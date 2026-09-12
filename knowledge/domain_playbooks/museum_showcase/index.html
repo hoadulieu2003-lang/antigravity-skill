@@ -1,0 +1,4338 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>L'ÉCLAT VIRTUS — Grand Palais des Arts Numériques | Paris • Tokyo • Venise</title>
+  <meta name="description" content="Le sanctuaire contemporain où l'architecture monumentale classique fusionne avec les arts numériques quantiques, les sculptures cinétiques et les paysages sonores spatiaux.">
+  <meta name="theme-color" content="#060709">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="L'ÉCLAT VIRTUS — Grand Palais des Arts Numériques">
+  <meta property="og:description" content="Musée immersif d'art contemporain et numérique. Visite virtuelle 3D, acoustique spatiale et chefs-d'œuvre quantiques.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=1200&auto=format&fit=crop">
+
+  <!-- Google Fonts: Haute Couture Editorial Pairings with Latin & Vietnamese Subsets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- External Libraries: Three.js r128, OrbitControls, GSAP 3.12.5 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* ==========================================================================
+       1. DESIGN SYSTEM & TOKENS (master_design_direction_2026.md)
+       ========================================================================== */
+    :root {
+      /* Surface Hierarchy */
+      --surface-void: #040507;
+      --surface-deep: #08090e;
+      --surface-panel: #0d0f16;
+      --surface-card: #12141e;
+      --surface-card-elevated: #181b28;
+      --surface-glass: rgba(13, 15, 22, 0.82);
+      --surface-glass-heavy: rgba(8, 9, 14, 0.92);
+
+      /* Typography Scales */
+      --font-serif-monumental: 'Cinzel Decorative', 'Cinzel', serif;
+      --font-serif-classical: 'Cinzel', serif;
+      --font-serif-editorial: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+      --font-display-modern: 'Syne', sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Luminance & Color Tokens */
+      --text-pure: #ffffff;
+      --text-primary: #f5f6f8;
+      --text-secondary: #c4c8d4;
+      --text-tertiary: #848a9c;
+      --text-muted: #525666;
+
+      /* Royal Art Accents */
+      --accent-gold: #d4af37;
+      --accent-gold-light: #f3e2a9;
+      --accent-gold-glow: rgba(212, 175, 55, 0.3);
+      --accent-gold-deep: #997d26;
+      --accent-cyan: #00f0ff;
+      --accent-cyan-glow: rgba(0, 240, 255, 0.3);
+      --accent-violet: #8a63ff;
+      --accent-violet-glow: rgba(138, 99, 255, 0.3);
+      --accent-crimson: #e63946;
+
+      /* Borders & Glass Dividers */
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-standard: rgba(255, 255, 255, 0.12);
+      --border-highlight: rgba(255, 255, 255, 0.24);
+      --border-gold: rgba(212, 175, 55, 0.45);
+      --border-gold-glow: rgba(212, 175, 55, 0.8);
+
+      /* Motion Curves */
+      --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Vietnamese Typography Overrides for Perfect Harmonious Diacritics */
+    html[lang="vi"] .hero-monumental-title,
+    html[lang="vi"] .section-heading-serif,
+    html[lang="vi"] .brand-name {
+      font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    /* Base Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background-color: var(--surface-void);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: var(--surface-void);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    ::selection {
+      background: var(--accent-gold);
+      color: #000;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--surface-void);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.35);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-gold);
+    }
+
+    /* ==========================================================================
+       2. CUSTOM CURSOR PHYSICS & INTERACTION
+       ========================================================================== */
+    .custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate3d(-100px, -100px, 0);
+      mix-blend-mode: difference;
+    }
+
+    #cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-gold-light);
+      border-radius: 50%;
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      transition: transform 0.15s ease, background-color 0.3s;
+    }
+
+    #cursor-ring {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      border-radius: 50%;
+      position: absolute;
+      top: -22px;
+      left: -22px;
+      transition: width 0.3s var(--ease-luxury), height 0.3s var(--ease-luxury), top 0.3s var(--ease-luxury), left 0.3s var(--ease-luxury), border-color 0.3s;
+    }
+
+    #cursor-label {
+      position: absolute;
+      top: 24px;
+      left: -50px;
+      width: 100px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-gold-light);
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+
+    body.hover-interactive #cursor-ring {
+      width: 68px;
+      height: 68px;
+      top: -34px;
+      left: -34px;
+      border-color: var(--accent-gold);
+      background: rgba(212, 175, 55, 0.14);
+    }
+    body.hover-interactive #cursor-dot {
+      transform: scale(1.5);
+      background: #fff;
+    }
+    body.hover-interactive #cursor-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Ambient Background Light Mesh Canvas */
+    #ambient-bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.65;
+    }
+
+    /* Master Progress Bar */
+    #master-scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-gold), var(--accent-cyan), var(--accent-violet));
+      z-index: 10000;
+      width: 0%;
+      box-shadow: 0 0 12px var(--accent-gold-glow);
+    }
+
+    /* ==========================================================================
+       3. NAVIGATION & HUD BAR
+       ========================================================================== */
+    header.site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 40px;
+      background: var(--surface-glass);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: transform 0.4s var(--ease-luxury), background 0.3s;
+    }
+
+    .nav-container {
+      max-width: 1720px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-crest {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, rgba(212,175,55,0.18) 0%, transparent 70%);
+      box-shadow: 0 0 16px var(--accent-gold-glow);
+      transition: transform 0.4s var(--ease-luxury), box-shadow 0.4s;
+    }
+
+    .nav-brand:hover .brand-crest {
+      transform: rotate(45deg);
+      box-shadow: 0 0 24px rgba(212, 175, 55, 0.5);
+    }
+
+    .brand-crest svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--accent-gold);
+    }
+
+    .brand-text-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: var(--font-serif-monumental);
+      font-size: 16px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-pure);
+      font-weight: 700;
+    }
+
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    nav.nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-family: var(--font-display-modern);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.3s;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent-gold);
+      transition: width 0.3s var(--ease-luxury);
+    }
+
+    .nav-link:hover {
+      color: var(--text-pure);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Nav Telemetry & Audio Synthesizer Controls */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .audio-synthesizer-hud {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 30px;
+      padding: 6px 14px;
+      transition: border-color 0.3s;
+    }
+
+    .audio-synthesizer-hud:hover {
+      border-color: var(--border-gold);
+    }
+
+    #audio-spectrum-canvas {
+      width: 64px;
+      height: 18px;
+      display: block;
+    }
+
+    .audio-toggle-btn {
+      background: none;
+      border: none;
+      color: var(--accent-gold);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px;
+      transition: color 0.3s, transform 0.2s;
+    }
+
+    .audio-toggle-btn:hover {
+      color: var(--text-pure);
+      transform: scale(1.05);
+    }
+
+    .sound-pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      animation: pulse-ring 1.8s infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 8px var(--accent-gold); }
+      100% { transform: scale(0.9); opacity: 0.6; }
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 3px 6px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      padding: 4px 8px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--accent-gold);
+      color: #000;
+      font-weight: 700;
+    }
+
+    .btn-vip-reserve {
+      font-family: var(--font-display-modern);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border: 1px solid var(--accent-gold);
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0.05) 100%);
+      color: var(--accent-gold-light);
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 16px rgba(212, 175, 55, 0.1);
+      transition: all 0.3s var(--ease-luxury);
+    }
+
+    .btn-vip-reserve:hover {
+      background: var(--accent-gold);
+      color: #000;
+      box-shadow: 0 0 24px rgba(212, 175, 55, 0.45);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       4. SECTION: HERO CURTAIN
+       ========================================================================== */
+    section.hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 140px 40px 50px;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    .hero-media-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .hero-bg-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.32;
+      filter: contrast(1.2) brightness(0.7) saturate(0.8);
+      transform: scale(1.05);
+      transition: transform 1.2s var(--ease-luxury);
+    }
+
+    .hero-gradient-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 40%, rgba(138, 99, 255, 0.1) 0%, rgba(4, 5, 7, 0.85) 70%, var(--surface-void) 100%),
+                  linear-gradient(180deg, rgba(4, 5, 7, 0.3) 0%, var(--surface-void) 100%);
+    }
+
+    .hero-content-inner {
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-gold);
+      border-radius: 30px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold-light);
+      margin-bottom: 24px;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-badge-pill svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--accent-gold);
+    }
+
+    .hero-monumental-title {
+      font-family: var(--font-serif-monumental);
+      font-size: clamp(48px, 8.5vw, 120px);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #ffffff 20%, #e2e4ea 60%, rgba(212, 175, 55, 0.85) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 24px;
+      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-subtitle-editorial {
+      font-family: var(--font-serif-editorial);
+      font-style: italic;
+      font-size: clamp(20px, 2.5vw, 34px);
+      font-weight: 400;
+      color: var(--text-secondary);
+      max-width: 880px;
+      margin-bottom: 40px;
+      line-height: 1.4;
+    }
+
+    .hero-actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-hero-primary {
+      font-family: var(--font-display-modern);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border: 1px solid var(--accent-gold);
+      border-radius: 32px;
+      background: var(--accent-gold);
+      color: #000;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+      transition: all 0.35s var(--ease-luxury);
+    }
+
+    .btn-hero-primary:hover {
+      background: #ffffff;
+      border-color: #ffffff;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .btn-hero-secondary {
+      font-family: var(--font-display-modern);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border: 1px solid var(--border-standard);
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-primary);
+      cursor: pointer;
+      text-decoration: none;
+      backdrop-filter: blur(16px);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.35s var(--ease-luxury);
+    }
+
+    .btn-hero-secondary:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      background: rgba(212, 175, 55, 0.08);
+      transform: translateY(-3px);
+    }
+
+    /* Hero Telemetry Footer Bar */
+    .hero-telemetry-bar {
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 24px 32px;
+      background: rgba(13, 15, 22, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      backdrop-filter: blur(20px);
+    }
+
+    .telemetry-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      border-left: 1px solid var(--border-subtle);
+      padding-left: 18px;
+    }
+
+    .telemetry-item:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    .telemetry-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .telemetry-value {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .telemetry-value .dot-live {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    /* ==========================================================================
+       5. SECTION: CURATORIAL MANIFESTO (Scrollytelling & Philosophy)
+       ========================================================================== */
+    section.manifesto-section {
+      padding: 160px 40px;
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(180deg, var(--surface-void) 0%, var(--surface-deep) 50%, var(--surface-void) 100%);
+    }
+
+    .section-header-centered {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 80px;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .section-heading-serif {
+      font-family: var(--font-serif-monumental);
+      font-size: clamp(32px, 4.5vw, 64px);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-pure);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .section-desc-lead {
+      font-family: var(--font-serif-editorial);
+      font-size: 20px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Curatorial Bento Grid */
+    .manifesto-grid {
+      max-width: 1540px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 28px;
+    }
+
+    .bento-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s var(--ease-luxury), border-color 0.4s, box-shadow 0.4s;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-gold);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.08);
+    }
+
+    .bento-span-8 {
+      grid-column: span 8;
+    }
+
+    .bento-span-4 {
+      grid-column: span 4;
+    }
+
+    .bento-span-6 {
+      grid-column: span 6;
+    }
+
+    .bento-card-bg-art {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      opacity: 0.25;
+      background-size: cover;
+      background-position: center;
+      mask-image: linear-gradient(90deg, transparent 0%, black 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 100%);
+      transition: opacity 0.4s;
+    }
+
+    .bento-card:hover .bento-card-bg-art {
+      opacity: 0.4;
+    }
+
+    .bento-number {
+      font-family: var(--font-serif-monumental);
+      font-size: 16px;
+      color: var(--accent-gold);
+      letter-spacing: 0.15em;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .bento-title {
+      font-family: var(--font-display-modern);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-pure);
+      margin-bottom: 16px;
+      line-height: 1.25;
+    }
+
+    .bento-body {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* Comparison Interactive Module */
+    .duality-comparison-box {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .duality-col h4 {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+
+    .duality-col p {
+      font-size: 14px;
+      color: var(--text-tertiary);
+    }
+
+    /* Architectural Metric Counters */
+    .metric-stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1540px;
+      margin: 60px auto 0;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 30px 24px;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+
+    .stat-box:hover {
+      border-color: var(--border-gold);
+    }
+
+    .stat-big-number {
+      font-family: var(--font-serif-monumental);
+      font-size: 44px;
+      font-weight: 900;
+      color: var(--accent-gold-light);
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+
+    .stat-label-text {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       6. SECTION: 3D VIRTUAL GALLERY ROTUNDA (The Monumental Experience)
+       ========================================================================== */
+    section.virtual-rotunda-section {
+      padding: 120px 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .rotunda-stage-container {
+      max-width: 1600px;
+      margin: 0 auto;
+      background: var(--surface-card);
+      border: 1px solid var(--border-standard);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+      position: relative;
+    }
+
+    /* 3D WebGL Viewport */
+    .rotunda-viewport-wrapper {
+      position: relative;
+      width: 100%;
+      height: 720px;
+      background: #040508;
+      overflow: hidden;
+    }
+
+    #rotunda-three-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      outline: none;
+    }
+
+    /* 3D HUD Controls Layer */
+    .rotunda-hud-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px;
+    }
+
+    .hud-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      pointer-events: auto;
+    }
+
+    .active-wing-badge {
+      background: var(--surface-glass-heavy);
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      padding: 12px 20px;
+      backdrop-filter: blur(16px);
+    }
+
+    .wing-index-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .wing-main-title {
+      font-family: var(--font-serif-classical);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #fff;
+    }
+
+    .hud-camera-controls {
+      display: flex;
+      gap: 8px;
+      background: var(--surface-glass-heavy);
+      border: 1px solid var(--border-subtle);
+      border-radius: 30px;
+      padding: 4px;
+      backdrop-filter: blur(16px);
+    }
+
+    .btn-camera-mode {
+      background: transparent;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-camera-mode.active, .btn-camera-mode:hover {
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--accent-gold-light);
+      font-weight: 600;
+    }
+
+    /* Bottom Wing Selector & Lighting Modes */
+    .hud-bottom-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      pointer-events: auto;
+    }
+
+    .wing-pills-selector {
+      display: flex;
+      gap: 10px;
+      background: var(--surface-glass-heavy);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 6px;
+      backdrop-filter: blur(16px);
+    }
+
+    .btn-wing-pill {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 10px 18px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-luxury);
+    }
+
+    .btn-wing-pill:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-wing-pill.active {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--border-gold);
+    }
+
+    .pill-wing-code {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold);
+      display: block;
+    }
+
+    .pill-wing-name {
+      font-family: var(--font-display-modern);
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .lighting-atmosphere-cluster {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: var(--surface-glass-heavy);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 10px 14px;
+      backdrop-filter: blur(16px);
+    }
+
+    .lighting-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .lighting-buttons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-light-preset {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid transparent;
+      border-radius: 6px;
+      padding: 5px 10px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-light-preset.active {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      background: rgba(212, 175, 55, 0.15);
+    }
+
+    /* Rotunda Spec Details Drawer */
+    .rotunda-telemetry-drawer {
+      padding: 24px 32px;
+      background: var(--surface-panel);
+      border-top: 1px solid var(--border-subtle);
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .drawer-artwork-desc h3 {
+      font-family: var(--font-serif-classical);
+      font-size: 20px;
+      color: var(--text-pure);
+      margin-bottom: 4px;
+    }
+
+    .drawer-artwork-desc p {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      line-height: 1.5;
+    }
+
+    .drawer-stat-item span {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .drawer-stat-item strong {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--accent-gold-light);
+    }
+
+    .btn-inspect-3d-modal {
+      font-family: var(--font-display-modern);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border: 1px solid var(--border-gold);
+      border-radius: 24px;
+      background: rgba(212, 175, 55, 0.1);
+      color: var(--accent-gold-light);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s var(--ease-luxury);
+    }
+
+    .btn-inspect-3d-modal:hover {
+      background: var(--accent-gold);
+      color: #000;
+      box-shadow: 0 0 24px rgba(212, 175, 55, 0.4);
+    }
+
+    /* ==========================================================================
+       7. SECTION: PERMANENT & SEASONAL MASTERPIECES SHOWCASE
+       ========================================================================== */
+    section.masterpieces-section {
+      padding: 140px 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .masterpieces-filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
+
+    .btn-filter-tag {
+      font-family: var(--font-display-modern);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      color: var(--text-tertiary);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-filter-tag.active, .btn-filter-tag:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+      background: rgba(212, 175, 55, 0.1);
+    }
+
+    .masterpieces-grid {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+    }
+
+    .artwork-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s var(--ease-luxury), border-color 0.4s, box-shadow 0.4s;
+      position: relative;
+    }
+
+    .artwork-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-gold);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.1);
+    }
+
+    .artwork-img-box {
+      width: 100%;
+      height: 380px;
+      position: relative;
+      overflow: hidden;
+      background: #0a0b10;
+    }
+
+    .artwork-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease-luxury), filter 0.8s;
+      filter: brightness(0.9) contrast(1.1);
+    }
+
+    .artwork-card:hover .artwork-img-box img {
+      transform: scale(1.08);
+      filter: brightness(1) contrast(1.15);
+    }
+
+    .artwork-accession-pill {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      background: rgba(8, 9, 14, 0.82);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+      border-radius: 12px;
+      color: var(--accent-gold);
+      backdrop-filter: blur(8px);
+    }
+
+    .artwork-room-pill {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      background: rgba(8, 9, 14, 0.82);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+      border-radius: 12px;
+      color: var(--text-secondary);
+      backdrop-filter: blur(8px);
+    }
+
+    .artwork-audio-quick-btn {
+      position: absolute;
+      bottom: 18px;
+      right: 18px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--surface-glass-heavy);
+      border: 1px solid var(--border-gold);
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .artwork-audio-quick-btn:hover {
+      transform: scale(1.15);
+      background: var(--accent-gold);
+      color: #000;
+    }
+
+    .artwork-content-box {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .artwork-meta-header {
+      margin-bottom: 14px;
+    }
+
+    .artwork-artist-name {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .artwork-title {
+      font-family: var(--font-serif-classical);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-pure);
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .artwork-medium {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .artwork-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .artwork-year {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent-gold);
+    }
+
+    .btn-card-inspect {
+      font-family: var(--font-display-modern);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-gold-light);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .btn-card-inspect:hover {
+      color: #fff;
+      transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+       8. SECTION: ARCHITECTURAL BLUEPRINT & LEVEL EXPLORER
+       ========================================================================== */
+    section.blueprint-section {
+      padding: 140px 40px;
+      position: relative;
+      z-index: 2;
+      background: var(--surface-deep);
+    }
+
+    .blueprint-layout-wrapper {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .blueprint-visual-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-standard);
+      border-radius: 24px;
+      padding: 36px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .blueprint-header-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 16px;
+    }
+
+    .btn-floor-level {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-tertiary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-floor-level.active {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--border-gold);
+      color: var(--accent-gold-light);
+      font-weight: 600;
+    }
+
+    .blueprint-svg-canvas {
+      width: 100%;
+      height: 480px;
+      background: radial-gradient(circle at 50% 50%, rgba(20, 24, 38, 0.7) 0%, #07080d 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blueprint-details-col {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .environmental-sensors-panel {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .sensor-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sensor-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .sensor-reading {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .sensor-status-good {
+      color: #10b981;
+    }
+
+    /* ==========================================================================
+       9. SECTION: THE NOCTURNE ATELIER & VIP TICKETING ENGINE
+       ========================================================================== */
+    section.ticketing-section {
+      padding: 160px 40px;
+      position: relative;
+      z-index: 2;
+      background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.06) 0%, var(--surface-void) 70%);
+    }
+
+    .atelier-container {
+      max-width: 1540px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 50px;
+      background: var(--surface-card);
+      border: 1px solid var(--border-standard);
+      border-radius: 28px;
+      padding: 50px;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .atelier-form-col {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .atelier-step-group h4 {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Date Selector Carousel */
+    .date-picker-row {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+
+    .date-card-btn {
+      flex: 1;
+      min-width: 80px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .date-card-btn:hover {
+      border-color: var(--border-gold);
+    }
+
+    .date-card-btn.active {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--accent-gold);
+    }
+
+    .date-day-name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .date-day-num {
+      font-family: var(--font-serif-monumental);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-pure);
+      margin: 4px 0;
+      display: block;
+    }
+
+    .date-month-name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--accent-gold-light);
+      display: block;
+    }
+
+    /* Ticket Tier Selector */
+    .tier-cards-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .tier-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 20px 16px;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-luxury);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tier-card:hover {
+      border-color: var(--border-gold);
+    }
+
+    .tier-card.active {
+      background: rgba(212, 175, 55, 0.12);
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+    }
+
+    .tier-name {
+      font-family: var(--font-display-modern);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-pure);
+      margin-bottom: 6px;
+    }
+
+    .tier-price {
+      font-family: var(--font-mono);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent-gold-light);
+      margin-bottom: 8px;
+    }
+
+    .tier-perks {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Time Slots */
+    .time-slots-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .btn-time-slot {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 10px 6px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .btn-time-slot.active {
+      background: var(--accent-gold);
+      color: #000;
+      font-weight: 700;
+      border-color: var(--accent-gold);
+    }
+
+    /* Guest Input */
+    .guest-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .guest-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .guest-input:focus {
+      border-color: var(--accent-gold);
+    }
+
+    /* Digital Holographic Pass Preview (Right Col) */
+    .atelier-preview-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .holographic-ticket-pass {
+      width: 100%;
+      max-width: 440px;
+      background: linear-gradient(145deg, #181b26 0%, #0d0f17 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: 24px;
+      padding: 36px 30px;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(212, 175, 55, 0.2);
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.3s;
+    }
+
+    .ticket-holo-shimmer {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 40%, rgba(212, 175, 55, 0.15) 50%, rgba(0, 240, 255, 0.1) 55%, transparent 65%);
+      pointer-events: none;
+      animation: holo-sweep 6s infinite linear;
+    }
+
+    @keyframes holo-sweep {
+      0% { transform: translateY(-50%) rotate(25deg); }
+      100% { transform: translateY(50%) rotate(25deg); }
+    }
+
+    .ticket-head-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px dashed var(--border-gold);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .ticket-serial {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--accent-gold);
+    }
+
+    .ticket-qr-placeholder {
+      width: 54px;
+      height: 54px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ticket-qr-placeholder svg {
+      width: 100%;
+      height: 100%;
+      fill: #000;
+    }
+
+    .ticket-guest-info {
+      margin-bottom: 24px;
+    }
+
+    .ticket-guest-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .ticket-guest-val {
+      font-family: var(--font-serif-classical);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-pure);
+      margin-top: 2px;
+    }
+
+    .ticket-details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .ticket-total-calc {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+
+    .ticket-total-label {
+      font-family: var(--font-display-modern);
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    .ticket-total-amount {
+      font-family: var(--font-mono);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .btn-confirm-reservation {
+      width: 100%;
+      font-family: var(--font-display-modern);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 18px;
+      border: 1px solid var(--accent-gold);
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #b39228 100%);
+      color: #000;
+      cursor: pointer;
+      box-shadow: 0 0 28px rgba(212, 175, 55, 0.4);
+      transition: all 0.35s var(--ease-luxury);
+    }
+
+    .btn-confirm-reservation:hover {
+      background: #fff;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       10. SECTION: INTERNATIONAL CRITICAL ACCLAIM & COLOPHON
+       ========================================================================== */
+    section.colophon-section {
+      padding: 140px 40px 80px;
+      position: relative;
+      z-index: 2;
+      background: var(--surface-void);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .press-quotes-grid {
+      max-width: 1540px;
+      margin: 0 auto 100px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .press-quote-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .press-quote-text {
+      font-family: var(--font-serif-editorial);
+      font-style: italic;
+      font-size: 20px;
+      color: var(--text-primary);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .press-source {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .footer-colophon-inner {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 48px;
+      padding-top: 60px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .footer-col h5 {
+      font-family: var(--font-serif-classical);
+      font-size: 16px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      font-size: 14px;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--accent-gold-light);
+    }
+
+    .footer-newsletter-box p {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      margin-bottom: 16px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #fff;
+      outline: none;
+    }
+
+    .btn-newsletter {
+      background: var(--accent-gold);
+      border: none;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      color: #000;
+      transition: background 0.2s;
+    }
+
+    .btn-newsletter:hover {
+      background: #fff;
+    }
+
+    .footer-bottom-bar {
+      max-width: 1600px;
+      margin: 60px auto 0;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       11. CURATORIAL DOSSIER MODAL & CONFIRMATION MODAL
+       ========================================================================== */
+    .curatorial-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(4, 5, 7, 0.88);
+      backdrop-filter: blur(24px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease-luxury);
+    }
+
+    .curatorial-modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .curatorial-modal-card {
+      background: var(--surface-panel);
+      border: 1px solid var(--border-gold);
+      border-radius: 28px;
+      width: 100%;
+      max-width: 1100px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 48px;
+      position: relative;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9), 0 0 50px rgba(212, 175, 55, 0.15);
+      transform: scale(0.95);
+      transition: transform 0.4s var(--ease-luxury);
+    }
+
+    .curatorial-modal-backdrop.open .curatorial-modal-card {
+      transform: scale(1);
+    }
+
+    .btn-close-modal {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .btn-close-modal:hover {
+      background: var(--accent-gold);
+      color: #000;
+    }
+
+    .modal-dossier-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .modal-3d-interactive-box {
+      width: 100%;
+      height: 450px;
+      background: #080910;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #modal-three-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .modal-curatorial-text h2 {
+      font-family: var(--font-serif-classical);
+      font-size: 32px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .modal-artist-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .modal-curatorial-text p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .modal-specs-table {
+      margin-top: 24px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .modal-spec-cell span {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .modal-spec-cell strong {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-primary);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1200px) {
+      .bento-span-8, .bento-span-4 { grid-column: span 12; }
+      .masterpieces-grid { grid-template-columns: repeat(2, 1fr); }
+      .blueprint-layout-wrapper { grid-template-columns: 1fr; }
+      .atelier-container { grid-template-columns: 1fr; }
+      .press-quotes-grid { grid-template-columns: 1fr; }
+      .footer-colophon-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      header.site-header { padding: 14px 20px; }
+      nav.nav-links { display: none; }
+      .hero-telemetry-bar { grid-template-columns: 1fr 1fr; }
+      .masterpieces-grid { grid-template-columns: 1fr; }
+      .metric-stat-row { grid-template-columns: 1fr 1fr; }
+      .modal-dossier-grid { grid-template-columns: 1fr; }
+      .rotunda-telemetry-drawer { grid-template-columns: 1fr; }
+      .tier-cards-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Master Cursor -->
+  <div class="custom-cursor" id="cursor-tracker">
+    <div id="cursor-ring"></div>
+    <div id="cursor-dot"></div>
+    <div id="cursor-label">EXPLORE</div>
+  </div>
+
+  <!-- Master Top Scroll Progress -->
+  <div id="master-scroll-progress"></div>
+
+  <!-- Ambient Shader Light Mesh Canvas -->
+  <canvas id="ambient-bg-canvas"></canvas>
+
+  <!-- ========================================================================
+       SITE HEADER & HUD NAVIGATION
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="#hero" class="nav-brand">
+        <div class="brand-crest">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="brand-text-col">
+          <span class="brand-name">L'ÉCLAT VIRTUS</span>
+          <span class="brand-sub" data-i18n="nav_sub">Grand Palais des Arts Numériques</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#manifesto" class="nav-link" data-i18n="nav_manifesto">Manifeste</a>
+        <a href="#virtual-gallery" class="nav-link" data-i18n="nav_gallery">Rotonde 3D</a>
+        <a href="#masterpieces" class="nav-link" data-i18n="nav_masterpieces">Chefs-d'œuvre</a>
+        <a href="#architecture" class="nav-link" data-i18n="nav_architecture">Architecture</a>
+        <a href="#tickets" class="nav-link" data-i18n="nav_tickets">Nocturnes</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Audio Synthesizer Controls -->
+        <div class="audio-synthesizer-hud" title="Spatial Ambient Synthesizer">
+          <canvas id="audio-spectrum-canvas"></canvas>
+          <button class="audio-toggle-btn" id="btn-audio-toggle">
+            <span class="sound-pulse-dot" id="sound-dot"></span>
+            <span id="audio-status-text" data-i18n="audio_start">AUDIO ON</span>
+          </button>
+        </div>
+
+        <!-- Trilingual Language Switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="fr">FR</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="vi">VI</button>
+        </div>
+
+        <a href="#tickets" class="btn-vip-reserve" data-i18n="btn_reserve_nav">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span data-i18n="reserve_pass">Réserver un Pass</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         ACT I: HERO CURTAIN & MONUMENTAL STATEMENT
+         ====================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="hero-media-wrapper">
+        <video class="hero-bg-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=1600&auto=format&fit=crop">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+        </video>
+        <div class="hero-gradient-overlay"></div>
+      </div>
+
+      <div></div> <!-- Spacer -->
+
+      <div class="hero-content-inner">
+        <div class="hero-badge-pill">
+          <svg viewBox="0 0 24 24">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span data-i18n="hero_badge">BIENNALE MONDIALE D'ART NUMÉRIQUE 2026 • PARIS</span>
+        </div>
+
+        <h1 class="hero-monumental-title" data-i18n="hero_title">
+          L'ÉCLAT VIRTUS
+        </h1>
+
+        <p class="hero-subtitle-editorial" data-i18n="hero_subtitle">
+          "Où l'architecture monumentale du XVIIIe siècle se dissout dans la lumière quantique générative et la conscience computationnelle."
+        </p>
+
+        <div class="hero-actions-row">
+          <a href="#virtual-gallery" class="btn-hero-primary" data-i18n="btn_enter_gallery">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span data-i18n="explore_virtual_rotunda">Explorer la Rotonde 3D</span>
+          </a>
+          <a href="#tickets" class="btn-hero-secondary" data-i18n="btn_nocturnes">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span data-i18n="schedule_vip_visit">Nocturnes Privilège</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Telemetry Live Bar -->
+      <div class="hero-telemetry-bar">
+        <div class="telemetry-item">
+          <span class="telemetry-label" data-i18n="telemetry_loc">Localisation & Coordonnées</span>
+          <span class="telemetry-value">Paris VIII • 48.8661° N, 2.3125° E</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label" data-i18n="telemetry_time">Temps Sidéral Musée</span>
+          <span class="telemetry-value" id="paris-clock">21:42:15 CET</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label" data-i18n="telemetry_curation">Commissariat d'Exposition</span>
+          <span class="telemetry-value">
+            <span class="dot-live"></span>
+            <span data-i18n="curator_status">Actif • Nocturne Ouverte</span>
+          </span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label" data-i18n="telemetry_resonance">Champ Acoustique Spatial</span>
+          <span class="telemetry-value" id="acoustic-hz">432.08 Hz • D-Mineur 9</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACT II: CURATORIAL MANIFESTO & PHILOSOPHY
+         ====================================================================== -->
+    <section class="manifesto-section" id="manifesto">
+      <div class="section-header-centered">
+        <span class="section-eyebrow" data-i18n="manifesto_eyebrow">PHILOSOPHIE & CONSCIENCE VISUELLE</span>
+        <h2 class="section-heading-serif" data-i18n="manifesto_heading">Le Sanctuaire Quantique</h2>
+        <p class="section-desc-lead" data-i18n="manifesto_lead">
+          L'œuvre d'art n'est plus un objet immobile derrière un cordon de velours. Elle respire au rythme de la lumière mathématique, s'adapte à la présence du spectateur et résonne dans l'espace infini.
+        </p>
+      </div>
+
+      <div class="manifesto-grid">
+        <!-- Bento 1: Grand Concept -->
+        <div class="bento-card bento-span-8">
+          <div class="bento-card-bg-art" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop');"></div>
+          <span class="bento-number">ACTE I • FUSION MONUMENTALE</span>
+          <h3 class="bento-title" data-i18n="bento1_title">L'Héritage Classique Sublimé par l'Algorithme</h3>
+          <p class="bento-body" data-i18n="bento1_desc">
+            Bâti sous les voûtes de pierre calcaire de l'ancien Grand Palais, L'Éclat Virtus intègre des réseaux neuronaux génératifs et des projecteurs laser à photons cohérents pour transcender la matière physique. Chaque colonne dorique devient une harpe lumineuse vibrante.
+          </p>
+          <div class="duality-comparison-box">
+            <div class="duality-col">
+              <h4 data-i18n="duality_trad_title">Musée Traditionnel (1793)</h4>
+              <p data-i18n="duality_trad_desc">Toiles statiques, silence compassé, éclairage directionnel figé dans le temps.</p>
+            </div>
+            <div class="duality-col">
+              <h4 data-i18n="duality_virtus_title">L'Éclat Virtus (2026)</h4>
+              <p data-i18n="duality_virtus_desc">Sculptures quantiques interactives, acoustique spatiale binaurale, métamorphose en 60 FPS.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento 2: Spatial Sound -->
+        <div class="bento-card bento-span-4">
+          <span class="bento-number">ACTE II • RÉSONANCE</span>
+          <h3 class="bento-title" data-i18n="bento2_title">Acoustique Spatiale 432 Hz</h3>
+          <p class="bento-body" data-i18n="bento2_desc">
+            Un réseau de 128 transducteurs ultrasoniques sphériques sculpte le son dans l'air. L'acoustique réagit au déplacement de chaque visiteur, créant une bulle contemplative intime au cœur de la grandeur collective.
+          </p>
+        </div>
+
+        <!-- Bento 3: Temporal Immersion -->
+        <div class="bento-card bento-span-6">
+          <span class="bento-number">ACTE III • PERSISTANCE</span>
+          <h3 class="bento-title" data-i18n="bento3_title">Matière Vivante & Fluide Ferro-Magnétique</h3>
+          <p class="bento-body" data-i18n="bento3_desc">
+            Nos installations cinétiques mélangent métaux nobles et nanoparticules magnétiques en lévitation hydrodynamique. Les formes changent d'état sous l'influence des marées gravitationnelles et des algorithmes biomimétiques.
+          </p>
+        </div>
+
+        <!-- Bento 4: Nocturne Immersion -->
+        <div class="bento-card bento-span-6">
+          <span class="bento-number">ACTE IV • LES NOCTURNES</span>
+          <h3 class="bento-title" data-i18n="bento4_title">La Transmutation de Minuit</h3>
+          <p class="bento-body" data-i18n="bento4_desc">
+            Dès le crépuscule, les projecteurs solaires s'éteignent pour laisser place aux lasers ultraviolets et à la luminescence d'or pur. Une expérience réservée à 120 convives par soirée pour une communion absolue avec l'art.
+          </p>
+        </div>
+      </div>
+
+      <!-- Architectural Metrics -->
+      <div class="metric-stat-row">
+        <div class="stat-box">
+          <div class="stat-big-number">14 800</div>
+          <div class="stat-label-text" data-i18n="stat_area">Mètres Carrés d'Exposition</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-big-number">600K</div>
+          <div class="stat-label-text" data-i18n="stat_lumens">Lumens de Pureté Laser</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-big-number">60 FPS</div>
+          <div class="stat-label-text" data-i18n="stat_fps">Synchronisation WebGL GPU</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-big-number">0.00%</div>
+          <div class="stat-label-text" data-i18n="stat_carbon">Empreinte Carbone • Géothermie</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACT III: 3D VIRTUAL GALLERY ROTUNDA (INTERACTIVE THREE.JS EXPERIENCE)
+         ====================================================================== -->
+    <section class="virtual-rotunda-section" id="virtual-gallery">
+      <div class="section-header-centered">
+        <span class="section-eyebrow" data-i18n="rotunda_eyebrow">EXPÉRIENCE INTERACTIVE EN TEMPS RÉEL</span>
+        <h2 class="section-heading-serif" data-i18n="rotunda_heading">La Grande Rotonde 3D</h2>
+        <p class="section-desc-lead" data-i18n="rotunda_lead">
+          Explorez les 4 Ailes Curieuses de notre nef néoclassique. Cliquez sur les sculptures pour inspecter leur matérialité quantique ou déplacez la caméra à votre gré.
+        </p>
+      </div>
+
+      <div class="rotunda-stage-container">
+        <!-- 3D Canvas Viewport -->
+        <div class="rotunda-viewport-wrapper">
+          <canvas id="rotunda-three-canvas"></canvas>
+
+          <!-- 3D HUD Interface -->
+          <div class="rotunda-hud-overlay">
+            <div class="hud-top-bar">
+              <div class="active-wing-badge">
+                <span class="wing-index-tag" id="hud-wing-tag">AILE I • NEF CENTRALE</span>
+                <span class="wing-main-title" id="hud-sculpture-title">L'Obélisque Quantique (2026)</span>
+              </div>
+
+              <div class="hud-camera-controls">
+                <button class="btn-camera-mode active" data-cam="walk" data-i18n="cam_walk">Promenade</button>
+                <button class="btn-camera-mode" data-cam="orbit" data-i18n="cam_orbit">Orbite 360°</button>
+                <button class="btn-camera-mode" data-cam="zenith" data-i18n="cam_zenith">Zénith</button>
+                <button class="btn-camera-mode" data-cam="macro" data-i18n="cam_macro">Détail Macro</button>
+              </div>
+            </div>
+
+            <div class="hud-bottom-bar">
+              <!-- 4 Wings Pills -->
+              <div class="wing-pills-selector">
+                <button class="btn-wing-pill active" data-wing="0">
+                  <span class="pill-wing-code">AILE I</span>
+                  <span class="pill-wing-name">L'Obélisque</span>
+                </button>
+                <button class="btn-wing-pill" data-wing="1">
+                  <span class="pill-wing-code">AILE II</span>
+                  <span class="pill-wing-name">Jardin Éthéré</span>
+                </button>
+                <button class="btn-wing-pill" data-wing="2">
+                  <span class="pill-wing-code">AILE III</span>
+                  <span class="pill-wing-name">L'Apollon</span>
+                </button>
+                <button class="btn-wing-pill" data-wing="3">
+                  <span class="pill-wing-code">AILE IV</span>
+                  <span class="pill-wing-name">Chronos</span>
+                </button>
+              </div>
+
+              <!-- Atmosphere Presets -->
+              <div class="lighting-atmosphere-cluster">
+                <span class="lighting-label" data-i18n="light_atmos">Atmosphère Lumineuse</span>
+                <div class="lighting-buttons">
+                  <button class="btn-light-preset active" data-light="nocturne">Nocturne</button>
+                  <button class="btn-light-preset" data-light="solarium">Solarium</button>
+                  <button class="btn-light-preset" data-light="aurore">Aurore</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telemetry Details Drawer -->
+        <div class="rotunda-telemetry-drawer">
+          <div class="drawer-artwork-desc">
+            <h3 id="drawer-title">Claire de Vigny — L'Obélisque Quantique</h3>
+            <p id="drawer-desc">Polyèdre à réfraction chromatique d'or 24 carats et transmission de lumière cohérente. Émet une harmonique résonante de 432 Hz.</p>
+          </div>
+          <div class="drawer-stat-item">
+            <span data-i18n="mat_composition">Composition</span>
+            <strong id="drawer-mat">Cristal de Silice & Or Pur</strong>
+          </div>
+          <div class="drawer-stat-item">
+            <span data-i18n="lux_illuminance">Éclairement Lux</span>
+            <strong id="drawer-lux">185 LX • Faisceau Guidé</strong>
+          </div>
+          <div style="text-align: right;">
+            <button class="btn-inspect-3d-modal" id="btn-open-dossier" data-i18n="btn_inspect_modal">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <span>Consulter le Dossier</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACT IV: CURATED MASTERPIECES SHOWCASE
+         ====================================================================== -->
+    <section class="masterpieces-section" id="masterpieces">
+      <div class="section-header-centered">
+        <span class="section-eyebrow" data-i18n="gallery_eyebrow">ACQUISITIONS PERMANENTES & PRÊTS HISTORIQUES</span>
+        <h2 class="section-heading-serif" data-i18n="gallery_heading">Chefs-d'œuvre de la Biennale</h2>
+        <p class="section-desc-lead" data-i18n="gallery_lead">
+          Six installations monumentales sélectionnées pour leur audace conceptuelle, leur perfection mathématique et leur puissance d'évocation émotionnelle.
+        </p>
+      </div>
+
+      <!-- Filter Categories -->
+      <div class="masterpieces-filter-bar">
+        <button class="btn-filter-tag active" data-filter="all" data-i18n="filter_all">Toutes les Œuvres (6)</button>
+        <button class="btn-filter-tag" data-filter="light" data-i18n="filter_light">Lumière Quantique</button>
+        <button class="btn-filter-tag" data-filter="kinetic" data-i18n="filter_kinetic">Sculpture Cinétique</button>
+        <button class="btn-filter-tag" data-filter="sound" data-i18n="filter_sound">Acoustique Spatiale</button>
+      </div>
+
+      <!-- Grid of 6 Masterpieces -->
+      <div class="masterpieces-grid">
+        <!-- Artwork 1 -->
+        <article class="artwork-card" data-category="light" data-id="1">
+          <div class="artwork-img-box">
+            <img src="https://images.unsplash.com/photo-1544967082-d9d25d867d66?q=80&w=800&auto=format&fit=crop" alt="L'Aura des Étoiles">
+            <span class="artwork-accession-pill">LV-2026.01</span>
+            <span class="artwork-room-pill">Aile I • Nef</span>
+            <button class="artwork-audio-quick-btn" title="Écouter l'Extrait Acoustique" onclick="playMasterpieceAudio(0)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </button>
+          </div>
+          <div class="artwork-content-box">
+            <div class="artwork-meta-header">
+              <span class="artwork-artist-name">Claire de Vigny (France)</span>
+              <h3 class="artwork-title">L'Origine du Labyrinthe</h3>
+              <p class="artwork-medium">Cristal de quartz optique, laser néodyme, résonance acoustique à 432 Hz.</p>
+            </div>
+            <div class="artwork-card-footer">
+              <span class="artwork-year">MMXXVI</span>
+              <button class="btn-card-inspect" onclick="openMasterpieceDossier(0)">
+                <span data-i18n="btn_inspect">Inspecter</span> &rarr;
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 2 -->
+        <article class="artwork-card" data-category="kinetic" data-id="2">
+          <div class="artwork-img-box">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop" alt="Symphonie des Particules">
+            <span class="artwork-accession-pill">LV-2025.14</span>
+            <span class="artwork-room-pill">Aile II • Éther</span>
+            <button class="artwork-audio-quick-btn" title="Écouter l'Extrait Acoustique" onclick="playMasterpieceAudio(1)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </button>
+          </div>
+          <div class="artwork-content-box">
+            <div class="artwork-meta-header">
+              <span class="artwork-artist-name">Kenzo Takahashi & Studio Mirage (Tokyo)</span>
+              <h3 class="artwork-title">Symphonie des Particules</h3>
+              <p class="artwork-medium">40 000 émetteurs de photons bio-interactifs, détection de présence LiDAR.</p>
+            </div>
+            <div class="artwork-card-footer">
+              <span class="artwork-year">MMXXV</span>
+              <button class="btn-card-inspect" onclick="openMasterpieceDossier(1)">
+                <span data-i18n="btn_inspect">Inspecter</span> &rarr;
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 3 -->
+        <article class="artwork-card" data-category="light" data-id="3">
+          <div class="artwork-img-box">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" alt="Pietà Numérique">
+            <span class="artwork-accession-pill">LV-2026.03</span>
+            <span class="artwork-room-pill">Aile III • Apollon</span>
+            <button class="artwork-audio-quick-btn" title="Écouter l'Extrait Acoustique" onclick="playMasterpieceAudio(2)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </button>
+          </div>
+          <div class="artwork-content-box">
+            <div class="artwork-meta-header">
+              <span class="artwork-artist-name">Elena Rostova (Saint-Pétersbourg)</span>
+              <h3 class="artwork-title">Pietà Numérique (Vénération du Code)</h3>
+              <p class="artwork-medium">Marbre de Carrare sculpté par robot 7-axes, champ holographique anisotrope.</p>
+            </div>
+            <div class="artwork-card-footer">
+              <span class="artwork-year">MMXXVI</span>
+              <button class="btn-card-inspect" onclick="openMasterpieceDossier(2)">
+                <span data-i18n="btn_inspect">Inspecter</span> &rarr;
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 4 -->
+        <article class="artwork-card" data-category="kinetic" data-id="4">
+          <div class="artwork-img-box">
+            <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop" alt="Le Silence des Sphères">
+            <span class="artwork-accession-pill">LV-2024.89</span>
+            <span class="artwork-room-pill">Aile IV • Chronos</span>
+            <button class="artwork-audio-quick-btn" title="Écouter l'Extrait Acoustique" onclick="playMasterpieceAudio(3)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </button>
+          </div>
+          <div class="artwork-content-box">
+            <div class="artwork-meta-header">
+              <span class="artwork-artist-name">Marcus Vance (Londres)</span>
+              <h3 class="artwork-title">Le Silence des Sphères</h3>
+              <p class="artwork-medium">Titane Grade 5, or rose, gyroscope triple axe en lévitation supra-conductrice.</p>
+            </div>
+            <div class="artwork-card-footer">
+              <span class="artwork-year">MMXXIV</span>
+              <button class="btn-card-inspect" onclick="openMasterpieceDossier(3)">
+                <span data-i18n="btn_inspect">Inspecter</span> &rarr;
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 5 -->
+        <article class="artwork-card" data-category="sound" data-id="5">
+          <div class="artwork-img-box">
+            <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?q=80&w=800&auto=format&fit=crop" alt="Biocénose Flottante">
+            <span class="artwork-accession-pill">LV-2026.05</span>
+            <span class="artwork-room-pill">Crypte • Solarium</span>
+            <button class="artwork-audio-quick-btn" title="Écouter l'Extrait Acoustique" onclick="playMasterpieceAudio(4)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </button>
+          </div>
+          <div class="artwork-content-box">
+            <div class="artwork-meta-header">
+              <span class="artwork-artist-name">Dr. Solis Nguyen (Hanoï / Paris)</span>
+              <h3 class="artwork-title">Biocénose Flottante</h3>
+              <p class="artwork-medium">Mycélium bioluminescent, synthèse sonore neuronale en temps réel.</p>
+            </div>
+            <div class="artwork-card-footer">
+              <span class="artwork-year">MMXXVI</span>
+              <button class="btn-card-inspect" onclick="openMasterpieceDossier(4)">
+                <span data-i18n="btn_inspect">Inspecter</span> &rarr;
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Artwork 6 -->
+        <article class="artwork-card" data-category="sound" data-id="6">
+          <div class="artwork-img-box">
+            <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=800&auto=format&fit=crop" alt="La Chute d'Icare Virtuel">
+            <span class="artwork-accession-pill">LV-2025.42</span>
+            <span class="artwork-room-pill">Belvédère • Ciel</span>
+            <button class="artwork-audio-quick-btn" title="Écouter l'Extrait Acoustique" onclick="playMasterpieceAudio(5)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </button>
+          </div>
+          <div class="artwork-content-box">
+            <div class="artwork-meta-header">
+              <span class="artwork-artist-name">Jean-Luc Moreau (Genève)</span>
+              <h3 class="artwork-title">La Chute d'Icare Virtuel</h3>
+              <p class="artwork-medium">Dispersion volumétrique de brume cryogénique, faisceaux laser 532 nm.</p>
+            </div>
+            <div class="artwork-card-footer">
+              <span class="artwork-year">MMXXV</span>
+              <button class="btn-card-inspect" onclick="openMasterpieceDossier(5)">
+                <span data-i18n="btn_inspect">Inspecter</span> &rarr;
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACT V: ARCHITECTURAL BLUEPRINT & LEVEL EXPLORER
+         ====================================================================== -->
+    <section class="blueprint-section" id="architecture">
+      <div class="section-header-centered">
+        <span class="section-eyebrow" data-i18n="arch_eyebrow">CARTOGRAPHIE SPATIALE & MICRO-CLIMAT</span>
+        <h2 class="section-heading-serif" data-i18n="arch_heading">Topologie Monumentale</h2>
+        <p class="section-desc-lead" data-i18n="arch_lead">
+          Trois niveaux de sanctuaires interconnectés. Chaque salle maintient un micro-climat ultra-précis pour préserver les cristaux optiques et maximiser la propagation acoustique.
+        </p>
+      </div>
+
+      <div class="blueprint-layout-wrapper">
+        <!-- Interactive Vector Floor Plan -->
+        <div class="blueprint-visual-card">
+          <div class="blueprint-header-tabs">
+            <button class="btn-floor-level active" data-level="1">Niveau 0 • Grande Rotonde</button>
+            <button class="btn-floor-level" data-level="2">Niveau +1 • Solarium & Belvédère</button>
+            <button class="btn-floor-level" data-level="0">Niveau -1 • Crypte des Ombres</button>
+          </div>
+
+          <div class="blueprint-svg-canvas" id="blueprint-canvas-container">
+            <!-- Dynamic SVG Blueprint injected by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Environmental Telemetry Panel -->
+        <div class="blueprint-details-col">
+          <div class="bento-card" style="padding: 30px;">
+            <span class="bento-number" id="selected-room-code">SALLE S-101</span>
+            <h3 class="bento-title" id="selected-room-name">La Grande Nef Centrale</h3>
+            <p class="bento-body" id="selected-room-desc">
+              Voûte néoclassique de 28 mètres sous clef. Oculus central en verre polarisé actif régulant le flux solaire naturel en synergie với các chùm laser chiếu sáng.
+            </p>
+          </div>
+
+          <div class="environmental-sensors-panel">
+            <div class="sensor-item">
+              <span class="sensor-title" data-i18n="sensor_temp">Température</span>
+              <span class="sensor-reading" id="sensor-temp">20.8 °C</span>
+              <span class="sensor-status-good" data-i18n="status_optimal">Optimal &plusmn;0.2</span>
+            </div>
+            <div class="sensor-item">
+              <span class="sensor-title" data-i18n="sensor_hum">Hygrométrie</span>
+              <span class="sensor-reading" id="sensor-hum">48.4 % HR</span>
+              <span class="sensor-status-good" data-i18n="status_optimal">Optimal</span>
+            </div>
+            <div class="sensor-item">
+              <span class="sensor-title" data-i18n="sensor_cap">Jauge Visiteurs</span>
+              <span class="sensor-reading" id="sensor-cap">74 / 120</span>
+              <span class="sensor-status-good" data-i18n="status_fluid">Fluide</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACT VI: THE NOCTURNE ATELIER & VIP TICKETING ENGINE
+         ====================================================================== -->
+    <section class="ticketing-section" id="tickets">
+      <div class="section-header-centered">
+        <span class="section-eyebrow" data-i18n="ticket_eyebrow">RÉSERVATION PRIVILÈGE & BILLETTERIE HAUTE COUTURE</span>
+        <h2 class="section-heading-serif" data-i18n="ticket_heading">L'Atelier des Nocturnes</h2>
+        <p class="section-desc-lead" data-i18n="ticket_lead">
+          Accédez à la transmutation nocturne du musée. Choisissez votre date, votre niveau de privilège et générez instantanément votre pass numérique holographique numéroté.
+        </p>
+      </div>
+
+      <div class="atelier-container">
+        <!-- Form Builder (Left) -->
+        <div class="atelier-form-col">
+          <!-- Step 1: Date Picker -->
+          <div class="atelier-step-group">
+            <h4 data-i18n="step1_date">1. SÉLECTIONNEZ LA DATE DE VOTRE VISITE</h4>
+            <div class="date-picker-row" id="date-picker-container">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Step 2: Privilege Tier -->
+          <div class="atelier-step-group">
+            <h4 data-i18n="step2_tier">2. NIVEAU DE PRIVILÈGE CURATORIAL</h4>
+            <div class="tier-cards-row">
+              <div class="tier-card active" data-tier="nocturne" data-price="25">
+                <div>
+                  <div class="tier-name" data-i18n="tier1_name">Pass Nocturne</div>
+                  <div class="tier-price">25 &euro;</div>
+                </div>
+                <div class="tier-perks" data-i18n="tier1_perks">Accès libre à toutes les 4 ailes de 19h à minuit. Casque spatial fourni.</div>
+              </div>
+              <div class="tier-card" data-tier="curator" data-price="65">
+                <div>
+                  <div class="tier-name" data-i18n="tier2_name">Visite Commissaire</div>
+                  <div class="tier-price">65 &euro;</div>
+                </div>
+                <div class="tier-perks" data-i18n="tier2_perks">Visite guidée en petit groupe (max 10), coupe de champagne sous l'Oculus.</div>
+              </div>
+              <div class="tier-card" data-tier="patron" data-price="180">
+                <div>
+                  <div class="tier-name" data-i18n="tier3_name">Cercle Mécènes VIP</div>
+                  <div class="tier-price">180 &euro;</div>
+                </div>
+                <div class="tier-perks" data-i18n="tier3_perks">Accès permanent coupe-file, salon privé des mécènes, catalogue d'art relié cuir.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Time Slot -->
+          <div class="atelier-step-group">
+            <h4 data-i18n="step3_time">3. CRÉNEAU HORAIRE</h4>
+            <div class="time-slots-grid">
+              <button class="btn-time-slot active" data-time="19:30">19:30</button>
+              <button class="btn-time-slot" data-time="20:45">20:45</button>
+              <button class="btn-time-slot" data-time="22:00">22:00</button>
+              <button class="btn-time-slot" data-time="23:15">23:15</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Attendee Info -->
+          <div class="atelier-step-group">
+            <h4 data-i18n="step4_guest">4. NOM DU TITULAIRE DU PASS</h4>
+            <div class="guest-row">
+              <input type="text" class="guest-input" id="guest-name-input" value="Anh — Lead Architect" placeholder="Prénom et Nom">
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Holographic Digital Pass Preview (Right) -->
+        <div class="atelier-preview-col">
+          <div class="holographic-ticket-pass" id="ticket-pass-card">
+            <div class="ticket-holo-shimmer"></div>
+
+            <div class="ticket-head-row">
+              <div>
+                <span class="ticket-serial" id="ticket-serial-val">PASS • LV-2026-8842</span>
+                <div style="font-family: var(--font-serif-monumental); font-size: 13px; color: #fff; margin-top: 4px;">L'ÉCLAT VIRTUS</div>
+              </div>
+              <div class="ticket-qr-placeholder">
+                <svg viewBox="0 0 24 24">
+                  <path d="M3 3h6v6H3V3zm2 2v2h2V5H5zm8-2h6v6h-6V3zm2 2v2h2V5h-2zM3 13h6v6H3v-6zm2 2v2h2v-2H5zm10 0h2v2h-2v-2zm-2 2h2v2h-2v-2zm4 0h2v2h-2v-2zm0-4h2v2h-2v-2zm-4 0h2v2h-2v-2zm2 4h2v2h-2v-2z"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="ticket-guest-info">
+              <span class="ticket-guest-label" data-i18n="pass_holder">Titulaire Privilège</span>
+              <div class="ticket-guest-val" id="ticket-preview-name">Anh — Lead Architect</div>
+            </div>
+
+            <div class="ticket-details-grid">
+              <div>
+                <span class="ticket-guest-label" data-i18n="pass_date">Date de Visite</span>
+                <strong style="color: #fff; font-size: 14px;" id="ticket-preview-date">18 Septembre 2026</strong>
+              </div>
+              <div>
+                <span class="ticket-guest-label" data-i18n="pass_slot">Créneau Horaire</span>
+                <strong style="color: var(--accent-gold); font-size: 14px;" id="ticket-preview-slot">19:30 CET</strong>
+              </div>
+              <div>
+                <span class="ticket-guest-label" data-i18n="pass_tier">Niveau de Pass</span>
+                <strong style="color: #fff; font-size: 14px;" id="ticket-preview-tier">Cercle Mécènes VIP</strong>
+              </div>
+              <div>
+                <span class="ticket-guest-label" data-i18n="pass_salon">Salon Réservé</span>
+                <strong style="color: #10b981; font-size: 14px;">Nef & Rotonde</strong>
+              </div>
+            </div>
+
+            <div class="ticket-total-calc">
+              <span class="ticket-total-label" data-i18n="total_amount">Montant Total</span>
+              <span class="ticket-total-amount" id="ticket-preview-price">180 &euro;</span>
+            </div>
+
+            <button class="btn-confirm-reservation" id="btn-issue-pass" data-i18n="btn_issue_ticket">
+              Confirmer & Émettre le Billet VIP
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACT VII: PRESS CRITICAL ACCLAIM & COLOPHON
+         ====================================================================== -->
+    <section class="colophon-section" id="colophon">
+      <div class="press-quotes-grid">
+        <div class="press-quote-card">
+          <p class="press-quote-text">
+            "Une expérience esthétique monumentale qui redéfinit radicalement la notion même de musée. L'Éclat Virtus est le Louvre du XXIe siècle."
+          </p>
+          <span class="press-source">LE FIGARO CULTURE</span>
+        </div>
+        <div class="press-quote-card">
+          <p class="press-quote-text">
+            "Breathtaking visual synchronization. The convergence of neoclassical stone and fluid GPU poetry left the audience in ecstatic silence."
+          </p>
+          <span class="press-source">THE NEW YORK TIMES ART</span>
+        </div>
+        <div class="press-quote-card">
+          <p class="press-quote-text">
+            "Đỉnh cao mỹ thuật số đương đại. Sự kết hợp kỳ vĩ giữa kiến trúc đá kinh điển và ánh sáng lượng tử đã làm rung chuyển mọi giác quan."
+          </p>
+          <span class="press-source">ARCHITECTURAL DIGEST ASIA</span>
+        </div>
+      </div>
+
+      <div class="footer-colophon-inner">
+        <div class="footer-col">
+          <div class="brand-name" style="font-size: 18px; margin-bottom: 8px;">L'ÉCLAT VIRTUS</div>
+          <p style="font-size: 13px; color: var(--text-tertiary); max-width: 320px; line-height: 1.6;">
+            Grand Palais des Arts Numériques &bull; Fondation Internationale pour la Conscience Visuelle et l'Acoustique Spatiale.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); margin-top: 14px;">
+            Paris &bull; Tokyo &bull; Neo-Venice
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5 data-i18n="footer_wings">Ailes du Musée</h5>
+          <ul>
+            <li><a href="#virtual-gallery">Aile I &bull; L'Obélisque Quantique</a></li>
+            <li><a href="#virtual-gallery">Aile II &bull; Jardin des Éthers</a></li>
+            <li><a href="#virtual-gallery">Aile III &bull; L'Apollon Numérique</a></li>
+            <li><a href="#virtual-gallery">Aile IV &bull; Chronos Spatium</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 data-i18n="footer_patrons">Cercle des Mécènes</h5>
+          <ul>
+            <li><a href="#tickets">Adhésion Annuelle</a></li>
+            <li><a href="#tickets">Visites Privées Nocturnes</a></li>
+            <li><a href="#tickets">Archives & Provenance</a></li>
+            <li><a href="#tickets">Programme Éducatif IA</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-newsletter-box">
+          <h5 data-i18n="footer_bulletin">Le Bulletin Curatorial</h5>
+          <p data-i18n="footer_bulletin_desc">Recevez les invitations aux vernissages privés et aux transmutations nocturnes de la Biennale.</p>
+          <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+            <input type="email" class="newsletter-input" placeholder="commissaire@domaine.com" required>
+            <button type="submit" class="btn-newsletter" data-i18n="btn_join">Rejoindre</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>&copy; MMXXVI L'ÉCLAT VIRTUS &bull; TOUS DROITS RÉSERVÉS</span>
+        <span>CONÇU POUR ANH &bull; LEAD ARCHITECT &amp; PRODUCT OWNER</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       MODAL 1: CURATORIAL MASTERPIECE DOSSIER & 3D INSPECTOR
+       ======================================================================== -->
+  <div class="curatorial-modal-backdrop" id="modal-inspect">
+    <div class="curatorial-modal-card">
+      <button class="btn-close-modal" id="btn-close-inspect">&times;</button>
+      <div class="modal-dossier-grid">
+        <div class="modal-3d-interactive-box">
+          <canvas id="modal-three-canvas"></canvas>
+        </div>
+        <div class="modal-curatorial-text">
+          <span class="modal-artist-label" id="modal-artist">CLAIRE DE VIGNY &bull; PARIS</span>
+          <h2 id="modal-title">L'Origine du Labyrinthe</h2>
+          <p id="modal-thesis">
+            Cette sculpture monumentale en quartz de synthèse et or colloïdal réagit aux micro-ondes gravitationnelles. Les facettes polygonales diffractent un faisceau laser cohérent pour projeter une carte fractale vivante de la conscience humaine.
+          </p>
+          <div class="modal-specs-table">
+            <div class="modal-spec-cell">
+              <span>Numéro d'Accession</span>
+              <strong id="modal-accession">LV-2026.01</strong>
+            </div>
+            <div class="modal-spec-cell">
+              <span>Résonance Sonore</span>
+              <strong id="modal-freq">432.08 Hz (D-Mineur)</strong>
+            </div>
+            <div class="modal-spec-cell">
+              <span>Dimensions Physiques</span>
+              <strong id="modal-dim">4.80m &times; 3.20m &times; 3.20m</strong>
+            </div>
+            <div class="modal-spec-cell">
+              <span>Provenance</span>
+              <strong id="modal-prov">Collection Nationale des Arts</strong>
+            </div>
+          </div>
+          <button class="btn-hero-primary" style="margin-top: 24px;" onclick="playMasterpieceAudioCurrent()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <span data-i18n="listen_curator_audio">Écouter la Note Curatée</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODAL 2: TICKET CONFIRMATION PASSPORT
+       ======================================================================== -->
+  <div class="curatorial-modal-backdrop" id="modal-ticket-success">
+    <div class="curatorial-modal-card" style="max-width: 580px; text-align: center;">
+      <button class="btn-close-modal" id="btn-close-success">&times;</button>
+      <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(212, 175, 55, 0.2); border: 2px solid var(--accent-gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <h2 style="font-family: var(--font-serif-monumental); color: #fff; margin-bottom: 12px;" data-i18n="modal_success_title">PASS VIP CONFIRMÉ</h2>
+      <p style="font-size: 15px; color: var(--text-secondary); margin-bottom: 24px;" data-i18n="modal_success_desc">
+        Votre pass d'accès nocturne a été inscrit dans le registre curatorial de L'Éclat Virtus. Un certificat cryptographique numéroté a été généré.
+      </p>
+      <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-gold); border-radius: 12px; padding: 18px; margin-bottom: 28px; font-family: var(--font-mono); font-size: 13px; color: var(--accent-gold-light);" id="success-ticket-digest">
+        PASS #LV-2026-8842 &bull; Alexandre de Montmirail
+      </div>
+      <button class="btn-hero-primary" style="width: 100%; justify-content: center;" onclick="closeSuccessModal()" data-i18n="btn_close_pass">
+        Accéder au Portefeuille Numérique
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       JAVASCRIPT ARCHITECTURE
+       ======================================================================== -->
+  <script>
+    /* ==========================================================================
+       1. TRILINGUAL TRANSLATION ENGINE & DATA DICTIONARY
+       ========================================================================== */
+    const I18N = {
+      fr: {
+        nav_sub: "Grand Palais des Arts Numériques",
+        nav_manifesto: "Manifeste",
+        nav_gallery: "Rotonde 3D",
+        nav_masterpieces: "Chefs-d'œuvre",
+        nav_architecture: "Architecture",
+        nav_tickets: "Nocturnes",
+        audio_start: "AUDIO ON",
+        btn_reserve_nav: "Réserver un Pass",
+        reserve_pass: "Réserver un Pass",
+        hero_badge: "BIENNALE MONDIALE D'ART NUMÉRIQUE 2026 • PARIS",
+        hero_title: "L'ÉCLAT VIRTUS",
+        hero_subtitle: "\"Où l'architecture monumentale du XVIIIe siècle se dissout dans la lumière quantique générative et la conscience computationnelle.\"",
+        btn_enter_gallery: "Explorer la Rotonde 3D",
+        explore_virtual_rotunda: "Explorer la Rotonde 3D",
+        btn_nocturnes: "Nocturnes Privilège",
+        schedule_vip_visit: "Nocturnes Privilège",
+        telemetry_loc: "Localisation & Coordonnées",
+        telemetry_time: "Temps Sidéral Musée",
+        telemetry_curation: "Commissariat d'Exposition",
+        curator_status: "Actif • Nocturne Ouverte",
+        telemetry_resonance: "Champ Acoustique Spatial",
+        manifesto_eyebrow: "PHILOSOPHIE & CONSCIENCE VISUELLE",
+        manifesto_heading: "Le Sanctuaire Quantique",
+        manifesto_lead: "L'œuvre d'art n'est plus un objet immobile derrière un cordon de velours. Elle respire au rythme de la lumière mathématique, s'adapte à la présence du spectateur et résonne dans l'espace infini.",
+        bento1_title: "L'Héritage Classique Sublimé par l'Algorithme",
+        bento1_desc: "Bâti sous les voûtes de pierre calcaire de l'ancien Grand Palais, L'Éclat Virtus intègre des réseaux neuronaux génératifs et des projecteurs laser à photons cohérents pour transcender la matière physique. Chaque colonne dorique devient une harpe lumineuse vibrante.",
+        duality_trad_title: "Musée Traditionnel (1793)",
+        duality_trad_desc: "Toiles statiques, silence compassé, éclairage directionnel figé dans le temps.",
+        duality_virtus_title: "L'Éclat Virtus (2026)",
+        duality_virtus_desc: "Sculptures quantiques interactives, acoustique spatiale binaurale, métamorphose en 60 FPS.",
+        bento2_title: "Acoustique Spatiale 432 Hz",
+        bento2_desc: "Un réseau de 128 transducteurs ultrasoniques sphériques sculpte le son dans l'air. L'acoustique réagit au déplacement de chaque visiteur, créant une bulle contemplative intime au cœur de la grandeur collective.",
+        bento3_title: "Matière Vivante & Fluide Ferro-Magnétique",
+        bento3_desc: "Nos installations cinétiques mélangent métaux nobles et nanoparticules magnétiques en lévitation hydrodynamique. Les formes changent d'état sous l'influence des marées gravitationnelles.",
+        bento4_title: "La Transmutation de Minuit",
+        bento4_desc: "Dès le crépuscule, les projecteurs solaires s'éteignent pour laisser place aux lasers ultraviolets et à la luminescence d'or pur. Une expérience réservée à 120 convives par soirée.",
+        stat_area: "Mètres Carrés d'Exposition",
+        stat_lumens: "Lumens de Pureté Laser",
+        stat_fps: "Synchronisation WebGL GPU",
+        stat_carbon: "Empreinte Carbone • Géothermie",
+        rotunda_eyebrow: "EXPÉRIENCE INTERACTIVE EN TEMPS RÉEL",
+        rotunda_heading: "La Grande Rotonde 3D",
+        rotunda_lead: "Explorez les 4 Ailes Curieuses de notre nef néoclassique. Cliquez sur les sculptures pour inspecter leur matérialité quantique ou déplacez la caméra à votre gré.",
+        cam_walk: "Promenade",
+        cam_orbit: "Orbite 360°",
+        cam_zenith: "Zénith",
+        cam_macro: "Détail Macro",
+        light_atmos: "Atmosphère Lumineuse",
+        mat_composition: "Composition",
+        lux_illuminance: "Éclairement Lux",
+        btn_inspect_modal: "Consulter le Dossier",
+        gallery_eyebrow: "ACQUISITIONS PERMANENTES & PRÊTS HISTORIQUES",
+        gallery_heading: "Chefs-d'œuvre de la Biennale",
+        gallery_lead: "Six installations monumentales sélectionnées pour leur audace conceptuelle, leur perfection mathématique et leur puissance d'évocation émotionnelle.",
+        filter_all: "Toutes les Œuvres (6)",
+        filter_light: "Lumière Quantique",
+        filter_kinetic: "Sculpture Cinétique",
+        filter_sound: "Acoustique Spatiale",
+        btn_inspect: "Inspecter",
+        arch_eyebrow: "CARTOGRAPHIE SPATIALE & MICRO-CLIMAT",
+        arch_heading: "Topologie Monumentale",
+        arch_lead: "Trois niveaux de sanctuaires interconnectés. Chaque salle maintient un micro-climat ultra-précis pour préserver les cristaux optiques.",
+        sensor_temp: "Température",
+        sensor_hum: "Hygrométrie",
+        sensor_cap: "Jauge Visiteurs",
+        status_optimal: "Optimal &plusmn;0.2",
+        status_fluid: "Fluide",
+        ticket_eyebrow: "RÉSERVATION PRIVILÈGE & BILLETTERIE HAUTE COUTURE",
+        ticket_heading: "L'Atelier des Nocturnes",
+        ticket_lead: "Accédez à la transmutation nocturne du musée. Choisissez votre date, votre niveau de privilège et générez instantanément votre pass numérique holographique.",
+        step1_date: "1. SÉLECTIONNEZ LA DATE DE VOTRE VISITE",
+        step2_tier: "2. NIVEAU DE PRIVILÈGE CURATORIAL",
+        tier1_name: "Pass Nocturne",
+        tier1_perks: "Accès libre à toutes les 4 ailes de 19h à minuit. Casque spatial fourni.",
+        tier2_name: "Visite Commissaire",
+        tier2_perks: "Visite guidée en petit groupe (max 10), coupe de champagne sous l'Oculus.",
+        tier3_name: "Cercle Mécènes VIP",
+        tier3_perks: "Accès permanent coupe-file, salon privé des mécènes, catalogue d'art relié cuir.",
+        step3_time: "3. CRÉNEAU HORAIRE",
+        step4_guest: "4. NOM DU TITULAIRE DU PASS",
+        pass_holder: "Titulaire Privilège",
+        pass_date: "Date de Visite",
+        pass_slot: "Créneau Horaire",
+        pass_tier: "Niveau de Pass",
+        pass_salon: "Salon Réservé",
+        total_amount: "Montant Total",
+        btn_issue_ticket: "Confirmer & Émettre le Billet VIP",
+        footer_wings: "Ailes du Musée",
+        footer_patrons: "Cercle des Mécènes",
+        footer_bulletin: "Le Bulletin Curatorial",
+        footer_bulletin_desc: "Recevez les invitations aux vernissages privés et aux transmutations nocturnes de la Biennale.",
+        btn_join: "Rejoindre",
+        listen_curator_audio: "Écouter la Note Curatée",
+        modal_success_title: "PASS VIP CONFIRMÉ",
+        modal_success_desc: "Votre pass d'accès nocturne a été inscrit dans le registre curatorial de L'Éclat Virtus. Un certificat cryptographique numéroté a été généré.",
+        btn_close_pass: "Accéder au Portefeuille Numérique"
+      },
+      en: {
+        nav_sub: "Grand Palais of Digital Arts",
+        nav_manifesto: "Manifesto",
+        nav_gallery: "3D Rotunda",
+        nav_masterpieces: "Masterpieces",
+        nav_architecture: "Architecture",
+        nav_tickets: "Nocturnes",
+        audio_start: "AUDIO ON",
+        btn_reserve_nav: "Reserve a Pass",
+        reserve_pass: "Reserve a Pass",
+        hero_badge: "WORLD BIENNIAL OF DIGITAL ART 2026 • PARIS",
+        hero_title: "L'ÉCLAT VIRTUS",
+        hero_subtitle: "\"Where monumental 18th-century architecture dissolves into generative quantum light and computational consciousness.\"",
+        btn_enter_gallery: "Explore 3D Rotunda",
+        explore_virtual_rotunda: "Explore 3D Rotunda",
+        btn_nocturnes: "Privilege Nocturnes",
+        schedule_vip_visit: "Privilege Nocturnes",
+        telemetry_loc: "Location & Coordinates",
+        telemetry_time: "Museum Sidereal Time",
+        telemetry_curation: "Curatorial Status",
+        curator_status: "Active • Nocturne Open",
+        telemetry_resonance: "Spatial Acoustic Field",
+        manifesto_eyebrow: "PHILOSOPHY & VISUAL CONSCIOUSNESS",
+        manifesto_heading: "The Quantum Sanctuary",
+        manifesto_lead: "The artwork is no longer an inert relic sequestered behind velvet ropes. It breathes with algorithmic light, adapts to observer presence, and echoes through infinite dimensions.",
+        bento1_title: "Classical Monumentality Meets Pure Algorithm",
+        bento1_desc: "Erected beneath the soaring limestone vaults of the historic Grand Palais, L'Éclat Virtus marries generative neural networks and coherent photon lasers to transcend raw matter. Every Doric column vibrates as an illuminated spatial harp.",
+        duality_trad_title: "Traditional Museum (1793)",
+        duality_trad_desc: "Static canvases, stiff silence, directional lighting frozen in bygone centuries.",
+        duality_virtus_title: "L'Éclat Virtus (2026)",
+        duality_virtus_desc: "Interactive quantum sculptures, binaural acoustic architecture, 60 FPS metamorphosis.",
+        bento2_title: "Spatial Acoustic Architecture (432 Hz)",
+        bento2_desc: "An array of 128 spherical ultrasonic transducers sculpts sound waves directly in mid-air. Acoustics organically shift with each spectator's coordinates, forming intimate personal sonic sanctuaries.",
+        bento3_title: "Living Matter & Ferrofluid Fluidics",
+        bento3_desc: "Our kinetic installations suspend precious alloys and magnetic nanoparticles in hydrodynamic levitation, morphing under gravitational tides and biomimetic algorithms.",
+        bento4_title: "The Midnight Transmutation",
+        bento4_desc: "At dusk, solar spotlights give way to ultraviolet lasers and pure gold luminescence. An experience strictly curated for 120 guests per evening.",
+        stat_area: "Square Meters of Exhibition",
+        stat_lumens: "Lumens of Coherent Laser Purity",
+        stat_fps: "GPU WebGL Synchronization",
+        stat_carbon: "Carbon Footprint • Geothermal",
+        rotunda_eyebrow: "REAL-TIME INTERACTIVE 3D EXPERIENCE",
+        rotunda_heading: "The Grand 3D Rotunda",
+        rotunda_lead: "Explore the 4 Curatorial Wings of our neoclassical nave. Click on sculptures to inspect quantum materiality or navigate camera angles freely.",
+        cam_walk: "Walkthrough",
+        cam_orbit: "360° Orbit",
+        cam_zenith: "Zenith View",
+        cam_macro: "Macro Detail",
+        light_atmos: "Lighting Atmosphere",
+        mat_composition: "Composition",
+        lux_illuminance: "Lux Illuminance",
+        btn_inspect_modal: "View Artwork Dossier",
+        gallery_eyebrow: "PERMANENT ACQUISITIONS & HISTORIC LOANS",
+        gallery_heading: "Biennial Masterpieces",
+        gallery_lead: "Six monumental installations selected for conceptual audacity, mathematical perfection, and emotional resonance.",
+        filter_all: "All Works (6)",
+        filter_light: "Quantum Light",
+        filter_kinetic: "Kinetic Sculpture",
+        filter_sound: "Spatial Acoustic",
+        btn_inspect: "Inspect",
+        arch_eyebrow: "SPATIAL CARTOGRAPHY & MICROCLIMATE",
+        arch_heading: "Monumental Topology",
+        arch_lead: "Three levels of interconnected sanctums. Each hall maintains laboratory-grade microclimates to preserve optical crystals and optimize sound propagation.",
+        sensor_temp: "Temperature",
+        sensor_hum: "Humidity",
+        sensor_cap: "Visitor Density",
+        status_optimal: "Optimal &plusmn;0.2",
+        status_fluid: "Fluid",
+        ticket_eyebrow: "VIP PRIVILEGE & HAUTE COUTURE TICKETING",
+        ticket_heading: "The Nocturne Atelier",
+        ticket_lead: "Access the museum's nocturnal transmutation. Choose your date, your privilege tier, and immediately generate your holographic digital pass.",
+        step1_date: "1. SELECT YOUR VISIT DATE",
+        step2_tier: "2. CURATORIAL PRIVILEGE TIER",
+        tier1_name: "Nocturne Pass",
+        tier1_perks: "Full evening access to all 4 wings from 7 PM to midnight. Spatial headset provided.",
+        tier2_name: "Curator's Tour",
+        tier2_perks: "Private guided tour (max 10 guests), champagne reception under the Oculus.",
+        tier3_name: "Patron Circle VIP",
+        tier3_perks: "Permanent fast-track access, private patron salon, leather-bound numbered art catalog.",
+        step3_time: "3. TIME SLOT",
+        step4_guest: "4. PASS HOLDER NAME",
+        pass_holder: "Privilege Holder",
+        pass_date: "Visit Date",
+        pass_slot: "Time Slot",
+        pass_tier: "Pass Tier",
+        pass_salon: "Assigned Salon",
+        total_amount: "Total Amount",
+        btn_issue_ticket: "Confirm & Issue VIP Pass",
+        footer_wings: "Museum Wings",
+        footer_patrons: "Patron Circle",
+        footer_bulletin: "Curatorial Gazette",
+        footer_bulletin_desc: "Receive private vernissage invitations and nocturnal biennial announcements.",
+        btn_join: "Join",
+        listen_curator_audio: "Listen to Curatorial Note",
+        modal_success_title: "VIP PASS CONFIRMED",
+        modal_success_desc: "Your nocturnal access pass has been registered in the L'Éclat Virtus ledger. A cryptographically signed pass has been generated.",
+        btn_close_pass: "Access Digital Wallet"
+      },
+      vi: {
+        nav_sub: "Đại Điện Nghệ Thuật Số Đương Đại",
+        nav_manifesto: "Tuyên Ngôn",
+        nav_gallery: "Đại Điện 3D",
+        nav_masterpieces: "Kiệt Tác",
+        nav_architecture: "Kiến Trúc",
+        nav_tickets: "Dạ Tiệc Nocturne",
+        audio_start: "BẬT ÂM THANH",
+        btn_reserve_nav: "Đặt Vé VIP",
+        reserve_pass: "Đặt Vé VIP",
+        hero_badge: "ĐẠI HỘI BIENNALE NGHỆ THUẬT SỐ QUỐC TẾ 2026 • PARIS",
+        hero_title: "L'ÉCLAT VIRTUS",
+        hero_subtitle: "\"Nơi kiến trúc đá kinh điển thế kỷ 18 tan biến vào ánh sáng lượng tử tạo sinh và tâm thức tính toán học vĩ đại.\"",
+        btn_enter_gallery: "Khám Phá Đại Điện 3D",
+        explore_virtual_rotunda: "Khám Phá Đại Điện 3D",
+        btn_nocturnes: "Đặc Quyền Dạ Tiệc",
+        schedule_vip_visit: "Đặc Quyền Dạ Tiệc",
+        telemetry_loc: "Tọa Độ Địa Lý",
+        telemetry_time: "Giờ Thiên Văn Bảo Tàng",
+        telemetry_curation: "Trạng Thái Giám Tuyển",
+        curator_status: "Đang Hoạt Động • Mở Cửa Đêm",
+        telemetry_resonance: "Trường Âm Thanh Không Gian",
+        manifesto_eyebrow: "TRIẾT LÝ & TÂM THỨC THỊ GIÁC",
+        manifesto_heading: "Thánh Đường Lượng Tử",
+        manifesto_lead: "Tác phẩm nghệ thuật không còn là hiện vật bất động sau dây nhung rào chắn. Nó sống và thở theo từng xung nhịp ánh sáng toán học, giao thoa với sự hiện diện của người xem.",
+        bento1_title: "Di Sản Kinh Điển Thăng Hoa Cùng Thuật Toán",
+        bento1_desc: "Được kiến tạo dưới những vòm đá vôi tráng lệ của Grand Palais, L'Éclat Virtus kết hợp mạng nơ-ron tạo sinh và chùm tia laser quang tử đồng pha để vượt qua giới hạn của vật chất hữu hình. Mỗi cột trụ Doric trở thành một cây đàn hạc ánh sáng ngân vang.",
+        duality_trad_title: "Bảo Tàng Cổ Điển (1793)",
+        duality_trad_desc: "Tranh tĩnh lặng, sự im ắng gò bó, ánh đèn rọi cố định qua hàng thế kỷ.",
+        duality_virtus_title: "L'Éclat Virtus (2026)",
+        duality_virtus_desc: "Điêu khắc lượng tử tương tác, âm học không gian 3D, biến ảo ở tốc độ 60 khung hình/giây.",
+        bento2_title: "Kiến Trúc Âm Học Không Gian 432 Hz",
+        bento2_desc: "Hệ thống 128 đầu phát siêu âm hình cầu tạc nên làn sóng âm giữa không trung. Âm học biến chuyển linh hoạt theo bước chân du khách, tạo nên khoảnh khắc tĩnh tại riêng tư giữa đại sảnh nguy nga.",
+        bento3_title: "Vật Chất Sống & Dòng Chảy Sắt Từ",
+        bento3_desc: "Các tác phẩm cơ học lơ lửng kết hợp hợp kim quý và hạt nano từ tính trong môi trường thủy động lực học, biến đổi hình thái theo nhịp thủy triều và thuật toán phỏng sinh học.",
+        bento4_title: "Biến Hóa Trong Đêm Huyền Bí",
+        bento4_desc: "Khi hoàng hôn buông xuống, ánh sáng mặt trời nhường chỗ cho tia laser cực tím và sắc vàng kim rực rỡ. Trải nghiệm giới hạn chỉ dành cho 120 vị khách tinh hoa mỗi đêm.",
+        stat_area: "Mét Vuông Trưng Bày",
+        stat_lumens: "Lumen Ánh Sáng Laser Thuần Khiết",
+        stat_fps: "Đồng Bộ Hóa Card Đồ Họa WebGL",
+        stat_carbon: "Phát Thải Carbon • Năng Lượng Địa Nhiệt",
+        rotunda_eyebrow: "TRẢI NGHIỆM TƯƠNG TÁC 3D THỰC THỜI",
+        rotunda_heading: "Đại Sảnh Vòm Tròn 3D",
+        rotunda_lead: "Tự do du ngoạn qua 4 Cánh Cung Nghệ Thuật. Nhấp vào tác phẩm điêu khắc để giải mã cấu trúc lượng tử hoặc điều chỉnh góc nhìn camera theo ý muốn.",
+        cam_walk: "Đi Dạo",
+        cam_orbit: "Xoay 360°",
+        cam_zenith: "Góc Nhìn Từ Đỉnh",
+        cam_macro: "Soi Chi Tiết",
+        light_atmos: "Ánh Sáng Khí Quyển",
+        mat_composition: "Chất Liệu",
+        lux_illuminance: "Độ Sáng Lux",
+        btn_inspect_modal: "Mở Hồ Sơ Giám Tuyển",
+        gallery_eyebrow: "BỘ SƯU TẬP VĨNH CỬU & CỔ VẬT DANH TIẾNG",
+        gallery_heading: "Kiệt Tác Tại Đại Hội",
+        gallery_lead: "Sáu công trình điêu khắc quy mô được tuyển chọn vì tư tưởng tiên phong, vẻ đẹp hình học và sức mạnh lay động cảm xúc.",
+        filter_all: "Tất Cả Tác Phẩm (6)",
+        filter_light: "Ánh Sáng Lượng Tử",
+        filter_kinetic: "Điêu Khắc Động Lực",
+        filter_sound: "Âm Thanh Không Gian",
+        btn_inspect: "Chiêm Ngưỡng",
+        arch_eyebrow: "BẢN ĐỒ TỌA ĐỘ & TIỂU KHÍ HẬU",
+        arch_heading: "Hình Học Không Gian",
+        arch_lead: "Ba tầng bảo tàng kết nối liền mạch. Từng phòng triển lãm được kiểm soát vi khí hậu tuyệt đối nhằm bảo quản pha lê quang học và duy trì chất lượng âm thanh hoàn hảo.",
+        sensor_temp: "Nhiệt Độ",
+        sensor_hum: "Độ Ẩm",
+        sensor_cap: "Mật Độ Khách",
+        status_optimal: "Tối Ưu &plusmn;0.2",
+        status_fluid: "Thoáng Đãng",
+        ticket_eyebrow: "ĐẶT VÉ ĐẶC QUYỀN HAUTE COUTURE",
+        ticket_heading: "Phòng Vé Dạ Tiệc Đêm",
+        ticket_lead: "Trải nghiệm khoảnh khắc biến ảo kỳ diệu của bảo tàng khi đêm về. Chọn ngày tham quan, hạng đặc quyền và nhận ngay tấm thẻ thông hành kỹ thuật số cao cấp.",
+        step1_date: "1. CHỌN NGÀY THAM QUAN",
+        step2_tier: "2. HẠNG ĐẶC QUYỀN GIÁM TUYỂN",
+        tier1_name: "Vé Dạ Tiệc Đêm",
+        tier1_perks: "Tự do tham quan 4 cánh cung từ 19h đến nửa đêm. Trang bị tai nghe âm thanh không gian.",
+        tier2_name: "Chuyến Đi Cùng Giám Tuyển",
+        tier2_perks: "Đoàn dẫn đường riêng (tối đa 10 người), thưởng thức sâm-panh dưới vòm kính Oculus.",
+        tier3_name: "Thành Viên VIP Danh Dự",
+        tier3_perks: "Lối đi ưu tiên vĩnh viễn, phòng chờ VIP riêng, tặng kèm kỷ yếu bọc da khắc tên.",
+        step3_time: "3. KHUNG GIỜ THAM QUAN",
+        step4_guest: "4. TÊN CHỦ SỞ HỮU THẺ VIP",
+        pass_holder: "Chủ Nhân Thẻ",
+        pass_date: "Ngày Tham Quan",
+        pass_slot: "Khung Giờ",
+        pass_tier: "Hạng Thẻ",
+        pass_salon: "Khu Vực",
+        total_amount: "Tổng Chi Phí",
+        btn_issue_ticket: "Xác Nhận & Xuất Thẻ VIP",
+        footer_wings: "Các Cánh Cung",
+        footer_patrons: "Hội Đồng Bảo Trợ",
+        footer_bulletin: "Bản Tin Mỹ Thuật",
+        footer_bulletin_desc: "Nhận thư mời tham dự các buổi triển lãm kín và sự kiện ra mắt độc quyền.",
+        btn_join: "Đăng Ký",
+        listen_curator_audio: "Nghe Thuyết Minh Giám Tuyển",
+        modal_success_title: "XÁC NHẬN THẺ VIP THÀNH CÔNG",
+        modal_success_desc: "Thẻ thông hành đêm của quý khách đã được ghi danh vào sổ giám tuyển của L'Éclat Virtus kèm chữ ký số xác thực.",
+        btn_close_pass: "Mở Ví Thẻ Kỹ Thuật Số"
+      }
+    };
+
+    let currentLang = 'fr';
+
+    function setLanguage(lang) {
+      if (!I18N[lang]) return;
+      currentLang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (I18N[lang][key]) {
+          el.innerHTML = I18N[lang][key];
+        }
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      document.documentElement.lang = lang;
+      updateTicketPreview();
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+    });
+
+    /* ==========================================================================
+       2. WEB AUDIO API SPATIAL SYNTHESIZER & REAL-TIME VISUALIZER
+       ========================================================================== */
+    class MuseumSpatialSynthesizer {
+      constructor() {
+        this.ctx = null;
+        this.isPlaying = false;
+        this.masterGain = null;
+        this.filter = null;
+        this.oscillators = [];
+        this.analyser = null;
+        this.spectrumCanvas = document.getElementById('audio-spectrum-canvas');
+        this.spectrumCtx = this.spectrumCanvas ? this.spectrumCanvas.getContext('2d') : null;
+      }
+
+      init() {
+        if (this.ctx) return;
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        this.ctx = new AudioCtx();
+
+        // Master Gain
+        this.masterGain = this.ctx.createGain();
+        this.masterGain.gain.setValueAtTime(0.001, this.ctx.currentTime);
+
+        // Lowpass Filter for Spatial Modulation
+        this.filter = this.ctx.createBiquadFilter();
+        this.filter.type = 'lowpass';
+        this.filter.frequency.setValueAtTime(700, this.ctx.currentTime);
+        this.filter.Q.setValueAtTime(2.5, this.ctx.currentTime);
+
+        // Spectrum Analyser
+        this.analyser = this.ctx.createAnalyser();
+        this.analyser.fftSize = 64;
+
+        this.filter.connect(this.masterGain);
+        this.masterGain.connect(this.analyser);
+        this.analyser.connect(this.ctx.destination);
+
+        // Drone Harmonizers: D-Minor 9 Chord (D2, A2, F3, C4, E4)
+        const freqs = [73.42, 110.00, 174.61, 261.63, 329.63];
+        freqs.forEach((f, idx) => {
+          const osc = this.ctx.createOscillator();
+          const g = this.ctx.createGain();
+          osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
+          osc.frequency.setValueAtTime(f, this.ctx.currentTime);
+
+          // Subtle Detune for Lush Ethereal Texture
+          osc.detune.setValueAtTime((idx - 2) * 5.5, this.ctx.currentTime);
+          g.gain.setValueAtTime(0.12 / freqs.length, this.ctx.currentTime);
+
+          osc.connect(g);
+          g.connect(this.filter);
+          osc.start();
+          this.oscillators.push(osc);
+        });
+
+        this.startVisualizer();
+
+        // Mouse modulation on acoustic filter
+        window.addEventListener('pointermove', (e) => {
+          if (!this.filter || !this.isPlaying) return;
+          const ratioX = e.clientX / window.innerWidth;
+          const targetFreq = 300 + ratioX * 2200;
+          this.filter.frequency.setTargetAtTime(targetFreq, this.ctx.currentTime, 0.15);
+        });
+      }
+
+      toggle() {
+        this.init();
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+
+        if (this.isPlaying) {
+          this.masterGain.gain.setTargetAtTime(0.001, this.ctx.currentTime, 0.3);
+          this.isPlaying = false;
+          document.getElementById('sound-dot').style.animationPlayState = 'paused';
+          document.getElementById('audio-status-text').textContent = 'AUDIO MUTE';
+        } else {
+          this.masterGain.gain.setTargetAtTime(0.35, this.ctx.currentTime, 0.5);
+          this.isPlaying = true;
+          document.getElementById('sound-dot').style.animationPlayState = 'running';
+          document.getElementById('audio-status-text').textContent = 'AUDIO ON';
+          this.playCrystalChime(880.00); // Intro Bell
+        }
+      }
+
+      playCrystalChime(freq = 659.25) {
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const g = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+
+        g.gain.setValueAtTime(0.2, this.ctx.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 2.2);
+
+        osc.connect(g);
+        g.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 2.3);
+      }
+
+      startVisualizer() {
+        if (!this.spectrumCtx) return;
+        const bufferLength = this.analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
+
+        const draw = () => {
+          requestAnimationFrame(draw);
+          if (!this.isPlaying) {
+            this.spectrumCtx.clearRect(0, 0, this.spectrumCanvas.width, this.spectrumCanvas.height);
+            return;
+          }
+          this.analyser.getByteFrequencyData(dataArray);
+
+          this.spectrumCtx.clearRect(0, 0, this.spectrumCanvas.width, this.spectrumCanvas.height);
+          const barWidth = (this.spectrumCanvas.width / bufferLength) * 1.5;
+          let x = 0;
+
+          for (let i = 0; i < bufferLength; i++) {
+            const barHeight = (dataArray[i] / 255) * this.spectrumCanvas.height;
+            this.spectrumCtx.fillStyle = '#d4af37';
+            this.spectrumCtx.fillRect(x, this.spectrumCanvas.height - barHeight, barWidth - 1, barHeight);
+            x += barWidth;
+          }
+        };
+        draw();
+      }
+    }
+
+    const soundEngine = new MuseumSpatialSynthesizer();
+    document.getElementById('btn-audio-toggle').addEventListener('click', () => {
+      soundEngine.toggle();
+    });
+
+    /* ==========================================================================
+       3. THREE.JS 3D VIRTUAL GALLERY ROTUNDA ENGINE
+       ========================================================================== */
+    const WING_DATA = [
+      {
+        code: "AILE I • NEF CENTRALE",
+        title: "L'Obélisque Quantique (2026)",
+        author: "Claire de Vigny — L'Obélisque Quantique",
+        desc: "Polyèdre à réfraction chromatique d'or 24 carats et transmission de lumière cohérente. Émet une harmonique résonante de 432 Hz.",
+        mat: "Cristal de Silice & Or Pur",
+        lux: "185 LX • Faisceau Guidé",
+        pos: { x: 0, y: 3.2, z: 0 },
+        cam: { x: 0, y: 4.5, z: 12 },
+        target: { x: 0, y: 3.2, z: 0 },
+        chime: 587.33
+      },
+      {
+        code: "AILE II • JARDIN ÉTHÉRÉ",
+        title: "Symphonie des Particules (2025)",
+        author: "Kenzo Takahashi — Jardin des Éthers",
+        desc: "Vortex de 40 000 particules luminescentes réactives au regard et aux ondes gravitationnelles.",
+        mat: "Photons Bio-Interactifs & Argon",
+        lux: "240 LX • Gradient Violet",
+        pos: { x: 26, y: 3.2, z: 0 },
+        cam: { x: 26, y: 5, z: 12 },
+        target: { x: 26, y: 3.2, z: 0 },
+        chime: 698.46
+      },
+      {
+        code: "AILE III • L'APOLLON",
+        title: "Pietà Numérique / L'Apollon (2026)",
+        author: "Elena Rostova — L'Apollon Numérique",
+        desc: "Buste géométrique à lattice tridimensionnelle vibrant de lumière dorée sous cloche sous vide.",
+        mat: "Titane Voxelisé & Laser 532nm",
+        lux: "160 LX • Faisceau Zénithal",
+        pos: { x: 0, y: 3.2, z: -26 },
+        cam: { x: 0, y: 5, z: -14 },
+        target: { x: 0, y: 3.2, z: -26 },
+        chime: 880.00
+      },
+      {
+        code: "AILE IV • CHRONOS",
+        title: "Chronos Spatium (2024)",
+        author: "Marcus Vance — Le Silence des Sphères",
+        desc: "Gyroscope cinétique triple anneau en lévitation continue, distordant l'espace-temps perçu.",
+        mat: "Titane Grade 5 & Or Rose",
+        lux: "210 LX • Balayage Orbital",
+        pos: { x: -26, y: 3.2, z: 0 },
+        cam: { x: -26, y: 5, z: 12 },
+        target: { x: -26, y: 3.2, z: 0 },
+        chime: 1046.50
+      }
+    ];
+
+    let rotundaScene, rotundaCamera, rotundaRenderer, rotundaControls;
+    let sculptures = [];
+    let currentWingIdx = 0;
+    let ambientParticles;
+    let rotundaSpotLight;
+
+    function initThreeRotunda() {
+      const container = document.querySelector('.rotunda-viewport-wrapper');
+      const canvas = document.getElementById('rotunda-three-canvas');
+      if (!canvas) return;
+
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      // 1. Scene & Atmospheric Fog
+      rotundaScene = new THREE.Scene();
+      rotundaScene.fog = new THREE.FogExp2(0x040508, 0.018);
+
+      // 2. Camera
+      rotundaCamera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
+      rotundaCamera.position.set(0, 4.5, 12);
+
+      // 3. Renderer
+      rotundaRenderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+      rotundaRenderer.setSize(width, height);
+      rotundaRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      rotundaRenderer.toneMapping = THREE.ACESFilmicToneMapping;
+      rotundaRenderer.toneMappingExposure = 1.3;
+
+      // 4. OrbitControls
+      rotundaControls = new THREE.OrbitControls(rotundaCamera, canvas);
+      rotundaControls.enableDamping = true;
+      rotundaControls.dampingFactor = 0.05;
+      rotundaControls.maxPolarAngle = Math.PI / 2 - 0.04;
+      rotundaControls.minDistance = 3;
+      rotundaControls.maxDistance = 35;
+      rotundaControls.target.set(0, 3.2, 0);
+
+      // 5. Lighting Architecture
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
+      rotundaScene.add(ambientLight);
+
+      rotundaSpotLight = new THREE.SpotLight(0xfffae6, 4.5);
+      rotundaSpotLight.position.set(0, 24, 0);
+      rotundaSpotLight.angle = Math.PI / 3.5;
+      rotundaSpotLight.penumbra = 0.8;
+      rotundaScene.add(rotundaSpotLight);
+
+      // Volumetric Light Cone from Oculus
+      const coneGeo = new THREE.CylinderGeometry(11, 1.5, 23, 32, 1, true);
+      const coneMat = new THREE.MeshBasicMaterial({
+        color: 0xd4af37,
+        transparent: true,
+        opacity: 0.07,
+        side: THREE.DoubleSide,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+      });
+      const lightCone = new THREE.Mesh(coneGeo, coneMat);
+      lightCone.position.set(0, 11.5, 0);
+      rotundaScene.add(lightCone);
+
+      // 6. Architectural Monumental Pavilion
+      buildArchitecturalRotunda();
+
+      // 7. Four Monumental Sculptures with Pedestals & Custom Point Lights
+      buildFourSculptures();
+
+      // 8. Ambient Dust Fireflies (2,000 particles)
+      buildAmbientFireflies();
+
+      // 9. Resize Listener
+      window.addEventListener('resize', onRotundaResize);
+
+      // 10. Animation Loop
+      animateRotunda();
+    }
+
+    function buildArchitecturalRotunda() {
+      // Marble Reflective Ground
+      const floorGeo = new THREE.CircleGeometry(48, 64);
+      const floorMat = new THREE.MeshStandardMaterial({
+        color: 0x080910,
+        roughness: 0.15,
+        metalness: 0.85
+      });
+      const floor = new THREE.Mesh(floorGeo, floorMat);
+      floor.rotation.x = -Math.PI / 2;
+      floor.position.y = 0;
+      rotundaScene.add(floor);
+
+      // Circular Grid Pattern on Floor
+      const gridHelper = new THREE.PolarGridHelper(46, 16, 8, 64, 0xd4af37, 0x1a1d2e);
+      gridHelper.position.y = 0.02;
+      rotundaScene.add(gridHelper);
+
+      // 12 Majestic Neoclassical Columns
+      const colGeo = new THREE.CylinderGeometry(0.7, 0.9, 20, 24);
+      const colMat = new THREE.MeshStandardMaterial({
+        color: 0x121420,
+        roughness: 0.35,
+        metalness: 0.3
+      });
+
+      for (let i = 0; i < 12; i++) {
+        const angle = (i / 12) * Math.PI * 2;
+        const radius = 38;
+        const col = new THREE.Mesh(colGeo, colMat);
+        col.position.set(Math.cos(angle) * radius, 10, Math.sin(angle) * radius);
+        rotundaScene.add(col);
+
+        // Column Crown Capital
+        const capGeo = new THREE.BoxGeometry(2.4, 0.8, 2.4);
+        const cap = new THREE.Mesh(capGeo, colMat);
+        cap.position.set(col.position.x, 20, col.position.z);
+        rotundaScene.add(cap);
+      }
+
+      // Upper Oculus Ring
+      const oculusGeo = new THREE.TorusGeometry(12, 0.8, 16, 64);
+      const oculusMat = new THREE.MeshStandardMaterial({
+        color: 0xd4af37,
+        roughness: 0.2,
+        metalness: 0.9
+      });
+      const oculus = new THREE.Mesh(oculusGeo, oculusMat);
+      oculus.rotation.x = Math.PI / 2;
+      oculus.position.set(0, 22, 0);
+      rotundaScene.add(oculus);
+    }
+
+    function createPedestal(x, z, glowColor = 0xd4af37) {
+      const pGroup = new THREE.Group();
+      pGroup.position.set(x, 0, z);
+
+      // Main Stone Cylinder
+      const cylGeo = new THREE.CylinderGeometry(2.2, 2.5, 1.2, 32);
+      const cylMat = new THREE.MeshStandardMaterial({ color: 0x0f111a, roughness: 0.3, metalness: 0.6 });
+      const cyl = new THREE.Mesh(cylGeo, cylMat);
+      cyl.position.y = 0.6;
+      pGroup.add(cyl);
+
+      // Upper Brass Plate
+      const plateGeo = new THREE.CylinderGeometry(2.3, 2.3, 0.08, 32);
+      const plateMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, roughness: 0.1, metalness: 0.95 });
+      const plate = new THREE.Mesh(plateGeo, plateMat);
+      plate.position.y = 1.24;
+      pGroup.add(plate);
+
+      // Glowing Base LED Ring
+      const ringGeo = new THREE.TorusGeometry(2.4, 0.05, 16, 64);
+      const ringMat = new THREE.MeshBasicMaterial({ color: glowColor });
+      const ring = new THREE.Mesh(ringGeo, ringMat);
+      ring.rotation.x = Math.PI / 2;
+      ring.position.y = 0.05;
+      pGroup.add(ring);
+
+      rotundaScene.add(pGroup);
+      return pGroup;
+    }
+
+    function buildFourSculptures() {
+      const ringMat = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.95, roughness: 0.05 });
+
+      // 1. Sculpture Wing I: The Quantum Monolith (Icosahedron + nested gold rings)
+      createPedestal(WING_DATA[0].pos.x, WING_DATA[0].pos.z, 0xd4af37);
+      const group1 = new THREE.Group();
+      group1.position.set(WING_DATA[0].pos.x, WING_DATA[0].pos.y, WING_DATA[0].pos.z);
+
+      const icoGeo = new THREE.IcosahedronGeometry(2.2, 0);
+      const icoMat = new THREE.MeshPhysicalMaterial({
+        color: 0xd4af37,
+        metalness: 0.9,
+        roughness: 0.1,
+        clearcoat: 1.0,
+        clearcoatRoughness: 0.1,
+        wireframe: false
+      });
+      const ico = new THREE.Mesh(icoGeo, icoMat);
+      group1.add(ico);
+
+      // Golden Orbital Rings
+      const ring1 = new THREE.Mesh(new THREE.TorusGeometry(3.2, 0.05, 16, 64), ringMat);
+      const ring2 = new THREE.Mesh(new THREE.TorusGeometry(3.7, 0.04, 16, 64), ringMat);
+      ring2.rotation.x = Math.PI / 3;
+      group1.add(ring1);
+      group1.add(ring2);
+
+      // Inner Core Light
+      const coreGeo = new THREE.OctahedronGeometry(0.8);
+      const coreMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff, wireframe: true });
+      const core = new THREE.Mesh(coreGeo, coreMat);
+      group1.add(core);
+
+      // Local Point Light
+      const light1 = new THREE.PointLight(0xd4af37, 3, 14);
+      light1.position.set(0, 0, 0);
+      group1.add(light1);
+
+      rotundaScene.add(group1);
+      sculptures.push({ group: group1, type: 'monolith', core, ring1, ring2, ico });
+
+      // 2. Sculpture Wing II: Nebula Flora (Vortex Particle Cloud)
+      createPedestal(WING_DATA[1].pos.x, WING_DATA[1].pos.z, 0x8a63ff);
+      const group2 = new THREE.Group();
+      group2.position.set(WING_DATA[1].pos.x, WING_DATA[1].pos.y, WING_DATA[1].pos.z);
+
+      const pCount = 10000;
+      const pGeo = new THREE.BufferGeometry();
+      const pPos = new Float32Array(pCount * 3);
+      const pCol = new Float32Array(pCount * 3);
+
+      for (let i = 0; i < pCount; i++) {
+        const theta = Math.random() * Math.PI * 2;
+        const r = 0.4 + Math.pow(Math.random(), 2) * 3.8;
+        const y = (Math.random() - 0.5) * 3.4;
+
+        pPos[i * 3] = Math.cos(theta) * r;
+        pPos[i * 3 + 1] = y;
+        pPos[i * 3 + 2] = Math.sin(theta) * r;
+
+        // Colors: Prismatic Violet, Magenta, Gold
+        pCol[i * 3] = 0.85 + Math.random() * 0.15;
+        pCol[i * 3 + 1] = 0.25 + Math.random() * 0.5;
+        pCol[i * 3 + 2] = 0.95;
+      }
+
+      pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+      pGeo.setAttribute('color', new THREE.BufferAttribute(pCol, 3));
+
+      const pMat = new THREE.PointsMaterial({
+        size: 0.08,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.9,
+        blending: THREE.AdditiveBlending
+      });
+      const particleVortex = new THREE.Points(pGeo, pMat);
+      group2.add(particleVortex);
+
+      const light2 = new THREE.PointLight(0x8a63ff, 3.5, 14);
+      light2.position.set(0, 0, 0);
+      group2.add(light2);
+
+      rotundaScene.add(group2);
+      sculptures.push({ group: group2, type: 'flora', particleVortex });
+
+      // 3. Sculpture Wing III: Cybernetic Apollo (Geodesic Wireframe Bust)
+      createPedestal(WING_DATA[2].pos.x, WING_DATA[2].pos.z, 0x00f0ff);
+      const group3 = new THREE.Group();
+      group3.position.set(WING_DATA[2].pos.x, WING_DATA[2].pos.y, WING_DATA[2].pos.z);
+
+      const apoGeo = new THREE.DodecahedronGeometry(2.4, 2);
+      const apoMat = new THREE.MeshStandardMaterial({
+        color: 0x00f0ff,
+        wireframe: true,
+        wireframeLinewidth: 2
+      });
+      const apo = new THREE.Mesh(apoGeo, apoMat);
+      group3.add(apo);
+
+      // Inner Solid Glowing Core
+      const apoInner = new THREE.Mesh(
+        new THREE.DodecahedronGeometry(1.6, 1),
+        new THREE.MeshStandardMaterial({ color: 0x0c1428, roughness: 0.2, metalness: 0.9 })
+      );
+      group3.add(apoInner);
+
+      const light3 = new THREE.PointLight(0x00f0ff, 3.5, 14);
+      light3.position.set(0, 0, 0);
+      group3.add(light3);
+
+      rotundaScene.add(group3);
+      sculptures.push({ group: group3, type: 'apollo', apo, apoInner });
+
+      // 4. Sculpture Wing IV: Chronos Spatium (Nested Gyroscope Gimbal)
+      createPedestal(WING_DATA[3].pos.x, WING_DATA[3].pos.z, 0xd4af37);
+      const group4 = new THREE.Group();
+      group4.position.set(WING_DATA[3].pos.x, WING_DATA[3].pos.y, WING_DATA[3].pos.z);
+
+      const gR1 = new THREE.Mesh(new THREE.TorusGeometry(3.0, 0.12, 16, 64), ringMat);
+      const gR2 = new THREE.Mesh(new THREE.TorusGeometry(2.3, 0.10, 16, 64), ringMat);
+      const gR3 = new THREE.Mesh(new THREE.TorusGeometry(1.6, 0.08, 16, 64), ringMat);
+      const gCore = new THREE.Mesh(new THREE.SphereGeometry(0.8, 32, 32), icoMat);
+
+      group4.add(gR1);
+      group4.add(gR2);
+      group4.add(gR3);
+      group4.add(gCore);
+
+      const light4 = new THREE.PointLight(0xd4af37, 3, 14);
+      light4.position.set(0, 0, 0);
+      group4.add(light4);
+
+      rotundaScene.add(group4);
+      sculptures.push({ group: group4, type: 'chronos', gR1, gR2, gR3, gCore });
+    }
+
+    function buildAmbientFireflies() {
+      const fCount = 1800;
+      const fGeo = new THREE.BufferGeometry();
+      const fPos = new Float32Array(fCount * 3);
+
+      for (let i = 0; i < fCount; i++) {
+        fPos[i * 3] = (Math.random() - 0.5) * 80;
+        fPos[i * 3 + 1] = Math.random() * 25;
+        fPos[i * 3 + 2] = (Math.random() - 0.5) * 80;
+      }
+      fGeo.setAttribute('position', new THREE.BufferAttribute(fPos, 3));
+
+      const fMat = new THREE.PointsMaterial({
+        size: 0.13,
+        color: 0xd4af37,
+        transparent: true,
+        opacity: 0.65,
+        blending: THREE.AdditiveBlending
+      });
+      ambientParticles = new THREE.Points(fGeo, fMat);
+      rotundaScene.add(ambientParticles);
+    }
+
+    function onRotundaResize() {
+      const container = document.querySelector('.rotunda-viewport-wrapper');
+      if (!container || !rotundaRenderer || !rotundaCamera) return;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      rotundaCamera.aspect = width / height;
+      rotundaCamera.updateProjectionMatrix();
+      rotundaRenderer.setSize(width, height);
+    }
+
+    function animateRotunda() {
+      requestAnimationFrame(animateRotunda);
+      const time = performance.now() * 0.001;
+
+      // 1. Sculpture Rotations
+      if (sculptures[0]) {
+        sculptures[0].ico.rotation.y = time * 0.3;
+        sculptures[0].ico.rotation.x = time * 0.15;
+        sculptures[0].ring1.rotation.z = time * 0.4;
+        sculptures[0].ring2.rotation.y = -time * 0.5;
+        sculptures[0].core.rotation.y = -time * 0.8;
+      }
+
+      if (sculptures[1]) {
+        sculptures[1].particleVortex.rotation.y = time * 0.25;
+      }
+
+      if (sculptures[2]) {
+        sculptures[2].apo.rotation.y = time * 0.2;
+        sculptures[2].apoInner.rotation.x = -time * 0.3;
+      }
+
+      if (sculptures[3]) {
+        sculptures[3].gR1.rotation.x = time * 0.5;
+        sculptures[3].gR2.rotation.y = time * 0.7;
+        sculptures[3].gR3.rotation.z = time * 0.9;
+      }
+
+      // 2. Ambient Fireflies Slow Drift
+      if (ambientParticles) {
+        ambientParticles.rotation.y = time * 0.02;
+      }
+
+      // 3. OrbitControls Update
+      if (rotundaControls) {
+        rotundaControls.update();
+      }
+
+      // 4. Render
+      if (rotundaRenderer && rotundaScene && rotundaCamera) {
+        rotundaRenderer.render(rotundaScene, rotundaCamera);
+      }
+    }
+
+    // Wing Transition with GSAP Smooth Camera Dolly
+    function selectWing(index) {
+      if (index < 0 || index >= WING_DATA.length) return;
+      currentWingIdx = index;
+      const data = WING_DATA[index];
+
+      // Play Pentatonic Crystal Chime
+      soundEngine.playCrystalChime(data.chime);
+
+      // GSAP Camera & Target Interpolation (60 FPS Power3 Curve)
+      gsap.to(rotundaCamera.position, {
+        x: data.cam.x,
+        y: data.cam.y,
+        z: data.cam.z,
+        duration: 1.8,
+        ease: "power3.inOut"
+      });
+
+      gsap.to(rotundaControls.target, {
+        x: data.target.x,
+        y: data.target.y,
+        z: data.target.z,
+        duration: 1.8,
+        ease: "power3.inOut"
+      });
+
+      // Update HUD Labels
+      document.getElementById('hud-wing-tag').textContent = data.code;
+      document.getElementById('hud-sculpture-title').textContent = data.title;
+      document.getElementById('drawer-title').textContent = data.author;
+      document.getElementById('drawer-desc').textContent = data.desc;
+      document.getElementById('drawer-mat').textContent = data.mat;
+      document.getElementById('drawer-lux').textContent = data.lux;
+
+      // Update Button Active States
+      document.querySelectorAll('.btn-wing-pill').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx === index);
+      });
+    }
+
+    document.querySelectorAll('.btn-wing-pill').forEach((btn, idx) => {
+      btn.addEventListener('click', () => selectWing(idx));
+    });
+
+    // Camera Mode Switcher
+    document.querySelectorAll('.btn-camera-mode').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.btn-camera-mode').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const mode = btn.getAttribute('data-cam');
+        const wing = WING_DATA[currentWingIdx];
+
+        if (mode === 'walk') {
+          gsap.to(rotundaCamera.position, { x: wing.pos.x, y: 2.2, z: wing.pos.z + 7, duration: 1.2, ease: "power2.out" });
+        } else if (mode === 'orbit') {
+          gsap.to(rotundaCamera.position, { x: wing.pos.x + 8, y: 6, z: wing.pos.z + 8, duration: 1.2, ease: "power2.out" });
+        } else if (mode === 'zenith') {
+          gsap.to(rotundaCamera.position, { x: wing.pos.x, y: 18, z: wing.pos.z + 0.1, duration: 1.5, ease: "power2.out" });
+        } else if (mode === 'macro') {
+          gsap.to(rotundaCamera.position, { x: wing.pos.x, y: wing.pos.y + 0.5, z: wing.pos.z + 3.8, duration: 1.2, ease: "power2.out" });
+        }
+      });
+    });
+
+    // Lighting Atmosphere Presets
+    document.querySelectorAll('.btn-light-preset').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.btn-light-preset').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const light = btn.getAttribute('data-light');
+
+        if (light === 'nocturne') {
+          rotundaScene.fog.color.setHex(0x040508);
+          rotundaSpotLight.color.setHex(0xfffae6);
+        } else if (light === 'solarium') {
+          rotundaScene.fog.color.setHex(0x180e06);
+          rotundaSpotLight.color.setHex(0xffaa44);
+        } else if (light === 'aurore') {
+          rotundaScene.fog.color.setHex(0x06141a);
+          rotundaSpotLight.color.setHex(0x00f0ff);
+        }
+      });
+    });
+
+    /* ==========================================================================
+       4. GSAP 60 FPS SCROLLYTELLING & MASTER CHOREOGRAPHY
+       ========================================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Hero Entrance Timeline
+      const heroTl = gsap.timeline({ defaults: { duration: 1.0, ease: "power3.out" } });
+      heroTl
+        .from('.brand-crest', { scale: 0.5, opacity: 0, duration: 0.8 })
+        .from('.hero-badge-pill', { y: 20, opacity: 0 }, "-=0.4")
+        .from('.hero-monumental-title', { y: 40, opacity: 0, duration: 1.2 }, "-=0.5")
+        .from('.hero-subtitle-editorial', { y: 20, opacity: 0 }, "-=0.6")
+        .from('.hero-actions-row', { y: 20, opacity: 0 }, "-=0.5")
+        .from('.hero-telemetry-bar', { y: 30, opacity: 0 }, "-=0.3");
+
+      // Bento Cards ScrollTrigger Stagger
+      gsap.from('.bento-card', {
+        scrollTrigger: {
+          trigger: '.manifesto-grid',
+          start: 'top 80%'
+        },
+        y: 40,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.9,
+        ease: "power3.out"
+      });
+
+      // Masterpieces Grid ScrollTrigger
+      gsap.from('.artwork-card', {
+        scrollTrigger: {
+          trigger: '.masterpieces-grid',
+          start: 'top 80%'
+        },
+        y: 50,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.8,
+        ease: "power3.out"
+      });
+
+      // Master Scroll Progress Bar Sync
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / docHeight) * 100;
+        document.getElementById('master-scroll-progress').style.width = progress + '%';
+      });
+
+      // Initialize Three.js Rotunda
+      initThreeRotunda();
+
+      // Initialize Paris Sidereal Clock
+      setInterval(updateParisClock, 1000);
+      updateParisClock();
+
+      // Initialize Ticketing Dates
+      initTicketingCalendar();
+    });
+
+    function updateParisClock() {
+      const now = new Date();
+      const str = now.toLocaleTimeString('fr-FR', { timeZone: 'Europe/Paris' }) + ' CET';
+      const el = document.getElementById('paris-clock');
+      if (el) el.textContent = str;
+    }
+
+    /* ==========================================================================
+       5. CUSTOM CURSOR PHYSICS & MAGNETIC HOVER
+       ========================================================================== */
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorRing = document.getElementById('cursor-ring');
+    const cursorLabel = document.getElementById('cursor-label');
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX;
+    let ringY = mouseY;
+
+    window.addEventListener('pointermove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+    });
+
+    function animateCursorRing() {
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      cursorLabel.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      requestAnimationFrame(animateCursorRing);
+    }
+    animateCursorRing();
+
+    document.querySelectorAll('button, a, .bento-card, .artwork-card, .tier-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        document.body.classList.add('hover-interactive');
+        const customText = el.getAttribute('data-cursor') || 'EXPLORE';
+        cursorLabel.textContent = customText;
+      });
+      el.addEventListener('mouseleave', () => {
+        document.body.classList.remove('hover-interactive');
+      });
+    });
+
+    /* ==========================================================================
+       6. INTERACTIVE BLUEPRINT & SENSORS
+       ========================================================================== */
+    const ROOM_SENSORS = {
+      1: {
+        code: "SALLE S-101",
+        name: "La Grande Nef Centrale & Rotonde",
+        desc: "Voûte néoclassique de 28 mètres sous clef. Oculus central en verre polarisé actif régulant le flux solaire naturel en synergie avec les lasers d'illumination.",
+        temp: "20.8 °C",
+        hum: "48.4 % HR",
+        cap: "74 / 120"
+      },
+      2: {
+        code: "SALLE S-204",
+        name: "Solarium & Belvédère Céleste",
+        desc: "Plateforme en porte-à-faux offrant une vue panoramique sur les toits de Paris et abritant les prismes holographiques de grand format.",
+        temp: "21.2 °C",
+        hum: "46.1 % HR",
+        cap: "38 / 60"
+      },
+      0: {
+        code: "SALLE S-012",
+        name: "Crypte des Ombres & Transducteurs",
+        desc: "Fondations souterraines en moellons de calcaire luttétien. Salle entièrement insonorisée pour l'écoute binaurale pure des basses fréquences.",
+        temp: "19.5 °C",
+        hum: "52.0 % HR",
+        cap: "19 / 40"
+      }
+    };
+
+    function renderBlueprintSVG(level) {
+      const container = document.getElementById('blueprint-canvas-container');
+      if (!container) return;
+
+      container.innerHTML = `
+        <svg viewBox="0 0 600 400" width="100%" height="100%" style="display: block;">
+          <defs>
+            <radialGradient id="oculusGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#d4af37" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <line x1="50" y1="200" x2="550" y2="200" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+          <line x1="300" y1="50" x2="300" y2="350" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
+          
+          <circle cx="300" cy="200" r="140" fill="none" stroke="rgba(212,175,55,0.3)" stroke-width="2"/>
+          <circle cx="300" cy="200" r="100" fill="url(#oculusGlow)" stroke="rgba(212,175,55,0.6)" stroke-width="1.5"/>
+          
+          <rect x="180" y="80" width="80" height="70" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.2)"/>
+          <text x="220" y="120" fill="#d4af37" font-family="JetBrains Mono" font-size="10" text-anchor="middle">AILE I</text>
+
+          <rect x="340" y="80" width="80" height="70" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.2)"/>
+          <text x="380" y="120" fill="#00f0ff" font-family="JetBrains Mono" font-size="10" text-anchor="middle">AILE II</text>
+
+          <rect x="180" y="250" width="80" height="70" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.2)"/>
+          <text x="220" y="290" fill="#8a63ff" font-family="JetBrains Mono" font-size="10" text-anchor="middle">AILE III</text>
+
+          <rect x="340" y="250" width="80" height="70" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.2)"/>
+          <text x="380" y="290" fill="#d4af37" font-family="JetBrains Mono" font-size="10" text-anchor="middle">AILE IV</text>
+
+          <circle cx="300" cy="200" r="12" fill="#d4af37"/>
+          <text x="300" y="204" fill="#000" font-family="JetBrains Mono" font-size="9" font-weight="bold" text-anchor="middle">LV</text>
+        </svg>
+      `;
+    }
+    renderBlueprintSVG(1);
+
+    document.querySelectorAll('.btn-floor-level').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.btn-floor-level').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const level = parseInt(btn.getAttribute('data-level'));
+        renderBlueprintSVG(level);
+        const data = ROOM_SENSORS[level];
+        if (data) {
+          document.getElementById('selected-room-code').textContent = data.code;
+          document.getElementById('selected-room-name').textContent = data.name;
+          document.getElementById('selected-room-desc').textContent = data.desc;
+          document.getElementById('sensor-temp').textContent = data.temp;
+          document.getElementById('sensor-hum').textContent = data.hum;
+          document.getElementById('sensor-cap').textContent = data.cap;
+        }
+      });
+    });
+
+    /* ==========================================================================
+       7. TICKETING ATELIER & VIP PASS ISSUANCE
+       ========================================================================== */
+    let selectedDate = "18 Septembre 2026";
+    let selectedTier = "patron";
+    let selectedTierPrice = 180;
+    let selectedTimeSlot = "19:30 CET";
+
+    function initTicketingCalendar() {
+      const container = document.getElementById('date-picker-container');
+      if (!container) return;
+
+      const days = [
+        { name: "VEN", num: "18", month: "SEPT" },
+        { name: "SAM", num: "19", month: "SEPT" },
+        { name: "DIM", num: "20", month: "SEPT" },
+        { name: "MAR", num: "22", month: "SEPT" },
+        { name: "MER", num: "23", month: "SEPT" },
+        { name: "JEU", num: "24", month: "SEPT" }
+      ];
+
+      container.innerHTML = '';
+      days.forEach((d, idx) => {
+        const btn = document.createElement('button');
+        btn.className = `date-card-btn ${idx === 0 ? 'active' : ''}`;
+        btn.innerHTML = `
+          <span class="date-day-name">${d.name}</span>
+          <span class="date-day-num">${d.num}</span>
+          <span class="date-month-name">${d.month}</span>
+        `;
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.date-card-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedDate = `${d.num} ${d.month === 'SEPT' ? 'Septembre' : d.month} 2026`;
+          updateTicketPreview();
+        });
+        container.appendChild(btn);
+      });
+
+      // Tier cards
+      document.querySelectorAll('.tier-card').forEach(card => {
+        card.addEventListener('click', () => {
+          document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+          selectedTier = card.getAttribute('data-tier');
+          selectedTierPrice = parseInt(card.getAttribute('data-price'));
+          updateTicketPreview();
+        });
+      });
+
+      // Time slots
+      document.querySelectorAll('.btn-time-slot').forEach(slot => {
+        slot.addEventListener('click', () => {
+          document.querySelectorAll('.btn-time-slot').forEach(s => s.classList.remove('active'));
+          slot.classList.add('active');
+          selectedTimeSlot = slot.getAttribute('data-time') + ' CET';
+          updateTicketPreview();
+        });
+      });
+
+      // Guest Name Input
+      const nameInput = document.getElementById('guest-name-input');
+      if (nameInput) {
+        nameInput.addEventListener('input', (e) => {
+          document.getElementById('ticket-preview-name').textContent = e.target.value.trim() || 'Anh — Lead Architect';
+        });
+      }
+
+      // Confirm button
+      document.getElementById('btn-issue-pass').addEventListener('click', issueVIPPass);
+    }
+
+    function updateTicketPreview() {
+      const tierMap = {
+        nocturne: { fr: "Pass Nocturne", en: "Nocturne Pass", vi: "Vé Dạ Tiệc Đêm" },
+        curator: { fr: "Visite Commissaire", en: "Curator's Tour", vi: "Chuyến Đi Cùng Giám Tuyển" },
+        patron: { fr: "Cercle Mécènes VIP", en: "Patron Circle VIP", vi: "Thành Viên VIP Danh Dự" }
+      };
+
+      document.getElementById('ticket-preview-date').textContent = selectedDate;
+      document.getElementById('ticket-preview-slot').textContent = selectedTimeSlot;
+      document.getElementById('ticket-preview-tier').textContent = tierMap[selectedTier][currentLang] || "Cercle Mécènes VIP";
+      document.getElementById('ticket-preview-price').innerHTML = selectedTierPrice + " &euro;";
+    }
+
+    function issueVIPPass() {
+      soundEngine.playCrystalChime(1046.50);
+      const guestName = document.getElementById('guest-name-input').value.trim() || 'Anh — Lead Architect';
+      document.getElementById('success-ticket-digest').textContent = `PASS #LV-2026-8842 • ${guestName} • ${selectedDate} (${selectedTimeSlot})`;
+
+      const modal = document.getElementById('modal-ticket-success');
+      modal.classList.add('open');
+    }
+
+    function closeSuccessModal() {
+      document.getElementById('modal-ticket-success').classList.remove('open');
+    }
+    document.getElementById('btn-close-success').addEventListener('click', closeSuccessModal);
+
+    /* ==========================================================================
+       8. CURATORIAL MASTERPIECE DOSSIER MODAL & 3D MINI-VIEWER
+       ========================================================================== */
+    const MASTERPIECE_DOSSIERS = [
+      {
+        title: "L'Origine du Labyrinthe",
+        artist: "CLAIRE DE VIGNY • PARIS",
+        thesis: "Cette sculpture monumentale en quartz de synthèse et or colloïdal réagit aux micro-ondes gravitationnelles. Les facettes polygonales diffractent un faisceau laser cohérent pour projeter une carte fractale vivante de la conscience humaine.",
+        accession: "LV-2026.01",
+        freq: "432.08 Hz (D-Mineur)",
+        dim: "4.80m × 3.20m × 3.20m",
+        prov: "Collection Nationale des Arts",
+        color: 0xd4af37
+      },
+      {
+        title: "Symphonie des Particules",
+        artist: "KENZO TAKAHASHI • TOKYO",
+        thesis: "Un tourbillon de 40 000 émetteurs photoniques organiques qui synchronisent leur fréquence d'oscillation với nhịp tim người xem.",
+        accession: "LV-2025.14",
+        freq: "528.00 Hz (Aurore)",
+        dim: "7.50m × 7.50m × 5.00m",
+        prov: "Mori Art Museum • Prêt Quinquennal",
+        color: 0x8a63ff
+      },
+      {
+        title: "Pietà Numérique",
+        artist: "ELENA ROSTOVA • SAINT-PÉTERSBOURG",
+        thesis: "Sculptée au micron près par un bras robotique 7-axes dans un monolithe de Carrare, cette figure déploie un squelette neuronal de lumière dorée à travers un champ polarisant anisotrope.",
+        accession: "LV-2026.03",
+        freq: "396.00 Hz (Terre)",
+        dim: "3.10m × 2.40m × 2.00m",
+        prov: "Fondation Hermitage Contemporain",
+        color: 0x00f0ff
+      },
+      {
+        title: "Le Silence des Sphères",
+        artist: "MARCUS VANCE • LONDRES",
+        thesis: "Trois anneaux de titane et or rose en lévitation supra-conductrice tournent à des vitesses harmoniques non commensurables, annulant tout frottement et générant une onde de silence enveloppante.",
+        accession: "LV-2024.89",
+        freq: "432.00 Hz (Harmonique)",
+        dim: "4.00m × 4.00m × 4.00m",
+        prov: "Tate Modern • Don Perpétuel",
+        color: 0xd4af37
+      },
+      {
+        title: "Biocénose Flottante",
+        artist: "DR. SOLIS NGUYEN • HANOÏ / PARIS",
+        thesis: "Une colonie vivante de mycélium et d'éponges photoniques synthétise des harmonies sonores en analysant la respiration collective de la salle d'exposition.",
+        accession: "LV-2026.05",
+        freq: "639.00 Hz (Céleste)",
+        dim: "5.20m × 3.80m × 3.80m",
+        prov: "Pavillon de Venise • Biennale 2026",
+        color: 0x10b981
+      },
+      {
+        title: "La Chute d'Icare Virtuel",
+        artist: "JEAN-LUC MOREAU • GENÈVE",
+        thesis: "Un rideau de brouillard cryogénique illuminé par 12 lasers 532 nm dans lequel se dessine en anamorphose la chute mythologique à travers le ciel de données.",
+        accession: "LV-2025.42",
+        freq: "741.00 Hz (Clarté)",
+        dim: "8.00m × 4.00m × 6.00m",
+        prov: "Grand Palais Immersif",
+        color: 0xff3366
+      }
+    ];
+
+    let modalScene, modalCamera, modalRenderer, modalMesh;
+
+    function initModalThree() {
+      const canvas = document.getElementById('modal-three-canvas');
+      if (!canvas) return;
+      modalScene = new THREE.Scene();
+      modalCamera = new THREE.PerspectiveCamera(50, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+      modalCamera.position.set(0, 0, 5);
+
+      modalRenderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      modalRenderer.setSize(canvas.clientWidth, canvas.clientHeight);
+
+      const light = new THREE.DirectionalLight(0xffffff, 2);
+      light.position.set(3, 5, 4);
+      modalScene.add(light);
+      modalScene.add(new THREE.AmbientLight(0xffffff, 0.5));
+
+      const geo = new THREE.IcosahedronGeometry(1.8, 1);
+      const mat = new THREE.MeshStandardMaterial({ color: 0xd4af37, roughness: 0.15, metalness: 0.9, wireframe: false });
+      modalMesh = new THREE.Mesh(geo, mat);
+      modalScene.add(modalMesh);
+
+      function renderModalThree() {
+        requestAnimationFrame(renderModalThree);
+        if (modalMesh) {
+          modalMesh.rotation.y += 0.015;
+          modalMesh.rotation.x += 0.008;
+        }
+        modalRenderer.render(modalScene, modalCamera);
+      }
+      renderModalThree();
+    }
+    initModalThree();
+
+    let currentModalIdx = 0;
+    function openMasterpieceDossier(index) {
+      currentModalIdx = index;
+      const data = MASTERPIECE_DOSSIERS[index] || MASTERPIECE_DOSSIERS[0];
+      document.getElementById('modal-artist').textContent = data.artist;
+      document.getElementById('modal-title').textContent = data.title;
+      document.getElementById('modal-thesis').textContent = data.thesis;
+      document.getElementById('modal-accession').textContent = data.accession;
+      document.getElementById('modal-freq').textContent = data.freq;
+      document.getElementById('modal-dim').textContent = data.dim;
+      document.getElementById('modal-prov').textContent = data.prov;
+
+      if (modalMesh) {
+        modalMesh.material.color.setHex(data.color);
+      }
+
+      document.getElementById('modal-inspect').classList.add('open');
+      soundEngine.playCrystalChime(783.99);
+    }
+
+    function playMasterpieceAudio(index) {
+      soundEngine.init();
+      if (soundEngine.ctx && soundEngine.ctx.state === 'suspended') {
+        soundEngine.ctx.resume();
+      }
+      const freqs = [587.33, 698.46, 880.00, 1046.50, 659.25, 783.99];
+      soundEngine.playCrystalChime(freqs[index] || 659.25);
+    }
+
+    function playMasterpieceAudioCurrent() {
+      playMasterpieceAudio(currentModalIdx);
+    }
+
+    document.getElementById('btn-close-inspect').addEventListener('click', () => {
+      document.getElementById('modal-inspect').classList.remove('open');
+    });
+
+    document.getElementById('btn-open-dossier').addEventListener('click', () => {
+      openMasterpieceDossier(currentWingIdx);
+    });
+
+    function handleNewsletter(e) {
+      e.preventDefault();
+      alert("Merci. Votre invitation au vernissage de la Biennale a été enregistrée.");
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
