@@ -4733,8 +4733,12 @@
       }
     ];
 
+    let currentTheme = localStorage.getItem('eclat_virtus_theme') || 'light';
     let rotundaScene, rotundaCamera, rotundaRenderer, rotundaControls;
     let rotundaAnimId;
+    let rotundaAmbientLight, rotundaSunLight, rotundaLightCone;
+    let rotundaFloor, rotundaGridHelper, rotundaColumnsMat, rotundaOculus;
+    let rotundaPedestals = [];
     let sculptures = [];
     let currentWingIdx = 0;
     let ambientParticles;
