@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>L'ÉCLAT VIRTUS — Grand Palais des Arts Numériques | Paris • Tokyo • Venise</title>
   <meta name="description" content="Le sanctuaire contemporain où l'architecture monumentale classique fusionne avec les arts numériques quantiques, les sculptures cinétiques et les paysages sonores spatiaux.">
-  <meta name="theme-color" content="#060709">
+  <meta name="theme-color" content="#fbfbfa">
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
@@ -28,15 +28,52 @@
     /* ==========================================================================
        1. DESIGN SYSTEM & TOKENS (master_design_direction_2026.md)
        ========================================================================== */
-    :root {
-      /* Surface Hierarchy */
-      --surface-void: #040507;
-      --surface-deep: #08090e;
-      --surface-panel: #0d0f16;
-      --surface-card: #12141e;
-      --surface-card-elevated: #181b28;
-      --surface-glass: rgba(13, 15, 22, 0.82);
-      --surface-glass-heavy: rgba(8, 9, 14, 0.92);
+    :root, [data-theme="light"] {
+      /* Surface Hierarchy — Pristine Sunlit Museum (Warm Alabaster & Carrara Marble) */
+      --surface-void: #fbfbfa;           /* Pure pristine warm museum alabaster base */
+      --surface-deep: #f5f4ee;           /* Soft honed limestone / travertine */
+      --surface-panel: #ece9e1;          /* Elegant architectural gallery panel */
+      --surface-card: #ffffff;           /* Crisp Carrara white exhibition plinth / card */
+      --surface-card-elevated: #faf9f5;  /* Subtle elevated warm alabaster */
+      --surface-glass: rgba(251, 251, 250, 0.88); /* Frosted crystal alabaster */
+      --surface-glass-heavy: rgba(245, 244, 238, 0.96);
+
+      /* Typography Scales & Deep Obsidian Charcoal (WCAG AAA Contrast > 14:1) */
+      --text-pure: #0e1014;              /* Pure deep charcoal / obsidian */
+      --text-primary: #191a20;           /* Deep mineral black (highest readability) */
+      --text-secondary: #484b56;         /* Warm slate graphite */
+      --text-tertiary: #6e7382;          /* Curatorial annotation grey */
+      --text-muted: #8e94a4;             /* Refined caption grey */
+
+      /* Royal Art Accents — Antique Bronze & Champagne Gold */
+      --accent-gold: #b38b22;            /* Deep antique bronze gold (high contrast on light) */
+      --accent-gold-light: #7a5a08;      /* Deep readable bronze for light backgrounds */
+      --accent-gold-glow: rgba(179, 139, 34, 0.22);
+      --accent-gold-deep: #5c4305;
+      --accent-cyan: #008794;            /* Jewel cerulean accent */
+      --accent-cyan-glow: rgba(0, 135, 148, 0.2);
+      --accent-violet: #6b44bd;          /* Imperial French violet */
+      --accent-violet-glow: rgba(107, 68, 189, 0.2);
+      --accent-crimson: #bf2130;
+
+      /* Borders & Architectural Glass Dividers */
+      --border-subtle: rgba(24, 26, 32, 0.08);
+      --border-standard: rgba(24, 26, 32, 0.14);
+      --border-highlight: rgba(24, 26, 32, 0.24);
+      --border-gold: rgba(179, 139, 34, 0.42);
+      --border-gold-glow: rgba(179, 139, 34, 0.75);
+
+      /* Dynamic Architectural Shadows */
+      --shadow-card: 0 16px 40px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.03);
+      --shadow-elevated: 0 24px 60px rgba(0, 0, 0, 0.09), 0 0 25px rgba(179, 139, 34, 0.1);
+      --shadow-glow: 0 0 30px rgba(179, 139, 34, 0.2);
+
+      /* Blueprint Architectural Drawing Tokens */
+      --bp-bg: radial-gradient(circle at 50% 50%, #f9f8f4 0%, #ebe7de 100%);
+      --bp-grid-color: rgba(24, 26, 36, 0.08);
+      --bp-wall-color: rgba(24, 26, 36, 0.35);
+      --bp-axis-color: rgba(24, 26, 36, 0.2);
+      --bp-line-color: rgba(24, 26, 36, 0.25);
 
       /* Typography Scales */
       --font-serif-monumental: 'Cinzel Decorative', 'Cinzel', serif;
@@ -45,6 +82,21 @@
       --font-display-modern: 'Syne', sans-serif;
       --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
+
+      /* Motion Curves */
+      --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    [data-theme="dark"] {
+      /* Surface Hierarchy — Nocturne Curatorial (Deep Obsidian & Celestial Indigo) */
+      --surface-void: #040507;
+      --surface-deep: #08090e;
+      --surface-panel: #0d0f16;
+      --surface-card: #12141e;
+      --surface-card-elevated: #181b28;
+      --surface-glass: rgba(13, 15, 22, 0.82);
+      --surface-glass-heavy: rgba(8, 9, 14, 0.92);
 
       /* Luminance & Color Tokens */
       --text-pure: #ffffff;
@@ -71,9 +123,15 @@
       --border-gold: rgba(212, 175, 55, 0.45);
       --border-gold-glow: rgba(212, 175, 55, 0.8);
 
-      /* Motion Curves */
-      --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.6);
+      --shadow-elevated: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(212, 175, 55, 0.2);
+      --shadow-glow: 0 0 35px rgba(212, 175, 55, 0.3);
+
+      --bp-bg: radial-gradient(circle at 50% 50%, rgba(20, 24, 38, 0.7) 0%, #07080d 100%);
+      --bp-grid-color: rgba(0, 240, 255, 0.08);
+      --bp-wall-color: rgba(212, 175, 55, 0.4);
+      --bp-axis-color: rgba(0, 240, 255, 0.2);
+      --bp-line-color: rgba(255, 255, 255, 0.2);
     }
 
     /* Vietnamese Typography Overrides for Perfect Harmonious Diacritics */
@@ -2091,6 +2149,792 @@
       .rotunda-telemetry-drawer { grid-template-columns: 1fr; }
       .tier-cards-row { grid-template-columns: 1fr; }
     }
+
+    /* ==========================================================================
+       12. WALKTHROUGH CONTROLS HUD & ON-SCREEN D-PAD
+       ========================================================================== */
+    .walkthrough-hud-overlay {
+      position: absolute;
+      bottom: 120px;
+      left: 32px;
+      z-index: 15;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      pointer-events: none;
+    }
+
+    .walk-tip-banner {
+      background: rgba(7, 8, 13, 0.85);
+      border: 1px solid var(--border-gold);
+      backdrop-filter: blur(12px);
+      padding: 8px 16px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      pointer-events: auto;
+      max-width: 500px;
+    }
+
+    .walk-badge {
+      background: var(--accent-gold);
+      color: #000;
+      font-weight: 700;
+      font-size: 9px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.1em;
+    }
+
+    .walk-dpad-cluster {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      pointer-events: auto;
+      width: 120px;
+    }
+
+    .dpad-mid-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .btn-dpad {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(15, 17, 26, 0.75);
+      border: 1px solid var(--border-gold);
+      color: var(--accent-gold-light);
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.15s var(--ease-luxury);
+      user-select: none;
+    }
+
+    .btn-dpad:hover, .btn-dpad.active {
+      background: rgba(212, 175, 55, 0.3);
+      border-color: #fff;
+      color: #fff;
+      transform: scale(1.08);
+    }
+
+    .btn-dpad.dpad-sprint {
+      font-size: 14px;
+      background: rgba(138, 99, 255, 0.2);
+      border-color: var(--accent-violet);
+      color: var(--accent-violet);
+    }
+
+    /* ==========================================================================
+       13. SECTION: LE PAVILLON CINÉMATIQUE (21:9 VIDEO THEATRE)
+       ========================================================================== */
+    .cinema-section {
+      padding: 140px 40px;
+      position: relative;
+      background: var(--surface-void);
+      z-index: 2;
+    }
+
+    .cinema-container {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .cinema-top-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-cinema-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--surface-card);
+      border: 1px solid var(--border-standard);
+      border-radius: 30px;
+      color: var(--text-secondary);
+      font-family: var(--font-display-modern);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-luxury);
+    }
+
+    .btn-cinema-action:hover, .btn-cinema-action.active {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--border-gold);
+      color: var(--accent-gold-light);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+
+    .cinema-screen-halo {
+      position: relative;
+      border-radius: 28px;
+      padding: 2px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.4) 0%, rgba(138, 99, 255, 0.2) 50%, rgba(0, 240, 255, 0.3) 100%);
+      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 80px rgba(212, 175, 55, 0.12);
+      transition: box-shadow 0.8s var(--ease-luxury);
+    }
+
+    .cinema-screen-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 21 / 9;
+      background: #000;
+      border-radius: 26px;
+      overflow: hidden;
+    }
+
+    .cinema-video-player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.15) brightness(0.95);
+      transition: opacity 0.5s;
+    }
+
+    .cinema-generative-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.6s var(--ease-luxury);
+    }
+
+    .cinema-generative-canvas.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .cinema-screen-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 50%, transparent 65%, rgba(0,0,0,0.6) 100%);
+      box-shadow: inset 0 0 60px rgba(0,0,0,0.8);
+    }
+
+    .cinema-player-hud {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(0deg, rgba(4, 5, 7, 0.95) 0%, rgba(4, 5, 7, 0.5) 70%, transparent 100%);
+      padding: 24px 32px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      z-index: 10;
+      opacity: 0.95;
+      transition: opacity 0.3s;
+    }
+
+    .cinema-timeline-bar {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      position: relative;
+      cursor: pointer;
+      transition: height 0.15s;
+    }
+
+    .cinema-timeline-bar:hover {
+      height: 8px;
+    }
+
+    .cinema-timeline-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 32%;
+      background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
+      border-radius: 2px;
+      box-shadow: 0 0 10px var(--accent-gold);
+    }
+
+    .cinema-controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cinema-left-ctrls, .cinema-right-ctrls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-cinema-ctrl {
+      background: transparent;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      border-radius: 50%;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .btn-cinema-ctrl:hover {
+      color: var(--accent-gold-light);
+      transform: scale(1.15);
+    }
+
+    .cinema-time-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    .cinema-aspect-pill {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding: 3px 8px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--border-gold);
+      color: var(--accent-gold-light);
+      border-radius: 4px;
+      letter-spacing: 0.1em;
+    }
+
+    .cinema-chapters-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .cinema-chapter-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-standard);
+      border-radius: 18px;
+      padding: 24px;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-luxury);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .cinema-chapter-card:hover, .cinema-chapter-card.active {
+      border-color: var(--border-gold);
+      background: rgba(20, 24, 38, 0.6);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .chapter-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent-gold);
+      letter-spacing: 0.15em;
+    }
+
+    .chapter-title {
+      font-family: var(--font-serif-monumental);
+      font-size: 18px;
+      color: #fff;
+      margin: 0;
+    }
+
+    .chapter-synopsis {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    .chapter-duration {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* Cinema Dark Mode Dimmer */
+    .cinema-dimmer-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(8px);
+      z-index: 80;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.8s var(--ease-luxury);
+    }
+
+    body.cinema-lights-dimmed .cinema-dimmer-backdrop {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    body.cinema-lights-dimmed #cinema-pavilion {
+      position: relative;
+      z-index: 85;
+    }
+
+    /* ==========================================================================
+       14. LUXURY TOAST NOTIFICATION
+       ========================================================================== */
+    .luxury-toast-container {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      z-index: 1000;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      transition: all 0.4s var(--ease-luxury);
+    }
+
+    .luxury-toast-container.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .luxury-toast-inner {
+      background: rgba(15, 17, 26, 0.92);
+      border: 1px solid var(--border-gold);
+      backdrop-filter: blur(20px);
+      padding: 18px 24px;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(212, 175, 55, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 480px;
+    }
+
+    .toast-gold-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--border-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .toast-text-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .toast-title {
+      font-family: var(--font-display-modern);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--accent-gold-light);
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .toast-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .toast-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-tertiary);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0 4px;
+      transition: color 0.2s;
+    }
+
+    .toast-close-btn:hover {
+      color: #fff;
+    }
+
+    /* Mobile / Touch Responsive exclusions for cursor */
+    @media (hover: none) and (pointer: coarse) {
+      .custom-cursor, #cursor-dot, #cursor-ring, #cursor-label {
+        display: none !important;
+      }
+    }
+  
+    /* ==========================================================================
+       SMOOTH THEME TRANSITION SCENOGRAPHY
+       ========================================================================== */
+    html, body, .site-header, .bento-card, .artwork-card, .blueprint-visual-card,
+    .environmental-sensors-panel, .calendar-day-card, .tier-selection-card,
+    .holographic-ticket-pass, .modal-curatorial-sheet, .rotunda-spec-drawer,
+    .rotunda-viewport-wrapper, .blueprint-svg-canvas, .audio-hud-capsule,
+    .lang-switcher, .theme-switcher {
+      transition: background-color 0.4s var(--ease-luxury),
+                  color 0.3s var(--ease-luxury),
+                  border-color 0.3s var(--ease-luxury),
+                  box-shadow 0.4s var(--ease-luxury);
+    }
+
+    /* ==========================================================================
+       THEME SWITCHER HUD (SOLAIRE LIGHT / NOCTURNE DARK)
+       ========================================================================== */
+    .theme-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: var(--surface-card-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 3px 5px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .theme-toggle-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      padding: 5px 10px;
+      border-radius: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.25s var(--ease-luxury);
+    }
+
+    .theme-toggle-btn svg {
+      transition: transform 0.3s var(--ease-luxury), stroke 0.2s;
+    }
+
+    .theme-toggle-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .theme-toggle-btn.active {
+      background: var(--accent-gold);
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 2px 8px var(--accent-gold-glow);
+    }
+
+    [data-theme="dark"] .theme-toggle-btn.active {
+      color: #000000;
+    }
+
+    /* ==========================================================================
+       PRISTINE SUNLIT MUSEUM (LIGHT THEME) ART DIRECTION OVERRIDES
+       ========================================================================== */
+    [data-theme="light"] .hero-gradient-overlay {
+      background: radial-gradient(circle at 50% 35%, rgba(212, 175, 55, 0.12) 0%, rgba(251, 251, 250, 0.8) 60%, var(--surface-void) 100%),
+                  linear-gradient(180deg, rgba(251, 251, 250, 0.35) 0%, var(--surface-void) 100%);
+    }
+
+    [data-theme="light"] .hero-monumental-title {
+      background: linear-gradient(180deg, #111216 15%, #252834 60%, #b38b22 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    [data-theme="light"] .hero-telemetry-bar {
+      background: var(--surface-glass);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.05);
+      border-color: var(--border-subtle);
+    }
+
+    [data-theme="light"] .btn-hero-primary {
+      background: var(--accent-gold);
+      color: #ffffff;
+      border-color: var(--accent-gold);
+      box-shadow: 0 8px 24px var(--accent-gold-glow);
+    }
+
+    [data-theme="light"] .btn-hero-primary:hover {
+      background: #141518;
+      color: #ffffff;
+      border-color: #141518;
+      box-shadow: 0 12px 32px rgba(20, 22, 28, 0.25);
+    }
+
+    [data-theme="light"] .btn-hero-secondary {
+      background: var(--surface-card);
+      color: var(--text-primary);
+      border-color: var(--border-standard);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="light"] .btn-hero-secondary:hover {
+      border-color: var(--accent-gold);
+      color: var(--accent-gold-light);
+    }
+
+    [data-theme="light"] .bento-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+    }
+
+    [data-theme="light"] .bento-card:hover {
+      border-color: var(--border-gold);
+      box-shadow: var(--shadow-elevated);
+    }
+
+    [data-theme="light"] .rotunda-viewport-wrapper {
+      background: var(--surface-deep);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    [data-theme="light"] .wing-main-title,
+    [data-theme="light"] .pill-wing-name,
+    [data-theme="light"] .footer-col h5,
+    [data-theme="light"] .modal-curatorial-text h2,
+    [data-theme="light"] .chapter-title,
+    [data-theme="light"] #selected-room-name {
+      color: var(--text-pure);
+    }
+
+    [data-theme="light"] .wing-nav-pill {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="light"] .wing-nav-pill.active {
+      background: var(--accent-gold);
+      color: #ffffff;
+      border-color: var(--accent-gold);
+      box-shadow: 0 6px 20px var(--accent-gold-glow);
+    }
+
+    [data-theme="light"] .rotunda-spec-drawer {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    }
+
+    [data-theme="light"] .walkthrough-dpad-container {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border-standard);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    [data-theme="light"] .btn-dpad {
+      color: var(--text-primary);
+    }
+
+    [data-theme="light"] .btn-dpad:hover,
+    [data-theme="light"] .btn-dpad.active {
+      background: var(--accent-gold);
+      color: #ffffff;
+      border-color: var(--accent-gold);
+    }
+
+    [data-theme="light"] .artwork-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+    }
+
+    [data-theme="light"] .artwork-card:hover {
+      border-color: var(--border-gold);
+      box-shadow: var(--shadow-elevated);
+    }
+
+    [data-theme="light"] .artwork-img-box {
+      background: var(--surface-deep);
+    }
+
+    [data-theme="light"] .btn-filter-artwork {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+
+    [data-theme="light"] .btn-filter-artwork.active {
+      background: var(--accent-gold);
+      color: #ffffff;
+      border-color: var(--accent-gold);
+    }
+
+    [data-theme="light"] .blueprint-visual-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-standard);
+      box-shadow: var(--shadow-card);
+    }
+
+    [data-theme="light"] .blueprint-svg-canvas {
+      background: var(--bp-bg);
+      border: 1px solid var(--border-standard);
+    }
+
+    [data-theme="light"] .environmental-sensors-panel {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+
+    [data-theme="light"] .calendar-day-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    }
+
+    [data-theme="light"] .calendar-day-card.active {
+      background: var(--accent-gold);
+      color: #ffffff;
+      border-color: var(--accent-gold);
+    }
+
+    [data-theme="light"] .tier-selection-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+    }
+
+    [data-theme="light"] .tier-selection-card.active {
+      border-color: var(--accent-gold);
+      box-shadow: 0 12px 35px rgba(179, 139, 34, 0.16);
+    }
+
+    [data-theme="light"] .guest-input,
+    [data-theme="light"] .newsletter-input {
+      background: #ffffff;
+      border: 1px solid var(--border-standard);
+      color: var(--text-primary);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="light"] .guest-input:focus,
+    [data-theme="light"] .newsletter-input:focus {
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 12px var(--accent-gold-glow);
+    }
+
+    [data-theme="light"] .holographic-ticket-pass {
+      background: linear-gradient(145deg, #ffffff 0%, #f6f4ed 100%);
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 0 35px rgba(179, 139, 34, 0.12);
+    }
+
+    [data-theme="light"] .ticket-pass-type {
+      color: var(--accent-gold-light);
+    }
+
+    [data-theme="light"] .ticket-owner-val {
+      color: var(--text-pure);
+    }
+
+    [data-theme="light"] .ticket-meta-col span:last-child {
+      color: var(--text-primary);
+    }
+
+    [data-theme="light"] .ticket-qr-placeholder {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+    }
+
+    [data-theme="light"] .btn-confirm-reservation {
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #8c6a12 100%);
+      color: #ffffff;
+      box-shadow: 0 8px 24px var(--accent-gold-glow);
+    }
+
+    [data-theme="light"] .btn-confirm-reservation:hover {
+      background: #141518;
+      color: #ffffff;
+      box-shadow: 0 12px 32px rgba(20, 22, 28, 0.25);
+    }
+
+    [data-theme="light"] .modal-3d-interactive-box {
+      background: var(--surface-deep);
+      border: 1px solid var(--border-standard);
+    }
+
+    [data-theme="light"] .curatorial-modal-sheet {
+      background: #ffffff;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+    }
+
+    [data-theme="light"] .custom-cursor {
+      mix-blend-mode: normal;
+    }
+
+    [data-theme="light"] #cursor-dot {
+      background: var(--accent-gold);
+    }
+
+    [data-theme="light"] #cursor-ring {
+      border-color: rgba(179, 139, 34, 0.55);
+    }
+
+    [data-theme="light"] #cursor-label {
+      color: var(--accent-gold-light);
+    }
+
+    [data-theme="light"] .lang-switcher {
+      background: var(--surface-card-elevated);
+      border: 1px solid var(--border-subtle);
+    }
+
+    [data-theme="light"] .lang-btn.active {
+      background: var(--accent-gold);
+      color: #ffffff;
+    }
+
+    [data-theme="light"] .btn-vip-reserve {
+      background: rgba(179, 139, 34, 0.09);
+      color: var(--accent-gold-light);
+      border: 1px solid var(--border-gold);
+    }
+
+    [data-theme="light"] .btn-vip-reserve:hover {
+      background: var(--accent-gold);
+      color: #ffffff;
+      box-shadow: 0 0 24px var(--accent-gold-glow);
+    }
+
   </style>
 </head>
 <body>
@@ -2129,6 +2973,7 @@
         <a href="#manifesto" class="nav-link" data-i18n="nav_manifesto">Manifeste</a>
         <a href="#virtual-gallery" class="nav-link" data-i18n="nav_gallery">Rotonde 3D</a>
         <a href="#masterpieces" class="nav-link" data-i18n="nav_masterpieces">Chefs-d'œuvre</a>
+        <a href="#cinema-pavilion" class="nav-link" data-i18n="nav_cinema">Cinéma Immersif</a>
         <a href="#architecture" class="nav-link" data-i18n="nav_architecture">Architecture</a>
         <a href="#tickets" class="nav-link" data-i18n="nav_tickets">Nocturnes</a>
       </nav>
@@ -2148,6 +2993,30 @@
           <button class="lang-btn active" data-lang="fr">FR</button>
           <button class="lang-btn" data-lang="en">EN</button>
           <button class="lang-btn" data-lang="vi">VI</button>
+        </div>
+
+        <!-- Sunlit / Nocturne Theme Switcher -->
+        <div class="theme-switcher" id="theme-switcher-wrapper" role="radiogroup" aria-label="Galerie Ambiance">
+          <button class="theme-toggle-btn active" id="theme-btn-light" data-theme-val="light" title="Galerie Ensoleillée (Sunlit Light)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <span class="theme-label" data-i18n="theme_light">Solaire</span>
+          </button>
+          <button class="theme-toggle-btn" id="theme-btn-dark" data-theme-val="dark" title="Nocturne Curatorial (Dark Mode)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span class="theme-label" data-i18n="theme_dark">Nocturne</span>
+          </button>
         </div>
 
         <a href="#tickets" class="btn-vip-reserve" data-i18n="btn_reserve_nav">
@@ -2332,6 +3201,24 @@
         <div class="rotunda-viewport-wrapper">
           <canvas id="rotunda-three-canvas"></canvas>
 
+          <!-- 3D Walkthrough Control Overlay -->
+          <div class="walkthrough-hud-overlay" id="walkthrough-hud">
+            <div class="walk-tip-banner">
+              <span class="walk-badge">MODE 3D</span>
+              <span id="walk-tip-text" data-i18n="walk_tip">Touches W/A/S/D ou Flèches pour marcher • Glisser pour orienter • Shift pour accélérer</span>
+            </div>
+            <!-- On-Screen Virtual D-Pad for Touch & Trackpad -->
+            <div class="walk-dpad-cluster">
+              <button class="btn-dpad dpad-up" id="dpad-fwd" title="Avancer (W)">▲</button>
+              <div class="dpad-mid-row">
+                <button class="btn-dpad dpad-left" id="dpad-left" title="Pas à gauche (A)">◀</button>
+                <button class="btn-dpad dpad-sprint" id="dpad-sprint" title="Accélérer (Shift)">⚡</button>
+                <button class="btn-dpad dpad-right" id="dpad-right" title="Pas à droite (D)">▶</button>
+              </div>
+              <button class="btn-dpad dpad-down" id="dpad-back" title="Reculer (S)">▼</button>
+            </div>
+          </div>
+
           <!-- 3D HUD Interface -->
           <div class="rotunda-hud-overlay">
             <div class="hud-top-bar">
@@ -2434,7 +3321,8 @@
         <!-- Artwork 1 -->
         <article class="artwork-card" data-category="light" data-id="1">
           <div class="artwork-img-box">
-            <img src="https://images.unsplash.com/photo-1544967082-d9d25d867d66?q=80&w=800&auto=format&fit=crop" alt="L'Aura des Étoiles">
+            <img src="https://images.unsplash.com/photo-1544967082-d9d25d867d66?q=80&w=800&auto=format&fit=crop" alt="L'Origine du Labyrinthe">
+            <span class="artwork-room-pill" data-i18n="art0_room">Aile I • Nef</span>
             <span class="artwork-accession-pill">LV-2026.01</span>
             <span class="artwork-room-pill">Aile I • Nef</span>
             <button class="artwork-audio-quick-btn" title="Écouter l'Extrait Acoustique" onclick="playMasterpieceAudio(0)">
@@ -2445,9 +3333,9 @@
           </div>
           <div class="artwork-content-box">
             <div class="artwork-meta-header">
-              <span class="artwork-artist-name">Claire de Vigny (France)</span>
-              <h3 class="artwork-title">L'Origine du Labyrinthe</h3>
-              <p class="artwork-medium">Cristal de quartz optique, laser néodyme, résonance acoustique à 432 Hz.</p>
+              <span class="artwork-artist-name" data-i18n="art0_artist">Claire de Vigny (France)</span>
+              <h3 class="artwork-title" data-i18n="art0_title">L'Origine du Labyrinthe</h3>
+              <p class="artwork-medium" data-i18n="art0_medium">Cristal de quartz optique, laser néodyme, résonance acoustique à 432 Hz.</p>
             </div>
             <div class="artwork-card-footer">
               <span class="artwork-year">MMXXVI</span>
@@ -2472,9 +3360,9 @@
           </div>
           <div class="artwork-content-box">
             <div class="artwork-meta-header">
-              <span class="artwork-artist-name">Kenzo Takahashi & Studio Mirage (Tokyo)</span>
-              <h3 class="artwork-title">Symphonie des Particules</h3>
-              <p class="artwork-medium">40 000 émetteurs de photons bio-interactifs, détection de présence LiDAR.</p>
+              <span class="artwork-artist-name" data-i18n="art1_artist">Kenzo Takahashi & Studio Mirage (Tokyo)</span>
+              <h3 class="artwork-title" data-i18n="art1_title">Symphonie des Particules</h3>
+              <p class="artwork-medium" data-i18n="art1_medium">40 000 émetteurs de photons bio-interactifs, détection de présence LiDAR.</p>
             </div>
             <div class="artwork-card-footer">
               <span class="artwork-year">MMXXV</span>
@@ -2580,9 +3468,9 @@
           </div>
           <div class="artwork-content-box">
             <div class="artwork-meta-header">
-              <span class="artwork-artist-name">Jean-Luc Moreau (Genève)</span>
-              <h3 class="artwork-title">La Chute d'Icare Virtuel</h3>
-              <p class="artwork-medium">Dispersion volumétrique de brume cryogénique, faisceaux laser 532 nm.</p>
+              <span class="artwork-artist-name" data-i18n="art5_artist">Jean-Luc Moreau (Genève)</span>
+              <h3 class="artwork-title" data-i18n="art5_title">La Chute d'Icare Virtuel</h3>
+              <p class="artwork-medium" data-i18n="art5_medium">Dispersion volumétrique de brume cryogénique, faisceaux laser 532 nm.</p>
             </div>
             <div class="artwork-card-footer">
               <span class="artwork-year">MMXXV</span>
@@ -2592,6 +3480,121 @@
             </div>
           </div>
         </article>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACT V: LE PAVILLON CINÉMATIQUE • SALLE DES ÉCRANS PANORAMIQUES
+         ====================================================================== -->
+    <section class="cinema-section" id="cinema-pavilion">
+      <div class="section-header-centered">
+        <span class="section-eyebrow" data-i18n="cinema_eyebrow">PROJECTIONS PANORAMIQUES 21:9 & ART VIDÉO ÉLECTRONIQUE</span>
+        <h2 class="section-heading-serif" data-i18n="cinema_heading">Le Pavillon Cinématique</h2>
+        <p class="section-desc-lead" data-i18n="cinema_lead">
+          Des toiles lumineuses monumentales projetées en 21:9 anamorphique ultra-large. Plongez dans nos créations audiovisuelles génératives synchronisées avec notre architecture acoustique spatiale.
+        </p>
+      </div>
+
+      <div class="cinema-container">
+        <!-- Cinema Action Controls Top Bar -->
+        <div class="cinema-top-actions">
+          <button class="btn-cinema-action active" id="btn-cinema-mode" title="Assombrir l'environnement pour une immersion totale">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <span data-i18n="cinema_mode_btn">Mode Cinéma Obscur</span>
+          </button>
+
+          <button class="btn-cinema-action" id="btn-cinema-shader" title="Activer le générateur procédural quantique en direct">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <span data-i18n="cinema_gen_btn">Générateur Procédural Quantique</span>
+          </button>
+        </div>
+
+        <!-- 21:9 Curved Screen Frame with Ambient Projection Halo -->
+        <div class="cinema-screen-halo" id="cinema-halo">
+          <div class="cinema-screen-frame">
+            <!-- Video Element -->
+            <video class="cinema-video-player" id="main-cinema-video" playsinline loop muted autoplay poster="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1600&auto=format&fit=crop">
+              <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+            </video>
+
+            <!-- Procedural Generative Shader Canvas Overlay -->
+            <canvas class="cinema-generative-canvas" id="cinema-gen-canvas"></canvas>
+
+            <!-- Cinema Overlay Vignette & Scanlines -->
+            <div class="cinema-screen-overlay"></div>
+
+            <!-- On-Screen Cinema Playback HUD -->
+            <div class="cinema-player-hud">
+              <div class="cinema-timeline-bar" id="cinema-timeline">
+                <div class="cinema-timeline-progress" id="cinema-progress"></div>
+              </div>
+
+              <div class="cinema-controls-row">
+                <div class="cinema-left-ctrls">
+                  <button class="btn-cinema-ctrl" id="btn-cinema-play" title="Lecture / Pause">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </button>
+                  <span class="cinema-time-label" id="cinema-time-display">00:12 / 03:45</span>
+                  <span class="cinema-aspect-pill">21:9 CINEMASCOPE • 4K HDR</span>
+                </div>
+
+                <div class="cinema-right-ctrls">
+                  <button class="btn-cinema-ctrl" id="btn-cinema-sound" title="Spatial Audio Sync">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                  </button>
+                  <button class="btn-cinema-ctrl" id="btn-cinema-fullscreen" title="Plein Écran">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Cinema Chapters Navigation -->
+        <div class="cinema-chapters-grid">
+          <div class="cinema-chapter-card active" data-chapter="0" onclick="selectCinemaChapter(0)">
+            <div class="chapter-num">ACTE I • PARIS</div>
+            <h4 class="chapter-title" data-i18n="ch1_title">Genèse de la Lumière Quantique</h4>
+            <p class="chapter-synopsis" data-i18n="ch1_desc">Diffraction laser sous la grande verrière du Grand Palais et émergence des premières particules cohérentes.</p>
+            <span class="chapter-duration">03:45 • Son Spatial 432 Hz</span>
+          </div>
+
+          <div class="cinema-chapter-card" data-chapter="1" onclick="selectCinemaChapter(1)">
+            <div class="chapter-num">ACTE II • TOKYO</div>
+            <h4 class="chapter-title" data-i18n="ch2_title">Symphonie des Gravitons</h4>
+            <p class="chapter-synopsis" data-i18n="ch2_desc">Vortex cinétique de 40 000 photons bio-interactifs ondulant au gré des marées gravitationnelles.</p>
+            <span class="chapter-duration">04:20 • Son Spatial 528 Hz</span>
+          </div>
+
+          <div class="cinema-chapter-card" data-chapter="2" onclick="selectCinemaChapter(2)">
+            <div class="chapter-num">ACTE III • VENISE</div>
+            <h4 class="chapter-title" data-i18n="ch3_title">L'Infini Computationnel</h4>
+            <p class="chapter-synopsis" data-i18n="ch3_desc">Transmutation de la matière solide en conscience algorithmique pure à l'aube de la Biennale 2026.</p>
+            <span class="chapter-duration">05:10 • Son Spatial 639 Hz</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2617,7 +3620,89 @@
           </div>
 
           <div class="blueprint-svg-canvas" id="blueprint-canvas-container">
-            <!-- Dynamic SVG Blueprint injected by JavaScript -->
+            <svg viewBox="0 0 600 480" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" id="blueprint-svg-el">
+  <defs>
+    <pattern id="bp-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="var(--bp-grid-color, rgba(24,26,36,0.08))" stroke-width="0.75"/>
+    </pattern>
+    <radialGradient id="rotunda-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="var(--accent-gold)" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="var(--accent-gold)" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Drafting Grid -->
+  <rect width="100%" height="100%" fill="url(#bp-grid)" />
+
+  <!-- Outer Structural Walls -->
+  <rect x="50" y="60" width="500" height="360" rx="24" fill="none" stroke="var(--bp-wall-color, rgba(24,26,36,0.35))" stroke-width="2" stroke-dasharray="6 3" />
+  <rect x="70" y="80" width="460" height="320" rx="16" fill="none" stroke="var(--bp-wall-color, rgba(24,26,36,0.45))" stroke-width="1.5" />
+
+  <!-- Central Rotunda Sanctuary Circle -->
+  <circle cx="300" cy="240" r="110" fill="url(#rotunda-glow)" stroke="var(--accent-gold)" stroke-width="1.5" />
+  <circle cx="300" cy="240" r="85" fill="none" stroke="var(--accent-gold)" stroke-width="1" stroke-dasharray="4 4" />
+  <circle cx="300" cy="240" r="35" fill="none" stroke="var(--accent-gold)" stroke-width="2" />
+  <circle cx="300" cy="240" r="8" fill="var(--accent-gold)" />
+
+  <!-- Radial Cross Axes -->
+  <line x1="70" y1="240" x2="530" y2="240" stroke="var(--bp-axis-color, rgba(24,26,36,0.2))" stroke-width="1" stroke-dasharray="5 5" />
+  <line x1="300" y1="80" x2="300" y2="400" stroke="var(--bp-axis-color, rgba(24,26,36,0.2))" stroke-width="1" stroke-dasharray="5 5" />
+
+  <!-- 4 Wing Chambers -->
+  <rect x="90" y="190" width="100" height="100" rx="8" fill="none" stroke="var(--bp-line-color, rgba(24,26,36,0.25))" stroke-width="1.2" />
+  <text x="140" y="245" font-family="monospace" font-size="9" fill="var(--text-tertiary)" text-anchor="middle" letter-spacing="1">AILE I</text>
+
+  <rect x="410" y="190" width="100" height="100" rx="8" fill="none" stroke="var(--bp-line-color, rgba(24,26,36,0.25))" stroke-width="1.2" />
+  <text x="460" y="245" font-family="monospace" font-size="9" fill="var(--text-tertiary)" text-anchor="middle" letter-spacing="1">AILE II</text>
+
+  <rect x="250" y="90" width="100" height="60" rx="8" fill="none" stroke="var(--bp-line-color, rgba(24,26,36,0.25))" stroke-width="1.2" />
+  <text x="300" y="125" font-family="monospace" font-size="9" fill="var(--text-tertiary)" text-anchor="middle" letter-spacing="1">AILE III</text>
+
+  <rect x="250" y="330" width="100" height="60" rx="8" fill="none" stroke="var(--bp-line-color, rgba(24,26,36,0.25))" stroke-width="1.2" />
+  <text x="300" y="365" font-family="monospace" font-size="9" fill="var(--text-tertiary)" text-anchor="middle" letter-spacing="1">AILE IV</text>
+
+  <!-- Interactive Dynamic Highlight Zone -->
+  <path id="blueprint-highlight-zone" d="M 300,240 m -85,0 a 85,85 0 1,0 170,0 a 85,85 0 1,0 -170,0" fill="rgba(179, 139, 34, 0.22)" stroke="var(--accent-gold)" stroke-width="2.5" style="transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);" />
+
+  <!-- 16 Doric Colonnade Ring Dots -->
+  <g id="col-dots">
+    <circle cx="410.0" cy="240.0" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="401.6" cy="282.1" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="377.8" cy="317.8" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="342.1" cy="341.6" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="300.0" cy="350.0" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="257.9" cy="341.6" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="222.2" cy="317.8" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="198.4" cy="282.1" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="190.0" cy="240.0" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="198.4" cy="197.9" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="222.2" cy="162.2" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="257.9" cy="138.4" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="300.0" cy="130.0" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="342.1" cy="138.4" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="377.8" cy="162.2" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+    <circle cx="401.6" cy="197.9" r="3.5" fill="var(--accent-gold)" stroke="var(--surface-void)" stroke-width="1" />
+  </g>
+
+  <!-- Metric Scale Bar -->
+  <g transform="translate(80, 435)">
+    <line x1="0" y1="0" x2="100" y2="0" stroke="var(--text-muted)" stroke-width="1.5" />
+    <line x1="0" y1="-4" x2="0" y2="4" stroke="var(--text-muted)" stroke-width="1.5" />
+    <line x1="50" y1="-2" x2="50" y2="2" stroke="var(--text-muted)" stroke-width="1" />
+    <line x1="100" y1="-4" x2="100" y2="4" stroke="var(--text-muted)" stroke-width="1.5" />
+    <text x="0" y="12" font-family="monospace" font-size="8" fill="var(--text-muted)">0m</text>
+    <text x="45" y="12" font-family="monospace" font-size="8" fill="var(--text-muted)">25m</text>
+    <text x="90" y="12" font-family="monospace" font-size="8" fill="var(--text-muted)">50m</text>
+  </g>
+
+  <!-- North Compass -->
+  <g transform="translate(510, 110)">
+    <circle cx="0" cy="0" r="16" fill="none" stroke="var(--border-standard)" stroke-width="1" />
+    <path d="M 0 -12 L 4 0 L 0 -2 L -4 0 Z" fill="var(--accent-gold)" />
+    <path d="M 0 12 L 4 0 L 0 2 L -4 0 Z" fill="var(--text-muted)" />
+    <text x="0" y="-16" font-family="monospace" font-size="9" font-weight="bold" fill="var(--accent-gold)" text-anchor="middle">N</text>
+  </g>
+</svg>
           </div>
         </div>
 
@@ -2922,9 +4007,28 @@
   <!-- ========================================================================
        JAVASCRIPT ARCHITECTURE
        ======================================================================== -->
+  <!-- Cinema Dark Mode Overlay -->
+  <div class="cinema-dimmer-backdrop" id="cinema-dimmer"></div>
+
+  <!-- Luxury Floating Toast Notification -->
+  <div class="luxury-toast-container" id="luxury-toast-box">
+    <div class="luxury-toast-inner">
+      <div class="toast-gold-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <div class="toast-text-block">
+        <h5 class="toast-title" id="toast-title">NOTIFICATION CURATORIALE</h5>
+        <p class="toast-desc" id="toast-msg">Votre demande a été enregistrée dans le grand registre de la Biennale.</p>
+      </div>
+      <button class="toast-close-btn" onclick="hideLuxuryToast()">&times;</button>
+    </div>
+  </div>
+
   <script>
     /* ==========================================================================
-       1. TRILINGUAL TRANSLATION ENGINE & DATA DICTIONARY
+       1. TRILINGUAL TRANSLATION ENGINE & DATA DICTIONARY (FR / EN / VI)
        ========================================================================== */
     const I18N = {
       fr: {
@@ -2932,9 +4036,14 @@
         nav_manifesto: "Manifeste",
         nav_gallery: "Rotonde 3D",
         nav_masterpieces: "Chefs-d'œuvre",
+        nav_cinema: "Cinéma Immersif",
         nav_architecture: "Architecture",
         nav_tickets: "Nocturnes",
         audio_start: "AUDIO ON",
+        theme_light: "Sunlit",
+        theme_dark: "Nocturne",
+        theme_light: "Solaire",
+        theme_dark: "Nocturne",
         btn_reserve_nav: "Réserver un Pass",
         reserve_pass: "Réserver un Pass",
         hero_badge: "BIENNALE MONDIALE D'ART NUMÉRIQUE 2026 • PARIS",
@@ -2970,11 +4079,12 @@
         stat_carbon: "Empreinte Carbone • Géothermie",
         rotunda_eyebrow: "EXPÉRIENCE INTERACTIVE EN TEMPS RÉEL",
         rotunda_heading: "La Grande Rotonde 3D",
-        rotunda_lead: "Explorez les 4 Ailes Curieuses de notre nef néoclassique. Cliquez sur les sculptures pour inspecter leur matérialité quantique ou déplacez la caméra à votre gré.",
-        cam_walk: "Promenade",
+        rotunda_lead: "Explorez les 4 Ailes Curieuses de notre nef néoclassique. Marchez librement avec les touches Z/Q/S/D ou le pavé tactile, ou cliquez sur les sculptures pour inspecter leur matérialité.",
+        cam_walk: "Promenade 3D",
         cam_orbit: "Orbite 360°",
         cam_zenith: "Zénith",
         cam_macro: "Détail Macro",
+        walk_tip: "PROMENADE LIBRE: Touches Z/Q/S/D ou Flèches pour marcher • Glisser pour orienter • Shift pour accélérer",
         light_atmos: "Atmosphère Lumineuse",
         mat_composition: "Composition",
         lux_illuminance: "Éclairement Lux",
@@ -2987,13 +4097,48 @@
         filter_kinetic: "Sculpture Cinétique",
         filter_sound: "Acoustique Spatiale",
         btn_inspect: "Inspecter",
+        art0_artist: "Claire de Vigny (France)",
+        art0_title: "L'Origine du Labyrinthe",
+        art0_medium: "Cristal de quartz optique, laser néodyme, résonance acoustique à 432 Hz.",
+        art0_room: "Aile I • Nef",
+        art1_artist: "Kenzo Takahashi & Studio Mirage (Tokyo)",
+        art1_title: "Symphonie des Particules",
+        art1_medium: "40 000 émetteurs de photons bio-interactifs, détection de présence LiDAR.",
+        art1_room: "Aile II • Éther",
+        art2_artist: "Elena Rostova (Saint-Pétersbourg)",
+        art2_title: "Pietà Numérique",
+        art2_medium: "Marbre de Carrare usiné au micron, fibre optique dorée, lattice tridimensionnelle.",
+        art2_room: "Aile III • Apollon",
+        art3_artist: "Marcus Vance (Londres)",
+        art3_title: "Le Silence des Sphères",
+        art3_medium: "Trois anneaux de titane et or rose en lévitation supraconductrice continue.",
+        art3_room: "Aile IV • Chronos",
+        art4_artist: "Dr. Solis Nguyen (Hanoï / Paris)",
+        art4_title: "Biocénose Flottante",
+        art4_medium: "Bio-réacteur à micro-algues bioluminescentes, capteurs de flux de visiteurs.",
+        art4_room: "Pavillon Sud",
+        art5_artist: "Jean-Luc Moreau (Genève)",
+        art5_title: "La Chute d'Icare Virtuel",
+        art5_medium: "Dispersion volumétrique de brume cryogénique, faisceaux laser 532 nm.",
+        art5_room: "Atrium Est",
+        cinema_eyebrow: "PROJECTIONS PANORAMIQUES 21:9 & ART VIDÉO ÉLECTRONIQUE",
+        cinema_heading: "Le Pavillon Cinématique",
+        cinema_lead: "Des toiles lumineuses monumentales projetées en 21:9 anamorphique ultra-large. Plongez dans nos créations audiovisuelles génératives synchronisées avec notre architecture acoustique spatiale.",
+        cinema_mode_btn: "Mode Cinéma Obscur",
+        cinema_gen_btn: "Générateur Procédural Quantique",
+        ch1_title: "Genèse de la Lumière Quantique",
+        ch1_desc: "Diffraction laser sous la grande verrière du Grand Palais et émergence des premières particules cohérentes.",
+        ch2_title: "Symphonie des Gravitons",
+        ch2_desc: "Vortex cinétique de 40 000 photons bio-interactifs ondulant au gré des marées gravitationnelles.",
+        ch3_title: "L'Infini Computationnel",
+        ch3_desc: "Transmutation de la matière solide en conscience algorithmique pure à l'aube de la Biennale 2026.",
         arch_eyebrow: "CARTOGRAPHIE SPATIALE & MICRO-CLIMAT",
         arch_heading: "Topologie Monumentale",
         arch_lead: "Trois niveaux de sanctuaires interconnectés. Chaque salle maintient un micro-climat ultra-précis pour préserver les cristaux optiques.",
         sensor_temp: "Température",
         sensor_hum: "Hygrométrie",
         sensor_cap: "Jauge Visiteurs",
-        status_optimal: "Optimal &plusmn;0.2",
+        status_optimal: "Optimal ±0.2",
         status_fluid: "Fluide",
         ticket_eyebrow: "RÉSERVATION PRIVILÈGE & BILLETTERIE HAUTE COUTURE",
         ticket_heading: "L'Atelier des Nocturnes",
@@ -3023,13 +4168,16 @@
         listen_curator_audio: "Écouter la Note Curatée",
         modal_success_title: "PASS VIP CONFIRMÉ",
         modal_success_desc: "Votre pass d'accès nocturne a été inscrit dans le registre curatorial de L'Éclat Virtus. Un certificat cryptographique numéroté a été généré.",
-        btn_close_pass: "Accéder au Portefeuille Numérique"
+        btn_close_pass: "Accéder au Portefeuille Numérique",
+        toast_title: "CONFIRMATION CURATORIALE",
+        toast_success: "Votre demande d'invitation au vernissage privé a été enregistrée avec succès."
       },
       en: {
         nav_sub: "Grand Palais of Digital Arts",
         nav_manifesto: "Manifesto",
         nav_gallery: "3D Rotunda",
         nav_masterpieces: "Masterpieces",
+        nav_cinema: "Immersive Cinema",
         nav_architecture: "Architecture",
         nav_tickets: "Nocturnes",
         audio_start: "AUDIO ON",
@@ -3068,11 +4216,12 @@
         stat_carbon: "Carbon Footprint • Geothermal",
         rotunda_eyebrow: "REAL-TIME INTERACTIVE 3D EXPERIENCE",
         rotunda_heading: "The Grand 3D Rotunda",
-        rotunda_lead: "Explore the 4 Curatorial Wings of our neoclassical nave. Click on sculptures to inspect quantum materiality or navigate camera angles freely.",
-        cam_walk: "Walkthrough",
+        rotunda_lead: "Explore the 4 Curatorial Wings of our neoclassical nave. Walk freely using WASD or Arrow Keys, or click on sculptures to inspect their quantum materiality.",
+        cam_walk: "3D Walkthrough",
         cam_orbit: "360° Orbit",
         cam_zenith: "Zenith View",
         cam_macro: "Macro Detail",
+        walk_tip: "FREE WALKTHROUGH: WASD or Arrow Keys to walk • Drag to look • Shift to sprint",
         light_atmos: "Lighting Atmosphere",
         mat_composition: "Composition",
         lux_illuminance: "Lux Illuminance",
@@ -3085,13 +4234,48 @@
         filter_kinetic: "Kinetic Sculpture",
         filter_sound: "Spatial Acoustic",
         btn_inspect: "Inspect",
+        art0_artist: "Claire de Vigny (France)",
+        art0_title: "The Origin of the Labyrinth",
+        art0_medium: "Optical quartz crystal, neodymium laser, acoustic harmonic resonance at 432 Hz.",
+        art0_room: "Wing I • Central Nave",
+        art1_artist: "Kenzo Takahashi & Studio Mirage (Tokyo)",
+        art1_title: "Particle Symphony",
+        art1_medium: "40,000 bio-interactive photon emitters, high-precision LiDAR spectator tracking.",
+        art1_room: "Wing II • Ethereal Garden",
+        art2_artist: "Elena Rostova (Saint Petersburg)",
+        art2_title: "Digital Pietà",
+        art2_medium: "Micron-milled Carrara marble, golden optical fiber, 3D neural voxel lattice.",
+        art2_room: "Wing III • Apollo",
+        art3_artist: "Marcus Vance (London)",
+        art3_title: "The Silence of the Spheres",
+        art3_medium: "Triple titanium and rose gold rings in superconducting perpetual levitation.",
+        art3_room: "Wing IV • Chronos",
+        art4_artist: "Dr. Solis Nguyen (Hanoi / Paris)",
+        art4_title: "Floating Biocenosis",
+        art4_medium: "Bioluminescent micro-algae bioreactor, visitor breath rhythm audio synthesizer.",
+        art4_room: "South Pavilion",
+        art5_artist: "Jean-Luc Moreau (Geneva)",
+        art5_title: "Virtual Fall of Icarus",
+        art5_medium: "Volumetric cryogenic fog dispersion, 12 coherent 532 nm laser light sheets.",
+        art5_room: "East Atrium",
+        cinema_eyebrow: "21:9 PANORAMIC PROJECTIONS & ELECTRONIC VIDEO ART",
+        cinema_heading: "The Cinematic Pavilion",
+        cinema_lead: "Monumental luminous canvases projected in ultra-widescreen 21:9 Cinemascope. Experience generative audiovisual creations synchronized with binaural acoustic spatialization.",
+        cinema_mode_btn: "Cinema Dark Mode",
+        cinema_gen_btn: "Quantum Generative Shader",
+        ch1_title: "Genesis of Quantum Light",
+        ch1_desc: "Laser diffraction beneath the soaring glass vaults of the Grand Palais and emergence of first coherent photons.",
+        ch2_title: "Graviton Symphony",
+        ch2_desc: "Kinetic vortex of 40,000 bio-interactive photons undulating along spacetime gravitational ripples.",
+        ch3_title: "Computational Infinity",
+        ch3_desc: "Transmutation of physical matter into pure algorithmic consciousness at the dawn of the 2026 Biennial.",
         arch_eyebrow: "SPATIAL CARTOGRAPHY & MICROCLIMATE",
         arch_heading: "Monumental Topology",
-        arch_lead: "Three levels of interconnected sanctums. Each hall maintains laboratory-grade microclimates to preserve optical crystals and optimize sound propagation.",
+        arch_lead: "Three levels of interconnected sanctums. Each hall maintains laboratory-grade microclimates to preserve optical crystals.",
         sensor_temp: "Temperature",
         sensor_hum: "Humidity",
         sensor_cap: "Visitor Density",
-        status_optimal: "Optimal &plusmn;0.2",
+        status_optimal: "Optimal ±0.2",
         status_fluid: "Fluid",
         ticket_eyebrow: "VIP PRIVILEGE & HAUTE COUTURE TICKETING",
         ticket_heading: "The Nocturne Atelier",
@@ -3121,16 +4305,21 @@
         listen_curator_audio: "Listen to Curatorial Note",
         modal_success_title: "VIP PASS CONFIRMED",
         modal_success_desc: "Your nocturnal access pass has been registered in the L'Éclat Virtus ledger. A cryptographically signed pass has been generated.",
-        btn_close_pass: "Access Digital Wallet"
+        btn_close_pass: "Access Digital Wallet",
+        toast_title: "CURATORIAL CONFIRMATION",
+        toast_success: "Your invitation request to the private biennial vernissage has been successfully recorded."
       },
       vi: {
         nav_sub: "Đại Điện Nghệ Thuật Số Đương Đại",
         nav_manifesto: "Tuyên Ngôn",
         nav_gallery: "Đại Điện 3D",
         nav_masterpieces: "Kiệt Tác",
+        nav_cinema: "Điện Ảnh Đắm Chìm",
         nav_architecture: "Kiến Trúc",
         nav_tickets: "Dạ Tiệc Nocturne",
         audio_start: "BẬT ÂM THANH",
+        theme_light: "Quang Sáng",
+        theme_dark: "Dạ Khúc",
         btn_reserve_nav: "Đặt Vé VIP",
         reserve_pass: "Đặt Vé VIP",
         hero_badge: "ĐẠI HỘI BIENNALE NGHỆ THUẬT SỐ QUỐC TẾ 2026 • PARIS",
@@ -3166,11 +4355,12 @@
         stat_carbon: "Phát Thải Carbon • Năng Lượng Địa Nhiệt",
         rotunda_eyebrow: "TRẢI NGHIỆM TƯƠNG TÁC 3D THỰC THỜI",
         rotunda_heading: "Đại Sảnh Vòm Tròn 3D",
-        rotunda_lead: "Tự do du ngoạn qua 4 Cánh Cung Nghệ Thuật. Nhấp vào tác phẩm điêu khắc để giải mã cấu trúc lượng tử hoặc điều chỉnh góc nhìn camera theo ý muốn.",
-        cam_walk: "Đi Dạo",
+        rotunda_lead: "Tự do du ngoạn qua 4 Cánh Cung Nghệ Thuật. Bước đi tự do bằng phím WASD hoặc cụm điều hướng, hoặc nhấp vào tác phẩm điêu khắc để giải mã cấu trúc lượng tử.",
+        cam_walk: "Đi Dạo 3D",
         cam_orbit: "Xoay 360°",
         cam_zenith: "Góc Nhìn Từ Đỉnh",
         cam_macro: "Soi Chi Tiết",
+        walk_tip: "CHẾ ĐỘ ĐI DẠO TỰ DO: Dùng phím WASD hoặc mũi tên để bước đi • Kéo chuột để xoay góc nhìn • Shift để chạy nhanh",
         light_atmos: "Ánh Sáng Khí Quyển",
         mat_composition: "Chất Liệu",
         lux_illuminance: "Độ Sáng Lux",
@@ -3183,13 +4373,48 @@
         filter_kinetic: "Điêu Khắc Động Lực",
         filter_sound: "Âm Thanh Không Gian",
         btn_inspect: "Chiêm Ngưỡng",
+        art0_artist: "Claire de Vigny (Pháp)",
+        art0_title: "Nguồn Cội Mê Cung",
+        art0_medium: "Tinh thể thạch anh quang học, tia laser neodymium, cộng hưởng âm học 432 Hz.",
+        art0_room: "Cánh Cung I • Đại Điện",
+        art1_artist: "Kenzo Takahashi & Studio Mirage (Tokyo)",
+        art1_title: "Bản Giao Hưởng Hạt",
+        art1_medium: "40.000 nguồn phát photon sinh học tương tác, cảm biến LiDAR nhận diện khán giả.",
+        art1_room: "Cánh Cung II • Vườn Ê-te",
+        art2_artist: "Elena Rostova (Saint-Pétersbourg)",
+        art2_title: "Pietà Kỹ Thuật Số",
+        art2_medium: "Đá cẩm thạch Carrara tiện vi sai, sợi quang học mạ vàng, cấu trúc mạng nơ-ron 3D.",
+        art2_room: "Cánh Cung III • Thần Apollo",
+        art3_artist: "Marcus Vance (Luân Đôn)",
+        art3_title: "Sự Tĩnh Lặng Của Các Thiên Cầu",
+        art3_medium: "Ba vòng tròn đồng tâm titan và vàng hồng lơ lửng siêu dẫn liên tục.",
+        art3_room: "Cánh Cung IV • Thần Thời Gian",
+        art4_artist: "TS. Solis Nguyễn (Hà Nội / Paris)",
+        art4_title: "Quần Xã Sinh Học Bồng Bềnh",
+        art4_medium: "Lò phản ứng sinh học vi tảo phát quang, bộ tổng hợp âm thanh nhịp thở tập thể.",
+        art4_room: "Đại Sảnh Phía Nam",
+        art5_artist: "Jean-Luc Moreau (Genève)",
+        art5_title: "Cú Rơi Của Icarus Ảo",
+        art5_medium: "Màn sương hàn lạnh tán xạ thể tích, 12 chùm tia laser bước sóng 532 nm.",
+        art5_room: "Đại Cung Phía Đông",
+        cinema_eyebrow: "TRÌNH CHIẾU TOÀN CẢNH 21:9 & NGHỆ THUẬT VIDEO ĐƯƠNG ĐẠI",
+        cinema_heading: "Đại Cung Điện Ảnh Ảo",
+        cinema_lead: "Những tấm thảm ánh sáng hoành tráng được phóng chiếu ở tỷ lệ siêu rộng 21:9 Cinemascope. Đắm chìm vào các tác phẩm tạo sinh đỉnh cao hòa quyện cùng âm thanh không gian 360°.",
+        cinema_mode_btn: "Chế Độ Rạp Phim Tối",
+        cinema_gen_btn: "Bộ Tạo Sinh Lượng Tử",
+        ch1_title: "Khởi Nguyên Ánh Sáng Lượng Tử",
+        ch1_desc: "Nhiễu xạ tia laser dưới mái vòm kính vĩ đại của Grand Palais và sự khởi sinh của các quang tử đồng pha.",
+        ch2_title: "Giao Hưởng Của Trọng Lực",
+        ch2_desc: "Xoáy lốc động lực học của 40.000 hạt photon sinh học uốn lượn theo từng làn sóng hấp dẫn.",
+        ch3_title: "Chân Trời Tính Toán Vô Tận",
+        ch3_desc: "Sự biến chuyển của vật chất rắn thành tâm thức thuật toán thuần khiết tại thềm Biennale 2026.",
         arch_eyebrow: "BẢN ĐỒ TỌA ĐỘ & TIỂU KHÍ HẬU",
         arch_heading: "Hình Học Không Gian",
-        arch_lead: "Ba tầng bảo tàng kết nối liền mạch. Từng phòng triển lãm được kiểm soát vi khí hậu tuyệt đối nhằm bảo quản pha lê quang học và duy trì chất lượng âm thanh hoàn hảo.",
+        arch_lead: "Ba tầng bảo tàng kết nối liền mạch. Từng phòng triển lãm được kiểm soát vi khí hậu tuyệt đối nhằm bảo quản pha lê quang học.",
         sensor_temp: "Nhiệt Độ",
         sensor_hum: "Độ Ẩm",
         sensor_cap: "Mật Độ Khách",
-        status_optimal: "Tối Ưu &plusmn;0.2",
+        status_optimal: "Tối Ưu ±0.2",
         status_fluid: "Thoáng Đãng",
         ticket_eyebrow: "ĐẶT VÉ ĐẶC QUYỀN HAUTE COUTURE",
         ticket_heading: "Phòng Vé Dạ Tiệc Đêm",
@@ -3219,7 +4444,9 @@
         listen_curator_audio: "Nghe Thuyết Minh Giám Tuyển",
         modal_success_title: "XÁC NHẬN THẺ VIP THÀNH CÔNG",
         modal_success_desc: "Thẻ thông hành đêm của quý khách đã được ghi danh vào sổ giám tuyển của L'Éclat Virtus kèm chữ ký số xác thực.",
-        btn_close_pass: "Mở Ví Thẻ Kỹ Thuật Số"
+        btn_close_pass: "Mở Ví Thẻ Kỹ Thuật Số",
+        toast_title: "XÁC NHẬN GIÁM TUYỂN",
+        toast_success: "Yêu cầu thư mời tham dự tiệc khai mạc của quý khách đã được ghi nhận vào sổ danh dự."
       }
     };
 
@@ -3242,6 +4469,10 @@
 
       document.documentElement.lang = lang;
       updateTicketPreview();
+      updateWingHUDLanguage();
+      if (document.getElementById('modal-inspect').classList.contains('open')) {
+        populateModalDossier(currentModalIdx);
+      }
     }
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -3249,7 +4480,7 @@
     });
 
     /* ==========================================================================
-       2. WEB AUDIO API SPATIAL SYNTHESIZER & REAL-TIME VISUALIZER
+       2. WEB AUDIO API SPATIAL STEREO PANNER & SOUNDSCAPE ENGINE
        ========================================================================== */
     class MuseumSpatialSynthesizer {
       constructor() {
@@ -3257,10 +4488,12 @@
         this.isPlaying = false;
         this.masterGain = null;
         this.filter = null;
+        this.panner = null;
         this.oscillators = [];
         this.analyser = null;
         this.spectrumCanvas = document.getElementById('audio-spectrum-canvas');
         this.spectrumCtx = this.spectrumCanvas ? this.spectrumCanvas.getContext('2d') : null;
+        this.lastFootstepTime = 0;
       }
 
       init() {
@@ -3272,29 +4505,39 @@
         this.masterGain = this.ctx.createGain();
         this.masterGain.gain.setValueAtTime(0.001, this.ctx.currentTime);
 
-        // Lowpass Filter for Spatial Modulation
+        // Lowpass Filter for Acoustic Environment Simulation
         this.filter = this.ctx.createBiquadFilter();
         this.filter.type = 'lowpass';
         this.filter.frequency.setValueAtTime(700, this.ctx.currentTime);
-        this.filter.Q.setValueAtTime(2.5, this.ctx.currentTime);
+        this.filter.Q.setValueAtTime(2.2, this.ctx.currentTime);
+
+        // Spatial Stereo Panner Node
+        if (this.ctx.createStereoPanner) {
+          this.panner = this.ctx.createStereoPanner();
+          this.panner.pan.setValueAtTime(0, this.ctx.currentTime);
+        }
 
         // Spectrum Analyser
         this.analyser = this.ctx.createAnalyser();
         this.analyser.fftSize = 64;
 
-        this.filter.connect(this.masterGain);
+        // Audio Graph Routing: Source -> Filter -> Panner -> MasterGain -> Analyser -> Destination
+        if (this.panner) {
+          this.filter.connect(this.panner);
+          this.panner.connect(this.masterGain);
+        } else {
+          this.filter.connect(this.masterGain);
+        }
         this.masterGain.connect(this.analyser);
         this.analyser.connect(this.ctx.destination);
 
-        // Drone Harmonizers: D-Minor 9 Chord (D2, A2, F3, C4, E4)
+        // Harmonizer Drones: D-Minor 9 Chord (D2, A2, F3, C4, E4)
         const freqs = [73.42, 110.00, 174.61, 261.63, 329.63];
         freqs.forEach((f, idx) => {
           const osc = this.ctx.createOscillator();
           const g = this.ctx.createGain();
           osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
           osc.frequency.setValueAtTime(f, this.ctx.currentTime);
-
-          // Subtle Detune for Lush Ethereal Texture
           osc.detune.setValueAtTime((idx - 2) * 5.5, this.ctx.currentTime);
           g.gain.setValueAtTime(0.12 / freqs.length, this.ctx.currentTime);
 
@@ -3305,14 +4548,6 @@
         });
 
         this.startVisualizer();
-
-        // Mouse modulation on acoustic filter
-        window.addEventListener('pointermove', (e) => {
-          if (!this.filter || !this.isPlaying) return;
-          const ratioX = e.clientX / window.innerWidth;
-          const targetFreq = 300 + ratioX * 2200;
-          this.filter.frequency.setTargetAtTime(targetFreq, this.ctx.currentTime, 0.15);
-        });
       }
 
       toggle() {
@@ -3331,8 +4566,48 @@
           this.isPlaying = true;
           document.getElementById('sound-dot').style.animationPlayState = 'running';
           document.getElementById('audio-status-text').textContent = 'AUDIO ON';
-          this.playCrystalChime(880.00); // Intro Bell
+          this.playCrystalChime(880.00);
         }
+      }
+
+      updatePositionFromCamera(camX, camZ, activeWingIdx) {
+        if (!this.ctx || !this.isPlaying || !this.panner) return;
+        const targetWing = WING_DATA[activeWingIdx];
+        if (!targetWing) return;
+
+        // Calculate relative vector from camera to active sculpture
+        const dx = targetWing.pos.x - camX;
+        const dz = targetWing.pos.z - camZ;
+        const dist = Math.hypot(dx, dz);
+
+        // Normalize panning between -0.85 (left) and +0.85 (right)
+        const panVal = Math.max(-0.85, Math.min(0.85, dx / 25));
+        this.panner.pan.setTargetAtTime(panVal, this.ctx.currentTime, 0.1);
+
+        // Proximity Filter Cutoff: closer opens filter to bright high-frequencies
+        const targetCutoff = Math.max(350, Math.min(3200, 2400 - dist * 45));
+        this.filter.frequency.setTargetAtTime(targetCutoff, this.ctx.currentTime, 0.15);
+      }
+
+      playFootstep() {
+        if (!this.ctx || !this.isPlaying) return;
+        const now = performance.now();
+        if (now - this.lastFootstepTime < 340) return;
+        this.lastFootstepTime = now;
+
+        const osc = this.ctx.createOscillator();
+        const g = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(95, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(38, this.ctx.currentTime + 0.12);
+
+        g.gain.setValueAtTime(0.04, this.ctx.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.12);
+
+        osc.connect(g);
+        g.connect(this.masterGain);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.14);
       }
 
       playCrystalChime(freq = 659.25) {
@@ -3385,15 +4660,20 @@
     });
 
     /* ==========================================================================
-       3. THREE.JS 3D VIRTUAL GALLERY ROTUNDA ENGINE
+       3. THREE.JS 3D VIRTUAL ROTUNDA & FIRST-PERSON WALKTHROUGH ENGINE
        ========================================================================== */
     const WING_DATA = [
       {
-        code: "AILE I • NEF CENTRALE",
-        title: "L'Obélisque Quantique (2026)",
-        author: "Claire de Vigny — L'Obélisque Quantique",
-        desc: "Polyèdre à réfraction chromatique d'or 24 carats et transmission de lumière cohérente. Émet une harmonique résonante de 432 Hz.",
-        mat: "Cristal de Silice & Or Pur",
+        id: "wing_1",
+        code: { fr: "AILE I • NEF CENTRALE", en: "WING I • CENTRAL NAVE", vi: "CÁNH CUNG I • ĐẠI ĐIỆN" },
+        title: { fr: "L'Obélisque Quantique (2026)", en: "The Quantum Obelisk (2026)", vi: "Đài Bia Lượng Tử (2026)" },
+        author: { fr: "Claire de Vigny — L'Obélisque Quantique", en: "Claire de Vigny — The Quantum Obelisk", vi: "Claire de Vigny — Đài Bia Lượng Tử" },
+        desc: {
+          fr: "Polyèdre à réfraction chromatique d'or 24 carats et transmission de lumière cohérente. Émet une harmonique résonante de 432 Hz.",
+          en: "24-karat gold chromatic refraction polyhedron projecting coherent laser light. Resonates at harmonic frequency of 432 Hz.",
+          vi: "Khối đa diện khúc xạ sắc ký vàng 24k và truyền dẫn chùm sáng quang tử đồng pha. Ngân vang tần số 432 Hz."
+        },
+        mat: { fr: "Cristal de Silice & Or Pur", en: "Silica Crystal & Pure Gold", vi: "Thạch Anh Silic & Vàng Ròng" },
         lux: "185 LX • Faisceau Guidé",
         pos: { x: 0, y: 3.2, z: 0 },
         cam: { x: 0, y: 4.5, z: 12 },
@@ -3401,11 +4681,16 @@
         chime: 587.33
       },
       {
-        code: "AILE II • JARDIN ÉTHÉRÉ",
-        title: "Symphonie des Particules (2025)",
-        author: "Kenzo Takahashi — Jardin des Éthers",
-        desc: "Vortex de 40 000 particules luminescentes réactives au regard et aux ondes gravitationnelles.",
-        mat: "Photons Bio-Interactifs & Argon",
+        id: "wing_2",
+        code: { fr: "AILE II • JARDIN ÉTHÉRÉ", en: "WING II • ETHEREAL GARDEN", vi: "CÁNH CUNG II • VƯỜN Ê-TE" },
+        title: { fr: "Symphonie des Particules (2025)", en: "Particle Symphony (2025)", vi: "Giao Hưởng Hạt (2025)" },
+        author: { fr: "Kenzo Takahashi — Jardin des Éthers", en: "Kenzo Takahashi — Garden of Ethers", vi: "Kenzo Takahashi — Vườn Ê-te" },
+        desc: {
+          fr: "Vortex de 40 000 particules luminescentes réactives au regard et aux ondes gravitationnelles.",
+          en: "Vortex of 40,000 luminescent particles reacting dynamically to spectator gaze and gravitational waves.",
+          vi: "Xoáy lốc 40.000 hạt phát quang tương tác theo ánh nhìn và dao động sóng hấp dẫn."
+        },
+        mat: { fr: "Photons Bio-Interactifs & Argon", en: "Bio-Interactive Photons & Argon", vi: "Hạt Quang Tử Sinh Học & Khí Argon" },
         lux: "240 LX • Gradient Violet",
         pos: { x: 26, y: 3.2, z: 0 },
         cam: { x: 26, y: 5, z: 12 },
@@ -3413,11 +4698,16 @@
         chime: 698.46
       },
       {
-        code: "AILE III • L'APOLLON",
-        title: "Pietà Numérique / L'Apollon (2026)",
-        author: "Elena Rostova — L'Apollon Numérique",
-        desc: "Buste géométrique à lattice tridimensionnelle vibrant de lumière dorée sous cloche sous vide.",
-        mat: "Titane Voxelisé & Laser 532nm",
+        id: "wing_3",
+        code: { fr: "AILE III • L'APOLLON", en: "WING III • THE APOLLO", vi: "CÁNH CUNG III • THẦN APOLLO" },
+        title: { fr: "Pietà Numérique / L'Apollon (2026)", en: "Digital Pietà / Apollo (2026)", vi: "Pietà Số Hóa / Thần Apollo (2026)" },
+        author: { fr: "Elena Rostova — L'Apollon Numérique", en: "Elena Rostova — The Digital Apollo", vi: "Elena Rostova — Thần Apollo Kỹ Thuật Số" },
+        desc: {
+          fr: "Buste géométrique à lattice tridimensionnelle vibrant de lumière dorée sous cloche sous vide.",
+          en: "Geometric bust with three-dimensional lattice pulsating with golden laser light under vacuum bell.",
+          vi: "Tượng bán thân hình học mạng nơ-ron 3D lấp lánh tia sáng vàng kim trong buồng chân không."
+        },
+        mat: { fr: "Titane Voxelisé & Laser 532nm", en: "Voxelized Titanium & 532nm Laser", vi: "Hợp Kim Titan Voxel & Laser 532nm" },
         lux: "160 LX • Faisceau Zénithal",
         pos: { x: 0, y: 3.2, z: -26 },
         cam: { x: 0, y: 5, z: -14 },
@@ -3425,11 +4715,16 @@
         chime: 880.00
       },
       {
-        code: "AILE IV • CHRONOS",
-        title: "Chronos Spatium (2024)",
-        author: "Marcus Vance — Le Silence des Sphères",
-        desc: "Gyroscope cinétique triple anneau en lévitation continue, distordant l'espace-temps perçu.",
-        mat: "Titane Grade 5 & Or Rose",
+        id: "wing_4",
+        code: { fr: "AILE IV • CHRONOS", en: "WING IV • CHRONOS", vi: "CÁNH CUNG IV • THỜI GIAN" },
+        title: { fr: "Chronos Spatium (2024)", en: "Chronos Spatium (2024)", vi: "Không Gian Chronos (2024)" },
+        author: { fr: "Marcus Vance — Le Silence des Sphères", en: "Marcus Vance — Silence of Spheres", vi: "Marcus Vance — Sự Tĩnh Lặng Của Thiên Cầu" },
+        desc: {
+          fr: "Gyroscope cinétique triple anneau en lévitation continue, distordant l'espace-temps perçu.",
+          en: "Triple-ring kinetic gyroscope in continuous levitation, subtly warping perceived space-time.",
+          vi: "Con quay hồi chuyển cơ học 3 vòng lơ lửng liên tục làm biến dạng không-thời gian quan sát."
+        },
+        mat: { fr: "Titane Grade 5 & Or Rose", en: "Grade 5 Titanium & Rose Gold", vi: "Titan Cấp Độ 5 & Vàng Hồng" },
         lux: "210 LX • Balayage Orbital",
         pos: { x: -26, y: 3.2, z: 0 },
         cam: { x: -26, y: 5, z: 12 },
@@ -3439,232 +4734,259 @@
     ];
 
     let rotundaScene, rotundaCamera, rotundaRenderer, rotundaControls;
+    let rotundaAnimId;
     let sculptures = [];
     let currentWingIdx = 0;
     let ambientParticles;
     let rotundaSpotLight;
 
+    // Walkthrough State
+    const walkState = {
+      fwd: false,
+      back: false,
+      left: false,
+      right: false,
+      turnLeft: false,
+      turnRight: false,
+      sprint: false,
+      stepTimer: 0,
+      velocity: null
+    };
+
+    function updateWingHUDLanguage() {
+      const data = WING_DATA[currentWingIdx];
+      if (!data) return;
+      document.getElementById('hud-wing-tag').textContent = data.code[currentLang] || data.code.fr;
+      document.getElementById('hud-sculpture-title').textContent = data.title[currentLang] || data.title.fr;
+      document.getElementById('drawer-title').textContent = data.author[currentLang] || data.author.fr;
+      document.getElementById('drawer-desc').textContent = data.desc[currentLang] || data.desc.fr;
+      document.getElementById('drawer-mat').textContent = data.mat[currentLang] || data.mat.fr;
+      document.getElementById('drawer-lux').textContent = data.lux;
+    }
+
     function initThreeRotunda() {
       const container = document.querySelector('.rotunda-viewport-wrapper');
       const canvas = document.getElementById('rotunda-three-canvas');
-      if (!canvas) return;
+      if (!canvas || !container) return;
 
-      const width = container.clientWidth;
-      const height = container.clientHeight;
+      const width = container.clientWidth || window.innerWidth;
+      const height = container.clientHeight || 750;
 
-      // 1. Scene & Atmospheric Fog
       rotundaScene = new THREE.Scene();
       rotundaScene.fog = new THREE.FogExp2(0x040508, 0.018);
 
-      // 2. Camera
       rotundaCamera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
       rotundaCamera.position.set(0, 4.5, 12);
 
-      // 3. Renderer
       rotundaRenderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
       rotundaRenderer.setSize(width, height);
       rotundaRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       rotundaRenderer.toneMapping = THREE.ACESFilmicToneMapping;
-      rotundaRenderer.toneMappingExposure = 1.3;
+      rotundaRenderer.toneMappingExposure = 1.25;
 
-      // 4. OrbitControls
+      // OrbitControls for rotational drag
       rotundaControls = new THREE.OrbitControls(rotundaCamera, canvas);
       rotundaControls.enableDamping = true;
-      rotundaControls.dampingFactor = 0.05;
-      rotundaControls.maxPolarAngle = Math.PI / 2 - 0.04;
-      rotundaControls.minDistance = 3;
-      rotundaControls.maxDistance = 35;
+      rotundaControls.dampingFactor = 0.06;
+      rotundaControls.maxPolarAngle = Math.PI / 2 - 0.02;
+      rotundaControls.minDistance = 2.5;
+      rotundaControls.maxDistance = 38;
       rotundaControls.target.set(0, 3.2, 0);
 
-      // 5. Lighting Architecture
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
-      rotundaScene.add(ambientLight);
+      // WebGL Context Loss Handlers
+      canvas.addEventListener('webglcontextlost', (e) => {
+        e.preventDefault();
+        console.warn("[WebGL] Context Lost. Suspending render loop...");
+        cancelAnimationFrame(rotundaAnimId);
+      }, false);
 
-      rotundaSpotLight = new THREE.SpotLight(0xfffae6, 4.5);
-      rotundaSpotLight.position.set(0, 24, 0);
-      rotundaSpotLight.angle = Math.PI / 3.5;
+      canvas.addEventListener('webglcontextrestored', () => {
+        console.info("[WebGL] Context Restored. Reconstructing rotunda architecture...");
+        initThreeRotunda();
+      }, false);
+
+      // Neoclassical Lighting Architecture
+      rotundaAmbientLight = new THREE.AmbientLight(0xfffaee, currentTheme === 'light' ? 0.95 : 0.45);
+      rotundaScene.add(rotundaAmbientLight);
+
+      rotundaSunLight = new THREE.DirectionalLight(0xfff8ee, currentTheme === 'light' ? 3.0 : 0.8);
+      rotundaSunLight.position.set(2, 24, 2);
+      rotundaScene.add(rotundaSunLight);
+
+      rotundaSpotLight = new THREE.SpotLight(0xfffae6, currentTheme === 'light' ? 5.5 : 4.5);
+      rotundaSpotLight.position.set(0, 22, 0);
+      rotundaSpotLight.angle = Math.PI / 5;
       rotundaSpotLight.penumbra = 0.8;
+      rotundaSpotLight.decay = 1.4;
+      rotundaSpotLight.distance = 50;
       rotundaScene.add(rotundaSpotLight);
 
-      // Volumetric Light Cone from Oculus
+      // Volumetric Light Cone
       const coneGeo = new THREE.CylinderGeometry(11, 1.5, 23, 32, 1, true);
       const coneMat = new THREE.MeshBasicMaterial({
-        color: 0xd4af37,
+        color: 0xfffae6,
         transparent: true,
-        opacity: 0.07,
+        opacity: currentTheme === 'light' ? 0.16 : 0.08,
         side: THREE.DoubleSide,
-        blending: THREE.AdditiveBlending,
         depthWrite: false
       });
       const lightCone = new THREE.Mesh(coneGeo, coneMat);
       lightCone.position.set(0, 11.5, 0);
       rotundaScene.add(lightCone);
+      rotundaLightCone = lightCone;
 
-      // 6. Architectural Monumental Pavilion
-      buildArchitecturalRotunda();
-
-      // 7. Four Monumental Sculptures with Pedestals & Custom Point Lights
-      buildFourSculptures();
-
-      // 8. Ambient Dust Fireflies (2,000 particles)
-      buildAmbientFireflies();
-
-      // 9. Resize Listener
-      window.addEventListener('resize', onRotundaResize);
-
-      // 10. Animation Loop
-      animateRotunda();
-    }
-
-    function buildArchitecturalRotunda() {
-      // Marble Reflective Ground
+      // Terrazzo Marble Floor
       const floorGeo = new THREE.CircleGeometry(48, 64);
       const floorMat = new THREE.MeshStandardMaterial({
-        color: 0x080910,
-        roughness: 0.15,
-        metalness: 0.85
+        color: currentTheme === 'light' ? 0xf5f3ec : 0x080a10,
+        roughness: currentTheme === 'light' ? 0.10 : 0.15,
+        metalness: currentTheme === 'light' ? 0.20 : 0.85
       });
       const floor = new THREE.Mesh(floorGeo, floorMat);
       floor.rotation.x = -Math.PI / 2;
       floor.position.y = 0;
       rotundaScene.add(floor);
+      rotundaFloor = floor;
 
-      // Circular Grid Pattern on Floor
-      const gridHelper = new THREE.PolarGridHelper(46, 16, 8, 64, 0xd4af37, 0x1a1d2e);
+      const gridHelper = new THREE.PolarGridHelper(46, 16, 8, 64, currentTheme === 'light' ? 0xb38b22 : 0xd4af37, currentTheme === 'light' ? 0xdad5c8 : 0x1a1d2e);
       gridHelper.position.y = 0.02;
       rotundaScene.add(gridHelper);
+      rotundaGridHelper = gridHelper;
 
-      // 12 Majestic Neoclassical Columns
+      // Neoclassical Doric Columns Ring
+      const numCols = 16;
+      const colRadius = 38;
       const colGeo = new THREE.CylinderGeometry(0.7, 0.9, 20, 24);
       const colMat = new THREE.MeshStandardMaterial({
-        color: 0x121420,
-        roughness: 0.35,
-        metalness: 0.3
+        color: currentTheme === 'light' ? 0xebe7dd : 0x151824,
+        roughness: currentTheme === 'light' ? 0.55 : 0.6,
+        metalness: currentTheme === 'light' ? 0.15 : 0.3
       });
-
-      for (let i = 0; i < 12; i++) {
-        const angle = (i / 12) * Math.PI * 2;
-        const radius = 38;
+      rotundaColumnsMat = colMat;
+      for (let i = 0; i < numCols; i++) {
+        const theta = (i / numCols) * Math.PI * 2;
+        const cx = Math.cos(theta) * colRadius;
+        const cz = Math.sin(theta) * colRadius;
         const col = new THREE.Mesh(colGeo, colMat);
-        col.position.set(Math.cos(angle) * radius, 10, Math.sin(angle) * radius);
+        col.position.set(cx, 10, cz);
         rotundaScene.add(col);
 
-        // Column Crown Capital
         const capGeo = new THREE.BoxGeometry(2.4, 0.8, 2.4);
         const cap = new THREE.Mesh(capGeo, colMat);
-        cap.position.set(col.position.x, 20, col.position.z);
+        cap.position.set(cx, 19.8, cz);
         rotundaScene.add(cap);
       }
 
-      // Upper Oculus Ring
+      // Grand Oculus Ring
       const oculusGeo = new THREE.TorusGeometry(12, 0.8, 16, 64);
       const oculusMat = new THREE.MeshStandardMaterial({
-        color: 0xd4af37,
-        roughness: 0.2,
-        metalness: 0.9
+        color: currentTheme === 'light' ? 0xb38b22 : 0xd4af37,
+        metalness: 0.92,
+        roughness: 0.18
       });
       const oculus = new THREE.Mesh(oculusGeo, oculusMat);
       oculus.rotation.x = Math.PI / 2;
       oculus.position.set(0, 22, 0);
       rotundaScene.add(oculus);
-    }
+      rotundaOculus = oculus;
 
-    function createPedestal(x, z, glowColor = 0xd4af37) {
-      const pGroup = new THREE.Group();
-      pGroup.position.set(x, 0, z);
+      // Create 4 Sculpture Stations
+      sculptures = [];
+      const createPedestal = (x, z, glowColor) => {
+        const pGroup = new THREE.Group();
+        pGroup.position.set(x, 0, z);
 
-      // Main Stone Cylinder
-      const cylGeo = new THREE.CylinderGeometry(2.2, 2.5, 1.2, 32);
-      const cylMat = new THREE.MeshStandardMaterial({ color: 0x0f111a, roughness: 0.3, metalness: 0.6 });
-      const cyl = new THREE.Mesh(cylGeo, cylMat);
-      cyl.position.y = 0.6;
-      pGroup.add(cyl);
+        const cylGeo = new THREE.CylinderGeometry(2.2, 2.5, 1.2, 32);
+        const isLight = (currentTheme === 'light');
+        const cylMat = new THREE.MeshStandardMaterial({ color: isLight ? 0xe5e1d7 : 0x0f111a, roughness: 0.35, metalness: isLight ? 0.2 : 0.6 });
+        const cyl = new THREE.Mesh(cylGeo, cylMat);
+        cyl.position.y = 0.6;
+        pGroup.add(cyl);
 
-      // Upper Brass Plate
-      const plateGeo = new THREE.CylinderGeometry(2.3, 2.3, 0.08, 32);
-      const plateMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, roughness: 0.1, metalness: 0.95 });
-      const plate = new THREE.Mesh(plateGeo, plateMat);
-      plate.position.y = 1.24;
-      pGroup.add(plate);
+        const plateGeo = new THREE.CylinderGeometry(2.3, 2.3, 0.08, 32);
+        const plateMat = new THREE.MeshStandardMaterial({ color: isLight ? 0xb38b22 : 0xd4af37, roughness: 0.15, metalness: 0.95 });
+        const plate = new THREE.Mesh(plateGeo, plateMat);
+        plate.position.y = 1.24;
+        pGroup.add(plate);
 
-      // Glowing Base LED Ring
-      const ringGeo = new THREE.TorusGeometry(2.4, 0.05, 16, 64);
-      const ringMat = new THREE.MeshBasicMaterial({ color: glowColor });
-      const ring = new THREE.Mesh(ringGeo, ringMat);
-      ring.rotation.x = Math.PI / 2;
-      ring.position.y = 0.05;
-      pGroup.add(ring);
+        const ringGeo = new THREE.TorusGeometry(2.4, 0.05, 16, 64);
+        const ringMat = new THREE.MeshBasicMaterial({ color: isLight ? 0xb38b22 : glowColor });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.rotation.x = Math.PI / 2;
+        ring.position.y = 1.26;
+        pGroup.add(ring);
 
-      rotundaScene.add(pGroup);
-      return pGroup;
-    }
+        rotundaPedestals.push({ cyl, plate, ring, glowColor });
+        rotundaScene.add(pGroup);
+        return pGroup;
+      };
 
-    function buildFourSculptures() {
       const ringMat = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.95, roughness: 0.05 });
 
-      // 1. Sculpture Wing I: The Quantum Monolith (Icosahedron + nested gold rings)
-      createPedestal(WING_DATA[0].pos.x, WING_DATA[0].pos.z, 0xd4af37);
+      // 1. Central Obelisk
+      createPedestal(0, 0, 0xd4af37);
       const group1 = new THREE.Group();
-      group1.position.set(WING_DATA[0].pos.x, WING_DATA[0].pos.y, WING_DATA[0].pos.z);
+      group1.position.set(0, 3.4, 0);
 
       const icoGeo = new THREE.IcosahedronGeometry(2.2, 0);
       const icoMat = new THREE.MeshPhysicalMaterial({
         color: 0xd4af37,
-        metalness: 0.9,
+        metalness: 0.85,
         roughness: 0.1,
-        clearcoat: 1.0,
-        clearcoatRoughness: 0.1,
+        transmission: 0.5,
+        thickness: 1.2,
         wireframe: false
       });
       const ico = new THREE.Mesh(icoGeo, icoMat);
       group1.add(ico);
 
-      // Golden Orbital Rings
       const ring1 = new THREE.Mesh(new THREE.TorusGeometry(3.2, 0.05, 16, 64), ringMat);
       const ring2 = new THREE.Mesh(new THREE.TorusGeometry(3.7, 0.04, 16, 64), ringMat);
-      ring2.rotation.x = Math.PI / 3;
+      ring1.rotation.x = Math.PI / 3;
+      ring2.rotation.y = Math.PI / 4;
       group1.add(ring1);
       group1.add(ring2);
 
-      // Inner Core Light
       const coreGeo = new THREE.OctahedronGeometry(0.8);
       const coreMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff, wireframe: true });
       const core = new THREE.Mesh(coreGeo, coreMat);
       group1.add(core);
 
-      // Local Point Light
       const light1 = new THREE.PointLight(0xd4af37, 3, 14);
-      light1.position.set(0, 0, 0);
+      light1.position.y = 2;
       group1.add(light1);
 
       rotundaScene.add(group1);
-      sculptures.push({ group: group1, type: 'monolith', core, ring1, ring2, ico });
+      sculptures.push({ group: group1, ico, ring1, ring2, core });
 
-      // 2. Sculpture Wing II: Nebula Flora (Vortex Particle Cloud)
-      createPedestal(WING_DATA[1].pos.x, WING_DATA[1].pos.z, 0x8a63ff);
+      // 2. Particle Symphony
+      createPedestal(26, 0, 0x8a63ff);
       const group2 = new THREE.Group();
-      group2.position.set(WING_DATA[1].pos.x, WING_DATA[1].pos.y, WING_DATA[1].pos.z);
+      group2.position.set(26, 3.4, 0);
 
-      const pCount = 10000;
+      const pCount = 3500;
       const pGeo = new THREE.BufferGeometry();
       const pPos = new Float32Array(pCount * 3);
       const pCol = new Float32Array(pCount * 3);
+      const colA = new THREE.Color(0x8a63ff);
+      const colB = new THREE.Color(0x00f0ff);
 
       for (let i = 0; i < pCount; i++) {
-        const theta = Math.random() * Math.PI * 2;
-        const r = 0.4 + Math.pow(Math.random(), 2) * 3.8;
-        const y = (Math.random() - 0.5) * 3.4;
+        const u = Math.random();
+        const v = Math.random();
+        const theta = u * 2.0 * Math.PI;
+        const phi = Math.acos(2.0 * v - 1.0);
+        const r = Math.cbrt(Math.random()) * 2.8;
 
-        pPos[i * 3] = Math.cos(theta) * r;
-        pPos[i * 3 + 1] = y;
-        pPos[i * 3 + 2] = Math.sin(theta) * r;
+        pPos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+        pPos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+        pPos[i * 3 + 2] = r * Math.cos(phi);
 
-        // Colors: Prismatic Violet, Magenta, Gold
-        pCol[i * 3] = 0.85 + Math.random() * 0.15;
-        pCol[i * 3 + 1] = 0.25 + Math.random() * 0.5;
-        pCol[i * 3 + 2] = 0.95;
+        const mixed = colA.clone().lerp(colB, Math.random());
+        pCol[i * 3] = mixed.r;
+        pCol[i * 3 + 1] = mixed.g;
+        pCol[i * 3 + 2] = mixed.b;
       }
-
       pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
       pGeo.setAttribute('color', new THREE.BufferAttribute(pCol, 3));
 
@@ -3672,34 +4994,33 @@
         size: 0.08,
         vertexColors: true,
         transparent: true,
-        opacity: 0.9,
+        opacity: 0.85,
         blending: THREE.AdditiveBlending
       });
       const particleVortex = new THREE.Points(pGeo, pMat);
       group2.add(particleVortex);
 
       const light2 = new THREE.PointLight(0x8a63ff, 3.5, 14);
-      light2.position.set(0, 0, 0);
       group2.add(light2);
 
       rotundaScene.add(group2);
-      sculptures.push({ group: group2, type: 'flora', particleVortex });
+      sculptures.push({ group: group2, particleVortex });
 
-      // 3. Sculpture Wing III: Cybernetic Apollo (Geodesic Wireframe Bust)
-      createPedestal(WING_DATA[2].pos.x, WING_DATA[2].pos.z, 0x00f0ff);
+      // 3. Digital Pietà / Apollo
+      createPedestal(0, -26, 0x00f0ff);
       const group3 = new THREE.Group();
-      group3.position.set(WING_DATA[2].pos.x, WING_DATA[2].pos.y, WING_DATA[2].pos.z);
+      group3.position.set(0, 3.4, -26);
 
       const apoGeo = new THREE.DodecahedronGeometry(2.4, 2);
       const apoMat = new THREE.MeshStandardMaterial({
-        color: 0x00f0ff,
+        color: 0xd4af37,
         wireframe: true,
-        wireframeLinewidth: 2
+        roughness: 0.1,
+        metalness: 0.95
       });
       const apo = new THREE.Mesh(apoGeo, apoMat);
       group3.add(apo);
 
-      // Inner Solid Glowing Core
       const apoInner = new THREE.Mesh(
         new THREE.DodecahedronGeometry(1.6, 1),
         new THREE.MeshStandardMaterial({ color: 0x0c1428, roughness: 0.2, metalness: 0.9 })
@@ -3707,56 +5028,223 @@
       group3.add(apoInner);
 
       const light3 = new THREE.PointLight(0x00f0ff, 3.5, 14);
-      light3.position.set(0, 0, 0);
       group3.add(light3);
 
       rotundaScene.add(group3);
-      sculptures.push({ group: group3, type: 'apollo', apo, apoInner });
+      sculptures.push({ group: group3, apo, apoInner });
 
-      // 4. Sculpture Wing IV: Chronos Spatium (Nested Gyroscope Gimbal)
-      createPedestal(WING_DATA[3].pos.x, WING_DATA[3].pos.z, 0xd4af37);
+      // 4. Chronos Spatium
+      createPedestal(-26, 0, 0xd4af37);
       const group4 = new THREE.Group();
-      group4.position.set(WING_DATA[3].pos.x, WING_DATA[3].pos.y, WING_DATA[3].pos.z);
+      group4.position.set(-26, 3.4, 0);
 
       const gR1 = new THREE.Mesh(new THREE.TorusGeometry(3.0, 0.12, 16, 64), ringMat);
       const gR2 = new THREE.Mesh(new THREE.TorusGeometry(2.3, 0.10, 16, 64), ringMat);
       const gR3 = new THREE.Mesh(new THREE.TorusGeometry(1.6, 0.08, 16, 64), ringMat);
       const gCore = new THREE.Mesh(new THREE.SphereGeometry(0.8, 32, 32), icoMat);
-
       group4.add(gR1);
       group4.add(gR2);
       group4.add(gR3);
       group4.add(gCore);
 
       const light4 = new THREE.PointLight(0xd4af37, 3, 14);
-      light4.position.set(0, 0, 0);
       group4.add(light4);
 
       rotundaScene.add(group4);
-      sculptures.push({ group: group4, type: 'chronos', gR1, gR2, gR3, gCore });
-    }
+      sculptures.push({ group: group4, gR1, gR2, gR3, gCore });
 
-    function buildAmbientFireflies() {
-      const fCount = 1800;
+      // Ambient Dust Particles
+      const fCount = 600;
       const fGeo = new THREE.BufferGeometry();
       const fPos = new Float32Array(fCount * 3);
-
-      for (let i = 0; i < fCount; i++) {
-        fPos[i * 3] = (Math.random() - 0.5) * 80;
-        fPos[i * 3 + 1] = Math.random() * 25;
-        fPos[i * 3 + 2] = (Math.random() - 0.5) * 80;
+      for (let i = 0; i < fCount * 3; i += 3) {
+        fPos[i] = (Math.random() - 0.5) * 60;
+        fPos[i + 1] = Math.random() * 20;
+        fPos[i + 2] = (Math.random() - 0.5) * 60;
       }
       fGeo.setAttribute('position', new THREE.BufferAttribute(fPos, 3));
-
       const fMat = new THREE.PointsMaterial({
-        size: 0.13,
-        color: 0xd4af37,
+        size: 0.05,
+        color: currentTheme === 'light' ? 0xb38b22 : 0xd4af37,
         transparent: true,
-        opacity: 0.65,
-        blending: THREE.AdditiveBlending
+        opacity: currentTheme === 'light' ? 0.45 : 0.55
       });
       ambientParticles = new THREE.Points(fGeo, fMat);
       rotundaScene.add(ambientParticles);
+
+      walkState.velocity = new THREE.Vector3();
+
+      window.addEventListener('resize', onRotundaResize);
+      setupWalkthroughListeners();
+      animateRotunda();
+      updateWingHUDLanguage();
+    }
+
+    
+    /* ==========================================================================
+       DYNAMIC THEME SCENOGRAPHY ENGINE (SUNLIT GALLERY & NOCTURNE CURATORIAL)
+       ========================================================================== */
+    function updateThreeRotundaTheme(theme) {
+      if (!rotundaScene) return;
+      const isLight = (theme === 'light');
+
+      if (rotundaScene.fog) {
+        rotundaScene.fog.color.setHex(isLight ? 0xfbfbfa : 0x040508);
+        rotundaScene.fog.density = isLight ? 0.011 : 0.018;
+      }
+
+      if (rotundaRenderer) {
+        rotundaRenderer.setClearColor(isLight ? 0xfbfbfa : 0x040508, isLight ? 1.0 : 0.0);
+      }
+
+      if (rotundaAmbientLight) {
+        rotundaAmbientLight.intensity = isLight ? 0.95 : 0.45;
+        rotundaAmbientLight.color.setHex(isLight ? 0xfffaee : 0xffffff);
+      }
+
+      if (rotundaSunLight) {
+        rotundaSunLight.intensity = isLight ? 3.0 : 0.8;
+        rotundaSunLight.color.setHex(isLight ? 0xfff8ee : 0xffeedd);
+      }
+
+      if (rotundaSpotLight) {
+        rotundaSpotLight.intensity = isLight ? 5.5 : 4.5;
+        rotundaSpotLight.color.setHex(isLight ? 0xfffae6 : 0xfffae6);
+      }
+
+      if (rotundaLightCone && rotundaLightCone.material) {
+        rotundaLightCone.material.opacity = isLight ? 0.16 : 0.08;
+      }
+
+      if (rotundaFloor && rotundaFloor.material) {
+        rotundaFloor.material.color.setHex(isLight ? 0xf5f3ec : 0x080a10);
+        rotundaFloor.material.roughness = isLight ? 0.10 : 0.15;
+        rotundaFloor.material.metalness = isLight ? 0.20 : 0.85;
+      }
+
+      if (rotundaColumnsMat) {
+        rotundaColumnsMat.color.setHex(isLight ? 0xebe7dd : 0x151824);
+        rotundaColumnsMat.roughness = isLight ? 0.55 : 0.6;
+        rotundaColumnsMat.metalness = isLight ? 0.15 : 0.3;
+      }
+
+      if (rotundaOculus && rotundaOculus.material) {
+        rotundaOculus.material.color.setHex(isLight ? 0xb38b22 : 0xd4af37);
+      }
+
+      rotundaPedestals.forEach(p => {
+        if (p.cyl && p.cyl.material) {
+          p.cyl.material.color.setHex(isLight ? 0xe5e1d7 : 0x0f111a);
+          p.cyl.material.metalness = isLight ? 0.2 : 0.6;
+        }
+        if (p.plate && p.plate.material) {
+          p.plate.material.color.setHex(isLight ? 0xb38b22 : 0xd4af37);
+        }
+        if (p.ring && p.ring.material) {
+          p.ring.material.color.setHex(isLight ? 0xb38b22 : p.glowColor);
+        }
+      });
+
+      if (ambientParticles && ambientParticles.material) {
+        ambientParticles.material.color.setHex(isLight ? 0xb38b22 : 0xd4af37);
+        ambientParticles.material.opacity = isLight ? 0.45 : 0.55;
+      }
+    }
+
+    function setTheme(theme, notify = true) {
+      currentTheme = theme;
+      localStorage.setItem('eclat_virtus_theme', theme);
+      document.documentElement.setAttribute('data-theme', theme);
+
+      const metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#fbfbfa' : '#040507');
+
+      const lightBtn = document.getElementById('theme-btn-light');
+      const darkBtn = document.getElementById('theme-btn-dark');
+      if (lightBtn && darkBtn) {
+        lightBtn.classList.toggle('active', theme === 'light');
+        darkBtn.classList.toggle('active', theme === 'dark');
+      }
+
+      updateThreeRotundaTheme(theme);
+
+      if (notify && typeof showLuxuryToast === 'function') {
+        const toastMsgs = {
+          light: {
+            fr: "Galerie Solaire Activée • Ambiance Marbre Carrara & Albâtre",
+            en: "Sunlit Gallery Activated • Pristine Carrara Marble & Alabaster",
+            vi: "Đã kích hoạt Chế độ Quang Sáng • Cẩm thạch Carrara & Thạch cao Mỹ thuật"
+          },
+          dark: {
+            fr: "Nocturne Curatorial Activé • Sanctuaire Nocturne Mystique",
+            en: "Nocturne Curatorial Activated • Mystical Night Curatorial Sanctum",
+            vi: "Đã kích hoạt Chế độ Dạ Khúc • Không gian đêm huyền bí đương đại"
+          }
+        };
+        const msg = (toastMsgs[theme] && toastMsgs[theme][currentLang]) ? toastMsgs[theme][currentLang] : toastMsgs[theme].fr;
+        showLuxuryToast(msg);
+      }
+    }
+
+    // Initialize Theme Switcher Buttons
+    function initThemeSwitcher() {
+      const lightBtn = document.getElementById('theme-btn-light');
+      const darkBtn = document.getElementById('theme-btn-dark');
+
+      if (lightBtn) {
+        lightBtn.addEventListener('click', () => {
+          if (currentTheme !== 'light') setTheme('light', true);
+        });
+      }
+
+      if (darkBtn) {
+        darkBtn.addEventListener('click', () => {
+          if (currentTheme !== 'dark') setTheme('dark', true);
+        });
+      }
+
+      setTheme(currentTheme, false);
+    }
+
+    // Ambient Canvas Background subtle procedural light
+    function initAmbientCanvas() {
+      const canvas = document.getElementById('ambient-bg-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = window.innerWidth;
+      let h = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      });
+
+      let time = 0;
+      function drawAmbient() {
+        requestAnimationFrame(drawAmbient);
+        time += 0.003;
+        ctx.clearRect(0, 0, w, h);
+
+        const isLight = (document.documentElement.getAttribute('data-theme') !== 'dark');
+        const cx = w * 0.5 + Math.sin(time) * (w * 0.15);
+        const cy = h * 0.35 + Math.cos(time * 0.8) * (h * 0.1);
+        const radius = Math.max(w, h) * 0.7;
+
+        const grad = ctx.createRadialGradient(cx, cy, 10, cx, cy, radius);
+        if (isLight) {
+          grad.addColorStop(0, 'rgba(212, 175, 55, 0.08)');
+          grad.addColorStop(0.4, 'rgba(245, 238, 222, 0.05)');
+          grad.addColorStop(1, 'rgba(251, 251, 250, 0)');
+        } else {
+          grad.addColorStop(0, 'rgba(138, 99, 255, 0.06)');
+          grad.addColorStop(0.5, 'rgba(212, 175, 55, 0.03)');
+          grad.addColorStop(1, 'rgba(4, 5, 7, 0)');
+        }
+
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, w, h);
+      }
+      drawAmbient();
     }
 
     function onRotundaResize() {
@@ -3769,8 +5257,48 @@
       rotundaRenderer.setSize(width, height);
     }
 
+    // Keyboard & D-Pad Walkthrough Listeners
+    function setupWalkthroughListeners() {
+      window.addEventListener('keydown', (e) => {
+        if (['input', 'textarea'].includes(document.activeElement.tagName.toLowerCase())) return;
+        if (e.code === 'KeyW' || e.code === 'ArrowUp') walkState.fwd = true;
+        if (e.code === 'KeyS' || e.code === 'ArrowDown') walkState.back = true;
+        if (e.code === 'KeyA' || e.code === 'ArrowLeft') walkState.left = true;
+        if (e.code === 'KeyD' || e.code === 'ArrowRight') walkState.right = true;
+        if (e.code === 'KeyQ') walkState.turnLeft = true;
+        if (e.code === 'KeyE') walkState.turnRight = true;
+        if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') walkState.sprint = true;
+      });
+
+      window.addEventListener('keyup', (e) => {
+        if (e.code === 'KeyW' || e.code === 'ArrowUp') walkState.fwd = false;
+        if (e.code === 'KeyS' || e.code === 'ArrowDown') walkState.back = false;
+        if (e.code === 'KeyA' || e.code === 'ArrowLeft') walkState.left = false;
+        if (e.code === 'KeyD' || e.code === 'ArrowRight') walkState.right = false;
+        if (e.code === 'KeyQ') walkState.turnLeft = false;
+        if (e.code === 'KeyE') walkState.turnRight = false;
+        if (e.code === 'ShiftLeft' || e.code === 'ShiftRight') walkState.sprint = false;
+      });
+
+      // On-Screen D-Pad
+      const bindDpad = (id, key) => {
+        const btn = document.getElementById(id);
+        if (!btn) return;
+        const setKey = (v) => { walkState[key] = v; btn.classList.toggle('active', v); };
+        btn.addEventListener('pointerdown', (e) => { e.preventDefault(); setKey(true); });
+        btn.addEventListener('pointerup', () => setKey(false));
+        btn.addEventListener('pointerleave', () => setKey(false));
+      };
+
+      bindDpad('dpad-fwd', 'fwd');
+      bindDpad('dpad-back', 'back');
+      bindDpad('dpad-left', 'left');
+      bindDpad('dpad-right', 'right');
+      bindDpad('dpad-sprint', 'sprint');
+    }
+
     function animateRotunda() {
-      requestAnimationFrame(animateRotunda);
+      rotundaAnimId = requestAnimationFrame(animateRotunda);
       const time = performance.now() * 0.001;
 
       // 1. Sculpture Rotations
@@ -3781,33 +5309,97 @@
         sculptures[0].ring2.rotation.y = -time * 0.5;
         sculptures[0].core.rotation.y = -time * 0.8;
       }
-
       if (sculptures[1]) {
         sculptures[1].particleVortex.rotation.y = time * 0.25;
       }
-
       if (sculptures[2]) {
         sculptures[2].apo.rotation.y = time * 0.2;
         sculptures[2].apoInner.rotation.x = -time * 0.3;
       }
-
       if (sculptures[3]) {
         sculptures[3].gR1.rotation.x = time * 0.5;
         sculptures[3].gR2.rotation.y = time * 0.7;
         sculptures[3].gR3.rotation.z = time * 0.9;
       }
-
-      // 2. Ambient Fireflies Slow Drift
       if (ambientParticles) {
         ambientParticles.rotation.y = time * 0.02;
       }
 
-      // 3. OrbitControls Update
-      if (rotundaControls) {
+      // 2. First-Person Walkthrough Physics
+      if (rotundaCamera && rotundaControls) {
+        const isMoving = walkState.fwd || walkState.back || walkState.left || walkState.right;
+        const isTurning = walkState.turnLeft || walkState.turnRight;
+
+        if (isMoving || isTurning) {
+          // Camera horizontal forward and right vectors
+          const fwd = new THREE.Vector3();
+          rotundaCamera.getWorldDirection(fwd);
+          fwd.y = 0;
+          fwd.normalize();
+
+          const right = new THREE.Vector3().crossVectors(fwd, rotundaCamera.up).normalize();
+
+          if (walkState.turnLeft) rotundaControls.target.addScaledVector(right, -0.4);
+          if (walkState.turnRight) rotundaControls.target.addScaledVector(right, 0.4);
+
+          const moveSpeed = walkState.sprint ? 0.45 : 0.22;
+          const targetVel = new THREE.Vector3();
+
+          if (walkState.fwd) targetVel.addScaledVector(fwd, moveSpeed);
+          if (walkState.back) targetVel.addScaledVector(fwd, -moveSpeed);
+          if (walkState.left) targetVel.addScaledVector(right, -moveSpeed * 0.85);
+          if (walkState.right) targetVel.addScaledVector(right, moveSpeed * 0.85);
+
+          // Smooth acceleration and inertia damping
+          walkState.velocity.lerp(targetVel, 0.25);
+          rotundaCamera.position.add(walkState.velocity);
+          rotundaControls.target.add(walkState.velocity);
+
+          // Boundary Collision: Contain inside Rotunda circular floor (r = 42)
+          const rad = Math.hypot(rotundaCamera.position.x, rotundaCamera.position.z);
+          if (rad > 42) {
+            const scale = 42 / rad;
+            rotundaCamera.position.x *= scale;
+            rotundaCamera.position.z *= scale;
+          }
+
+          // Subtle Head Bobbing & Marble Floor Footstep Acoustics
+          if (walkState.velocity.length() > 0.05) {
+            walkState.stepTimer += walkState.sprint ? 0.28 : 0.18;
+            rotundaCamera.position.y = 4.2 + Math.sin(walkState.stepTimer) * 0.06;
+            soundEngine.playFootstep();
+          }
+
+          // Proximity Detection to 4 Wings
+          let closestIdx = 0;
+          let minDistance = 999;
+          WING_DATA.forEach((w, idx) => {
+            const d = Math.hypot(rotundaCamera.position.x - w.pos.x, rotundaCamera.position.z - w.pos.z);
+            if (d < minDistance) {
+              minDistance = d;
+              closestIdx = idx;
+            }
+          });
+
+          if (closestIdx !== currentWingIdx && minDistance < 15) {
+            currentWingIdx = closestIdx;
+            updateWingHUDLanguage();
+            document.querySelectorAll('.btn-wing-pill').forEach((btn, idx) => {
+              btn.classList.toggle('active', idx === currentWingIdx);
+            });
+            soundEngine.playCrystalChime(WING_DATA[currentWingIdx].chime);
+          }
+
+          // Real-time Spatial Audio Panning update
+          soundEngine.updatePositionFromCamera(rotundaCamera.position.x, rotundaCamera.position.z, currentWingIdx);
+        } else {
+          walkState.velocity.multiplyScalar(0.7);
+        }
+
         rotundaControls.update();
       }
 
-      // 4. Render
+      // 3. Render Scene
       if (rotundaRenderer && rotundaScene && rotundaCamera) {
         rotundaRenderer.render(rotundaScene, rotundaCamera);
       }
@@ -3819,10 +5411,8 @@
       currentWingIdx = index;
       const data = WING_DATA[index];
 
-      // Play Pentatonic Crystal Chime
       soundEngine.playCrystalChime(data.chime);
 
-      // GSAP Camera & Target Interpolation (60 FPS Power3 Curve)
       gsap.to(rotundaCamera.position, {
         x: data.cam.x,
         y: data.cam.y,
@@ -3839,15 +5429,8 @@
         ease: "power3.inOut"
       });
 
-      // Update HUD Labels
-      document.getElementById('hud-wing-tag').textContent = data.code;
-      document.getElementById('hud-sculpture-title').textContent = data.title;
-      document.getElementById('drawer-title').textContent = data.author;
-      document.getElementById('drawer-desc').textContent = data.desc;
-      document.getElementById('drawer-mat').textContent = data.mat;
-      document.getElementById('drawer-lux').textContent = data.lux;
+      updateWingHUDLanguage();
 
-      // Update Button Active States
       document.querySelectorAll('.btn-wing-pill').forEach((btn, idx) => {
         btn.classList.toggle('active', idx === index);
       });
@@ -3866,7 +5449,8 @@
         const wing = WING_DATA[currentWingIdx];
 
         if (mode === 'walk') {
-          gsap.to(rotundaCamera.position, { x: wing.pos.x, y: 2.2, z: wing.pos.z + 7, duration: 1.2, ease: "power2.out" });
+          gsap.to(rotundaCamera.position, { x: wing.pos.x, y: 3.8, z: wing.pos.z + 7, duration: 1.2, ease: "power2.out" });
+          gsap.to(rotundaControls.target, { x: wing.pos.x, y: 3.2, z: wing.pos.z, duration: 1.2 });
         } else if (mode === 'orbit') {
           gsap.to(rotundaCamera.position, { x: wing.pos.x + 8, y: 6, z: wing.pos.z + 8, duration: 1.2, ease: "power2.out" });
         } else if (mode === 'zenith') {
@@ -3898,7 +5482,174 @@
     });
 
     /* ==========================================================================
-       4. GSAP 60 FPS SCROLLYTELLING & MASTER CHOREOGRAPHY
+       4. LE PAVILLON CINÉMATIQUE (21:9 VIDEO THEATRE & GENERATIVE SHADER)
+       ========================================================================== */
+    const cinemaVideo = document.getElementById('main-cinema-video');
+    const cinemaPlayBtn = document.getElementById('btn-cinema-play');
+    const cinemaProgress = document.getElementById('cinema-progress');
+    const cinemaTimeline = document.getElementById('cinema-timeline');
+    const cinemaTimeDisplay = document.getElementById('cinema-time-display');
+    const cinemaModeBtn = document.getElementById('btn-cinema-mode');
+    const cinemaShaderBtn = document.getElementById('btn-cinema-shader');
+    const cinemaGenCanvas = document.getElementById('cinema-gen-canvas');
+    let genCtx = cinemaGenCanvas ? cinemaGenCanvas.getContext('2d') : null;
+    let isShaderActive = false;
+    let shaderAnimId;
+
+    // Play / Pause Toggle
+    if (cinemaPlayBtn && cinemaVideo) {
+      cinemaPlayBtn.addEventListener('click', () => {
+        if (cinemaVideo.paused) {
+          cinemaVideo.play();
+          cinemaPlayBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+        } else {
+          cinemaVideo.pause();
+          cinemaPlayBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+        }
+      });
+
+      cinemaVideo.addEventListener('timeupdate', () => {
+        if (cinemaVideo.duration) {
+          const pct = (cinemaVideo.currentTime / cinemaVideo.duration) * 100;
+          if (cinemaProgress) cinemaProgress.style.width = pct + '%';
+          const curM = Math.floor(cinemaVideo.currentTime / 60);
+          const curS = Math.floor(cinemaVideo.currentTime % 60);
+          const durM = Math.floor(cinemaVideo.duration / 60);
+          const durS = Math.floor(cinemaVideo.duration % 60);
+          if (cinemaTimeDisplay) {
+            cinemaTimeDisplay.textContent = `${String(curM).padStart(2,'0')}:${String(curS).padStart(2,'0')} / ${String(durM).padStart(2,'0')}:${String(durS).padStart(2,'0')}`;
+          }
+        }
+      });
+
+      if (cinemaTimeline) {
+        cinemaTimeline.addEventListener('click', (e) => {
+          const rect = cinemaTimeline.getBoundingClientRect();
+          const pos = (e.clientX - rect.left) / rect.width;
+          if (cinemaVideo.duration) {
+            cinemaVideo.currentTime = pos * cinemaVideo.duration;
+          }
+        });
+      }
+    }
+
+    // Sound Sync Button
+    const cinemaSoundBtn = document.getElementById('btn-cinema-sound');
+    if (cinemaSoundBtn && cinemaVideo) {
+      cinemaSoundBtn.addEventListener('click', () => {
+        cinemaVideo.muted = !cinemaVideo.muted;
+        cinemaSoundBtn.style.color = cinemaVideo.muted ? '#fff' : 'var(--accent-gold)';
+        soundEngine.toggle();
+      });
+    }
+
+    // Fullscreen Toggle
+    const cinemaFullscreenBtn = document.getElementById('btn-cinema-fullscreen');
+    if (cinemaFullscreenBtn) {
+      cinemaFullscreenBtn.addEventListener('click', () => {
+        const frame = document.querySelector('.cinema-screen-frame');
+        if (!document.fullscreenElement) {
+          if (frame.requestFullscreen) frame.requestFullscreen();
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+        }
+      });
+    }
+
+    // Cinema Dark Mode (Lighting Dimmer)
+    if (cinemaModeBtn) {
+      cinemaModeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('cinema-lights-dimmed');
+        cinemaModeBtn.classList.toggle('active', document.body.classList.contains('cinema-lights-dimmed'));
+      });
+    }
+    const dimmerBackdrop = document.getElementById('cinema-dimmer');
+    if (dimmerBackdrop) {
+      dimmerBackdrop.addEventListener('click', () => {
+        document.body.classList.remove('cinema-lights-dimmed');
+        if (cinemaModeBtn) cinemaModeBtn.classList.remove('active');
+      });
+    }
+
+    // Procedural Quantum Generative Canvas Shader Engine (60 FPS)
+    function runGenerativeCinemaShader() {
+      if (!isShaderActive || !genCtx || !cinemaGenCanvas) return;
+      shaderAnimId = requestAnimationFrame(runGenerativeCinemaShader);
+
+      const w = cinemaGenCanvas.width = cinemaGenCanvas.clientWidth || 1200;
+      const h = cinemaGenCanvas.height = cinemaGenCanvas.clientHeight || 514;
+      const t = performance.now() * 0.001;
+
+      // Radial Deep Void Background
+      const grad = genCtx.createRadialGradient(w / 2, h / 2, 20, w / 2, h / 2, Math.max(w, h));
+      grad.addColorStop(0, 'rgba(15, 12, 35, 0.95)');
+      grad.addColorStop(0.5, 'rgba(4, 5, 8, 0.98)');
+      grad.addColorStop(1, '#020305');
+      genCtx.fillStyle = grad;
+      genCtx.fillRect(0, 0, w, h);
+
+      // Kaleidoscopic Light Waveforms
+      const numLines = 14;
+      for (let i = 0; i < numLines; i++) {
+        genCtx.beginPath();
+        const offset = i * (Math.PI / 7);
+        genCtx.strokeStyle = i % 2 === 0 ? 'rgba(212, 175, 55, 0.45)' : 'rgba(138, 99, 255, 0.4)';
+        genCtx.lineWidth = 1.5;
+
+        for (let x = 0; x <= w; x += 15) {
+          const normX = x / w;
+          const y = h / 2 + Math.sin(normX * 6 + t * 1.5 + offset) * 90 * Math.sin(t * 0.4 + i * 0.3)
+                            + Math.cos(normX * 12 - t * 2) * 35;
+          if (x === 0) genCtx.moveTo(x, y);
+          else genCtx.lineTo(x, y);
+        }
+        genCtx.stroke();
+      }
+
+      // Quantum Particle Filaments
+      for (let j = 0; j < 35; j++) {
+        const px = (Math.sin(t * 0.5 + j * 1.2) * 0.4 + 0.5) * w;
+        const py = (Math.cos(t * 0.7 + j * 0.8) * 0.35 + 0.5) * h;
+        const pSize = Math.sin(t * 2 + j) * 2.5 + 3.5;
+        genCtx.beginPath();
+        genCtx.arc(px, py, pSize, 0, Math.PI * 2);
+        genCtx.fillStyle = j % 3 === 0 ? '#00f0ff' : (j % 3 === 1 ? '#d4af37' : '#8a63ff');
+        genCtx.shadowBlur = 15;
+        genCtx.shadowColor = genCtx.fillStyle;
+        genCtx.fill();
+        genCtx.shadowBlur = 0;
+      }
+    }
+
+    if (cinemaShaderBtn) {
+      cinemaShaderBtn.addEventListener('click', () => {
+        isShaderActive = !isShaderActive;
+        cinemaShaderBtn.classList.toggle('active', isShaderActive);
+        if (cinemaGenCanvas) cinemaGenCanvas.classList.toggle('active', isShaderActive);
+        if (isShaderActive) {
+          if (cinemaVideo) cinemaVideo.style.opacity = '0.15';
+          runGenerativeCinemaShader();
+        } else {
+          if (cinemaVideo) cinemaVideo.style.opacity = '1';
+          cancelAnimationFrame(shaderAnimId);
+        }
+      });
+    }
+
+    // Cinema Chapter Switcher
+    function selectCinemaChapter(idx) {
+      document.querySelectorAll('.cinema-chapter-card').forEach((c, i) => {
+        c.classList.toggle('active', i === idx);
+      });
+      soundEngine.playCrystalChime([587.33, 698.46, 880.00][idx] || 659.25);
+      if (cinemaVideo && cinemaVideo.duration) {
+        const timestamps = [0, cinemaVideo.duration * 0.35, cinemaVideo.duration * 0.7];
+        cinemaVideo.currentTime = timestamps[idx] || 0;
+      }
+    }
+
+    /* ==========================================================================
+       5. GSAP 60 FPS SCROLLYTELLING & MASTER CHOREOGRAPHY
        ========================================================================== */
     window.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
@@ -3917,56 +5668,52 @@
       gsap.from('.bento-card', {
         scrollTrigger: {
           trigger: '.manifesto-grid',
-          start: 'top 80%'
+          start: "top 80%",
+          toggleActions: "play none none none"
         },
-        y: 40,
+        y: 60,
         opacity: 0,
-        stagger: 0.15,
         duration: 0.9,
+        stagger: 0.15,
         ease: "power3.out"
       });
 
-      // Masterpieces Grid ScrollTrigger
+      // Masterpieces Grid Entrance
       gsap.from('.artwork-card', {
         scrollTrigger: {
           trigger: '.masterpieces-grid',
-          start: 'top 80%'
+          start: "top 80%",
+          toggleActions: "play none none none"
         },
-        y: 50,
+        y: 80,
         opacity: 0,
+        duration: 0.9,
         stagger: 0.12,
-        duration: 0.8,
         ease: "power3.out"
       });
 
-      // Master Scroll Progress Bar Sync
-      window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = (scrollTop / docHeight) * 100;
-        document.getElementById('master-scroll-progress').style.width = progress + '%';
-      });
+      // Telemetry Live Number Flurry
+      const animateTelemetry = () => {
+        const now = new Date();
+        const hrs = String(now.getUTCHours()).padStart(2, '0');
+        const mins = String(now.getUTCMinutes()).padStart(2, '0');
+        const secs = String(now.getUTCSeconds()).padStart(2, '0');
+        const sidereal = `${hrs}:${mins}:${secs} UTC+1`;
+        const timeEl = document.getElementById('sidereal-time');
+        if (timeEl) timeEl.textContent = sidereal;
+      };
+      setInterval(animateTelemetry, 1000);
+      animateTelemetry();
 
-      // Initialize Three.js Rotunda
+      initThemeSwitcher();
+      initAmbientCanvas();
       initThreeRotunda();
-
-      // Initialize Paris Sidereal Clock
-      setInterval(updateParisClock, 1000);
-      updateParisClock();
-
-      // Initialize Ticketing Dates
       initTicketingCalendar();
+      initModalThree();
     });
 
-    function updateParisClock() {
-      const now = new Date();
-      const str = now.toLocaleTimeString('fr-FR', { timeZone: 'Europe/Paris' }) + ' CET';
-      const el = document.getElementById('paris-clock');
-      if (el) el.textContent = str;
-    }
-
     /* ==========================================================================
-       5. CUSTOM CURSOR PHYSICS & MAGNETIC HOVER
+       6. ADVANCED CURSOR PHYSICS, VELOCITY DEFORMATION & MAGNETIC BUTTONS
        ========================================================================== */
     const cursorDot = document.getElementById('cursor-dot');
     const cursorRing = document.getElementById('cursor-ring');
@@ -3976,158 +5723,175 @@
     let mouseY = window.innerHeight / 2;
     let ringX = mouseX;
     let ringY = mouseY;
+    let prevMouseX = mouseX;
+    let prevMouseY = mouseY;
 
     window.addEventListener('pointermove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+      if (cursorDot) cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
     });
 
     function animateCursorRing() {
       ringX += (mouseX - ringX) * 0.18;
       ringY += (mouseY - ringY) * 0.18;
-      cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
-      cursorLabel.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+
+      // Velocity calculation for dynamic squash and stretch
+      const vx = mouseX - prevMouseX;
+      const vy = mouseY - prevMouseY;
+      const speed = Math.hypot(vx, vy);
+      const angle = Math.atan2(vy, vx);
+      const stretch = Math.min(speed * 0.02, 0.45);
+
+      prevMouseX = mouseX;
+      prevMouseY = mouseY;
+
+      if (cursorRing) {
+        cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) rotate(${angle}rad) scale(${1 + stretch}, ${1 - stretch * 0.5})`;
+      }
+      if (cursorLabel) {
+        cursorLabel.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      }
+
       requestAnimationFrame(animateCursorRing);
     }
     animateCursorRing();
 
-    document.querySelectorAll('button, a, .bento-card, .artwork-card, .tier-card').forEach(el => {
+    // Hover interactive triggers
+    document.querySelectorAll('button, a, .bento-card, .artwork-card, .tier-card, .cinema-chapter-card').forEach(el => {
       el.addEventListener('mouseenter', () => {
         document.body.classList.add('hover-interactive');
         const customText = el.getAttribute('data-cursor') || 'EXPLORE';
-        cursorLabel.textContent = customText;
+        if (cursorLabel) cursorLabel.textContent = customText;
       });
       el.addEventListener('mouseleave', () => {
         document.body.classList.remove('hover-interactive');
       });
     });
 
+    // Magnetic Button Spring Attraction
+    document.querySelectorAll('.btn-hero-primary, .btn-camera-mode, .btn-filter-tag, .btn-wing-pill, .btn-light-preset, .lang-btn, .btn-cinema-action, .btn-vip-reserve').forEach(btn => {
+      btn.addEventListener('pointermove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const relX = e.clientX - (rect.left + rect.width / 2);
+        const relY = e.clientY - (rect.top + rect.height / 2);
+        btn.style.transform = `translate3d(${relX * 0.25}px, ${relY * 0.25}px, 0)`;
+      });
+      btn.addEventListener('pointerleave', () => {
+        btn.style.transform = 'translate3d(0, 0, 0)';
+      });
+    });
+
     /* ==========================================================================
-       6. INTERACTIVE BLUEPRINT & SENSORS
+       7. INTERACTIVE BLUEPRINT & ENVIRONMENTAL SENSORS
        ========================================================================== */
     const ROOM_SENSORS = {
       1: {
         code: "SALLE S-101",
-        name: "La Grande Nef Centrale & Rotonde",
-        desc: "Voûte néoclassique de 28 mètres sous clef. Oculus central en verre polarisé actif régulant le flux solaire naturel en synergie avec les lasers d'illumination.",
+        name: { fr: "La Grande Nef Centrale & Rotonde", en: "Grand Central Nave & Rotunda", vi: "Đại Điện Vòm Trung Tâm" },
+        desc: {
+          fr: "Voûte néoclassique de 28 mètres sous clef. Oculus central en verre polarisé actif régulant le flux solaire naturel en synergie avec les lasers d'illumination.",
+          en: "28-meter neoclassical soaring limestone vault. Central active polarized glass oculus regulating natural solar flux with illumination lasers.",
+          vi: "Vòm đá vôi cao 28 mét. Vòm kính trung tâm Oculus phân cực quang chủ động điều hòa ánh sáng tự nhiên cùng dàn laser."
+        },
         temp: "20.8 °C",
         hum: "48.4 % HR",
         cap: "74 / 120"
       },
       2: {
         code: "SALLE S-204",
-        name: "Solarium & Belvédère Céleste",
-        desc: "Plateforme en porte-à-faux offrant une vue panoramique sur les toits de Paris et abritant les prismes holographiques de grand format.",
+        name: { fr: "Solarium & Belvédère Céleste", en: "Solarium & Celestial Belvedere", vi: "Đài Thiên Văn & Vọng Lâu" },
+        desc: {
+          fr: "Plateforme en porte-à-faux offrant une vue panoramique sur les toits de Paris et abritant les prismes holographiques de grand format.",
+          en: "Cantilevered platform offering panoramic views over the roofs of Paris and housing monumental holographic prisms.",
+          vi: "Sàn ban công vươn dài ngắm toàn cảnh Paris hoa lệ, trưng bày các lăng kính ba chiều khổ lớn."
+        },
         temp: "21.2 °C",
         hum: "46.1 % HR",
         cap: "38 / 60"
       },
-      0: {
+      3: {
         code: "SALLE S-012",
-        name: "Crypte des Ombres & Transducteurs",
-        desc: "Fondations souterraines en moellons de calcaire luttétien. Salle entièrement insonorisée pour l'écoute binaurale pure des basses fréquences.",
-        temp: "19.5 °C",
+        name: { fr: "Crypte Cryogénique & Chambre d'Écho", en: "Cryogenic Crypt & Echo Chamber", vi: "Hầm Băng Đông Lạnh & Phòng Vọng Âm" },
+        desc: {
+          fr: "Espace souterrain sous isolation sismique pour installations laser sub-zéro et expériences sonores ultra-basses fréquences.",
+          en: "Subterranean chamber with seismic isolation dedicated to sub-zero laser installations and ultra-low bass acoustics.",
+          vi: "Không gian lòng đất cách ly địa chấn hoàn hảo cho các tác phẩm laser âm độ và tần số siêu trầm."
+        },
+        temp: "17.4 °C",
         hum: "52.0 % HR",
-        cap: "19 / 40"
+        cap: "24 / 40"
       }
     };
 
-    function renderBlueprintSVG(level) {
-      const container = document.getElementById('blueprint-canvas-container');
-      if (!container) return;
+    function selectFloorLevel(level) {
+      document.querySelectorAll('.btn-floor-level').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.getAttribute('data-level')) === level);
+      });
 
-      container.innerHTML = `
-        <svg viewBox="0 0 600 400" width="100%" height="100%" style="display: block;">
-          <defs>
-            <radialGradient id="oculusGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#d4af37" stop-opacity="0.3"/>
-              <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <line x1="50" y1="200" x2="550" y2="200" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
-          <line x1="300" y1="50" x2="300" y2="350" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4"/>
-          
-          <circle cx="300" cy="200" r="140" fill="none" stroke="rgba(212,175,55,0.3)" stroke-width="2"/>
-          <circle cx="300" cy="200" r="100" fill="url(#oculusGlow)" stroke="rgba(212,175,55,0.6)" stroke-width="1.5"/>
-          
-          <rect x="180" y="80" width="80" height="70" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.2)"/>
-          <text x="220" y="120" fill="#d4af37" font-family="JetBrains Mono" font-size="10" text-anchor="middle">AILE I</text>
+      const sensor = ROOM_SENSORS[level] || ROOM_SENSORS[1];
+      const roomCodeEl = document.getElementById('selected-room-code');
+      const roomNameEl = document.getElementById('selected-room-name') || document.getElementById('blueprint-room-name');
+      const roomDescEl = document.getElementById('selected-room-desc') || document.getElementById('blueprint-room-desc');
+      const tempEl = document.getElementById('sensor-temp') || document.getElementById('sensor-temp-val');
+      const humEl = document.getElementById('sensor-hum') || document.getElementById('sensor-hum-val');
+      const capEl = document.getElementById('sensor-cap') || document.getElementById('sensor-cap-val');
 
-          <rect x="340" y="80" width="80" height="70" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.2)"/>
-          <text x="380" y="120" fill="#00f0ff" font-family="JetBrains Mono" font-size="10" text-anchor="middle">AILE II</text>
+      if (roomCodeEl) roomCodeEl.textContent = sensor.code;
+      if (roomNameEl) roomNameEl.textContent = sensor.name[currentLang] || sensor.name.fr;
+      if (roomDescEl) roomDescEl.textContent = sensor.desc[currentLang] || sensor.desc.fr;
+      if (tempEl) tempEl.textContent = sensor.temp;
+      if (humEl) humEl.textContent = sensor.hum;
+      if (capEl) capEl.textContent = sensor.cap;
 
-          <rect x="180" y="250" width="80" height="70" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.2)"/>
-          <text x="220" y="290" fill="#8a63ff" font-family="JetBrains Mono" font-size="10" text-anchor="middle">AILE III</text>
-
-          <rect x="340" y="250" width="80" height="70" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.2)"/>
-          <text x="380" y="290" fill="#d4af37" font-family="JetBrains Mono" font-size="10" text-anchor="middle">AILE IV</text>
-
-          <circle cx="300" cy="200" r="12" fill="#d4af37"/>
-          <text x="300" y="204" fill="#000" font-family="JetBrains Mono" font-size="9" font-weight="bold" text-anchor="middle">LV</text>
-        </svg>
-      `;
+      const path = document.getElementById('blueprint-highlight-zone');
+      if (path) {
+        if (level === 1) path.setAttribute('d', 'M 280,240 m -70,0 a 70,70 0 1,0 140,0 a 70,70 0 1,0 -140,0');
+        else if (level === 2) path.setAttribute('d', 'M 140,120 L 420,120 L 420,190 L 140,190 Z');
+        else if (level === 3) path.setAttribute('d', 'M 180,310 L 380,310 L 380,380 L 180,380 Z');
+      }
     }
-    renderBlueprintSVG(1);
 
     document.querySelectorAll('.btn-floor-level').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.btn-floor-level').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const level = parseInt(btn.getAttribute('data-level'));
-        renderBlueprintSVG(level);
-        const data = ROOM_SENSORS[level];
-        if (data) {
-          document.getElementById('selected-room-code').textContent = data.code;
-          document.getElementById('selected-room-name').textContent = data.name;
-          document.getElementById('selected-room-desc').textContent = data.desc;
-          document.getElementById('sensor-temp').textContent = data.temp;
-          document.getElementById('sensor-hum').textContent = data.hum;
-          document.getElementById('sensor-cap').textContent = data.cap;
-        }
-      });
+      btn.addEventListener('click', () => selectFloorLevel(parseInt(btn.getAttribute('data-level'))));
     });
 
     /* ==========================================================================
-       7. TICKETING ATELIER & VIP PASS ISSUANCE
+       8. TICKETING ATELIER & VIP PASS ISSUANCE
        ========================================================================== */
-    let selectedDate = "18 Septembre 2026";
+    let selectedDate = "18 OCTOBRE 2026";
     let selectedTier = "patron";
-    let selectedTierPrice = 180;
-    let selectedTimeSlot = "19:30 CET";
+    let selectedTierPrice = 240;
+    let selectedTimeSlot = "21:30 — NOCTURNE PRIVILÈGE";
 
     function initTicketingCalendar() {
-      const container = document.getElementById('date-picker-container');
-      if (!container) return;
-
-      const days = [
-        { name: "VEN", num: "18", month: "SEPT" },
-        { name: "SAM", num: "19", month: "SEPT" },
-        { name: "DIM", num: "20", month: "SEPT" },
-        { name: "MAR", num: "22", month: "SEPT" },
-        { name: "MER", num: "23", month: "SEPT" },
-        { name: "JEU", num: "24", month: "SEPT" }
+      const dates = [
+        { day: "16", month: "OCT", full: "16 OCTOBRE 2026" },
+        { day: "17", month: "OCT", full: "17 OCTOBRE 2026" },
+        { day: "18", month: "OCT", full: "18 OCTOBRE 2026" },
+        { day: "19", month: "OCT", full: "19 OCTOBRE 2026" },
+        { day: "20", month: "OCT", full: "20 OCTOBRE 2026" },
+        { day: "21", month: "OCT", full: "21 OCTOBRE 2026" }
       ];
 
-      container.innerHTML = '';
-      days.forEach((d, idx) => {
-        const btn = document.createElement('button');
-        btn.className = `date-card-btn ${idx === 0 ? 'active' : ''}`;
-        btn.innerHTML = `
-          <span class="date-day-name">${d.name}</span>
-          <span class="date-day-num">${d.num}</span>
-          <span class="date-month-name">${d.month}</span>
-        `;
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.date-card-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          selectedDate = `${d.num} ${d.month === 'SEPT' ? 'Septembre' : d.month} 2026`;
-          updateTicketPreview();
+      const calGrid = document.querySelector('.calendar-days-grid');
+      if (calGrid) {
+        calGrid.innerHTML = '';
+        dates.forEach((d, idx) => {
+          const card = document.createElement('div');
+          card.className = `calendar-day-card ${idx === 2 ? 'active' : ''}`;
+          card.innerHTML = `<span class="cal-day-num">${d.day}</span><span class="cal-day-month">${d.month}</span>`;
+          card.addEventListener('click', () => {
+            document.querySelectorAll('.calendar-day-card').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+            selectedDate = d.full;
+            updateTicketPreview();
+          });
+          calGrid.appendChild(card);
         });
-        container.appendChild(btn);
-      });
+      }
 
-      // Tier cards
+      // Tier Selector
       document.querySelectorAll('.tier-card').forEach(card => {
         card.addEventListener('click', () => {
           document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('active'));
@@ -4138,12 +5902,12 @@
         });
       });
 
-      // Time slots
-      document.querySelectorAll('.btn-time-slot').forEach(slot => {
-        slot.addEventListener('click', () => {
-          document.querySelectorAll('.btn-time-slot').forEach(s => s.classList.remove('active'));
-          slot.classList.add('active');
-          selectedTimeSlot = slot.getAttribute('data-time') + ' CET';
+      // Time Slot Selector
+      document.querySelectorAll('.btn-slot-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.btn-slot-pill').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedTimeSlot = btn.getAttribute('data-slot');
           updateTicketPreview();
         });
       });
@@ -4156,8 +5920,8 @@
         });
       }
 
-      // Confirm button
-      document.getElementById('btn-issue-pass').addEventListener('click', issueVIPPass);
+      const issueBtn = document.getElementById('btn-issue-pass');
+      if (issueBtn) issueBtn.addEventListener('click', issueVIPPass);
     }
 
     function updateTicketPreview() {
@@ -4167,142 +5931,296 @@
         patron: { fr: "Cercle Mécènes VIP", en: "Patron Circle VIP", vi: "Thành Viên VIP Danh Dự" }
       };
 
-      document.getElementById('ticket-preview-date').textContent = selectedDate;
-      document.getElementById('ticket-preview-slot').textContent = selectedTimeSlot;
-      document.getElementById('ticket-preview-tier').textContent = tierMap[selectedTier][currentLang] || "Cercle Mécènes VIP";
-      document.getElementById('ticket-preview-price').innerHTML = selectedTierPrice + " &euro;";
+      const dateEl = document.getElementById('ticket-preview-date');
+      const slotEl = document.getElementById('ticket-preview-slot');
+      const tierEl = document.getElementById('ticket-preview-tier');
+      const priceEl = document.getElementById('ticket-preview-price');
+
+      if (dateEl) dateEl.textContent = selectedDate;
+      if (slotEl) slotEl.textContent = selectedTimeSlot;
+      if (tierEl) tierEl.textContent = (tierMap[selectedTier] && tierMap[selectedTier][currentLang]) ? tierMap[selectedTier][currentLang] : "Cercle Mécènes VIP";
+      if (priceEl) priceEl.innerHTML = selectedTierPrice + " &euro;";
     }
 
     function issueVIPPass() {
       soundEngine.playCrystalChime(1046.50);
-      const guestName = document.getElementById('guest-name-input').value.trim() || 'Anh — Lead Architect';
-      document.getElementById('success-ticket-digest').textContent = `PASS #LV-2026-8842 • ${guestName} • ${selectedDate} (${selectedTimeSlot})`;
+      const guestName = (document.getElementById('guest-name-input') && document.getElementById('guest-name-input').value.trim()) || 'Anh — Lead Architect';
+      const digestEl = document.getElementById('success-ticket-digest');
+      if (digestEl) {
+        digestEl.textContent = `PASS #LV-2026-8842 • ${guestName} • ${selectedDate} (${selectedTimeSlot})`;
+      }
 
       const modal = document.getElementById('modal-ticket-success');
-      modal.classList.add('open');
+      if (modal) modal.classList.add('open');
     }
 
     function closeSuccessModal() {
-      document.getElementById('modal-ticket-success').classList.remove('open');
+      const modal = document.getElementById('modal-ticket-success');
+      if (modal) modal.classList.remove('open');
     }
-    document.getElementById('btn-close-success').addEventListener('click', closeSuccessModal);
+    const closeSuccessBtn = document.getElementById('btn-close-success');
+    if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closeSuccessModal);
 
     /* ==========================================================================
-       8. CURATORIAL MASTERPIECE DOSSIER MODAL & 3D MINI-VIEWER
+       9. PROCEDURAL MULTI-OBJECT 3D MODAL INSPECTOR & DOSSIER ENGINE
        ========================================================================== */
     const MASTERPIECE_DOSSIERS = [
       {
-        title: "L'Origine du Labyrinthe",
-        artist: "CLAIRE DE VIGNY • PARIS",
-        thesis: "Cette sculpture monumentale en quartz de synthèse et or colloïdal réagit aux micro-ondes gravitationnelles. Les facettes polygonales diffractent un faisceau laser cohérent pour projeter une carte fractale vivante de la conscience humaine.",
+        title: { fr: "L'Origine du Labyrinthe", en: "The Origin of the Labyrinth", vi: "Nguồn Cội Mê Cung" },
+        artist: { fr: "CLAIRE DE VIGNY • PARIS", en: "CLAIRE DE VIGNY • PARIS", vi: "CLAIRE DE VIGNY • PARIS" },
+        thesis: {
+          fr: "Cette sculpture monumentale en quartz de synthèse et or colloïdal réagit aux micro-ondes gravitationnelles. Les facettes polygonales diffractent un faisceau laser cohérent pour projeter une carte fractale vivante de la conscience humaine.",
+          en: "This monumental sculpture in synthetic quartz and colloidal gold reacts to gravitational microwaves. The polygonal facets diffract a coherent laser beam to project a living fractal map of human consciousness.",
+          vi: "Công trình điêu khắc bằng thạch anh tổng hợp và hạt nano vàng phản ứng với vi sóng hấp dẫn. Các mặt đa giác nhiễu xạ chùm laser quang tử, chiếu rọi bản đồ fractal sống động về tâm thức nhân loại."
+        },
         accession: "LV-2026.01",
         freq: "432.08 Hz (D-Mineur)",
         dim: "4.80m × 3.20m × 3.20m",
-        prov: "Collection Nationale des Arts",
+        prov: { fr: "Collection Nationale des Arts", en: "National Arts Collection", vi: "Bộ Sưu Tập Nghệ Thuật Quốc Gia" },
         color: 0xd4af37
       },
       {
-        title: "Symphonie des Particules",
-        artist: "KENZO TAKAHASHI • TOKYO",
-        thesis: "Un tourbillon de 40 000 émetteurs photoniques organiques qui synchronisent leur fréquence d'oscillation với nhịp tim người xem.",
+        title: { fr: "Symphonie des Particules", en: "Particle Symphony", vi: "Bản Giao Hưởng Hạt" },
+        artist: { fr: "KENZO TAKAHASHI • TOKYO", en: "KENZO TAKAHASHI • TOKYO", vi: "KENZO TAKAHASHI • TOKYO" },
+        thesis: {
+          fr: "Un tourbillon de 40 000 émetteurs photoniques organiques qui synchronisent leur fréquence d'oscillation avec le rythme cardiaque et la respiration collective des observateurs.",
+          en: "A swirling vortex of 40,000 organic photonic emitters synchronizing their oscillation frequency with spectator heartbeats and room collective breath.",
+          vi: "Một xoáy lốc gồm 40.000 nguồn phát quang sinh học đồng bộ tần số dao động với nhịp tim và hơi thở tập thể của toàn bộ khách tham quan."
+        },
         accession: "LV-2025.14",
         freq: "528.00 Hz (Aurore)",
         dim: "7.50m × 7.50m × 5.00m",
-        prov: "Mori Art Museum • Prêt Quinquennal",
+        prov: { fr: "Mori Art Museum • Prêt Quinquennal", en: "Mori Art Museum • Five-Year Loan", vi: "Bảo Tàng Mori Art Museum • Mượn Định Kỳ 5 Năm" },
         color: 0x8a63ff
       },
       {
-        title: "Pietà Numérique",
-        artist: "ELENA ROSTOVA • SAINT-PÉTERSBOURG",
-        thesis: "Sculptée au micron près par un bras robotique 7-axes dans un monolithe de Carrare, cette figure déploie un squelette neuronal de lumière dorée à travers un champ polarisant anisotrope.",
+        title: { fr: "Pietà Numérique", en: "Digital Pietà", vi: "Pietà Kỹ Thuật Số" },
+        artist: { fr: "ELENA ROSTOVA • SAINT-PÉTERSBOURG", en: "ELENA ROSTOVA • SAINT PETERSBURG", vi: "ELENA ROSTOVA • SAINT-PÉTERSBOURG" },
+        thesis: {
+          fr: "Sculptée au micron près par un bras robotique 7-axes dans un monolithe de Carrare, cette figure déploie un squelette neuronal de lumière dorée à travers un champ polarisant anisotrope.",
+          en: "Micron-milled by a 7-axis robotic arm from a Carrara monolith, this figure radiates an internal neural skeleton of golden light through an anisotropic polarizing field.",
+          vi: "Được gia công chính xác tới mức micron bằng cánh tay robot 7 trục từ khối đá cẩm thạch Carrara, tác phẩm tỏa ra bộ xương nơ-ron ánh sáng vàng xuyên qua trường phân cực đa hướng."
+        },
         accession: "LV-2026.03",
         freq: "396.00 Hz (Terre)",
         dim: "3.10m × 2.40m × 2.00m",
-        prov: "Fondation Hermitage Contemporain",
+        prov: { fr: "Fondation Hermitage Contemporain", en: "Contemporary Hermitage Foundation", vi: "Quỹ Di Sản Hermitage Đương Đại" },
         color: 0x00f0ff
       },
       {
-        title: "Le Silence des Sphères",
-        artist: "MARCUS VANCE • LONDRES",
-        thesis: "Trois anneaux de titane et or rose en lévitation supra-conductrice tournent à des vitesses harmoniques non commensurables, annulant tout frottement et générant une onde de silence enveloppante.",
+        title: { fr: "Le Silence des Sphères", en: "The Silence of the Spheres", vi: "Sự Tĩnh Lặng Của Các Thiên Cầu" },
+        artist: { fr: "MARCUS VANCE • LONDRES", en: "MARCUS VANCE • LONDON", vi: "MARCUS VANCE • LUÂN ĐÔN" },
+        thesis: {
+          fr: "Trois anneaux de titane et or rose en lévitation supra-conductrice tournent à des vitesses harmoniques non commensurables, annulant tout frottement et générant une onde de silence enveloppante.",
+          en: "Three titanium and rose gold rings in superconducting levitation spin at non-commensurate harmonic velocities, negating mechanical friction and sculpting a perimeter of absolute acoustic silence.",
+          vi: "Ba vòng tròn đồng tâm titan và vàng hồng lơ lửng siêu dẫn quay ở vận tốc hài hòa không ma sát, tạo nên trường chân không âm thanh tĩnh mịch bao bọc không gian."
+        },
         accession: "LV-2024.89",
         freq: "432.00 Hz (Harmonique)",
         dim: "4.00m × 4.00m × 4.00m",
-        prov: "Tate Modern • Don Perpétuel",
+        prov: { fr: "Tate Modern • Don Perpétuel", en: "Tate Modern • Perpetual Gift", vi: "Bảo Tàng Tate Modern • Hiến Tặng Vĩnh Viễn" },
         color: 0xd4af37
       },
       {
-        title: "Biocénose Flottante",
-        artist: "DR. SOLIS NGUYEN • HANOÏ / PARIS",
-        thesis: "Une colonie vivante de mycélium et d'éponges photoniques synthétise des harmonies sonores en analysant la respiration collective de la salle d'exposition.",
+        title: { fr: "Biocénose Flottante", en: "Floating Biocenosis", vi: "Quần Xã Sinh Học Bồng Bềnh" },
+        artist: { fr: "DR. SOLIS NGUYEN • HANOÏ / PARIS", en: "DR. SOLIS NGUYEN • HANOI / PARIS", vi: "TS. SOLIS NGUYỄN • HÀ NỘI / PARIS" },
+        thesis: {
+          fr: "Une colonie vivante de micro-algues et d'éponges photoniques synthétise des harmonies spectrales en analysant la respiration et la charge électrostatique de la nef.",
+          en: "A living colony of bioluminescent micro-algae and photonic sponges synthesizes spectral soundscapes by analyzing spectator exhalations and room electrostatic charges.",
+          vi: "Quần xã sinh học sống vi tảo phát quang và bọt biển quang tử tổng hợp các dải âm phổ hài hòa bằng cách phân tích hơi thở và điện tích tĩnh của gian phòng triển lãm."
+        },
         accession: "LV-2026.05",
         freq: "639.00 Hz (Céleste)",
         dim: "5.20m × 3.80m × 3.80m",
-        prov: "Pavillon de Venise • Biennale 2026",
+        prov: { fr: "Pavillon de Venise • Biennale 2026", en: "Venice Pavilion • Biennale 2026", vi: "Đại Sảnh Venice • Biennale 2026" },
         color: 0x10b981
       },
       {
-        title: "La Chute d'Icare Virtuel",
-        artist: "JEAN-LUC MOREAU • GENÈVE",
-        thesis: "Un rideau de brouillard cryogénique illuminé par 12 lasers 532 nm dans lequel se dessine en anamorphose la chute mythologique à travers le ciel de données.",
+        title: { fr: "La Chute d'Icare Virtuel", en: "Virtual Fall of Icarus", vi: "Cú Rơi Của Icarus Ảo" },
+        artist: { fr: "JEAN-LUC MOREAU • GENÈVE", en: "JEAN-LUC MOREAU • GENEVA", vi: "JEAN-LUC MOREAU • GENÈVE" },
+        thesis: {
+          fr: "Un rideau de brouillard cryogénique illuminé par 12 lasers 532 nm dans lequel se dessine en anamorphose la chute mythologique à travers le ciel de données.",
+          en: "A cryogenic fog curtain illuminated by 12 coherent 532nm lasers projecting an anamorphic illusion of the mythological descent through the data cloud.",
+          vi: "Màn sương hàn lạnh tán xạ thể tích được rọi sáng bởi 12 luồng laser bước sóng 532 nm, vẽ nên ảo ảnh quang học về cú rơi thần thoại xuyên qua chân mây dữ liệu."
+        },
         accession: "LV-2025.42",
         freq: "741.00 Hz (Clarté)",
         dim: "8.00m × 4.00m × 6.00m",
-        prov: "Grand Palais Immersif",
+        prov: { fr: "Grand Palais Immersif", en: "Grand Palais Immersif", vi: "Đại Điện Grand Palais Immersif" },
         color: 0xff3366
       }
     ];
 
-    let modalScene, modalCamera, modalRenderer, modalMesh;
+    let modalScene, modalCamera, modalRenderer, modalGroup;
+    let currentModalIdx = 0;
+    let isModalPointerDown = false;
+    let modalPrevMouseX = 0;
+    let modalPrevMouseY = 0;
 
     function initModalThree() {
       const canvas = document.getElementById('modal-three-canvas');
       if (!canvas) return;
+
       modalScene = new THREE.Scene();
-      modalCamera = new THREE.PerspectiveCamera(50, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
-      modalCamera.position.set(0, 0, 5);
+      modalCamera = new THREE.PerspectiveCamera(48, (canvas.clientWidth || 450) / (canvas.clientHeight || 450), 0.1, 100);
+      modalCamera.position.set(0, 0, 5.5);
 
       modalRenderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-      modalRenderer.setSize(canvas.clientWidth, canvas.clientHeight);
+      modalRenderer.setSize(canvas.clientWidth || 450, canvas.clientHeight || 450);
+      modalRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-      const light = new THREE.DirectionalLight(0xffffff, 2);
-      light.position.set(3, 5, 4);
-      modalScene.add(light);
-      modalScene.add(new THREE.AmbientLight(0xffffff, 0.5));
+      const dirLight = new THREE.DirectionalLight(0xffffff, 2.2);
+      dirLight.position.set(4, 6, 5);
+      modalScene.add(dirLight);
+      modalScene.add(new THREE.AmbientLight(0xffffff, 0.6));
 
-      const geo = new THREE.IcosahedronGeometry(1.8, 1);
-      const mat = new THREE.MeshStandardMaterial({ color: 0xd4af37, roughness: 0.15, metalness: 0.9, wireframe: false });
-      modalMesh = new THREE.Mesh(geo, mat);
-      modalScene.add(modalMesh);
+      modalGroup = new THREE.Group();
+      modalScene.add(modalGroup);
+
+      // Interactive Pointer Drag on Modal 3D Object
+      canvas.addEventListener('pointerdown', (e) => {
+        isModalPointerDown = true;
+        modalPrevMouseX = e.clientX;
+        modalPrevMouseY = e.clientY;
+      });
+      window.addEventListener('pointerup', () => { isModalPointerDown = false; });
+      window.addEventListener('pointermove', (e) => {
+        if (!isModalPointerDown || !modalGroup) return;
+        const dx = e.clientX - modalPrevMouseX;
+        const dy = e.clientY - modalPrevMouseY;
+        modalGroup.rotation.y += dx * 0.01;
+        modalGroup.rotation.x += dy * 0.01;
+        modalPrevMouseX = e.clientX;
+        modalPrevMouseY = e.clientY;
+      });
 
       function renderModalThree() {
         requestAnimationFrame(renderModalThree);
-        if (modalMesh) {
-          modalMesh.rotation.y += 0.015;
-          modalMesh.rotation.x += 0.008;
+        if (modalGroup && !isModalPointerDown) {
+          modalGroup.rotation.y += 0.012;
+          modalGroup.rotation.x += 0.006;
         }
-        modalRenderer.render(modalScene, modalCamera);
+        if (modalRenderer && modalScene && modalCamera) {
+          modalRenderer.render(modalScene, modalCamera);
+        }
       }
       renderModalThree();
     }
-    initModalThree();
 
-    let currentModalIdx = 0;
-    function openMasterpieceDossier(index) {
+    // Build Distinct Procedural 3D Geometry for Each Masterpiece in Modal
+    function buildModalSculpture(index) {
+      if (!modalGroup) return;
+
+      // Clear previous meshes
+      while (modalGroup.children.length > 0) {
+        const obj = modalGroup.children[0];
+        modalGroup.remove(obj);
+        if (obj.geometry) obj.geometry.dispose();
+        if (obj.material) {
+          if (Array.isArray(obj.material)) obj.material.forEach(m => m.dispose());
+          else obj.material.dispose();
+        }
+      }
+
+      modalGroup.rotation.set(0, 0, 0);
+      const goldMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, roughness: 0.15, metalness: 0.95 });
+      const wireMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff, wireframe: true });
+
+      if (index === 0) {
+        // 0: Faceted Quartz Polyhedron + dual orbiting concentric rings
+        const crystal = new THREE.Mesh(new THREE.IcosahedronGeometry(1.5, 0), goldMat);
+        const r1 = new THREE.Mesh(new THREE.TorusGeometry(2.3, 0.04, 16, 64), new THREE.MeshBasicMaterial({ color: 0xffffff }));
+        const r2 = new THREE.Mesh(new THREE.TorusGeometry(2.7, 0.03, 16, 64), wireMat);
+        r1.rotation.x = Math.PI / 4;
+        r2.rotation.y = Math.PI / 3;
+        modalGroup.add(crystal);
+        modalGroup.add(r1);
+        modalGroup.add(r2);
+      } else if (index === 1) {
+        // 1: Particle Swirl Cloud (2,500 particles in vortex spiral)
+        const pCount = 2500;
+        const geo = new THREE.BufferGeometry();
+        const pos = new Float32Array(pCount * 3);
+        const cols = new Float32Array(pCount * 3);
+        const cA = new THREE.Color(0x8a63ff);
+        const cB = new THREE.Color(0x00f0ff);
+        for (let i = 0; i < pCount; i++) {
+          const t = i * 0.015;
+          const r = Math.pow(i / pCount, 0.5) * 2.5;
+          pos[i * 3] = r * Math.cos(t * 8);
+          pos[i * 3 + 1] = (Math.random() - 0.5) * 1.8;
+          pos[i * 3 + 2] = r * Math.sin(t * 8);
+          const c = cA.clone().lerp(cB, Math.random());
+          cols[i * 3] = c.r; cols[i * 3 + 1] = c.g; cols[i * 3 + 2] = c.b;
+        }
+        geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+        geo.setAttribute('color', new THREE.BufferAttribute(cols, 3));
+        const pMesh = new THREE.Points(geo, new THREE.PointsMaterial({ size: 0.06, vertexColors: true, blending: THREE.AdditiveBlending }));
+        modalGroup.add(pMesh);
+        modalGroup.add(new THREE.Mesh(new THREE.SphereGeometry(0.4, 16, 16), wireMat));
+      } else if (index === 2) {
+        // 2: Dodecahedron Lattice Voxel Structure
+        const d1 = new THREE.Mesh(new THREE.DodecahedronGeometry(1.8, 1), goldMat);
+        const d2 = new THREE.Mesh(new THREE.DodecahedronGeometry(1.2, 0), wireMat);
+        const cyl = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 4.5, 16), new THREE.MeshBasicMaterial({ color: 0x00f0ff }));
+        modalGroup.add(d1);
+        modalGroup.add(d2);
+        modalGroup.add(cyl);
+      } else if (index === 3) {
+        // 3: Triple Concentric Gyroscope Rings
+        const g1 = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.08, 16, 64), goldMat);
+        const g2 = new THREE.Mesh(new THREE.TorusGeometry(1.6, 0.07, 16, 64), new THREE.MeshStandardMaterial({ color: 0xe0a899, metalness: 0.9, roughness: 0.2 }));
+        const g3 = new THREE.Mesh(new THREE.TorusGeometry(1.0, 0.06, 16, 64), goldMat);
+        const pearl = new THREE.Mesh(new THREE.SphereGeometry(0.45, 32, 32), new THREE.MeshPhysicalMaterial({ color: 0xffffff, roughness: 0.1, metalness: 0.8 }));
+        g1.rotation.x = Math.PI / 4;
+        g2.rotation.y = Math.PI / 3;
+        modalGroup.add(g1);
+        modalGroup.add(g2);
+        modalGroup.add(g3);
+        modalGroup.add(pearl);
+      } else if (index === 4) {
+        // 4: Organic Torus Knot Bio-Cluster
+        const knot = new THREE.Mesh(
+          new THREE.TorusKnotGeometry(1.3, 0.35, 128, 32, 2, 3),
+          new THREE.MeshStandardMaterial({ color: 0x10b981, roughness: 0.2, metalness: 0.85, wireframe: true })
+        );
+        const innerKnot = new THREE.Mesh(
+          new THREE.TorusKnotGeometry(1.0, 0.18, 64, 16, 3, 4),
+          new THREE.MeshBasicMaterial({ color: 0x00f0ff, wireframe: true })
+        );
+        modalGroup.add(knot);
+        modalGroup.add(innerKnot);
+      } else if (index === 5) {
+        // 5: Double Inverted Crystalline Pyramids with Laser Core
+        const p1 = new THREE.Mesh(new THREE.ConeGeometry(1.4, 2.0, 4), goldMat);
+        const p2 = new THREE.Mesh(new THREE.ConeGeometry(1.4, 2.0, 4), new THREE.MeshStandardMaterial({ color: 0xff3366, metalness: 0.9, roughness: 0.15, wireframe: true }));
+        p2.rotation.x = Math.PI;
+        p2.position.y = -1.2;
+        p1.position.y = 1.2;
+        const laser = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 5, 16), new THREE.MeshBasicMaterial({ color: 0xff3366 }));
+        modalGroup.add(p1);
+        modalGroup.add(p2);
+        modalGroup.add(laser);
+      }
+    }
+
+    function populateModalDossier(index) {
       currentModalIdx = index;
       const data = MASTERPIECE_DOSSIERS[index] || MASTERPIECE_DOSSIERS[0];
-      document.getElementById('modal-artist').textContent = data.artist;
-      document.getElementById('modal-title').textContent = data.title;
-      document.getElementById('modal-thesis').textContent = data.thesis;
+
+      document.getElementById('modal-artist').textContent = data.artist[currentLang] || data.artist.fr;
+      document.getElementById('modal-title').textContent = data.title[currentLang] || data.title.fr;
+      document.getElementById('modal-thesis').textContent = data.thesis[currentLang] || data.thesis.fr;
       document.getElementById('modal-accession').textContent = data.accession;
       document.getElementById('modal-freq').textContent = data.freq;
       document.getElementById('modal-dim').textContent = data.dim;
-      document.getElementById('modal-prov').textContent = data.prov;
+      document.getElementById('modal-prov').textContent = data.prov[currentLang] || data.prov.fr;
 
-      if (modalMesh) {
-        modalMesh.material.color.setHex(data.color);
-      }
+      buildModalSculpture(index);
+    }
 
+    function openMasterpieceDossier(index) {
+      populateModalDossier(index);
       document.getElementById('modal-inspect').classList.add('open');
       soundEngine.playCrystalChime(783.99);
     }
@@ -4320,19 +6238,55 @@
       playMasterpieceAudio(currentModalIdx);
     }
 
-    document.getElementById('btn-close-inspect').addEventListener('click', () => {
-      document.getElementById('modal-inspect').classList.remove('open');
-    });
+    const closeInspectBtn = document.getElementById('btn-close-inspect');
+    if (closeInspectBtn) {
+      closeInspectBtn.addEventListener('click', () => {
+        document.getElementById('modal-inspect').classList.remove('open');
+      });
+    }
 
-    document.getElementById('btn-open-dossier').addEventListener('click', () => {
-      openMasterpieceDossier(currentWingIdx);
-    });
+    const openDossierBtn = document.getElementById('btn-open-dossier');
+    if (openDossierBtn) {
+      openDossierBtn.addEventListener('click', () => {
+        openMasterpieceDossier(currentWingIdx);
+      });
+    }
+
+    /* ==========================================================================
+       10. BESPOKE LUXURY TOAST NOTIFICATIONS (NO BLOCKING ALERTS)
+       ========================================================================== */
+    let toastTimeout;
+    function showLuxuryToast(title, message) {
+      const toastBox = document.getElementById('luxury-toast-box');
+      const toastTitle = document.getElementById('toast-title');
+      const toastMsg = document.getElementById('toast-msg');
+      if (!toastBox) return;
+
+      if (toastTitle) toastTitle.textContent = title;
+      if (toastMsg) toastMsg.textContent = message;
+
+      toastBox.classList.add('show');
+      soundEngine.playCrystalChime(880.00);
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        hideLuxuryToast();
+      }, 5500);
+    }
+
+    function hideLuxuryToast() {
+      const toastBox = document.getElementById('luxury-toast-box');
+      if (toastBox) toastBox.classList.remove('show');
+    }
 
     function handleNewsletter(e) {
       e.preventDefault();
-      alert("Merci. Votre invitation au vernissage de la Biennale a été enregistrée.");
+      const title = I18N[currentLang].toast_title || "CONFIRMATION CURATORIALE";
+      const msg = I18N[currentLang].toast_success || "Votre demande a été enregistrée avec succès.";
+      showLuxuryToast(title, msg);
       e.target.reset();
     }
+
   </script>
 </body>
 </html>
