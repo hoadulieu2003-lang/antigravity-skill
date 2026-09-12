@@ -1,14 +1,14 @@
 {
   "aiEngineSettings": {
     "activeModel": "gemini-3.8-flash",
-    "reasoningProfile": "ultra_high_reasoning",
-    "outputTokenMultiplier": 8,
-    "maxOutputTokensHeadroom": 131072,
-    "scope": "ENGINEERING_CODE_AND_ARCHITECTURE_ONLY",
-    "videoPromptBloatPrevention": true,
-    "deepThinkingBudget": "unlimited_maximum",
     "autonomousSelfHealing": true,
-    "status": "HYPER_OVERCLOCKED_X8_ENGINEERING_ONLY"
+    "deepThinkingBudget": "unlimited_maximum",
+    "maxOutputTokensHeadroom": 131072,
+    "outputTokenMultiplier": 8,
+    "reasoningProfile": "ultra_high_reasoning",
+    "scope": "ENGINEERING_CODE_AND_ARCHITECTURE_ONLY",
+    "status": "HYPER_OVERCLOCKED_X8_ENGINEERING_ONLY",
+    "videoPromptBloatPrevention": true
   },
   "plugins": {
     "android-cli-plugin": {
@@ -99,7 +99,8 @@
         "read_url(chatgpt.com)",
         "read_url(mobbin.com)",
         "read_url(llm.codorai.com)",
-        "mcp(cdp-bridge/get_ast_repo_map)"
+        "mcp(cdp-bridge/get_ast_repo_map)",
+        "read_url(linear.app)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
