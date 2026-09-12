@@ -2509,6 +2509,44 @@
       z-index: 85;
     }
 
+    
+    .ticket-brand-title {
+      font-family: var(--font-serif-monumental);
+      font-size: 13px;
+      color: #ffffff;
+      margin-top: 4px;
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+
+    .ticket-val-highlight {
+      color: #ffffff;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .modal-success-heading {
+      font-family: var(--font-serif-monumental);
+      font-size: 26px;
+      color: #ffffff;
+      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+      transition: color 0.3s;
+    }
+
+    .modal-success-cert-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 28px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--accent-gold-light);
+      letter-spacing: 0.05em;
+      transition: all 0.3s;
+    }
+
     /* ==========================================================================
        14. LUXURY TOAST NOTIFICATION
        ========================================================================== */
@@ -2873,6 +2911,136 @@
     [data-theme="light"] .ticket-qr-placeholder {
       background: #ffffff;
       border: 1px solid var(--border-subtle);
+    }
+
+        [data-theme="light"] .ticket-brand-title,
+    [data-theme="light"] .ticket-val-highlight {
+      color: var(--text-pure);
+    }
+
+    [data-theme="light"] .modal-success-heading {
+      color: var(--text-pure);
+    }
+
+    [data-theme="light"] .modal-success-cert-box {
+      background: rgba(179, 139, 34, 0.08);
+      border: 1px solid var(--border-gold);
+      color: var(--accent-gold-deep);
+    }
+
+    [data-theme="light"] .btn-close-modal {
+      background: rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--border-standard);
+      color: var(--text-primary);
+    }
+
+    [data-theme="light"] .btn-close-modal:hover {
+      background: var(--accent-gold);
+      color: #ffffff;
+      border-color: var(--accent-gold);
+    }
+
+    [data-theme="light"] .btn-confirm-reservation:hover {
+      background: linear-gradient(135deg, #141518 0%, #252834 100%);
+      color: #ffffff;
+      border-color: #141518;
+      box-shadow: 0 12px 32px rgba(20, 22, 28, 0.25);
+      transform: translateY(-2px);
+    }
+
+    [data-theme="light"] .luxury-toast-inner {
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12), 0 0 30px rgba(179, 139, 34, 0.16);
+      backdrop-filter: blur(20px);
+    }
+
+    [data-theme="light"] .toast-title {
+      color: var(--accent-gold-light);
+    }
+
+    [data-theme="light"] .toast-desc {
+      color: var(--text-primary);
+    }
+
+    [data-theme="light"] .toast-close-btn {
+      color: var(--text-tertiary);
+    }
+
+    [data-theme="light"] .toast-close-btn:hover {
+      color: var(--text-pure);
+    }
+
+    [data-theme="light"] .cinema-chapter-card:hover,
+    [data-theme="light"] .cinema-chapter-card.active {
+      background: #ffffff;
+      border-color: var(--accent-gold);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08), 0 0 25px rgba(179, 139, 34, 0.12);
+      transform: translateY(-4px);
+    }
+
+    [data-theme="light"] .cinema-chapter-card:hover .chapter-title,
+    [data-theme="light"] .cinema-chapter-card.active .chapter-title {
+      color: var(--text-pure);
+    }
+
+    [data-theme="light"] .ticket-total-calc {
+      background: rgba(0, 0, 0, 0.03);
+      border: 1px solid var(--border-subtle);
+    }
+
+    [data-theme="light"] .ticket-total-label {
+      color: var(--text-secondary);
+    }
+
+    [data-theme="light"] .ticket-total-amount {
+      color: var(--accent-gold);
+    }
+
+    [data-theme="light"] .audio-synthesizer-hud {
+      background: var(--surface-card);
+      border-color: var(--border-standard);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="light"] .audio-synthesizer-hud:hover {
+      border-color: var(--accent-gold);
+      box-shadow: 0 6px 20px var(--accent-gold-glow);
+    }
+
+    [data-theme="light"] .audio-toggle-btn {
+      color: var(--accent-gold-light);
+    }
+
+    [data-theme="light"] .btn-floor-level {
+      color: var(--text-secondary);
+    }
+
+    [data-theme="light"] .btn-floor-level:hover {
+      color: var(--text-pure);
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="light"] .btn-floor-level.active {
+      background: var(--accent-gold);
+      color: #ffffff;
+      border-color: var(--accent-gold);
+      box-shadow: 0 4px 12px var(--accent-gold-glow);
+    }
+
+    [data-theme="light"] .curatorial-modal-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15), 0 0 40px rgba(179, 139, 34, 0.1);
+    }
+
+    [data-theme="light"] .modal-spec-grid {
+      background: var(--surface-deep);
+      border: 1px solid var(--border-subtle);
+    }
+
+    [data-theme="light"] .modal-spec-cell strong {
+      color: var(--text-pure);
     }
 
     [data-theme="light"] .btn-confirm-reservation {
@@ -3816,7 +3984,7 @@
             <div class="ticket-head-row">
               <div>
                 <span class="ticket-serial" id="ticket-serial-val">PASS • LV-2026-8842</span>
-                <div style="font-family: var(--font-serif-monumental); font-size: 13px; color: #fff; margin-top: 4px;">L'ÉCLAT VIRTUS</div>
+                <div class="ticket-brand-title">L'ÉCLAT VIRTUS</div>
               </div>
               <div class="ticket-qr-placeholder">
                 <svg viewBox="0 0 24 24">
@@ -3833,7 +4001,7 @@
             <div class="ticket-details-grid">
               <div>
                 <span class="ticket-guest-label" data-i18n="pass_date">Date de Visite</span>
-                <strong style="color: #fff; font-size: 14px;" id="ticket-preview-date">18 Septembre 2026</strong>
+                <strong class="ticket-val-highlight" id="ticket-preview-date">18 Septembre 2026</strong>
               </div>
               <div>
                 <span class="ticket-guest-label" data-i18n="pass_slot">Créneau Horaire</span>
@@ -3841,7 +4009,7 @@
               </div>
               <div>
                 <span class="ticket-guest-label" data-i18n="pass_tier">Niveau de Pass</span>
-                <strong style="color: #fff; font-size: 14px;" id="ticket-preview-tier">Cercle Mécènes VIP</strong>
+                <strong class="ticket-val-highlight" id="ticket-preview-tier">Cercle Mécènes VIP</strong>
               </div>
               <div>
                 <span class="ticket-guest-label" data-i18n="pass_salon">Salon Réservé</span>
@@ -3991,11 +4159,11 @@
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
       </div>
-      <h2 style="font-family: var(--font-serif-monumental); color: #fff; margin-bottom: 12px;" data-i18n="modal_success_title">PASS VIP CONFIRMÉ</h2>
+      <h2 class="modal-success-heading" data-i18n="modal_success_title">PASS VIP CONFIRMÉ</h2>
       <p style="font-size: 15px; color: var(--text-secondary); margin-bottom: 24px;" data-i18n="modal_success_desc">
         Votre pass d'accès nocturne a été inscrit dans le registre curatorial de L'Éclat Virtus. Un certificat cryptographique numéroté a été généré.
       </p>
-      <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-gold); border-radius: 12px; padding: 18px; margin-bottom: 28px; font-family: var(--font-mono); font-size: 13px; color: var(--accent-gold-light);" id="success-ticket-digest">
+      <div class="modal-success-cert-box" id="success-ticket-digest">
         PASS #LV-2026-8842 &bull; Alexandre de Montmirail
       </div>
       <button class="btn-hero-primary" style="width: 100%; justify-content: center;" onclick="closeSuccessModal()" data-i18n="btn_close_pass">
@@ -4733,7 +4901,13 @@
       }
     ];
 
-    let currentTheme = localStorage.getItem('eclat_virtus_theme') || 'light';
+    let currentTheme = 'light';
+    try {
+      const stored = localStorage.getItem('eclat_virtus_theme');
+      if (stored === 'light' || stored === 'dark') currentTheme = stored;
+    } catch (e) {
+      console.warn('[Storage] localStorage inaccessible, defaulting to light mode', e);
+    }
     let rotundaScene, rotundaCamera, rotundaRenderer, rotundaControls;
     let rotundaAnimId;
     let rotundaAmbientLight, rotundaSunLight, rotundaLightCone;
@@ -4777,7 +4951,7 @@
       const height = container.clientHeight || 750;
 
       rotundaScene = new THREE.Scene();
-      rotundaScene.fog = new THREE.FogExp2(0x040508, 0.018);
+      rotundaScene.fog = new THREE.FogExp2(currentTheme === 'light' ? 0xfbfbfa : 0x040508, currentTheme === 'light' ? 0.011 : 0.018);
 
       rotundaCamera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
       rotundaCamera.position.set(0, 4.5, 12);
@@ -4787,6 +4961,7 @@
       rotundaRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       rotundaRenderer.toneMapping = THREE.ACESFilmicToneMapping;
       rotundaRenderer.toneMappingExposure = 1.25;
+      rotundaRenderer.setClearColor(currentTheme === 'light' ? 0xfbfbfa : 0x040508, currentTheme === 'light' ? 1.0 : 0.0);
 
       // OrbitControls for rotational drag
       rotundaControls = new THREE.OrbitControls(rotundaCamera, canvas);
@@ -5157,7 +5332,7 @@
 
     function setTheme(theme, notify = true) {
       currentTheme = theme;
-      localStorage.setItem('eclat_virtus_theme', theme);
+      try { localStorage.setItem('eclat_virtus_theme', theme); } catch (e) { console.warn('[Storage] Unable to save theme', e); }
       document.documentElement.setAttribute('data-theme', theme);
 
       const metaTheme = document.querySelector('meta[name="theme-color"]');
