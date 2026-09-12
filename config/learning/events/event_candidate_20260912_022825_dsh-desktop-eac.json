@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-12T02:28:25.520475+00:00",
+  "skill_name": "dsh-desktop-eac",
+  "source_repo": "DSH-EAC/DSH-Desktop-EAC",
+  "stars": 1634,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\dsh-desktop-eac\\SKILL.md",
+  "human_promotion_required": true
+}

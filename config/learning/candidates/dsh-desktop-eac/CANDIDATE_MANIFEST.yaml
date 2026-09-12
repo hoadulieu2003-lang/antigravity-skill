@@ -1,0 +1,10 @@
+schema_version: "1.0"
+skill_name: "dsh-desktop-eac"
+source_repo: "DSH-EAC/DSH-Desktop-EAC"
+stars: 1634
+status: "CANDIDATE"
+created_at: "2026-09-12T02:28:25.519589+00:00"
+human_promotion_required: true
+evidence_files:
+  - "SKILL.md"
+  - "references/dsh-desktop-eac/README.md"

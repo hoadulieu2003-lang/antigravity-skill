@@ -186,3 +186,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập: `2026-09-12 09:28:21`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1634 ⭐)]** [DSH-EAC/DSH-Desktop-EAC](https://github.com/DSH-EAC/DSH-Desktop-EAC)
+  > DeepSeek Harness Desktop (dsh-desktop). EAC: Embracing All Creation (揽尽万象). Bundled Node.js runtime with full dsh-CLI kernel, one-click startup, 10 built-in ...
+- **[GitHub (601 ⭐)]** [leoncuhk/awesome-quant-ai](https://github.com/leoncuhk/awesome-quant-ai)
+  > A curated list of awesome resources for quantitative investment and trading strategies focusing on artificial intelligence and machine learning applications ...
+- **[GitHub (99 ⭐)]** [wq19901103wq/wechat-mac-rpa](https://github.com/wq19901103wq/wechat-mac-rpa)
+  > 基于多模态视觉感知与 LLM Agent 的 macOS 微信自动化框架 | Visual RPA for WeChat
+
+</untrusted_external_content>
+
+---
