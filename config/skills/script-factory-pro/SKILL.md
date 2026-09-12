@@ -92,7 +92,13 @@ Module `04_GOOGLE_FLOW_APPLET_SOURCE/batch_video_final/` đã đạt trạng th�
 5. **Khóa Môi VoiceOver Bằng Góc Máy Sau Lưng (`VoiceOver Silhouette Lock`)**: VoiceOver mang `[AUDIO: NON-DIEGETIC NARRATOR VOICEOVER]` + `[LIP LOCK: ALL CHARACTERS KEEP MOUTHS CLOSED]`, visual action bắt buộc dùng góc quay Over-The-Shoulder từ sau lưng / bóng nghiêng.
 6. **Khóa Cứng Chế Độ Câm (`Silent Mode Lock`)**: Cảnh Silent bắt buộc mang `[AUDIO: PURE DIEGETIC SOUND EFFECTS ONLY] STRICTLY ZERO SPEECH. NO VOICES. NO SPOKEN WORDS. NO DIALOGUE. ALL ACTORS REMAIN SILENT.` để ngăn Veo 3.1 sinh tiếng Anh lảm nhảm.
 7. **Làm Sạch Dấu Chấm Lửng (`cleanSpokenWords`)**: Tự động chuyển toàn bộ dấu `...` thành dấu phẩy `, ` để triệt tiêu triệt để các âm ngập ngừng phụ ("ah", "um", mumble).
-8. **Tri-Asset Reference Packing**: Nạp tối đa 3 asset theo thứ tự: `SUB_01` -> `SUB_02` -> `ENV_01` / `PROP_01`.
+8. **Tri-Asset Reference Packing**: Nạp tối đa 3 asset theo thứ tự ưu tiên: `SUB_01` -> `SUB_02` -> `ENV_01` / `PROP_01` (hoặc trực tiếp theo `reference_plan.resolved_reference_ids`).
+9. **Google Flow Autonomous Closed-Loop Law (Quy chuẩn 3 bước tự động qua Prompt Builder)**: 
+   - Google Flow Tool Builder hoạt động trên Cloud và **CHỈ NHẬN THAY ĐỔI QUA PROMPT BUILDER** hoặc tab "Mã", tuyệt đối không tự động đồng bộ từ code local.
+   - Khi Anh giao lệnh sửa code Flow:
+     - **Bước 1**: Tự động gửi Prompt chuẩn vào Prompt Builder ("Trình tạo công cụ") qua kết nối CDP cổng 9222/9223.
+     - **Bước 2**: Giám sát và đợi AI của Tool Builder hoàn tất chỉnh sửa mã nguồn trên Cloud.
+     - **Bước 3**: Tự động chuyển sang tab "Mã", trích xuất code live và review đối soát nghiêm ngặt đúng phạm vi yêu cầu (In-Scope Code Review), bảo đảm không phát sinh lỗi hồi quy trước khi báo cáo kết quả.
 
 ---
 

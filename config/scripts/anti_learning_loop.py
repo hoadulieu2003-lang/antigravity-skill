@@ -149,6 +149,75 @@ def fetch_google_ai_updates():
         pass
     return items_data
 
+def fetch_google_research_updates():
+    """Thu thập bài nghiên cứu đột phá từ Google Research"""
+    url = "https://research.google/blog/rss/"
+    raw = make_request(url)
+    if not raw:
+        return []
+    items_data = []
+    try:
+        root = ET.fromstring(raw)
+        for item in root.findall(".//item")[:4]:
+            t = item.find("title").text or ""
+            l = item.find("link").text or ""
+            d = item.find("description").text or ""
+            items_data.append({
+                "source": "Google Research",
+                "title": t.strip(),
+                "link": l.strip(),
+                "snippet": clean_html_snippet(d, max_length=200)
+            })
+    except Exception:
+        pass
+    return items_data
+
+def fetch_deepmind_updates():
+    """Thu thập bài nghiên cứu kiến trúc từ Google DeepMind"""
+    url = "https://deepmind.google/blog/rss.xml"
+    raw = make_request(url)
+    if not raw:
+        return []
+    items_data = []
+    try:
+        root = ET.fromstring(raw)
+        for item in root.findall(".//item")[:4]:
+            t = item.find("title").text or ""
+            l = item.find("link").text or ""
+            d = item.find("description").text or ""
+            items_data.append({
+                "source": "Google DeepMind",
+                "title": t.strip(),
+                "link": l.strip(),
+                "snippet": clean_html_snippet(d, max_length=200)
+            })
+    except Exception:
+        pass
+    return items_data
+
+def fetch_cloudflare_updates():
+    """Thu thập kinh nghiệm hạ tầng và edge computing từ Cloudflare Engineering"""
+    url = "https://blog.cloudflare.com/rss/"
+    raw = make_request(url)
+    if not raw:
+        return []
+    items_data = []
+    try:
+        root = ET.fromstring(raw)
+        for item in root.findall(".//item")[:3]:
+            t = item.find("title").text or ""
+            l = item.find("link").text or ""
+            d = item.find("description").text or ""
+            items_data.append({
+                "source": "Cloudflare Engineering",
+                "title": t.strip(),
+                "link": l.strip(),
+                "snippet": clean_html_snippet(d, max_length=200)
+            })
+    except Exception:
+        pass
+    return items_data
+
 def fetch_github_trending_agents():
     """Thu thập các repository thịnh hành về AI Agent & LLM trên GitHub"""
     url = "https://api.github.com/search/repositories?q=topic:ai-agent+stars:>50&sort=updated&order=desc&per_page=5"
@@ -281,11 +350,15 @@ def main():
     print(f"[{timestamp}] 🚀 Kích hoạt Anti Autonomous Learning Loop...")
     
     google_updates = fetch_google_ai_updates()
+    research_updates = fetch_google_research_updates()
+    deepmind_updates = fetch_deepmind_updates()
+    cloudflare_updates = fetch_cloudflare_updates()
     github_updates = fetch_github_trending_agents()
     hf_updates = fetch_huggingface_trending()
     arxiv_updates = fetch_arxiv_ai_preprints()
     
-    all_raw_findings = google_updates + github_updates + hf_updates + arxiv_updates
+    all_raw_findings = (google_updates + research_updates + deepmind_updates + 
+                        cloudflare_updates + github_updates + hf_updates + arxiv_updates)
     
     if not all_raw_findings:
         print("⚠️ Không có kết nối mạng hoặc nguồn cấp dữ liệu tạm thời chưa sẵn sàng.")
@@ -295,11 +368,15 @@ def main():
     seen_cache = load_seen_cache()
     
     google_new = [it for it in google_updates if it["link"] and it["link"] not in seen_cache][:3]
+    research_new = [it for it in research_updates if it["link"] and it["link"] not in seen_cache][:3]
+    deepmind_new = [it for it in deepmind_updates if it["link"] and it["link"] not in seen_cache][:3]
+    cloudflare_new = [it for it in cloudflare_updates if it["link"] and it["link"] not in seen_cache][:2]
     github_new = [it for it in github_updates if it["link"] and it["link"] not in seen_cache][:3]
     hf_new = [it for it in hf_updates if it["link"] and it["link"] not in seen_cache][:3]
     arxiv_new = [it for it in arxiv_updates if it["link"] and it["link"] not in seen_cache][:2]
     
-    new_findings = google_new + github_new + hf_new + arxiv_new
+    new_findings = (google_new + research_new + deepmind_new + 
+                    cloudflare_new + github_new + hf_new + arxiv_new)
 
     if not new_findings:
         print(f"[{timestamp}] ℹ️ Tất cả {len(all_raw_findings)} phát hiện đã tồn tại trong kho tri thức, bỏ qua ghi trùng lặp.")
@@ -312,12 +389,24 @@ def main():
                 f.write("> Tự động cập nhật mỗi khi Anh khởi động máy tính.\n\n")
 
         # Bọc nội dung cào từ web ngoài vào thẻ cách ly an toàn <untrusted_external_content>
-        session_md = [f"## 📅 Phiên Học Tập: `{timestamp}`\n"]
+        session_md = [f"## 📅 Phiên Học Tập Đa Nguồn: `{timestamp}`\n"]
         session_md.append("<untrusted_external_content>")
         
         if google_new:
-            session_md.append("### 🌐 Tin tức Nổi bật từ Google & Frontier Labs")
+            session_md.append("### 🌐 Tin tức Sản phẩm Google & Frontier Labs")
             for it in google_new:
+                session_md.append(f"- **[{it['source']}]** [{it['title']}]({it['link']})\n  > {it['snippet']}")
+            session_md.append("")
+
+        if research_new or deepmind_new:
+            session_md.append("### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind")
+            for it in (research_new + deepmind_new):
+                session_md.append(f"- **[{it['source']}]** [{it['title']}]({it['link']})\n  > {it['snippet']}")
+            session_md.append("")
+
+        if cloudflare_new:
+            session_md.append("### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)")
+            for it in cloudflare_new:
                 session_md.append(f"- **[{it['source']}]** [{it['title']}]({it['link']})\n  > {it['snippet']}")
             session_md.append("")
 
@@ -358,23 +447,24 @@ def main():
         try:
             with open(event_file, "w", encoding="utf-8") as ef:
                 json.dump({
-                    "event_type": "AUTONOMOUS_LEARNING_CAPTURE",
+                    "event_type": "MULTI_SOURCE_LEARNING_CAPTURE",
                     "timestamp": timestamp,
                     "findings_count": len(new_findings),
-                    "sources": ["Google AI", "GitHub", "Hugging Face", "ArXiv"],
+                    "sources": ["Google AI", "Google Research", "Google DeepMind", "Cloudflare", "GitHub", "Hugging Face", "ArXiv"],
                     "untrusted_content_isolated": True,
                     "deduplication_active": True
                 }, ef, indent=2)
         except Exception:
             pass
 
-        print(f"✅ Hoàn thành phiên học tập! Đã lưu {len(new_findings)} phát hiện mới (được cách ly an toàn) vào: {OUTPUT_FILE}")
+        print(f"✅ Hoàn thành phiên học tập đa nguồn! Đã lưu {len(new_findings)} phát hiện mới vào: {OUTPUT_FILE}")
 
-    # 6. Tầng 2 & 3: Tự động đào sâu tài liệu và đóng gói Candidate Skills (>1000 ⭐)
+    scripts_dir = os.path.dirname(os.path.abspath(__file__))
+    if scripts_dir not in sys.path:
+        sys.path.insert(0, scripts_dir)
+
+    # 6. Tầng 2 & 3: Tự động lọc và đóng gói Candidate Skills (>1000 ⭐, đã qua bộ lọc kiểm duyệt 2 tầng)
     try:
-        scripts_dir = os.path.dirname(os.path.abspath(__file__))
-        if scripts_dir not in sys.path:
-            sys.path.insert(0, scripts_dir)
         import skill_synthesizer
         candidate_skills = skill_synthesizer.synthesize_from_findings(all_raw_findings, min_stars=1000)
         if candidate_skills:
@@ -382,10 +472,28 @@ def main():
     except Exception as e:
         print(f"⚠️ Lỗi trong quá trình tự động đóng gói Candidate Skills: {e}")
 
-    # 7. Tự động đồng bộ kho tri thức lên Git Remote (GitOps Auto-Sync)
+    # 7. Tầng 4: Tiêu hóa bài nghiên cứu Google AI / DeepMind / ArXiv thành Cẩm nang Kiến trúc
+    try:
+        import knowledge_distiller
+        distilled_patterns = knowledge_distiller.distill_findings(all_raw_findings)
+        if distilled_patterns:
+            print(f"🏛️ Đã tiêu hóa {len(distilled_patterns)} Cẩm nang Kiến trúc mới tại: {os.path.join(BASE_DIR, 'knowledge', 'architecture_patterns')}")
+    except Exception as e:
+        print(f"⚠️ Lỗi trong quá trình tiêu hóa tri thức kiến trúc: {e}")
+
+    # 8. Tầng 5: Đào sâu & Cập nhật 4 Cẩm nang Thực chiến Chuyên đề (Domain Playbooks)
+    try:
+        import topical_research_crawler
+        updated_playbooks = topical_research_crawler.sync_domain_playbooks()
+        if updated_playbooks:
+            print(f"📘 Đã đồng bộ {len(updated_playbooks)} Cẩm nang Thực chiến Chuyên đề tại: {os.path.join(BASE_DIR, 'knowledge', 'domain_playbooks')}")
+    except Exception as e:
+        print(f"⚠️ Lỗi trong quá trình đồng bộ Cẩm nang Thực chiến: {e}")
+
+    # 9. Tự động đồng bộ toàn bộ tri thức và kỹ năng lên Git Remote (GitOps Auto-Sync)
     try:
         import sync_vault
-        sync_vault.push_vault("sync(vault): autonomous daily learning & candidate skills update")
+        sync_vault.push_vault("sync(vault): autonomous multi-source knowledge & domain playbooks update")
     except Exception as e:
         print(f"⚠️ Thông báo đồng bộ Git: {e}")
 

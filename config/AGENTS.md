@@ -42,6 +42,15 @@
   * Khi bắt đầu phiên làm việc mới, nếu Anh yêu cầu cập nhật công nghệ hoặc thảo luận kiến trúc AI/mã nguồn mới, Em chủ động kiểm tra file `C:/Users/game/.gemini/knowledge/daily_learnings.md` để nắm bắt thông tin mới nhất.
   * Luôn đối chiếu kiến thức mới thu thập với bài toán thực tế của Anh để đưa ra tư vấn và giải pháp tối ưu nhất.
 
+### 1.5. Quy Chuẩn Vận Hành Tự Động Google Flow Tool Builder (Flow Autonomous Closed-Loop Law)
+
+* **Nguyên lý cốt lõi (`Core Invariant`)**: Google Flow Tool Builder (nền tảng `flow.google.com`) hoạt động độc lập trên Cloud và **CHỈ NHẬN THAY ĐỔI THÔNG QUA PROMPT BUILDER** (thay đổi bằng câu lệnh Prompt tự nhiên trên giao diện Tool Builder) hoặc thao tác trực tiếp vào tab "Mã", **TUYỆT ĐỐI KHÔNG TỰ ĐỘNG ĐỒNG BỘ TỪ MÃ NGUỒN LOCAL TRÊN MÁY TÍNH**.
+* **Quy trình Khép Kín Tự Động 3 Bước Bắt Buộc (`Mandatory 3-Step Closed-Loop Protocol`)**:
+  * Khi Anh giao việc chỉnh sửa tính năng hoặc sửa lỗi Flow:
+    1. **Bước 1 — Tự động Dispatch Prompt (`Autonomous Prompt Dispatch`)**: Em tự động biên soạn câu lệnh Prompt chuẩn chỉnh và trực tiếp gửi sang khung chat **Prompt Builder ("Trình tạo công cụ")** trên Chrome thông qua kết nối CDP (cổng 9222/9223).
+    2. **Bước 2 — Lắng nghe & Đợi Hoàn Tất (`Await Cloud Generation`)**: Em chủ động giám sát trạng thái trình duyệt, đợi cho đến khi AI của Tool Builder hoàn tất việc sinh và cập nhật mã nguồn trên Cloud (không ngắt quãng hoặc can thiệp giữa chừng).
+    3. **Bước 3 — Kiểm toán & Review Đúng Phạm Vi (`In-Scope Code Review`)**: Sau khi sửa xong, Em lập tức truy cập vào tab **"Mã"**, trích xuất mã nguồn live và tiến hành kiểm toán (`Code Review`) đối chiếu nghiêm ngặt đúng phạm vi thay đổi (`Scope Control`), đảm bảo không phát sinh hồi quy (`No Regressions`) và không vi phạm 8 Quy Tắc Bất Biến trước khi báo cáo cho Anh.
+
 ## 2. Thứ tự ưu tiên
 
 Khi có xung đột, áp dụng thứ tự sau:

@@ -200,3 +200,37 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-12 10:19:56`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google Research]** [ToolGrad: Efficient tool-use dataset generation with textual "gradients"](https://research.google/blog/toolgrad-efficient-tool-use-dataset-generation-with-textual-gradients/)
+  > Machine Intelligence
+- **[Google Research]** [Transfer learning for genomic prediction in underrepresented populations](https://research.google/blog/transfer-learning-for-genomic-prediction-in-underrepresented-populations/)
+  > General Science
+- **[Google Research]** [A connectomics milestone: Mapping the complete male fruit fly brain](https://research.google/blog/a-connectomics-milestone-mapping-the-complete-male-fruit-fly-brain/)
+  > General Science
+- **[Google DeepMind]** [AlphaGenome Atlas: A predictive map of every possible DNA letter change in the human genome](https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/)
+  > AlphaGenome Atlas maps the molecular effects of 9 billion single-letter DNA variants across the human genome.
+- **[Google DeepMind]** [Introducing WeatherNext 3, our most advanced and accurate global weather AI model](https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model/)
+  > 
+- **[Google DeepMind]** [Proactive cyber defense for governments and enterprises](https://deepmind.google/blog/proactive-cyber-defense-for-governments-and-enterprises/)
+  > 
+
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [Introducing automatic remediation policies with Cloudflare CASB](https://blog.cloudflare.com/casb-policies/)
+  > Cloudflare CASB policies introduce a native automation engine built directly on the Cloudflare developer platform to remediate SaaS risks automatically. Security teams can now design event-driven l...
+- **[Cloudflare Engineering]** [1.1.1.1 now supports post-quantum DNSSEC, all 2,420 bytes of it](https://blog.cloudflare.com/post-quantum-dnssec-1111/)
+  > 1.1.1.1 now validates DNSSEC signatures using NIST’s post-quantum ML-DSA-44 algorithm. Here is how we manage 2,420-byte signatures and downgrade risks at scale.
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1152 ⭐)]** [vm0-ai/vm0](https://github.com/vm0-ai/vm0)
+  > Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control.
+- **[GitHub (413 ⭐)]** [vivekchand/clawmetry](https://github.com/vivekchand/clawmetry)
+  > See your agent think. Zero-config observability & governance for 30 AI agent runtimes: Claude Code, OpenAI Codex, Hermes, OpenClaw & 26 more. Live token cost...
+- **[GitHub (394 ⭐)]** [chadbyte/clay](https://github.com/chadbyte/clay)
+  > A self-hosted workspace where people and coding agents work together across projects, sessions, and providers.
+
+</untrusted_external_content>
+
+---
