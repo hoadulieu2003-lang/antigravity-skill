@@ -469,6 +469,23 @@ def main():
         candidate_skills = skill_synthesizer.synthesize_from_findings(all_raw_findings, min_stars=1000)
         if candidate_skills:
             print(f"🎯 Đã tự động đóng gói {len(candidate_skills)} Candidate Skills mới tại: {os.path.join(BASE_DIR, 'config', 'learning', 'candidates')}")
+        
+        # Tự động chấm điểm Benchmark cho Candidate Skills
+        try:
+            import candidate_benchmark
+            if candidate_skills:
+                for cand in candidate_skills:
+                    sname = cand.get("skill_name")
+                    if sname:
+                        bench_res = candidate_benchmark.benchmark_candidate(sname, save_manifest=True)
+                        score = bench_res.get("total_score", 0)
+                        rating = bench_res.get("rating", "NEEDS_REVIEW")
+                        badge = "🟢 [RECOMMENDED]" if rating == "RECOMMENDED" else "🟡 [NEEDS_REVIEW]"
+                        print(f"   📊 Đã chấm điểm Benchmark cho '{sname}': {score}/10 {badge}")
+            else:
+                candidate_benchmark.benchmark_all_candidates(save_manifest=True)
+        except Exception as be:
+            print(f"⚠️ Lỗi chấm điểm benchmark candidate: {be}")
     except Exception as e:
         print(f"⚠️ Lỗi trong quá trình tự động đóng gói Candidate Skills: {e}")
 
@@ -496,6 +513,18 @@ def main():
         sync_vault.push_vault("sync(vault): autonomous multi-source knowledge & domain playbooks update")
     except Exception as e:
         print(f"⚠️ Thông báo đồng bộ Git: {e}")
+
+    # 10. Tầng 6: Kiểm tra sức khỏe toàn diện hệ sinh thái ngoại vi (CDP, Git, Photoshop, Telegram)
+    try:
+        import cdp_auto_launcher
+        health_report = cdp_auto_launcher.check_ecosystem_health(auto_launch_cdp=True)
+        c9222_st = health_report.get("cdp_9222", {}).get("status", "OFFLINE")
+        git_st = health_report.get("git", {}).get("status", "UNKNOWN")
+        ps_st = health_report.get("photoshop", {}).get("status", "OFFLINE")
+        tg_st = health_report.get("telegram", {}).get("status", "UNKNOWN")
+        print(f"🩺 Sức khỏe Hệ sinh thái Ngoại vi: CDP 9222: {c9222_st} | Git: {git_st} | Photoshop: {ps_st} | Telegram: {tg_st}")
+    except Exception as e:
+        print(f"⚠️ Lỗi kiểm tra sức khỏe hệ sinh thái: {e}")
 
 if __name__ == "__main__":
     main()

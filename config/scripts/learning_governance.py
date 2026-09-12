@@ -286,13 +286,15 @@ class LearningGovernanceRuntime:
                 if os.path.exists(manifest_path):
                     with open(manifest_path, "r", encoding="utf-8") as f:
                         manifest_data = yaml.safe_load(f) or {}
+                benchmark_data = manifest_data.get("benchmark", {})
                 candidates.append({
                     "name": item,
                     "status": manifest_data.get("status", "CANDIDATE"),
                     "stars": manifest_data.get("stars", 0),
                     "source_repo": manifest_data.get("source_repo", "Unknown"),
                     "created_at": manifest_data.get("created_at", "Unknown"),
-                    "has_skill_file": os.path.exists(skill_path)
+                    "has_skill_file": os.path.exists(skill_path),
+                    "benchmark": benchmark_data
                 })
         return candidates
 
@@ -350,6 +352,7 @@ def main():
     parser.add_argument("--audit", action="store_true", help="Kiểm toán các bất biến INV-E01 đến INV-E07")
     parser.add_argument("--status", action="store_true", help="Hiển thị trạng thái kho tri thức và registry")
     parser.add_argument("--candidates", action="store_true", help="Liệt kê danh sách Candidate Skills đang chờ duyệt")
+    parser.add_argument("--benchmark", type=str, nargs="?", const="ALL", metavar="SKILL_NAME", help="Chấm điểm Benchmark định lượng cho Candidate Skill")
     parser.add_argument("--promote", type=str, metavar="SKILL_NAME", help="Thăng hạng Candidate Skill thành Official Skill (Human Gate)")
     args = parser.parse_args()
 
@@ -365,9 +368,31 @@ def main():
         for c in cands:
             print(f"• Kỹ năng      : {c['name']} (Từ repo: {c['source_repo']} - {c['stars']} ⭐)")
             print(f"  Trạng thái   : {c['status']}")
+            bench = c.get("benchmark", {})
+            if bench and "total_score" in bench:
+                rating = bench.get("rating", "NEEDS_REVIEW")
+                badge = "🟢 [RECOMMENDED]" if rating == "RECOMMENDED" else "🟡 [NEEDS_REVIEW]"
+                bk = bench.get("breakdown", {})
+                print(f"  Benchmark    : {bench.get('total_score', 0)}/10 {badge} (Cấu trúc: {bk.get('structure_metadata', 0)} | Lệnh: {bk.get('command_safety', 0)} | Tài liệu: {bk.get('reference_coverage', 0)} | Tương thích: {bk.get('ecosystem_compatibility', 0)})")
+            else:
+                print(f"  Benchmark    : ⚪ Chưa chấm điểm (Chạy: python candidate_benchmark.py --benchmark {c['name']})")
             print(f"  File SKILL.md: {'Có sẵn' if c['has_skill_file'] else 'Thiếu'}")
             print(f"  Lệnh duyệt   : python learning_governance.py --promote {c['name']}")
             print("────────────────────────────────────────────────────────────────")
+        return
+
+    if args.benchmark:
+        try:
+            import candidate_benchmark
+            if args.benchmark == "ALL":
+                res = candidate_benchmark.benchmark_all_candidates(save_manifest=True)
+                for sname, r in res.items():
+                    candidate_benchmark.print_benchmark_report(r)
+            else:
+                res = candidate_benchmark.benchmark_candidate(args.benchmark, save_manifest=True)
+                candidate_benchmark.print_benchmark_report(res)
+        except Exception as e:
+            print(f"❌ Lỗi khi thực hiện Benchmark: {e}")
         return
 
     if args.promote:
