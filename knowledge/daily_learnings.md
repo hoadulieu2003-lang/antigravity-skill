@@ -234,3 +234,33 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-12 17:33:55`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google Research]** [Mapping global methane emissions from space with deep learning](https://research.google/blog/mapping-global-methane-emissions-from-space-with-deep-learning/)
+  > Climate & Sustainability
+- **[Google DeepMind]** [Introducing Gemini 3.8 Flash and 3.8 Flash Cyber](https://deepmind.google/blog/introducing-gemini-3-8-flash-and-38-flash-cyber/)
+  > 
+
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [How we rebuilt Cloudflare Workers’ module registry for Node.js compatibility](https://blog.cloudflare.com/workers-module-registry-nodejs/)
+  > Workers now enables Node.js compatibility by default, supports applications up to 64 mebibytes, and adds a URL-based module registry with import.meta, lazy compilation, shared code caches, and clea...
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (48047 ⭐)]** [HKUDS/nanobot](https://github.com/HKUDS/nanobot)
+  > Ultra-lightweight, open-source, self-hosted personal AI agent framework in Python with WebUI, tools, memory, MCP, multi-agent workflows, automation, and chat...
+- **[GitHub (232 ⭐)]** [sorry510/go_binance_futures](https://github.com/sorry510/go_binance_futures)
+  > AI agent + 币安合约量化(重构中) + 模拟交易 + 历史回测
+- **[GitHub (912 ⭐)]** [TNT-Likely/PanWatch](https://github.com/TNT-Likely/PanWatch)
+  > 盯盘侠 PanWatch · 自托管 AI 盯盘助手，集成 TradingAgents 多 Agent 投资决策 | A股/港股/美股实时监控、持仓管理、智能分析、全渠道推送
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Probabilistic Focal Search: Accelerating Bounded-Suboptimal Search via Lower-Bound Advancement](https://arxiv.org/abs/2609.10584)
+  > arXiv:2609.10584v1 Announce Type: new Abstract: Bounded-suboptimal search seeks a solution within a factor $w$ of optimal while reducing search effort. Focal...
+- **[ArXiv CS.AI]** [Automating Quadratic Unconstrained Binary Optimization](https://arxiv.org/abs/2609.10629)
+  > arXiv:2609.10629v1 Announce Type: new Abstract: Quadratic Unconstrained Binary Optimization (QUBO) is a central formulation for combinatorial optimization an...
+
+</untrusted_external_content>
+
+---
