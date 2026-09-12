@@ -21,9 +21,9 @@ Quy chuẩn vận hành Hệ thống Dự án Đa Tác tử Động V2 (Dynamic 
 
 ## 2. Adaptive Execution — 3 Phân tầng Thực thi (FAST / STANDARD / CRITICAL)
 
-* **FAST (Tối thiểu Thủ tục — Giữ vững An toàn)**: Local scope, low blast radius, reversible, clear AC. Không chạm auth/schema/contracts. Vận hành: Plan-lite, `SINGLE_OWNER`, targeted verification.
-* **STANDARD (Feature / Module Tiêu chuẩn)**: Feature thông thường, liên kết nội bộ rõ ràng. Vận hành: Standard Spec, Work Packages, `OWNER + REVIEWER`, Developer Self-Verification.
-* **CRITICAL (Kiến trúc & Rủi ro Trọng yếu)**: Auth, permissions, secrets, database migrations, public contracts, core state. Vận hành: Forensic Spec, Bắt buộc Human Gate từ Anh (Product Owner), `ARCHITECT + ADVERSARIAL REVIEWER + HUMAN GATE`.
+* **FAST (Tối thiểu Thủ tục — Giữ vững An toàn)**: Local scope, low blast radius, reversible, clear AC. Không chạm auth/schema/contracts. Vận hành: Plan-lite, `SINGLE_OWNER` (Single-Agent Turbo), targeted verification tức thì, không gây trễ.
+* **STANDARD (Feature / Module Tiêu chuẩn)**: Feature thông thường, liên kết nội bộ rõ ràng. Vận hành: Standard Spec, Work Packages, `TEAMWORK_POD` (Tự động kích hoạt Teamwork Multi-Agent / `teamwork_preview` hoặc subagents pod, không bắt Anh phải gõ `/teamwork-preview`), Developer Self-Verification.
+* **CRITICAL (Kiến trúc & Rủi ro Trọng yếu)**: Auth, permissions, secrets, database migrations, public contracts, core state. Vận hành: Forensic Spec, Bắt buộc Human Gate từ Anh (Product Owner), `TEAMWORK_FULL_POD` (Tự động triệu tập Architect + Parallel Implementers + Adversarial Reviewer + Human Gate).
 
 ---
 
@@ -33,9 +33,10 @@ Quy chuẩn vận hành Hệ thống Dự án Đa Tác tử Động V2 (Dynamic 
 
 ---
 
-## 4. Minimum Agent Topology
+## 4. Minimum Agent Topology & Autonomous Teamwork Protocol
 
-* **Nguyên tắc Invariant**: `More Agents != More Intelligence`. Agent count = số lượng tối thiểu cần thiết theo topology. FAST = 1 owner, STANDARD = 1 owner + 1 reviewer, CRITICAL = architect + reviewer + human gate.
+* **Nguyên tắc Invariant**: `More Agents != More Intelligence`. Agent count = số lượng tối thiểu cần thiết theo topology. FAST = 1 owner (Single-Agent Turbo), STANDARD = Teamwork Pod (Owner + Reviewer via native `invoke_subagent`), CRITICAL = Teamwork Full Pod (Architect + Subagent Implementers + Adversarial Reviewer + Human Gate).
+* **Teamwork-by-Default Invariant**: Đối với mọi tác vụ STANDARD và CRITICAL, hệ thống **mặc định 100% tự động kích hoạt chế độ Teamwork Multi-Agent**. Antigravity đảm nhiệm vai trò Lead Integrator / Orchestrator, tự động soạn thảo prompt cấu trúc chuẩn và dispatch sang subagents/`teamwork_preview` mà Anh không cần phải nhớ hay gõ lệnh `/teamwork-preview` thủ công.
 
 ---
 

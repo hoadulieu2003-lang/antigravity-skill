@@ -27,7 +27,13 @@
       "coupling",
       "parallelizability"
     ],
-    "mandatory_multi_agent": false
+    "mandatory_multi_agent": true,
+    "adaptive_teamwork_routing": {
+      "fast_mode": "SINGLE_OWNER",
+      "standard_mode": "TEAMWORK_POD",
+      "critical_mode": "TEAMWORK_FULL_POD",
+      "autonomous_dispatch_skill": "teamwork_preview"
+    }
   },
   "concurrency": {
     "max_active_agents": 5,
@@ -46,9 +52,11 @@
       "SINGLE_OWNER",
       "SEQUENTIAL",
       "PARALLEL",
-      "HYBRID"
+      "HYBRID",
+      "TEAMWORK_POD",
+      "TEAMWORK_FULL_POD"
     ],
-    "default": "SINGLE_OWNER"
+    "default": "PARALLEL"
   },
   "loop_limits": {
     "max_planning_review_rounds": 2,

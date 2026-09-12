@@ -59,14 +59,29 @@ async function getConnectedFlowPage(port = 9222) {
   return { browser, flowPage, activePort: targetPort };
 }
 
+async function findToolFrame(flowPage) {
+  const frames = flowPage.frames();
+  for (const f of frames) {
+    try {
+      const hasApplet = await f.evaluate(() => {
+        return !!document.querySelector('textarea') || !!window.__FLOW04_READY__ || !!window.__FLOW_APPLET_READY__;
+      });
+      if (hasApplet) return f;
+    } catch (e) {}
+  }
+  return frames.find(f => {
+    const u = f.url();
+    return u === 'about:srcdoc' || u.includes('flow-applet') || u.includes('scf.usercontent.goog') || u.startsWith('blob:');
+  }) || null;
+}
+
 /**
  * TOOL 1: Inspect Deep State & React Fiber
  */
 async function handleInspectState(args) {
   const port = args?.port || 9222;
   const { flowPage, activePort } = await getConnectedFlowPage(port);
-  const frames = flowPage.frames();
-  const appFrame = frames.find(f => f.url() === 'about:srcdoc');
+  const appFrame = await findToolFrame(flowPage);
 
   const pageInfo = {
     connectedPort: activePort,
@@ -191,8 +206,7 @@ async function handleInjectAndRender(args) {
   }
 
   const { flowPage, activePort } = await getConnectedFlowPage(port);
-  let frames = flowPage.frames();
-  let appFrame = frames.find(f => f.url() === 'about:srcdoc');
+  let appFrame = await findToolFrame(flowPage);
 
   if (!appFrame) {
     // Navigate or click to open tool
@@ -202,8 +216,7 @@ async function handleInjectAndRender(args) {
       if (batchBtn) batchBtn.click();
     });
     await new Promise(r => setTimeout(r, 2000));
-    frames = flowPage.frames();
-    appFrame = frames.find(f => f.url() === 'about:srcdoc');
+    appFrame = await findToolFrame(flowPage);
   }
 
   if (!appFrame) {
@@ -294,8 +307,7 @@ async function handleClickButton(args) {
   }
 
   const { flowPage, activePort } = await getConnectedFlowPage(port);
-  const frames = flowPage.frames();
-  const appFrame = frames.find(f => f.url() === 'about:srcdoc');
+  const appFrame = await findToolFrame(flowPage);
 
   const clickTarget = async (frameOrPage) => {
     return await frameOrPage.evaluate((targetText) => {
@@ -342,8 +354,7 @@ async function handleEvaluateScript(args) {
   }
 
   const { flowPage, activePort } = await getConnectedFlowPage(port);
-  const frames = flowPage.frames();
-  const appFrame = frames.find(f => f.url() === 'about:srcdoc');
+  const appFrame = await findToolFrame(flowPage);
 
   let result;
   if (targetFrame === 'tool' && appFrame) {

@@ -28,3 +28,16 @@ Mọi tác vụ do Anh giao (không phân biệt lớn nhỏ) **bắt buộc lu�
 * **Step 2 — `$dev`**: Lập Master Plan, chia tách Work Packages, triển khai code và tự kiểm chứng chặt chẽ.
 * **Step 3 — `$test`**: Kiểm chứng độc lập kịch bản biên, phát hiện sai số trước khi xuất xưởng.
 * **Master Visual Engine — `$design`**: Giám đốc nghệ thuật, định hình Art Direction, Semantic Color Tokens, chuyển động mượt 60 FPS và tương phản WCAG AA.
+
+---
+
+## 🤖 4. Adaptive Teamwork Multi-Agent Protocol (Quy chuẩn Tự động hóa Đa tác tử Thích ứng)
+Hệ thống **mặc định 100% chế độ Teamwork Multi-Agent (Đa tác tử Hiệp đồng)** cho mọi quy trình kỹ thuật. Anh **không bao giờ cần phải gõ thủ công lệnh `/teamwork-preview`**:
+* **Phân tầng Thích ứng (`Adaptive Routing`)**:
+  * **Tác vụ nhỏ / giải thích code (`FAST Mode`)**: Em xử lý trực tiếp tức thì (`Single-Agent Turbo`) để tối đa hóa tốc độ phản hồi.
+  * **Tác vụ tính năng, module, kiểm thử, refactor hoặc tiền tố `$plan` / `$dev` (`STANDARD & CRITICAL Mode`)**: **100% Tự động kích hoạt Teamwork Multi-Agent**.
+* **Cơ chế Điều phối Tự trị (`Autonomous Orchestration`)**:
+  * Em giữ vai trò **Lead Orchestrator / Integrator (Tác tử Trưởng & Tích hợp)**.
+  * Tại pha `$dev`, Em tự động bóc tách đặc tả, cấu trúc payload (R1, R2, Acceptance Criteria, Independent Verification) và tự động gọi `invoke_subagent(TypeName: "teamwork_preview", Prompt: ...)` hoặc điều phối bầy subagent ngầm song song.
+  * Khi bầy agent hoàn tất, Em trực tiếp kiểm toán đối chiếu (`Audit & Self-Verification`) trước khi bàn giao cho Anh.
+

@@ -51,6 +51,17 @@
     2. **Bước 2 — Lắng nghe & Đợi Hoàn Tất (`Await Cloud Generation`)**: Em chủ động giám sát trạng thái trình duyệt, đợi cho đến khi AI của Tool Builder hoàn tất việc sinh và cập nhật mã nguồn trên Cloud (không ngắt quãng hoặc can thiệp giữa chừng).
     3. **Bước 3 — Kiểm toán & Review Đúng Phạm Vi (`In-Scope Code Review`)**: Sau khi sửa xong, Em lập tức truy cập vào tab **"Mã"**, trích xuất mã nguồn live và tiến hành kiểm toán (`Code Review`) đối chiếu nghiêm ngặt đúng phạm vi thay đổi (`Scope Control`), đảm bảo không phát sinh hồi quy (`No Regressions`) và không vi phạm 8 Quy Tắc Bất Biến trước khi báo cáo cho Anh.
 
+### 1.6. Quy Chuẩn Tự Động Hóa Đa Tác Tử Thích Ứng (Adaptive Teamwork Multi-Agent Law)
+
+* **Nguyên lý Mặc định Không Ma sát (`Zero-Friction Default Invariant`)**: Hệ thống **mặc định vận hành ở chế độ Đa tác tử Hiệp đồng (`Teamwork Multi-Agent`)**. Anh **tuyệt đối không bao giờ cần phải gõ thủ công lệnh `/teamwork-preview`**.
+* **Định tuyến Thích ứng Hai Phân tầng (`Adaptive Dual-Tier Routing`)**:
+  * **Tác vụ nhỏ / giải thích code (`FAST Mode`)**: Em xử lý tức thì (`Single-Agent Turbo`) để bảo đảm tốc độ và không tạo độ trễ thừa.
+  * **Tác vụ tính năng, module, kiểm thử, refactor hoặc quy trình `$plan` / `$dev` (`STANDARD & CRITICAL Mode`)**: **100% Tự động kích hoạt Teamwork Multi-Agent**.
+* **Trách nhiệm Tác tử Trưởng (`Lead Orchestrator & Integrator`)**:
+  * Em chịu trách nhiệm bóc tách đặc tả và Work Packages thành cấu trúc Teamwork chuẩn (R1, R2, Acceptance Criteria, Independent Verification).
+  * Em trực tiếp tự động gọi `invoke_subagent(TypeName: "teamwork_preview", Prompt: ...)` hoặc điều phối bầy subagent độc lập chạy ngầm song song.
+  * Khi bầy agent hoàn tất, Em trực tiếp kiểm toán đối chiếu (`Audit & Self-Verification`) trước khi bàn giao cho Anh.
+
 ## 2. Thứ tự ưu tiên
 
 Khi có xung đột, áp dụng thứ tự sau:
@@ -87,7 +98,7 @@ Không bắt đầu triển khai khi chưa hiểu rõ trạng thái mong muốn.
 ### 3.1. Tôn Chỉ Vận Hành Trọng Tâm: Bộ Kỹ Năng Tiền Tố $ ($plan, $dev, $test, $design)
 Áp dụng quy chuẩn vận hành chuẩn mực theo Hệ thống Dự án Đa Tác tử Động (`rules/dynamic-project-system.md`):
 * **Step 1 — `$plan`** (`$project-definition`): Khảo sát hiện trạng, định nghĩa phạm vi in/out, consumers, contracts, rủi ro và acceptance criteria. Xuất Definition Handoff và đồng bộ đặc tả `spec.md`. Phân tích read-only, tuyệt đối cấm sửa mã nguồn trong Step 1. Kết thúc bằng `READY_FOR_DELIVERY` để chuyển sang Step 2.
-* **Step 2 — `$dev`** (`$project-delivery`): Lập Master Plan, chia tách Work Packages với ownership và boundary rõ ràng. Thực thi theo topology (`SINGLE_OWNER`, `SEQUENTIAL`, `PARALLEL`, `HYBRID`). Antigravity đóng vai trò Lead Engine kiêm Integrator duy nhất quản lý toàn bộ tích hợp. Đóng băng bản candidate (`baseline.frozen: true`) và xuất `READY_FOR_VERIFICATION`.
+* **Step 2 — `$dev`** (`$project-delivery`): Lập Master Plan, chia tách Work Packages với ownership và boundary rõ ràng. Thực thi theo topology thích ứng (`FAST`: `SINGLE_OWNER` turbo; `STANDARD` / `CRITICAL`: **100% Mặc định kích hoạt Teamwork Multi-Agent** qua `invoke_subagent(TypeName: "teamwork_preview")` hoặc subagents pod). Antigravity đóng vai trò Lead Engine kiêm Integrator duy nhất quản lý toàn bộ tích hợp. Đóng băng bản candidate (`baseline.frozen: true`) và xuất `READY_FOR_VERIFICATION`.
 * **Step 3 — `$test`** (`$project-verification`): **CHỈ ĐƯỢC GỌI TƯỜNG MINH (Explicit Call Only)**. Tuyệt đối không tự kích hoạt ngầm sau Step 2. Mặc định `AUDIT_ONLY`, tester read-only, `AUTO_FIX = false`. Controlled repair chỉ sửa defect có bằng chứng và được duyệt, tối đa 2 vòng repair/retest.
 * **Master Visual Engine — `$design`**: Tự động đồng hành và nhúng vào toàn bộ chu trình giao diện: `$plan + $design` (lên layout, wireframe, semantic color tokens, typography pairing), `$dev + $design` (lập trình pixel-perfect, micro-animations 60FPS, zero-placeholder), `$test + $design` (nghiệm thu visual, tương phản WCAG AA và responsive đa kích thước).
 

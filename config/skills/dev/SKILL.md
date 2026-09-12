@@ -1,4 +1,4 @@
-﻿---
+---
 name: dev
 description: Step 2 ($dev or $project-delivery) — Plan, partition, produce, self-verify, and integrate an approved product, design, software, AI/data, automation, document, or content deliverable. Operates under strict Developer Self-Verification, Evidence Ledger emission, Scope Drift control, and Loop Budget accounting. Use after scope and acceptance criteria are defined; do not use to invent material requirements or perform final independent verification.
 ---
@@ -18,9 +18,16 @@ Turn an approved Definition Handoff into an integrated, verifiable release candi
 ## 1. Execution Mode & Topology Routing
 
 Delivery topology adapts strictly to the `execution_mode` established in $plan:
-- **`FAST` Delivery**: `SINGLE_OWNER`. Targeted implementation and targeted self-verification.
-- **`STANDARD` Delivery**: `OWNER + REVIEWER` (or bounded modular topology). Work package partition with clear boundaries.
-- **`CRITICAL` Delivery**: `ARCHITECT/OWNER + ADVERSARIAL REVIEWER + HUMAN GATE`. Preconditioned on explicit Human Approval from Product Owner (Anh).
+- **`FAST` Delivery**: `SINGLE_OWNER`. Targeted implementation and targeted self-verification (Single-Agent Turbo for rapid execution on small tasks, quick Q&A, and micro-fixes).
+- **`STANDARD` Delivery**: `TEAMWORK_MULTI_AGENT` (`OWNER + REVIEWER` pod or native `teamwork_preview`). Work package partition with autonomous delegation via `invoke_subagent`. Antigravity acts as Lead Integrator.
+- **`CRITICAL` Delivery**: `TEAMWORK_FULL_POD` (`ARCHITECT/OWNER + ADVERSARIAL REVIEWER + HUMAN GATE`). Autonomous multi-agent delegation preconditioned on explicit Human Approval from Product Owner (Anh).
+
+### 1.1 Autonomous Teamwork Multi-Agent Protocol (Mặc định Đa tác tử)
+When executing in `STANDARD` or `CRITICAL` mode:
+1. **Zero-Friction Invariant**: The Product Owner (Anh) is **NEVER required to type `/teamwork-preview` manually**. The system defaults to teamwork execution automatically.
+2. **Autonomous Dispatch**: Antigravity (acting as Lead Integrator / Orchestrator) converts the approved Definition Handoff into a structured Teamwork payload (R1, R2, Acceptance Criteria, Independent Verification).
+3. **Subagent Delegation**: Automatically call `invoke_subagent(TypeName: "teamwork_preview", Prompt: payload)` or orchestrate dedicated specialist subagents (`research`, `self`, or custom workers).
+4. **Integrator Gate & Synthesis**: When subagents complete execution, Antigravity audits diffs against AC, enforces the Developer Self-Verification contract, and presents verified results to Anh.
 
 ---
 

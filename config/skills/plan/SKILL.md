@@ -1,4 +1,4 @@
-﻿---
+---
 name: plan
 description: Step 1 ($plan or $project-definition) — Define and scope a new product, feature, technical module, service, AI/data pipeline, automation, or document/content deliverable with Adaptive Planning Depth (FAST / STANDARD / CRITICAL) before execution. Use when deciding what should exist, why it is needed, its boundaries, and its acceptance conditions; do not use to implement or perform final verification.
 ---
@@ -50,7 +50,7 @@ Use for standard features and modules:
 - **Dependencies & Integration**: Points of connection with other components.
 - **Acceptance Criteria**: Requirement-traceable criteria (AC-01, AC-02...).
 - **Work Boundaries**: Module ownership and do-not-touch boundaries.
-- **Proposed Topology**: OWNER + REVIEWER
+- **Proposed Topology**: TEAMWORK_POD (Autonomous Multi-Agent delegation via invoke_subagent)
 ```
 
 ### Template 3: CRITICAL PLAN (Pháp y Kiến trúc Chuyên sâu)
@@ -69,7 +69,7 @@ Use for architecture, security, database, contracts, or high-risk tasks:
 - **Security & Data Concerns**: Credentials, privacy, and migration safeguards.
 - **Acceptance Criteria**: Strict verification requirements.
 - **Human Decisions Required**: Explicit choices that require Product Owner (Anh) sign-off.
-- **Proposed Topology**: ARCHITECT + ADVERSARIAL REVIEWER + HUMAN GATE
+- **Proposed Topology**: TEAMWORK_FULL_POD (Architect + Parallel Implementers + Adversarial Reviewer + Human Gate)
 ```
 
 ---
