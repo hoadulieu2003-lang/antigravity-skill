@@ -1,8 +1,38 @@
 {
   "$schema": "https://antigravity.google/schemas/dynamic-project-system.json",
   "system": "Antigravity Dynamic Multi-Agent Project System",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "target_scope": "USER_GLOBAL",
+  "enterprise_operating_model": {
+    "organization_name": "Antigravity Autonomous Enterprise",
+    "sole_owner": "Anh",
+    "lead_orchestrator": "Em (Antigravity)",
+    "charter_path": "config/ENTERPRISE_CHARTER.md",
+    "divisions": {
+      "strategic_rd_board": {
+        "engine": "boost",
+        "subagents": ["DeepInvestigator", "DeepCoder"],
+        "scope": "forensic_investigation, threat_modeling, adversarial_architecture"
+      },
+      "software_delivery_squads": {
+        "engine": "teamwork_multi_agent",
+        "subagents": ["teamwork_preview", "parallel_swe_workers"],
+        "scope": "work_package_implementation, parallel_coding"
+      },
+      "visual_design_studio": {
+        "engine": "design",
+        "scope": "art_direction, semantic_tokens, 60fps_motion, wcag_aa"
+      },
+      "independent_audit_commission": {
+        "engine": "test",
+        "scope": "fresh_context_verification, evidence_ledger, adversarial_chaos"
+      },
+      "corporate_knowledge_vault": {
+        "engine": "governed_continuous_learning",
+        "vault_path": "knowledge/daily_learnings.md"
+      }
+    }
+  },
   "orchestration": {
     "mode": "dynamic",
     "role_assignment": "dynamic",
