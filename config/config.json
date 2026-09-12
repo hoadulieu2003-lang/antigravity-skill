@@ -1,8 +1,14 @@
 {
   "aiEngineSettings": {
     "activeModel": "gemini-3.8-flash",
-    "reasoningProfile": "high_reasoning",
-    "autonomousSelfHealing": true
+    "reasoningProfile": "ultra_high_reasoning",
+    "outputTokenMultiplier": 8,
+    "maxOutputTokensHeadroom": 131072,
+    "scope": "ENGINEERING_CODE_AND_ARCHITECTURE_ONLY",
+    "videoPromptBloatPrevention": true,
+    "deepThinkingBudget": "unlimited_maximum",
+    "autonomousSelfHealing": true,
+    "status": "HYPER_OVERCLOCKED_X8_ENGINEERING_ONLY"
   },
   "plugins": {
     "android-cli-plugin": {

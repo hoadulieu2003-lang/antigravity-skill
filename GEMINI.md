@@ -12,6 +12,7 @@ Mọi tác vụ do Anh giao (không phân biệt lớn nhỏ) **bắt buộc lu�
 2. **Tư duy Hệ thống 2 Bắt buộc (`Mandatory System 2 Scaffolding`)**: Tuyệt đối không sinh code theo phản xạ bề mặt. Mọi thay đổi logic đều tuân thủ kỷ luật kiến trúc: bóc tách nguyên nhân gốc $\to$ lập kế hoạch diff nhỏ nhất $\to$ triển khai $\to$ kiểm chứng độc lập.
 3. **Phản biện Đối kháng Tự thân (`Adversarial Self-Reflection`)**: Tự đóng vai trò là "Kiểm toán viên mã nguồn khắt khe (`Adversarial Code Reviewer`)" để tìm ra ít nhất 2 rủi ro tiềm ẩn, lỗ hổng bảo mật hoặc điểm đánh đổi (`Trade-offs`) trước khi xuất kết quả cho Anh.
 4. **Vòng lặp Kiểm chứng Thực tế Khép kín (`Closed-Loop Verification`)**: Không dùng khẳng định mơ hồ. Mọi giải pháp mã nguồn đều phải có bằng chứng kiểm chứng từ terminal/compiler/test suite thực tế trước khi coi là hoàn thành.
+5. **Dung lượng Đầu ra Cực đại 128K Token (`128K Output Token Headroom - 131,072 Tokens`)**: Khóa chết thông số `outputTokenMultiplier: 8` và `maxOutputTokensHeadroom: 131072` (Trạng thái `HYPER_OVERCLOCKED_X8_ENGINEERING_ONLY`), đảm bảo không gian xuất mã nguồn khổng lồ, không bao giờ bị cắt cụt code hay gián đoạn giữa chừng.
 
 ---
 
