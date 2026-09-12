@@ -377,10 +377,12 @@ def main():
             sys.path.insert(0, scripts_dir)
         import skill_synthesizer
         candidate_skills = skill_synthesizer.synthesize_from_findings(all_raw_findings, min_stars=1000)
-        if candidate_skills:
-            print(f"🎯 Đã tự động đóng gói {len(candidate_skills)} Candidate Skills mới tại: {os.path.join(BASE_DIR, 'config', 'learning', 'candidates')}")
+    # 7. Tự động đồng bộ kho tri thức lên Git Remote (GitOps Auto-Sync)
+    try:
+        import sync_vault
+        sync_vault.push_vault("sync(vault): autonomous daily learning & candidate skills update")
     except Exception as e:
-        print(f"⚠️ Lỗi trong quá trình tự động đóng gói Candidate Skills: {e}")
+        print(f"⚠️ Thông báo đồng bộ Git: {e}")
 
 if __name__ == "__main__":
     main()
