@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Autonomous Skill Synthesis Engine (Tầng 2 & Tầng 3)
 Part of Google Antigravity Engineering Ecosystem.
@@ -42,6 +42,61 @@ def get_ssl_context():
             ctx.check_hostname = False
             ctx.verify_mode = ssl.CERT_NONE
     return ctx
+
+# Danh sách từ khóa loại trừ (Denylist) - Loại bỏ ứng dụng GUI/Desktop chat thuần túy hoặc tài liệu sưu tầm
+EXCLUDED_PATTERNS = [
+    "desktop client",
+    "desktop app",
+    "gui client",
+    "gui wrapper",
+    "tauri wrapper",
+    "tauri client",
+    "tauri app",
+    "electron app",
+    "electron client",
+    "chat webui",
+    "chat ui",
+    "webui client",
+    "chat interface",
+    "awesome-",
+    "curated list",
+    "prompt collection",
+    "prompt engineering list",
+    "wallpaper",
+    "macos client",
+    "ios app",
+    "android app",
+]
+
+# Danh sách lĩnh vực năng lực kỹ thuật trọng tâm cho Anti (Allowlist)
+VALUABLE_TOPICS = [
+    "cli", "agent", "orchestrat", "framework", "automation",
+    "tool", "sdk", "library", "engine", "benchmark", "git",
+    "compiler", "parser", "ast", "test", "verification",
+    "workflow", "pipeline", "browser", "cdp", "puppeteer",
+    "playwright", "ffmpeg", "graphics", "ui", "ux", "design",
+    "api", "protocol", "mcp", "sidecar", "runtime", "model",
+    "inference", "embed", "rag", "vector", "search", "vision"
+]
+
+def evaluate_repo_relevance(repo_name: str, summary: str, sample_text: str = "") -> tuple[bool, str]:
+    """
+    Đánh giá độ tương thích năng lực (Relevance & Capability Fit Scoring).
+    Ngăn chặn hiện tượng Bắt nhầm Ngữ nghĩa (Semantic False Positive).
+    """
+    combined = f"{repo_name} {summary} {sample_text}".lower()
+    
+    # 1. Kiểm tra từ khóa bị loại trừ
+    for pattern in EXCLUDED_PATTERNS:
+        if pattern in combined:
+            return False, f"Khớp từ khóa loại trừ: '{pattern}' (GUI/Desktop chat hoặc tài liệu sưu tầm)"
+            
+    # 2. Kiểm tra độ phù hợp với các nhóm năng lực lõi của Anti
+    has_valuable_topic = any(topic in combined for topic in VALUABLE_TOPICS)
+    if not has_valuable_topic:
+        return False, "Không thuộc nhóm công nghệ hoặc năng lực lõi của Anti"
+        
+    return True, "Hợp lệ"
 
 def fetch_raw_github_readme(repo_full_name: str) -> tuple[str, str]:
     """Tải nội dung README.md từ GitHub (thử cả nhánh main và master)"""
@@ -200,6 +255,12 @@ def process_candidate_repo(repo_full_name: str, stars: int, summary: str) -> dic
         
     sanitized_readme = sanitize_content_for_storage(readme_content)
     
+    # Đánh giá lại độ tương thích năng lực với nội dung tài liệu README
+    is_relevant, reason = evaluate_repo_relevance(repo_full_name, summary, sanitized_readme[:2000])
+    if not is_relevant:
+        print(f"⛔ Hủy đóng gói '{repo_full_name}': {reason}")
+        return {"status": "REJECTED_BY_FILTER", "reason": reason}
+
     # Lưu tài liệu gốc vào references/
     ref_repo_dir = os.path.join(REFERENCES_DIR, skill_name)
     os.makedirs(ref_repo_dir, exist_ok=True)
@@ -271,12 +332,18 @@ def synthesize_from_findings(findings: list[dict], min_stars=1000) -> list[dict]
             summary = it.get("snippet", "")
             
             if "/" in repo_name and stars_val >= min_stars:
-                # Kiểm tra nếu skill đã tồn tại trong skills/ chính thức thì bỏ qua
+                # 1. Kiểm tra nếu skill đã tồn tại trong skills/ chính thức thì bỏ qua
                 skill_slug = re.sub(r'[^a-z0-9\-]', '-', repo_name.split('/')[-1].lower()).strip('-')
                 if os.path.exists(os.path.join(SKILLS_DIR, skill_slug)):
                     print(f"ℹ️ Skill '{skill_slug}' đã tồn tại trong skills chính thức, bỏ qua.")
                     continue
                     
+                # 2. Đánh giá độ tương thích năng lực (Relevance Filter)
+                is_relevant, reason = evaluate_repo_relevance(repo_name, summary)
+                if not is_relevant:
+                    print(f"⛔ Bỏ qua '{repo_name}': {reason}")
+                    continue
+
                 res = process_candidate_repo(repo_name, stars_val, summary)
                 if res.get("status") == "SUCCESS":
                     synthesized.append(res)
