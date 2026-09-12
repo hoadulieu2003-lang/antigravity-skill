@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AETHER ONE — Acoustic Spatial Transducer & Precision Synthesizer</title>
+  <meta name="description" content="A masterclass in acoustic engineering. Sculpted unibody Grade-5 Titanium, 50mm planar magnetic transducer core, and 360-degree spatial telemetry.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+  
+  <!-- GSAP 3.12.5 & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS (Sourced from master_design_direction_2026.md)
+       ========================================================================== */
+    :root {
+      --surface-void: #08090a;
+      --surface-panel: #0d0e11;
+      --surface-card: #121316;
+      --surface-card-elevated: #1a1b20;
+      --surface-card-hover: #212228;
+      --surface-glass: rgba(18, 19, 22, 0.75);
+
+      --text-primary: #f7f8f8;
+      --text-secondary: #c5cbd5;
+      --text-tertiary: #838894;
+      --text-quaternary: #545761;
+
+      --accent-champagne: #d4af37;
+      --accent-champagne-glow: rgba(212, 175, 55, 0.22);
+      --accent-violet: #7170ff;
+      --accent-violet-glow: rgba(113, 112, 255, 0.2);
+      --accent-titanium: #e2e4e9;
+
+      --border-subtle: rgba(255, 255, 255, 0.05);
+      --border-standard: rgba(255, 255, 255, 0.09);
+      --border-highlight: rgba(255, 255, 255, 0.2);
+      --border-gold: rgba(212, 175, 55, 0.4);
+
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+      --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+    }
+
+    /* Reset & Base Setup */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background-color: var(--surface-void);
+      color: var(--text-primary);
+      font-family: var(--font-ui);
+      font-feature-settings: "cv01" on, "ss03" on;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background-color: var(--surface-void);
+      overflow-x: hidden;
+      line-height: 1.5;
+      position: relative;
+    }
+
+    ::selection {
+      background: var(--accent-champagne);
+      color: #000;
+    }
+
+    /* Ambient Cursor Spotlight */
+    #cursor-spotlight {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      margin-left: -300px;
+      margin-top: -300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, rgba(113, 112, 255, 0.03) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      transform: translate3d(0, 0, 0);
+    }
+
+    /* Layout Wrappers */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 18px 0;
+      background: rgba(8, 9, 10, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: border-color 0.3s ease;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      font-size: 15px;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .brand-mark svg {
+      color: var(--accent-champagne);
+      filter: drop-shadow(0 0 8px var(--accent-champagne-glow));
+    }
+
+    .brand-mark span {
+      font-family: var(--font-mono);
+      font-weight: 400;
+      font-size: 12px;
+      color: var(--text-quaternary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-telemetry {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-tertiary);
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+    }
+
+    .telemetry-dot {
+      width: 6px;
+      height: 6px;
+      background: #27a644;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #27a644;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .nav-cta {
+      background: var(--text-primary);
+      color: #08090a;
+      border: none;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero-section {
+      min-height: 100vh;
+      padding-top: 150px;
+      padding-bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle Animated Ambient Background Grid */
+    .hero-bg-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.4;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent-champagne);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      box-shadow: 0 0 24px rgba(212, 175, 55, 0.1);
+    }
+
+    .hero-title {
+      font-size: clamp(52px, 8vw, 104px);
+      font-weight: 600;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #b8bec9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      max-width: 14ch;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(17px, 2.2vw, 22px);
+      font-weight: 400;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+
+    .btn-luxury-primary {
+      background: linear-gradient(180deg, #f7f8f8 0%, #e2e4e9 100%);
+      color: #08090a;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px -5px rgba(255, 255, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 1);
+      transition: all 0.3s var(--ease-out-expo);
+    }
+
+    .btn-luxury-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px -5px rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-luxury-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-primary);
+      border: 1px solid var(--border-standard);
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s var(--ease-out-expo);
+    }
+
+    .btn-luxury-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--border-highlight);
+      transform: translateY(-2px);
+    }
+
+    /* 3D Perspective Hero Card (Interactive Gyro / Cursor Parallax) */
+    .hero-stage-card-wrapper {
+      perspective: 1200px;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero-stage-card {
+      background: linear-gradient(180deg, #13151a 0%, #0a0b0d 100%);
+      border: 1px solid var(--border-standard);
+      border-radius: 20px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8),
+                  0 0 0 1px rgba(255, 255, 255, 0.05),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .hero-stage-card:hover {
+      border-color: rgba(212, 175, 55, 0.3);
+      box-shadow: 0 35px 100px -20px rgba(0, 0, 0, 0.9),
+                  0 0 40px rgba(212, 175, 55, 0.12),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .stage-canvas-container {
+      width: 100%;
+      height: 480px;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #1b1d24 0%, #0c0d10 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #interactive-product-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+
+    #interactive-product-canvas:active {
+      cursor: grabbing;
+    }
+
+    .stage-overlay-hud {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      pointer-events: none;
+    }
+
+    .stage-hud-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-tertiary);
+      text-align: left;
+      line-height: 1.8;
+      background: rgba(8, 9, 10, 0.65);
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(10px);
+    }
+
+    .stage-hud-meta strong {
+      color: var(--accent-champagne);
+    }
+
+    .stage-drag-hint {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.08);
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border-standard);
+      backdrop-filter: blur(12px);
+    }
+
+    /* ==========================================================================
+       CINEMA REEL SHOWCASE (Custom Video Player HUD)
+       ========================================================================== */
+    .cinema-section {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-champagne);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .video-player-container {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border-standard);
+      background: #000;
+      box-shadow: 0 30px 90px -20px rgba(0, 0, 0, 0.9);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .video-player-media {
+      width: 100%;
+      height: auto;
+      max-height: 620px;
+      display: block;
+      object-fit: cover;
+      opacity: 0.92;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Canvas Spectrum Overlay drawn on top of video */
+    #video-spectrum-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Glassmorphism Floating Video HUD */
+    .video-hud-controls {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px 32px;
+      background: linear-gradient(180deg, transparent 0%, rgba(8, 9, 10, 0.95) 100%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: opacity 0.3s ease;
+    }
+
+    .video-progress-bar {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      position: relative;
+      cursor: pointer;
+      transition: height 0.2s ease;
+    }
+
+    .video-progress-bar:hover {
+      height: 7px;
+    }
+
+    .video-progress-fill {
+      height: 100%;
+      width: 25%;
+      background: linear-gradient(90deg, var(--accent-champagne) 0%, #ffffff 100%);
+      border-radius: 999px;
+      position: relative;
+      box-shadow: 0 0 12px var(--accent-champagne);
+    }
+
+    .video-progress-fill::after {
+      content: "";
+      position: absolute;
+      right: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    }
+
+    .video-controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .video-ctrl-left, .video-ctrl-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hud-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.2s ease;
+    }
+
+    .hud-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: var(--border-highlight);
+      transform: scale(1.05);
+    }
+
+    .hud-time {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    .spectrum-toggle-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-standard);
+      padding: 6px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .spectrum-toggle-btn.active {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--accent-champagne);
+      color: var(--accent-champagne);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+    }
+
+    /* ==========================================================================
+       SCROLLYTELLING PINNED STAGE
+       ========================================================================== */
+    .scrolly-section {
+      position: relative;
+      background: #090a0d;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .scrolly-pinned-wrapper {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      overflow: hidden;
+    }
+
+    .scrolly-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .scrolly-stage-canvas-box {
+      height: 520px;
+      background: radial-gradient(circle at center, #15171d 0%, #0a0b0e 90%);
+      border: 1px solid var(--border-standard);
+      border-radius: 16px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    #scrolly-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .scrolly-cards-stack {
+      position: relative;
+      height: 380px;
+    }
+
+    .scrolly-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--surface-card);
+      border: 1px solid var(--border-standard);
+      border-radius: 16px;
+      padding: 36px;
+      opacity: 0;
+      transform: translateY(40px);
+      pointer-events: none;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+    }
+
+    .scrolly-card.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .scrolly-index {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-champagne);
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .scrolly-heading {
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .scrolly-body {
+      font-size: 15.5px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .scrolly-spec-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 20px;
+    }
+
+    .spec-item {
+      font-family: var(--font-mono);
+    }
+
+    .spec-label {
+      font-size: 11px;
+      color: var(--text-quaternary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .spec-val {
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* Track trigger height to allow scrolling through 3 stages */
+    .scrolly-trigger-track {
+      height: 300vh;
+    }
+
+    /* ==========================================================================
+       BENTO GRID SECTION (12 Columns Asymmetric)
+       ========================================================================== */
+    .bento-section {
+      padding: 120px 0;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .bento-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-standard);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s var(--ease-out-expo), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-highlight);
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--border-highlight);
+    }
+
+    .bento-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+    }
+
+    .span-8 { grid-column: span 8; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .span-12 { grid-column: span 12; }
+
+    @media (max-width: 900px) {
+      .span-8, .span-4, .span-6 {
+        grid-column: span 12;
+      }
+    }
+
+    /* Bento Card 1: Interactive Waveform Oscillator */
+    .osc-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .osc-wave-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .wave-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .wave-btn.active {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--accent-champagne);
+      color: var(--accent-champagne);
+    }
+
+    #oscillator-canvas {
+      width: 100%;
+      height: 200px;
+      background: #090a0c;
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+      display: block;
+    }
+
+    .osc-slider-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .osc-slider-row input[type="range"] {
+      flex: 1;
+      accent-color: var(--accent-champagne);
+    }
+
+    /* Bento Card 2: Interactive Tactile Knurled Dial */
+    .dial-card-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+    }
+
+    .knurled-dial-wrapper {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 24px 0;
+      user-select: none;
+      cursor: grab;
+    }
+
+    .knurled-dial-wrapper:active {
+      cursor: grabbing;
+    }
+
+    .dial-rotor {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #2a2c33 0%, #111215 80%);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8),
+                  inset 0 2px 4px rgba(255, 255, 255, 0.2),
+                  inset 0 -2px 4px rgba(0, 0, 0, 0.8);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.05s linear;
+    }
+
+    .dial-notch {
+      position: absolute;
+      top: 12px;
+      width: 4px;
+      height: 14px;
+      background: var(--accent-champagne);
+      border-radius: 2px;
+      box-shadow: 0 0 8px var(--accent-champagne);
+    }
+
+    .dial-readout {
+      font-family: var(--font-mono);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    /* Bento Card 5: Tactile KBD Shortcuts */
+    .kbd-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .kbd-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+    }
+
+    .kbd-item span {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    kbd, .kbd-key {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 24px;
+      min-width: 24px;
+      padding: 0 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: linear-gradient(180deg, #24262b 0%, #141518 100%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-bottom-color: rgba(255, 255, 255, 0.06);
+      border-radius: 4px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 4px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    kbd:active, .kbd-key:active, .kbd-key.pressed {
+      transform: translateY(2px);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+      background: #111215;
+    }
+
+    /* ==========================================================================
+       TOAST SYSTEM & SHORTCUT MODAL
+       ========================================================================== */
+    #toast-notification {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: rgba(18, 19, 23, 0.9);
+      border: 1px solid var(--border-highlight);
+      padding: 14px 24px;
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(16px);
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: all 0.3s var(--ease-out-expo);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    #toast-notification.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 60px 0;
+      background: #060708;
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-primary);
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Cursor Glow -->
+  <div id="cursor-spotlight"></div>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="container nav-inner">
+      <a href="#" class="brand-mark">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        AETHER <span>// ONE</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#hero">Overview</a></li>
+        <li><a href="#cinema">Cinema Reel</a></li>
+        <li><a href="#scrolly">Architecture</a></li>
+        <li><a href="#bento">Acoustic Specs</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div class="nav-telemetry">
+          <div class="telemetry-dot"></div>
+          <span>44.1 kHz // READY</span>
+        </div>
+        <button class="nav-cta" id="nav-preorder-btn">
+          Pre-Order Edition 01
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <canvas class="hero-bg-canvas" id="hero-grid-canvas"></canvas>
+
+    <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+      <div class="hero-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        Aerospace Grade-5 Titanium • Limited Edition 500
+      </div>
+
+      <h1 class="hero-title">AETHER ONE</h1>
+      <p class="hero-subtitle">
+        Acoustic Spatial Transducer & Precision Synthesizer. Machined unibody geometry, planar magnetic core, and zero-distortion acoustic telemetry.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-luxury-primary" id="btn-watch-reel">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          Experience Cinema Reel
+        </button>
+        <button class="btn-luxury-secondary" id="btn-inspect-specs">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+          </svg>
+          Technical Dossier
+        </button>
+      </div>
+
+      <!-- 3D Gyro Perspective Card -->
+      <div class="hero-stage-card-wrapper">
+        <div class="hero-stage-card" id="hero-3d-card">
+          <div class="stage-canvas-container">
+            <canvas id="interactive-product-canvas"></canvas>
+            
+            <div class="stage-overlay-hud">
+              <div class="stage-hud-meta">
+                <div>CHASSIS: <strong>Ti-6Al-4V GRADE 5</strong></div>
+                <div>MASS: <strong>248.4 GRAMS</strong></div>
+                <div>DRIVER: <strong>50mm PLANAR H-RES</strong></div>
+              </div>
+
+              <div class="stage-drag-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3"></path>
+                </svg>
+                Drag to Rotate 360° Perspective
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cinema Showcase Section (Video + Glassmorphic HUD) -->
+  <section class="cinema-section" id="cinema">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Cinematic Experience</span>
+        <h2 class="section-title">The Motion of Pure Acoustics</h2>
+        <p class="section-desc">Witness the harmonic convergence of aerospace unibody titanium and symmetrical magnetic pressure.</p>
+      </div>
+
+      <div class="video-player-container" id="video-container">
+        <!-- HTML5 Video element with high quality tech reel source + generative canvas fallback -->
+        <video class="video-player-media" id="luxury-video" loop playsinline muted>
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-robotic-arm-working-in-a-lab-42790-large.mp4" type="video/mp4">
+        </video>
+
+        <!-- Live Audio Spectrum Overlay Canvas -->
+        <canvas id="video-spectrum-canvas"></canvas>
+
+        <!-- Glassmorphism Floating HUD -->
+        <div class="video-hud-controls">
+          <div class="video-progress-bar" id="video-progress">
+            <div class="video-progress-fill" id="video-progress-fill"></div>
+          </div>
+
+          <div class="video-controls-row">
+            <div class="video-ctrl-left">
+              <button class="hud-btn" id="video-play-btn" title="Play/Pause [Space]">
+                <svg id="play-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              </button>
+
+              <button class="hud-btn" id="video-mute-btn" title="Mute/Unmute [M]">
+                <svg id="volume-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+              </button>
+
+              <div class="hud-time" id="video-time">00:08 / 00:32</div>
+            </div>
+
+            <div class="video-ctrl-right">
+              <button class="spectrum-toggle-btn active" id="spectrum-btn">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                Telemetry Spectrum: ON
+              </button>
+
+              <button class="hud-btn" id="video-fullscreen-btn" title="Fullscreen [F]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scrollytelling Pinned Stage Section -->
+  <section class="scrolly-section" id="scrolly">
+    <div class="scrolly-pinned-wrapper">
+      <div class="container">
+        <div class="scrolly-grid">
+          
+          <!-- Visual Layer Showcase Canvas -->
+          <div class="scrolly-stage-canvas-box">
+            <canvas id="scrolly-canvas"></canvas>
+          </div>
+
+          <!-- Pinned Content Cards -->
+          <div class="scrolly-cards-stack">
+            <!-- Stage 1 -->
+            <div class="scrolly-card active" id="scrolly-card-1">
+              <span class="scrolly-index">STAGE 01 // ARCHITECTURE</span>
+              <h3 class="scrolly-heading">Unibody Grade-5 Titanium</h3>
+              <p class="scrolly-body">
+                Carved via 5-axis robotic CNC milling from a solid billet of aerospace titanium. Zero mechanical joints. Acoustic resonance eliminated through monolithic density.
+              </p>
+              <div class="scrolly-spec-table">
+                <div class="spec-item">
+                  <div class="spec-label">Material Density</div>
+                  <div class="spec-val">4.43 g/cm³</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">Tensile Yield</div>
+                  <div class="spec-val">880 MPa</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stage 2 -->
+            <div class="scrolly-card" id="scrolly-card-2">
+              <span class="scrolly-index">STAGE 02 // TRANSDUCER</span>
+              <h3 class="scrolly-heading">50mm Planar Magnetic Core</h3>
+              <p class="scrolly-body">
+                An ultra-thin 2.5-micron diaphragm suspended between symmetrical neodymium N52 arrays. Drives air uniformly with absolute transient speed and zero phase shift.
+              </p>
+              <div class="scrolly-spec-table">
+                <div class="spec-item">
+                  <div class="spec-label">Magnetic Flux</div>
+                  <div class="spec-val">1.85 Tesla</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">Harmonic Distortion</div>
+                  <div class="spec-val">&lt; 0.0008% THD</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stage 3 -->
+            <div class="scrolly-card" id="scrolly-card-3">
+              <span class="scrolly-index">STAGE 03 // ACOUSTICS</span>
+              <h3 class="scrolly-heading">Spatial Holographic Chamber</h3>
+              <p class="scrolly-body">
+                Internal spiral acoustic baffles diffract standing waves into non-interfering vectors, reproducing physical room acoustic reflections with pinpoint binaural accuracy.
+              </p>
+              <div class="scrolly-spec-table">
+                <div class="spec-item">
+                  <div class="spec-label">Freq Response</div>
+                  <div class="spec-val">4 Hz – 64,000 Hz</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">Soundstage Width</div>
+                  <div class="spec-val">360° Iso-Planar</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Invisible Scroll Distance Track for GSAP Pinning -->
+    <div class="scrolly-trigger-track"></div>
+  </section>
+
+  <!-- Bento Grid Section -->
+  <section class="bento-section" id="bento">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Tactile Engineering</span>
+        <h2 class="section-title">Hardware Telemetry & Control</h2>
+        <p class="section-desc">Every knob, diode, and frequency filter responds to tactile user intent with zero latency.</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Card 1 (Span 8): Real-Time Interactive Acoustic Waveform Generator -->
+        <div class="bento-card span-8">
+          <div class="osc-controls">
+            <div>
+              <span class="section-tag" style="margin-bottom: 4px;">Live Oscilloscope</span>
+              <h3 style="font-size: 20px; font-weight: 600;">Harmonic Frequency Generator</h3>
+            </div>
+            <div class="osc-wave-buttons">
+              <button class="wave-btn active" data-wave="sine">Sine</button>
+              <button class="wave-btn" data-wave="triangle">Triangle</button>
+              <button class="wave-btn" data-wave="square">Square</button>
+            </div>
+          </div>
+
+          <canvas id="oscillator-canvas"></canvas>
+
+          <div class="osc-slider-row">
+            <span>20 Hz</span>
+            <input type="range" id="freq-slider" min="20" max="2000" value="440" step="1">
+            <span id="freq-readout" style="color: var(--accent-champagne); font-weight: 600; width: 80px; text-align: right;">440 Hz</span>
+          </div>
+        </div>
+
+        <!-- Card 2 (Span 4): Knurled Haptic Dial -->
+        <div class="bento-card span-4">
+          <div class="dial-card-inner">
+            <span class="section-tag" style="margin-bottom: 4px;">Tactile Interface</span>
+            <h3 style="font-size: 18px; font-weight: 600;">Rotary Precision Gain</h3>
+
+            <div class="knurled-dial-wrapper" id="knurled-dial">
+              <div class="dial-rotor" id="dial-rotor">
+                <div class="dial-notch"></div>
+              </div>
+            </div>
+
+            <div class="dial-readout" id="dial-gain-readout">+12.0 dB</div>
+            <p style="font-size: 12px; color: var(--text-tertiary); font-family: var(--font-mono);">
+              Drag dial to adjust volume &amp; harmonics
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 (Span 4): Zero-Loss Signal Cable -->
+        <div class="bento-card span-4">
+          <span class="section-tag" style="margin-bottom: 4px;">Signal Path</span>
+          <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 12px;">Monocrystal Pure Silver</h3>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+            Continuous casting monocrystal 99.9999% silver wiring with dual balanced 4.4mm Pentaconn termination.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent-champagne);">
+            RESISTANCE: 0.004 Ω/m
+          </div>
+        </div>
+
+        <!-- Card 4 (Span 4): Quantum Battery -->
+        <div class="bento-card span-4">
+          <span class="section-tag" style="margin-bottom: 4px;">Power Matrix</span>
+          <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 12px;">84-Hour Continuous Cell</h3>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+            Dual solid-state silicon anode cells with magnetic dock charging. 15 minutes of docking grants 18 hours of playback.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent-champagne);">
+            RAPID DOCK: 85W QI-MAGNETIC
+          </div>
+        </div>
+
+        <!-- Card 5 (Span 4): Tactile Mechanical Hotkeys -->
+        <div class="bento-card span-4">
+          <span class="section-tag" style="margin-bottom: 4px;">Command Protocol</span>
+          <h3 style="font-size: 18px; font-weight: 600;">Tactile Hotkey Matrix</h3>
+          
+          <div class="kbd-grid">
+            <div class="kbd-item">
+              <span>Play / Pause</span>
+              <kbd class="kbd-key" data-key=" ">Space</kbd>
+            </div>
+            <div class="kbd-item">
+              <span>Mute / Sound</span>
+              <kbd class="kbd-key" data-key="m">M</kbd>
+            </div>
+            <div class="kbd-item">
+              <span>Stage View</span>
+              <kbd class="kbd-key" data-key="1">1</kbd>
+            </div>
+            <div class="kbd-item">
+              <span>Full Screen</span>
+              <kbd class="kbd-key" data-key="f">F</kbd>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast Notification -->
+  <div id="toast-notification">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-champagne)" stroke-width="2">
+      <circle cx="12" cy="12" r="10"></circle>
+      <polyline points="12 6 12 12 14 14"></polyline>
+    </svg>
+    <span id="toast-message">Telemetry connected.</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <strong style="color: var(--text-primary); letter-spacing: 0.08em;">AETHER ACOUSTICS LABS</strong>
+        <p style="margin-top: 4px;">Crafted for Lead Architect // High-Craft Engineering Showcase 2026</p>
+      </div>
+
+      <ul class="footer-links">
+        <li><a href="#hero">Top</a></li>
+        <li><a href="#cinema">Reel</a></li>
+        <li><a href="#scrolly">Architecture</a></li>
+        <li><a href="#bento">Specifications</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       PRODUCTION JAVASCRIPT & GSAP MOTION ARCHITECTURE
+       ========================================================================== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Register GSAP plugins
+      gsap.registerPlugin(ScrollTrigger);
+
+      // ------------------------------------------------------------------------
+      // 1. Toast Notification Helper
+      // ------------------------------------------------------------------------
+      const toastEl = document.getElementById("toast-notification");
+      const toastMsg = document.getElementById("toast-message");
+      let toastTimer = null;
+
+      function showToast(msg) {
+        toastMsg.textContent = msg;
+        toastEl.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastEl.classList.remove("show");
+        }, 2400);
+      }
+
+      // ------------------------------------------------------------------------
+      // 2. Ambient Cursor Spotlight (Desktop only)
+      // ------------------------------------------------------------------------
+      const spotlight = document.getElementById("cursor-spotlight");
+      if (spotlight && window.matchMedia("(pointer: fine)").matches) {
+        document.addEventListener("mousemove", (e) => {
+          spotlight.style.opacity = "1";
+          gsap.to(spotlight, {
+            x: e.clientX,
+            y: e.clientY,
+            duration: 0.2,
+            ease: "power2.out"
+          });
+        });
+        document.addEventListener("mouseleave", () => {
+          spotlight.style.opacity = "0";
+        });
+      }
+
+      // ------------------------------------------------------------------------
+      // 3. 3D Perspective Tilt for Hero Card
+      // ------------------------------------------------------------------------
+      const card3D = document.getElementById("hero-3d-card");
+      if (card3D) {
+        card3D.addEventListener("mousemove", (e) => {
+          const rect = card3D.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          const rotateX = -(y / rect.height) * 12;
+          const rotateY = (x / rect.width) * 12;
+
+          gsap.to(card3D, {
+            rotateX: rotateX,
+            rotateY: rotateY,
+            duration: 0.4,
+            ease: "power1.out",
+            transformPerspective: 1200
+          });
+        });
+
+        card3D.addEventListener("mouseleave", () => {
+          gsap.to(card3D, {
+            rotateX: 0,
+            rotateY: 0,
+            duration: 0.8,
+            ease: "elastic.out(1, 0.4)"
+          });
+        });
+      }
+
+      // ------------------------------------------------------------------------
+      // 4. Interactive 3D Product Canvas (Hero Visualizer)
+      // ------------------------------------------------------------------------
+      const prodCanvas = document.getElementById("interactive-product-canvas");
+      if (prodCanvas) {
+        const ctx = prodCanvas.getContext("2d");
+        let width = prodCanvas.parentElement.clientWidth;
+        let height = prodCanvas.parentElement.clientHeight;
+        prodCanvas.width = width * window.devicePixelRatio;
+        prodCanvas.height = height * window.devicePixelRatio;
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+        let rotY = 0;
+        let rotX = 0.2;
+        let isDragging = false;
+        let lastMouseX = 0;
+        let lastMouseY = 0;
+
+        prodCanvas.addEventListener("mousedown", (e) => {
+          isDragging = true;
+          lastMouseX = e.clientX;
+          lastMouseY = e.clientY;
+        });
+
+        window.addEventListener("mouseup", () => { isDragging = false; });
+        window.addEventListener("mousemove", (e) => {
+          if (!isDragging) return;
+          const dx = e.clientX - lastMouseX;
+          const dy = e.clientY - lastMouseY;
+          rotY += dx * 0.008;
+          rotX += dy * 0.008;
+          lastMouseX = e.clientX;
+          lastMouseY = e.clientY;
+        });
+
+        // Procedural render of luxury acoustic hardware geometry
+        function renderProduct() {
+          if (!isDragging) {
+            rotY += 0.004; // Gentle ambient rotation
+          }
+          ctx.clearRect(0, 0, width, height);
+
+          const cx = width / 2;
+          const cy = height / 2;
+          const radius = Math.min(width, height) * 0.28;
+
+          ctx.save();
+          ctx.translate(cx, cy);
+
+          // Draw concentric titanium acoustic rings in 3D projection
+          for (let i = 0; i < 4; i++) {
+            const ringR = radius * (1 - i * 0.18);
+            const yOffset = Math.sin(rotX) * 25 * (i - 1.5);
+
+            ctx.save();
+            ctx.translate(0, yOffset);
+            ctx.scale(1, Math.cos(rotX) * 0.65 + 0.35);
+
+            ctx.beginPath();
+            ctx.arc(0, 0, ringR, 0, Math.PI * 2);
+            
+            // Dynamic metallic gradient matching angle
+            const grad = ctx.createLinearGradient(-ringR, -ringR, ringR, ringR);
+            const lightShift = Math.sin(rotY + i);
+            if (i === 0) {
+              // Outer Titanium Rim
+              grad.addColorStop(0, `rgba(226, 228, 233, ${0.4 + lightShift * 0.3})`);
+              grad.addColorStop(0.5, "rgba(212, 175, 55, 0.5)");
+              grad.addColorStop(1, "rgba(80, 85, 95, 0.4)");
+              ctx.lineWidth = 4;
+            } else if (i === 1) {
+              // Planar Magnetic Diaphragm Grid
+              grad.addColorStop(0, "rgba(212, 175, 55, 0.8)");
+              grad.addColorStop(1, "rgba(113, 112, 255, 0.6)");
+              ctx.lineWidth = 2;
+            } else {
+              grad.addColorStop(0, "rgba(255, 255, 255, 0.2)");
+              grad.addColorStop(1, "rgba(255, 255, 255, 0.05)");
+              ctx.lineWidth = 1;
+            }
+
+            ctx.strokeStyle = grad;
+            ctx.stroke();
+
+            // Symmetrical Acoustic Ray lines
+            ctx.beginPath();
+            for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 6) {
+              const ax = Math.cos(angle + rotY) * (ringR - 10);
+              const ay = Math.sin(angle + rotY) * (ringR - 10);
+              const bx = Math.cos(angle + rotY) * ringR;
+              const by = Math.sin(angle + rotY) * ringR;
+              ctx.moveTo(ax, ay);
+              ctx.lineTo(bx, by);
+            }
+            ctx.strokeStyle = "rgba(212, 175, 55, 0.25)";
+            ctx.stroke();
+
+            ctx.restore();
+          }
+
+          // Center Monolith Core
+          ctx.beginPath();
+          ctx.arc(0, 0, 16, 0, Math.PI * 2);
+          ctx.fillStyle = "#d4af37";
+          ctx.shadowColor = "#d4af37";
+          ctx.shadowBlur = 18;
+          ctx.fill();
+
+          ctx.restore();
+          requestAnimationFrame(renderProduct);
+        }
+        renderProduct();
+      }
+
+      // ------------------------------------------------------------------------
+      // 5. Cinema Video Subsystem & Live Audio Spectrum Overlay
+      // ------------------------------------------------------------------------
+      const video = document.getElementById("luxury-video");
+      const playBtn = document.getElementById("video-play-btn");
+      const playIcon = document.getElementById("play-icon");
+      const muteBtn = document.getElementById("video-mute-btn");
+      const videoProgress = document.getElementById("video-progress");
+      const progressFill = document.getElementById("video-progress-fill");
+      const videoTime = document.getElementById("video-time");
+      const spectrumToggleBtn = document.getElementById("spectrum-btn");
+      const specCanvas = document.getElementById("video-spectrum-canvas");
+      const specCtx = specCanvas ? specCanvas.getContext("2d") : null;
+
+      let isSpectrumActive = true;
+
+      function resizeSpectrumCanvas() {
+        if (!specCanvas) return;
+        specCanvas.width = specCanvas.parentElement.clientWidth * window.devicePixelRatio;
+        specCanvas.height = specCanvas.parentElement.clientHeight * window.devicePixelRatio;
+        specCtx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      }
+      resizeSpectrumCanvas();
+      window.addEventListener("resize", resizeSpectrumCanvas);
+
+      // Play / Pause Logic
+      function toggleVideoPlay() {
+        if (!video) return;
+        if (video.paused) {
+          video.play().then(() => {
+            playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+            showToast("Cinema Reel Playing");
+          }).catch(() => {
+            showToast("Autoplay blocked - Click to play");
+          });
+        } else {
+          video.pause();
+          playIcon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+          showToast("Cinema Reel Paused");
+        }
+      }
+
+      if (playBtn) playBtn.addEventListener("click", toggleVideoPlay);
+
+      // Mute / Unmute Logic
+      if (muteBtn) {
+        muteBtn.addEventListener("click", () => {
+          if (!video) return;
+          video.muted = !video.muted;
+          if (video.muted) {
+            muteBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="1" y1="1" x2="23" y2="23"></line><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon></svg>';
+            showToast("Audio Muted");
+          } else {
+            muteBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>';
+            showToast("Audio Unmuted (Spatial)");
+          }
+        });
+      }
+
+      // Video Time & Scrubber Update
+      if (video) {
+        video.addEventListener("timeupdate", () => {
+          if (video.duration) {
+            const pct = (video.currentTime / video.duration) * 100;
+            progressFill.style.width = pct + "%";
+
+            const curM = Math.floor(video.currentTime / 60);
+            const curS = Math.floor(video.currentTime % 60).toString().padStart(2, "0");
+            const durM = Math.floor(video.duration / 60);
+            const durS = Math.floor(video.duration % 60).toString().padStart(2, "0");
+            videoTime.textContent = `${curM}:${curS} / ${durM}:${durS}`;
+          }
+        });
+      }
+
+      // Progress bar click to seek
+      if (videoProgress && video) {
+        videoProgress.addEventListener("click", (e) => {
+          const rect = videoProgress.getBoundingClientRect();
+          const pos = (e.clientX - rect.left) / rect.width;
+          video.currentTime = pos * (video.duration || 1);
+        });
+      }
+
+      // Spectrum toggle button
+      if (spectrumToggleBtn) {
+        spectrumToggleBtn.addEventListener("click", () => {
+          isSpectrumActive = !isSpectrumActive;
+          spectrumToggleBtn.classList.toggle("active", isSpectrumActive);
+          spectrumToggleBtn.innerHTML = `
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            Telemetry Spectrum: ${isSpectrumActive ? "ON" : "OFF"}
+          `;
+          showToast(`Spectrum Visualizer ${isSpectrumActive ? "Enabled" : "Disabled"}`);
+        });
+      }
+
+      // Live Kinetic Spectrum Renderer Overlay
+      let specPhase = 0;
+      function renderSpectrumOverlay() {
+        if (specCanvas && specCtx) {
+          const w = specCanvas.parentElement.clientWidth;
+          const h = specCanvas.parentElement.clientHeight;
+          specCtx.clearRect(0, 0, w, h);
+
+          if (isSpectrumActive) {
+            specPhase += 0.08;
+            const bars = 48;
+            const barW = (w - 120) / bars;
+
+            for (let i = 0; i < bars; i++) {
+              const freqFactor = Math.sin(specPhase + i * 0.25) * 0.5 + 0.5;
+              const barH = (freqFactor * 80 + 10) * (video && !video.paused ? 1.2 : 0.4);
+              const x = 60 + i * barW;
+              const y = h - 90 - barH;
+
+              const barGrad = specCtx.createLinearGradient(x, y, x, y + barH);
+              barGrad.addColorStop(0, "rgba(212, 175, 55, 0.85)");
+              barGrad.addColorStop(1, "rgba(113, 112, 255, 0.1)");
+
+              specCtx.fillStyle = barGrad;
+              specCtx.fillRect(x + 2, y, barW - 4, barH);
+            }
+          }
+        }
+        requestAnimationFrame(renderSpectrumOverlay);
+      }
+      renderSpectrumOverlay();
+
+      // Fullscreen Button
+      const fsBtn = document.getElementById("video-fullscreen-btn");
+      const videoContainer = document.getElementById("video-container");
+      if (fsBtn && videoContainer) {
+        fsBtn.addEventListener("click", () => {
+          if (!document.fullscreenElement) {
+            videoContainer.requestFullscreen().catch(() => {});
+          } else {
+            document.exitFullscreen();
+          }
+        });
+      }
+
+      // ------------------------------------------------------------------------
+      // 6. Scrollytelling Pinned Stage (GSAP ScrollTrigger)
+      // ------------------------------------------------------------------------
+      const scrollyCanvas = document.getElementById("scrolly-canvas");
+      let scrollyCtx = scrollyCanvas ? scrollyCanvas.getContext("2d") : null;
+      let scrollyStage = 0; // 0: Titanium unibody, 1: Planar core, 2: Acoustic chamber
+
+      if (scrollyCanvas) {
+        function resizeScrollyCanvas() {
+          const w = scrollyCanvas.parentElement.clientWidth;
+          const h = scrollyCanvas.parentElement.clientHeight;
+          scrollyCanvas.width = w * window.devicePixelRatio;
+          scrollyCanvas.height = h * window.devicePixelRatio;
+          scrollyCtx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+        resizeScrollyCanvas();
+        window.addEventListener("resize", resizeScrollyCanvas);
+      }
+
+      function drawScrollyVisual(stageProgress) {
+        if (!scrollyCtx || !scrollyCanvas) return;
+        const w = scrollyCanvas.parentElement.clientWidth;
+        const h = scrollyCanvas.parentElement.clientHeight;
+        scrollyCtx.clearRect(0, 0, w, h);
+
+        const cx = w / 2;
+        const cy = h / 2;
+
+        scrollyCtx.save();
+        scrollyCtx.translate(cx, cy);
+
+        if (stageProgress < 0.33) {
+          // STAGE 1: Titanium Unibody Hexagon & CNC Milling Path
+          const p = stageProgress / 0.33;
+          scrollyCtx.strokeStyle = "rgba(226, 228, 233, 0.8)";
+          scrollyCtx.lineWidth = 3;
+          
+          scrollyCtx.beginPath();
+          for (let a = 0; a < Math.PI * 2; a += Math.PI / 3) {
+            const r = 120 + Math.sin(p * Math.PI) * 20;
+            const x = Math.cos(a) * r;
+            const y = Math.sin(a) * r;
+            if (a === 0) scrollyCtx.moveTo(x, y);
+            else scrollyCtx.lineTo(x, y);
+          }
+          scrollyCtx.closePath();
+          scrollyCtx.stroke();
+
+          // Laser CNC Toolhead indicator
+          scrollyCtx.fillStyle = "#d4af37";
+          scrollyCtx.shadowColor = "#d4af37";
+          scrollyCtx.shadowBlur = 12;
+          scrollyCtx.beginPath();
+          scrollyCtx.arc(Math.cos(p * 6) * 120, Math.sin(p * 6) * 120, 6, 0, Math.PI * 2);
+          scrollyCtx.fill();
+
+        } else if (stageProgress < 0.66) {
+          // STAGE 2: Planar Magnetic Array Diaphragm
+          const p = (stageProgress - 0.33) / 0.33;
+          const rows = 9;
+          const spacing = 22;
+
+          for (let i = -rows/2; i <= rows/2; i++) {
+            const y = i * spacing;
+            const lineW = 200 - Math.abs(i) * 20;
+
+            scrollyCtx.beginPath();
+            scrollyCtx.moveTo(-lineW, y);
+            scrollyCtx.lineTo(lineW, y);
+            scrollyCtx.strokeStyle = i % 2 === 0 ? "rgba(212, 175, 55, 0.85)" : "rgba(113, 112, 255, 0.7)";
+            scrollyCtx.lineWidth = 2.5;
+            scrollyCtx.stroke();
+          }
+
+          // Magnetic field lines
+          scrollyCtx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+          scrollyCtx.lineWidth = 1;
+          scrollyCtx.beginPath();
+          scrollyCtx.arc(0, 0, 140, 0, Math.PI * 2);
+          scrollyCtx.stroke();
+
+        } else {
+          // STAGE 3: 360 Spatial Chamber Soundwaves
+          const p = (stageProgress - 0.66) / 0.34;
+          for (let r = 20; r < 180; r += 28) {
+            const dynamicR = r + p * 20;
+            scrollyCtx.beginPath();
+            scrollyCtx.arc(0, 0, dynamicR, 0, Math.PI * 2);
+            scrollyCtx.strokeStyle = `rgba(212, 175, 55, ${Math.max(0, 1 - dynamicR / 200)})`;
+            scrollyCtx.lineWidth = 1.5;
+            scrollyCtx.stroke();
+          }
+        }
+
+        scrollyCtx.restore();
+      }
+
+      // Create Pinned Timeline
+      const scrollyCards = [
+        document.getElementById("scrolly-card-1"),
+        document.getElementById("scrolly-card-2"),
+        document.getElementById("scrolly-card-3")
+      ];
+
+      ScrollTrigger.create({
+        trigger: ".scrolly-section",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.6,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          drawScrollyVisual(progress);
+
+          if (progress < 0.33) {
+            scrollyCards[0].classList.add("active");
+            scrollyCards[1].classList.remove("active");
+            scrollyCards[2].classList.remove("active");
+          } else if (progress < 0.66) {
+            scrollyCards[0].classList.remove("active");
+            scrollyCards[1].classList.add("active");
+            scrollyCards[2].classList.remove("active");
+          } else {
+            scrollyCards[0].classList.remove("active");
+            scrollyCards[1].classList.remove("active");
+            scrollyCards[2].classList.add("active");
+          }
+        }
+      });
+      drawScrollyVisual(0.05);
+
+      // ------------------------------------------------------------------------
+      // 7. Bento Grid Interactive Waveform Oscillator
+      // ------------------------------------------------------------------------
+      const oscCanvas = document.getElementById("oscillator-canvas");
+      const freqSlider = document.getElementById("freq-slider");
+      const freqReadout = document.getElementById("freq-readout");
+      const waveBtns = document.querySelectorAll(".wave-btn");
+
+      let oscType = "sine";
+      let oscFreq = 440;
+      let oscCtx = oscCanvas ? oscCanvas.getContext("2d") : null;
+      let oscPhase = 0;
+
+      if (oscCanvas) {
+        function resizeOscCanvas() {
+          oscCanvas.width = oscCanvas.parentElement.clientWidth * window.devicePixelRatio;
+          oscCanvas.height = 200 * window.devicePixelRatio;
+          oscCtx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        }
+        resizeOscCanvas();
+        window.addEventListener("resize", resizeOscCanvas);
+      }
+
+      waveBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          waveBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          oscType = btn.getAttribute("data-wave");
+          showToast(`Waveform: ${oscType.toUpperCase()}`);
+        });
+      });
+
+      if (freqSlider) {
+        freqSlider.addEventListener("input", (e) => {
+          oscFreq = parseInt(e.target.value);
+          freqReadout.textContent = oscFreq + " Hz";
+        });
+      }
+
+      function renderOscillator() {
+        if (oscCanvas && oscCtx) {
+          const w = oscCanvas.parentElement.clientWidth;
+          const h = 200;
+          oscCtx.clearRect(0, 0, w, h);
+
+          // Grid lines
+          oscCtx.strokeStyle = "rgba(255, 255, 255, 0.05)";
+          oscCtx.lineWidth = 1;
+          oscCtx.beginPath();
+          oscCtx.moveTo(0, h / 2);
+          oscCtx.lineTo(w, h / 2);
+          oscCtx.stroke();
+
+          // Waveform
+          oscPhase += 0.04;
+          oscCtx.beginPath();
+          oscCtx.lineWidth = 2.5;
+          oscCtx.strokeStyle = "#d4af37";
+          oscCtx.shadowColor = "rgba(212, 175, 55, 0.5)";
+          oscCtx.shadowBlur = 10;
+
+          const cycles = Math.min(12, oscFreq / 60);
+          for (let x = 0; x < w; x++) {
+            const normX = x / w;
+            let yVal = 0;
+
+            if (oscType === "sine") {
+              yVal = Math.sin(normX * Math.PI * 2 * cycles + oscPhase);
+            } else if (oscType === "triangle") {
+              yVal = Math.asin(Math.sin(normX * Math.PI * 2 * cycles + oscPhase)) * (2 / Math.PI);
+            } else if (oscType === "square") {
+              yVal = Math.sin(normX * Math.PI * 2 * cycles + oscPhase) >= 0 ? 1 : -1;
+            }
+
+            const y = h / 2 + yVal * 60;
+            if (x === 0) oscCtx.moveTo(x, y);
+            else oscCtx.lineTo(x, y);
+          }
+          oscCtx.stroke();
+          oscCtx.shadowBlur = 0; // reset
+        }
+        requestAnimationFrame(renderOscillator);
+      }
+      renderOscillator();
+
+      // ------------------------------------------------------------------------
+      // 8. Bento Knurled Tactile Rotary Dial
+      // ------------------------------------------------------------------------
+      const dialWrapper = document.getElementById("knurled-dial");
+      const dialRotor = document.getElementById("dial-rotor");
+      const dialGainReadout = document.getElementById("dial-gain-readout");
+
+      let dialAngle = 45;
+      let isDialDragging = false;
+
+      if (dialWrapper && dialRotor) {
+        function updateDial(e) {
+          const rect = dialWrapper.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const rad = Math.atan2(e.clientY - cy, e.clientX - cx);
+          let deg = rad * (180 / Math.PI) + 90;
+          if (deg < 0) deg += 360;
+
+          dialAngle = deg;
+          dialRotor.style.transform = `rotate(${deg}deg)`;
+
+          const gain = ((deg / 360) * 24 - 6).toFixed(1);
+          dialGainReadout.textContent = (gain >= 0 ? "+" : "") + gain + " dB";
+        }
+
+        dialWrapper.addEventListener("mousedown", (e) => {
+          isDialDragging = true;
+          updateDial(e);
+        });
+
+        window.addEventListener("mousemove", (e) => {
+          if (isDialDragging) updateDial(e);
+        });
+
+        window.addEventListener("mouseup", () => {
+          if (isDialDragging) {
+            isDialDragging = false;
+            showToast(`Gain Level: ${dialGainReadout.textContent}`);
+          }
+        });
+      }
+
+      // ------------------------------------------------------------------------
+      // 9. Keyboard Shortcuts Matrix
+      // ------------------------------------------------------------------------
+      document.addEventListener("keydown", (e) => {
+        // Space -> Play/Pause
+        if (e.code === "Space" && e.target.tagName !== "INPUT") {
+          e.preventDefault();
+          toggleVideoPlay();
+          flashKbdKey(" ");
+        }
+        // M -> Mute/Unmute
+        if (e.key.toLowerCase() === "m") {
+          if (muteBtn) muteBtn.click();
+          flashKbdKey("m");
+        }
+        // 1, 2, 3 -> Jump to scrolly stages
+        if (["1", "2", "3"].includes(e.key)) {
+          const scrollySec = document.getElementById("scrolly");
+          if (scrollySec) {
+            const trackOffset = (parseInt(e.key) - 1) * (window.innerHeight * 0.9);
+            window.scrollTo({
+              top: scrollySec.offsetTop + trackOffset,
+              behavior: "smooth"
+            });
+            showToast(`Jump to Stage 0${e.key}`);
+            flashKbdKey(e.key);
+          }
+        }
+        // F -> Fullscreen video
+        if (e.key.toLowerCase() === "f") {
+          if (fsBtn) fsBtn.click();
+          flashKbdKey("f");
+        }
+      });
+
+      function flashKbdKey(keyChar) {
+        const kbd = document.querySelector(`.kbd-key[data-key="${keyChar}"]`);
+        if (kbd) {
+          kbd.classList.add("pressed");
+          setTimeout(() => kbd.classList.remove("pressed"), 180);
+        }
+      }
+
+      // Smooth scroll triggers for nav links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // Quick CTA interaction
+      const preorderBtn = document.getElementById("nav-preorder-btn");
+      if (preorderBtn) {
+        preorderBtn.addEventListener("click", () => {
+          showToast("Edition 01: Allocation Reserved (500 Units Total)");
+        });
+      }
+
+      const watchReelBtn = document.getElementById("btn-watch-reel");
+      if (watchReelBtn) {
+        watchReelBtn.addEventListener("click", () => {
+          const cinema = document.getElementById("cinema");
+          cinema.scrollIntoView({ behavior: "smooth" });
+          if (video && video.paused) {
+            setTimeout(toggleVideoPlay, 600);
+          }
+        });
+      }
+
+      const inspectBtn = document.getElementById("btn-inspect-specs");
+      if (inspectBtn) {
+        inspectBtn.addEventListener("click", () => {
+          document.getElementById("bento").scrollIntoView({ behavior: "smooth" });
+        });
+      }
+
+      // Ready signal
+      showToast("AETHER ONE Telemetry Engine Loaded (60 FPS)");
+    });
+  </script>
+</body>
+</html>
