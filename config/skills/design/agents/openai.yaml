@@ -1,0 +1,6 @@
+interface:
+  display_name: "Master Design Engine"
+  short_description: "Unified UI/UX & Visual Design Studio ($design)"
+  default_prompt: "Use $design to create beautiful, world-class UI/UX interfaces by combining OpenDesign brand systems, UI-UX-Pro-Max aesthetics, and Studio Packshot assets."
+policy:
+  allow_implicit_invocation: true

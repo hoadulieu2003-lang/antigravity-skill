@@ -1,0 +1,35 @@
+schema_version: "1.0"
+project:
+  name: ""
+  objective: ""
+deliverable:
+  type: ""
+  description: ""
+phase:
+  current: "definition"
+  status: "draft"
+baseline:
+  identifier: ""
+  frozen: false
+current_state:
+  evidence: []
+scope:
+  in: []
+  out: []
+consumers: []
+capabilities: []
+contracts:
+  inputs: []
+  outputs: []
+  interfaces: []
+dependencies: []
+constraints: []
+acceptance_criteria: []
+assumptions: []
+risks: []
+decisions: []
+work_packages: []
+evidence: []
+known_issues: []
+phase_verdict: ""
+next_action: ""

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "cdp-bridge": {
+      "command": "node",
+      "args": [
+        "C:\\Users\\game\\.gemini\\config\\sidecars\\cdp-bridge\\cdp_mcp_server.js"
+      ]
+    }
+  }
+}

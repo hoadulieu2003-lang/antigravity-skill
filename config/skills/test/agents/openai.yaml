@@ -1,0 +1,6 @@
+interface:
+  display_name: "Test (Project Verification)"
+  short_description: "Verify frozen deliverables safely ($test)"
+  default_prompt: "Use $test to audit this frozen release candidate against its acceptance criteria."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,134 @@
+{
+  "$schema": "https://antigravity.google/schemas/dynamic-project-system.json",
+  "system": "Antigravity Dynamic Multi-Agent Project System",
+  "version": "1.0.0",
+  "target_scope": "USER_GLOBAL",
+  "orchestration": {
+    "mode": "dynamic",
+    "role_assignment": "dynamic",
+    "skills": {
+      "definition": "plan",
+      "delivery": "dev",
+      "verification": "test",
+      "visual_engine": "design",
+      "aliases": {
+        "plan": ["project-definition"],
+        "dev": ["project-delivery"],
+        "test": ["project-verification"],
+        "design": ["master-design-studio"]
+      }
+    },
+    "router_evaluation_dimensions": [
+      "deliverable_type",
+      "current_phase",
+      "complexity",
+      "risk",
+      "domain_diversity",
+      "coupling",
+      "parallelizability"
+    ],
+    "mandatory_multi_agent": false
+  },
+  "concurrency": {
+    "max_active_agents": 5,
+    "max_parallel_workers": 3,
+    "max_parallel_writers": 3,
+    "parallel_writers_invariants": {
+      "independent_ownership": true,
+      "defined_inputs_outputs": true,
+      "no_shared_mutable_surface": true,
+      "designated_integrator": true,
+      "fallback_on_violation": "SINGLE_OWNER"
+    }
+  },
+  "execution_topology": {
+    "allowed": [
+      "SINGLE_OWNER",
+      "SEQUENTIAL",
+      "PARALLEL",
+      "HYBRID"
+    ],
+    "default": "SINGLE_OWNER"
+  },
+  "loop_limits": {
+    "max_planning_review_rounds": 2,
+    "max_execution_retry_rounds": 2,
+    "max_repair_rounds": 2,
+    "allow_full_restart": false,
+    "retry_until_pass_permitted": false
+  },
+  "phase_permissions": {
+    "step1_definition": {
+      "specialist_system_access": "READ_ONLY",
+      "allowed_write_targets": [
+        "Definition Handoff",
+        "PROJECT_STATE.yaml"
+      ],
+      "reviewer_allowed_actions": [
+        "verdict",
+        "critique"
+      ],
+      "implementation_permitted": false
+    },
+    "step2_delivery": {
+      "planner_implementation_access": "READ_ONLY",
+      "worker_write_scope": "ASSIGNED_WORK_PACKAGE_OWNERSHIP_ONLY",
+      "cross_worker_scope_modification": false,
+      "shared_surface_manager": "INTEGRATOR_ONLY",
+      "reviewer_access": "READ_ONLY"
+    },
+    "step3_verification": {
+      "invocation_policy": "EXPLICIT_CALL_ONLY",
+      "auto_invoke_after_step2": false,
+      "default_mode": "AUDIT_ONLY",
+      "tester_candidate_access": "READ_ONLY",
+      "auto_fix": false,
+      "repair_requires_evidence_and_approval": true,
+      "repair_owner_locked_scope": true,
+      "max_repair_retest_rounds": 2,
+      "exhausted_budget_verdict": ["FAIL", "BLOCKED"]
+    }
+  },
+  "phase_transitions": {
+    "READY_FOR_DELIVERY": "Step 2 ($project-delivery)",
+    "READY_FOR_VERIFICATION": "PAUSE (Awaiting explicit invocation of Step 3)",
+    "PASS": "TERMINATE_SUCCESS",
+    "CONDITIONAL_PASS": "TERMINATE_WITH_RESIDUAL_RISKS",
+    "FAIL": "STOP_AND_REQUEST_ARCHITECT_DECISION",
+    "BLOCKED": "STOP_AND_REQUEST_ARCHITECT_DECISION"
+  },
+  "finding_routing": {
+    "REQUIREMENT_GAP": "Step 1 ($project-definition)",
+    "PLAN_OR_ARCHITECTURE_GAP": "Step 2 Planning",
+    "LOCAL_IMPLEMENTATION_DEFECT": "Controlled Repair Queue",
+    "INVALID_VERIFICATION_METHOD": "Step 3 Internal Correction",
+    "NEW_FEATURE_REQUEST": "Backlog"
+  },
+  "runtime_capability_map": {
+    "supported_native": [
+      "SKILL_DISCOVERY_USER_GLOBAL",
+      "PROGRESSIVE_DISCLOSURE",
+      "RULE_HIERARCHICAL_INJECTION",
+      "EXPLICIT_INVOCATION_POLICY_YAML",
+      "PROJECT_STATE_YAML_CONTRACT",
+      "MCP_TOOL_GATEWAYS"
+    ],
+    "unsupported_capabilities": [
+      {
+        "capability": "OS_LEVEL_CONCURRENT_THREAD_SCHEDULER_LOCKS",
+        "status": "UNSUPPORTED_CAPABILITY",
+        "native_alternative": "Governed by AGENTS.md Single-Writer Axiom and Work Package scope partitioning."
+      },
+      {
+        "capability": "ARBITRARY_SUBAGENT_PROCESS_FORK_CLI",
+        "status": "UNSUPPORTED_CAPABILITY",
+        "native_alternative": "Subagents routed via browser_subagent, schedule background runners, and ai-engineering-team MCP specialist gateways."
+      },
+      {
+        "capability": "DAEMON_KERNEL_LOOP_INTERRUPTER",
+        "status": "UNSUPPORTED_CAPABILITY",
+        "native_alternative": "Enforced deterministically via operating rule invariants in dynamic-project-system.md and 2-Strike rule."
+      }
+    ]
+  }
+}

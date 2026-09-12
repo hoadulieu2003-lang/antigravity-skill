@@ -1,0 +1,105 @@
+{
+  "aiEngineSettings": {
+    "activeModel": "gemini-3.8-flash",
+    "reasoningProfile": "high_reasoning",
+    "autonomousSelfHealing": true
+  },
+  "plugins": {
+    "android-cli-plugin": {
+      "enabled": false
+    },
+    "chrome-devtools-plugin": {
+      "enabled": true
+    },
+    "firebase": {
+      "enabled": false
+    },
+    "flutter": {
+      "enabled": false
+    },
+    "google-antigravity-sdk": {
+      "enabled": true
+    },
+    "googlecloudtools.datacloud_telemetry": {
+      "enabled": false
+    },
+    "modern-web-guidance-plugin": {
+      "enabled": true
+    },
+    "science": {
+      "enabled": false
+    }
+  },
+  "userSettings": {
+    "artifactReviewMode": "ARTIFACT_REVIEW_MODE_TURBO",
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_EAGER",
+    "browserJsExecutionPolicy": "BROWSER_JS_EXECUTION_POLICY_TURBO",
+    "conversationWidth": "CONVERSATION_WIDTH_WIDE",
+    "enableTerminalSandbox": true,
+    "globalPermissionGrants": {
+      "allow": [
+        "read_file(C:\\Users\\game\\Downloads\\New folder (2))",
+        "command(git status --short)",
+        "command(npm run test)",
+        "command(npx tsc --noEmit)",
+        "command(npm run lint)",
+        "command(npm run build)",
+        "command(npm run test:e2e)",
+        "command(git diff --stat)",
+        "command(git branch -vv)",
+        "command(npx vitest list)",
+        "command(Get-ChildItem -Path \"$env:LOCALAPPDATA\\Programs\\Antigravity\" -Recurse -Filter \"*.js\" | Select-String \"CASCADE_COMMANDS_AUTO_EXECUTION\" | Select-Object -First 5)",
+        "command(Get-Process | Where-Object {$_.ProcessName -match \"antigravity|gemini\"} | Select-Object Id, ProcessName, Path)",
+        "command(Get-ChildItem -Path \"C:\\Users\\game\\AppData\\Local\\Programs\\antigravity\\resources\" -Recurse -Filter \"*.js\" | Select-String \"CASCADE_COMMANDS_AUTO_EXECUTION_\" -List | Select-Object -First 10 -ExpandProperty Line)",
+        "command(Get-ChildItem -Path \"C:\\Users\\game\\AppData\\Local\\Programs\\antigravity\\resources\")",
+        "command(node -e 'const fs = require(\"fs\"); const s = fs.readFileSync(\"C:/Users/game/AppData/Local/Programs/antigravity/resources/app.asar\", \"utf8\"); const m = s.match(/CASCADE_COMMANDS_AUTO_EXECUTION_[A-Z0-9_]+/g); console.log([...new Set(m)])')",
+        "command(node -e \"const fs = require('fs'); const s = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/app.asar', 'latin1'); const m = s.match(/CASCADE_COMMANDS_AUTO_EXECUTION_[A-Z0-9_]+/g); console.log([...new Set(m)])\")",
+        "command(Get-ChildItem -Path \"C:\\Users\\game\\.gemini\" -Recurse -Filter \"*.*\" -ErrorAction SilentlyContinue | Select-String \"CASCADE_COMMANDS_AUTO_EXECUTION\" | Select-Object -First 10 -Property Path, LineNumber, Line)",
+        "command(node -e \"const fs = require('fs'); const b = fs.readFileSync('C:/Users/game/.gemini/antigravity/agyhub_summaries_proto.pb', 'latin1'); const m = b.match(/[A-Z0-9_]*CASCADE_COMMANDS_AUTO_EXECUTION[A-Z0-9_]*/g); console.log([...new Set(m)])\")",
+        "command(node -e \"const fs = require('fs'); const b = fs.readFileSync('C:/Users/game/.gemini/antigravity/agyhub_summaries_proto.pb', 'latin1'); const idx = b.indexOf('CASCADE_COMMANDS_AUTO_EXECUTION'); console.log(b.slice(idx - 100, idx + 300))\")",
+        "command(Get-ChildItem -Path \"C:\\Users\\game\\AppData\\Local\\Programs\\antigravity\" -Recurse -Filter \"*.*\" -ErrorAction SilentlyContinue | Select-String \"AUTO_EXECUTION\" | Select-Object -First 10 -Property Path, Line)",
+        "command(node -e \"const fs = require('fs'); const b = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/bin/language_server.exe', 'latin1'); const m = b.match(/[A-Z0-9_]*AUTO_EXECUTION[A-Z0-9_]*/g); console.log([...new Set(m)])\")",
+        "command(node -e \"const fs = require('fs'); const b = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/bin/language_server.exe', 'latin1'); const idx = b.indexOf('CASCADE_COMMANDS_AUTO_EXECUTION_EAGER'); console.log(b.slice(idx - 200, idx + 200))\")",
+        "command(node -e \"const fs = require('fs'); const s = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/app.asar', 'latin1'); const idx = s.indexOf('Auto-Execution'); console.log(s.slice(idx - 100, idx + 400))\")",
+        "command(node -e \"const fs = require('fs'); const s = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/app.asar', 'utf8'); const m = s.match(/[a-zA-Z0-9_-]*auto[-_]?execution[a-zA-Z0-9_-]*/gi); console.log([...new Set(m)])\")",
+        "command(Get-ChildItem -Path \"C:\\Users\\game\\AppData\\Local\\Programs\\antigravity\\resources\" -Recurse -Filter \"*.js\" | ForEach-Object { $m = (Get-Content $_.FullName -Raw) -match \"CASCADE_COMMANDS_AUTO_EXECUTION\"; if ($m) { $_.FullName } })",
+        "command(Get-ChildItem -Path \"C:\\Users\\game\\AppData\\Local\\Programs\\antigravity\")",
+        "command(node -e \"const fs = require('fs'); const b = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/bin/language_server.exe', 'latin1'); const idx = b.indexOf('global_permission_grants'); console.log(b.slice(idx - 100, idx + 300))\")",
+        "command(node -e \"const fs = require('fs'); const b = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/bin/language_server.exe', 'latin1'); const idx = b.indexOf('PermissionGrantsConfig'); console.log(b.slice(idx - 100, idx + 400))\")",
+        "command(node -e \"const fs = require('fs'); const b = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/bin/language_server.exe', 'latin1'); const idx = b.indexOf('globalPermissionGrants'); console.log(b.slice(idx - 200, idx + 400))\")",
+        "command(powershell -Command \"Write-Host 'Auto-Execution Policy is active:' (Get-Date -Format 'yyyy-MM-dd HH:mm:ss')\")",
+        "command(node -e \"const fs = require('fs'); const b = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/bin/language_server.exe', 'latin1'); const m = b.match(/[a-zA-Z0-9_]*remote_control[a-zA-Z0-9_]*/gi); console.log([...new Set(m)])\")",
+        "command(node -e \"const fs = require('fs'); const b = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/bin/language_server.exe', 'latin1'); const idx = b.indexOf('remote_control'); console.log(b.slice(idx - 100, idx + 400))\")",
+        "command(node -e \"const fs = require('fs'); const b = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/bin/language_server.exe', 'latin1'); const m = b.match(/https?:\\/\\/[a-zA-Z0-9.-]+\\/remote[a-zA-Z0-9\\/._-]*/gi); console.log([...new Set(m)])\")",
+        "command(node -e \"const fs = require('fs'); const b = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/bin/language_server.exe', 'latin1'); const m = b.match(/https?:\\/\\/[a-zA-Z0-9.-]+\\.google[a-zA-Z0-9\\/._-]*/gi); console.log([...new Set(m)])\")",
+        "command(node -e \"const fs = require('fs'); const b = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/bin/language_server.exe', 'latin1'); const m = b.match(/(?:read_file|write_file|command|browse_url|network)\\([^\\)]*\\)/g); console.log([...new Set(m)].slice(0, 30))\")",
+        "command(node -e \"const fs = require('fs'); const b = fs.readFileSync('C:/Users/game/AppData/Local/Programs/antigravity/resources/bin/language_server.exe', 'latin1'); const m = b.match(/[a-z_]+\\(\\*\\)/g); console.log([...new Set(m)])\")",
+        "command(powershell -Command \"Write-Host 'Testing wildcard permission: OK!'\")",
+        "mcp(cdp-bridge/cdp_inspect_state)",
+        "execute_url(https://drive.google.com/drive/my-drive)",
+        "read_url(ql.chothongminh.top)",
+        "mcp(cdp-bridge/cdp_capture_screenshot)",
+        "mcp(cdp-bridge/cdp_evaluate_script)",
+        "read_url(smartmarket-1.vercel.app)",
+        "read_url(github.com)",
+        "read_url(raw.githubusercontent.com)",
+        "read_url(unseen.co)",
+        "read_url(localhost)",
+        "read_url(ics.media)",
+        "read_url(vietaiedu.com)",
+        "read_url(sankoudesign.com)",
+        "read_url(juri-portfolio.com)",
+        "read_url(koyobase.com)",
+        "read_url(chatgpt.com)",
+        "read_url(mobbin.com)",
+        "read_url(llm.codorai.com)",
+        "mcp(cdp-bridge/get_ast_repo_map)"
+      ]
+    },
+    "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
+    "queuedMessageDeliveryStrategy": "MESSAGE_DELIVERY_STRATEGY_WHEN_IDLE",
+    "remoteControlEnabled": true,
+    "remoteControlHostname": "Hoa-Laptop",
+    "themeMode": "THEME_MODE_INHERIT"
+  }
+}

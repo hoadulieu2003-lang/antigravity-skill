@@ -1,0 +1,45 @@
+schema_version: "2.0"
+audit_plan_id: "AUDIT_PLAN_001"
+created_at: "2026-09-06T08:45:00Z"
+test_mode: "AUDIT_ONLY"
+source_write_access: false
+auto_fix: false
+
+execution_context:
+  execution_mode: "STANDARD" # FAST | STANDARD | CRITICAL
+  verification_depth: "STANDARD" # TARGETED | STANDARD | DEEP
+  baseline_frozen: true
+  frozen_commit_or_hash: "HEAD"
+
+acceptance_under_test:
+  - id: "AC-01"
+    description: "Core acceptance criterion to independently verify"
+    verified: false
+
+contracts:
+  - name: "DESIGN_CONTRACT.yaml"
+    version: "2.0"
+    status: "LOCKED"
+  - name: "API_OR_ENGINEERING_CONTRACT"
+    version: "2.0"
+
+selected_ladder:
+  - rung: "L0_BASELINE"
+    purpose: "Verify release candidate identity, frozen baseline, and clean environment"
+  - rung: "L1_BUILD"
+    purpose: "Independent syntax, compile, and static analysis"
+  - rung: "L2_UNIT"
+    purpose: "Isolated unit and component logic verification"
+  - rung: "L3_INTEGRATION"
+    purpose: "Contract and cross-module boundary verification"
+
+omitted_ladder:
+  - rung: "L5_MIGRATION_SECURITY"
+    reason: "No database schema migration or security-critical surface altered"
+  - rung: "L7_ADVERSARIAL_RECOVERY"
+    reason: "Standard mode deliverable; deep adversarial fault injection reserved for CRITICAL mode"
+
+environment:
+  isolation_required: true
+  isolation_type: "READ_ONLY_SANDBOX"
+  side_effects_permitted: false

@@ -1,0 +1,32 @@
+schema_version: "2.0"
+evidence_id: "TE-001"
+timestamp: "2026-09-06T08:45:00Z"
+test_mode: "AUDIT_ONLY"
+
+check:
+  layer: "L1_BUILD" # L0 | L1 | L2 | L3 | L4 | L5 | L6 | L7
+  name: "Production Compile & Type Check"
+  description: "Independent execution of build toolchain to disprove compilation integrity"
+
+method:
+  type: "command" # command | browser | inspection | script | api | other
+  command: "npm run build"
+  cwd: "workspace_root"
+
+scope: "src/**/*.ts, src/**/*.tsx"
+
+result:
+  status: "PASS" # PASS | FAIL | NOT_VERIFIED | N/A | BLOCKED
+  exit_code: 0
+  duration_ms: 4620
+
+artifacts:
+  - "dist/index.html"
+  - "dist/assets/index.js"
+
+observations:
+  - "Independent compiler finished in 4.62s with zero warnings or errors"
+  - "Zero unexecuted checks reported as pass"
+
+acceptance_refs:
+  - "AC-01"

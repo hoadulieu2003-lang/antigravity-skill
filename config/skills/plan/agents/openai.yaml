@@ -1,0 +1,6 @@
+interface:
+  display_name: "Plan (Project Definition)"
+  short_description: "Define scope before delivery ($plan)"
+  default_prompt: "Use $plan to define the scope, boundaries, and acceptance criteria for this project."
+policy:
+  allow_implicit_invocation: true

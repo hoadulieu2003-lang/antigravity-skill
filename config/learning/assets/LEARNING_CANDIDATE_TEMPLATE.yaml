@@ -1,0 +1,41 @@
+schema_version: "1.0"
+candidate_id: "LC-YYYYMMDD-001"
+created_at: "2026-09-06T09:00:00Z"
+
+candidate_type: "RULE_CANDIDATE"
+# RULE_CANDIDATE | SKILL_CANDIDATE | REGRESSION_TEST_CANDIDATE | CAPABILITY_ROUTING_ADVICE
+
+target_scope: "DOMAIN"
+# TASK | PROJECT | DOMAIN | GLOBAL (Default to narrowest valid scope)
+
+source_events:
+  - "LE-20260906-001"
+  - "LE-20260906-002"
+
+title: "Precise title of the proposed reusable capability or rule"
+description: "Why this pattern is generalizable beyond the original task"
+
+content:
+  rule_statement: "Must perform visual screenshot audit before production acceptance for visual-heavy projects."
+  rationale: "Screenshots reveal layout shifts and contrast failures that headless DOM tests miss."
+  scope_rationale: "Applies to visual UI domain; does not apply to pure headless backend services."
+
+validation_evidence:
+  repetition_count: 2
+  projects_observed:
+    - "portfolio"
+    - "showcase_agency"
+  counterexample_check: "PASSED (checked against headless backend projects; properly isolated to visual domain)"
+  secret_sanitized: true
+
+governance:
+  status: "READY_FOR_PROMOTION_REVIEW"
+  # DRAFT | READY_FOR_PROMOTION_REVIEW | APPROVED | REJECTED | SUPERSEDED
+  requires_human_gate: true
+  human_decision: null # APPROVE | APPROVE_WITH_CHANGES | REJECT
+  decision_date: null
+  decision_notes: null
+
+rollback_plan:
+  revert_action: "Remove candidate rule entry from domain config; fallback to standard verification"
+  safe_to_revert: true

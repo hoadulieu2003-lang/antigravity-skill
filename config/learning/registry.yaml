@@ -1,0 +1,80 @@
+schema_version: '1.0'
+registry_id: FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY
+last_updated: '2026-09-12T01:26:54Z'
+governance_mode: STRICT_HUMAN_PROMOTION_GATE
+tri_state_lifecycle:
+  record: Stored as CANDIDATE; no execution authority
+  activate: Activated within local project or domain after domain review
+  promote: Elevated to global framework level; strictly requires Human Gate
+dual_path_capture:
+  success_events:
+  - RELEASE_ACCEPTED
+  failure_events:
+  - TEST_FAIL
+  - TEST_BLOCKED
+  - REJECTED
+  - ESCALATED
+  - ROLLED_BACK
+heuristic_triggers:
+  domain_review_threshold: 2 projects in same domain
+  global_review_threshold: 3 distinct contexts (triggers review only, never auto-promotes)
+invariants:
+  autonomous_observation: true
+  autonomous_candidate_creation: true
+  autonomous_global_mutation: false
+  human_promotion_required: true
+  scope_priority: NARROWEST_VALID_SCOPE_FIRST
+scopes:
+  task:
+    description: Transient execution memory, discarded after micro-sprint
+    retention: EPHEMERAL
+  project:
+    description: Repo-specific guidelines, patterns, and configurations
+    location: .project/learning/
+  domain:
+    description: Category-specific knowledge (e.g., visual UI, data engineering)
+    location: config/learning/domain/
+  global:
+    description: Universal framework invariants and skills
+    location: config/rules/ & config/skills/
+    mutation_rule: HUMAN_GATE_ONLY
+promoted_rules: []
+promoted_skills:
+- skill: hermes-agent
+  promoted_at: '2026-09-12T01:31:14Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/hermes-agent/SKILL.md
+- skill: oh-my-pi
+  promoted_at: '2026-09-12T01:31:15Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/oh-my-pi/SKILL.md
+- skill: omnigent
+  promoted_at: '2026-09-12T01:31:15Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/omnigent/SKILL.md
+capability_routing_history:
+- capability: gsap
+  domain: visual_choreography
+  observed_performance: HIGH
+  recommendation: Prefer for scroll choreographies and micro-animations
+- capability: gsap
+  domain: static_admin_crud
+  observed_performance: OVERKILL
+  recommendation: Prefer native CSS or lightweight Tailwind transitions
+active_domain_packs:
+- domain: creative-interactive-web
+  manifest: config/learning/domain/creative-interactive-web/DOMAIN_MANIFEST.yaml
+  activated_at: '2026-09-06T09:16:00Z'
+  approved_by: Anh (Product Owner)
+runtime_sync:
+  last_sync: '2026-09-12T01:26:54Z'
+  total_events_processed: 14
+  autonomous_captures: 9
+  knowledge_ingestions: 1
+  failure_events: 0
+  sync_status: HEALTHY
+  invariants_verified:
+  - INV-E01 (No autonomous global mutation)
+  - INV-E02 (One-off observation != Global rule)
+  - INV-E05 (Heuristic review trigger only)
+  - INV-E07 (Zero secrets/credentials ingested)

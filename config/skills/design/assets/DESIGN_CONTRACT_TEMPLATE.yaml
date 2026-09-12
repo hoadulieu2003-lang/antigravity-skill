@@ -1,0 +1,94 @@
+﻿# Canonical Design Contract Schema — Phase C
+design_contract:
+  schema_version: "1.0"
+  project_id: "portfolio_design_lab"
+  status: "LOCKED" # DRAFT | LOCKED | CHANGE_REQUESTED
+
+  audience:
+    primary: "Global Tech Leads, Creative Directors, Founders seeking High-End AI Engineering"
+    secondary: "AI Pair-Programmers & Senior Software Engineers"
+
+  product_intent:
+    primary_job: "Demonstrate elite autonomous AI engineering coupled with Awwwards-tier visual craft"
+    desired_perception:
+      - "experimental"
+      - "technical"
+      - "precise"
+      - "ambitious"
+
+  design_thesis: "A living AI product laboratory — Projects exist as interactive optical systems, not passive portfolio cards"
+
+  signature_experience:
+    description: "Interactive optical liquid crystal core responding to cursor kinetics with real-time fluid refraction"
+    purpose: "Create unforgettable visceral proof of WebGL + AI mastery within 3 seconds of landing"
+
+  composition:
+    hierarchy: "Dominant spatial visual anchor with staggered typographic overlay"
+    asymmetry: "strong"
+    dominant_visual_ratio: "0.68"
+    whitespace: "expansive"
+    grid_behavior: "flexible"
+
+  typography:
+    direction: "Technical Editorial pairing"
+    display_role: "Syne / Space Grotesk (High character, sculptural headers)"
+    body_role: "Inter / JetBrains Mono (High legibility, engineered data precision)"
+    constraints:
+      - "Strict uppercase tracking on technical badges (+0.15em)"
+      - "Fluid clamp typography scale without line wraps at desktop"
+
+  color_strategy:
+    philosophy: "Atmospheric Dark Studio (#080808) with high-contrast monochrome and surgical cyan-blue refraction"
+    accent_usage: "Selective optical glow on cursor interaction and active states only"
+
+  spatial_strategy:
+    mode: "hybrid_webgl"
+    rationale: "Selective WebGL canvas for optical depth, layered with high-performance DOM text and GSAP motion"
+
+  motion_language:
+    philosophy: "Deliberate cinematic pacing; physical inertia without frivolous bounce"
+    semantic_rules:
+      - "Camera dolly and mesh rotation respond to scroll velocity"
+      - "Blur-in text reveals with staggered letter tracking"
+    prohibited:
+      - "gratuitous_bounce"
+      - "unnecessary_fade_all"
+    reduced_motion_required: true
+
+  interaction_principles:
+    - "Magnetic cursor attraction on primary CTA"
+    - "Zero latency fluid ripple propagation on mousemove"
+
+  accessibility:
+    target: "WCAG AA"
+    constraints:
+      - "Minimum contrast 4.5:1 on all text labels"
+      - "prefers-reduced-motion fallback disables WebGL turbulence"
+
+  performance:
+    constraints:
+      - "60 FPS locked on desktop 1440x900"
+      - "DPR clamped to 1.5 to prevent mobile GPU thermal throttling"
+
+  avoid:
+    - "saas_card_grid"
+    - "generic_purple_ai_gradient"
+    - "excessive_frosted_glass"
+    - "random_pointless_3d_torus"
+    - "cluttered_bento_box"
+
+  capability_requirements:
+    - capability: "threejs_spatial"
+      reason: "Optical refractive mesh simulation"
+    - capability: "gsap_motion"
+      reason: "ScrollTrigger & quickTo cursor kinetics"
+    - capability: "fluid_shader"
+      reason: "Interactive liquid distortion plane"
+
+  visual_acceptance:
+    - id: "VAC-01"
+      criterion: "Hero section renders optical core with fluid refraction at >= 55 FPS"
+    - id: "VAC-02"
+      criterion: "Typographic pairing conforms to Technical Editorial hierarchy without layout shift"
+    - id: "VAC-03"
+      criterion: "Zero instances of generic AI purple gradients or template card grids"

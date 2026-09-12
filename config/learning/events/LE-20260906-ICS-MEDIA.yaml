@@ -1,0 +1,18 @@
+event_id: "LE-20260906-ICS-MEDIA"
+timestamp: "2026-09-06T09:16:00Z"
+source: "https://ics.media/en/ and https://ics.media/tutorial-three/"
+scope: "DOMAIN"
+domain: "creative-interactive-web"
+event_type: "KNOWLEDGE_INGESTION"
+status: "ACTIVATED"
+author: "IKEDA Yasunobu / ICS Inc."
+curator: "Antigravity Senior Engineering Agent"
+approved_by: "Anh (Product Owner)"
+summary: "Ingested next-generation WebGPU, TSL shaders, CSS Scroll-driven animations, spring physics linear(), and Japanese precision microinteractions."
+associated_artifacts:
+  - "config/learning/domain/creative-interactive-web/references/ics-media-motion-playbook.md"
+  - "config/learning/domain/creative-interactive-web/DOMAIN_MANIFEST.yaml"
+invariants_verified:
+  - "INV-E01 (No autonomous global mutation)"
+  - "INV-E03 (Aesthetic and technique isolated to creative-interactive-web domain)"
+  - "INV-E07 (Zero secrets/credentials ingested)"

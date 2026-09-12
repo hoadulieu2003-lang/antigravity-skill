@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-12T01:26:45.719984+00:00",
+  "skill_name": "hermes-agent",
+  "source_repo": "NousResearch/hermes-agent",
+  "stars": 244616,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\hermes-agent\\SKILL.md",
+  "human_promotion_required": true
+}

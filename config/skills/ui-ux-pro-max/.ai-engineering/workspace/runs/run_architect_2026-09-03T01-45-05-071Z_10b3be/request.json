@@ -1,0 +1,13 @@
+{
+  "codebase_context": "Kho kỹ năng C:\\Users\\game\\.gemini\\config\\skills\\ui-ux-pro-max đã có sẵn repository nextlevelbuilder/ui-ux-pro-max-skill. Hệ thống Antigravity IDE đã tự động nhận diện và index skill này qua SKILL.md.",
+  "constraints": [
+    "Không làm hỏng cấu trúc config của Antigravity IDE",
+    "Đảm bảo SKILL.md tuân thủ đúng quy chuẩn yaml frontmatter của Antigravity"
+  ],
+  "project_root": "C:\\Users\\game\\.gemini\\config\\skills\\ui-ux-pro-max",
+  "relevant_files": [
+    "C:\\Users\\game\\.gemini\\config\\skills\\ui-ux-pro-max\\SKILL.md"
+  ],
+  "requirement": "Đánh giá tính khả thi và độ ổn định khi tích hợp trực tiếp repo ui-ux-pro-max-skill vào hệ thống Antigravity IDE. Xác minh xem skill này đã tồn tại và hoạt động ổn định hay chưa, có cần cài thêm gì không.",
+  "risk_level": "LOW"
+}

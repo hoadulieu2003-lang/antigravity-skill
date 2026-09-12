@@ -1,0 +1,33 @@
+schema_version: "2.0"
+finding_id: "FIND-001"
+timestamp: "2026-09-06T08:45:00Z"
+severity: "CRITICAL" # BLOCKER | CRITICAL | MAJOR | MINOR | INFO
+status: "OPEN" # OPEN | TRIAGED | REPAIR_AUTHORIZED | RESOLVED | REJECTED | DEFERRED
+
+acceptance_ref: "AC-01"
+evidence_refs:
+  - "TE-002"
+
+title: "Precise summary of the disproven behavior or contract violation"
+reproduction:
+  steps:
+    - "1. Run independent verification check under isolated environment"
+    - "2. Observe deviation between expected contract and actual state"
+  environment_details: "Node v24.18.0 / Windows 11"
+
+expected: "Detailed expected behavior according to locked spec/contract"
+actual: "Observed failing state with exact error log or metric"
+
+defect_type: "CONTRACT_VIOLATION"
+# CONTRACT_VIOLATION | REGRESSION | RUNTIME_CRASH | VISUAL_DEFECT | SECURITY_DATA_RISK | UNMET_CRITERIA
+
+likely_failure_class: "IMPLEMENTATION_DEFECT"
+# Canonical Phase B escalation taxonomy:
+# IMPLEMENTATION_DEFECT | SPEC_DEFECT | ARCHITECTURE_DEFECT | ENVIRONMENT_DEFECT | EXTERNAL_DEPENDENCY | DESIGN_DIRECTION_DEFECT
+
+recommended_owner: "developer"
+# developer | architect | product_owner | environment_owner | design_director
+
+auto_fix_attempted: false
+source_mutated: false
+routing_action: "EMIT_FINDING_AND_STOP"

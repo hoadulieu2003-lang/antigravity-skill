@@ -1,0 +1,11 @@
+{
+  "entries": [
+    { "path": "skills/gstack" },
+    { "path": "skills/plan" },
+    { "path": "skills/dev" },
+    { "path": "skills/test" },
+    { "path": "skills/design" },
+    { "path": "skills/open-design" },
+    { "path": "skills/ui-ux-pro-max" }
+  ]
+}

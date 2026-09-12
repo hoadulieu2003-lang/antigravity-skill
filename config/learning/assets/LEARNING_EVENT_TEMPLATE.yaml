@@ -1,0 +1,33 @@
+schema_version: "1.0"
+id: "LE-YYYYMMDD-001"
+timestamp: "2026-09-06T09:00:00Z"
+
+source:
+  project_id: "portfolio"
+  phase: "PHASE_C2"
+  work_package: "WP-C2-PILOT"
+  task_id: "TASK-001"
+
+event_type: "SUCCESS_PATTERN"
+# SUCCESS_PATTERN | FAILURE_PATTERN | PROCESS_FRICTION | CAPABILITY_GAP | TOOLING_INSIGHT | DESIGN_INSIGHT | VERIFICATION_INSIGHT
+
+observation: "Brief, objective description of what occurred during execution"
+
+evidence_refs:
+  - "EV-001"
+  - "TE-002"
+  - "screenshot: pilot_c2_editorial_specimen_1440x900.png"
+
+proposed_scope: "PROJECT"
+# TASK | PROJECT | DOMAIN | GLOBAL (Prefers narrowest correct scope)
+
+confidence: "MEDIUM"
+# LOW | MEDIUM | HIGH
+
+sanitization:
+  secrets_removed: true
+  personal_data_removed: true
+  sanitized_at: "2026-09-06T09:00:00Z"
+
+status: "OBSERVED"
+# OBSERVED | CANDIDATE | REJECTED | PROMOTED

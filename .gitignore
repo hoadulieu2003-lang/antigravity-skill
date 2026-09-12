@@ -1,0 +1,33 @@
+# Antigravity Internal Cache & Heavy Transcripts (Do not sync across devices)
+antigravity/
+antigravity-browser-profile/
+antigravity-ide/
+chrome-profile/
+Documents/
+googlecloudtools.datacloud_telemetry.bak/
+sandbox/
+projects/
+
+# Backups & Temp files
+config/backups/
+config/repositories/
+**/*.tmp
+**/*.bak
+**/*.log
+**/__pycache__/
+**/.pytest_cache/
+**/node_modules/
+
+# Local session files
+SESSION_STATE.md
+
+# Sensitive Tokens & Credentials (AGENTS.md Rule 14)
+**/.env*
+**/hub_config.json
+config/sidecars/antigravity_master_hub/.env.local
+config/sidecars/antigravity_master_hub/*.png
+
+# OS Generated
+Thumbs.db
+Desktop.ini
+.DS_Store

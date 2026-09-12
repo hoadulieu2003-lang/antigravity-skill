@@ -1,0 +1,41 @@
+﻿# Canonical Evidence Ledger Schema — Phase B
+evidence_packet:
+  schema_version: "1.0"
+  project:
+    id: "project_identifier"
+    execution_mode: FAST # FAST | STANDARD | CRITICAL
+  work_package:
+    id: "WP-01"
+    status: READY_FOR_INTEGRATION # READY_FOR_INTEGRATION | BLOCKED | FAILED
+  changed_files:
+    - "src/path/to/modified_file.ext"
+  acceptance_mapping:
+    AC-01:
+      status: PASS # PASS | FAIL | NOT_VERIFIED | N/A
+      evidence_refs:
+        - "EV-001"
+        - "EV-002"
+  verification:
+    - id: "EV-001"
+      check: build # build | lint | unit | integration | runtime | visual | contract | other
+      method: command # command | inspection | browser | script | other
+      command: "npm run build"
+      scope: "project"
+      result: PASS # PASS | FAIL | N/A | SKIPPED_BLOCKED
+      exit_code: 0
+      artifact: null
+      notes: "Compiled cleanly with 0 errors"
+  discovered_issues:
+    - id: "ISSUE-001"
+      description: "Discovered edge case or technical debt"
+      required_for_current_acceptance: false
+      action: BACKLOG # FIX_CURRENT_WP | BACKLOG | RECLASSIFY
+      backlog_ref: "BACKLOG-042"
+  repair_budget:
+    attempts_used: 0
+    max_attempts: 2
+  known_risks:
+    - "Documented residual risks or limitations"
+  final_claim:
+    ready: true
+    reason: "All acceptance criteria verified with concrete proof"

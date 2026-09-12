@@ -1,0 +1,17 @@
+domain_id: "CREATIVE_INTERACTIVE_WEB"
+description: "High-end interactive web front-end, WebGPU/Three.js 3D, CSS physics animations, and Japanese precision microinteractions"
+curated_sources:
+  - name: "ICS Media Japan"
+    url: "https://ics.media/en/"
+    topics: ["WebGPU", "TSL", "Three.js r182", "CSS Scroll-driven", "Spring Physics", "Microinteractions"]
+references:
+  - id: "REF-ICS-MEDIA-PLAYBOOK"
+    path: "references/ics-media-motion-playbook.md"
+    title: "ICS Media Motion & WebGPU Playbook"
+    status: "ACTIVATED"
+governance:
+  scope: "DOMAIN"
+  human_gate_required_for_global: true
+  invariants:
+    - "INV-E03"
+    - "INV-E01"
