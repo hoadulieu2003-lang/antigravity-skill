@@ -38,29 +38,33 @@ REFERENCES_DIR = os.path.join(LEARNING_DIR, "references")
 
 # Mẫu lệnh phá hoại nguy hiểm (Destructive Command Patterns)
 DESTRUCTIVE_PATTERNS = [
-    (r"\brm\s+-(?:r[fF]|fr)\s+[/~*]", "Lệnh xóa đệ quy gốc hoặc wildcard nguy hiểm (rm -rf /)"),
+    (r"\brm\s+(?:-[a-zA-Z0-9_-]+\s+)*(?:/[*]?|~|\*)", "Lệnh xóa đệ quy gốc hoặc wildcard nguy hiểm (rm -rf /)"),
     (r"\bformat\s+[a-zA-Z]:", "Lệnh format ổ đĩa Windows (format C:)"),
-    (r"\bdel\s+/[sfq]\s+[\*\\]", "Lệnh xóa hàng loạt không xác nhận trên Windows (del /f /s /q)"),
-    (r"\brd\s+/[sq]\s+[a-zA-Z]:\\", "Lệnh xóa sạch thư mục gốc Windows (rd /s /q)"),
+    (r"\bdel\s+(?:/[a-zA-Z]+\s+)*(?:[a-zA-Z]:\\?|[\*\\])", "Lệnh xóa hàng loạt nguy hiểm trên Windows (del /f /s /q)"),
+    (r"\b(?:rd|rmdir)\s+(?:/[a-zA-Z]+\s+)*(?:[a-zA-Z]:\\?|/)", "Lệnh xóa sạch thư mục gốc Windows (rd /s /q)"),
     (r"\bmkfs\b", "Lệnh format filesystem Linux (mkfs)"),
     (r"\bdd\s+if=.*of=/dev/", "Lệnh ghi đè block device trực tiếp (dd)"),
     (r":\(\)\s*\{\s*:\s*\|\s*:\s*&\s*\}\s*;\s*:", "Fork bomb gây tê liệt hệ thống"),
-    (r"\bgit\s+clean\s+-fdx\b", "Lệnh dọn sạch file không theo dõi mà không có kiểm duyệt (git clean -fdx)"),
-    (r"\bgit\s+reset\s+--hard\s+origin", "Lệnh ghi đè thô bạo commit lịch sử (git reset --hard origin)"),
+    (r"\bgit\s+clean\s+-(?:[a-zA-Z]*f[a-zA-Z]*d|fd|fdx|df|dfx)\b", "Lệnh dọn sạch file không theo dõi mà không có kiểm duyệt (git clean -fdx)"),
+    (r"\bgit\s+reset\s+--hard\b", "Lệnh ghi đè thô bạo commit lịch sử (git reset --hard)"),
+    (r"\bgit\s+checkout\s+\.(?:\s|$)", "Lệnh hủy bỏ mọi thay đổi làm mất dữ liệu (git checkout .)"),
+    (r"\bgit\s+push\s+.*(?:--force\b|-f\b|--force-with-lease\b)", "Lệnh ép đẩy phá hoại remote branch (git push --force)"),
     (r"\bchmod\s+-R\s+777\s+/", "Lệnh mở toang quyền hệ thống (chmod -R 777 /)")
 ]
 
 def parse_frontmatter(content: str) -> tuple[dict, str]:
     """Bóc tách frontmatter YAML và phần thân markdown của file SKILL.md"""
-    if not content.startswith("---"):
-        return {}, content
+    if not isinstance(content, str) or not content.startswith("---"):
+        return {}, content if isinstance(content, str) else ""
     parts = content.split("---", 2)
     if len(parts) >= 3:
         try:
-            fm_data = yaml.safe_load(parts[1]) or {}
-            return fm_data, parts[2].strip()
+            fm_data = yaml.safe_load(parts[1])
+            if isinstance(fm_data, dict):
+                return fm_data, parts[2].strip()
+            return {}, parts[2].strip()
         except Exception:
-            return {}, content
+            return {}, parts[2].strip() if len(parts) > 2 else content
     return {}, content
 
 def check_for_raw_secrets(text: str) -> list[str]:
@@ -97,6 +101,8 @@ def evaluate_structure_metadata(skill_md_content: str, skill_name: str) -> tuple
         return 0.0, ["File SKILL.md rỗng hoặc không tồn tại (0/2.5)"]
         
     fm, body = parse_frontmatter(skill_md_content)
+    if not isinstance(fm, dict):
+        fm = {}
     
     # 1. Frontmatter YAML tồn tại (+0.5đ)
     if fm:
@@ -155,7 +161,7 @@ def evaluate_command_safety(skill_md_content: str) -> tuple[float, list[str]]:
     notes = []
     
     # 1. Khối code block thực thi (+0.5đ)
-    code_blocks = re.findall(r'```(?:bash|sh|powershell|cmd|python|json)?\s*\n(.*?)\n```', skill_md_content, re.DOTALL)
+    code_blocks = re.findall(r'```[^\r\n]*\r?\n(.*?)\r?\n```', skill_md_content, re.DOTALL)
     if code_blocks:
         score += 0.5
         notes.append(f"Có {len(code_blocks)} khối mã lệnh thực thi (+0.5)")
@@ -245,6 +251,8 @@ def evaluate_ecosystem_compatibility(skill_md_content: str, manifest_data: dict,
     """Đánh giá Tiêu chí 4: Độ tương thích hệ sinh thái Antigravity (AGENTS.md, Rule 14, 2-strike) [0 - 2.5 điểm]"""
     score = 0.0
     notes = []
+    if not isinstance(manifest_data, dict):
+        manifest_data = {}
     
     # 1. Kiểm toán Rule 14 / INV-E07: Không rò rỉ secret (+1.0đ)
     leaks = check_for_raw_secrets(skill_md_content)
@@ -304,8 +312,13 @@ def benchmark_candidate(skill_name: str, save_manifest: bool = True) -> dict:
             
     manifest_data = {}
     if os.path.exists(manifest_path):
-        with open(manifest_path, "r", encoding="utf-8", errors="replace") as f:
-            manifest_data = yaml.safe_load(f) or {}
+        try:
+            with open(manifest_path, "r", encoding="utf-8", errors="replace") as f:
+                loaded = yaml.safe_load(f)
+                if isinstance(loaded, dict):
+                    manifest_data = loaded
+        except Exception:
+            manifest_data = {}
             
     # Chấm 4 tiêu chí
     s1, notes1 = evaluate_structure_metadata(skill_content, skill_name)
@@ -331,9 +344,14 @@ def benchmark_candidate(skill_name: str, save_manifest: bool = True) -> dict:
     }
     
     if save_manifest:
+        if not isinstance(manifest_data, dict):
+            manifest_data = {}
         manifest_data["benchmark"] = benchmark_record
-        with open(manifest_path, "w", encoding="utf-8") as f:
-            yaml.dump(manifest_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+        try:
+            with open(manifest_path, "w", encoding="utf-8") as f:
+                yaml.dump(manifest_data, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+        except Exception as e:
+            return {"status": "ERROR", "message": f"Không thể lưu manifest tại {manifest_path}: {e}"}
             
     return {
         "status": "SUCCESS",

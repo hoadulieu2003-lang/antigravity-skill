@@ -78,12 +78,59 @@ del /f /s /q *
         self.assertTrue(any("VI PHẠM BẢO MẬT" in n for n in notes))
         self.assertLess(score, 2.0)
 
+    def test_evaluate_structure_metadata_non_dict_frontmatter(self):
+        sample_scalar = "---\njust a string\n---\n# Title\nBody"
+        score, notes = candidate_benchmark.evaluate_structure_metadata(sample_scalar, "test")
+        self.assertLessEqual(score, 0.5)
+
+    def test_evaluate_ecosystem_compatibility_non_dict_manifest(self):
+        score, notes = candidate_benchmark.evaluate_ecosystem_compatibility("Some safe content", "not a dict", "test")
+        self.assertGreaterEqual(score, 1.0)
+
+    def test_evaluate_command_safety_isolated_destructive_commands(self):
+        s_del = "```bash\ndel /f /s /q *\n```"
+        score, notes = candidate_benchmark.evaluate_command_safety(s_del)
+        self.assertTrue(any("del /f /s /q" in n for n in notes))
+
+        s_rd = "```bash\nrd /s /q C:\\\n```"
+        score, notes = candidate_benchmark.evaluate_command_safety(s_rd)
+        self.assertTrue(any("rd /s /q" in n for n in notes))
+
+        s_git = "```bash\ngit checkout .\n```"
+        score, notes = candidate_benchmark.evaluate_command_safety(s_git)
+        self.assertTrue(any("git checkout ." in n for n in notes))
+
+    def test_benchmark_candidate_isolated_tempdir_save(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            cand_dir = os.path.join(tmp_dir, "test-skill")
+            os.makedirs(cand_dir, exist_ok=True)
+            with open(os.path.join(cand_dir, "SKILL.md"), "w", encoding="utf-8") as f:
+                f.write("---\nname: test-skill\ndescription: Tự động kích hoạt khi test.\n---\n# test\n")
+            with open(os.path.join(cand_dir, "CANDIDATE_MANIFEST.yaml"), "w", encoding="utf-8") as f:
+                yaml.dump({"skill_name": "test-skill", "human_promotion_required": True}, f)
+            
+            orig_cands = candidate_benchmark.CANDIDATES_DIR
+            try:
+                candidate_benchmark.CANDIDATES_DIR = tmp_dir
+                res = candidate_benchmark.benchmark_candidate("test-skill", save_manifest=True)
+                self.assertEqual(res["status"], "SUCCESS")
+                with open(os.path.join(cand_dir, "CANDIDATE_MANIFEST.yaml"), "r", encoding="utf-8") as f:
+                    saved = yaml.safe_load(f)
+                self.assertIn("benchmark", saved)
+            finally:
+                candidate_benchmark.CANDIDATES_DIR = orig_cands
+
     def test_benchmark_candidate_e2e_vm0(self):
-        res = candidate_benchmark.benchmark_candidate("vm0", save_manifest=True)
+        res = candidate_benchmark.benchmark_candidate("vm0", save_manifest=False)
         self.assertEqual(res.get("status"), "SUCCESS")
         self.assertEqual(res.get("skill_name"), "vm0")
         self.assertGreaterEqual(res.get("total_score"), 7.5)
         self.assertEqual(res.get("rating"), "RECOMMENDED")
+
+    def test_nonexistent_candidate_benchmark_error(self):
+        res = candidate_benchmark.benchmark_candidate("nonexistent_skill_xyz", save_manifest=False)
+        self.assertEqual(res.get("status"), "ERROR")
+        self.assertIn("Không tìm thấy ứng viên", res.get("message", ""))
 
 class TestLearningGovernanceIntegration(unittest.TestCase):
     def test_list_candidates_has_benchmark(self):

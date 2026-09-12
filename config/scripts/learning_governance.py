@@ -284,9 +284,14 @@ class LearningGovernanceRuntime:
                 skill_path = os.path.join(item_path, "SKILL.md")
                 manifest_data = {}
                 if os.path.exists(manifest_path):
-                    with open(manifest_path, "r", encoding="utf-8") as f:
-                        manifest_data = yaml.safe_load(f) or {}
-                benchmark_data = manifest_data.get("benchmark", {})
+                    try:
+                        with open(manifest_path, "r", encoding="utf-8") as f:
+                            loaded = yaml.safe_load(f)
+                            if isinstance(loaded, dict):
+                                manifest_data = loaded
+                    except Exception:
+                        manifest_data = {}
+                benchmark_data = manifest_data.get("benchmark", {}) if isinstance(manifest_data, dict) else {}
                 candidates.append({
                     "name": item,
                     "status": manifest_data.get("status", "CANDIDATE"),
@@ -390,9 +395,13 @@ def main():
                     candidate_benchmark.print_benchmark_report(r)
             else:
                 res = candidate_benchmark.benchmark_candidate(args.benchmark, save_manifest=True)
+                if res.get("status") == "ERROR":
+                    print(f"❌ {res.get('message')}")
+                    sys.exit(1)
                 candidate_benchmark.print_benchmark_report(res)
         except Exception as e:
             print(f"❌ Lỗi khi thực hiện Benchmark: {e}")
+            sys.exit(1)
         return
 
     if args.promote:

@@ -48,12 +48,14 @@ STANDARD_CHROME_PATHS = [
     r"C:\Program Files\Google\Chrome\Application\chrome.exe",
     r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
     os.path.expandvars(r"%LOCALAPPDATA%\Google\Chrome\Application\chrome.exe"),
+    os.path.expandvars(r"%PROGRAMFILES%\Google\Chrome\Application\chrome.exe"),
+    os.path.expandvars(r"%PROGRAMFILES(X86)%\Google\Chrome\Application\chrome.exe"),
 ]
 
 def find_chrome_executable() -> str | None:
     """Xác định vị trí tệp thực thi chrome.exe trên máy tính Windows"""
     for path in STANDARD_CHROME_PATHS:
-        if os.path.isfile(path):
+        if path and os.path.isfile(path):
             return path
             
     # Tra cứu qua PATH hệ thống
@@ -93,6 +95,12 @@ def check_cdp_port(port: int = 9222, host: str = "127.0.0.1", timeout: float = 1
                     "ws_url": data.get("webSocketDebuggerUrl", ""),
                     "user_agent": data.get("User-Agent", "")
                 }
+            else:
+                return {
+                    "port": port,
+                    "status": "BUSY",
+                    "message": f"Cổng {port} phản hồi HTTP {response.status}"
+                }
     except Exception as e:
         # Nếu HTTP request lỗi nhưng port đang mở (có thể do chặn nguồn gốc)
         if check_tcp_port_open(port, host=host, timeout=0.8):
@@ -108,10 +116,13 @@ def check_cdp_port(port: int = 9222, host: str = "127.0.0.1", timeout: float = 1
         "message": f"Cổng {port} chưa mở hoặc chưa được kích hoạt"
     }
 
-def launch_chrome_debug(port: int = 9222, profile_dir: str = CHROME_PROFILE_DIR, wait_timeout: int = 12) -> dict:
+def launch_chrome_debug(port: int = 9222, profile_dir: str = None, wait_timeout: int = 12) -> dict:
     """
     Tự động kích hoạt Google Chrome với cờ Remote Debugging và Profile cách ly an toàn.
     """
+    if profile_dir is None:
+        profile_dir = CHROME_PROFILE_DIR if port == 9222 else os.path.join(BASE_DIR, f"chrome-profile-{port}")
+
     # 1. Kiểm tra nếu cổng đã sẵn sàng
     current_status = check_cdp_port(port=port)
     if current_status.get("status") == "ONLINE":
@@ -119,6 +130,13 @@ def launch_chrome_debug(port: int = 9222, profile_dir: str = CHROME_PROFILE_DIR,
             "status": "ALREADY_ONLINE",
             "port": port,
             "message": f"Chrome Remote Debugging tại cổng {port} đã hoạt động sẵn sàng.",
+            "details": current_status
+        }
+    if check_tcp_port_open(port):
+        return {
+            "status": "PORT_BUSY",
+            "port": port,
+            "message": f"Cổng {port} đang được sử dụng hoặc đang lắng nghe kết nối nhưng chưa sẵn sàng CDP.",
             "details": current_status
         }
 
@@ -224,7 +242,7 @@ def check_git_health(repo_dir: str = BASE_DIR) -> dict:
         )
         last_commit = res_log.stdout.strip() if res_log.returncode == 0 else "Chưa có commit"
 
-        status = "HEALTHY" if origin_url != "None" else "DEGRADED"
+        status = "HEALTHY" if (origin_url != "None" and uncommitted == 0) else ("DIRTY" if origin_url != "None" else "DEGRADED")
         return {
             "status": status,
             "origin_url": origin_url,
@@ -377,7 +395,7 @@ def print_health_dashboard(report: dict):
     # 3. Git Remote
     git = report.get("git", {})
     st_git = git.get("status", "UNKNOWN")
-    badge_git = "🟢 HEALTHY" if st_git == "HEALTHY" else "🟡 " + st_git
+    badge_git = "🟢 HEALTHY" if st_git == "HEALTHY" else ("🟡 DIRTY" if st_git == "DIRTY" else "🔴 " + st_git)
     print(f"• [Git Remote Storage]      : {badge_git}")
     print(f"  ├─ Remote : {git.get('origin_url')}")
     print(f"  ├─ Branch : {git.get('branch')} (Chưa commit: {git.get('uncommitted_files')} tệp)")
