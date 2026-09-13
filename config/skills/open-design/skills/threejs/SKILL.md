@@ -29,15 +29,6 @@ Three.js skills for creating 3D elements and interactive experiences in the brow
 
 ## How to use
 
-This catalogue entry advertises the skill in OpenDesign so the agent
-discovers it during planning. To run the full upstream workflow with
-its original assets, scripts, and references, install the upstream
-bundle into your active agent's skills directory:
-
-```bash
-# Inspect the upstream README for exact paths
-open https://github.com/CloudAI-X/threejs-skills
-```
-
-Then ask the agent to invoke this skill by name (`threejs`) or with
-one of the trigger phrases listed in this skill's frontmatter.
+This skill is fully installed as a top-level Antigravity skill at `C:\Users\game\.gemini\config\skills\threejs\`.
+To invoke this skill, simply request Three.js / 3D WebGL features or use the trigger phrase `threejs`, `$threejs`, or `3d web`.
+See the complete master guide and 11 reference modules in `config/skills/threejs/`.
