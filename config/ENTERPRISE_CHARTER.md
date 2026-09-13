@@ -69,8 +69,10 @@ flowchart TD
 ### 📚 Khối 5: Trung tâm Quản trị Tri thức & Tự học Doanh nghiệp (`Corporate Knowledge & Learning Vault`)
 * **Động cơ cốt lõi**: Phân hệ Tự học Có kiểm soát (`Governed Continuous Learning Engine`).
 * **Nhiệm vụ**:
-  * Nạp và lưu trữ tri thức công nghệ mới vào kho `knowledge/daily_learnings.md`.
-  * Tự động chuyển hóa các bài học thất bại (`Defects`) và thành công thành các quy tắc vận hành (`Operating Playbooks`) và bài kiểm tra hồi quy chuẩn hóa.
+  * **Nhịp Đập Tự Học Định Kỳ (`Continuous Pulse Scheduler`)**: Tự động thức dậy mỗi 3 tiếng qua Windows Scheduled Task chạy tàng hình, tự chạy bù khi máy tính thức dậy từ Sleep.
+  * **Kênh Báo Động Nóng Telegram (`Telegram Hot Alert`)**: Tự động thông báo trực tiếp sang điện thoại của Anh khi radar săn được dự án GitHub $\ge 2.000$ Stars, mô hình đột phá hoặc Candidate Skill đạt mức `RECOMMENDED`.
+  * **Quản trị Sổ cái Tri thức**: Nạp và lưu trữ tri thức công nghệ mới vào kho `knowledge/daily_learnings.md`.
+  * **Chuyển hóa Kinh nghiệm Thực chiến**: Tự động chuyển hóa các bài học thất bại (`Defects`) và thành công thành các quy tắc vận hành (`Operating Playbooks`) và bài kiểm tra hồi quy chuẩn hóa.
 
 ---
 

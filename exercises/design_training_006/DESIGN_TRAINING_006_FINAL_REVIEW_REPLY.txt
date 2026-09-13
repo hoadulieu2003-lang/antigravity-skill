@@ -1,0 +1,9 @@
+Đã thẩm định xong anh.
+
+Kết quả: cần vòng sửa cuối 2/2. Thiết kế, lập luận và quyết định áp dụng Candidate đều đạt. Chỉ còn một sai lệch: Anti tuyên bố kiểm thử Tab/Enter, nhưng script thực tế dùng focus() và click() lập trình.
+
+Không cần sửa giao diện hoặc chụp lại ảnh. Anti chỉ cần thay bằng thao tác bàn phím thực qua Puppeteer và đồng bộ báo cáo/JSON.
+
+DESIGN_TRAINING_006_REVIEW_002.md
+
+Evidence — bằng chứng · Keyboard — bàn phím · Focus — tiêu điểm · Verdict — phán quyết · Integrity — tính toàn vẹn

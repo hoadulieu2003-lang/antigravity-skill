@@ -351,3 +351,42 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Đúc Rút Tri Thức Nền Tảng Thiết Kế Thực Chiến (Design Training 001-006 Capstone Foundation Masterclass): `2026-09-13 21:00:00`
+
+> **Chủ quản (Owner)**: Anh — Lead Architect / Product Owner  
+> **Cộng sự AI**: Antigravity Senior Engineering Agent  
+> **Cơ quan Thẩm định Độc lập**: ChatGPT Architectural Controller  
+> **Trạng thái**: `CAPSTONE_FOUNDATION_STAGE: COMPLETED` (6/6 Modules Certified, 7/7 Gates Passed)
+
+### 🏛️ 6 Định Luật Kiến Trúc Giao Diện Chuẩn Mực Bất Biến
+
+#### 1. Module 001: Chuẩn Mực Kiểu Chữ & Nhịp Điệu Dọc (Typography & Vertical Rhythm)
+- **Giới hạn dòng đọc (`Line Measure`)**: Văn bản nội dung (`Body copy`) bắt buộc nằm trong khoảng `45ch – 75ch` (tối ưu: `65ch`). Tuyệt đối không để text kéo dài theo toàn bộ chiều rộng viewport.
+- **Tỷ lệ co giãn mượt mà (`Fluid Clamp Typography`)**: Sử dụng công thức nội suy `clamp(min, preferred_vw, max)` từ Utopia Core cho mọi heading, thay thế hoàn toàn các bước nhảy cỡ chữ cứng bằng media query.
+- **Nhịp dòng tỷ lệ nghịch cỡ chữ (`Inverse Leading Proportionality`)**: Tiêu đề lớn dùng `line-height` chặt chẽ (`1.1 – 1.25`); văn bản nhỏ đọc dài dùng `line-height` thoáng đãng (`1.5 – 1.65`).
+
+#### 2. Module 002: Bố Cục Không Gian & Nhịp Điệu Lưới (Spatial Rhythm & Grid Primitives)
+- **Hệ thống khoảng cách bội số chuẩn (`8pt / 4pt Spatial Scale`)**: Toàn bộ `padding`, `margin`, `gap` tuân thủ nghiêm ngặt thang đo 4px/8px từ Carbon Design System (`0.25rem`, `0.5rem`, `1rem`, `1.5rem`, `2rem`, `3rem`, `4rem`).
+- **8 Nguyên mẫu Bố cục Cơ bản (`8 Layout Primitives` từ Every Layout)**: `Stack` (xếp dọc có nhịp), `Cluster` (cụm thẻ tự co giãn), `Sidebar` (cột phụ cố định/co giãn), `Switcher` (tự động chuyển giữa hàng ngang và cột dọc khi hẹp), `Cover` (bao trùm khung nhìn), `Center` (căn giữa có cữ), `Grid auto-fit` (lưới tự cân đối cột), `Frame` (khóa tỷ lệ khung hình cố định).
+
+#### 3. Module 003: Tương Phản Ánh Sáng & Quy Chuẩn Không Chuyển Động Rác (WCAG AA & Zero Motion)
+- **Công thức sRGB Relative Luminance WCAG 2.1 bắt buộc**:
+  $$L = 0.2126 \times R_{\text{linear}} + 0.7152 \times G_{\text{linear}} + 0.0722 \times B_{\text{linear}}$$
+  $$\text{Contrast Ratio} = \frac{L_1 + 0.05}{L_2 + 0.05} \ge 4.5:1 \quad (\text{Normal Text}), \quad \ge 3.0:1 \quad (\text{Large Text})$$
+- **Quy chuẩn Không Chuyển Động Rác (`Zero Motion Protocol`)**: Không lạm dụng animation bay lượn vô cớ. Mọi chuyển động phải có mục đích chức năng và tôn trọng triệt để thuộc tính hệ thống `@media (prefers-reduced-motion: reduce)`.
+- **Giao diện sáng mặc định tối cao (`Mandatory Light Theme Default`)**: 100% giao diện mặc định sử dụng bảng màu sáng thanh lịch (Warm Alabaster `#FAF9F6`, Crisp Ivory `#FDFBF7`), cấm tự ý tạo nền đen trừ khi Anh yêu cầu tường minh.
+
+#### 4. Module 004: Máy Trạng Thái Bất Đồng Bộ & Năng Lực Phục Hồi Lỗi (State Machine & Resilience)
+- **Bốn trạng thái giao diện tất định (`Deterministic UI States`)**:
+  $$\text{IDLE} \xrightarrow{\text{Submit}} \text{SAVING (Optimistic)} \xrightarrow{\text{Resolve}} \text{SUCCESS} \lor \text{ERROR (with Inline Retry)}$$
+- **Phản hồi tức thời tại chỗ (`Inline Non-Modal Feedback`)**: Tuyệt đối không dùng popup/alert che khuất; thông báo hiển thị ngay cạnh trường thao tác với màu sắc và icon ngữ nghĩa rõ ràng.
+- **Khả năng tự phục hồi (`Self-Healing / Retry Loop`)**: Khi xảy ra lỗi mạng/timeout, bảo toàn nguyên vẹn form data và cung cấp nút `Thử lại (Retry)` khôi phục trạng thái mà không bắt người dùng nhập lại.
+
+#### 5. Module 005: Xác Lập Định Hướng Nghệ Thuật & Khóa Hợp Đồng (Visual Direction & Contract)
+- **Đề xuất Đa phương án Đối trọng (`Multi-Direction Proposal`)**: Luôn xây dựng ít nhất 2 hướng thẩm mỹ đối lập (Editorial Warm Minimalist vs Technical Crisp Structural) trước khi thi công.
+- **Hợp đồng Thiết kế Bất biến (`DESIGN_CONTRACT.yaml`)**: Mô tả màu sắc, typography scale, spacing grid và motion rules thành cấu trúc dữ liệu khóa cứng giữa Design Director và Developer.
+
+#### 6. Module 006: Phản Biện Thiết Kế & Tái Cấu Trúc Dựa Trên Bằng Chứng (Design Critique & Evidence Refactoring)
+- **Kỷ luật Ngữ nghĩa Phản biện (`Critique Taxonomy Discipline`)**: Phân tách rạch ròi giữa *Observation (Hiện tượng quan sát)*, *Defect (Khiếm khuyết cấu trúc)*, và *Design Trade-off (Điểm đánh đổi kiến trúc)*.
+- **Cấu trúc Khối Gom Nhóm vs Thẻ Độc Lập (`Grouped Container with Hairline Dividers vs Individual Cards`)**: Gom các nguyên lý liền mạch vào chung 1 container với đường kẻ mảnh hairline (`border-right: 1px solid var(--color-border)` trên desktop, `border-bottom` trên mobile) giúp nhịp điệu đọc liền mạch. Duy trì card riêng cho các thực thể độc lập có state riêng.
+- **Kiểm thử Bàn phím Phần cứng Thực tế (`Native Hardware Keyboard Traversal`)**: Mô phỏng sự kiện bàn phím phần cứng qua CDP `page.keyboard.press('Tab')` và `page.keyboard.press('Enter')` để chứng minh 100% khả năng tiếp cận theo thứ tự focus tự nhiên của DOM.

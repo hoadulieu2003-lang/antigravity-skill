@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRACE — Không gian theo dõi bàn giao (Candidate M06)</title>
+  <meta name="description" content="TRACE tập hợp tài liệu, người phụ trách và trạng thái bàn giao để nhóm biết cần xem gì và làm gì tiếp theo.">
+  <style>
+    /* CSS Reset & Variable Tokens */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: auto !important;
+      transition: none !important;
+      animation: none !important;
+    }
+
+    :root {
+      /* System Candidate Fonts */
+      --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      
+      /* Light Theme Color Tokens */
+      --color-bg: #F8FAFC;
+      --color-surface: #FFFFFF;
+      --color-surface-subtle: #F1F5F9;
+      --color-surface-muted: #F8FAFC;
+      --color-text-main: #0F172A;
+      --color-text-muted: #475569;
+      --color-text-subtle: #64748B;
+      --color-border: #E2E8F0;
+      --color-border-strong: #CBD5E1;
+      --color-accent: #0284C7;
+      --color-accent-subtle: #E0F2FE;
+      
+      /* Spacing Scale */
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.5rem;
+      --space-xl: 4rem;
+      --container-max: 1120px;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text-main);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+      width: 100%;
+    }
+
+    /* Top Brand Bar & Navigation */
+    header {
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-sm) 0;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-symbol {
+      width: 14px;
+      height: 14px;
+      background-color: var(--color-accent);
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .brand-title {
+      font-family: var(--font-sans);
+      font-size: 1.125rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--color-text-main);
+      text-decoration: none;
+    }
+
+    .context-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      background-color: var(--color-surface-subtle);
+      border: 1px solid var(--color-border);
+      padding: 0.25rem 0.625rem;
+      border-radius: 2px;
+      letter-spacing: 0.02em;
+    }
+
+    /* Hero Section */
+    .section-hero {
+      padding: var(--space-xl) 0 var(--space-lg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-kicker::before {
+      content: "[HỆ THỐNG]";
+      color: var(--color-text-subtle);
+    }
+
+    h1 {
+      font-family: var(--font-sans);
+      font-size: clamp(2.25rem, 4vw, 3rem);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--color-text-main);
+      margin-bottom: var(--space-md);
+    }
+
+    .lead-text {
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: var(--space-lg);
+    }
+
+    .cta-cluster {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.375rem;
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      outline-offset: 2px;
+      min-height: 44px;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--color-accent);
+    }
+
+    .btn-primary {
+      background-color: var(--color-text-main);
+      color: #FFFFFF;
+      border-color: var(--color-text-main);
+    }
+
+    .btn-secondary {
+      background-color: var(--color-surface);
+      color: var(--color-text-main);
+      border-color: var(--color-border-strong);
+    }
+
+    /* Hero Preview Module: Static Specimen */
+    .hero-specimen-wrap {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+    }
+
+    .specimen-header {
+      background-color: var(--color-surface-subtle);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0.625rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+
+    .specimen-title {
+      font-weight: 700;
+      color: var(--color-text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-specimen-body {
+      padding: var(--space-md);
+    }
+
+    .mini-data-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .mini-data-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.625rem 0.875rem;
+      background-color: var(--color-surface-muted);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      font-size: 0.875rem;
+    }
+
+    .mini-doc-name {
+      font-weight: 600;
+      color: var(--color-text-main);
+    }
+
+    .mini-owner {
+      color: var(--color-text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+    }
+
+    /* Section 2: Một nơi để đối chiếu */
+    .section-organization {
+      padding: var(--space-xl) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .section-header-wrap {
+      max-width: 680px;
+      margin-bottom: var(--space-lg);
+    }
+
+    .section-index {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-xs);
+    }
+
+    h2 {
+      font-family: var(--font-sans);
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      line-height: 1.25;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--color-text-main);
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-desc {
+      font-size: 1.0625rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* Data Specimen Matrix Table */
+    .matrix-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+      overflow: hidden;
+    }
+
+    .matrix-toolbar {
+      background-color: var(--color-surface-subtle);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+
+    .matrix-table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    /* Desktop Table Styles */
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9375rem;
+    }
+
+    .matrix-table th {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-muted);
+      background-color: #FAFAFA;
+      padding: 0.875rem 1.25rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .matrix-table td {
+      padding: 1.125rem 1.25rem;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: middle;
+    }
+
+    .matrix-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .doc-cell-content {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .doc-name-text {
+      font-weight: 600;
+      color: var(--color-text-main);
+    }
+
+    .doc-icon-badge {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      background-color: var(--color-surface-subtle);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+      padding: 0.125rem 0.375rem;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .col-owner {
+      color: #334155;
+      font-weight: 500;
+    }
+
+    .owner-label {
+      display: none; /* Desktop hidden */
+    }
+
+    /* Badges with Text Label + Geometric Marker */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 0.3125rem 0.75rem;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .badge-marker {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .status-current {
+      background-color: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+    }
+
+    .status-current .badge-marker {
+      background-color: #059669;
+    }
+
+    .status-drafting {
+      background-color: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+    }
+
+    .status-drafting .badge-marker {
+      background-color: #D97706;
+    }
+
+    .status-pending {
+      background-color: #FFEDD5;
+      color: #9A3412;
+      border: 1px solid #FED7AA;
+    }
+
+    .status-pending .badge-marker {
+      background-color: #EA580C;
+    }
+
+    .matrix-footer {
+      background-color: var(--color-surface-subtle);
+      border-top: 1px solid var(--color-border);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Section 3: Quyết định thiết kế — Candidate Experiment */
+    .section-decisions {
+      padding: var(--space-xl) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* Candidate Change 1: Unified Architectural Column Module */
+    .decisions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: var(--space-lg);
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+      overflow: hidden;
+    }
+
+    .decision-card {
+      background-color: transparent;
+      border: none;
+      border-right: 1px solid var(--color-border);
+      padding: var(--space-lg) var(--space-md);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .decision-card:last-child {
+      border-right: none;
+    }
+
+    /* Candidate Change 2: Technical Monospace Tag Anchor */
+    .decision-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      background-color: var(--color-surface-subtle);
+      border: 1px solid var(--color-border);
+      padding: 0.25rem 0.5rem;
+      border-radius: 2px;
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: var(--space-sm);
+      letter-spacing: 0.05em;
+    }
+
+    h3 {
+      font-family: var(--font-sans);
+      font-size: 1.1875rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      margin-bottom: var(--space-xs);
+      letter-spacing: -0.01em;
+    }
+
+    .decision-text {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--color-surface);
+      padding: var(--space-lg) 0;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .footer-notice {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      border-left: 3px solid var(--color-accent);
+      padding-left: 0.75rem;
+    }
+
+    .footer-brand {
+      font-size: 0.8125rem;
+      color: var(--color-text-subtle);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 900px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+
+      /* Candidate Mobile Section 03 Adaptation */
+      .decisions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .decision-card {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+        padding: var(--space-md);
+      }
+
+      .decision-card:last-child {
+        border-bottom: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .cta-cluster {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .matrix-toolbar, .matrix-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        padding: 0.625rem 1rem;
+      }
+
+      /* F01 Mobile Adaptive Table */
+      .matrix-table thead {
+        display: none;
+      }
+
+      .matrix-table, .matrix-table tbody {
+        display: block;
+        width: 100%;
+      }
+
+      .matrix-table tbody tr {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--color-border);
+        padding: 0.875rem 1rem;
+      }
+
+      .matrix-table tbody tr:last-child {
+        border-bottom: none;
+      }
+
+      .matrix-table td.col-doc {
+        flex: 0 0 100%;
+        display: block;
+        padding: 0 0 0.5rem 0;
+        border: none;
+      }
+
+      .doc-cell-content {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .doc-name-text {
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+
+      .matrix-table td.col-owner {
+        flex: 1 1 auto;
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0;
+        border: none;
+        font-size: 0.875rem;
+      }
+
+      .owner-label {
+        display: inline;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--color-text-subtle);
+      }
+
+      .matrix-table td.col-status {
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0;
+        border: none;
+      }
+
+      .status-badge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+      }
+
+      .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Global Header & Navigation -->
+  <header>
+    <div class="container">
+      <nav class="nav-bar" aria-label="Điều hướng chính">
+        <div class="brand-wrap">
+          <span class="brand-symbol" aria-hidden="true"></span>
+          <span class="brand-title">TRACE</span>
+        </div>
+        <span class="context-tag">Dự án tự khởi xướng · Thiết kế sản phẩm</span>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1: Hero -->
+    <section class="section-hero" id="section-hero" aria-labelledby="hero-heading">
+      <div class="container hero-layout">
+        <div class="hero-content">
+          <p class="hero-kicker">Dự án tự khởi xướng · Thiết kế sản phẩm</p>
+          <h1 id="hero-heading">Bàn giao rõ ràng.<br>Công việc tiếp nối.</h1>
+          <p class="lead-text">TRACE tập hợp tài liệu, người phụ trách và trạng thái bàn giao để nhóm biết cần xem gì và làm gì tiếp theo.</p>
+          <div class="cta-cluster">
+            <a href="#section-organization" class="btn btn-primary" id="cta-organization">Xem cách tổ chức</a>
+            <a href="#section-decisions" class="btn btn-secondary" id="cta-decisions">Đọc quyết định thiết kế</a>
+          </div>
+        </div>
+
+        <!-- Hero Preview Module: Static Specimen -->
+        <div class="hero-specimen-wrap" aria-label="Bản mẫu thu nhỏ dòng dữ liệu bàn giao">
+          <div class="specimen-header">
+            <span class="specimen-title">MODULE 01: TRACE SPECIMEN</span>
+            <span>BẢN MẪU TĨNH</span>
+          </div>
+          <div class="hero-specimen-body">
+            <div class="mini-data-list">
+              <div class="mini-data-item">
+                <span class="mini-doc-name">Yêu cầu sản phẩm</span>
+                <span class="mini-owner">An · Hiện hành</span>
+              </div>
+              <div class="mini-data-item">
+                <span class="mini-doc-name">Bản mẫu đăng nhập</span>
+                <span class="mini-owner">Bình · Đang soạn</span>
+              </div>
+              <div class="mini-data-item">
+                <span class="mini-doc-name">Biên bản bàn giao</span>
+                <span class="mini-owner">Chi · Chờ xác nhận</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Một nơi để đối chiếu -->
+    <section class="section-organization" id="section-organization" aria-labelledby="heading-organization">
+      <div class="container">
+        <div class="section-header-wrap">
+          <p class="section-index">[PHẦN 02 // CẤU TRÚC]</p>
+          <h2 id="heading-organization">Một nơi để đối chiếu</h2>
+          <p class="section-desc">Tài liệu được đặt cạnh người phụ trách và trạng thái, giúp người xem đối chiếu thông tin trong cùng một ngữ cảnh.</p>
+        </div>
+
+        <!-- Shared Visual Specimen Asset: Full Data Matrix -->
+        <div class="matrix-card">
+          <div class="matrix-toolbar">
+            <span>BẢNG MA TRẬN BÀN GIAO // BẢN MẪU DỮ LIỆU TĨNH</span>
+            <span>TỔNG SỐ: 3 DÒNG DỮ LIỆU</span>
+          </div>
+          <div class="matrix-table-container">
+            <table class="matrix-table" aria-label="Bảng đối chiếu thông tin bàn giao">
+              <thead>
+                <tr>
+                  <th scope="col">Tài liệu</th>
+                  <th scope="col">Người phụ trách</th>
+                  <th scope="col">Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-doc">
+                    <div class="doc-cell-content">
+                      <span class="doc-icon-badge" aria-hidden="true">DOC-01</span>
+                      <span class="doc-name-text">Yêu cầu sản phẩm</span>
+                    </div>
+                  </td>
+                  <td class="col-owner">
+                    <span class="owner-label">Phụ trách: </span>
+                    <span>An</span>
+                  </td>
+                  <td class="col-status">
+                    <span class="status-badge status-current">
+                      <span class="badge-marker" aria-hidden="true"></span>
+                      <span>Hiện hành</span>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-doc">
+                    <div class="doc-cell-content">
+                      <span class="doc-icon-badge" aria-hidden="true">DOC-02</span>
+                      <span class="doc-name-text">Bản mẫu đăng nhập</span>
+                    </div>
+                  </td>
+                  <td class="col-owner">
+                    <span class="owner-label">Phụ trách: </span>
+                    <span>Bình</span>
+                  </td>
+                  <td class="col-status">
+                    <span class="status-badge status-drafting">
+                      <span class="badge-marker" aria-hidden="true"></span>
+                      <span>Đang soạn</span>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-doc">
+                    <div class="doc-cell-content">
+                      <span class="doc-icon-badge" aria-hidden="true">DOC-03</span>
+                      <span class="doc-name-text">Biên bản bàn giao</span>
+                    </div>
+                  </td>
+                  <td class="col-owner">
+                    <span class="owner-label">Phụ trách: </span>
+                    <span>Chi</span>
+                  </td>
+                  <td class="col-status">
+                    <span class="status-badge status-pending">
+                      <span class="badge-marker" aria-hidden="true"></span>
+                      <span>Chờ xác nhận</span>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="matrix-footer">
+            <span>ĐỐI CHIẾU TRONG CÙNG NGỮ CẢNH BÀN GIAO</span>
+            <span>HỆ THỐNG TRACE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Quyết định thiết kế — Candidate Architectural Column Layout -->
+    <section class="section-decisions" id="section-decisions" aria-labelledby="heading-decisions">
+      <div class="container">
+        <div class="section-header-wrap">
+          <p class="section-index">[PHẦN 03 // ĐẶC TẢ]</p>
+          <h2 id="heading-decisions">Quyết định thiết kế</h2>
+        </div>
+
+        <div class="decisions-grid">
+          <!-- Paragraph 1: Typography -->
+          <article class="decision-card">
+            <span class="decision-num">[01 // TYPOGRAPHY]</span>
+            <h3>Hệ thống kiểu chữ</h3>
+            <p class="decision-text">Hệ thống kiểu chữ sử dụng cặp phông tương hỗ: Neo-grotesque Sans-serif hiện đại cho các khối tiêu đề và văn bản đọc lướt nhanh, kết hợp cùng Monospace kỹ thuật cho các nhãn định danh và chỉ báo trạng thái. Cấu trúc này phân định rõ rệt giữa thông điệp truyền đạt và dữ liệu đo đạc, giúp người vận hành không mất thời gian xử lý thị giác.</p>
+          </article>
+
+          <!-- Paragraph 2: Composition -->
+          <article class="decision-card">
+            <span class="decision-num">[02 // BỐ CỤC]</span>
+            <h3>Trục căn chỉnh & Phân tầng</h3>
+            <p class="decision-text">Bố cục xây dựng trên trục căn lề trái nghiêm ngặt và hệ thống lưới mô-đun phân tầng. Việc khóa chặt đường gióng giữa tiêu đề, khối nội dung và các thẻ bảng dữ liệu tạo nên cảm giác trật tự và ổn định, giúp nhóm theo dõi bàn giao nắm bắt dòng chảy công việc một cách tự nhiên mà không bị xao nhãng.</p>
+          </article>
+
+          <!-- Paragraph 3: Image Treatment -->
+          <article class="decision-card">
+            <span class="decision-num">[03 // HÌNH ẢNH]</span>
+            <h3>Xử lý tài sản dữ liệu</h3>
+            <p class="decision-text">Bản mẫu dữ liệu tĩnh được xử lý như một khối giao diện phần mềm thực tế với tiêu đề công cụ, thanh trạng thái và đường kẻ hairline mảnh. Hình ảnh không đóng vai trò trang trí cảm tính mà là bằng chứng kiến trúc trực quan, phản ánh chính xác cấu trúc ba dòng dữ liệu bàn giao thiết yếu.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer>
+    <div class="container footer-row">
+      <p class="footer-notice">Bản mẫu minh họa — chưa kết nối dữ liệu thật.</p>
+      <p class="footer-brand">TRACE · Không gian theo dõi bàn giao</p>
+    </div>
+  </footer>
+
+  <script>
+    // Xử lý cuộn tức thì (instant scroll) cho CTA bàn phím và con trỏ
+    document.addEventListener('DOMContentLoaded', () => {
+      const ctaOrg = document.getElementById('cta-organization');
+      const ctaDec = document.getElementById('cta-decisions');
+      const secOrg = document.getElementById('section-organization');
+      const secDec = document.getElementById('section-decisions');
+
+      function scrollToTarget(e, targetEl) {
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'instant', block: 'start' });
+          history.pushState(null, '', '#' + targetEl.id);
+        }
+      }
+
+      if (ctaOrg && secOrg) {
+        ctaOrg.addEventListener('click', (e) => scrollToTarget(e, secOrg));
+      }
+      if (ctaDec && secDec) {
+        ctaDec.addEventListener('click', (e) => scrollToTarget(e, secDec));
+      }
+    });
+  </script>
+</body>
+</html>

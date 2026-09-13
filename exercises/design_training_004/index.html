@@ -292,14 +292,22 @@
       border-color: #94A3B8;
     }
 
+    /* Nút Thử lưu lại: kế thừa nút hành động chính, đổi màu đỏ nổi bật */
     .btn-retry {
       background-color: var(--error-text);
       color: #FFFFFF;
       border-color: var(--error-text);
     }
 
-    .btn-retry:hover:not(:disabled) {
+    .btn-retry:hover:not(:disabled):not([aria-disabled="true"]) {
       background-color: #7F1D1D;
+    }
+
+    .btn-retry[aria-disabled="true"] {
+      background-color: #94A3B8;
+      border-color: #94A3B8;
+      color: #F8FAFC;
+      cursor: not-allowed;
     }
 
     .btn-retry:focus-visible {
@@ -315,7 +323,7 @@
       line-height: 1.45;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     .status-saving {
@@ -415,26 +423,13 @@
       font-size: 12px;
       color: #64748B;
     }
-
-    /* SCREEN READER ONLY */
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
   </style>
 </head>
 <body>
 
   <div class="container">
     <!-- BANNER MINH BẠCH BÀI TẬP MÔ PHỎNG -->
-    <header class="banner-notice" role="note" aria-label="Thông báo chế độ mô phỏng">
+    <header class="banner-notice" id="banner-notice" tabindex="0" role="note" aria-label="Thông báo chế độ mô phỏng">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10"></circle>
         <line x1="12" y1="8" x2="12" y2="12"></line>
@@ -492,10 +487,11 @@
           </div>
         </div>
 
-        <!-- THAO TÁC & PHẢN HỒI GỬI -->
+        <!-- THAO TÁC & PHẢN HỒI GỬI (F01 FIX: Nút hành động chính luôn ổn định trong DOM) -->
         <div class="form-actions">
           <div class="button-group" id="main-actions-group">
             <button class="btn btn-primary" id="btn-submit" type="submit">Lưu phân công</button>
+            <button class="btn btn-secondary" id="btn-edit-assignment" type="button" style="display: none;">Sửa phân công</button>
           </div>
 
           <!-- CONTAINER PHẢN HỒI TOÀN BIỂU MẪU (Saving, Error, Success) -->
@@ -580,11 +576,11 @@
       const noteError = document.getElementById('note-error');
       const noteCounter = document.getElementById('note-counter');
       const btnSubmit = document.getElementById('btn-submit');
+      const btnEditAssignment = document.getElementById('btn-edit-assignment');
       const formFeedback = document.getElementById('form-feedback');
       const committedAssigneeText = document.getElementById('committed-assignee-text');
       const committedNoteText = document.getElementById('committed-note-text');
       const btnResetSimulation = document.getElementById('btn-reset-simulation');
-      const mainActionsGroup = document.getElementById('main-actions-group');
 
       // 3. Phơi bày đối tượng chẩn đoán toàn cục cho kịch bản kiểm thử (Test Automation)
       function updateDiagnostics() {
@@ -607,12 +603,12 @@
         };
       }
 
-      // 4. Hàm cập nhật giao diện theo trạng thái FSM
+      // 4. Hàm cập nhật giao diện theo trạng thái FSM (F01 FIX: Nút chính luôn ổn định trong DOM)
       function renderState() {
-        // Cập nhật bộ đếm ký tự ghi chú
-        const currentNoteLen = noteTextarea.value.length;
-        noteCounter.textContent = `${currentNoteLen}/200`;
-        if (currentNoteLen > 200) {
+        // Cập nhật bộ đếm ký tự ghi chú (đồng nhất theo độ dài chuỗi sau trim() theo chỉ đạo F06)
+        const trimmedNoteLen = noteTextarea.value.trim().length;
+        noteCounter.textContent = `${trimmedNoteLen}/200`;
+        if (trimmedNoteLen > 200) {
           noteCounter.style.color = 'var(--error-text)';
           noteCounter.style.fontWeight = '700';
         } else {
@@ -649,18 +645,20 @@
         switch (currentState) {
           case STATE.EDITING:
           case STATE.INVALID:
-            // Khôi phục quyền tương tác các trường
+            // Mở khóa các trường
             assigneeSelect.disabled = false;
             noteTextarea.disabled = false;
             btnResetSimulation.disabled = false;
 
-            // Nút submit hiển thị và sẵn sàng
+            // Nút submit ở trạng thái ban đầu
             btnSubmit.style.display = 'inline-flex';
+            btnSubmit.className = 'btn btn-primary';
+            btnSubmit.textContent = 'Lưu phân công';
             btnSubmit.disabled = false;
             btnSubmit.removeAttribute('aria-disabled');
-            btnSubmit.textContent = 'Lưu phân công';
 
-            // Xóa feedback toàn form nếu là editing bình thường
+            btnEditAssignment.style.display = 'none';
+
             if (currentState === STATE.EDITING) {
               formFeedback.innerHTML = '';
             }
@@ -672,11 +670,15 @@
             noteTextarea.disabled = true;
             btnResetSimulation.disabled = true;
 
-            // Khóa nút submit nhưng giữ trong DOM để không làm rơi focus về body
+            // F01 FIX: Nút submit giữ nguyên trong DOM, chuyển sang aria-disabled="true"
+            // Khi đang saving từ Retry, nút vẫn giữ nguyên vị trí và focus ổn định
             btnSubmit.style.display = 'inline-flex';
             btnSubmit.setAttribute('aria-disabled', 'true');
+            btnSubmit.textContent = 'Đang lưu phân công…';
 
-            // Hiển thị thông báo đang lưu
+            btnEditAssignment.style.display = 'none';
+
+            // Thông báo trạng thái đang lưu
             formFeedback.innerHTML = `
               <div class="status-alert status-saving" role="status">
                 <span>Đang lưu phân công…</span>
@@ -690,26 +692,22 @@
             noteTextarea.disabled = false;
             btnResetSimulation.disabled = false;
 
-            // Ẩn nút submit mặc định, thay bằng phản hồi lỗi kèm nút Thử lưu lại
-            btnSubmit.style.display = 'none';
+            // F01 FIX: Nút chính CHUYỂN THÀNH NÚT THỬ LƯU LẠI ngay tại vị trí cũ
+            // Nhờ đó không xóa nút khỏi DOM, focus được giữ ổn định 100%
+            btnSubmit.style.display = 'inline-flex';
+            btnSubmit.className = 'btn btn-retry';
+            btnSubmit.textContent = 'Thử lưu lại';
+            btnSubmit.removeAttribute('aria-disabled');
+            btnSubmit.disabled = false;
 
+            btnEditAssignment.style.display = 'none';
+
+            // Thông báo lỗi
             formFeedback.innerHTML = `
               <div class="status-alert status-error" role="alert">
                 <span class="status-error-text">Chưa lưu được phân công. Dữ liệu bạn nhập vẫn được giữ. Hãy thử lại.</span>
-                <div class="button-group">
-                  <button class="btn btn-retry" id="btn-retry" type="button">Thử lưu lại</button>
-                </div>
               </div>
             `;
-
-            // Gắn sự kiện cho nút Thử lưu lại
-            const btnRetry = document.getElementById('btn-retry');
-            if (btnRetry) {
-              btnRetry.addEventListener('click', function (e) {
-                e.preventDefault();
-                handleRetry();
-              });
-            }
             break;
 
           case STATE.SUCCESS:
@@ -718,26 +716,16 @@
             noteTextarea.disabled = true;
             btnResetSimulation.disabled = false;
 
+            // Ẩn nút submit, hiện nút Sửa phân công
             btnSubmit.style.display = 'none';
+            btnEditAssignment.style.display = 'inline-flex';
 
             const savedName = ASSIGNEE_MAP[committedData.assignee] || committedData.assignee;
             formFeedback.innerHTML = `
               <div class="status-alert status-success" role="status">
                 <span>Đã giao W01 cho ${savedName} — kết quả mô phỏng.</span>
-                <div class="button-group" style="margin-top: 4px;">
-                  <button class="btn btn-secondary" id="btn-edit-assignment" type="button">Sửa phân công</button>
-                </div>
               </div>
             `;
-
-            // Gắn sự kiện nút Sửa phân công
-            const btnEdit = document.getElementById('btn-edit-assignment');
-            if (btnEdit) {
-              btnEdit.addEventListener('click', function (e) {
-                e.preventDefault();
-                handleEditAssignment();
-              });
-            }
             break;
         }
 
@@ -795,7 +783,6 @@
 
         // Dữ liệu hợp lệ -> Chuyển sang SAVING
         currentState = STATE.SAVING;
-        // Chụp bản snapshot của lần gửi này
         const submissionSnapshot = {
           assignee: draftData.assignee,
           note: draftData.note
@@ -808,15 +795,18 @@
         // Giả lập độ trễ lưu mạng xác định: đúng 1.200ms
         clearTimeout(saveTimer);
         saveTimer = setTimeout(function () {
+          // Ghi nhận liệu người dùng có đang focus tại nút submit không trước khi render
+          const wasFocusedOnSubmit = (document.activeElement === btnSubmit);
+
           // Lần gửi hợp lệ đầu tiên kể từ khi mở/đặt lại LUÔN THẤT BẠI
           if (attemptCount === 1) {
             currentState = STATE.ERROR;
             renderState();
 
-            // Đưa focus đến thông báo lỗi hoặc nút Thử lưu lại
-            const btnRetry = document.getElementById('btn-retry');
-            if (btnRetry) {
-              btnRetry.focus();
+            // F01: Nút btnSubmit đổi thành "Thử lưu lại". Chỉ giữ focus nếu người dùng đang đứng tại nút submit.
+            // Nếu người dùng đã Tab sang phần tử ổn định khác trong lúc chờ, không kéo focus trở lại vô điều kiện.
+            if (wasFocusedOnSubmit) {
+              btnSubmit.focus();
             }
           } else {
             // Lần gửi thứ 2 trở đi LUÔN THÀNH CÔNG
@@ -827,23 +817,16 @@
             currentState = STATE.SUCCESS;
             renderState();
 
-            // Đưa focus đến nút Sửa phân công để người dùng bàn phím tiếp tục thao tác thuận tiện
-            const btnEdit = document.getElementById('btn-edit-assignment');
-            if (btnEdit) {
-              btnEdit.focus();
+            // F01: Nút submit bị ẩn đi khi thành công. Chuyển focus có chủ đích sang nút "Sửa phân công"
+            // CHỈ KHI người dùng trước đó đang đứng tại nút submit bị ẩn. Nếu đã Tab sang chỗ khác, giữ nguyên.
+            if (wasFocusedOnSubmit) {
+              btnEditAssignment.focus();
             }
           }
         }, 1200);
       }
 
-      // 7. Thao tác Thử lưu lại (Retry)
-      function handleRetry() {
-        if (currentState !== STATE.ERROR) return;
-        // Gửi lại với cùng bản nháp hiện tại, không bắt nhập lại
-        submitAssignment();
-      }
-
-      // 8. Thao tác Sửa phân công (Edit Assignment)
+      // 7. Thao tác Sửa phân công (Edit Assignment)
       function handleEditAssignment() {
         if (currentState !== STATE.SUCCESS) return;
         currentState = STATE.EDITING;
@@ -864,7 +847,7 @@
         assigneeSelect.focus();
       }
 
-      // 9. Thao tác Đặt lại mô phỏng (Reset Simulation)
+      // 8. Thao tác Đặt lại mô phỏng (Reset Simulation)
       function handleResetSimulation() {
         // Trong saving không được phép đặt lại
         if (currentState === STATE.SAVING) return;
@@ -894,11 +877,11 @@
         assigneeSelect.focus();
       }
 
-      // 10. Lắng nghe các sự kiện người dùng (User Interaction Events)
+      // 9. Lắng nghe các sự kiện người dùng (User Interaction Events)
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         // Kiểm tra nếu nút đang có aria-disabled="true" thì chặn submit
-        if (btnSubmit.getAttribute('aria-disabled') === 'true') {
+        if (btnSubmit.getAttribute('aria-disabled') === 'true' || currentState === STATE.SAVING) {
           return;
         }
         submitAssignment();
@@ -912,6 +895,12 @@
         }
       });
 
+      // Gắn sự kiện nút Sửa phân công
+      btnEditAssignment.addEventListener('click', function (e) {
+        e.preventDefault();
+        handleEditAssignment();
+      });
+
       // Lắng nghe chỉnh sửa trên select
       assigneeSelect.addEventListener('change', function () {
         draftData.assignee = assigneeSelect.value.trim();
@@ -921,7 +910,6 @@
           fieldErrors.assignee = null;
           assigneeSelect.removeAttribute('aria-invalid');
           assigneeError.textContent = '';
-          // Nếu cả 2 trường đều không còn lỗi -> chuyển về editing
           if (!fieldErrors.note) {
             currentState = STATE.EDITING;
           }
@@ -939,11 +927,10 @@
       // Lắng nghe chỉnh sửa trên textarea
       noteTextarea.addEventListener('input', function () {
         draftData.note = noteTextarea.value;
-        const currentLen = draftData.note.length;
         const trimmedLen = draftData.note.trim().length;
 
-        noteCounter.textContent = `${currentLen}/200`;
-        if (currentLen > 200) {
+        noteCounter.textContent = `${trimmedLen}/200`;
+        if (trimmedLen > 200) {
           noteCounter.style.color = 'var(--error-text)';
           noteCounter.style.fontWeight = '700';
         } else {

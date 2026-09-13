@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRACE — Định hướng A: Biên tập (Editorial Draft)</title>
+  <style>
+    /* CSS Reset & Variable Tokens */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: auto !important;
+      transition: none !important;
+      animation: none !important;
+    }
+
+    :root {
+      --font-serif: Georgia, "Times New Roman", Garamond, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --color-bg: #FAF7F2;
+      --color-surface: #FFFFFF;
+      --color-text-main: #292524;
+      --color-text-muted: #78716C;
+      --color-border: #E7E2D8;
+      --color-accent: #991B1B;
+      --color-accent-subtle: #FEF2F2;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.5rem;
+      --space-xl: 4rem;
+      --container-max: 1140px;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text-main);
+      font-family: var(--font-sans);
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      padding: 0;
+    }
+
+    /* Direction Header Banner */
+    .direction-badge {
+      background-color: #F5EBE1;
+      border-bottom: 1px solid var(--color-border);
+      padding: 0.5rem 1rem;
+      font-size: 0.8125rem;
+      font-family: var(--font-sans);
+      color: #57534E;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Top Brand Bar */
+    header {
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .brand-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-text-main);
+    }
+
+    .context-tag {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      font-style: italic;
+    }
+
+    /* Hero Section - Asymmetric Editorial Layout */
+    .hero {
+      padding: var(--space-xl) 0 var(--space-lg);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    .hero-text {
+      max-width: 620px;
+    }
+
+    .hero-pretitle {
+      font-family: var(--font-sans);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+      margin-bottom: var(--space-sm);
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--color-text-main);
+      margin-bottom: var(--space-md);
+    }
+
+    .lead-paragraph {
+      font-size: 1.1875rem;
+      color: #44403C;
+      line-height: 1.6;
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.375rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      outline-offset: 2px;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--color-accent);
+    }
+
+    .btn-primary {
+      background-color: var(--color-text-main);
+      color: #FAF7F2;
+      border-color: var(--color-text-main);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-text-main);
+      border-color: #D6D3D1;
+    }
+
+    /* Editorial Specimen Card */
+    .specimen-column {
+      padding-top: var(--space-xs);
+    }
+
+    .specimen-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      box-shadow: 0 4px 16px rgba(41, 37, 36, 0.04);
+      padding: var(--space-md);
+    }
+
+    .specimen-caption {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--space-xs);
+      margin-bottom: var(--space-md);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .specimen-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9375rem;
+    }
+
+    .specimen-table th {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      text-align: left;
+      padding: 0.5rem 0.5rem 0.75rem;
+      border-bottom: 2px solid var(--color-text-main);
+      color: var(--color-text-main);
+      font-size: 0.875rem;
+    }
+
+    .specimen-table td {
+      padding: 0.875rem 0.5rem;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: middle;
+    }
+
+    .doc-title {
+      font-weight: 600;
+      color: var(--color-text-main);
+    }
+
+    .doc-owner {
+      color: #57534E;
+    }
+
+    .badge-status {
+      display: inline-block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .status-current {
+      background-color: #F0FDF4;
+      color: #166534;
+      border: 1px solid #BBF7D0;
+    }
+
+    .status-drafting {
+      background-color: #FEFCE8;
+      color: #854D0E;
+      border: 1px solid #FEF08A;
+    }
+
+    .status-pending {
+      background-color: #FFF7ED;
+      color: #9A3412;
+      border: 1px solid #FED7AA;
+    }
+
+    .specimen-foot {
+      margin-top: var(--space-sm);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="direction-badge">
+    <span><strong>HƯỚNG A: BIÊN TẬP (EDITORIAL DRAFT)</strong> — Khảo sát nhịp đọc chữ và khoảng trắng</span>
+    <span>Bản nháp định hướng thị giác</span>
+  </div>
+
+  <header>
+    <div class="container brand-row">
+      <span class="brand-name">TRACE</span>
+      <span class="context-tag">Dự án tự khởi xướng · Thiết kế sản phẩm</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="hero-pretitle">Dự án tự khởi xướng · Thiết kế sản phẩm</p>
+          <h1>Bàn giao rõ ràng.<br>Công việc tiếp nối.</h1>
+          <p class="lead-paragraph">TRACE tập hợp tài liệu, người phụ trách và trạng thái bàn giao để nhóm biết cần xem gì và làm gì tiếp theo.</p>
+          <div class="hero-actions">
+            <a href="#section-organization" class="btn btn-primary">Xem cách tổ chức</a>
+            <a href="#section-decisions" class="btn btn-secondary">Đọc quyết định thiết kế</a>
+          </div>
+        </div>
+
+        <div class="specimen-column">
+          <div class="specimen-card">
+            <div class="specimen-caption">
+              <span>Minh họa tài sản dữ liệu</span>
+              <span>Bản mẫu tĩnh</span>
+            </div>
+            <table class="specimen-table">
+              <thead>
+                <tr>
+                  <th scope="col">Tài liệu</th>
+                  <th scope="col">Người phụ trách</th>
+                  <th scope="col">Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="doc-title">Yêu cầu sản phẩm</td>
+                  <td class="doc-owner">An</td>
+                  <td><span class="badge-status status-current">Hiện hành</span></td>
+                </tr>
+                <tr>
+                  <td class="doc-title">Bản mẫu đăng nhập</td>
+                  <td class="doc-owner">Bình</td>
+                  <td><span class="badge-status status-drafting">Đang soạn</span></td>
+                </tr>
+                <tr>
+                  <td class="doc-title">Biên bản bàn giao</td>
+                  <td class="doc-owner">Chi</td>
+                  <td><span class="badge-status status-pending">Chờ xác nhận</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="specimen-foot">Bản mẫu đối chiếu thông tin trong cùng một ngữ cảnh bàn giao.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

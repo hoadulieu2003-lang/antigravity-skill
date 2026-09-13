@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRACE — Định hướng B: Hệ thống (System Precision Draft)</title>
+  <style>
+    /* CSS Reset & Variable Tokens */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: auto !important;
+      transition: none !important;
+      animation: none !important;
+    }
+
+    :root {
+      --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --color-bg: #F8FAFC;
+      --color-surface: #FFFFFF;
+      --color-surface-subtle: #F1F5F9;
+      --color-text-main: #0F172A;
+      --color-text-muted: #475569;
+      --color-border: #E2E8F0;
+      --color-border-strong: #CBD5E1;
+      --color-accent: #0284C7;
+      --color-accent-subtle: #E0F2FE;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.25rem;
+      --space-xl: 3.5rem;
+      --container-max: 1160px;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text-main);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: 0;
+    }
+
+    /* Direction Header Banner */
+    .direction-badge {
+      background-color: #0F172A;
+      color: #F8FAFC;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      letter-spacing: 0.05em;
+    }
+
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    /* Top Brand Bar */
+    header {
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-sm) 0;
+    }
+
+    .brand-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .brand-name {
+      font-family: var(--font-sans);
+      font-size: 1.125rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--color-text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-icon {
+      width: 12px;
+      height: 12px;
+      background-color: var(--color-accent);
+      display: inline-block;
+    }
+
+    .context-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      background-color: var(--color-surface-subtle);
+      padding: 0.25rem 0.5rem;
+      border: 1px solid var(--color-border);
+      border-radius: 2px;
+    }
+
+    /* Hero Section - Modular System Layout */
+    .hero {
+      padding: var(--space-xl) 0 var(--space-lg);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: stretch;
+    }
+
+    .hero-panel {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .system-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .system-meta::before {
+      content: "[01/SYSTEM]";
+      color: var(--color-text-muted);
+    }
+
+    h1 {
+      font-family: var(--font-sans);
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--color-text-main);
+      margin-bottom: var(--space-md);
+    }
+
+    .lead-paragraph {
+      font-size: 1.0625rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.625rem 1.25rem;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      outline-offset: 2px;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--color-accent);
+    }
+
+    .btn-primary {
+      background-color: var(--color-text-main);
+      color: #FFFFFF;
+      border-color: var(--color-text-main);
+    }
+
+    .btn-secondary {
+      background-color: var(--color-surface);
+      color: var(--color-text-main);
+      border-color: var(--color-border-strong);
+    }
+
+    /* System Module Specimen View */
+    .module-specimen {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .module-header {
+      background-color: var(--color-surface-subtle);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0.625rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+
+    .module-title {
+      font-weight: 600;
+      color: var(--color-text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .module-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      color: #047857;
+      font-weight: 600;
+    }
+
+    .status-dot-pulse {
+      width: 6px;
+      height: 6px;
+      background-color: #10B981;
+      border-radius: 50%;
+    }
+
+    .data-table-wrap {
+      padding: 0;
+      overflow-x: auto;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      text-align: left;
+    }
+
+    .data-table th {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      background-color: #FAFAFA;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .data-table td {
+      padding: 1rem 1rem;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: middle;
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .cell-document {
+      font-weight: 600;
+      color: var(--color-text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cell-document::before {
+      content: "DOC";
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      background-color: var(--color-surface-subtle);
+      border: 1px solid var(--color-border);
+      padding: 0.125rem 0.25rem;
+      color: var(--color-text-muted);
+      border-radius: 2px;
+    }
+
+    .cell-owner {
+      font-family: var(--font-sans);
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.625rem;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .badge-current {
+      background-color: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+    }
+
+    .badge-drafting {
+      background-color: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+    }
+
+    .badge-pending {
+      background-color: #FFEDD5;
+      color: #9A3412;
+      border: 1px solid #FED7AA;
+    }
+
+    .module-footer {
+      background-color: var(--color-surface-subtle);
+      border-top: 1px solid var(--color-border);
+      padding: 0.75rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      color: var(--color-text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="direction-badge">
+    <span>[TRACE_DIR_B // STRUCTURAL_SYSTEM_PRECISION]</span>
+    <span>DRAFT SPECIFICATION // DIRECTION B</span>
+  </div>
+
+  <header>
+    <div class="container brand-row">
+      <div class="brand-group">
+        <span class="brand-name"><span class="brand-icon"></span>TRACE</span>
+      </div>
+      <span class="context-tag">Dự án tự khởi xướng · Thiết kế sản phẩm</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-panel">
+          <div>
+            <div class="system-meta">Không gian theo dõi bàn giao</div>
+            <h1>Bàn giao rõ ràng.<br>Công việc tiếp nối.</h1>
+            <p class="lead-paragraph">TRACE tập hợp tài liệu, người phụ trách và trạng thái bàn giao để nhóm biết cần xem gì và làm gì tiếp theo.</p>
+          </div>
+          <div class="hero-actions">
+            <a href="#section-organization" class="btn btn-primary">Xem cách tổ chức</a>
+            <a href="#section-secondary" class="btn btn-secondary">Đọc quyết định thiết kế</a>
+          </div>
+        </div>
+
+        <div class="module-specimen">
+          <div class="module-header">
+            <span class="module-title">MODULE 01: HANDOVER MATRIX</span>
+            <span class="module-status-pill"><span class="status-dot-pulse"></span>ACTIVE VIEW</span>
+          </div>
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col">Tài liệu</th>
+                  <th scope="col">Người phụ trách</th>
+                  <th scope="col">Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cell-document">Yêu cầu sản phẩm</td>
+                  <td class="cell-owner">An</td>
+                  <td><span class="status-badge badge-current">Hiện hành</span></td>
+                </tr>
+                <tr>
+                  <td class="cell-document">Bản mẫu đăng nhập</td>
+                  <td class="cell-owner">Bình</td>
+                  <td><span class="status-badge badge-drafting">Đang soạn</span></td>
+                </tr>
+                <tr>
+                  <td class="cell-document">Biên bản bàn giao</td>
+                  <td class="cell-owner">Chi</td>
+                  <td><span class="status-badge badge-pending">Chờ xác nhận</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="module-footer">
+            <span>SPECIMEN VIEW // STATIC DATA</span>
+            <span>COUNT: 3 RECORDS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

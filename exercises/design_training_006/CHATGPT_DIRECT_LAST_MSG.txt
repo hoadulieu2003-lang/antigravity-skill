@@ -1,0 +1,19 @@
+Em dự tính 14 module tất cả, chia thành ba chặng anh nhé:
+
+Chặng	Module	Nội dung
+Nền tảng — đã PASS	01–05	Bố cục, phân cấp, kiến trúc thông tin, tương tác, định hướng nghệ thuật
+Đang thực hiện	06	Phản biện thiết kế
+Kiểm tra tổng hợp	07	Áp dụng kiến thức vào một brief mới
+Màu sắc	08	Hệ màu, tương phản, vai trò màu và trạng thái
+Trợ năng	09	Bàn phím, focus, biểu mẫu, trình đọc màn hình
+Hệ thống thiết kế	10	Token, component, theme và tính nhất quán
+Motion nền tảng	11	Thời gian, nhịp, chuyển cảnh và phản hồi
+Motion trong sản phẩm	12	Phối hợp chuyển động, hiệu năng và giảm chuyển động
+3D nền tảng	13	Không gian, camera, ánh sáng và vật liệu
+3D trong trải nghiệm thực tế	14	Tích hợp vào web, tương tác, hiệu năng và phương án thay thế
+
+Hiện đã hoàn thành 5/14, còn 9 module tính cả Module 06. Đây là lộ trình dự kiến; mỗi module chỉ cần một bài thực hành có trọng tâm, không nhất thiết xây một ứng dụng mới.
+
+Đến cuối, mục tiêu là Anti biết khi nào màu, motion hoặc 3D giúp sản phẩm tốt hơn, đồng thời triển khai và kiểm chứng được.
+
+5 từ: Color — màu sắc · Accessibility — khả năng tiếp cận · Motion — chuyển động · Depth — chiều sâu · Review — thẩm định.

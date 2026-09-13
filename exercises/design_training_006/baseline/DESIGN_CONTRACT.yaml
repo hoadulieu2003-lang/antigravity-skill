@@ -1,0 +1,48 @@
+module: DESIGN_TRAINING_005
+selected_direction: B
+status: ACCEPTED_FOR_EXERCISE
+final_verdict_ref: DESIGN_TRAINING_005_FINAL_REVIEW_002.md
+thesis: "Sử dụng trục căn lề trái nghiêm ngặt kết hợp cặp phông Sans-serif mô-đun và Monospace kỹ thuật nhằm biến thông tin bàn giao thành các khối dữ liệu đối chiếu chuẩn xác, giúp người phụ trách sản phẩm nhận diện tức thì tình trạng công việc mà không bị phân tán thị giác."
+audience: "Người phụ trách sản phẩm hoặc vận hành doanh nghiệp nhỏ"
+perception_goals:
+  - "Rõ ràng: Dữ liệu và trạng thái bàn giao được tách bạch minh bạch trên từng hàng đối chiếu (mục tiêu cảm nhận, chưa phải đo lường người dùng)."
+  - "Có chủ đích: Mọi đường hairline, tỷ lệ spacing và badge trạng thái đều phục vụ giả thuyết quét thông tin nhanh."
+  - "Đáng tin: Cấu trúc mô-đun vững chắc, không hiệu ứng hào nhoáng thừa thãi, thể hiện sự nghiêm túc của công cụ sản phẩm."
+  - "Có nét riêng: Bản sắc kỹ thuật sắc nét (technical precision) với điểm nhấn Sky/Cyan và hệ thống nhãn monospace."
+typography:
+  families:
+    - primary: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif (Ứng viên Inter đầu stack, fallback hệ thống offline)"
+    - secondary: "ui-monospace, 'SF Mono', Monaco, Consolas, 'Liberation Mono', monospace (Ứng viên SF Mono đầu stack, fallback hệ thống offline)"
+  roles:
+    heading_display: "Inter / 800 weight / clamp(2.25rem, 4vw, 3rem) / line-height 1.15 / tracking -0.03em"
+    body_lead: "Inter / 400 weight / 1.125rem / line-height 1.6 / color #475569"
+    metadata_mono: "SF Mono / 600 weight / 0.8125rem / uppercase / tracking 0.06em / color #0284C7"
+    data_cell: "Inter / 600 weight / 0.9375rem (desktop), 1rem (mobile) / color #0F172A"
+color:
+  roles:
+    bg_canvas: "#F8FAFC (Slate-50 - Nền sáng trung tính sạch sẽ)"
+    surface_card: "#FFFFFF (Pure White - Nổi bật khối nội dung)"
+    surface_subtle: "#F1F5F9 (Slate-100 - Phân tầng thanh công cụ và header bảng)"
+    text_primary: "#0F172A (Slate-900 - Tương phản 17.06:1 so với nền canvas theo sRGB)"
+    text_secondary: "#475569 (Slate-600 - Tương phản 7.24:1 so với nền canvas theo sRGB)"
+    border_subtle: "#E2E8F0 (Slate-200 - Đường hairline chia khối)"
+    accent_brand: "#0284C7 (Sky-600 - Nhận diện điểm nhấn kỹ thuật, tương phản 4.54:1)"
+    status_current: "bg: #ECFDF5, text: #065F46, border: #A7F3D0, marker: #059669 (Hiện hành, tương phản 7.29:1)"
+    status_drafting: "bg: #FEF3C7, text: #92400E, border: #FDE68A, marker: #D97706 (Đang soạn, tương phản 6.37:1)"
+    status_pending: "bg: #FFEDD5, text: #9A3412, border: #FED7AA, marker: #EA580C (Chờ xác nhận, tương phản 6.38:1)"
+composition:
+  alignment: "Trục căn lề trái nhất quán (Strict Left-Aligned Datum Axis), khóa chặt mối quan hệ giữa nhãn, tiêu đề, nút bấm và bảng dữ liệu."
+  hierarchy: "Nhãn ngữ cảnh monospace -> Tiêu đề chính h1 -> Đoạn dẫn nhập -> Cặp nút CTA -> Bản mẫu dữ liệu đối chiếu 3 dòng."
+image_direction:
+  purpose: "Bản mẫu giao diện tĩnh đóng vai trò bằng chứng kiến trúc thực tế, mô phỏng bảng ma trận bàn giao để người xem đối chiếu trực quan 3 dòng dữ liệu (Yêu cầu sản phẩm, Bản mẫu đăng nhập, Biên bản bàn giao) trong cùng một ngữ cảnh."
+signature_decision: "Bố trí bảng dữ liệu bàn giao với tiêu đề khung công cụ 'MODULE 01: TRACE SPECIMEN' và nhãn rõ ràng 'BẢN MẪU TĨNH', biến bản mẫu từ một hình ảnh minh họa thụ động thành một giao diện công cụ đo đạc có cấu trúc kỹ thuật trực quan mà không tạo hiểu lầm về dữ liệu thời gian thực."
+avoid:
+  - "Tránh nền tối (Dark theme) trong bài tập này vì TRACE được định hướng giao diện sáng nhằm phục vụ sự tập trung cao độ của người làm vận hành doanh nghiệp nhỏ; đây là lựa chọn có điều kiện của dự án, không áp đặt thành quy luật chung cho mọi sản phẩm."
+  - "Tránh các hiệu ứng chuyển động (animations, transitions, smooth scroll) theo yêu cầu kỹ thuật Zero Motion đã khóa của bài tập; phục vụ việc hiển thị tức thì và chính xác dữ liệu đối chiếu."
+  - "Tránh thu nhỏ bảng dữ liệu thành hình ảnh chữ li ti không đọc được trên màn hình hẹp (mobile)."
+responsive:
+  mobile_changes:
+    - "Chuyển đổi lưới hero 2 cột ngang (desktop 1440px) thành 1 cột dọc (mobile 390px) theo trật tự tự nhiên: Nội dung dẫn nhập trước, Bảng đối chiếu theo sau."
+    - "Bảng dữ liệu thích ứng trên mobile: Tên tài liệu chiếm trọn 100% chiều ngang dòng đầu với font 1rem (16px), dòng thứ hai hiển thị Người phụ trách và Badge trạng thái song song; không co hẹp hay bẻ vụn chữ."
+    - "Cặp nút CTA mở rộng toàn chiều ngang (100% width) trên mobile để tạo vùng bấm ngón tay thuận tiện (touch target >= 44px)."
+motion: none

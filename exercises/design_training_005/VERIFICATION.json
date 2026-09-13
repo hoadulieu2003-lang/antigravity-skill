@@ -1,0 +1,249 @@
+{
+  "module": "DESIGN_TRAINING_005",
+  "submission_round": "REPAIR_001_R02",
+  "timestamp": "2026-09-13T12:32:39.983Z",
+  "cdp_port": 9222,
+  "dpr": 2,
+  "v01_content_and_data": {
+    "pass": true,
+    "details": {
+      "hasName": true,
+      "hasContext": true,
+      "hasH1": true,
+      "hasLead": true,
+      "hasCta1": true,
+      "hasCta2": true,
+      "hasSec2Title": true,
+      "hasSec2Lead": true,
+      "hasSec3Title": true,
+      "hasFooter": true,
+      "row1": true,
+      "row2": true,
+      "row3": true,
+      "hasStaticSpecimenLabel": true,
+      "hasNoActiveRunFalsePromise": true,
+      "foundForbidden": [],
+      "isClean": true
+    }
+  },
+  "v02_ab_distinction": {
+    "status": "PRESERVED_PASS",
+    "review_type": "VISUAL_REVIEW",
+    "notes": "Kế thừa kết quả ĐẠT từ Review 001; hai ảnh nháp option_a và option_b được giữ nguyên."
+  },
+  "v03_contract_consistency": {
+    "status": "SELF_REVIEW_PENDING_CONTROLLER",
+    "review_type": "VISUAL_REVIEW",
+    "notes": "Đã đồng bộ 100% typography, nhãn bản mẫu tĩnh và CSS tokens giữa Contract và index.html."
+  },
+  "v04_cta_targets": {
+    "pass": true,
+    "cta_primary": {
+      "target": "#section-organization",
+      "finalTop": -0.046875,
+      "hash": "#section-organization"
+    },
+    "cta_secondary": {
+      "target": "#section-decisions",
+      "finalTop": 263.078125,
+      "hash": "#section-decisions"
+    }
+  },
+  "v05_keyboard_navigation": {
+    "pass": true,
+    "cta1_focus": {
+      "id": "cta-organization",
+      "tagName": "A",
+      "outlineStyle": "solid",
+      "outlineWidth": "2px",
+      "outlineColor": "rgb(2, 132, 199)"
+    },
+    "cta2_focus": {
+      "id": "cta-decisions",
+      "tagName": "A",
+      "outlineStyle": "solid",
+      "outlineWidth": "2px",
+      "outlineColor": "rgb(2, 132, 199)"
+    },
+    "hashAfterEnter1": "#section-organization",
+    "hashAfterEnter2": "#section-decisions"
+  },
+  "v06_responsive_and_readability": {
+    "pass": true,
+    "viewports": {
+      "desktop_1440x900": {
+        "innerWidth": 1440,
+        "clientWidth": 1425,
+        "scrollWidth": 1425,
+        "bodyScrollWidth": 1425,
+        "dpr": 2,
+        "hasHorizontalOverflow": false,
+        "rowHeightAdequate": true,
+        "h1Width": 554.390625,
+        "h1Height": 110.375
+      },
+      "tablet_768x1024": {
+        "innerWidth": 768,
+        "clientWidth": 753,
+        "scrollWidth": 753,
+        "bodyScrollWidth": 753,
+        "dpr": 2,
+        "hasHorizontalOverflow": false,
+        "rowHeightAdequate": true,
+        "h1Width": 600,
+        "h1Height": 82.78125
+      },
+      "mobile_390x844": {
+        "innerWidth": 390,
+        "clientWidth": 375,
+        "scrollWidth": 375,
+        "bodyScrollWidth": 375,
+        "dpr": 2,
+        "hasHorizontalOverflow": false,
+        "rowHeightAdequate": true,
+        "docTitleMetrics": [
+          {
+            "text": "Yêu cầu sản phẩm",
+            "width": 133.96875,
+            "height": 21.59375,
+            "estimatedLines": 1
+          },
+          {
+            "text": "Bản mẫu đăng nhập",
+            "width": 150.890625,
+            "height": 21.59375,
+            "estimatedLines": 1
+          },
+          {
+            "text": "Biên bản bàn giao",
+            "width": 135.5,
+            "height": 21.59375,
+            "estimatedLines": 1
+          }
+        ],
+        "h1Width": 327,
+        "h1Height": 82.78125
+      }
+    },
+    "mobile_readability": {
+      "evaluation": "SELF_REVIEW_PENDING_CONTROLLER",
+      "observation": "Trên viewport 390px, cả 3 tiêu đề tài liệu ('Yêu cầu sản phẩm', 'Bản mẫu đăng nhập', 'Biên bản bàn giao') chiếm trọn 100% bề ngang dòng đầu (width ~290px), hiển thị gọn gàng trên 1 dòng đơn (estimatedLines: 1), không còn hiện tượng bị bẻ vụn từng từ thành nhiều tầng hẹp.",
+      "docTitles": [
+        {
+          "text": "Yêu cầu sản phẩm",
+          "width": 133.96875,
+          "height": 21.59375,
+          "estimatedLines": 1
+        },
+        {
+          "text": "Bản mẫu đăng nhập",
+          "width": 150.890625,
+          "height": 21.59375,
+          "estimatedLines": 1
+        },
+        {
+          "text": "Biên bản bàn giao",
+          "width": 135.5,
+          "height": 21.59375,
+          "estimatedLines": 1
+        }
+      ]
+    }
+  },
+  "v07_semantics_and_contrast": {
+    "pass": true,
+    "details": {
+      "h1Count": 1,
+      "h1Text": "Bàn giao rõ ràng.\nCông việc tiếp nối.",
+      "h2Count": 2,
+      "h2Texts": [
+        "Một nơi để đối chiếu",
+        "Quyết định thiết kế"
+      ],
+      "h3Count": 3,
+      "h3Texts": [
+        "Hệ thống kiểu chữ",
+        "Trục căn chỉnh & Phân tầng",
+        "Xử lý tài sản dữ liệu"
+      ],
+      "hasNav": true,
+      "hasMain": true,
+      "hasFooter": true,
+      "sections": 3,
+      "badges": [
+        {
+          "text": "Hiện hành",
+          "hasMarker": true
+        },
+        {
+          "text": "Đang soạn",
+          "hasMarker": true
+        },
+        {
+          "text": "Chờ xác nhận",
+          "hasMarker": true
+        }
+      ]
+    },
+    "contrast_measurements": {
+      "text_primary": {
+        "description": "Chữ chính trên nền canvas",
+        "fg": "#0F172A",
+        "bg": "#F8FAFC",
+        "ratio": "17.06:1",
+        "passes_wcag_aa": true,
+        "passes_wcag_aaa": true
+      },
+      "text_muted": {
+        "description": "Chữ phụ trên nền canvas",
+        "fg": "#475569",
+        "bg": "#F8FAFC",
+        "ratio": "7.24:1",
+        "passes_wcag_aa": true,
+        "passes_wcag_aaa": true
+      },
+      "button_primary": {
+        "description": "Chữ nút chính trên nền nút",
+        "fg": "#FFFFFF",
+        "bg": "#0F172A",
+        "ratio": "17.85:1",
+        "passes_wcag_aa": true,
+        "passes_wcag_aaa": true
+      },
+      "status_current": {
+        "description": "Chữ badge Hiện hành trên nền badge",
+        "fg": "#065F46",
+        "bg": "#ECFDF5",
+        "ratio": "7.29:1",
+        "passes_wcag_aa": true,
+        "passes_wcag_aaa": true
+      },
+      "status_drafting": {
+        "description": "Chữ badge Đang soạn trên nền badge",
+        "fg": "#92400E",
+        "bg": "#FEF3C7",
+        "ratio": "6.37:1",
+        "passes_wcag_aa": true,
+        "passes_wcag_aaa": false
+      },
+      "status_pending": {
+        "description": "Chữ badge Chờ xác nhận trên nền badge",
+        "fg": "#9A3412",
+        "bg": "#FFEDD5",
+        "ratio": "6.38:1",
+        "passes_wcag_aa": true,
+        "passes_wcag_aaa": false
+      }
+    },
+    "contrast_scope_note": "Phép đo áp dụng trên 6 cặp màu đại diện chính trong hệ thống token, tính toán bằng công thức Relative Luminance sRGB chuẩn WCAG 2.1."
+  },
+  "v08_zero_motion_and_repro": {
+    "pass": true,
+    "details": {
+      "isZeroTransition": true,
+      "isZeroAnimation": true,
+      "isInstantScroll": true,
+      "bodyFontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif"
+    }
+  }
+}

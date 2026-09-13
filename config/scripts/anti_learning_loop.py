@@ -25,6 +25,7 @@ KNOWLEDGE_DIR = os.path.join(BASE_DIR, "knowledge")
 OUTPUT_FILE = os.path.join(KNOWLEDGE_DIR, "daily_learnings.md")
 EVENTS_DIR = os.path.join(BASE_DIR, "config", "learning", "events")
 SEEN_CACHE_FILE = os.path.join(KNOWLEDGE_DIR, ".seen_cache.json")
+ALERTS_CACHE_FILE = os.path.join(KNOWLEDGE_DIR, ".seen_alerts.json")
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
 
@@ -119,6 +120,111 @@ def save_seen_cache(seen_set, max_items=1000):
             json.dump(items, f, indent=2, ensure_ascii=False)
     except Exception:
         pass
+
+def load_alerts_cache():
+    """Tải danh sách URL/ID đã từng gửi cảnh báo Telegram để tránh spam"""
+    if os.path.exists(ALERTS_CACHE_FILE):
+        try:
+            with open(ALERTS_CACHE_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if isinstance(data, list):
+                    return set(data)
+        except Exception:
+            pass
+    return set()
+
+def save_alerts_cache(alerts_set, max_items=500):
+    """Lưu trữ danh sách cảnh báo đã gửi vào cache"""
+    try:
+        items = list(alerts_set)[-max_items:]
+        with open(ALERTS_CACHE_FILE, "w", encoding="utf-8") as f:
+            json.dump(items, f, indent=2, ensure_ascii=False)
+    except Exception:
+        pass
+
+def get_telegram_config():
+    """Lấy Telegram Bot Token và Chat ID của Anh từ môi trường hoặc .env.local an toàn"""
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "7809143825")
+
+    env_local = os.path.join(BASE_DIR, "config", "sidecars", "antigravity_master_hub", ".env.local")
+    if os.path.exists(env_local):
+        try:
+            with open(env_local, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith("TELEGRAM_BOT_TOKEN="):
+                        val = line.split("=", 1)[1].strip().strip('"').strip("'")
+                        if val:
+                            token = val
+        except Exception:
+            pass
+
+    hub_config = os.path.join(BASE_DIR, "config", "sidecars", "antigravity_master_hub", "hub_config.json")
+    if os.path.exists(hub_config):
+        try:
+            with open(hub_config, "r", encoding="utf-8") as f:
+                cdata = json.load(f)
+                btoken = cdata.get("bot_token")
+                if btoken and not btoken.startswith("ENV:"):
+                    token = btoken
+                allowed = cdata.get("allowed_user_ids")
+                if allowed and isinstance(allowed, list) and len(allowed) > 0:
+                    chat_id = str(allowed[0])
+        except Exception:
+            pass
+
+    return token, chat_id
+
+def send_telegram_hot_alert(title: str, summary: str, source: str, link: str = "", score: str = None) -> bool:
+    """Gửi cảnh báo nóng về phát hiện công nghệ đột phá sang Telegram của Anh"""
+    token, chat_id = get_telegram_config()
+    if not token or not chat_id:
+        print("⚠️ Không tìm thấy cấu hình Telegram Bot Token hoặc Chat ID.")
+        return False
+
+    score_line = f"📊 *Đánh giá Benchmark*: `{score}`\n" if score else ""
+    link_line = f"🔗 *Liên kết*: {link}\n" if link else ""
+
+    text = (
+        f"🚀 *[ANTIGRAVITY RADAR] PHÁT HIỆN CÔNG NGHỆ ĐỘT PHÁ!*\n"
+        f"━━━━━━━━━━━━━━━━━━━━━━━\n"
+        f"🔥 *Nguồn*: {source}\n"
+        f"📦 *Tên*: `{title}`\n"
+        f"{score_line}"
+        f"📝 *Tóm tắt*: {summary}\n"
+        f"{link_line}"
+        f"━━━━━━━━━━━━━━━━━━━━━━━\n"
+        f"💡 _Đã lưu vào Kho Tri Thức và đóng gói Candidate Skill sẵn sàng cho Anh phê duyệt!_"
+    )
+
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    payload = {
+        "chat_id": chat_id,
+        "text": text,
+        "parse_mode": "Markdown",
+        "disable_web_page_preview": False
+    }
+    data = json.dumps(payload).encode("utf-8")
+    ctx = get_ssl_context()
+    req = urllib.request.Request(
+        url,
+        data=data,
+        headers={"Content-Type": "application/json", "User-Agent": USER_AGENT}
+    )
+    try:
+        with urllib.request.urlopen(req, context=ctx, timeout=12) as response:
+            res_data = json.loads(response.read().decode("utf-8"))
+            if res_data.get("ok"):
+                print(f"📱 [Telegram Alert] Đã gửi báo động nóng thành công tới Anh (Chat ID: {chat_id})!")
+                return True
+            else:
+                print(f"⚠️ Telegram API trả về lỗi: {res_data}")
+                return False
+    except Exception as e:
+        print(f"⚠️ Lỗi gửi thông báo Telegram: {e}")
+        return False
+
 
 def fetch_google_ai_updates():
     """Thu thập thông tin mới nhất từ Google AI Blog"""
@@ -345,7 +451,18 @@ def rotate_learning_log(max_lines=600):
 def main():
     os.makedirs(KNOWLEDGE_DIR, exist_ok=True)
     os.makedirs(EVENTS_DIR, exist_ok=True)
-    
+
+    if "--test-telegram" in sys.argv:
+        print("🧪 Đang kiểm tra đường truyền gửi cảnh báo tới Telegram của Anh...")
+        ok = send_telegram_hot_alert(
+            title="Antigravity Radar Hot Alert Test",
+            summary="Kiểm tra kết nối thành công! Bầy tác tử đã kích hoạt cơ chế báo động nóng 24/7 trực tiếp tới Telegram của Anh mỗi khi phát hiện công nghệ hoặc Candidate Skill đột phá.",
+            source="Antigravity Autonomous Radar",
+            link="https://github.com/hoadulieu2003-lang/antigravity-skill",
+            score="10/10 🟢 [ACTIVE]"
+        )
+        sys.exit(0 if ok else 1)
+
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"[{timestamp}] 🚀 Kích hoạt Anti Autonomous Learning Loop...")
     
@@ -457,6 +574,25 @@ def main():
         except Exception:
             pass
 
+        # 5. Kích hoạt Báo Động Nóng Telegram (Telegram Hot Alert) cho phát hiện đột phá
+        alerts_cache = load_alerts_cache()
+        for it in github_new:
+            link = it.get("link", "")
+            if link and link not in alerts_cache:
+                stars_match = re.search(r'(\d+)\s*⭐', it.get("source", ""))
+                stars = int(stars_match.group(1)) if stars_match else 0
+                if stars >= 2000:
+                    print(f"🔥 Phát hiện GitHub Repo đỉnh cao ({stars:,} ⭐): {it['title']}")
+                    sent = send_telegram_hot_alert(
+                        title=it["title"],
+                        summary=it["snippet"],
+                        source=f"GitHub Trending ({stars:,} ⭐)",
+                        link=link
+                    )
+                    if sent:
+                        alerts_cache.add(link)
+        save_alerts_cache(alerts_cache)
+
         print(f"✅ Hoàn thành phiên học tập đa nguồn! Đã lưu {len(new_findings)} phát hiện mới vào: {OUTPUT_FILE}")
 
     scripts_dir = os.path.dirname(os.path.abspath(__file__))
@@ -474,6 +610,7 @@ def main():
         try:
             import candidate_benchmark
             if candidate_skills:
+                alerts_cache = load_alerts_cache()
                 for cand in candidate_skills:
                     sname = cand.get("skill_name")
                     if sname:
@@ -482,6 +619,19 @@ def main():
                         rating = bench_res.get("rating", "NEEDS_REVIEW")
                         badge = "🟢 [RECOMMENDED]" if rating == "RECOMMENDED" else "🟡 [NEEDS_REVIEW]"
                         print(f"   📊 Đã chấm điểm Benchmark cho '{sname}': {score}/10 {badge}")
+                        
+                        cand_id = f"cand_{sname}_{score}"
+                        if (rating == "RECOMMENDED" or score >= 8.0) and cand_id not in alerts_cache:
+                            sent = send_telegram_hot_alert(
+                                title=f"Candidate Skill: {sname}",
+                                summary=cand.get("summary", f"Bộ kỹ năng mới đã được đóng gói và kiểm chứng đạt điểm xuất sắc: {score}/10"),
+                                source="Candidate Skill Benchmark",
+                                link=cand.get("source_url", ""),
+                                score=f"{score}/10 {badge}"
+                            )
+                            if sent:
+                                alerts_cache.add(cand_id)
+                save_alerts_cache(alerts_cache)
             else:
                 candidate_benchmark.benchmark_all_candidates(save_manifest=True)
         except Exception as be:

@@ -1,14 +1,16 @@
 {
   "module": "DESIGN_TRAINING_004",
-  "timestamp": "2026-09-13T10:14:03.894Z",
+  "revision": "REV_002",
+  "timestamp": "2026-09-13T11:13:55.080Z",
   "environment": {
-    "cdpUrl": "http://127.0.0.1:9223",
+    "cdpUrl": "http://127.0.0.1:9222",
     "engine": "Puppeteer CDP Automation (Antigravity Self-Test)",
-    "dpr": 2
+    "dpr": 2,
+    "htmlPath": "file:///c:/Users/game/.gemini/exercises/design_training_004/index.html"
   },
   "testCases": {
     "T01": {
-      "precondition": "Tải trang hoặc đặt lại mô phỏng",
+      "precondition": "Tải trang hoặc đặt lại mô phỏng hoàn tất",
       "action": "Quan sát trạng thái khởi tạo ban đầu",
       "inputMethod": "None (Initial Load)",
       "stateBefore": "N/A",
@@ -30,8 +32,8 @@
     },
     "T02": {
       "precondition": "Form trống mặc định (chưa chọn người)",
-      "action": "Click nút Lưu phân công",
-      "inputMethod": "Pointer Click (btn-submit)",
+      "action": "Bấm nút Lưu phân công",
+      "inputMethod": "Programmatic DOM Click (btnSubmit.click())",
       "stateBefore": "editing",
       "stateAfter": "invalid",
       "activeElementAfter": "assignee-select",
@@ -45,7 +47,7 @@
     "T03": {
       "precondition": "Chọn P02 Bình, form chuẩn bị nhập ghi chú",
       "action": "Nhập 201 ký tự -> Submit -> Sửa về 200 ký tự -> Submit",
-      "inputMethod": "DOM Event Input + Pointer Click",
+      "inputMethod": "DOM Event Input + Programmatic DOM Click",
       "step1Reject": {
         "state": "invalid",
         "err": "Ghi chú cần tối đa 200 ký tự.",
@@ -65,9 +67,9 @@
       "verdict": "PASS"
     },
     "T04": {
-      "precondition": "Form có dữ liệu hợp lệ (P02 - Bình + Ghi chú chuẩn)",
-      "action": "Click Lưu phân công lần đầu tiên",
-      "inputMethod": "Pointer Click (btn-submit)",
+      "precondition": "Form có dữ liệu hợp lệ (P02 - Bình + Ghi chú chuẩn) sau khi chờ hết saving từ T03 và reset chuẩn xác",
+      "action": "Click Lưu phân công lần đầu tiên qua con trỏ thực tế",
+      "inputMethod": "Puppeteer Pointer Click (page.click)",
       "savingState": {
         "state": "saving",
         "isAssigneeLocked": true,
@@ -95,10 +97,10 @@
           },
           "isAssigneeLocked": false,
           "isNoteLocked": false,
-          "isSubmitLocked": true
+          "isSubmitLocked": false
         },
-        "feedbackText": "Chưa lưu được phân công. Dữ liệu bạn nhập vẫn được giữ. Hãy thử lại.\nThử lưu lại",
-        "activeEl": "btn-retry",
+        "feedbackText": "Chưa lưu được phân công. Dữ liệu bạn nhập vẫn được giữ. Hãy thử lại.",
+        "activeEl": "btn-submit",
         "draftAssignee": "P02",
         "draftNote": "Đối chiếu các tình huống đăng nhập trước khi bàn giao.",
         "committedAssignee": "Chưa giao",
@@ -109,48 +111,72 @@
       "verdict": "PASS"
     },
     "T05": {
-      "precondition": "Tiếp nối T04 (đang ở trạng thái error với nháp P02 Bình)",
-      "action": "Click nút Thử lưu lại",
-      "inputMethod": "Pointer Click (btn-retry)",
-      "stateBefore": "error",
-      "stateAfter": "success",
-      "attemptCount": 2,
-      "commitCount": 1,
-      "committed": {
-        "assignee": "P02 — Bình",
-        "note": "Đối chiếu các tình huống đăng nhập trước khi bàn giao."
+      "precondition": "Tiếp nối T04 (đang ở trạng thái error với nháp P02 Bình, focus tại btn-submit)",
+      "action": "Click nút Thử lưu lại -> Đo focus trong saving -> Đo sau success",
+      "inputMethod": "Puppeteer Pointer Click (page.click)",
+      "activeElementBeforeRetry": "btn-submit",
+      "savingRetryFocusCheck": {
+        "state": "saving",
+        "activeElementDuringSaving": "btn-submit",
+        "isButtonConnected": true,
+        "buttonAriaDisabled": "true",
+        "buttonText": "Đang lưu phân công…"
       },
-      "feedbackText": "Đã giao W01 cho Bình — kết quả mô phỏng.\nSửa phân công",
-      "expected": "state=success, attemptCount=2, commitCount=1, thông tin đã lưu khớp Bình + ghi chú, thông báo đúng, có nút Sửa phân công",
-      "actual": "state=success, attempts=2, commits=1, committedAssignee=P02 — Bình, feedback=\"Đã giao W01 cho Bình — kết quả mô phỏng.\nSửa phân công\"",
+      "successResult": {
+        "diag": {
+          "state": "success",
+          "attemptCount": 2,
+          "commitCount": 1,
+          "draft": {
+            "assignee": "P02",
+            "note": "Đối chiếu các tình huống đăng nhập trước khi bàn giao."
+          },
+          "committed": {
+            "assignee": "P02",
+            "note": "Đối chiếu các tình huống đăng nhập trước khi bàn giao."
+          },
+          "fieldErrors": {
+            "assignee": null,
+            "note": null
+          },
+          "isAssigneeLocked": true,
+          "isNoteLocked": true,
+          "isSubmitLocked": true
+        },
+        "feedbackText": "Đã giao W01 cho Bình — kết quả mô phỏng.",
+        "committedAssignee": "P02 — Bình",
+        "committedNote": "Đối chiếu các tình huống đăng nhập trước khi bàn giao.",
+        "btnEditExists": true,
+        "activeElementAfterSuccess": "btn-edit-assignment"
+      },
+      "expected": "Trong saving lần retry: focus giữ nguyên trên btn-submit (không rơi về body); sau success: state=success, attempts=2, commits=1, focus chuyển sang btn-edit-assignment",
+      "actual": "DuringSavingFocus=btn-submit (btnConnected=true); AfterSuccessFocus=btn-edit-assignment, attempts=2, commits=1",
       "verdict": "PASS"
     },
     "T06": {
       "precondition": "Form có dữ liệu hợp lệ mới sau khi reset",
-      "action": "Submit hợp lệ -> Kích hoạt gửi thêm 2 lần trong lúc saving (1 click + 1 form submit event)",
-      "inputMethod": "Mixed: Pointer click + DOM submit event during saving",
-      "extraSubmissionCheck": {
-        "attemptCountDuringSaving": 1,
-        "stateDuringSaving": "saving"
-      },
-      "finalState": {
+      "action": "Gửi hợp lệ (page.click) -> Kích hoạt thêm 1 pointer click (page.click) + 1 phím Enter trong lúc saving",
+      "inputMethod": "Puppeteer Pointer Click (page.click) + Keyboard Enter",
+      "attemptsBeforeExtra": 1,
+      "attemptsDuringSaving": 1,
+      "finalResult": {
         "state": "error",
         "attemptCount": 1,
         "commitCount": 0
       },
-      "expected": "Chỉ 1 lần gọi được chấp nhận, attemptCount=1, kết thúc state=error, commitCount=0",
-      "actual": "duringSavingAttempts=1, finalState=error, finalAttempts=1, finalCommits=0",
+      "expected": "Chỉ 1 lần gọi được chấp nhận (attemptCount=1), kích hoạt thêm bằng click và phím đều bị triệt tiêu, kết thúc state=error, commitCount=0",
+      "actual": "attemptsBefore=1, duringSaving=1, finalAttempts=1, finalCommits=0",
       "verdict": "PASS"
     },
     "T07": {
-      "precondition": "Đang ở trạng thái error từ lần gửi Bình",
+      "precondition": "Đang ở trạng thái error từ lần gửi Bình của T06",
       "action": "Đổi select sang P03 Chi -> Bấm Lưu phân công",
-      "inputMethod": "DOM Change Event (select P03) + Pointer Click (btn-submit)",
+      "inputMethod": "DOM Change Event (select P03) + Programmatic DOM Click (btnSubmit.click())",
       "stateAfterChange": "editing",
       "finalState": "success",
       "committedAssignee": "P03 — Chi",
       "commitCount": 1,
-      "feedback": "Đã giao W01 cho Chi — kết quả mô phỏng.\nSửa phân công",
+      "feedback": "Đã giao W01 cho Chi — kết quả mô phỏng.",
       "expected": "Đổi trường đưa về editing và xóa lỗi gửi cũ; lần gửi tiếp theo thành công với Chi, commitCount=1, không lưu nhầm Bình",
       "actual": "stateAfterChange=editing, finalState=success, committedAssignee=P03 — Chi, commits=1",
       "verdict": "PASS"
@@ -158,7 +184,7 @@
     "T08": {
       "precondition": "Đang ở trạng thái success (đã lưu Chi)",
       "action": "Click nút Sửa phân công",
-      "inputMethod": "Pointer Click (btn-edit-assignment)",
+      "inputMethod": "Programmatic DOM Click (btnEditAssignment.click())",
       "stateAfter": "editing",
       "activeElementAfter": "assignee-select",
       "prefilledData": {
@@ -175,7 +201,7 @@
     "T09": {
       "precondition": "Đang ở trạng thái success",
       "action": "Click Đặt lại mô phỏng -> Nhập dữ liệu hợp lệ -> Submit",
-      "inputMethod": "Pointer Click (btn-reset-simulation) -> Input -> Submit",
+      "inputMethod": "Programmatic DOM Click -> Event Input -> DOM Click",
       "resetCheck": {
         "diag": {
           "state": "editing",
@@ -222,7 +248,7 @@
           },
           "isAssigneeLocked": false,
           "isNoteLocked": false,
-          "isSubmitLocked": true
+          "isSubmitLocked": false
         },
         "committedAssignee": "Chưa giao"
       },
@@ -231,54 +257,74 @@
       "verdict": "PASS"
     },
     "T10": {
-      "precondition": "Mobile 390×844, bắt đầu từ form reset rỗng",
-      "action": "Thực thi toàn bộ chuỗi T02 -> nhập hợp lệ -> T04 -> T05 chỉ bằng phím Enter, Tab, Arrow keys",
-      "inputMethod": "Automated Keyboard Navigation (page.keyboard)",
+      "precondition": "Mobile 390×844, form reset rỗng, bắt đầu Tab tuần tự từ đầu trang",
+      "action": "Thực thi toàn bộ chuỗi T02 -> nhập hợp lệ -> T04 -> T05 chỉ bằng phím Enter, Tab, ArrowDown, Shift+Tab",
+      "inputMethod": "Strict Native Keyboard Navigation (page.keyboard)",
       "steps": [
         {
-          "step": "1. Bấm Enter submit rỗng",
+          "step": "1. Tab tới btn-submit & Enter submit rỗng",
           "activeBefore": "btn-submit",
           "activeAfter": "assignee-select",
           "state": "invalid",
-          "err": "Chọn người xử lý trước khi lưu."
+          "err": "Chọn người xử lý trước khi lưu.",
+          "errorInViewport": true
         },
         {
-          "step": "2-3. Chọn Bình & gõ ghi chú bằng bàn phím",
+          "step": "2-3. ArrowDown chọn P02 -> Tab textarea -> Type note",
           "activeElement": "note-textarea"
         },
         {
-          "step": "4. Tab nút submit và bấm Enter -> saving",
+          "step": "4. Tab btn-submit & Enter -> first saving",
           "activeElement": "btn-submit",
           "state": "saving",
+          "activeElementDuringFirstSaving": "btn-submit",
+          "buttonConnected": true,
           "savingText": "Đang lưu phân công…"
         },
         {
-          "step": "4b. Kết quả lỗi lần đầu",
+          "step": "4b. Lỗi lần đầu: focus ổn định tại nút thử lại",
           "state": "error",
-          "activeElement": "btn-retry",
-          "feedback": "Chưa lưu được phân công. Dữ liệu bạn nhập vẫn được giữ. Hãy thử lại.\nThử lưu lại",
-          "btnRetryVisibleInViewport": true
+          "activeElementAfterError": "btn-submit",
+          "feedback": "Chưa lưu được phân công. Dữ liệu bạn nhập vẫn được giữ. Hãy thử lại.",
+          "btnRetryVisibleInViewport": true,
+          "feedbackVisibleInViewport": true
         },
         {
-          "step": "5. Bấm Thử lưu lại -> thành công",
+          "step": "5a. Bấm Enter retry -> saving lần 2 (Đo focus giữ ổn định)",
+          "state": "saving",
+          "activeElementDuringRetrySaving": "btn-submit",
+          "isButtonConnected": true,
+          "buttonText": "Đang lưu phân công…",
+          "buttonAriaDisabled": "true",
+          "buttonVisibleInViewport": true
+        },
+        {
+          "step": "5b. Thành công lần 2: focus chuyển có chủ đích sang btn-edit-assignment",
           "state": "success",
-          "activeElement": "btn-edit-assignment",
-          "feedback": "Đã giao W01 cho Bình — kết quả mô phỏng.\nSửa phân công",
+          "activeElementAfterSuccess": "btn-edit-assignment",
+          "feedback": "Đã giao W01 cho Bình — kết quả mô phỏng.",
           "committedAssignee": "P02 — Bình",
           "btnEditVisibleInViewport": true,
+          "feedbackVisibleInViewport": true,
           "horizontalOverflow": false
         }
       ],
+      "f01NoStealCheck": {
+        "userTabFocusDuringSaving": "banner-notice",
+        "focusAfterCompletion": "banner-notice",
+        "verdict": "PASS"
+      },
       "finalCheck": {
         "state": "success",
-        "activeElement": "btn-edit-assignment",
-        "feedback": "Đã giao W01 cho Bình — kết quả mô phỏng.\nSửa phân công",
+        "activeElementAfterSuccess": "btn-edit-assignment",
+        "feedback": "Đã giao W01 cho Bình — kết quả mô phỏng.",
         "committedAssignee": "P02 — Bình",
         "btnEditVisibleInViewport": true,
+        "feedbackVisibleInViewport": true,
         "horizontalOverflow": false
       },
-      "expected": "Không mất focus, tự hoàn trả focus về select khi lỗi, focus vào retry button khi lỗi gửi, thành công với Bình, không tràn ngang",
-      "actual": "StepsCount=5, savingCheck=saving, finalState=success, committedAssignee=P02 — Bình, horizontalOverflow=false",
+      "expected": "Hoàn toàn bằng phím, không mất focus, focus ổn định trên btn-submit qua saving và retry, đo rect trong viewport, thành công với Bình, không cướp focus vô điều kiện",
+      "actual": "StepsCount=6, saving1Focus=btn-submit, errorFocus=btn-submit, savingRetryFocus=btn-submit, successFocus=btn-edit-assignment, horizontalOverflow=false",
       "verdict": "PASS"
     }
   },
@@ -321,12 +367,13 @@
     }
   },
   "screenshots": [
-    "desktop_initial_1440x900.png",
-    "mobile_initial_390x844.png",
-    "mobile_validation_390x844.png",
-    "mobile_saving_390x844.png",
-    "mobile_error_390x844.png",
-    "mobile_success_390x844.png"
+    "screenshots/desktop_initial_1440x900.png",
+    "screenshots/mobile_initial_390x844.png",
+    "screenshots/mobile_validation_390x844.png",
+    "screenshots/mobile_saving_390x844.png",
+    "screenshots/mobile_error_390x844.png",
+    "screenshots/mobile_retry_saving_390x844.png",
+    "screenshots/mobile_success_390x844.png"
   ],
   "overallVerdict": "PASS"
 }

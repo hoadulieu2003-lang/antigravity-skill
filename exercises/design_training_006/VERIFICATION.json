@@ -1,0 +1,199 @@
+{
+  "module": "DESIGN_TRAINING_006",
+  "revision": "R03_FINAL",
+  "timestamp": "2026-09-13T13:41:28.978Z",
+  "cdp_port": 9222,
+  "dpr": 2,
+  "q01_baseline_authenticity": {
+    "pass": true,
+    "source_zip_path": "exercises/design_training_005/design_training_005_submission_r02.zip",
+    "source_zip_sha256": "12302f8c948dd48126cb756f20c4e64639642eba8394a0501006c6034c850bf1",
+    "expected_sha256": "12302f8c948dd48126cb756f20c4e64639642eba8394a0501006c6034c850bf1",
+    "hash_matched_strictly": true,
+    "baseline_index_byte_identical_to_zip": true,
+    "baseline_contract_status": "ACCEPTED_FOR_EXERCISE (Metadata updated post-M05 PASS as permitted)"
+  },
+  "q02_critique_classification": {
+    "status": "PASS",
+    "review_type": "CRITIQUE_AUDIT",
+    "controller_status": "CLOSED (Review 002 confirmed PASS)"
+  },
+  "q03_single_hypothesis_two_changes": {
+    "pass": true,
+    "hypothesis": "Tại Section 03 ('Quyết định thiết kế'), việc hợp nhất 3 thẻ card đóng hộp độc lập thành một khung nhóm chung (Unified Grouped Container) phân cách bằng đường hairline dọc siêu mảnh trên desktop kết hợp thẻ nhãn kỹ thuật monospace sẽ tăng tính liên kết nhóm và độ thanh lịch của nhịp trang, trong khi vẫn bảo toàn 100% nội dung văn bản và cấu trúc hiển thị dọc trên mobile.",
+    "change_1": "Bố cục Section 03 Desktop: Chuyển từ 3 thẻ card riêng lẻ sang một khung nhóm chung (.decisions-grid) có đường hairline dọc ngăn cách nội bộ (.decision-card border-right: 1px solid var(--color-border) cho 2 cột đầu), bỏ viền riêng từng card.",
+    "change_2": "Nhãn định danh & Thích ứng Mobile: Tạo kiểu khung nhãn kỹ thuật gọn gàng cho .decision-num (nền var(--color-surface-subtle), viền mảnh 1px, font monospace); trên mobile (max-width: 900px) chuyển thành các phân đoạn xếp dọc ngăn cách bởi hairline ngang (border-bottom)."
+  },
+  "q04_fair_comparison": {
+    "pass": true,
+    "conditions": {
+      "desktop_viewport": "1440x900",
+      "tablet_viewport": "768x1024",
+      "mobile_viewport": "390x844",
+      "dpr": 2,
+      "font_state": "System fonts (Inter candidate)",
+      "content_identical": true,
+      "screenshots_reused_from_r02": true,
+      "reason": "Giao diện Candidate giữ nguyên 100%, bộ 5 ảnh đã được Controller kiểm tra và chấp nhận"
+    }
+  },
+  "q05_invariants_and_no_regressions": {
+    "pass": true,
+    "overflow_checks": {
+      "desktop_1440": {
+        "viewport": "1440x900",
+        "clientWidth": 1425,
+        "scrollWidth": 1425,
+        "hasHorizontalOverflow": false,
+        "assertPass": true
+      },
+      "tablet_768": {
+        "viewport": "768x1024",
+        "clientWidth": 753,
+        "scrollWidth": 753,
+        "hasHorizontalOverflow": false,
+        "assertPass": true
+      },
+      "mobile_390": {
+        "viewport": "390x844",
+        "clientWidth": 375,
+        "scrollWidth": 375,
+        "hasHorizontalOverflow": false,
+        "assertPass": true
+      }
+    },
+    "data_integrity": {
+      "rows": [
+        {
+          "rowIndex": 1,
+          "docName": "Yêu cầu sản phẩm",
+          "owner": "An",
+          "status": "Hiện hành"
+        },
+        {
+          "rowIndex": 2,
+          "docName": "Bản mẫu đăng nhập",
+          "owner": "Bình",
+          "status": "Đang soạn"
+        },
+        {
+          "rowIndex": 3,
+          "docName": "Biên bản bàn giao",
+          "owner": "Chi",
+          "status": "Chờ xác nhận"
+        }
+      ],
+      "row1Valid": true,
+      "row2Valid": true,
+      "row3Valid": true,
+      "allRowsValid": true,
+      "hasStaticLabel": true,
+      "h1Text": "Bàn giao rõ ràng.\nCông việc tiếp nối."
+    },
+    "cta_behavior": {
+      "pointer_cta": {
+        "targetedElement": "cta-organization",
+        "method": "Native pointer click via Puppeteer page.click(#cta-organization)",
+        "targetId": "section-organization",
+        "hashAfterClick": "#section-organization",
+        "targetTop": -0.046875,
+        "targetInView": true,
+        "pass": true
+      },
+      "keyboard_cta": {
+        "targetedElement": "cta-decisions",
+        "method": "Native keyboard via Puppeteer page.keyboard (Tab natural traversal + Enter activation)",
+        "focusSequence": [
+          {
+            "tabIndex": 1,
+            "tag": "A",
+            "id": "cta-organization",
+            "className": "btn btn-primary",
+            "href": "#section-organization"
+          },
+          {
+            "tabIndex": 2,
+            "tag": "A",
+            "id": "cta-decisions",
+            "className": "btn btn-secondary",
+            "href": "#section-decisions"
+          }
+        ],
+        "reachedViaTab": true,
+        "activeElementBeforeEnter": "cta-decisions",
+        "hashAfterEnter": "#section-decisions",
+        "targetTop": 193.078125,
+        "targetInView": true,
+        "pass": true
+      }
+    },
+    "zero_motion_comprehensive": {
+      "elements": [
+        {
+          "selector": "h1",
+          "transitionDuration": "0s",
+          "animationName": "none",
+          "isZero": true
+        },
+        {
+          "selector": "h2",
+          "transitionDuration": "0s",
+          "animationName": "none",
+          "isZero": true
+        },
+        {
+          "selector": "h3",
+          "transitionDuration": "0s",
+          "animationName": "none",
+          "isZero": true
+        },
+        {
+          "selector": ".btn-primary",
+          "transitionDuration": "0s",
+          "animationName": "none",
+          "isZero": true
+        },
+        {
+          "selector": ".btn-secondary",
+          "transitionDuration": "0s",
+          "animationName": "none",
+          "isZero": true
+        },
+        {
+          "selector": ".matrix-table",
+          "transitionDuration": "0s",
+          "animationName": "none",
+          "isZero": true
+        },
+        {
+          "selector": ".decision-card",
+          "transitionDuration": "0s",
+          "animationName": "none",
+          "isZero": true
+        },
+        {
+          "selector": ".matrix-card",
+          "transitionDuration": "0s",
+          "animationName": "none",
+          "isZero": true
+        },
+        {
+          "selector": "body",
+          "transitionDuration": "0s",
+          "animationName": "none",
+          "isZero": true
+        }
+      ],
+      "allZero": true
+    }
+  },
+  "q06_decision_and_tradeoff": {
+    "status": "PASS",
+    "decision": "ADOPT",
+    "controller_status": "ADOPT_ACCEPTED_FOR_EXERCISE (Review 002 confirmed PASS)"
+  },
+  "q07_bounded_learnings": {
+    "status": "PASS",
+    "controller_status": "CLOSED (Review 002 confirmed PASS)"
+  }
+}
