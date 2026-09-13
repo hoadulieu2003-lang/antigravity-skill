@@ -12,7 +12,8 @@ Transforming design from a capability catalog into a controlled, taste-driven cr
 > Capability selection after creative intent.  
 > Design Engineer implements; Design Director directs.  
 > Rendered screenshot evidence before visual approval.  
-> 3D and motion are optional capabilities, never default aesthetics.
+> 3D and motion are optional capabilities, never default aesthetics.  
+> Light Theme is the mandatory default — all color spectrums welcome except black/dark theme; dark theme ONLY when explicitly requested by Anh.
 
 ---
 
@@ -85,3 +86,4 @@ Read only the matching reference for current stage:
 2. **Khóa Hợp đồng**: Khi trạng thái là `ART_DIRECTION_LOCKED`, cấm Design Engineer tự ý đổi font, layout, bảng màu, hoặc triết lý chuyển động. Thay đổi cốt lõi bắt buộc qua `DESIGN_CONTRACT_CHANGE_REQUEST`.
 3. **Không Lạm dụng 3D/Motion**: Three.js/WebGL là giải pháp có chọn lọc khi phục vụ câu chuyện sản phẩm, tuyệt đối không dùng 3D làm vỏ bọc cho bố cục yếu.
 4. **Bằng chứng Thực nghiệm**: Bắt buộc có ảnh chụp màn hình (`Screenshot`) cho mọi nghiệm thu visual chính.
+5. **Giao Diện Màu Sáng Mặc Định (`Light Theme Default Invariant`)**: Mặc định 100% sử dụng giao diện màu sáng (khai thác toàn bộ các dải màu phong phú khác: trắng, kem, be, pastel, xanh, cam, xám nhạt, v.v., tuyệt đối loại trừ màu đen/dark theme). Chỉ được phép sử dụng giao diện màu đen khi Anh có yêu cầu tường minh.

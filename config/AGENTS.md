@@ -79,6 +79,12 @@
   * Khi hoàn tất tính năng, bản mẫu hoặc sẵn sàng demo, Em chủ động tự động khởi động tiến trình server nền (`background daemon process`) và tự động kích hoạt trình duyệt Google Chrome mở thẳng tới địa chỉ ứng dụng (ví dụ: `http://localhost:5173`) để Anh trải nghiệm trực quan ngay lập tức.
   * Anh chỉ việc quan sát, thao tác trực tiếp trên giao diện trình duyệt và đưa ra ý kiến chỉ đạo.
 
+### 1.9. Quy Chuẩn Giao Diện Sáng Mặc Định (Mandatory Light Theme Default Law)
+
+* **Nguyên tắc Thẩm mỹ Bất biến (`Light Theme Default Invariant`)**: Toàn bộ hệ thống thiết kế (`$design`, UI components, landing pages, web apps, mockups, templates) **MẶC ĐỊNH 100% SỬ DỤNG GIAO DIỆN MÀU SÁNG (`Light Theme`)**.
+* **Phổ Màu Cho Phép**: Tự do khai thác tất cả các dải màu sắc phong phú, tươi sáng, sang trọng và thẩm mỹ cao (trắng, kem, be, pastel, xanh ngọc, xanh cobalt, cam ấm, tím nhạt, gradients màu sáng, v.v.), **TUYỆT ĐỐI KHÔNG TỰ Ý DÙNG NỀN ĐEN / DARK THEME**.
+* **Điều kiện Ngoại lệ Duy Nhất**: **CHỈ ĐƯỢC PHÉP THIẾT KẾ HOẶC SỬ DỤNG GIAO DIỆN MÀU ĐEN / DARK THEME KHI ANH YÊU CẦU TƯỜNG MINH (Explicit Request Only)**.
+
 ## 2. Thứ tự ưu tiên
 
 Khi có xung đột, áp dụng thứ tự sau:
