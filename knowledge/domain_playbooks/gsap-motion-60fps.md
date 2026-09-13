@@ -3,7 +3,7 @@
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Hệ thống áp dụng**: Anti AI Pair-Programmer  
 > **Hệ sinh thái công nghệ**: `GSAP 3.12+, ScrollTrigger, SplitText, Flip, React useGSAP, WebGL Canvas`  
-> **Cập nhật lần cuối**: 2026-09-13 10:52:27 UTC
+> **Cập nhật lần cuối**: 2026-09-13 16:42:09 UTC
 
 ---
 

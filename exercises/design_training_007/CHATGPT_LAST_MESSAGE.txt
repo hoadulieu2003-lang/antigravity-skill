@@ -1,0 +1,23 @@
+Đã phát hành đề bài chính thức Module 07:
+
+DESIGN_TRAINING_007_DIRECTIVE.md
+
+Bài kiểm tra sử dụng sản phẩm mới TRIPFLOW — Bảng điều phối tour, gồm:
+
+Baseline trung tính và Candidate có DNA riêng.
+
+Dữ liệu khóa cứng T01–T08.
+
+Hai phương án kiến trúc thông tin và hai hướng nghệ thuật.
+
+8 gates nghiệm thu, 14 kịch bản kiểm thử.
+
+Luồng validation → saving → error → retry → success.
+
+Ba viewport, giao diện sáng, không chuyển động và WCAG 2.1 AA.
+
+Tối đa hai vòng sửa.
+
+Sau khi PASS sẽ chuyển sang Module 08 — hệ thống màu sắc.
+
+Transfer — chuyển giao · Baseline — bản chuẩn · Candidate — phương án thử · Invariant — điều bất biến · Dispatch — điều phối

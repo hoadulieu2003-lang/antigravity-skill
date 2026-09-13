@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIPFLOW — Direction A: Dispatch Ledger (Sổ Điều Phối)</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: none !important;
+      animation: none !important;
+    }
+    html {
+      scroll-behavior: auto !important;
+      background-color: #FAF9F6;
+      color: #1C1917;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+    }
+    body {
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #FAF9F6;
+    }
+    .ledger-wrap {
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    /* Direction A Header */
+    .ledger-masthead {
+      border-bottom: 2px solid #1C1917;
+      padding-bottom: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .ledger-badge {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #78716C;
+      margin-bottom: 0.25rem;
+    }
+    .ledger-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #1C1917;
+    }
+    .ledger-stamp {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.8125rem;
+      border: 1px dashed #A8A29E;
+      padding: 0.375rem 0.75rem;
+      background: #F5F5F4;
+      color: #44403C;
+    }
+
+    /* Direction Thesis Callout */
+    .direction-thesis {
+      background: #F5F5F4;
+      border-left: 3px solid #1C1917;
+      padding: 1rem 1.25rem;
+      font-size: 0.9375rem;
+      color: #44403C;
+    }
+
+    /* Urgency Card (T01 Priority) */
+    .urgency-banner {
+      background: #FFF7ED;
+      border: 1px solid #FDBA74;
+      border-left: 5px solid #EA580C;
+      border-radius: 4px;
+      padding: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .urgency-title {
+      font-weight: 700;
+      color: #9A3412;
+      font-size: 1.0625rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .urgency-desc {
+      font-size: 0.875rem;
+      color: #7C2D12;
+      margin-top: 0.25rem;
+    }
+
+    /* Ledger Table Container */
+    .ledger-table-box {
+      background: #FFFFFF;
+      border: 1px solid #E7E5E4;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .ledger-row {
+      display: grid;
+      grid-template-columns: 80px 1.5fr 1fr 1fr 1.2fr;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #E7E5E4;
+      align-items: center;
+      gap: 1rem;
+    }
+    .ledger-row:last-child {
+      border-bottom: none;
+    }
+    .ledger-row.header-row {
+      background: #F5F5F4;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #57534E;
+    }
+    .ledger-id {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-weight: 700;
+      color: #1C1917;
+    }
+    .ledger-tour {
+      font-weight: 600;
+      color: #1C1917;
+    }
+    .ledger-time {
+      font-size: 0.875rem;
+      color: #57534E;
+      font-variant-numeric: tabular-nums;
+    }
+    .ledger-owner {
+      font-size: 0.875rem;
+      color: #57534E;
+    }
+    .ledger-status {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      display: inline-flex;
+      padding: 0.25rem 0.625rem;
+      border-radius: 2px;
+      width: fit-content;
+    }
+    .badge-action { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+    .badge-ready { background: #DCFCE7; color: #166534; border: 1px solid #86EFAC; }
+    .badge-prep { background: #E0E7FF; color: #3730A3; border: 1px solid #A5B4FC; }
+    .badge-missing { background: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5; }
+    .badge-done { background: #F5F5F4; color: #57534E; border: 1px solid #D6D3D1; }
+
+    @media (max-width: 768px) {
+      .ledger-row {
+        grid-template-columns: 60px 1fr auto;
+      }
+      .ledger-row.header-row {
+        display: none;
+      }
+      .ledger-time, .ledger-owner {
+        grid-column: 2 / 3;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ledger-wrap">
+    <header class="ledger-masthead">
+      <div>
+        <div class="ledger-badge">Direction A // Art Direction Specimen</div>
+        <h1 class="ledger-title">TRIPFLOW — Sổ Điều Phối Tuyến (Dispatch Ledger)</h1>
+      </div>
+      <div class="ledger-stamp">Quy chiếu: 18:00, 13/09/2026</div>
+    </header>
+
+    <div class="direction-thesis">
+      <strong>Triết lý Thị giác (Art Thesis)</strong>: Cảm giác sổ ghi chép tuyến đường hành chính ấm áp, sử dụng nền giấy ngà `#FAF9F6`, đường kẻ hairline thanh nhã `#E7E5E4`, kiểu chữ Sans kết hợp Monospace cho dữ liệu công vụ. Đề cao tính chân thực, trật tự và khả năng đọc tập trung trong môi trường văn phòng du lịch bận rộn.
+    </div>
+
+    <!-- T01 Focal Point -->
+    <div class="urgency-banner">
+      <div>
+        <div class="urgency-title">⚠️ ĐIỂM NÓNG CẦN XỬ LÝ NGAY: T01 — Hạ Long 2N1Đ</div>
+        <div class="urgency-desc">Khởi hành: 14/09 07:30 (còn dưới 14 giờ) • Phụ trách: Lan • Vấn đề: Khách sạn chưa xác nhận 4 phòng.</div>
+      </div>
+      <span class="ledger-status badge-action">Chờ đối tác</span>
+    </div>
+
+    <!-- Table of 8 Tours -->
+    <div class="ledger-table-box">
+      <div class="ledger-row header-row">
+        <div>Mã</div>
+        <div>Tour & Vấn đề ghi chú</div>
+        <div>Khởi hành</div>
+        <div>Phụ trách</div>
+        <div>Trạng thái</div>
+      </div>
+
+      <div class="ledger-row" style="background: #FFFBEB;">
+        <div class="ledger-id">T01</div>
+        <div>
+          <div class="ledger-tour">Hạ Long 2N1Đ</div>
+          <div style="font-size: 0.8125rem; color: #B45309;">Khách sạn chưa xác nhận 4 phòng</div>
+        </div>
+        <div class="ledger-time">14/09/2026 07:30</div>
+        <div class="ledger-owner">Lan</div>
+        <div><span class="ledger-status badge-action">Chờ đối tác</span></div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="ledger-id">T02</div>
+        <div>
+          <div class="ledger-tour">Ninh Bình 1 ngày</div>
+          <div style="font-size: 0.8125rem; color: #78716C;">Đã đủ xe, hướng dẫn viên và danh sách khách</div>
+        </div>
+        <div class="ledger-time">14/09/2026 06:00</div>
+        <div class="ledger-owner">Minh</div>
+        <div><span class="ledger-status badge-ready">Sẵn sàng</span></div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="ledger-id">T03</div>
+        <div>
+          <div class="ledger-tour">Sapa 3N2Đ</div>
+          <div style="font-size: 0.8125rem; color: #B91C1C;">2 khách chưa gửi CCCD</div>
+        </div>
+        <div class="ledger-time">15/09/2026 21:30</div>
+        <div class="ledger-owner">Huy</div>
+        <div><span class="ledger-status badge-missing">Thiếu hồ sơ</span></div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="ledger-id">T04</div>
+        <div>
+          <div class="ledger-tour">Đà Nẵng 4N3Đ</div>
+          <div style="font-size: 0.8125rem; color: #4338CA;">Chờ chốt danh sách suất ăn</div>
+        </div>
+        <div class="ledger-time">16/09/2026 08:00</div>
+        <div class="ledger-owner">Lan</div>
+        <div><span class="ledger-status badge-prep">Đang chuẩn bị</span></div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="ledger-id">T05</div>
+        <div>
+          <div class="ledger-tour">Hà Giang 3N2Đ</div>
+          <div style="font-size: 0.8125rem; color: #78716C;">Đã hoàn tất checklist khởi hành</div>
+        </div>
+        <div class="ledger-time">17/09/2026 05:30</div>
+        <div class="ledger-owner">Minh</div>
+        <div><span class="ledger-status badge-ready">Sẵn sàng</span></div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="ledger-id">T06</div>
+        <div>
+          <div class="ledger-tour">Phú Quốc 3N2Đ</div>
+          <div style="font-size: 0.8125rem; color: #B45309;">Nhà xe trung chuyển chưa xác nhận</div>
+        </div>
+        <div class="ledger-time">18/09/2026 09:10</div>
+        <div class="ledger-owner">Huy</div>
+        <div><span class="ledger-status badge-action">Chờ đối tác</span></div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="ledger-id">T07</div>
+        <div>
+          <div class="ledger-tour">Mộc Châu 2N1Đ</div>
+          <div style="font-size: 0.8125rem; color: #4338CA;">Đang rà soát danh sách phòng</div>
+        </div>
+        <div class="ledger-time">19/09/2026 06:30</div>
+        <div class="ledger-owner">Lan</div>
+        <div><span class="ledger-status badge-prep">Đang chuẩn bị</span></div>
+      </div>
+
+      <div class="ledger-row" style="opacity: 0.75;">
+        <div class="ledger-id">T08</div>
+        <div>
+          <div class="ledger-tour">Huế 3N2Đ</div>
+          <div style="font-size: 0.8125rem; color: #78716C;">Đoàn đã khởi hành và bàn giao nhật ký</div>
+        </div>
+        <div class="ledger-time">12/09/2026 07:00</div>
+        <div class="ledger-owner">An</div>
+        <div><span class="ledger-status badge-done">Hoàn thành</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

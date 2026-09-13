@@ -390,3 +390,91 @@
 - **Kỷ luật Ngữ nghĩa Phản biện (`Critique Taxonomy Discipline`)**: Phân tách rạch ròi giữa *Observation (Hiện tượng quan sát)*, *Defect (Khiếm khuyết cấu trúc)*, và *Design Trade-off (Điểm đánh đổi kiến trúc)*.
 - **Cấu trúc Khối Gom Nhóm vs Thẻ Độc Lập (`Grouped Container with Hairline Dividers vs Individual Cards`)**: Gom các nguyên lý liền mạch vào chung 1 container với đường kẻ mảnh hairline (`border-right: 1px solid var(--color-border)` trên desktop, `border-bottom` trên mobile) giúp nhịp điệu đọc liền mạch. Duy trì card riêng cho các thực thể độc lập có state riêng.
 - **Kiểm thử Bàn phím Phần cứng Thực tế (`Native Hardware Keyboard Traversal`)**: Mô phỏng sự kiện bàn phím phần cứng qua CDP `page.keyboard.press('Tab')` và `page.keyboard.press('Enter')` để chứng minh 100% khả năng tiếp cận theo thứ tự focus tự nhiên của DOM.
+
+---
+## 📅 Phiên Đúc Rút Tri Thức Nền Tảng Thiết Kế Thực Chiến (Design Training 007 Capstone Transfer Testing — TRIPFLOW Dispatch Ledger): `2026-09-14 00:00:00`
+
+> **Chủ quản (Owner)**: Anh — Lead Architect / Product Owner  
+> **Cộng sự AI**: Antigravity Senior Engineering Agent  
+> **Cơ quan Thẩm định Độc lập**: ChatGPT Architectural Controller (Sol)  
+> **Trạng thái**: `CAPSTONE_TRANSFER_STAGE: COMPLETED` (Module 007 Certified, 8/8 Gates Passed, 14/14 Assertions Accepted)  
+> **Văn bản Nghiệm thu**: [`DESIGN_TRAINING_007_FINAL_REVIEW_004.md`](file:///C:/Users/game/.gemini/exercises/design_training_007/DESIGN_TRAINING_007_FINAL_REVIEW_004.md)  
+> **Mức độ Bằng chứng**: `EVIDENCE_LEVEL: EXERCISE_SUPPORTED` *(Giữ nguyên điều kiện áp dụng, ngoại lệ và tham chiếu thực nghiệm; không suy diễn thành universal law vô điều kiện)*.
+
+### 🏛️ 9 Bài Học Kiến Trúc & Kỹ Thuật Kiểm Chứng Được Phê Duyệt (Authorized Knowledge Promotion)
+
+#### 1. Tách Biệt Điều Hướng Tiến Trình vs Bộ Lọc Thuộc Tính Đa Chiều (`Workflow Navigation vs Faceted Filters`)
+* **Điều kiện áp dụng (`Applies`)**: Các giao diện bảng điều hành tác vụ (Operations / Dispatch Ledger) nơi người dùng phải quản lý các thực thể vừa có giai đoạn nghiệp vụ tuần tự, vừa có nhiều thuộc tính phân loại.
+* **Ngoại lệ (`Exception`)**: Các danh mục thương mại điện tử đơn giản chỉ có thuộc tính lọc phẳng hoặc màn hình chỉ có 1 luồng duy nhất.
+* **Nguyên lý kiến trúc (`Architectural Essence`)**: Phân tách rạch ròi thành 2 tầng kiến trúc thông tin (IA):
+  - **Tầng 1 — Workflow Navigation**: Các tab trạng thái nghiệp vụ loại trừ lẫn nhau (`Tất cả`, `Cần xử lý`, `Đang chuẩn bị`, `Sẵn sàng`, `Đã hoàn thành`) đặt ở vị trí chủ đạo trên cùng.
+  - **Tầng 2 — Faceted Filters**: Các bộ lọc đa chiều trực giao (`Cửa sổ thời gian khởi hành: 24h/48h`, `Điều phối viên phụ trách: Huy/Lan`) kết hợp điều kiện logic AND với nhau và với workflow tab đang chọn.
+* **Bằng chứng (`Evidence Reference`)**: G03, T03, T04 (`LOCKED_T03_EXECUTED`, `LOCKED_T04_EXECUTED`).
+
+#### 2. Đối Soát Sâu Đẳng Thức Dữ Liệu Khóa Định Căn Bản (`Canonical Fixture Deep Equality`)
+* **Điều kiện áp dụng (`Applies`)**: Toàn bộ các bộ kiểm chứng (test suites / harnesses) kiểm tra dữ liệu kết xuất, trạng thái bảng hoặc bản chụp trạng thái (state snapshots).
+* **Ngoại lệ (`Exception`)**: Các trường hợp dữ liệu luồng ngẫu nhiên có timestamp động không thể khóa cứng.
+* **Nguyên lý kiến trúc (`Architectural Essence`)**: Kiểm thử tính toàn vẹn dữ liệu phải đối chiếu sâu từng phần tử (`deep equality` trên mảng ID, thuộc tính canonical) với fixture đã khóa, cấm dùng các phép kiểm hời hợt chỉ hỏi truthy, length $\ge 1$ hoặc tồn tại chuỗi con chung chung.
+* **Bằng chứng (`Evidence Reference`)**: G01, G08, T01, T02, T14 (`t01_tuples_parity`, `t02_search_ids_parity`).
+
+#### 3. Duy Trì Tính Liên Tục Tiêu Điểm Bằng Phần Tử Thao Tác Ổn Định (`Stable Action Element Focus Continuity`)
+* **Điều kiện áp dụng (`Applies`)**: Mọi nút thao tác bất đồng bộ trải qua máy trạng thái nhiều bước (`IDLE -> SAVING -> ERROR -> RETRY -> SUCCESS`).
+* **Ngoại lệ (`Exception`)**: Các nút kích hoạt hành động đóng màn hình hoặc chuyển trang hoàn toàn.
+* **Nguyên lý kiến trúc (`Architectural Essence`)**: Giữ nguyên một phần tử DOM duy nhất (`single stable DOM node`) cho nút bấm xuyên suốt các trạng thái, cập nhật nội dung văn bản (`innerText`) và icon thay vì tháo dỡ rồi tạo nút mới vào DOM. Điều này đảm bảo tiêu điểm bàn phím (`focus`) không bị đứt đoạn giữa chừng.
+* **Bằng chứng (`Evidence Reference`)**: G04, F04, T08, T09 (`sameNodeIdentity: true`, `window._actionBtnRef === document.activeElement`).
+
+#### 4. Khóa Hành Vi Bằng aria-disabled Thay Vì Thuộc Tính Disabled Bản Địa (`aria-disabled with Behavioral Guard`)
+* **Điều kiện áp dụng (`Applies`)**: Các nút bấm hoặc trường nhập liệu trong lúc đang chờ xử lý bất đồng bộ (saving/loading) mà người dùng đang đặt tiêu điểm vào đó.
+* **Ngoại lệ (`Exception`)**: Các form tĩnh chưa điền đủ thông tin ban đầu nơi phần tử chưa từng nhận focus.
+* **Nguyên lý kiến trúc (`Architectural Essence`)**: Thuộc tính native HTML `disabled` sẽ khiến trình duyệt lập tức trục xuất (`evict`) focus khỏi phần tử và ném tiêu điểm về `document.body` (`activeTag: BODY`), phá vỡ hoàn toàn hành trình bàn phím của người khiếm thị hoặc người dùng bàn phím chuyên nghiệp. Thay vào đó, áp dụng:
+  - `aria-disabled="true"` để thông báo cho công nghệ trợ năng (`Screen Reader`).
+  - Class CSS `.is-saving` để định dạng giao diện không thể click (`pointer-events: none` hoặc cursor `wait`).
+  - Biến cờ guard logic trong mã JavaScript để chặn tuyệt đối việc kích hoạt lệnh trùng (`Duplicate Guard`).
+* **Bằng chứng (`Evidence Reference`)**: G04, F04, T08, T10 (`noFocusEvictionToBody: true`).
+
+#### 5. Kiểm Chứng Bàn Phím Bản Địa & Quy Tắc Không Cướp Tiêu Điểm (`Native Keyboard No-Steal Verification`)
+* **Điều kiện áp dụng (`Applies`)**: Mọi tương tác giao diện hỗ trợ khả năng tiếp cận bàn phím (WCAG 2.1 Focus Order & Focus Visible).
+* **Ngoại lệ (`Exception`)**: Không có ngoại lệ cho ứng dụng web chuyên nghiệp.
+* **Nguyên lý kiến trúc (`Architectural Essence`)**:
+  - Kiểm thử bàn phím phải kích hoạt bằng chuỗi phím cứng thực tế (`page.keyboard.press('Tab')`, `Enter`, `Shift+Tab`), tuyệt đối cấm dùng `page.focus(selector)` cưỡng ép để làm giả kết quả kiểm thử.
+  - **Quy tắc Bất biến Không Cướp Tiêu Điểm (`No-Steal Focus Invariant`)**: Nếu người dùng chủ động điều hướng tiêu điểm sang phần tử khác (ví dụ phím `Shift+Tab` nhảy lùi sang nút "Quay lại Sổ cái"), khi tiến trình lưu ngầm thành công, hệ thống tuyệt đối không được tự ý giật tiêu điểm quay trở lại nút thao tác cũ.
+* **Bằng chứng (`Evidence Reference`)**: G07, F04, T10 (`noStealVerifiedViaNativeShiftTab: true`, `window._backBtnRef === document.activeElement`).
+
+#### 6. Bản Chụp Ngữ Cảnh Đa Chiều Trước & Sau Điều Hướng (`Pre/Post Context Snapshot`)
+* **Điều kiện áp dụng (`Applies`)**: Các luồng giao diện Master-Detail (danh sách mở chi tiết dạng Modal hoặc Subview rồi quay lại).
+* **Ngoại lệ (`Exception`)**: Các liên kết điều hướng ngoài (`external navigation`) làm mới toàn bộ trang.
+* **Nguyên lý kiến trúc (`Architectural Essence`)**: Để chứng minh ngữ cảnh được bảo toàn 100%, bộ kiểm chứng phải chụp snapshot đa chiều đầy đủ trước khi mở và sau khi đóng: `searchQuery`, `workflow`, `timeFacet`, `ownerFacet`, danh sách `matchedIds`, và `matchedCount`. Đồng thời xác nhận tiêu điểm hoàn trả chính xác về nút đã kích hoạt trước đó (trigger button).
+* **Bằng chứng (`Evidence Reference`)**: G03, G07, F02, T06 (`snapshotsMatch: true`, `focusRestoredToT03: true`).
+
+#### 7. Ngân Sách Thay Đổi Hữu Hạn Trong Phản Biện Thiết Kế (`Bounded Critique Change Budget`)
+* **Điều kiện áp dụng (`Applies`)**: Quy trình hoàn thiện sản phẩm sau phản biện thiết kế (`Design Critique`).
+* **Ngoại lệ (`Exception`)**: Giai đoạn phác thảo ý tưởng ban đầu (`Exploratory Phase`).
+* **Nguyên lý kiến trúc (`Architectural Essence`)**: Mỗi chu trình phản biện phải giới hạn nghiêm ngặt trong một ngân sách thay đổi hữu hạn: đúng **1 giả thuyết cải tiến (`Hypothesis`)**, tối đa **2 can thiệp mã nguồn có chủ đích** (ví dụ: tối ưu nhịp điệu di động 2 dòng và bổ sung icon ngữ nghĩa cho phản hồi), đi kèm quyết định kiến trúc rõ ràng và kiểm chứng độc lập. Tuyệt đối cấm refactor cơ hội hoặc thay đổi cấu trúc diện rộng ngoài phạm vi giả thuyết.
+* **Bằng chứng (`Evidence Reference`)**: G06, Section 6 Critique, Candidate Diff (`pre_critique.html` $\to$ `index.html`).
+
+#### 8. Phản Hồi Ngữ Nghĩa Không Phụ Thuộc Đơn Thuần Vào Màu Sắc (`Semantic Feedback without Color-Only Dependency`)
+* **Điều kiện áp dụng (`Applies`)**: Toàn bộ các thông báo trạng thái, lỗi, cảnh báo, và tiến trình (WCAG 2.1 Guideline 1.4.1 Use of Color).
+* **Ngoại lệ (`Exception`)**: Không có ngoại lệ.
+* **Nguyên lý kiến trúc (`Architectural Essence`)**: Trạng thái giao diện phải được truyền tải qua tối thiểu 3 lớp nhận thức độc lập:
+  1. **Lớp Văn bản (`Text Copy`)**: Thông điệp cụ thể, rõ ràng, hướng dẫn hành động tiếp theo ("Lỗi kết nối đối tác. Vui lòng bấm Thử lưu lại.").
+  2. **Lớp Ký tự Biểu tượng Ngữ nghĩa (`Semantic Glyphs`)**: Ký hiệu trực quan độc lập (⏳ đang lưu, ⚠️ lỗi cảnh báo, ✓ thành công).
+  3. **Lớp Màu sắc Ngữ nghĩa (`Semantic Color Tokens`)**: Hỗ trợ thị giác với tỷ lệ tương phản chuẩn mực (Amber `#D97706`, Rose `#B91C1C`, Emerald `#0D5C46`).
+* **Bằng chứng (`Evidence Reference`)**: G04, G07, Candidate Final UI, T08.
+
+#### 9. Tính Toàn Vẹn Của Logic Kiểm Chứng Bằng Phép Hội Boolean (`Assertion Conjunction Integrity`)
+* **Điều kiện áp dụng (`Applies`)**: Thiết kế các bộ kiểm thử tự động, hàm assert nghiệm thu, và evidence ledger.
+* **Ngoại lệ (`Exception`)**: Các hàm telemetry thống kê không đóng vai trò cổng kiểm soát chất lượng (quality gate).
+* **Nguyên lý kiến trúc (`Architectural Essence`)**: Mọi điều kiện tiên quyết mang tính ràng buộc (như không tràn ngang trên cả 3 viewports: Desktop 1440, Tablet 768, Mobile 390 của cả Candidate và Baseline) bắt buộc phải được đưa trực tiếp vào mệnh đề logic hội (`Boolean Conjunction &&`) của biến kết quả `pass`. Không được phép tách rời để log thụ động bên ngoài khiến một bài kiểm tra có thể báo `pass: true` trong khi điều kiện tiên quyết bị vi phạm.
+* **Bằng chứng (`Evidence Reference`)**: G08, F05, T12 (`allViewportsNoOverflow` trong conjunction formula của `T12`).
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-13 23:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (101 ⭐)]** [Francis1998/agentic-career-search](https://github.com/Francis1998/agentic-career-search)
+  > Autonomous AI-agent orchestration engine for job discovery with decision traces, tool adapters, and production-grade run control.
+- **[GitHub (74 ⭐)]** [gtapps/claude-code-hermit](https://github.com/gtapps/claude-code-hermit)
+  > Turn Claude Code into a 24/7 Agent
+
+</untrusted_external_content>
+
+---

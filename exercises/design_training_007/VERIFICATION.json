@@ -1,0 +1,745 @@
+{
+  "metadata": {
+    "directive_id": "DESIGN_TRAINING_007",
+    "module": 7,
+    "stage": "FOUNDATION_TRANSFER_CAPSTONE",
+    "repair_round": "AUTHORITATIVE_REMEDIATION_R04",
+    "submission_id": "DESIGN_TRAINING_007_SUBMISSION_R04",
+    "authorization": "LEAD_ARCHITECT_OVERNIGHT_AUTHORIZATION",
+    "timestamp": "2026-09-13T16:15:24.787Z",
+    "executor": "Antigravity Senior Engineering Agent",
+    "environment": {
+      "platform": "win32",
+      "cdpPort": "9222",
+      "nodeVersion": "v24.18.0"
+    },
+    "hashes": {
+      "baseline": "d7725c3129303aaf375b457f246c215281da718cb008b68931dc001b429c5004",
+      "pre_critique": "0e68156a2f38bf14c8dde210ef96b363d5681900d83837684cf55931be3e655a",
+      "candidate_final": "ee5294b94f37e2b4945743ab3215af238dde9e3b97af10a357872c1a85506800"
+    }
+  },
+  "assertions": {
+    "T01_initial_data_integrity": {
+      "pass": true,
+      "measured": {
+        "count": 8,
+        "hasT08": true,
+        "hasT01": true,
+        "allPresent": true,
+        "deepTuples": [
+          {
+            "id": "T01",
+            "name": "Hạ Long 2N1Đ",
+            "depart": "14/09/2026 07:30",
+            "owner": "Lan",
+            "status": "Chờ đối tác",
+            "notes": "Khách sạn chưa xác nhận 4 phòng",
+            "groupAction": true,
+            "group48h": true,
+            "priority": true
+          },
+          {
+            "id": "T02",
+            "name": "Ninh Bình 1 ngày",
+            "depart": "14/09/2026 06:00",
+            "owner": "Minh",
+            "status": "Sẵn sàng",
+            "notes": "Đã đủ xe, hướng dẫn viên và danh sách khách",
+            "groupAction": false,
+            "group48h": true,
+            "priority": false
+          },
+          {
+            "id": "T03",
+            "name": "Sapa 3N2Đ",
+            "depart": "15/09/2026 21:30",
+            "owner": "Huy",
+            "status": "Thiếu hồ sơ",
+            "notes": "2 khách chưa gửi CCCD",
+            "groupAction": true,
+            "group48h": false,
+            "priority": false
+          },
+          {
+            "id": "T04",
+            "name": "Đà Nẵng 4N3Đ",
+            "depart": "16/09/2026 08:00",
+            "owner": "Lan",
+            "status": "Đang chuẩn bị",
+            "notes": "Chờ chốt danh sách suất ăn",
+            "groupAction": false,
+            "group48h": false,
+            "priority": false
+          },
+          {
+            "id": "T05",
+            "name": "Hà Giang 3N2Đ",
+            "depart": "17/09/2026 05:30",
+            "owner": "Minh",
+            "status": "Sẵn sàng",
+            "notes": "Đã hoàn tất checklist khởi hành",
+            "groupAction": false,
+            "group48h": false,
+            "priority": false
+          },
+          {
+            "id": "T06",
+            "name": "Phú Quốc 3N2Đ",
+            "depart": "18/09/2026 09:10",
+            "owner": "Huy",
+            "status": "Chờ đối tác",
+            "notes": "Nhà xe trung chuyển chưa xác nhận",
+            "groupAction": true,
+            "group48h": false,
+            "priority": false
+          },
+          {
+            "id": "T07",
+            "name": "Mộc Châu 2N1Đ",
+            "depart": "19/09/2026 06:30",
+            "owner": "Lan",
+            "status": "Đang chuẩn bị",
+            "notes": "Đang rà soát danh sách phòng",
+            "groupAction": false,
+            "group48h": false,
+            "priority": false
+          },
+          {
+            "id": "T08",
+            "name": "Huế 3N2Đ",
+            "depart": "12/09/2026 07:00",
+            "owner": "An",
+            "status": "Hoàn thành",
+            "notes": "Đoàn đã khởi hành và bàn giao nhật ký",
+            "groupAction": false,
+            "group48h": false,
+            "priority": false
+          }
+        ]
+      }
+    },
+    "T02_vietnamese_search_unaccented": {
+      "pass": true,
+      "measured": {
+        "matchedCount": 1,
+        "hasT01": true,
+        "matchedIds": [
+          "T01"
+        ]
+      }
+    },
+    "T03_locked_filter_intersection": {
+      "pass": true,
+      "measured": {
+        "locked_execution_demonstrated": true,
+        "step1_action": {
+          "count": 3,
+          "ids": [
+            "T01",
+            "T03",
+            "T06"
+          ]
+        },
+        "step2_action_and_huy": {
+          "count": 2,
+          "ids": [
+            "T03",
+            "T06"
+          ]
+        },
+        "step3_action_huy_and_nhaxe": {
+          "count": 1,
+          "ids": [
+            "T06"
+          ]
+        },
+        "supplemental_tabs": {
+          "prep": {
+            "count": 2,
+            "ids": [
+              "T04",
+              "T07"
+            ]
+          },
+          "ready": {
+            "count": 2,
+            "ids": [
+              "T02",
+              "T05"
+            ]
+          },
+          "done": {
+            "count": 1,
+            "ids": [
+              "T08"
+            ]
+          }
+        }
+      }
+    },
+    "T04_locked_time_filter": {
+      "pass": true,
+      "measured": {
+        "locked_execution_demonstrated": true,
+        "within_48h_all_owners": {
+          "count": 2,
+          "hasT01": true,
+          "hasT02": true,
+          "ids": [
+            "T01",
+            "T02"
+          ]
+        },
+        "supplemental_within_48h_owner_lan": {
+          "count": 1,
+          "ids": [
+            "T01"
+          ]
+        }
+      }
+    },
+    "T05_empty_state_and_reset_journey": {
+      "pass": true,
+      "measured": {
+        "empty": {
+          "count": 0,
+          "emptyStateVisible": true
+        },
+        "reset": {
+          "count": 8,
+          "isInputFocused": true
+        }
+      }
+    },
+    "T06_detail_view_context_preservation": {
+      "pass": true,
+      "measured": {
+        "native_keyboard_used": true,
+        "pre_navigation_snapshot": {
+          "searchQuery": "",
+          "workflow": "action",
+          "timeFacet": "all",
+          "ownerFacet": "all",
+          "matchedIds": [
+            "T01",
+            "T03",
+            "T06"
+          ],
+          "matchedCount": 3
+        },
+        "post_navigation_snapshot": {
+          "searchQuery": "",
+          "workflow": "action",
+          "timeFacet": "all",
+          "ownerFacet": "all",
+          "matchedIds": [
+            "T01",
+            "T03",
+            "T06"
+          ],
+          "matchedCount": 3,
+          "focusedElementId": "btn-detail-T03",
+          "isDetailClosed": true,
+          "isListVisible": true
+        },
+        "snapshots_match": true,
+        "focus_restored_to_trigger": true
+      }
+    },
+    "T07_validation_boundary_enforcement": {
+      "pass": true,
+      "measured": {
+        "emptyValidation": {
+          "text": "⚠️ Nhập nội dung liên hệ trước khi lưu.",
+          "isFocused": true,
+          "pass": true,
+          "attemptCount": 0,
+          "commitCount": 0
+        },
+        "overLengthValidation": {
+          "text": "⚠️ Ghi chú cần tối đa 160 ký tự.",
+          "isFocused": true,
+          "pass": true,
+          "attemptCount": 0,
+          "commitCount": 0
+        },
+        "exact160BoundaryState": {
+          "charCountText": "160 / 160 ký tự",
+          "errorCleared": true,
+          "attemptCount": 0,
+          "commitCount": 0
+        }
+      }
+    },
+    "T08_fsm_attempt1_error_preservation": {
+      "pass": true,
+      "measured": {
+        "savingState": {
+          "isSavingText": true,
+          "isAriaDisabled": true,
+          "isNativeDisabled": false,
+          "isNoteDisabled": true,
+          "btnText": "Đang lưu nhật ký…",
+          "activeId": "btn-save-contact-note",
+          "activeTag": "BUTTON",
+          "isButtonFocused": true,
+          "sameNodeDuringSaving": true
+        },
+        "errorResult": {
+          "text": "⚠️ Chưa lưu được nhật ký liên hệ. Nội dung của bạn vẫn được giữ.",
+          "btnText": "Thử lưu lại",
+          "btnId": "btn-save-contact-note",
+          "activeId": "btn-save-contact-note",
+          "isButtonFocused": true,
+          "hasErrorMsg": true,
+          "draftPreserved": true,
+          "attemptCount": 1,
+          "commitCount": 0,
+          "sameNodeAfterError": true
+        }
+      }
+    },
+    "T09_fsm_retry_success_state": {
+      "pass": true,
+      "measured": {
+        "retrySaving": {
+          "isSaving": true,
+          "btnText": "Đang lưu nhật ký…",
+          "btnAriaDisabled": true,
+          "activeId": "btn-save-contact-note",
+          "sameNodeDuringRetry": true
+        },
+        "retrySuccess": {
+          "text": "✓ Đã lưu nhật ký liên hệ cho T01.",
+          "hasSuccessMsg": true,
+          "committedCount": 1,
+          "committedText": "Đã liên hệ khách sạn — Khách sạn Mường Thanh đã nghe máy, đang kiểm tra phòng.",
+          "canonicalStatusRemains": true,
+          "btnText": "Lưu nhật ký",
+          "attemptCount": 2,
+          "commitCount": 1
+        }
+      }
+    },
+    "T10_duplicate_guard_focus_preservation_no_steal": {
+      "pass": true,
+      "measured": {
+        "pointer_method": "page.click",
+        "keyboard_method": "page.keyboard.press Enter",
+        "target": "#btn-save-contact-note",
+        "activeBeforeSubmit": "btn-save-contact-note",
+        "activeDuringSaving": "btn-save-contact-note",
+        "activeAfterError": "btn-save-contact-note",
+        "activeDuringRetrySaving": "btn-save-contact-note",
+        "activeBeforeSuccess": {
+          "id": "btn-back-to-ledger",
+          "isBackBtnNodeRef": true
+        },
+        "activeAfterSuccess": {
+          "id": "btn-back-to-ledger",
+          "isBackBtnNodeRef": true
+        },
+        "sameNodeIdentity": true,
+        "noStealVerifiedViaNativeShiftTab": true,
+        "bodyFocusEvents": 0
+      }
+    },
+    "T11_keyboard_accessibility_and_viewport_integrity": {
+      "pass": true,
+      "measured": {
+        "totalSteps": 19,
+        "allStepsValid": true,
+        "focusRestoredToT01Trigger": true,
+        "steps": [
+          {
+            "step": 1,
+            "key": "Tab",
+            "tag": "BUTTON",
+            "id": "btn-hero-action-t01",
+            "expectedTag": "BUTTON",
+            "expectedId": "btn-hero-action-t01",
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 2,
+            "key": "Tab",
+            "tag": "INPUT",
+            "id": "input-tour-search",
+            "expectedTag": "INPUT",
+            "expectedId": "input-tour-search",
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 3,
+            "key": "Tab",
+            "tag": "BUTTON",
+            "id": "btn-reset-filters",
+            "expectedTag": null,
+            "expectedId": null,
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 4,
+            "key": "Tab",
+            "tag": "BUTTON",
+            "id": "",
+            "expectedTag": null,
+            "expectedId": null,
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 5,
+            "key": "Tab",
+            "tag": "BUTTON",
+            "id": "",
+            "expectedTag": null,
+            "expectedId": null,
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 6,
+            "key": "Tab",
+            "tag": "BUTTON",
+            "id": "",
+            "expectedTag": null,
+            "expectedId": null,
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 7,
+            "key": "Tab",
+            "tag": "BUTTON",
+            "id": "",
+            "expectedTag": null,
+            "expectedId": null,
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 8,
+            "key": "Tab",
+            "tag": "BUTTON",
+            "id": "",
+            "expectedTag": null,
+            "expectedId": null,
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 9,
+            "key": "Tab",
+            "tag": "SELECT",
+            "id": "select-tour-time",
+            "expectedTag": null,
+            "expectedId": null,
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 10,
+            "key": "Tab",
+            "tag": "SELECT",
+            "id": "select-tour-owner",
+            "expectedTag": null,
+            "expectedId": null,
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 11,
+            "key": "Tab",
+            "tag": "BUTTON",
+            "id": "btn-detail-T01",
+            "expectedTag": null,
+            "expectedId": null,
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 12,
+            "key": "Enter",
+            "tag": "BUTTON",
+            "id": "btn-back-to-ledger",
+            "expectedTag": "BUTTON",
+            "expectedId": "btn-back-to-ledger",
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 13,
+            "key": "Tab",
+            "tag": "TEXTAREA",
+            "id": "textarea-hotel-note",
+            "expectedTag": "TEXTAREA",
+            "expectedId": null,
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 14,
+            "key": "Tab",
+            "tag": "BUTTON",
+            "id": "btn-save-contact-note",
+            "expectedTag": "BUTTON",
+            "expectedId": "btn-save-contact-note",
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 15,
+            "key": "Enter",
+            "tag": "BUTTON",
+            "id": "btn-save-contact-note",
+            "expectedTag": "BUTTON",
+            "expectedId": "btn-save-contact-note",
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 16,
+            "key": "Enter",
+            "tag": "BUTTON",
+            "id": "btn-save-contact-note",
+            "expectedTag": "BUTTON",
+            "expectedId": "btn-save-contact-note",
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 17,
+            "key": "Shift+Tab",
+            "tag": "TEXTAREA",
+            "id": "textarea-hotel-note",
+            "expectedTag": null,
+            "expectedId": null,
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 18,
+            "key": "Shift+Tab",
+            "tag": "BUTTON",
+            "id": "btn-back-to-ledger",
+            "expectedTag": null,
+            "expectedId": null,
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          },
+          {
+            "step": 19,
+            "key": "Enter",
+            "tag": "BUTTON",
+            "id": "btn-detail-T01",
+            "expectedTag": "BUTTON",
+            "expectedId": "btn-detail-T01",
+            "inViewport": true,
+            "focusInBody": false,
+            "stepValid": true
+          }
+        ]
+      }
+    },
+    "T12_full_scope_responsive_contrast_semantics": {
+      "pass": true,
+      "measured": {
+        "responsiveOverflowPass": true,
+        "candidateViewports": [
+          {
+            "name": "desktop",
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1425,
+            "clientWidth": 1425,
+            "hasOverflow": false
+          },
+          {
+            "name": "tablet",
+            "width": 768,
+            "height": 1024,
+            "scrollWidth": 753,
+            "clientWidth": 753,
+            "hasOverflow": false
+          },
+          {
+            "name": "mobile",
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 375,
+            "clientWidth": 375,
+            "hasOverflow": false
+          }
+        ],
+        "baselineViewports": [
+          {
+            "name": "desktop",
+            "width": 1440,
+            "height": 900,
+            "scrollWidth": 1425,
+            "clientWidth": 1425,
+            "hasOverflow": false
+          },
+          {
+            "name": "tablet",
+            "width": 768,
+            "height": 1024,
+            "scrollWidth": 753,
+            "clientWidth": 753,
+            "hasOverflow": false
+          },
+          {
+            "name": "mobile",
+            "width": 390,
+            "height": 844,
+            "scrollWidth": 375,
+            "clientWidth": 375,
+            "hasOverflow": false
+          }
+        ],
+        "targetSizesCount": 22,
+        "allTargetSizesPass": true,
+        "contrastResults": {
+          "bodyText": {
+            "ratio": 17.85,
+            "threshold": 4.5,
+            "pass": true
+          },
+          "notesText": {
+            "ratio": 4.76,
+            "threshold": 4.5,
+            "pass": true
+          },
+          "urgentHeading": {
+            "ratio": 17.06,
+            "threshold": 4.5,
+            "pass": true
+          },
+          "ctaButton": {
+            "ratio": 5.02,
+            "threshold": 4.5,
+            "pass": true
+          },
+          "statusAction": {
+            "ratio": 6.37,
+            "threshold": 4.5,
+            "pass": true
+          },
+          "statusReady": {
+            "ratio": 6.49,
+            "threshold": 4.5,
+            "pass": true
+          },
+          "statusMissing": {
+            "ratio": 6.8,
+            "threshold": 4.5,
+            "pass": true
+          },
+          "statusPrep": {
+            "ratio": 8.06,
+            "threshold": 4.5,
+            "pass": true
+          },
+          "statusDone": {
+            "ratio": 6.92,
+            "threshold": 4.5,
+            "pass": true
+          },
+          "feedbackSaving": {
+            "ratio": 5.17,
+            "threshold": 4.5,
+            "pass": true
+          },
+          "feedbackError": {
+            "ratio": 6.8,
+            "threshold": 4.5,
+            "pass": true
+          },
+          "feedbackSuccess": {
+            "ratio": 6.49,
+            "threshold": 4.5,
+            "pass": true
+          },
+          "focusRing": {
+            "elementId": "btn-hero-action-t01",
+            "matchesFocusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": 2,
+            "outlineColor": "rgb(217, 119, 6)",
+            "expectedToken": "#D97706 (rgb(217, 119, 6))",
+            "adjacentBackground": "#FAF9F6 (rgb(250, 249, 246))",
+            "ratio": 3.03,
+            "threshold": 3,
+            "pass": true
+          }
+        },
+        "semanticsAudit": {
+          "hasRoleStatus": true,
+          "hasAriaLive": true,
+          "hasDescribedByFeedback": true,
+          "hasDescribedByCharCount": true
+        },
+        "zeroMotionAudit": {
+          "scanned": 189,
+          "violations": 0,
+          "isZeroMotion": true
+        }
+      }
+    },
+    "T13_safe_dom_rendering_xss_protection": {
+      "pass": true,
+      "measured": {
+        "rawText": "Đã liên hệ khách sạn — <b>Đã gọi & \"xác nhận\"</b>",
+        "rawHtml": "Đã liên hệ khách sạn — &lt;b&gt;Đã gọi &amp; \"xác nhận\"&lt;/b&gt;",
+        "noTagsParsed": true
+      }
+    },
+    "T14_deep_normalized_outcome_parity_t01_t13": {
+      "pass": true,
+      "measured": {
+        "t01_tuples_parity": true,
+        "t02_search_ids_parity": true,
+        "t03_locked_filter_sequence_parity": true,
+        "t04_locked_time_filter_parity": true,
+        "t05_empty_reset_parity": true,
+        "t06_detail_context_snapshot_parity": true,
+        "t07_validation_parity": true,
+        "t08_fsm_error_parity": true,
+        "t09_fsm_success_parity": true,
+        "t10_duplicate_guard_no_steal_parity": true,
+        "t11_keyboard_journey_parity": true,
+        "t12_responsive_zero_motion_parity": true,
+        "t13_safe_rendering_parity": true
+      }
+    }
+  },
+  "summary": {
+    "total": 14,
+    "passed": 14,
+    "failed": 0,
+    "verdict": "SELF_CHECK_PASS"
+  }
+}

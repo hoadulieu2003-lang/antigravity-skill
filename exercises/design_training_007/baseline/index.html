@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIPFLOW — Bảng Điều Phối Tour Khởi Hành (Baseline)</title>
+  <style>
+    /* Invariants: Zero Motion & Light Theme */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: none !important;
+      animation: none !important;
+    }
+    html {
+      scroll-behavior: auto !important;
+      background-color: #F8FAFC;
+      color: #0F172A;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #F8FAFC;
+      color: #0F172A;
+      padding: 1.5rem 1rem;
+    }
+    :focus-visible {
+      outline: 2px solid #2563EB;
+      outline-offset: 2px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* Masthead */
+    .header {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0F172A;
+    }
+    .ref-time {
+      font-size: 0.875rem;
+      color: #475569;
+      background: #F1F5F9;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      border: 1px solid #CBD5E1;
+      font-family: ui-monospace, monospace;
+    }
+
+    /* Controls: Search & Filters */
+    .controls-panel {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .search-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .search-input {
+      flex: 1;
+      min-width: 0;
+      min-height: 44px;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #94A3B8;
+      border-radius: 4px;
+      font-size: 0.9375rem;
+      color: #0F172A;
+      background: #FFFFFF;
+    }
+    .btn-reset {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.5rem 1rem;
+      background: #F1F5F9;
+      color: #334155;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-reset:hover {
+      background: #E2E8F0;
+    }
+
+    /* IA Separation: Level 1 Workflow Navigation */
+    .workflow-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .nav-label {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: #64748B;
+      text-transform: uppercase;
+      font-family: ui-monospace, monospace;
+    }
+    .filter-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+      align-items: center;
+    }
+    .filter-btn {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.375rem 0.75rem;
+      border: 1px solid #CBD5E1;
+      background: #FFFFFF;
+      color: #334155;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .filter-btn[aria-pressed="true"] {
+      background: #2563EB;
+      color: #FFFFFF;
+      border-color: #2563EB;
+      font-weight: 600;
+    }
+
+    /* IA Separation: Faceted Filters (Time & Owner) */
+    .facets-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      align-items: center;
+    }
+    .filter-group {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .filter-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #475569;
+    }
+    .select-owner {
+      min-height: 44px;
+      padding: 0.375rem 0.75rem;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      background: #FFFFFF;
+      color: #0F172A;
+      font-size: 0.875rem;
+    }
+
+    /* Results Count Bar */
+    .results-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.875rem;
+      color: #64748B;
+      padding: 0 0.25rem;
+    }
+
+    /* Tour Card List */
+    .tour-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .tour-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      display: grid;
+      grid-template-columns: 80px 2fr 1.2fr 1fr 1.2fr auto;
+      align-items: center;
+      gap: 1rem;
+    }
+    .tour-id {
+      font-weight: 700;
+      font-family: ui-monospace, monospace;
+      color: #0F172A;
+    }
+    .tour-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .tour-name {
+      font-weight: 600;
+      color: #0F172A;
+    }
+    .tour-notes {
+      font-size: 0.8125rem;
+      color: #64748B;
+    }
+    .tour-depart {
+      font-size: 0.875rem;
+      color: #334155;
+    }
+    .tour-owner {
+      font-size: 0.875rem;
+      color: #475569;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      width: fit-content;
+    }
+    .status-action { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+    .status-ready { background: #DCFCE7; color: #166534; border: 1px solid #86EFAC; }
+    .status-missing { background: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5; }
+    .status-prep { background: #E0E7FF; color: #3730A3; border: 1px solid #A5B4FC; }
+    .status-done { background: #F1F5F9; color: #475569; border: 1px solid #CBD5E1; }
+
+    .btn-detail {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.5rem 1rem;
+      background: #FFFFFF;
+      color: #2563EB;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-detail:hover {
+      background: #EFF6FF;
+      border-color: #2563EB;
+    }
+
+    /* Empty State */
+    .empty-state {
+      padding: 3rem 1rem;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .empty-state-text {
+      color: #64748B;
+      font-size: 1rem;
+    }
+
+    /* Detail View Screen */
+    .detail-screen {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 0.75rem;
+    }
+    .btn-back {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.5rem 1rem;
+      background: #F1F5F9;
+      color: #0F172A;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .btn-back:hover {
+      background: #E2E8F0;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 1rem;
+    }
+    .detail-field label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #64748B;
+      margin-bottom: 0.25rem;
+    }
+    .detail-field .val {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: #0F172A;
+    }
+
+    /* Contact Action Section for T01 */
+    .contact-form-section {
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-form-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #0F172A;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+    .form-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #334155;
+    }
+    .note-textarea {
+      width: 100%;
+      min-height: 80px;
+      padding: 0.5rem;
+      border: 1px solid #94A3B8;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      color: #0F172A;
+      background: #FFFFFF;
+    }
+    .note-textarea:disabled {
+      background: #E2E8F0;
+      cursor: not-allowed;
+    }
+    .char-counter {
+      font-size: 0.75rem;
+      color: #64748B;
+      text-align: right;
+    }
+    .feedback-box {
+      padding: 0.625rem 0.875rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      display: none;
+    }
+    .feedback-box.visible {
+      display: block;
+    }
+    .feedback-saving {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+    }
+    .feedback-error {
+      background: #FEF2F2;
+      color: #B91C1C;
+      border: 1px solid #FECACA;
+    }
+    .feedback-success {
+      background: #F0FDF4;
+      color: #15803D;
+      border: 1px solid #BBF7D0;
+    }
+
+    /* Single Stable Primary Action Button */
+    .btn-submit {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.5rem 1.25rem;
+      background: #2563EB;
+      color: #FFFFFF;
+      border: 1px solid #1D4ED8;
+      border-radius: 4px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .btn-submit:disabled,
+    .btn-submit[aria-disabled="true"],
+    .btn-submit.is-saving {
+      background: #94A3B8;
+      border-color: #94A3B8;
+      cursor: not-allowed;
+    }
+
+    /* Committed Activities */
+    .committed-activities {
+      border-top: 1px solid #E2E8F0;
+      padding-top: 1rem;
+    }
+    .committed-activities-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 0.5rem;
+    }
+    .activity-item {
+      font-size: 0.875rem;
+      color: #0F172A;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 4px;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 0.375rem;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 768px) {
+      .tour-card {
+        grid-template-columns: 70px 1fr auto;
+      }
+      .tour-depart, .tour-owner {
+        grid-column: 2 / 3;
+      }
+      .tour-depart::before {
+        content: "Khởi hành: ";
+        font-weight: 500;
+      }
+      .tour-owner::before {
+        content: "Phụ trách: ";
+        font-weight: 500;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 0.5rem;
+      }
+      .search-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-reset {
+        width: 100%;
+        text-align: center;
+      }
+      .tour-card {
+        grid-template-columns: 1fr auto;
+        gap: 0.5rem;
+      }
+      .tour-id {
+        grid-column: 1 / 2;
+      }
+      .tour-title {
+        grid-column: 1 / 3;
+      }
+      .btn-detail {
+        grid-column: 1 / -1;
+        width: 100%;
+        min-height: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>TRIPFLOW — Điều Phối Tour</h1>
+      <div class="ref-time">Thời điểm quy chiếu: 18:00 13/09/2026 ICT</div>
+    </header>
+
+    <!-- Main List Screen -->
+    <main id="screen-list">
+      <!-- Search & Filters -->
+      <section class="controls-panel" aria-label="Bộ điều khiển tìm kiếm và lọc">
+        <div class="search-row">
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Tìm theo ID, tên tour, phụ trách, trạng thái, ghi chú..."
+            aria-label="Tìm kiếm tour"
+            autocomplete="off"
+          />
+          <button type="button" id="btn-reset" class="btn-reset" onclick="resetFilters()">
+            Xóa điều kiện
+          </button>
+        </div>
+
+        <!-- Level 1: Primary Workflow Navigation -->
+        <div class="workflow-row">
+          <span class="nav-label">Luồng xử lý:</span>
+          <div class="filter-btn-group" role="group" aria-label="Sơ đồ luồng xử lý">
+            <button type="button" class="filter-btn" data-group="all" data-workflow="all" aria-pressed="true" onclick="setWorkflowFilter('all')">Tất cả</button>
+            <button type="button" class="filter-btn" data-group="action" data-workflow="action" aria-pressed="false" onclick="setWorkflowFilter('action')">Cần xử lý</button>
+            <button type="button" class="filter-btn" data-group="prep" data-workflow="prep" aria-pressed="false" onclick="setWorkflowFilter('prep')">Đang chuẩn bị</button>
+            <button type="button" class="filter-btn" data-group="ready" data-workflow="ready" aria-pressed="false" onclick="setWorkflowFilter('ready')">Sẵn sàng</button>
+            <button type="button" class="filter-btn" data-group="done" data-workflow="done" aria-pressed="false" onclick="setWorkflowFilter('done')">Đã hoàn thành</button>
+          </div>
+        </div>
+
+        <!-- Faceted Filters: Independent Time & Owner -->
+        <div class="facets-row">
+          <div class="filter-group">
+            <label for="select-time" class="filter-label">Thời gian:</label>
+            <select id="select-time" class="select-owner" onchange="setTimeFilter(this.value)">
+              <option value="all">Tất cả thời gian</option>
+              <option value="48h">Trong 48 giờ</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="select-owner" class="filter-label">Phụ trách:</label>
+            <select id="select-owner" class="select-owner" onchange="setOwnerFilter(this.value)">
+              <option value="all">Tất cả người phụ trách</option>
+              <option value="Lan">Lan</option>
+              <option value="Minh">Minh</option>
+              <option value="Huy">Huy</option>
+              <option value="An">An</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results Count Bar -->
+      <div class="results-bar">
+        <span id="results-count-text">Đang hiển thị 8/8 tour</span>
+        <span id="active-criteria-summary">Phép lọc: Giao AND logic</span>
+      </div>
+
+      <!-- Tour List -->
+      <section class="tour-list" id="tour-list-container" aria-label="Danh sách tour">
+        <!-- Injected via JavaScript -->
+      </section>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="empty-state" style="display: none;">
+        <p class="empty-state-text">Không tìm thấy tour phù hợp điều kiện tìm kiếm/lọc.</p>
+        <button type="button" class="btn-reset" onclick="resetFilters()">Xóa điều kiện tìm kiếm</button>
+      </div>
+    </main>
+
+    <!-- Detail Screen (Initially hidden) -->
+    <section id="screen-detail" class="detail-screen" style="display: none;" aria-label="Chi tiết tour">
+      <div class="detail-header">
+        <button type="button" id="btn-back-to-list" class="btn-back" onclick="closeDetailView()">
+          ← Quay lại danh sách
+        </button>
+        <span id="detail-badge" class="status-badge"></span>
+      </div>
+
+      <h1 id="detail-tour-title" style="font-size: 1.5rem; font-weight: 700; color: #0F172A;"></h1>
+
+      <div class="detail-grid">
+        <div class="detail-field">
+          <label>Mã Tour</label>
+          <div class="val" id="detail-tour-id"></div>
+        </div>
+        <div class="detail-field">
+          <label>Khởi hành</label>
+          <div class="val" id="detail-tour-depart"></div>
+        </div>
+        <div class="detail-field">
+          <label>Người phụ trách</label>
+          <div class="val" id="detail-tour-owner"></div>
+        </div>
+        <div class="detail-field">
+          <label>Trạng thái</label>
+          <div class="val" id="detail-tour-status"></div>
+        </div>
+        <div class="detail-field" style="grid-column: 1 / -1;">
+          <label>Vấn đề / Ghi chú</label>
+          <div class="val" id="detail-tour-notes"></div>
+        </div>
+      </div>
+
+      <!-- Interaction section for T01 -->
+      <div id="contact-action-container" class="contact-form-section" style="display: none;">
+        <h2 class="contact-form-title">Ghi nhận liên hệ khách sạn (Hồ sơ T01)</h2>
+        <form id="form-contact-log" onsubmit="handleFormSubmit(event)" novalidate>
+          <div class="form-group">
+            <label for="contact-note-input" class="form-label">
+              Nội dung liên hệ với đối tác khách sạn <span style="color: #DC2626;">*</span>
+            </label>
+            <textarea
+              id="contact-note-input"
+              class="note-textarea"
+              rows="3"
+              placeholder="Nhập ghi chú phản hồi từ đối tác khách sạn..."
+              aria-describedby="char-counter contact-feedback"
+            ></textarea>
+            <div class="char-counter" id="char-counter">0 / 160 ký tự</div>
+          </div>
+
+          <!-- Inline Feedback Box -->
+          <div id="contact-feedback" class="feedback-box" role="status" aria-live="polite"></div>
+
+          <!-- Single Stable Action Element -->
+          <div class="form-actions" style="margin-top: 0.5rem;">
+            <button type="submit" id="btn-submit-contact" class="btn-submit">Lưu nhật ký</button>
+          </div>
+        </form>
+
+        <div class="committed-activities" id="committed-activities-section">
+          <div class="committed-activities-title">Nhật ký đã ghi nhận trong phiên:</div>
+          <div id="committed-activities-list">
+            <!-- Appended safely via textContent -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Canonical Data (T01 - T08)
+    const CANONICAL_TOURS = [
+      { id: "T01", name: "Hạ Long 2N1Đ", depart: "14/09/2026 07:30", owner: "Lan", status: "Chờ đối tác", notes: "Khách sạn chưa xác nhận 4 phòng", groupAction: true, group48h: true, priority: true },
+      { id: "T02", name: "Ninh Bình 1 ngày", depart: "14/09/2026 06:00", owner: "Minh", status: "Sẵn sàng", notes: "Đã đủ xe, hướng dẫn viên và danh sách khách", groupAction: false, group48h: true, priority: false },
+      { id: "T03", name: "Sapa 3N2Đ", depart: "15/09/2026 21:30", owner: "Huy", status: "Thiếu hồ sơ", notes: "2 khách chưa gửi CCCD", groupAction: true, group48h: false, priority: false },
+      { id: "T04", name: "Đà Nẵng 4N3Đ", depart: "16/09/2026 08:00", owner: "Lan", status: "Đang chuẩn bị", notes: "Chờ chốt danh sách suất ăn", groupAction: false, group48h: false, priority: false },
+      { id: "T05", name: "Hà Giang 3N2Đ", depart: "17/09/2026 05:30", owner: "Minh", status: "Sẵn sàng", notes: "Đã hoàn tất checklist khởi hành", groupAction: false, group48h: false, priority: false },
+      { id: "T06", name: "Phú Quốc 3N2Đ", depart: "18/09/2026 09:10", owner: "Huy", status: "Chờ đối tác", notes: "Nhà xe trung chuyển chưa xác nhận", groupAction: true, group48h: false, priority: false },
+      { id: "T07", name: "Mộc Châu 2N1Đ", depart: "19/09/2026 06:30", owner: "Lan", status: "Đang chuẩn bị", notes: "Đang rà soát danh sách phòng", groupAction: false, group48h: false, priority: false },
+      { id: "T08", name: "Huế 3N2Đ", depart: "12/09/2026 07:00", owner: "An", status: "Hoàn thành", notes: "Đoàn đã khởi hành và bàn giao nhật ký", groupAction: false, group48h: false, priority: false }
+    ];
+
+    // State
+    let currentSearch = "";
+    let currentWorkflow = "all";
+    let currentTime = "all";
+    let currentOwner = "all";
+    let activeTourIdInDetail = null;
+
+    // FSM State for Contact Form
+    let attemptCount = 0;
+    let commitCount = 0;
+    let isSaving = false;
+    let lastDraftText = "";
+
+    // Utilities
+    function removeVietnameseTones(str) {
+      if (!str) return "";
+      str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+      str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+      str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+      str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+      str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+      str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+      str = str.replace(/đ/g, "d");
+      str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+      str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+      str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+      str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+      str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+      str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+      str = str.replace(/Đ/g, "D");
+      return str;
+    }
+
+    function getStatusClass(status) {
+      switch (status) {
+        case "Chờ đối tác": return "status-action";
+        case "Sẵn sàng": return "status-ready";
+        case "Thiếu hồ sơ": return "status-missing";
+        case "Đang chuẩn bị": return "status-prep";
+        case "Hoàn thành": return "status-done";
+        default: return "status-done";
+      }
+    }
+
+    function filterTours() {
+      const q = removeVietnameseTones(currentSearch.trim().toLowerCase());
+
+      return CANONICAL_TOURS.filter(t => {
+        // 1. Primary Workflow filter
+        if (currentWorkflow === "action" && !t.groupAction) return false;
+        if (currentWorkflow === "prep" && t.status !== "Đang chuẩn bị") return false;
+        if (currentWorkflow === "ready" && t.status !== "Sẵn sàng") return false;
+        if (currentWorkflow === "done" && t.status !== "Hoàn thành") return false;
+
+        // 2. Independent Time filter
+        if (currentTime === "48h" && !t.group48h) return false;
+
+        // 3. Independent Owner filter
+        if (currentOwner !== "all" && t.owner !== currentOwner) return false;
+
+        // 4. Search query
+        if (q) {
+          const idNorm = removeVietnameseTones(t.id.toLowerCase());
+          const nameNorm = removeVietnameseTones(t.name.toLowerCase());
+          const ownerNorm = removeVietnameseTones(t.owner.toLowerCase());
+          const statusNorm = removeVietnameseTones(t.status.toLowerCase());
+          const notesNorm = removeVietnameseTones(t.notes.toLowerCase());
+          const match = idNorm.includes(q) || nameNorm.includes(q) || ownerNorm.includes(q) || statusNorm.includes(q) || notesNorm.includes(q);
+          if (!match) return false;
+        }
+
+        return true;
+      });
+    }
+
+    function renderTourList() {
+      const container = document.getElementById("tour-list-container");
+      const emptyState = document.getElementById("empty-state");
+      const countText = document.getElementById("results-count-text");
+
+      const filtered = filterTours();
+      countText.textContent = `Đang hiển thị ${filtered.length}/8 tour`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = "";
+        emptyState.style.display = "flex";
+        return;
+      }
+
+      emptyState.style.display = "none";
+      container.innerHTML = "";
+
+      filtered.forEach(t => {
+        const card = document.createElement("article");
+        card.className = "tour-card";
+        card.id = `tour-card-${t.id}`;
+        card.innerHTML = `
+          <div class="tour-id">${t.id}</div>
+          <div class="tour-title">
+            <span class="tour-name">${t.name}</span>
+            <span class="tour-notes">${t.notes}</span>
+          </div>
+          <div class="tour-depart">${t.depart}</div>
+          <div class="tour-owner">${t.owner}</div>
+          <div><span class="status-badge ${getStatusClass(t.status)}">${t.status}</span></div>
+          <div>
+            <button
+              type="button"
+              id="btn-detail-${t.id}"
+              class="btn-detail"
+              aria-label="Xem chi tiết tour ${t.id} ${t.name}"
+              onclick="openDetailView('${t.id}')"
+            >Chi tiết</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function setWorkflowFilter(wf) {
+      currentWorkflow = wf;
+      document.querySelectorAll(".filter-btn").forEach(btn => {
+        const match = (btn.getAttribute("data-workflow") === wf) || (btn.getAttribute("data-group") === wf);
+        btn.setAttribute("aria-pressed", match ? "true" : "false");
+      });
+      renderTourList();
+    }
+
+    function setTimeFilter(val) {
+      currentTime = val;
+      renderTourList();
+    }
+
+    function setOwnerFilter(owner) {
+      currentOwner = owner;
+      renderTourList();
+    }
+
+    function resetFilters() {
+      currentSearch = "";
+      currentWorkflow = "all";
+      currentTime = "all";
+      currentOwner = "all";
+      const searchInput = document.getElementById("search-input");
+      searchInput.value = "";
+      document.getElementById("select-time").value = "all";
+      document.getElementById("select-owner").value = "all";
+      setWorkflowFilter("all");
+      setTimeout(() => {
+        if (searchInput) searchInput.focus();
+      }, 0);
+    }
+
+    // Detail View Logic
+    function openDetailView(tourId) {
+      activeTourIdInDetail = tourId;
+      const tour = CANONICAL_TOURS.find(t => t.id === tourId);
+      if (!tour) return;
+
+      document.getElementById("detail-tour-id").textContent = tour.id;
+      document.getElementById("detail-tour-title").textContent = tour.name;
+      document.getElementById("detail-tour-depart").textContent = tour.depart;
+      document.getElementById("detail-tour-owner").textContent = tour.owner;
+      document.getElementById("detail-tour-status").textContent = tour.status;
+      document.getElementById("detail-tour-notes").textContent = tour.notes;
+
+      const badge = document.getElementById("detail-badge");
+      badge.textContent = tour.status;
+      badge.className = `status-badge ${getStatusClass(tour.status)}`;
+
+      // Show interaction panel only for T01
+      const contactSection = document.getElementById("contact-action-container");
+      if (tour.id === "T01") {
+        contactSection.style.display = "flex";
+      } else {
+        contactSection.style.display = "none";
+      }
+
+      document.getElementById("screen-list").style.display = "none";
+      document.getElementById("screen-detail").style.display = "flex";
+      window.scrollTo(0, 0);
+
+      // Move focus to back button
+      document.getElementById("btn-back-to-list").focus();
+    }
+
+    function closeDetailView() {
+      document.getElementById("screen-detail").style.display = "none";
+      document.getElementById("screen-list").style.display = "block";
+      window.scrollTo(0, 0);
+
+      // Restore focus to the specific tour item trigger
+      if (activeTourIdInDetail) {
+        const trigger = document.getElementById(`btn-detail-${activeTourIdInDetail}`);
+        if (trigger) {
+          trigger.focus();
+        }
+      }
+      activeTourIdInDetail = null;
+    }
+
+    // Form Interaction Logic (T01) with Single Stable Action Element
+    function handleFormSubmit(e) {
+      if (e) e.preventDefault();
+      if (isSaving) return false; // Duplicate guard: block pointer click and Enter while saving
+
+      const noteInput = document.getElementById("contact-note-input");
+      const feedback = document.getElementById("contact-feedback");
+      const submitBtn = document.getElementById("btn-submit-contact");
+
+      const text = noteInput.value.trim();
+
+      // Validation 1: Required
+      if (text.length === 0) {
+        feedback.textContent = "Nhập nội dung liên hệ trước khi lưu.";
+        feedback.className = "feedback-box visible feedback-error";
+        submitBtn.textContent = "Lưu nhật ký";
+        submitBtn.removeAttribute("aria-disabled");
+        submitBtn.classList.remove("is-saving");
+        noteInput.focus();
+        return false;
+      }
+
+      // Validation 2: Max 160 characters
+      if (text.length > 160) {
+        feedback.textContent = "Ghi chú cần tối đa 160 ký tự.";
+        feedback.className = "feedback-box visible feedback-error";
+        submitBtn.textContent = "Lưu nhật ký";
+        submitBtn.removeAttribute("aria-disabled");
+        submitBtn.classList.remove("is-saving");
+        noteInput.focus();
+        return false;
+      }
+
+      // Valid: Start Saving FSM
+      attemptCount++;
+      isSaving = true;
+      lastDraftText = text;
+
+      submitBtn.textContent = "Đang lưu nhật ký…";
+      submitBtn.setAttribute("aria-disabled", "true");
+      submitBtn.classList.add("is-saving");
+      // Do NOT set submitBtn.disabled = true; keep focus continuously!
+      noteInput.disabled = true;
+
+      feedback.textContent = "Đang lưu nhật ký liên hệ...";
+      feedback.className = "feedback-box visible feedback-saving";
+
+      setTimeout(() => {
+        isSaving = false;
+        noteInput.disabled = false;
+        submitBtn.removeAttribute("aria-disabled");
+        submitBtn.classList.remove("is-saving");
+
+        if (attemptCount === 1) {
+          // First attempt fails
+          commitCount = 0;
+          feedback.textContent = "Chưa lưu được nhật ký liên hệ. Nội dung của bạn vẫn được giữ.";
+          feedback.className = "feedback-box visible feedback-error";
+          submitBtn.textContent = "Thử lưu lại";
+          // Focus was never evicted
+        } else {
+          // Second / retry attempt succeeds
+          commitCount = 1;
+          feedback.textContent = "Đã lưu nhật ký liên hệ cho T01.";
+          feedback.className = "feedback-box visible feedback-success";
+
+          submitBtn.textContent = "Lưu nhật ký";
+
+          // Safely append committed activity using DOM textContent
+          const activityItem = document.createElement("div");
+          activityItem.className = "activity-item";
+          activityItem.textContent = "Đã liên hệ khách sạn — " + text;
+          document.getElementById("committed-activities-list").appendChild(activityItem);
+
+          // Clear form after success
+          noteInput.value = "";
+          updateCharCount();
+
+          // Conditional focus preservation (No-steal)
+          // Only refocus action button if the user STILL had focus on submitBtn or noteInput
+          const active = document.activeElement;
+          if (active === submitBtn || active === noteInput) {
+            submitBtn.focus();
+          }
+          // If user moved to another control like #btn-back-to-list, DO NOT STEAL FOCUS!
+        }
+      }, 800);
+
+      return false;
+    }
+
+    function updateCharCount() {
+      const noteInput = document.getElementById("contact-note-input");
+      const counter = document.getElementById("char-counter");
+      counter.textContent = `${noteInput.value.length} / 160 ký tự`;
+    }
+
+    // Event Listeners
+    document.getElementById("search-input").addEventListener("input", (e) => {
+      currentSearch = e.target.value;
+      renderTourList();
+    });
+
+    document.getElementById("contact-note-input").addEventListener("input", () => {
+      updateCharCount();
+      const feedback = document.getElementById("contact-feedback");
+      if (feedback.classList.contains("feedback-error")) {
+        feedback.className = "feedback-box";
+      }
+    });
+
+    // Initialize
+    window.addEventListener("DOMContentLoaded", () => {
+      renderTourList();
+    });
+  </script>
+</body>
+</html>

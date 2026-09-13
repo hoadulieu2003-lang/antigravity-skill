@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIPFLOW — Bảng Điều Phối Tour Khởi Hành (Candidate Pre-Critique)</title>
+  <style>
+    /* ==========================================================================
+       DESIGN CONTRACT & INVARIANTS: Zero Motion & Light Theme
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: none !important;
+      animation: none !important;
+    }
+    html {
+      scroll-behavior: auto !important;
+      background-color: #FAF9F6;
+      color: #1E293B;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #FAF9F6;
+      color: #1E293B;
+      padding: 1.5rem 1rem;
+    }
+
+    /* Accessibility Focus Rings */
+    :focus-visible {
+      outline: 2px solid #D97706;
+      outline-offset: 2px;
+    }
+
+    /* Layout Frame */
+    .app-shell {
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Header Masthead */
+    .dispatch-header {
+      border-bottom: 2px solid #0F172A;
+      padding-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .brand-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .brand-eyebrow {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748B;
+    }
+    .brand-title {
+      font-size: clamp(1.5rem, 1.25rem + 1.2vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0F172A;
+    }
+    .reference-clock {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.8125rem;
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      padding: 0.375rem 0.75rem;
+      border-radius: 4px;
+      color: #334155;
+    }
+
+    /* Focal Point Hero: Urgent Action Callout (T01 Priority) */
+    .urgent-focus-module {
+      background: #FFFBEB;
+      border: 1px solid #FCD34D;
+      border-left: 6px solid #D97706;
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+    .urgent-meta-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+      flex: 1;
+      min-width: 280px;
+    }
+    .urgent-tag {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #9A3412;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+    .urgent-tour-heading {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1E293B;
+    }
+    .urgent-details {
+      font-size: 0.875rem;
+      color: #78350F;
+    }
+    .btn-urgent-action {
+      min-height: 44px;
+      padding: 0.625rem 1.25rem;
+      background: #B45309;
+      color: #FFFFFF;
+      border: 1px solid #92400E;
+      border-radius: 4px;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-urgent-action:hover {
+      background: #92400E;
+    }
+
+    /* Controls: Filter & Search Panel */
+    .dispatch-controls {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .search-bar-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .search-input-field {
+      flex: 1;
+      min-width: 0;
+      min-height: 44px;
+      padding: 0.5rem 1rem;
+      border: 1px solid #94A3B8;
+      border-radius: 4px;
+      font-size: 0.9375rem;
+      color: #0F172A;
+      background: #FFFFFF;
+    }
+    .btn-clear-action {
+      min-height: 44px;
+      padding: 0.5rem 1rem;
+      background: #F8FAFC;
+      color: #334155;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-clear-action:hover {
+      background: #E2E8F0;
+    }
+
+    /* IA Separation: Level 1 Primary Workflow Navigation */
+    .workflow-nav-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .nav-label {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: #64748B;
+      text-transform: uppercase;
+      font-family: ui-monospace, monospace;
+    }
+    .segmented-groups {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+      align-items: center;
+    }
+    .seg-btn {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.375rem 0.875rem;
+      border: 1px solid #CBD5E1;
+      background: #FFFFFF;
+      color: #475569;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .seg-btn[aria-pressed="true"] {
+      background: #0F172A;
+      color: #FFFFFF;
+      border-color: #0F172A;
+      font-weight: 600;
+    }
+
+    /* IA Separation: Faceted Attribute Filters */
+    .facets-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+    .filter-facet-box {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .facet-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #475569;
+    }
+    .owner-select {
+      min-height: 44px;
+      padding: 0.375rem 0.75rem;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      color: #0F172A;
+      background: #FFFFFF;
+    }
+
+    /* Results Header */
+    .results-summary-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.875rem;
+      color: #64748B;
+      padding: 0 0.25rem;
+    }
+
+    /* Grouped Container with Hairline Dividers */
+    .grouped-tour-ledger {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .ledger-head {
+      display: grid;
+      grid-template-columns: 80px 1.8fr 1.2fr 1fr 1.1fr auto;
+      padding: 0.75rem 1.25rem;
+      background: #F8FAFC;
+      border-bottom: 1px solid #E2E8F0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748B;
+      gap: 1rem;
+    }
+    .ledger-item {
+      display: grid;
+      grid-template-columns: 80px 1.8fr 1.2fr 1fr 1.1fr auto;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #F1F5F9;
+      align-items: center;
+      gap: 1rem;
+    }
+    .ledger-item:last-child {
+      border-bottom: none;
+    }
+    .ledger-item.highlight-t01 {
+      background: #FFFDF7;
+      border-left: 4px solid #D97706;
+    }
+
+    .t-col-id {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-weight: 700;
+      color: #0F172A;
+    }
+    .t-col-tour {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .t-tour-name {
+      font-weight: 700;
+      color: #0F172A;
+      font-size: 0.9375rem;
+    }
+    .t-tour-notes {
+      font-size: 0.8125rem;
+      color: #64748B;
+    }
+    .t-col-depart {
+      font-size: 0.875rem;
+      color: #334155;
+      font-variant-numeric: tabular-nums;
+    }
+    .t-col-owner {
+      font-size: 0.875rem;
+      color: #475569;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.25rem 0.625rem;
+      border-radius: 4px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      width: fit-content;
+    }
+    .status-action { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+    .status-ready { background: #DCFCE7; color: #166534; border: 1px solid #86EFAC; }
+    .status-missing { background: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5; }
+    .status-prep { background: #E0E7FF; color: #3730A3; border: 1px solid #A5B4FC; }
+    .status-done { background: #F1F5F9; color: #475569; border: 1px solid #CBD5E1; }
+
+    .btn-open-detail {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.5rem 1rem;
+      background: #FFFFFF;
+      color: #0F172A;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-open-detail:hover {
+      background: #F8FAFC;
+      border-color: #94A3B8;
+    }
+
+    /* Empty State */
+    .empty-ledger-view {
+      padding: 3.5rem 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .empty-ledger-msg {
+      color: #64748B;
+      font-size: 1rem;
+    }
+
+    /* Detail View Screen */
+    .detail-view-container {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .detail-top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 1rem;
+    }
+    .btn-back-nav {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.5rem 1rem;
+      background: #F8FAFC;
+      color: #0F172A;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-back-nav:hover {
+      background: #F1F5F9;
+    }
+
+    .detail-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 6px;
+      padding: 1.25rem;
+    }
+    .info-cell label {
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #64748B;
+      margin-bottom: 0.25rem;
+    }
+    .info-cell .info-val {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0F172A;
+    }
+
+    /* Interaction Section for T01 */
+    .interaction-panel {
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .panel-heading {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #0F172A;
+    }
+    .input-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .field-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #334155;
+    }
+    .note-text-area {
+      width: 100%;
+      min-height: 90px;
+      padding: 0.75rem;
+      border: 1px solid #94A3B8;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      background: #FFFFFF;
+      color: #0F172A;
+    }
+    .note-text-area:disabled {
+      background: #F1F5F9;
+      cursor: not-allowed;
+    }
+    .char-count-line {
+      font-size: 0.75rem;
+      color: #64748B;
+      text-align: right;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    /* Live Feedback Status Box */
+    .status-feedback-box {
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      display: none;
+      font-weight: 500;
+    }
+    .status-feedback-box.show {
+      display: block;
+    }
+    .fb-saving {
+      background: #E0F2FE;
+      color: #0369A1;
+      border: 1px solid #7DD3FC;
+    }
+    .fb-error {
+      background: #FEE2E2;
+      color: #991B1B;
+      border: 1px solid #FCA5A5;
+    }
+    .fb-success {
+      background: #DCFCE7;
+      color: #166534;
+      border: 1px solid #86EFAC;
+    }
+
+    /* Single Stable Primary Action Button */
+    .form-btn-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .btn-action-primary {
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.625rem 1.25rem;
+      background: #B45309;
+      color: #FFFFFF;
+      border: 1px solid #92400E;
+      border-radius: 4px;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-action-primary:hover {
+      background: #92400E;
+    }
+    .btn-action-primary:disabled,
+    .btn-action-primary[aria-disabled="true"],
+    .btn-action-primary.is-saving {
+      background: #94A3B8;
+      border-color: #94A3B8;
+      cursor: not-allowed;
+    }
+
+    /* History / Committed Log */
+    .history-log-box {
+      border-top: 1px solid #E2E8F0;
+      padding-top: 1rem;
+    }
+    .history-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 0.5rem;
+    }
+    .committed-entry {
+      font-size: 0.875rem;
+      color: #0F172A;
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 4px;
+      padding: 0.625rem 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (Critique Change 1: 2-line cadence on mobile)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .ledger-head {
+        display: none;
+      }
+      .ledger-item {
+        grid-template-columns: 60px 1fr auto;
+        gap: 0.75rem;
+      }
+      .t-col-depart, .t-col-owner {
+        grid-column: 2 / 3;
+      }
+      .t-col-depart::before {
+        content: "Khởi hành: ";
+        font-weight: 600;
+      }
+      .t-col-owner::before {
+        content: "Phụ trách: ";
+        font-weight: 600;
+      }
+    }
+
+    /* Pre-Critique un-optimized mobile layout (Button on full-width row) */
+    @media (max-width: 480px) {
+      body {
+        padding: 0.5rem;
+      }
+      .dispatch-controls {
+        padding: 0.875rem 0.75rem;
+      }
+      .search-bar-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-clear-action {
+        width: 100%;
+        text-align: center;
+      }
+      .urgent-focus-module {
+        padding: 1rem 0.875rem;
+      }
+      .urgent-meta-left {
+        min-width: 0;
+      }
+      .btn-urgent-action {
+        width: 100%;
+        text-align: center;
+      }
+      .detail-view-container {
+        padding: 1rem 0.875rem;
+      }
+      .ledger-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem 0.75rem;
+      }
+      .btn-open-detail {
+        width: 100%;
+        min-height: 44px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell" id="app-root">
+    <!-- Header -->
+    <header class="dispatch-header">
+      <div class="brand-group">
+        <span class="brand-eyebrow">Hệ Thống Điều Hành Tuyến // Dispatch Engine</span>
+        <h1 class="brand-title">TRIPFLOW — Bảng Điều Phối Tour</h1>
+      </div>
+      <div class="reference-clock">Quy chiếu: 18:00, 13/09/2026 ICT</div>
+    </header>
+
+    <!-- Main List Screen -->
+    <main id="screen-list-view">
+      <!-- Focal Point Hero: T01 Urgent Priority -->
+      <section class="urgent-focus-module" aria-label="Điểm nóng cần xử lý ngay">
+        <div class="urgent-meta-left">
+          <div class="urgent-tag">
+            <span aria-hidden="true">⚠️</span> ĐIỂM NÓNG KHẨN CẤP (KHỞI HÀNH &lt; 24H)
+          </div>
+          <div class="urgent-tour-heading">T01 — Hạ Long 2N1Đ</div>
+          <div class="urgent-details">
+            <strong>Khởi hành:</strong> 14/09/2026 07:30 (còn dưới 14 giờ) • <strong>Phụ trách:</strong> Lan • <strong>Trạng thái:</strong> Chờ đối tác (Khách sạn chưa xác nhận 4 phòng)
+          </div>
+        </div>
+        <button
+          type="button"
+          id="btn-hero-action-t01"
+          class="btn-urgent-action"
+          onclick="openTourDetail('T01')"
+        >Xử lý hồ sơ T01 ngay →</button>
+      </section>
+
+      <!-- Controls Panel -->
+      <section class="dispatch-controls" aria-label="Bộ lọc và tìm kiếm" style="margin-top: 1.5rem;">
+        <div class="search-bar-row">
+          <input
+            type="text"
+            id="input-tour-search"
+            class="search-input-field"
+            placeholder="Tìm theo ID (T01), tên tour, phụ trách, trạng thái, vấn đề..."
+            aria-label="Tìm kiếm tour điều phối"
+            autocomplete="off"
+          />
+          <button type="button" id="btn-reset-filters" class="btn-clear-action" onclick="resetAllFilters()">
+            Xóa điều kiện
+          </button>
+        </div>
+
+        <!-- Level 1: Primary Workflow Navigation -->
+        <div class="workflow-nav-row">
+          <span class="nav-label">Luồng xử lý:</span>
+          <div class="segmented-groups" role="group" aria-label="Sơ đồ luồng xử lý">
+            <button type="button" class="seg-btn" data-group="all" data-workflow="all" aria-pressed="true" onclick="applyWorkflowFilter('all')">Tất cả</button>
+            <button type="button" class="seg-btn" data-group="action" data-workflow="action" aria-pressed="false" onclick="applyWorkflowFilter('action')">Cần xử lý</button>
+            <button type="button" class="seg-btn" data-group="prep" data-workflow="prep" aria-pressed="false" onclick="applyWorkflowFilter('prep')">Đang chuẩn bị</button>
+            <button type="button" class="seg-btn" data-group="ready" data-workflow="ready" aria-pressed="false" onclick="applyWorkflowFilter('ready')">Sẵn sàng</button>
+            <button type="button" class="seg-btn" data-group="done" data-workflow="done" aria-pressed="false" onclick="applyWorkflowFilter('done')">Đã hoàn thành</button>
+          </div>
+        </div>
+
+        <!-- Faceted Attribute Filters -->
+        <div class="facets-row">
+          <div class="filter-facet-box">
+            <label for="select-tour-time" class="facet-label">Thời gian:</label>
+            <select id="select-tour-time" class="owner-select" onchange="applyTimeFilter(this.value)">
+              <option value="all">Tất cả thời gian</option>
+              <option value="48h">Trong 48 giờ</option>
+            </select>
+          </div>
+
+          <div class="filter-facet-box">
+            <label for="select-tour-owner" class="facet-label">Phụ trách:</label>
+            <select id="select-tour-owner" class="owner-select" onchange="applyOwnerFilter(this.value)">
+              <option value="all">Tất cả điều phối viên</option>
+              <option value="Lan">Lan</option>
+              <option value="Minh">Minh</option>
+              <option value="Huy">Huy</option>
+              <option value="An">An</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results Count Bar -->
+      <div class="results-summary-strip" style="margin-top: 1rem; margin-bottom: 0.5rem;">
+        <span id="results-count-display">Đang hiển thị 8/8 tour</span>
+        <span>Phép lọc: Giao AND logic</span>
+      </div>
+
+      <!-- Grouped Container with Hairline Dividers -->
+      <section class="grouped-tour-ledger" id="tour-ledger-table" aria-label="Bảng danh sách tour">
+        <div class="ledger-head">
+          <div>Mã</div>
+          <div>Tour & Vấn đề / Ghi chú</div>
+          <div>Khởi hành</div>
+          <div>Phụ trách</div>
+          <div>Trạng thái</div>
+          <div>Thao tác</div>
+        </div>
+        <div id="tour-ledger-body">
+          <!-- Injected via JS -->
+        </div>
+      </section>
+
+      <!-- Empty State -->
+      <div class="empty-ledger-view" id="empty-results-view" style="display: none;">
+        <p class="empty-ledger-msg">Không tìm thấy tour phù hợp điều kiện tìm kiếm/lọc.</p>
+        <button type="button" class="btn-clear-action" onclick="resetAllFilters()">Xóa điều kiện tìm kiếm</button>
+      </div>
+    </main>
+
+    <!-- Detail View Screen (Initially Hidden) -->
+    <section id="screen-detail-view" class="detail-view-container" style="display: none;" aria-label="Chi tiết tour điều phối">
+      <div class="detail-top-nav">
+        <button type="button" id="btn-back-to-ledger" class="btn-back-nav" onclick="closeTourDetail()">
+          ← Quay lại bảng điều phối
+        </button>
+        <span id="detail-status-pill" class="status-badge"></span>
+      </div>
+
+      <h1 id="detail-tour-name-heading" style="font-size: 1.5rem; font-weight: 800; color: #0F172A;"></h1>
+
+      <div class="detail-info-grid">
+        <div class="info-cell">
+          <label>Mã Tour</label>
+          <div class="info-val" id="d-val-id"></div>
+        </div>
+        <div class="info-cell">
+          <label>Khởi hành</label>
+          <div class="info-val" id="d-val-depart"></div>
+        </div>
+        <div class="info-cell">
+          <label>Điều phối viên</label>
+          <div class="info-val" id="d-val-owner"></div>
+        </div>
+        <div class="info-cell">
+          <label>Trạng thái</label>
+          <div class="info-val" id="d-val-status"></div>
+        </div>
+        <div class="info-cell" style="grid-column: 1 / -1;">
+          <label>Vấn đề phát sinh / Ghi chú bàn giao</label>
+          <div class="info-val" id="d-val-notes" style="color: #9A3412;"></div>
+        </div>
+      </div>
+
+      <!-- Interaction Form for T01 with Single Stable Action Element -->
+      <div id="panel-hotel-interaction" class="interaction-panel" style="display: none;">
+        <h2 class="panel-heading">Ghi nhận liên hệ khách sạn (Hồ sơ T01)</h2>
+        <form id="form-hotel-log" onsubmit="submitHotelContactForm(event)" novalidate>
+          <div class="input-field-group">
+            <label for="textarea-hotel-note" class="field-label">
+              Nội dung nhật ký liên hệ đối tác khách sạn <span style="color: #DC2626;">*</span>
+            </label>
+            <textarea
+              id="textarea-hotel-note"
+              class="note-text-area"
+              rows="3"
+              placeholder="Nhập chi tiết cuộc gọi, xác nhận phòng hoặc ghi chú tiến độ..."
+              aria-describedby="char-count-tag status-contact-feedback"
+            ></textarea>
+            <div class="char-count-line" id="char-count-tag">0 / 160 ký tự</div>
+          </div>
+
+          <!-- CRITIQUE CHANGE 2: Semantic Text Icons in FSM feedback -->
+          <div id="status-contact-feedback" class="status-feedback-box" role="status" aria-live="polite"></div>
+
+          <div class="form-btn-row" style="margin-top: 0.5rem;">
+            <button type="submit" id="btn-save-contact-note" class="btn-action-primary">Lưu nhật ký</button>
+          </div>
+        </form>
+
+        <div class="history-log-box" id="committed-history-section">
+          <div class="history-title">Nhật ký đã ghi nhận trong phiên:</div>
+          <div id="committed-history-list">
+            <!-- Safely appended using textContent -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Canonical Data T01 - T08
+    const CANONICAL_TOURS = [
+      { id: "T01", name: "Hạ Long 2N1Đ", depart: "14/09/2026 07:30", owner: "Lan", status: "Chờ đối tác", notes: "Khách sạn chưa xác nhận 4 phòng", groupAction: true, group48h: true, priority: true },
+      { id: "T02", name: "Ninh Bình 1 ngày", depart: "14/09/2026 06:00", owner: "Minh", status: "Sẵn sàng", notes: "Đã đủ xe, hướng dẫn viên và danh sách khách", groupAction: false, group48h: true, priority: false },
+      { id: "T03", name: "Sapa 3N2Đ", depart: "15/09/2026 21:30", owner: "Huy", status: "Thiếu hồ sơ", notes: "2 khách chưa gửi CCCD", groupAction: true, group48h: false, priority: false },
+      { id: "T04", name: "Đà Nẵng 4N3Đ", depart: "16/09/2026 08:00", owner: "Lan", status: "Đang chuẩn bị", notes: "Chờ chốt danh sách suất ăn", groupAction: false, group48h: false, priority: false },
+      { id: "T05", name: "Hà Giang 3N2Đ", depart: "17/09/2026 05:30", owner: "Minh", status: "Sẵn sàng", notes: "Đã hoàn tất checklist khởi hành", groupAction: false, group48h: false, priority: false },
+      { id: "T06", name: "Phú Quốc 3N2Đ", depart: "18/09/2026 09:10", owner: "Huy", status: "Chờ đối tác", notes: "Nhà xe trung chuyển chưa xác nhận", groupAction: true, group48h: false, priority: false },
+      { id: "T07", name: "Mộc Châu 2N1Đ", depart: "19/09/2026 06:30", owner: "Lan", status: "Đang chuẩn bị", notes: "Đang rà soát danh sách phòng", groupAction: false, group48h: false, priority: false },
+      { id: "T08", name: "Huế 3N2Đ", depart: "12/09/2026 07:00", owner: "An", status: "Hoàn thành", notes: "Đoàn đã khởi hành và bàn giao nhật ký", groupAction: false, group48h: false, priority: false }
+    ];
+
+    // State Variables
+    let currentSearchTerm = "";
+    let activeWorkflowFilter = "all";
+    let activeTimeFilter = "all";
+    let activeOwnerFilter = "all";
+    let currentlyViewedTourId = null;
+
+    // FSM State Variables for T01 Form
+    let attemptCount = 0;
+    let commitCount = 0;
+    let isSavingActive = false;
+    let lastDraftNote = "";
+
+    // Vietnamese Tone Stripper
+    function stripVN(str) {
+      if (!str) return "";
+      str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+      str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+      str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+      str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+      str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+      str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+      str = str.replace(/đ/g, "d");
+      str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+      str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+      str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+      str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+      str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+      str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+      str = str.replace(/Đ/g, "D");
+      return str;
+    }
+
+    function getBadgeClass(status) {
+      switch (status) {
+        case "Chờ đối tác": return "status-action";
+        case "Sẵn sàng": return "status-ready";
+        case "Thiếu hồ sơ": return "status-missing";
+        case "Đang chuẩn bị": return "status-prep";
+        case "Hoàn thành": return "status-done";
+        default: return "status-done";
+      }
+    }
+
+    // Filter Algorithm: Search AND Workflow AND Time AND Owner
+    function getFilteredTours() {
+      const q = stripVN(currentSearchTerm.trim().toLowerCase());
+
+      return CANONICAL_TOURS.filter(tour => {
+        // 1. Workflow Group
+        if (activeWorkflowFilter === "action" && !tour.groupAction) return false;
+        if (activeWorkflowFilter === "prep" && tour.status !== "Đang chuẩn bị") return false;
+        if (activeWorkflowFilter === "ready" && tour.status !== "Sẵn sàng") return false;
+        if (activeWorkflowFilter === "done" && tour.status !== "Hoàn thành") return false;
+
+        // 2. Time Filter
+        if (activeTimeFilter === "48h" && !tour.group48h) return false;
+
+        // 3. Owner Filter
+        if (activeOwnerFilter !== "all" && tour.owner !== activeOwnerFilter) return false;
+
+        // 4. Search query
+        if (q) {
+          const idMatch = stripVN(tour.id.toLowerCase()).includes(q);
+          const nameMatch = stripVN(tour.name.toLowerCase()).includes(q);
+          const ownerMatch = stripVN(tour.owner.toLowerCase()).includes(q);
+          const statusMatch = stripVN(tour.status.toLowerCase()).includes(q);
+          const notesMatch = stripVN(tour.notes.toLowerCase()).includes(q);
+          if (!idMatch && !nameMatch && !ownerMatch && !statusMatch && !notesMatch) {
+            return false;
+          }
+        }
+
+        return true;
+      });
+    }
+
+    function renderTourLedger() {
+      const ledgerBody = document.getElementById("tour-ledger-body");
+      const emptyView = document.getElementById("empty-results-view");
+      const countDisplay = document.getElementById("results-count-display");
+
+      const filtered = getFilteredTours();
+      countDisplay.textContent = `Đang hiển thị ${filtered.length}/8 tour`;
+
+      if (filtered.length === 0) {
+        ledgerBody.innerHTML = "";
+        emptyView.style.display = "flex";
+        return;
+      }
+
+      emptyView.style.display = "none";
+      ledgerBody.innerHTML = "";
+
+      filtered.forEach(t => {
+        const row = document.createElement("article");
+        row.className = `ledger-item ${t.priority ? 'highlight-t01' : ''}`;
+        row.id = `ledger-row-${t.id}`;
+        row.innerHTML = `
+          <div class="t-col-id">${t.id}</div>
+          <div class="t-col-tour">
+            <span class="t-tour-name">${t.name}</span>
+            <span class="t-tour-notes">${t.notes}</span>
+          </div>
+          <div class="t-col-depart">${t.depart}</div>
+          <div class="t-col-owner">${t.owner}</div>
+          <div><span class="status-badge ${getBadgeClass(t.status)}">${t.status}</span></div>
+          <div>
+            <button
+              type="button"
+              id="btn-detail-${t.id}"
+              class="btn-open-detail"
+              aria-label="Xem chi tiết tour ${t.id} ${t.name}"
+              onclick="openTourDetail('${t.id}')"
+            >Chi tiết</button>
+          </div>
+        `;
+        ledgerBody.appendChild(row);
+      });
+    }
+
+    function applyWorkflowFilter(wf) {
+      activeWorkflowFilter = wf;
+      document.querySelectorAll(".seg-btn").forEach(btn => {
+        const isCurrent = (btn.getAttribute("data-workflow") === wf) || (btn.getAttribute("data-group") === wf);
+        btn.setAttribute("aria-pressed", isCurrent ? "true" : "false");
+      });
+      renderTourLedger();
+    }
+
+    function applyTimeFilter(val) {
+      activeTimeFilter = val;
+      renderTourLedger();
+    }
+
+    function applyOwnerFilter(owner) {
+      activeOwnerFilter = owner;
+      renderTourLedger();
+    }
+
+    function resetAllFilters() {
+      currentSearchTerm = "";
+      activeWorkflowFilter = "all";
+      activeTimeFilter = "all";
+      activeOwnerFilter = "all";
+      const searchInput = document.getElementById("input-tour-search");
+      searchInput.value = "";
+      document.getElementById("select-tour-time").value = "all";
+      document.getElementById("select-tour-owner").value = "all";
+      applyWorkflowFilter("all");
+      setTimeout(() => {
+        if (searchInput) searchInput.focus();
+      }, 0);
+    }
+
+    // Detail View Logic
+    function openTourDetail(tourId) {
+      currentlyViewedTourId = tourId;
+      const tour = CANONICAL_TOURS.find(t => t.id === tourId);
+      if (!tour) return;
+
+      document.getElementById("d-val-id").textContent = tour.id;
+      document.getElementById("detail-tour-name-heading").textContent = tour.name;
+      document.getElementById("d-val-depart").textContent = tour.depart;
+      document.getElementById("d-val-owner").textContent = tour.owner;
+      document.getElementById("d-val-status").textContent = tour.status;
+      document.getElementById("d-val-notes").textContent = tour.notes;
+
+      const pill = document.getElementById("detail-status-pill");
+      pill.textContent = tour.status;
+      pill.className = `status-badge ${getBadgeClass(tour.status)}`;
+
+      // Show interaction panel only for T01
+      const panel = document.getElementById("panel-hotel-interaction");
+      if (tour.id === "T01") {
+        panel.style.display = "flex";
+      } else {
+        panel.style.display = "none";
+      }
+
+      document.getElementById("screen-list-view").style.display = "none";
+      document.getElementById("screen-detail-view").style.display = "flex";
+      window.scrollTo(0, 0);
+
+      // Move focus to back button
+      document.getElementById("btn-back-to-ledger").focus();
+    }
+
+    function closeTourDetail() {
+      document.getElementById("screen-detail-view").style.display = "none";
+      document.getElementById("screen-list-view").style.display = "block";
+      window.scrollTo(0, 0);
+
+      // Restore focus to opened tour trigger
+      if (currentlyViewedTourId) {
+        const trigger = document.getElementById(`btn-detail-${currentlyViewedTourId}`);
+        if (trigger) {
+          trigger.focus();
+        }
+      }
+      currentlyViewedTourId = null;
+    }
+
+    // Form Interaction FSM (T01 Hotel Contact) with Single Stable Action Element & Semantic Icons (Change 2)
+    function submitHotelContactForm(e) {
+      if (e) e.preventDefault();
+      if (isSavingActive) return false; // Duplicate guard
+
+      const noteArea = document.getElementById("textarea-hotel-note");
+      const feedback = document.getElementById("status-contact-feedback");
+      const actionBtn = document.getElementById("btn-save-contact-note");
+
+      const text = noteArea.value.trim();
+
+      // Validation 1: Required
+      if (text.length === 0) {
+        feedback.textContent = "Nhập nội dung liên hệ trước khi lưu.";
+        feedback.className = "status-feedback-box show fb-error";
+        actionBtn.textContent = "Lưu nhật ký";
+        actionBtn.removeAttribute("aria-disabled");
+        actionBtn.classList.remove("is-saving");
+        noteArea.focus();
+        return false;
+      }
+
+      // Validation 2: Max 160 chars
+      if (text.length > 160) {
+        feedback.textContent = "Ghi chú cần tối đa 160 ký tự.";
+        feedback.className = "status-feedback-box show fb-error";
+        actionBtn.textContent = "Lưu nhật ký";
+        actionBtn.removeAttribute("aria-disabled");
+        actionBtn.classList.remove("is-saving");
+        noteArea.focus();
+        return false;
+      }
+
+      // Valid: Start Saving FSM
+      attemptCount++;
+      isSavingActive = true;
+      lastDraftNote = text;
+
+      actionBtn.textContent = "Đang lưu nhật ký…";
+      actionBtn.setAttribute("aria-disabled", "true");
+      actionBtn.classList.add("is-saving");
+      // Do NOT set actionBtn.disabled = true; keep focus continuously!
+      noteArea.disabled = true;
+
+      // Pre-Critique plain feedback text (No semantic icon glyphs)
+      feedback.textContent = "Đang lưu nhật ký liên hệ...";
+      feedback.className = "status-feedback-box show fb-saving";
+
+      setTimeout(() => {
+        isSavingActive = false;
+        noteArea.disabled = false;
+        actionBtn.removeAttribute("aria-disabled");
+        actionBtn.classList.remove("is-saving");
+
+        if (attemptCount === 1) {
+          // Attempt 1 Fails
+          commitCount = 0;
+          feedback.textContent = "Chưa lưu được nhật ký liên hệ. Nội dung của bạn vẫn được giữ.";
+          feedback.className = "status-feedback-box show fb-error";
+          actionBtn.textContent = "Thử lưu lại";
+          // Focus was never evicted
+        } else {
+          // Attempt 2 / Retry Succeeds
+          commitCount = 1;
+          feedback.textContent = "Đã lưu nhật ký liên hệ cho T01.";
+          feedback.className = "status-feedback-box show fb-success";
+
+          actionBtn.textContent = "Lưu nhật ký";
+
+          // Safely append committed activity using DOM textContent
+          const item = document.createElement("div");
+          item.className = "committed-entry";
+          item.textContent = "Đã liên hệ khách sạn — " + text;
+          document.getElementById("committed-history-list").appendChild(item);
+
+          // Clear draft
+          noteArea.value = "";
+          updateCharCount();
+
+          // Conditional focus preservation (No-steal)
+          // Only refocus action button if the user STILL had focus on actionBtn or noteArea
+          const active = document.activeElement;
+          if (active === actionBtn || active === noteArea) {
+            actionBtn.focus();
+          }
+          // If user moved to another control like #btn-back-to-ledger, DO NOT STEAL FOCUS!
+        }
+      }, 800);
+
+      return false;
+    }
+
+    function updateCharCount() {
+      const area = document.getElementById("textarea-hotel-note");
+      document.getElementById("char-count-tag").textContent = `${area.value.length} / 160 ký tự`;
+    }
+
+    // Event Bindings
+    document.getElementById("input-tour-search").addEventListener("input", (e) => {
+      currentSearchTerm = e.target.value;
+      renderTourLedger();
+    });
+
+    document.getElementById("textarea-hotel-note").addEventListener("input", () => {
+      updateCharCount();
+      const fb = document.getElementById("status-contact-feedback");
+      if (fb.classList.contains("fb-error")) {
+        fb.className = "status-feedback-box";
+      }
+    });
+
+    // Initialize
+    window.addEventListener("DOMContentLoaded", () => {
+      renderTourLedger();
+    });
+  </script>
+</body>
+</html>

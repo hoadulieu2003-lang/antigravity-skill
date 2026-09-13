@@ -1,0 +1,87 @@
+# ==============================================================================
+# TRIPFLOW DESIGN CONTRACT (MODULE 07 TRANSFER CAPSTONE)
+# ==============================================================================
+contract_id: "TRIPFLOW-DISPATCH-LEDGER-V1"
+module: "DESIGN_TRAINING_007"
+stage: "FOUNDATION_TRANSFER_CAPSTONE"
+product: "TRIPFLOW — Bảng điều phối tour khởi hành"
+art_direction: "Direction A — Dispatch Ledger (Sổ Điều Phối Hành Trình)"
+theme_mode: "LIGHT_ONLY" # Mặc định 100% Light Theme
+
+color_strategy:
+  theme_mode: "LIGHT_ONLY"
+  philosophy: "Warm paper ledger tone with high-contrast obsidian typography, hairline administrative borders, and surgical amber/terracotta urgency indicators"
+  tokens:
+    canvas_background: "#FAF9F6"       # Warm Paper canvas
+    surface_card: "#FFFFFF"            # Crisp White ledger container
+    surface_highlight: "#FFFBEB"       # Subtle Warm Amber tint for T01 urgency callout
+    surface_header: "#F8FAFC"          # Slate sub-header bar
+    border_hairline: "#E2E8F0"         # Hairline grid dividers (1px solid)
+    border_strong: "#0F172A"           # Strong boundary line
+    border_urgency: "#D97706"          # High-contrast Amber border
+    text_primary: "#0F172A"            # Obsidian body/heading (WCAG Contrast > 13:1 on white)
+    text_secondary: "#475569"          # Medium Slate subtext (WCAG Contrast > 5.5:1 on white)
+    text_muted: "#64748B"              # Slate Muted caption/metadata (WCAG Contrast > 4.5:1 on white)
+    text_urgency: "#9A3412"            # Dark Terracotta alert text (WCAG Contrast > 6.0:1 on #FFFBEB)
+    status_action_bg: "#FEF3C7"
+    status_action_text: "#92400E"      # Contrast 6.8:1
+    status_ready_bg: "#DCFCE7"
+    status_ready_text: "#166534"       # Contrast 6.5:1
+    status_missing_bg: "#FEE2E2"
+    status_missing_text: "#991B1B"     # Contrast 7.2:1
+    status_prep_bg: "#E0E7FF"
+    status_prep_text: "#3730A3"        # Contrast 7.0:1
+    status_done_bg: "#F1F5F9"
+    status_done_text: "#475569"        # Contrast 5.5:1
+
+typography:
+  family_primary: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
+  family_mono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace'
+  scale:
+    brand_title: "clamp(1.5rem, 1.25rem + 1.2vw, 2rem)"
+    urgent_heading: "1.25rem"
+    section_heading: "1.125rem"
+    tour_title: "0.9375rem"
+    body_base: "0.875rem"
+    caption_mono: "0.75rem"
+  measure:
+    max_line_length: "65ch"
+  rules:
+    - "Tabular numbers for all timestamps and tour counters"
+    - "Monospace uppercase tracking (+0.08em) on category badges and ID tags"
+    - "Inverse leading: 1.15 on headings, 1.5 on body copy"
+
+spacing:
+  base_grid: "4px / 8px Carbon modular scale"
+  tokens:
+    space_1: "0.25rem" # 4px
+    space_2: "0.5rem"  # 8px
+    space_3: "0.75rem" # 12px
+    space_4: "1rem"    # 16px
+    space_5: "1.25rem" # 20px
+    space_6: "1.5rem"  # 24px
+    space_8: "2rem"    # 32px
+  layout:
+    max_shell_width: "1140px"
+    touch_target_min: "44px"
+
+motion:
+  policy: "ZERO_MOTION_LOCKED"
+  transition: "none !important"
+  animation: "none !important"
+  scroll_behavior: "auto !important"
+  spinner: "none"
+
+accessibility:
+  standard: "WCAG 2.1 AA"
+  body_contrast_min: "4.5:1"
+  large_text_contrast_min: "3.0:1"
+  focus_ring: "2px solid #D97706, offset 2px"
+  semantic_landmarks: ["header", "main", "section", "article", "form"]
+  aria_live_regions: ["#status-contact-feedback (polite)"]
+  keyboard_traversal: "100% reachable via native hardware Tab and activatable via Enter/Space"
+
+artifacts_and_hashes:
+  baseline: "d7725c3129303aaf375b457f246c215281da718cb008b68931dc001b429c5004"
+  pre_critique: "0e68156a2f38bf14c8dde210ef96b363d5681900d83837684cf55931be3e655a"
+  candidate_final: "ee5294b94f37e2b4945743ab3215af238dde9e3b97af10a357872c1a85506800"
