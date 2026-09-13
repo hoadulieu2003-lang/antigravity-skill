@@ -478,3 +478,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-14 02:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (62 ⭐)]** [crisandrews/ClawCode](https://github.com/crisandrews/ClawCode)
+  > Persistent agents for Claude Code as a plugin, not a harness. Memory, personality, messaging across WhatsApp, Telegram, and Discord, plus a service mode for ...
+- **[GitHub (90 ⭐)]** [oaslananka/kicad-mcp-pro](https://github.com/oaslananka/kicad-mcp-pro)
+  > AI-ready MCP server for KiCad: automate schematic, PCB, ERC/DRC, DFM, BOM and manufacturing review from Claude, Cursor, Copilot and other AI agents.
+- **[GitHub (52 ⭐)]** [XNet-NGO/aiope](https://github.com/XNet-NGO/aiope)
+  > AIOPE — 70-tool on-device AI agent for Android. Linux terminal, realtime voice, browser automation, SSH, on-device RAG, dynamic UI, MCP. BYOK, any model. By ...
+
+</untrusted_external_content>
+
+---
