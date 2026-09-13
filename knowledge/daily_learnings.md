@@ -284,3 +284,19 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-13 08:05:56`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (4619 ⭐)]** [zebbern/claude-code-guide](https://github.com/zebbern/claude-code-guide)
+  > Claude Code Guide - Setup, Commands, workflows, agents, skills & tips-n-tricks from beginner to power user!
+- **[GitHub (182 ⭐)]** [ItsWendell/palot](https://github.com/ItsWendell/palot)
+  > Independent desktop client for OpenCode 2. Manage projects, sessions, parallel agents, requests, and changes on Linux and macOS.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Quantifying the Memorization-to-Generalization Transition: Scaling Laws and Phase Structure in Grokking](https://arxiv.org/abs/2609.10657)
+  > arXiv:2609.10657v1 Announce Type: new Abstract: Neural networks trained past memorization frequently undergo a delayed transition to generalization, a phenom...
+
+</untrusted_external_content>
+
+---
