@@ -7,7 +7,7 @@ description: "Testable visual & typographic rules for Antigravity automated code
 
 rules:
   # ----------------------------------------------------------------------------
-  # NHÓM 1: TYPOGRAPHY INTELLIGENCE (UTOPIA + WE落TYPOGRAPHY + CAPSIZE)
+  # NHÓM 1: TYPOGRAPHY INTELLIGENCE (UTOPIA + WEBTYPOGRAPHY + CAPSIZE)
   # ----------------------------------------------------------------------------
   - id: "TYPE-001"
     name: "fluid_type_clamp"
@@ -58,6 +58,16 @@ rules:
     requirement: "Any text styled with uppercase must expand letter-spacing (+0.05em to +0.15em) and reduce font-size to prevent optical crowding."
     bad_pattern: "text-transform: uppercase; letter-spacing: normal;"
     good_pattern: "text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem;"
+
+  - id: "TYPE-006"
+    name: "capsize_leading_trim"
+    category: "typography"
+    source: "capsize"
+    severity: "HIGH"
+    condition: "precision_typographic_alignment"
+    requirement: "Headings aligned next to graphical icons, cards, or hero boundaries must trim font leading to guarantee sub-pixel alignment of the cap-height and baseline."
+    bad_pattern: "margin-top: -8px; /* hacking optical alignment */"
+    good_pattern: "apply Capsize metrics or CSS leading-trim / text-box-trim: both;"
 
   # ----------------------------------------------------------------------------
   # NHÓM 2: LAYOUT PRIMITIVES & COMPOSITION (EVERY LAYOUT + OPEN PROPS)

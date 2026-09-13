@@ -19,12 +19,12 @@
 ---
 
 ### Câu hỏi 2: Spacing scale liên kết với typography như thế nào?
-* **Nguồn tham chiếu**: Utopia Core, Open Props, Carbon 2x Grid.
+* **Nguồn tham chiếu**: Utopia Core, Open Props, Carbon 2x Grid, Radix Themes.
 * **Bản chất kiến trúc**: Khoảng trắng (`Spacing`) không tồn tại độc lập mà là **khoảng đệm thở của con chữ**.
 * **Mối liên kết hữu cơ**:
   - Đơn vị cơ sở (`Base Space Unit - s0`) luôn đồng bộ với chiều cao dòng cơ bản (`Base Line-Height`) hoặc nửa bước dòng (`Half-Leading`).
-  - Khi kích thước chữ co giãn linh hoạt theo viewport (`Fluid Typography`), khoảng cách padding và gap giữa các khối cũng co giãn tương ứng theo cặp bước Utopia:
-    $$	ext{space-s-m} = 	ext{clamp}(	ext{min\_space}, \; 	ext{preferred\_space}, \; 	ext{max\_space})$$
+  - Hệ thống 9 cấp độ khoảng trắng của **Radix Themes** (`space-1: 4px` đến `space-9: 64px`) kết hợp với **Utopia Core** tạo thành các cặp token co giãn linh hoạt:
+    $$\text{space-s-m} = \text{clamp}(\text{min\_space}, \; \text{preferred\_space}, \; \text{max\_space})$$
   - Khoảng cách giữa các đoạn văn bản liền kề (`Paragraph Gap`) luôn tỉ lệ thuận với `line-height` của đoạn văn đó (thường bằng `0.75em - 1.25em`). Khoảng cách giữa tiêu đề và đoạn văn sau nó phải nhỏ hơn khoảng cách từ đoạn văn trước tới tiêu đề đó (Áp dụng **Quy luật Gần gũi - Law of Proximity** của Gestalt).
 
 ---
@@ -51,6 +51,7 @@
   6. **`Center`**: Khung căn giữa trang theo trục ngang với độ rộng giới hạn `max-inline-size: var(--measure)` và padding biên tự nhiên.
   7. **`Grid` (Auto-fit/Auto-fill)**: Lưới tự thích ứng số cột dựa trên độ rộng tối thiểu của thẻ con: `repeat(auto-fit, minmax(min(100%, 280px), 1fr))`.
   8. **`Frame`**: Khung giữ tỉ lệ cố định cho hình ảnh/video (`aspect-ratio: 16/9`), chống hiện tượng giật giật layout (`CLS - Cumulative Layout Shift`).
+* **Mở rộng cấp Component cùng Radix Themes**: Radix Themes bổ sung bộ tứ layout nguyên tử cấp component: `<Flex>`, `<Grid>`, `<Box>`, `<Container>` với hệ thống thuộc tính responsive dạng object (ví dụ: `direction={{ initial: 'column', md: 'row' }}`), giúp ánh xạ trực tiếp các primitive hình học của Every Layout vào mã nguồn React một cách tường minh và an toàn kiểu dữ liệu (`Type-Safe`).
 
 ---
 

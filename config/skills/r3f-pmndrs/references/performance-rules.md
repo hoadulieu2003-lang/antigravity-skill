@@ -29,3 +29,5 @@
 16. **Preload assets with useGLTF.preload()**: Prevents frame drops during user navigation.
 17. **Avoid heavy shaders on mobile**: Test on real mobile hardware.
 18. **Respect prefers-reduced-motion**: Gate animations on user accessibility settings.
+19. **Offscreen Canvas & Worker Offloading**: Offload heavy physics or simulation computations to Web Workers to keep the main thread locked at 60 FPS.
+20. **Memory Allocation & Leak Profiling**: Track `gl.info.memory` and `gl.info.render.calls` to ensure textures and geometries are disposed of upon unmount.

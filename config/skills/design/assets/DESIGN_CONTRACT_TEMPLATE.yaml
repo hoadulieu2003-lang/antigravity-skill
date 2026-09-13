@@ -1,4 +1,4 @@
-﻿# Canonical Design Contract Schema — Phase C
+# Canonical Design Contract Schema — Phase C
 design_contract:
   schema_version: "1.0"
   project_id: "portfolio_design_lab"
@@ -38,7 +38,8 @@ design_contract:
       - "Fluid clamp typography scale without line wraps at desktop"
 
   color_strategy:
-    philosophy: "Atmospheric Dark Studio (#080808) with high-contrast monochrome and surgical cyan-blue refraction"
+    theme_mode: "LIGHT_ONLY" # Mặc định 100% Light Theme; Dark Theme chỉ khi Anh yêu cầu
+    philosophy: "Warm Alabaster Light Studio (#FAF9F6) with crisp obsidian typography and surgical cyan-blue optical accents"
     accent_usage: "Selective optical glow on cursor interaction and active states only"
 
   spatial_strategy:

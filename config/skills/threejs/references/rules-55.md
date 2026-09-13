@@ -122,7 +122,7 @@ renderer.setPixelRatio(window.devicePixelRatio); // 3x display = 9 pixels per CS
 * **Không làm (Don't)**: Set a solid renderer clear color when the canvas must composite over HTML behind it
 ```javascript
 // CHUẨN (Good)
-const renderer = new THREE.WebGLRenderer({ alpha: true }); renderer.setClearColor(0x000000, 0); // fully transparent canvas // body { background: #0d0d0d; } handles the visible color
+const renderer = new THREE.WebGLRenderer({ alpha: true }); renderer.setClearColor(0x000000, 0); // fully transparent canvas // body { background: #faf9f6; } handles the visible light theme color
 ```
 ```javascript
 // TRÁNH (Bad)
@@ -851,3 +851,40 @@ scene.add(highDetailMesh); // 64k-triangle mesh rendered at full cost whether 1 
 *Docs: [https://threejs.org/docs/#api/en/objects/LOD](https://threejs.org/docs/#api/en/objects/LOD)*
 
 ---
+
+### Rule 54: [Modern] WebGPU TSL Node Material Shading Pipeline (Medium)
+**Ý nghĩa**: Khi xây dựng ứng dụng Three.js hiện đại (từ r160+), ưu tiên sử dụng `three/webgpu` và Three Shading Language (TSL) node materials thay cho raw GLSL `ShaderMaterial`. TSL cho phép mã shader chạy đa nền tảng (cả WebGL2 và WebGPU native), tự động tối ưu hóa và chống lỗi driver fragmentation.
+* **Nên làm (Do)**: Dùng `MeshStandardNodeMaterial` và TSL nodes (`positionLocal`, `time`, `mix`) cho hiệu ứng tương thích WebGPU.
+* **Không làm (Don't)**: Viết raw GLSL chuỗi cứng không thể biên dịch khi chuyển sang WebGPU pipeline.
+```javascript
+// CHUẨN (Good)
+import { MeshStandardNodeMaterial, color, timerLocal } from 'three/webgpu';
+const material = new MeshStandardNodeMaterial({ colorNode: color(0x0f766e) });
+```
+```javascript
+// TRÁNH (Bad)
+const material = new THREE.ShaderMaterial({ vertexShader: '...', fragmentShader: '...' });
+```
+*Docs: [https://threejs.org/docs/#api/en/renderers/webgpu/WebGPURenderer](https://threejs.org/docs/#api/en/renderers/webgpu/WebGPURenderer)*
+
+---
+
+### Rule 55: [Accessibility] Canvas ARIA Fallback & prefers-reduced-motion (High)
+**Ý nghĩa**: Mọi thẻ `<canvas>` Three.js phải có `role="img"`, thuộc tính `aria-label` mô tả trực quan cảnh 3D cho công nghệ hỗ trợ (Screen Readers), và luôn luôn lắng nghe media query `prefers-reduced-motion` để dừng hoặc giảm tốc độ vòng lặp render khi người dùng yêu cầu hạn chế chuyển động.
+* **Nên làm (Do)**: Gán `aria-label` và giảm tốc độ / tạm dừng animation loop khi `window.matchMedia('(prefers-reduced-motion: reduce)').matches`.
+* **Không làm (Don't)**: Bỏ qua thuộc tính trợ năng khiến canvas thành một hộp đen không thể truy cập đối với người dùng khiếm thị.
+```javascript
+// CHUẨN (Good)
+canvas.setAttribute('role', 'img');
+canvas.setAttribute('aria-label', '3D interactive product showcase model');
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!prefersReduced) requestAnimationFrame(animate);
+```
+```javascript
+// TRÁNH (Bad)
+<canvas id="c"></canvas> // Không có mô tả ARIA, vòng lặp chạy cưỡng bức bỏ qua accessibility
+```
+*Docs: [https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)*
+
+---
+

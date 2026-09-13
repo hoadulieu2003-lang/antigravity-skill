@@ -1,4 +1,4 @@
-﻿# Reference Intelligence Protocol
+# Reference Intelligence Protocol
 
 Quy trình nghiên cứu và bóc tách đối chuẩn thiết kế (Reference Analysis) dành cho Design Director.
 
@@ -9,7 +9,7 @@ Khi nghiên cứu một sản phẩm tham chiếu đỉnh cao (ví dụ: Unseen 
 1. **Art Direction**: Cảm giác bao trùm (Atmospheric, Sculptural, Brutalist, Minimalist).
 2. **Composition**: Trục bố cục, tỷ lệ khối hình ảnh so với văn bản, độ thoáng.
 3. **Typography**: Vai trò font tiêu đề, font nội dung, tỷ lệ co giãn, letter-spacing.
-4. **Color Strategy**: Cách dùng màu nền sâu thẳm (#080808) và điểm nhấn quang học.
+4. **Color Strategy**: Cách dùng màu nền sáng tinh tế (Warm Paper #FAF9F6, Ivory, Alabaster) và điểm nhấn quang học rực rỡ (theo Mandatory Light Theme Default Invariant).
 5. **Spatial Strategy**: Mức độ can thiệp của 3D (Full WebGL canvas vs Hybrid overlay).
 6. **Motion**: Nhịp độ chuyển động (Cinematic, physics-based, inertia).
 7. **Interaction**: Phản hồi con trỏ chuột, ripple, magnetic button.
