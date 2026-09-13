@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EDF2F7"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F766E"/>
+      <stop offset="100%" stop-color="#14B8A6"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" rx="20" fill="url(#bgGrad)"/>
+  <rect x="1" y="1" width="1198" height="798" rx="19" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+
+  <!-- App Window Frame -->
+  <g transform="translate(60, 50)" filter="url(#cardShadow)">
+    <rect width="1080" height="700" rx="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+    
+    <!-- Window Header -->
+    <path d="M 0 14 Q 0 0 14 0 L 1066 0 Q 1080 0 1080 14 L 1080 48 L 0 48 Z" fill="#F8FAFC"/>
+    <line x1="0" y1="48" x2="1080" y2="48" stroke="#E2E8F0" stroke-width="1"/>
+    <circle cx="28" cy="24" r="6" fill="#FCA5A5"/>
+    <circle cx="48" cy="24" r="6" fill="#FCD34D"/>
+    <circle cx="68" cy="24" r="6" fill="#86EFAC"/>
+    <rect x="380" y="12" width="320" height="24" rx="6" fill="#EDF2F7"/>
+    <text x="540" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748B" text-anchor="middle" font-weight="500">app.antigravity.design/live-prototype</text>
+
+    <!-- Sidebar Navigation -->
+    <rect x="0" y="48" width="220" height="652" fill="#FAFAFA"/>
+    <line x1="220" y1="48" x2="220" y2="700" stroke="#E2E8F0" stroke-width="1"/>
+    
+    <rect x="16" y="72" width="188" height="36" rx="8" fill="#E6FFFA"/>
+    <circle cx="36" cy="90" r="5" fill="#0F766E"/>
+    <text x="54" y="94" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#0F766E" font-weight="600">Canvas Explorer</text>
+    
+    <rect x="16" y="116" width="188" height="32" rx="6" fill="transparent"/>
+    <circle cx="36" cy="132" r="4" fill="#94A3B8"/>
+    <text x="54" y="136" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#64748B">Design Tokens</text>
+
+    <rect x="16" y="156" width="188" height="32" rx="6" fill="transparent"/>
+    <circle cx="36" cy="172" r="4" fill="#94A3B8"/>
+    <text x="54" y="176" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#64748B">Components (48)</text>
+
+    <!-- Main Workspace Area -->
+    <text x="250" y="86" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" fill="#0F172A" font-weight="700">Project Aura · Interactive Prototype</text>
+    <rect x="940" y="68" width="108" height="32" rx="6" fill="url(#accentGrad)"/>
+    <text x="994" y="88" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="600">Deploy Live</text>
+
+    <!-- Hero Card inside Prototype -->
+    <rect x="250" y="120" width="800" height="260" rx="10" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="278" y="146" width="124" height="24" rx="12" fill="#CCFBF1"/>
+    <text x="340" y="162" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#0F766E" text-anchor="middle" font-weight="600">PRODUCTION READY</text>
+    <text x="278" y="210" font-family="Georgia, serif" font-size="28" fill="#0F172A" font-weight="600">Editorial Design System</text>
+    <text x="278" y="242" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#64748B">Engineered typography scale coupled with dynamic fluid spacing tokens.</text>
+    <rect x="278" y="270" width="140" height="40" rx="8" fill="#0F172A"/>
+    <text x="348" y="295" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="600">Explore Metrics</text>
+
+    <!-- Visual Chart / Data Grid Area -->
+    <g transform="translate(250, 410)">
+      <rect width="250" height="240" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="20" y="36" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#0F172A" font-weight="600">Modular Ratio</text>
+      <text x="20" y="72" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="32" fill="#0F766E" font-weight="700">1.250</text>
+      <text x="20" y="94" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#64748B">Major Third Scale</text>
+      <rect x="20" y="130" width="24" height="80" rx="4" fill="#CCFBF1"/>
+      <rect x="54" y="150" width="24" height="60" rx="4" fill="#99F6E4"/>
+      <rect x="88" y="110" width="24" height="100" rx="4" fill="#5EEAD4"/>
+      <rect x="122" y="80" width="24" height="130" rx="4" fill="#2DD4BF"/>
+      <rect x="156" y="50" width="24" height="160" rx="4" fill="#0F766E"/>
+      <line x1="20" y1="215" x2="230" y2="215" stroke="#E2E8F0" stroke-width="1"/>
+      
+      <rect x="275" width="250" height="240" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="295" y="36" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#0F172A" font-weight="600">Reading Measure</text>
+      <text x="295" y="72" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="32" fill="#0F172A" font-weight="700">65 ch</text>
+      <text x="295" y="94" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#64748B">Bringhurst Golden Width</text>
+      <rect x="295" y="124" width="210" height="10" rx="3" fill="#F1F5F9"/>
+      <rect x="295" y="144" width="180" height="10" rx="3" fill="#F1F5F9"/>
+      <rect x="295" y="164" width="200" height="10" rx="3" fill="#F1F5F9"/>
+      <rect x="295" y="184" width="140" height="10" rx="3" fill="#0F766E" fill-opacity="0.3"/>
+
+      <rect x="550" width="250" height="240" rx="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="570" y="36" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#0F172A" font-weight="600">Fluid Clamps</text>
+      <text x="570" y="72" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="32" fill="#0F766E" font-weight="700">320-1440</text>
+      <text x="570" y="94" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#64748B">Zero Breakpoint Jitter</text>
+      <circle cx="675" cy="165" r="45" fill="none" stroke="#E2E8F0" stroke-width="8"/>
+      <circle cx="675" cy="165" r="45" fill="none" stroke="#0F766E" stroke-width="8" stroke-dasharray="210" stroke-dashoffset="60" stroke-linecap="round"/>
+      <text x="675" y="172" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="18" fill="#0F172A" font-weight="700" text-anchor="middle">100%</text>
+    </g>
+  </g>
+</svg>

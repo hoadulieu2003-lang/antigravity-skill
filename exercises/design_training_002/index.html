@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DESIGN TRAINING 002 · Phân cấp thị giác theo nhiệm vụ người dùng</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Mandatory Light Theme Invariant */
+      --bg-canvas: #FAF9F6;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --bg-muted: #F8FAFC;
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --text-subtle: #64748B;
+      --border-subtle: #E2E8F0;
+      --border-strong: #CBD5E1;
+
+      /* Accent Tokens */
+      --brand-accent: #0F766E;
+      --brand-accent-hover: #115E59;
+      --brand-accent-tint: #F0FDFA;
+      --brand-accent-border: #99F6E4;
+
+      /* Status Tokens with High Contrast Text */
+      --status-ready-bg: #ECFDF5;
+      --status-ready-text: #065F46;
+      --status-ready-border: #A7F3D0;
+
+      --status-blocked-bg: #FFFBEB;
+      --status-blocked-text: #92400E;
+      --status-blocked-border: #FDE68A;
+      --status-blocked-strong: #B45309;
+
+      --status-progress-bg: #EFF6FF;
+      --status-progress-text: #1E40AF;
+      --status-progress-border: #BFDBFE;
+
+      --status-done-bg: #F1F5F9;
+      --status-done-text: #475569;
+      --status-done-border: #E2E8F0;
+
+      /* Typography Scales (Utopia Fluid Scales) */
+      --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --step--1: clamp(0.75rem, 0.72rem + 0.15vw, 0.875rem);
+      --step-0:  clamp(0.95rem, 0.90rem + 0.25vw, 1.05rem);
+      --step-1:  clamp(1.15rem, 1.08rem + 0.35vw, 1.25rem);
+      --step-2:  clamp(1.35rem, 1.25rem + 0.5vw, 1.6rem);
+      --step-3:  clamp(1.65rem, 1.45rem + 0.9vw, 2.0rem);
+
+      /* Fluid Spacing Scale */
+      --space-2xs: 0.375rem;
+      --space-xs:  0.625rem;
+      --space-s:   0.875rem;
+      --space-m:   1.25rem;
+      --space-l:   1.75rem;
+      --space-xl:  2.5rem;
+
+      --measure: 65ch;
+      --container-max: 1080px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      font-size: var(--step-0);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: var(--space-xl);
+    }
+
+    .container {
+      width: min(100%, var(--container-max));
+      margin-inline: auto;
+      padding-inline: var(--space-m);
+    }
+
+    /* Top Evaluation Switcher Bar */
+    .eval-header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      padding-block: var(--space-s);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    .eval-header-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-s);
+    }
+    .eval-title {
+      font-size: var(--step--1);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .eval-pill {
+      background: var(--brand-accent-tint);
+      color: var(--brand-accent);
+      border: 1px solid var(--brand-accent-border);
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* Mode Switcher Buttons */
+    .mode-switch-group {
+      display: inline-flex;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      padding: 4px;
+      border-radius: 10px;
+      gap: 4px;
+    }
+    .mode-btn {
+      appearance: none;
+      border: none;
+      background: transparent;
+      padding: 0.5rem 1.1rem;
+      font-family: var(--font-family);
+      font-size: var(--step--1);
+      font-weight: 600;
+      color: var(--text-muted);
+      border-radius: 7px;
+      cursor: pointer;
+      
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .mode-btn:hover {
+      color: var(--text-main);
+    }
+    .mode-btn.active {
+      background: var(--bg-surface);
+      color: var(--text-main);
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    }
+    .mode-btn:focus-visible {
+      outline: 3px solid var(--brand-accent);
+      outline-offset: 3px;
+    }
+
+    /* Simulation Meta Card */
+    .meta-bar {
+      margin-top: var(--space-m);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-s);
+      padding: 0.75rem 1.25rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+    }
+    .meta-timestamp {
+      font-size: var(--step--1);
+      color: var(--text-muted);
+    }
+    .meta-timestamp strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+    .mode-question {
+      font-size: var(--step--1);
+      font-weight: 600;
+      color: var(--brand-accent);
+    }
+
+    /* Page Main Title Section */
+    .page-title-section {
+      margin-top: var(--space-m);
+      margin-bottom: var(--space-m);
+    }
+    .page-title {
+      font-size: var(--step-3);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+    .page-subtitle {
+      font-size: var(--step-0);
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+      max-width: var(--measure);
+    }
+
+    /* Interactive Action Banner (Feedback Box) */
+    .action-feedback-banner {
+      display: none;
+      margin-bottom: var(--space-m);
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      font-size: var(--step-0);
+      font-weight: 600;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-s);
+    }
+    .action-feedback-banner.show {
+      display: flex;
+    }
+    .action-feedback-banner.success {
+      background: #ECFDF5;
+      color: #065F46;
+      border: 1px solid #A7F3D0;
+    }
+    .action-feedback-banner.warning {
+      background: #FFFBEB;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+    }
+    .btn-reset-feedback {
+      appearance: none;
+      border: 1px solid currentColor;
+      background: transparent;
+      color: inherit;
+      padding: 0.3rem 0.75rem;
+      font-family: var(--font-family);
+      font-size: var(--step--1);
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn-reset-feedback:focus-visible {
+      outline: 3px solid var(--brand-accent);
+      outline-offset: 3px;
+    }
+
+    /* Layout Structure: Main Area & Side Details */
+    .main-workspace-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-l);
+    }
+    @media (min-width: 900px) {
+      .main-workspace-grid {
+        grid-template-columns: 7fr 5fr;
+        align-items: start;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SPOTLIGHT HERO CARD (Top Priority Anchor - Above The Fold)
+       ═══════════════════════════════════════════════════════════════ */
+    .spotlight-card {
+      background: var(--bg-surface);
+      border-radius: 14px;
+      padding: var(--space-l);
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06);
+      margin-bottom: var(--space-m);
+      border: 2px solid transparent;
+      position: relative;
+    }
+    .spotlight-card.priority-ready {
+      border-color: var(--brand-accent);
+      background: linear-gradient(180deg, #FFFFFF 0%, #F0FDFA 100%);
+    }
+    .spotlight-card.priority-blocked {
+      border-color: var(--status-blocked-strong);
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFFBEB 100%);
+    }
+    .spotlight-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-s);
+    }
+    .spotlight-eyebrow {
+      font-size: var(--step--1);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .spotlight-card.priority-ready .spotlight-eyebrow {
+      color: var(--brand-accent);
+    }
+    .spotlight-card.priority-blocked .spotlight-eyebrow {
+      color: var(--status-blocked-strong);
+    }
+
+    .spotlight-title {
+      font-size: var(--step-2);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text-main);
+      margin-bottom: var(--space-xs);
+    }
+    .spotlight-desc {
+      font-size: var(--step-0);
+      color: var(--text-muted);
+      margin-bottom: var(--space-m);
+      line-height: 1.5;
+    }
+    .spotlight-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: var(--space-s);
+      padding: var(--space-s);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      margin-bottom: var(--space-m);
+    }
+    .spotlight-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .spotlight-meta-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--text-subtle);
+    }
+    .spotlight-meta-val {
+      font-size: var(--step--1);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .spotlight-meta-val.urgent {
+      color: #DC2626;
+    }
+
+    /* Spotlight Primary CTAs */
+    .spotlight-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-s);
+    }
+    .btn-action-primary {
+      appearance: none;
+      border: none;
+      min-height: 48px;
+      padding: 0.85rem 1.75rem;
+      font-family: var(--font-family);
+      font-size: var(--step-0);
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      
+    }
+    .btn-action-primary:active {
+      
+    }
+    .btn-action-primary:focus-visible {
+      outline: 3px solid var(--brand-accent);
+      outline-offset: 3px;
+    }
+    .btn-ready {
+      background: var(--brand-accent);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(15, 118, 110, 0.25);
+    }
+    .btn-ready:hover {
+      background: var(--brand-accent-hover);
+    }
+    .btn-blocked {
+      background: var(--status-blocked-strong);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(180, 83, 9, 0.25);
+    }
+    .btn-blocked:hover {
+      background: #92400E;
+    }
+
+    .btn-inspect-detail {
+      appearance: none;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      min-height: 48px;
+      padding: 0.85rem 1.25rem;
+      font-family: var(--font-family);
+      font-size: var(--step-0);
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn-inspect-detail:hover {
+      background: var(--bg-subtle);
+    }
+    .btn-inspect-detail:focus-visible {
+      outline: 3px solid var(--brand-accent);
+      outline-offset: 3px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       REMAINING TASKS QUEUE (Secondary List - Scannable)
+       ═══════════════════════════════════════════════════════════════ */
+    .queue-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-s);
+    }
+    .queue-section-title {
+      font-size: var(--step-1);
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .queue-count {
+      font-size: var(--step--1);
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .tasks-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      list-style: none;
+    }
+    .task-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: var(--space-s) var(--space-m);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-s);
+      cursor: pointer;
+      
+      position: relative;
+    }
+    .task-item:hover {
+      border-color: var(--border-strong);
+      background: var(--bg-muted);
+    }
+    .task-item.selected {
+      border-color: var(--brand-accent);
+      background: var(--brand-accent-tint);
+    }
+    .task-item:focus-visible {
+      outline: 3px solid var(--brand-accent);
+      outline-offset: 3px;
+    }
+
+    /* State modifier classes */
+    .task-item.state-blocked {
+      border-left: 5px solid var(--status-blocked-strong);
+    }
+    .task-item.state-done {
+      opacity: 0.7;
+      background: var(--bg-muted);
+    }
+    .task-item.state-done .task-name {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .task-left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 1 1 240px;
+    }
+    .task-row-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .task-id {
+      font-family: monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-subtle);
+    }
+    .task-name {
+      font-size: var(--step-0);
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .task-support {
+      font-size: var(--step--1);
+      color: var(--text-muted);
+    }
+
+    .task-right-col {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-s);
+    }
+    .task-deadline {
+      font-size: var(--step--1);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .task-deadline strong {
+      color: var(--text-main);
+    }
+
+    /* Badges with Text and Contrast */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+    .badge-ready {
+      background: var(--status-ready-bg);
+      color: var(--status-ready-text);
+      border-color: var(--status-ready-border);
+    }
+    .badge-blocked {
+      background: var(--status-blocked-bg);
+      color: var(--status-blocked-text);
+      border-color: var(--status-blocked-border);
+    }
+    .badge-progress {
+      background: var(--status-progress-bg);
+      color: var(--status-progress-text);
+      border-color: var(--status-progress-border);
+    }
+    .badge-done {
+      background: var(--status-done-bg);
+      color: var(--status-done-text);
+      border-color: var(--status-done-border);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SIDE PANEL: TASK DETAIL INSPECTOR (Full Context)
+       ═══════════════════════════════════════════════════════════════ */
+    .detail-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: var(--space-m);
+      position: sticky;
+      top: 80px;
+    }
+    .detail-panel-title {
+      font-size: var(--step-1);
+      font-weight: 700;
+      margin-bottom: var(--space-s);
+      padding-bottom: var(--space-xs);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .detail-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: var(--space-m);
+    }
+    .detail-table th, .detail-table td {
+      padding: 0.6rem 0;
+      font-size: var(--step--1);
+      border-bottom: 1px solid var(--bg-subtle);
+      text-align: left;
+      vertical-align: top;
+    }
+    .detail-table th {
+      width: 35%;
+      color: var(--text-subtle);
+      font-weight: 600;
+    }
+    .detail-table td {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+    .mobile-back-row {
+      display: none;
+      margin-top: var(--space-s);
+    }
+    @media (max-width: 899px) {
+      .mobile-back-row {
+        display: block;
+      }
+    }
+    .btn-back-top {
+      width: 100%;
+      min-height: 44px;
+      padding: 0.6rem 1rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      font-family: var(--font-family);
+      font-size: var(--step--1);
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .btn-back-top:hover {
+      background: var(--bg-surface);
+      color: var(--text-main);
+    }
+    .btn-back-top:focus-visible {
+      outline: 3px solid var(--brand-accent);
+      outline-offset: 3px;
+    }
+    .detail-note {
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      line-height: 1.4;
+      background: var(--bg-subtle);
+      padding: 0.6rem 0.8rem;
+      border-radius: 6px;
+    }
+
+    /* Screen Reader Only Utility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Evaluation Switcher Toolbar -->
+  <header class="eval-header">
+    <div class="container eval-header-inner">
+      <div class="eval-title">
+        <span>DESIGN TRAINING 002</span>
+        <span class="eval-pill">TASK HIERARCHY</span>
+      </div>
+
+      <!-- Mode Switch Buttons (Mouse & Keyboard Accessible) -->
+      <div class="mode-switch-group" role="group" aria-label="Chế độ phân cấp thị giác theo nhiệm vụ">
+        <button type="button" class="mode-btn active" id="btn-mode-a" onclick="switchMode('a')" aria-pressed="true">
+          <span aria-hidden="true">▶</span>
+          <span>Chế độ A: Chọn việc để bắt đầu</span>
+        </button>
+        <button type="button" class="mode-btn" id="btn-mode-b" onclick="switchMode('b')" aria-pressed="false">
+          <span aria-hidden="true">⚠️</span>
+          <span>Chế độ B: Gỡ việc đang bị chặn</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Simulation Meta Timestamp Bar -->
+    <aside class="meta-bar" aria-label="Thông tin mốc thời gian giả lập">
+      <div class="meta-timestamp">
+        Mốc thời gian giả lập: <strong>09:00 ngày 14/09/2026</strong>
+      </div>
+      <div class="mode-question" id="mode-guidance-question">
+        Mục tiêu: "Tôi nên bắt đầu việc nào ngay bây giờ?"
+      </div>
+    </aside>
+
+    <!-- Page Title Section -->
+    <section class="page-title-section" aria-labelledby="main-page-heading">
+      <h1 id="main-page-heading" class="page-title">Công việc hôm nay</h1>
+      <p id="main-page-subtitle" class="page-subtitle">
+        Không gian điều phối nhiệm vụ thường nhật cùng AI Assistant.
+      </p>
+    </section>
+
+    <!-- Interactive Action Feedback Banner -->
+    <div id="action-feedback" class="action-feedback-banner" role="status" aria-live="polite">
+      <span id="action-feedback-text"></span>
+      <button type="button" class="btn-reset-feedback" onclick="resetFeedback()">Đặt lại</button>
+    </div>
+
+    <!-- Main Workspace Layout -->
+    <main class="main-workspace-grid">
+      
+      <!-- Primary Column: Spotlight & Queue -->
+      <section class="task-column" aria-label="Khu vực nhiệm vụ trọng tâm và hàng đợi">
+        
+        <!-- SPOTLIGHT HERO ANCHOR (Dynamically switches between T01 and T02) -->
+        <article id="spotlight-container" class="spotlight-card priority-ready" aria-labelledby="spotlight-task-title">
+          <!-- Injected via JavaScript based on Active Mode -->
+        </article>
+
+        <!-- REMAINING TASKS QUEUE -->
+        <section class="queue-section" aria-labelledby="queue-heading">
+          <div class="queue-section-header">
+            <h2 id="queue-heading" class="queue-section-title">Hàng đợi công việc khác</h2>
+            <span class="queue-count" id="queue-count-label">4 công việc</span>
+          </div>
+
+          <ul class="tasks-list" id="queue-tasks-list" role="list">
+            <!-- Remaining 4 task items injected via JavaScript -->
+          </ul>
+        </section>
+
+      </section>
+
+      <!-- Secondary Column: Task Detail Inspector -->
+      <aside class="detail-column" aria-label="Bảng chi tiết thông tin công việc">
+        <div class="detail-panel" id="task-detail-panel">
+          <h2 class="detail-panel-title">
+            <span>Chi tiết công việc</span>
+            <span class="status-badge badge-ready" id="detail-badge">CÓ THỂ LÀM</span>
+          </h2>
+
+          <table class="detail-table">
+            <tbody>
+              <tr>
+                <th scope="row">Mã công việc</th>
+                <td id="detail-id">T01</td>
+              </tr>
+              <tr>
+                <th scope="row">Tên nhiệm vụ</th>
+                <td id="detail-name">Gửi bản mẫu giao diện</td>
+              </tr>
+              <tr>
+                <th scope="row">Thời hạn</th>
+                <td id="detail-deadline">10:00 hôm nay</td>
+              </tr>
+              <tr>
+                <th scope="row">Trạng thái</th>
+                <td id="detail-status">Có thể làm</td>
+              </tr>
+              <tr>
+                <th scope="row">Thông tin hỗ trợ</th>
+                <td id="detail-support">Còn khoảng 45 phút thực hiện</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="detail-note">
+            Bảng chi tiết giữ nguyên 100% dữ liệu gốc để đối chiếu công bằng ở cả hai chế độ.
+          </p>
+          <div class="mobile-back-row">
+            <button type="button" class="btn-back-top" onclick="backToTop()">↑ Quay lại danh sách trên cùng</button>
+          </div>
+        </div>
+      </aside>
+
+    </main>
+  </div>
+
+  <script>
+    // ═══════════════════════════════════════════════════════════════
+    // EXACT DATA REPOSITORY (Mục 3 Đặc tả - Không chỉnh sửa dữ liệu)
+    // ═══════════════════════════════════════════════════════════════
+    const TASKS_DATA = [
+      {
+        id: 'T01',
+        title: 'Gửi bản mẫu giao diện',
+        deadline: '10:00 hôm nay',
+        status: 'Có thể làm',
+        statusKey: 'ready',
+        badgeText: 'Có thể làm',
+        support: 'Còn khoảng 45 phút thực hiện',
+        priorityInA: true,
+        priorityInB: false
+      },
+      {
+        id: 'T02',
+        title: 'Kiểm tra luồng đăng nhập',
+        deadline: '11:30 hôm nay',
+        status: 'Bị chặn',
+        statusKey: 'blocked',
+        badgeText: 'Bị chặn',
+        support: 'Thiếu tài khoản thử nghiệm; đã chờ 1 ngày',
+        priorityInA: false,
+        priorityInB: true
+      },
+      {
+        id: 'T03',
+        title: 'Hoàn thiện hướng dẫn sử dụng',
+        deadline: '16:00 hôm nay',
+        status: 'Đang làm',
+        statusKey: 'progress',
+        badgeText: 'Đang làm',
+        support: 'Hoàn thành 60%',
+        priorityInA: false,
+        priorityInB: false
+      },
+      {
+        id: 'T04',
+        title: 'Rà soát trang giới thiệu',
+        deadline: '17:00 ngày mai',
+        status: 'Có thể làm',
+        statusKey: 'ready',
+        badgeText: 'Có thể làm',
+        support: 'Còn khoảng 90 phút thực hiện',
+        priorityInA: false,
+        priorityInB: false
+      },
+      {
+        id: 'T05',
+        title: 'Chuẩn hóa tên tệp bàn giao',
+        deadline: '08:30 hôm nay',
+        status: 'Hoàn thành',
+        statusKey: 'done',
+        badgeText: 'Hoàn thành',
+        support: 'Đã gửi nội bộ trong tình huống giả lập',
+        priorityInA: false,
+        priorityInB: false
+      }
+    ];
+
+    let currentMode = 'a';
+    let selectedTaskId = 'T01';
+
+    // Switch between Mode A and Mode B
+    function switchMode(mode) {
+      currentMode = mode;
+      
+      const btnA = document.getElementById('btn-mode-a');
+      const btnB = document.getElementById('btn-mode-b');
+      const questionEl = document.getElementById('mode-guidance-question');
+
+      if (mode === 'a') {
+        btnA.classList.add('active');
+        btnA.setAttribute('aria-pressed', 'true');
+        btnB.classList.remove('active');
+        btnB.setAttribute('aria-pressed', 'false');
+        questionEl.innerText = 'Mục tiêu: "Tôi nên bắt đầu việc nào ngay bây giờ?"';
+        selectedTaskId = 'T01';
+      } else {
+        btnB.classList.add('active');
+        btnB.setAttribute('aria-pressed', 'true');
+        btnA.classList.remove('active');
+        btnA.setAttribute('aria-pressed', 'false');
+        questionEl.innerText = 'Mục tiêu: "Điều gì đang ngăn công việc chạy tiếp?"';
+        selectedTaskId = 'T02';
+      }
+
+      render();
+      resetFeedback();
+    }
+
+    // Render entire UI according to current mode
+    function render() {
+      const spotlightEl = document.getElementById('spotlight-container');
+      const queueListEl = document.getElementById('queue-tasks-list');
+      
+      if (currentMode === 'a') {
+        // Mode A: T01 is Spotlight (Pick task to start)
+        const t01 = TASKS_DATA.find(t => t.id === 'T01');
+        spotlightEl.className = 'spotlight-card priority-ready';
+        spotlightEl.innerHTML = `
+          <div class="spotlight-badge-row">
+            <span class="spotlight-eyebrow">Nhiệm vụ có thể làm ngay</span>
+            <span class="status-badge badge-ready">Có thể làm</span>
+          </div>
+          <h2 id="spotlight-task-title" class="spotlight-title">${t01.id} · ${t01.title}</h2>
+          <p class="spotlight-desc">Hạn 10:00 hôm nay, có thể làm, còn khoảng 45 phút thực hiện.</p>
+          
+          <div class="spotlight-meta-grid">
+            <div class="spotlight-meta-item">
+              <span class="spotlight-meta-label">Hạn hoàn thành</span>
+              <span class="spotlight-meta-val urgent">${t01.deadline}</span>
+            </div>
+            <div class="spotlight-meta-item">
+              <span class="spotlight-meta-label">Thời gian ước lượng</span>
+              <span class="spotlight-meta-val">${t01.support}</span>
+            </div>
+            <div class="spotlight-meta-item">
+              <span class="spotlight-meta-label">Trạng thái</span>
+              <span class="spotlight-meta-val">${t01.status}</span>
+            </div>
+          </div>
+
+          <div class="spotlight-actions">
+            <button type="button" class="btn-action-primary btn-ready" id="btn-action-t01" onclick="handlePrimaryAction('a')">
+              <span aria-hidden="true">▶</span>
+              <span>Bắt đầu việc</span>
+            </button>
+            <button type="button" class="btn-inspect-detail" onclick="inspectTaskDetail('T01')">
+              Xem chi tiết
+            </button>
+          </div>
+        `;
+
+        // Queue order for Mode A: T02 (Bị chặn), T03 (Đang làm), T04 (Có thể làm), T05 (Hoàn thành)
+        const queueTasks = [
+          TASKS_DATA.find(t => t.id === 'T02'),
+          TASKS_DATA.find(t => t.id === 'T03'),
+          TASKS_DATA.find(t => t.id === 'T04'),
+          TASKS_DATA.find(t => t.id === 'T05')
+        ];
+        renderQueue(queueTasks);
+
+      } else {
+        // Mode B: T02 is Spotlight (Unblock bottleneck)
+        const t02 = TASKS_DATA.find(t => t.id === 'T02');
+        spotlightEl.className = 'spotlight-card priority-blocked';
+        spotlightEl.innerHTML = `
+          <div class="spotlight-badge-row">
+            <span class="spotlight-eyebrow">Nhiệm vụ đang ở trạng thái bị chặn</span>
+            <span class="status-badge badge-blocked">Bị chặn</span>
+          </div>
+          <h2 id="spotlight-task-title" class="spotlight-title">${t02.id} · ${t02.title}</h2>
+          <p class="spotlight-desc">T02 chưa thể tiếp tục vì thiếu tài khoản thử nghiệm; đã chờ 1 ngày.</p>
+          
+          <div class="spotlight-meta-grid">
+            <div class="spotlight-meta-item">
+              <span class="spotlight-meta-label">Thông tin hỗ trợ</span>
+              <span class="spotlight-meta-val urgent">${t02.support}</span>
+            </div>
+            <div class="spotlight-meta-item">
+              <span class="spotlight-meta-label">Hạn hoàn thành</span>
+              <span class="spotlight-meta-val">${t02.deadline}</span>
+            </div>
+            <div class="spotlight-meta-item">
+              <span class="spotlight-meta-label">Trạng thái</span>
+              <span class="spotlight-meta-val">${t02.status}</span>
+            </div>
+          </div>
+
+          <div class="spotlight-actions">
+            <button type="button" class="btn-action-primary btn-blocked" id="btn-action-t02" onclick="handlePrimaryAction('b')">
+              <span aria-hidden="true">⚡</span>
+              <span>Xem cách gỡ chặn</span>
+            </button>
+            <button type="button" class="btn-inspect-detail" onclick="inspectTaskDetail('T02')">
+              Xem chi tiết
+            </button>
+          </div>
+        `;
+
+        // Queue order for Mode B: T01 (Có thể làm - gần hạn nhất, nổi bật!), T03 (Đang làm), T04 (Có thể làm), T05 (Hoàn thành)
+        const queueTasks = [
+          TASKS_DATA.find(t => t.id === 'T01'),
+          TASKS_DATA.find(t => t.id === 'T03'),
+          TASKS_DATA.find(t => t.id === 'T04'),
+          TASKS_DATA.find(t => t.id === 'T05')
+        ];
+        renderQueue(queueTasks);
+      }
+
+      updateDetailPanel(selectedTaskId);
+    }
+
+    // Render Queue Tasks
+    function renderQueue(tasks) {
+      const queueListEl = document.getElementById('queue-tasks-list');
+      queueListEl.innerHTML = tasks.map(task => {
+        const isSelected = task.id === selectedTaskId;
+        let badgeClass = 'badge-ready';
+        if (task.statusKey === 'blocked') badgeClass = 'badge-blocked';
+        else if (task.statusKey === 'progress') badgeClass = 'badge-progress';
+        else if (task.statusKey === 'done') badgeClass = 'badge-done';
+
+        let stateClass = '';
+        if (task.statusKey === 'blocked') stateClass = 'state-blocked';
+        if (task.statusKey === 'done') stateClass = 'state-done';
+
+        return `
+          <li class="task-item ${stateClass} ${isSelected ? 'selected' : ''}" 
+              tabindex="0" 
+              role="button" 
+              aria-label="Chọn công việc ${task.id}: ${task.title}"
+              onclick="inspectTaskDetail('${task.id}')"
+              onkeydown="if(event.key==='Enter'||event.key===' '){ inspectTaskDetail('${task.id}'); event.preventDefault(); }">
+            <div class="task-left-col">
+              <div class="task-row-meta">
+                <span class="task-id">${task.id}</span>
+                <span class="task-name">${task.title}</span>
+              </div>
+              <div class="task-support">${task.support}</div>
+            </div>
+            <div class="task-right-col">
+              <span class="task-deadline">Hạn: <strong>${task.deadline}</strong></span>
+              <span class="status-badge ${badgeClass}">${task.badgeText}</span>
+            </div>
+          </li>
+        `;
+      }).join('');
+    }
+
+    // Inspect a task in detail panel with mobile auto-scroll and focus
+    function inspectTaskDetail(taskId) {
+      selectTask(taskId);
+      if (window.innerWidth < 900) {
+        const panel = document.getElementById('task-detail-panel');
+        if (panel) {
+          panel.scrollIntoView({ behavior: 'instant', block: 'start' });
+          panel.setAttribute('tabindex', '-1');
+          panel.focus();
+        }
+      }
+    }
+
+    // Select a task to view in detail panel
+    function selectTask(taskId) {
+      selectedTaskId = taskId;
+      document.querySelectorAll('.task-item').forEach(el => el.classList.remove('selected'));
+      updateDetailPanel(taskId);
+      const matchingItems = document.querySelectorAll('.task-item');
+      matchingItems.forEach(item => {
+        if (item.innerText.includes(taskId)) item.classList.add('selected');
+      });
+    }
+
+    // Update Detail Panel with 100% Fixed Data
+    function updateDetailPanel(taskId) {
+      const task = TASKS_DATA.find(t => t.id === taskId);
+      if (!task) return;
+
+      document.getElementById('detail-id').innerText = task.id;
+      document.getElementById('detail-name').innerText = task.title;
+      document.getElementById('detail-deadline').innerText = task.deadline;
+      document.getElementById('detail-status').innerText = task.status;
+      document.getElementById('detail-support').innerText = task.support;
+
+      const badge = document.getElementById('detail-badge');
+      badge.innerText = task.badgeText;
+      badge.className = 'status-badge';
+      if (task.statusKey === 'ready') badge.classList.add('badge-ready');
+      else if (task.statusKey === 'blocked') badge.classList.add('badge-blocked');
+      else if (task.statusKey === 'progress') badge.classList.add('badge-progress');
+      else if (task.statusKey === 'done') badge.classList.add('badge-done');
+    }
+
+    // Handle Primary Actions as strictly required by Section 5 of Directive
+    function handlePrimaryAction(mode) {
+      const banner = document.getElementById('action-feedback');
+      const text = document.getElementById('action-feedback-text');
+
+      if (mode === 'a') {
+        banner.className = 'action-feedback-banner show success';
+        text.innerText = 'Đã chọn T01 để bắt đầu — thao tác mô phỏng';
+        selectTask('T01');
+      } else {
+        banner.className = 'action-feedback-banner show warning';
+        text.innerText = 'Bước tiếp theo: chuẩn bị tài khoản thử nghiệm cho T02 — hướng dẫn mô phỏng';
+        selectTask('T02');
+      }
+    }
+
+    // Back to top function with focus management for mobile
+    function backToTop() {
+      window.scrollTo(0, 0);
+      const heading = document.getElementById('main-page-heading');
+      if (heading) {
+        heading.setAttribute('tabindex', '-1');
+        heading.focus();
+      }
+    }
+
+    // Reset Simulation Feedback and return focus to active CTA
+    function resetFeedback() {
+      const banner = document.getElementById('action-feedback');
+      banner.className = 'action-feedback-banner';
+      const ctaId = currentMode === 'a' ? 'btn-action-t01' : 'btn-action-t02';
+      const cta = document.getElementById(ctaId);
+      if (cta) {
+        cta.focus();
+      }
+    }
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', () => {
+      render();
+    });
+  </script>
+</body>
+</html>

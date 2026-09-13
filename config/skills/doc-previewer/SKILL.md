@@ -1,4 +1,4 @@
-﻿---
+---
 name: doc-previewer
 description: Xem nhanh và trực quan hóa tài liệu (PDF, Word DOCX/DOC, PowerPoint PPTX, Excel XLSX) trực tiếp trong Antigravity 2.0 dưới dạng Artifacts (Carousel hình ảnh hoặc HTML giao diện chuẩn) và qua QuickLook trên Windows.
 ---
@@ -15,15 +15,26 @@ Skill này cung cấp cơ chế xem nhanh tài liệu đa định dạng cho ng�
   - Bấm **Space** hoặc **Esc** để đóng.
 
 ## 2. In-App Preview trong Antigravity 2.0 (Artifacts & Chat)
-Khi người dùng yêu cầu xem tệp bên trong Antigravity 2.0:
-- **PDF**: Sử dụng script `doc_preview.py` để trích xuất các trang thành ảnh PNG độ nét cao vào thư mục Artifacts của phiên làm việc (`brain/<conversation-id>/`) và tạo Artifact dạng `carousel` hoặc inline images.
-- **Word (.docx)**: Sử dụng script `doc_preview.py` (với thư viện `mammoth`) để chuyển đổi thành tệp HTML có kiểu dáng (styling) hiện đại, xem trực tiếp trong panel Artifacts của Antigravity 2.0.
+Khi người dùng yêu cầu xem tệp bên trong Antigravity 2.0 hoặc khi Agent tạo tài liệu văn phòng:
+- **Nguyên tắc Vàng**: Panel Artifacts của Antigravity chỉ render HTML, Markdown và hình ảnh. Nếu đặt link trực tiếp tới file nhị phân (`.docx`, `.pptx`, `.xlsx`), panel Artifacts sẽ mở dạng Text Editor và gây lỗi bung mã nhị phân rác `PK...`. Do đó:
+  * **LUÔN LUÔN tạo kèm bản HTML Preview** bằng `doc_preview.py`.
+  * **Link hiển thị cho Anh** luôn trỏ vào bản `.html` để khi click là thấy ngay giao diện chuẩn đẹp lập tức!
+- **Word (.docx)**: Sử dụng `doc_preview.py` để chuyển đổi thành tệp HTML có kiểu dáng văn bản hành chính sang trọng.
+- **PowerPoint (.pptx)**: Sử dụng `doc_preview.py` để chuyển đổi các slide thành bản trình chiếu Slide Deck HTML tương tác (có phím mũi tên, toàn màn hình).
+- **Excel (.xlsx, .csv)**: Sử dụng `doc_preview.py` để chuyển đổi thành bảng dữ liệu HTML có tab chuyển Sheet.
+- **PDF**: Sử dụng `doc_preview.py` để trích xuất các trang thành ảnh PNG độ nét cao hoặc nhúng HTML viewer.
 
 ### Cú pháp chạy script:
 ```bash
-# Preview PDF:
-python "C:/Users/game/.gemini/config/skills/doc-previewer/scripts/doc_preview.py" "path/to/file.pdf" -o "C:/Users/game/.gemini/antigravity/brain/<conversation-id>/pdf_preview"
+# Preview PowerPoint (.pptx):
+python "C:/Users/game/.gemini/config/skills/doc-previewer/scripts/doc_preview.py" "path/to/file.pptx" -o "C:/Users/game/.gemini/antigravity/brain/<conversation-id>/slide_preview.html"
 
-# Preview Word:
+# Preview Word (.docx):
 python "C:/Users/game/.gemini/config/skills/doc-previewer/scripts/doc_preview.py" "path/to/file.docx" -o "C:/Users/game/.gemini/antigravity/brain/<conversation-id>/doc_preview.html"
+
+# Preview Excel (.xlsx):
+python "C:/Users/game/.gemini/config/skills/doc-previewer/scripts/doc_preview.py" "path/to/file.xlsx" -o "C:/Users/game/.gemini/antigravity/brain/<conversation-id>/sheet_preview.html"
+
+# Mở trực tiếp bằng Microsoft Office chính thức trên Windows:
+python "C:/Users/game/.gemini/config/skills/doc-previewer/scripts/doc_preview.py" "path/to/file.pptx" --open
 ```

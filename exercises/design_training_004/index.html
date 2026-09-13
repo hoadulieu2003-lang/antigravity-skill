@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DESIGN TRAINING 004 · Thiết kế tương tác: trạng thái, phản hồi và phục hồi lỗi</title>
+  <style>
+    /* RESET & DESIGN TOKENS (Mandatory Light Theme Default Invariant) */
+    :root {
+      --bg-page: #FAF9F6;
+      --bg-surface: #FFFFFF;
+      --bg-surface-subtle: #F8FAFC;
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --text-dim: #64748B;
+      --border-light: #E2E8F0;
+      --border-focus: #0F766E;
+      --teal-primary: #0F766E;
+      --teal-hover: #115E59;
+      --teal-subtle: #CCFBF1;
+      --teal-text: #115E59;
+      --error-bg: #FEF2F2;
+      --error-border: #F87171;
+      --error-text: #991B1B;
+      --info-bg: #EFF6FF;
+      --info-border: #93C5FD;
+      --info-text: #1E40AF;
+      --success-bg: #F0FDF4;
+      --success-border: #86EFAC;
+      --success-text: #166534;
+      --warning-bg: #FFFBEB;
+      --warning-border: #FCD34D;
+      --warning-text: #92400E;
+    }
+
+    /* Zero Motion Invariant: Triệt tiêu hoàn toàn transitions và animations */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: none !important;
+      animation: none !important;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      padding: 24px 16px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* BANNER MINH BẠCH & HEADER CÔNG VIỆC W01 */
+    .banner-notice {
+      background-color: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      color: var(--warning-text);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .task-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .task-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .task-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background-color: var(--teal-subtle);
+      color: var(--teal-text);
+      letter-spacing: 0.05em;
+    }
+
+    .task-status-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background-color: #E2E8F0;
+      color: #334155;
+    }
+
+    .task-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .task-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* BIỂU MẪU GIAO VIỆC */
+    .form-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .form-heading {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .form-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .required-mark {
+      color: var(--error-text);
+      margin-left: 2px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 15px;
+      color: var(--text-main);
+      background-color: var(--bg-surface);
+      border: 1px solid #CBD5E1;
+      border-radius: 6px;
+      font-family: inherit;
+    }
+
+    .form-control:focus {
+      outline: 2px solid var(--border-focus);
+      outline-offset: 1px;
+      border-color: var(--border-focus);
+    }
+
+    .form-control[aria-invalid="true"] {
+      border-color: var(--error-border);
+      background-color: #FFFDFD;
+    }
+
+    .form-control[aria-invalid="true"]:focus {
+      outline: 2px solid var(--error-text);
+      outline-offset: 1px;
+    }
+
+    .form-control:disabled,
+    .form-control[aria-disabled="true"] {
+      background-color: #F1F5F9;
+      color: #64748B;
+      cursor: not-allowed;
+      border-color: #E2E8F0;
+    }
+
+    textarea.form-control {
+      min-height: 96px;
+      resize: vertical;
+    }
+
+    .counter-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .field-error {
+      color: var(--error-text);
+      font-size: 13px;
+      font-weight: 500;
+      min-height: 20px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .field-error:empty {
+      display: none;
+    }
+
+    /* KHU VỰC THAO TÁC VÀ PHẢN HỒI BIỂU MẪU */
+    .form-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      font-family: inherit;
+      min-height: 42px;
+      text-decoration: none;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--border-focus);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background-color: var(--teal-primary);
+      color: #FFFFFF;
+      border-color: var(--teal-primary);
+    }
+
+    .btn-primary:hover:not(:disabled):not([aria-disabled="true"]) {
+      background-color: var(--teal-hover);
+    }
+
+    .btn-primary:disabled,
+    .btn-primary[aria-disabled="true"] {
+      background-color: #94A3B8;
+      border-color: #94A3B8;
+      color: #F8FAFC;
+      cursor: not-allowed;
+    }
+
+    .btn-secondary {
+      background-color: #FFFFFF;
+      color: var(--text-main);
+      border-color: #CBD5E1;
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background-color: #F8FAFC;
+      border-color: #94A3B8;
+    }
+
+    .btn-retry {
+      background-color: var(--error-text);
+      color: #FFFFFF;
+      border-color: var(--error-text);
+    }
+
+    .btn-retry:hover:not(:disabled) {
+      background-color: #7F1D1D;
+    }
+
+    .btn-retry:focus-visible {
+      outline: 2px solid var(--error-text);
+      outline-offset: 2px;
+    }
+
+    /* FEEDBACK MESSAGES (Status, Error, Success) */
+    .status-alert {
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      line-height: 1.45;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .status-saving {
+      background-color: #F0FDF4;
+      border: 1px solid #86EFAC;
+      color: #166534;
+      font-weight: 600;
+    }
+
+    .status-error {
+      background-color: var(--error-bg);
+      border: 1px solid var(--error-border);
+      color: var(--error-text);
+    }
+
+    .status-error-text {
+      font-weight: 500;
+    }
+
+    .status-success {
+      background-color: var(--success-bg);
+      border: 1px solid var(--success-border);
+      color: var(--success-text);
+      font-weight: 600;
+    }
+
+    /* BẢNG THÔNG TIN ĐÃ LƯU */
+    .committed-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .committed-heading {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .committed-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    @media (min-width: 540px) {
+      .committed-row {
+        flex-direction: row;
+        gap: 16px;
+      }
+      .committed-label {
+        width: 130px;
+        flex-shrink: 0;
+      }
+    }
+
+    .committed-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .committed-val {
+      font-size: 14px;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    /* BẢNG ĐIỀU KHIỂN BÀI TẬP (SIMULATION CONTROLS) */
+    .controls-card {
+      background-color: #F8FAFC;
+      border: 1px dashed #CBD5E1;
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .controls-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .controls-desc {
+      font-size: 12px;
+      color: #64748B;
+    }
+
+    /* SCREEN READER ONLY */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- BANNER MINH BẠCH BÀI TẬP MÔ PHỎNG -->
+    <header class="banner-notice" role="note" aria-label="Thông báo chế độ mô phỏng">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+      <span>Bài tập mô phỏng — dữ liệu không được lưu sau khi tải lại trang</span>
+    </header>
+
+    <!-- THÔNG TIN CÔNG VIỆC GIẢ LẬP W01 -->
+    <section class="task-card" aria-labelledby="task-info-title">
+      <div class="task-card-header">
+        <span class="task-badge" id="task-id">W01</span>
+        <span class="task-status-badge" id="task-status">Trạng thái: Chưa bắt đầu</span>
+      </div>
+      <h1 class="task-title" id="task-info-title">Kiểm tra luồng đăng nhập</h1>
+      <p class="task-desc">Đối chiếu bản mẫu với kịch bản kiểm thử trước khi bàn giao.</p>
+    </section>
+
+    <!-- BIỂU MẪU GIAO NGƯỜI XỬ LÝ -->
+    <main class="form-card" aria-labelledby="form-heading">
+      <h2 class="form-heading" id="form-heading">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+        Giao người xử lý
+      </h2>
+
+      <form id="assignment-form" novalidate>
+        <!-- TRƯỜNG 1: NGƯỜI XỬ LÝ -->
+        <div class="form-group">
+          <label class="form-label" for="assignee-select">
+            Người xử lý <span class="required-mark" aria-hidden="true">*</span>
+          </label>
+          <select class="form-control" id="assignee-select" name="assignee" aria-describedby="assignee-error">
+            <option value="">Chọn người xử lý</option>
+            <option value="P01">P01 — An</option>
+            <option value="P02">P02 — Bình</option>
+            <option value="P03">P03 — Chi</option>
+          </select>
+          <span class="field-error" id="assignee-error" role="alert" aria-live="assertive"></span>
+        </div>
+
+        <!-- TRƯỜNG 2: GHI CHÚ -->
+        <div class="form-group">
+          <label class="form-label" for="note-textarea">
+            Ghi chú <span style="font-weight: 400; color: var(--text-dim); font-size: 13px;">(Tùy chọn, tối đa 200 ký tự)</span>
+          </label>
+          <textarea class="form-control" id="note-textarea" name="note" placeholder="Nhập ghi chú cho người xử lý..." aria-describedby="note-error note-counter"></textarea>
+          <div class="counter-row">
+            <span class="field-error" id="note-error" role="alert" aria-live="assertive"></span>
+            <span id="note-counter" aria-live="off">0/200</span>
+          </div>
+        </div>
+
+        <!-- THAO TÁC & PHẢN HỒI GỬI -->
+        <div class="form-actions">
+          <div class="button-group" id="main-actions-group">
+            <button class="btn btn-primary" id="btn-submit" type="submit">Lưu phân công</button>
+          </div>
+
+          <!-- CONTAINER PHẢN HỒI TOÀN BIỂU MẪU (Saving, Error, Success) -->
+          <div id="form-feedback" role="status" aria-live="polite"></div>
+        </div>
+      </form>
+    </main>
+
+    <!-- KHU VỰC HIỂN THỊ THÔNG TIN ĐÃ LƯU -->
+    <section class="committed-card" id="committed-section" aria-labelledby="committed-heading">
+      <h2 class="committed-heading" id="committed-heading">Thông tin đã lưu</h2>
+      <div class="committed-row">
+        <span class="committed-label">Người xử lý:</span>
+        <span class="committed-val" id="committed-assignee-text">Chưa giao</span>
+      </div>
+      <div class="committed-row">
+        <span class="committed-label">Ghi chú:</span>
+        <span class="committed-val" id="committed-note-text">Rỗng</span>
+      </div>
+    </section>
+
+    <!-- KHU VỰC ĐIỀU KHIỂN BÀI TẬP -->
+    <aside class="controls-card" aria-label="Điều khiển bài tập">
+      <div>
+        <div class="controls-title">Điều khiển bài tập</div>
+        <div class="controls-desc">Công cụ thử nghiệm trạng thái — đưa hệ thống về ban đầu</div>
+      </div>
+      <button class="btn btn-secondary" id="btn-reset-simulation" type="button">Đặt lại mô phỏng</button>
+    </aside>
+  </div>
+
+  <!-- BỘ MÁY TRẠNG THÁI HỮU HẠN & MOCK STORAGE -->
+  <script>
+    (function () {
+      'use strict';
+
+      // 1. Ánh xạ danh mục người xử lý
+      const ASSIGNEE_MAP = {
+        'P01': 'An',
+        'P02': 'Bình',
+        'P03': 'Chi'
+      };
+
+      // 2. Định nghĩa FSM State và Data
+      const STATE = {
+        EDITING: 'editing',
+        INVALID: 'invalid',
+        SAVING: 'saving',
+        ERROR: 'error',
+        SUCCESS: 'success'
+      };
+
+      // Biến trạng thái nội bộ
+      let currentState = STATE.EDITING;
+      let attemptCount = 0;   // Đếm số lần gửi hợp lệ được gọi tới bộ lưu
+      let commitCount = 0;    // Đếm số lần lưu thành công
+      let saveTimer = null;
+
+      // Bản nháp trong biểu mẫu (Draft)
+      let draftData = {
+        assignee: '',
+        note: ''
+      };
+
+      // Bản đã lưu thực tế (Committed Data)
+      let committedData = {
+        assignee: '',
+        note: ''
+      };
+
+      // Trạng thái lỗi trường
+      let fieldErrors = {
+        assignee: null,
+        note: null
+      };
+
+      // DOM Elements
+      const form = document.getElementById('assignment-form');
+      const assigneeSelect = document.getElementById('assignee-select');
+      const noteTextarea = document.getElementById('note-textarea');
+      const assigneeError = document.getElementById('assignee-error');
+      const noteError = document.getElementById('note-error');
+      const noteCounter = document.getElementById('note-counter');
+      const btnSubmit = document.getElementById('btn-submit');
+      const formFeedback = document.getElementById('form-feedback');
+      const committedAssigneeText = document.getElementById('committed-assignee-text');
+      const committedNoteText = document.getElementById('committed-note-text');
+      const btnResetSimulation = document.getElementById('btn-reset-simulation');
+      const mainActionsGroup = document.getElementById('main-actions-group');
+
+      // 3. Phơi bày đối tượng chẩn đoán toàn cục cho kịch bản kiểm thử (Test Automation)
+      function updateDiagnostics() {
+        window.__SIMULATION_DIAGNOSTICS__ = {
+          state: currentState,
+          attemptCount: attemptCount,
+          commitCount: commitCount,
+          draft: {
+            assignee: draftData.assignee,
+            note: draftData.note
+          },
+          committed: {
+            assignee: committedData.assignee,
+            note: committedData.note
+          },
+          fieldErrors: { ...fieldErrors },
+          isAssigneeLocked: assigneeSelect.disabled,
+          isNoteLocked: noteTextarea.disabled,
+          isSubmitLocked: btnSubmit.disabled || btnSubmit.getAttribute('aria-disabled') === 'true'
+        };
+      }
+
+      // 4. Hàm cập nhật giao diện theo trạng thái FSM
+      function renderState() {
+        // Cập nhật bộ đếm ký tự ghi chú
+        const currentNoteLen = noteTextarea.value.length;
+        noteCounter.textContent = `${currentNoteLen}/200`;
+        if (currentNoteLen > 200) {
+          noteCounter.style.color = 'var(--error-text)';
+          noteCounter.style.fontWeight = '700';
+        } else {
+          noteCounter.style.color = 'var(--text-dim)';
+          noteCounter.style.fontWeight = '400';
+        }
+
+        // Hiển thị lỗi từng trường
+        if (fieldErrors.assignee) {
+          assigneeSelect.setAttribute('aria-invalid', 'true');
+          assigneeError.textContent = fieldErrors.assignee;
+        } else {
+          assigneeSelect.removeAttribute('aria-invalid');
+          assigneeError.textContent = '';
+        }
+
+        if (fieldErrors.note) {
+          noteTextarea.setAttribute('aria-invalid', 'true');
+          noteError.textContent = fieldErrors.note;
+        } else {
+          noteTextarea.removeAttribute('aria-invalid');
+          noteError.textContent = '';
+        }
+
+        // Cập nhật vùng "Thông tin đã lưu"
+        if (committedData.assignee && ASSIGNEE_MAP[committedData.assignee]) {
+          committedAssigneeText.textContent = `${committedData.assignee} — ${ASSIGNEE_MAP[committedData.assignee]}`;
+        } else {
+          committedAssigneeText.textContent = 'Chưa giao';
+        }
+        committedNoteText.textContent = committedData.note ? committedData.note : 'Rỗng';
+
+        // Xử lý các trạng thái cụ thể
+        switch (currentState) {
+          case STATE.EDITING:
+          case STATE.INVALID:
+            // Khôi phục quyền tương tác các trường
+            assigneeSelect.disabled = false;
+            noteTextarea.disabled = false;
+            btnResetSimulation.disabled = false;
+
+            // Nút submit hiển thị và sẵn sàng
+            btnSubmit.style.display = 'inline-flex';
+            btnSubmit.disabled = false;
+            btnSubmit.removeAttribute('aria-disabled');
+            btnSubmit.textContent = 'Lưu phân công';
+
+            // Xóa feedback toàn form nếu là editing bình thường
+            if (currentState === STATE.EDITING) {
+              formFeedback.innerHTML = '';
+            }
+            break;
+
+          case STATE.SAVING:
+            // Khóa tương tác tất cả các trường
+            assigneeSelect.disabled = true;
+            noteTextarea.disabled = true;
+            btnResetSimulation.disabled = true;
+
+            // Khóa nút submit nhưng giữ trong DOM để không làm rơi focus về body
+            btnSubmit.style.display = 'inline-flex';
+            btnSubmit.setAttribute('aria-disabled', 'true');
+
+            // Hiển thị thông báo đang lưu
+            formFeedback.innerHTML = `
+              <div class="status-alert status-saving" role="status">
+                <span>Đang lưu phân công…</span>
+              </div>
+            `;
+            break;
+
+          case STATE.ERROR:
+            // Mở khóa lại các trường để người dùng chỉnh sửa hoặc giữ nguyên để thử lại
+            assigneeSelect.disabled = false;
+            noteTextarea.disabled = false;
+            btnResetSimulation.disabled = false;
+
+            // Ẩn nút submit mặc định, thay bằng phản hồi lỗi kèm nút Thử lưu lại
+            btnSubmit.style.display = 'none';
+
+            formFeedback.innerHTML = `
+              <div class="status-alert status-error" role="alert">
+                <span class="status-error-text">Chưa lưu được phân công. Dữ liệu bạn nhập vẫn được giữ. Hãy thử lại.</span>
+                <div class="button-group">
+                  <button class="btn btn-retry" id="btn-retry" type="button">Thử lưu lại</button>
+                </div>
+              </div>
+            `;
+
+            // Gắn sự kiện cho nút Thử lưu lại
+            const btnRetry = document.getElementById('btn-retry');
+            if (btnRetry) {
+              btnRetry.addEventListener('click', function (e) {
+                e.preventDefault();
+                handleRetry();
+              });
+            }
+            break;
+
+          case STATE.SUCCESS:
+            // Sau thành công: khóa các trường, không cho submit lại cùng phân công
+            assigneeSelect.disabled = true;
+            noteTextarea.disabled = true;
+            btnResetSimulation.disabled = false;
+
+            btnSubmit.style.display = 'none';
+
+            const savedName = ASSIGNEE_MAP[committedData.assignee] || committedData.assignee;
+            formFeedback.innerHTML = `
+              <div class="status-alert status-success" role="status">
+                <span>Đã giao W01 cho ${savedName} — kết quả mô phỏng.</span>
+                <div class="button-group" style="margin-top: 4px;">
+                  <button class="btn btn-secondary" id="btn-edit-assignment" type="button">Sửa phân công</button>
+                </div>
+              </div>
+            `;
+
+            // Gắn sự kiện nút Sửa phân công
+            const btnEdit = document.getElementById('btn-edit-assignment');
+            if (btnEdit) {
+              btnEdit.addEventListener('click', function (e) {
+                e.preventDefault();
+                handleEditAssignment();
+              });
+            }
+            break;
+        }
+
+        updateDiagnostics();
+      }
+
+      // 5. Kiểm tra tính hợp lệ dữ liệu biểu mẫu (Validation Logic)
+      function validateForm() {
+        let isValid = true;
+        fieldErrors.assignee = null;
+        fieldErrors.note = null;
+
+        // Đọc giá trị trực tiếp từ DOM
+        draftData.assignee = assigneeSelect.value.trim();
+        draftData.note = noteTextarea.value;
+
+        // Quy tắc 1: Người xử lý bắt buộc chọn
+        if (!draftData.assignee) {
+          fieldErrors.assignee = 'Chọn người xử lý trước khi lưu.';
+          isValid = false;
+        }
+
+        // Quy tắc 2: Ghi chú tối đa 200 ký tự theo JS string.length sau trim()
+        const trimmedNote = draftData.note.trim();
+        if (trimmedNote.length > 200) {
+          fieldErrors.note = 'Ghi chú cần tối đa 200 ký tự.';
+          isValid = false;
+        }
+
+        return isValid;
+      }
+
+      // 6. Thực thi quy trình gửi biểu mẫu (Submission Workflow)
+      function submitAssignment() {
+        // Nếu đang trong saving, chặn tuyệt đối mọi hành vi gửi thêm
+        if (currentState === STATE.SAVING) {
+          return;
+        }
+
+        // Xác thực dữ liệu
+        const isValid = validateForm();
+
+        if (!isValid) {
+          currentState = STATE.INVALID;
+          renderState();
+
+          // Chuyển focus về trường sai đầu tiên: Người xử lý -> Ghi chú
+          if (fieldErrors.assignee) {
+            assigneeSelect.focus();
+          } else if (fieldErrors.note) {
+            noteTextarea.focus();
+          }
+          return;
+        }
+
+        // Dữ liệu hợp lệ -> Chuyển sang SAVING
+        currentState = STATE.SAVING;
+        // Chụp bản snapshot của lần gửi này
+        const submissionSnapshot = {
+          assignee: draftData.assignee,
+          note: draftData.note
+        };
+
+        // Tăng số lần gọi gửi hợp lệ
+        attemptCount++;
+        renderState();
+
+        // Giả lập độ trễ lưu mạng xác định: đúng 1.200ms
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(function () {
+          // Lần gửi hợp lệ đầu tiên kể từ khi mở/đặt lại LUÔN THẤT BẠI
+          if (attemptCount === 1) {
+            currentState = STATE.ERROR;
+            renderState();
+
+            // Đưa focus đến thông báo lỗi hoặc nút Thử lưu lại
+            const btnRetry = document.getElementById('btn-retry');
+            if (btnRetry) {
+              btnRetry.focus();
+            }
+          } else {
+            // Lần gửi thứ 2 trở đi LUÔN THÀNH CÔNG
+            commitCount++;
+            committedData.assignee = submissionSnapshot.assignee;
+            committedData.note = submissionSnapshot.note;
+
+            currentState = STATE.SUCCESS;
+            renderState();
+
+            // Đưa focus đến nút Sửa phân công để người dùng bàn phím tiếp tục thao tác thuận tiện
+            const btnEdit = document.getElementById('btn-edit-assignment');
+            if (btnEdit) {
+              btnEdit.focus();
+            }
+          }
+        }, 1200);
+      }
+
+      // 7. Thao tác Thử lưu lại (Retry)
+      function handleRetry() {
+        if (currentState !== STATE.ERROR) return;
+        // Gửi lại với cùng bản nháp hiện tại, không bắt nhập lại
+        submitAssignment();
+      }
+
+      // 8. Thao tác Sửa phân công (Edit Assignment)
+      function handleEditAssignment() {
+        if (currentState !== STATE.SUCCESS) return;
+        currentState = STATE.EDITING;
+
+        // Điền sẵn dữ liệu đã lưu vào biểu mẫu
+        assigneeSelect.value = committedData.assignee;
+        noteTextarea.value = committedData.note;
+        draftData.assignee = committedData.assignee;
+        draftData.note = committedData.note;
+
+        // Xóa các lỗi cũ nếu có
+        fieldErrors.assignee = null;
+        fieldErrors.note = null;
+
+        renderState();
+
+        // Hoàn trả focus về select người xử lý
+        assigneeSelect.focus();
+      }
+
+      // 9. Thao tác Đặt lại mô phỏng (Reset Simulation)
+      function handleResetSimulation() {
+        // Trong saving không được phép đặt lại
+        if (currentState === STATE.SAVING) return;
+
+        clearTimeout(saveTimer);
+        currentState = STATE.EDITING;
+        attemptCount = 0;
+        commitCount = 0;
+
+        // Xóa nháp
+        draftData.assignee = '';
+        draftData.note = '';
+        assigneeSelect.value = '';
+        noteTextarea.value = '';
+
+        // Xóa bản đã lưu
+        committedData.assignee = '';
+        committedData.note = '';
+
+        // Xóa lỗi
+        fieldErrors.assignee = null;
+        fieldErrors.note = null;
+
+        renderState();
+
+        // Đưa focus về select người xử lý
+        assigneeSelect.focus();
+      }
+
+      // 10. Lắng nghe các sự kiện người dùng (User Interaction Events)
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        // Kiểm tra nếu nút đang có aria-disabled="true" thì chặn submit
+        if (btnSubmit.getAttribute('aria-disabled') === 'true') {
+          return;
+        }
+        submitAssignment();
+      });
+
+      // Chặn click trực tiếp vào nút khi đang saving
+      btnSubmit.addEventListener('click', function (e) {
+        if (btnSubmit.getAttribute('aria-disabled') === 'true' || currentState === STATE.SAVING) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      });
+
+      // Lắng nghe chỉnh sửa trên select
+      assigneeSelect.addEventListener('change', function () {
+        draftData.assignee = assigneeSelect.value.trim();
+
+        // Nếu đang ở invalid và trường này đã có người chọn -> xóa lỗi trường ngay
+        if (currentState === STATE.INVALID && draftData.assignee) {
+          fieldErrors.assignee = null;
+          assigneeSelect.removeAttribute('aria-invalid');
+          assigneeError.textContent = '';
+          // Nếu cả 2 trường đều không còn lỗi -> chuyển về editing
+          if (!fieldErrors.note) {
+            currentState = STATE.EDITING;
+          }
+        }
+
+        // Nếu đang ở error -> người dùng sửa dữ liệu thì chuyển về editing, bỏ thông báo lỗi gửi cũ
+        if (currentState === STATE.ERROR) {
+          currentState = STATE.EDITING;
+          renderState();
+        }
+
+        updateDiagnostics();
+      });
+
+      // Lắng nghe chỉnh sửa trên textarea
+      noteTextarea.addEventListener('input', function () {
+        draftData.note = noteTextarea.value;
+        const currentLen = draftData.note.length;
+        const trimmedLen = draftData.note.trim().length;
+
+        noteCounter.textContent = `${currentLen}/200`;
+        if (currentLen > 200) {
+          noteCounter.style.color = 'var(--error-text)';
+          noteCounter.style.fontWeight = '700';
+        } else {
+          noteCounter.style.color = 'var(--text-dim)';
+          noteCounter.style.fontWeight = '400';
+        }
+
+        // Nếu đang ở invalid và ghi chú đã <= 200 -> xóa lỗi trường ngay
+        if (currentState === STATE.INVALID && trimmedLen <= 200) {
+          fieldErrors.note = null;
+          noteTextarea.removeAttribute('aria-invalid');
+          noteError.textContent = '';
+          if (!fieldErrors.assignee) {
+            currentState = STATE.EDITING;
+          }
+        }
+
+        // Nếu đang ở error -> người dùng sửa dữ liệu thì chuyển về editing, bỏ thông báo lỗi gửi cũ
+        if (currentState === STATE.ERROR) {
+          currentState = STATE.EDITING;
+          renderState();
+        }
+
+        updateDiagnostics();
+      });
+
+      // Gắn sự kiện nút Đặt lại mô phỏng
+      btnResetSimulation.addEventListener('click', function (e) {
+        e.preventDefault();
+        handleResetSimulation();
+      });
+
+      // Khởi tạo ban đầu
+      renderState();
+    })();
+  </script>
+</body>
+</html>

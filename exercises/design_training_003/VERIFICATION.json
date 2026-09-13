@@ -1,0 +1,415 @@
+{
+  "test_run": "DESIGN_TRAINING_003_AUTOMATED_VERIFICATION_R02",
+  "timestamp": "2026-09-13T10:00:02.368Z",
+  "environment": "Chrome CDP / Puppeteer (Bàn phím tự động hóa)",
+  "dpr": 2,
+  "repair_round": "1/2",
+  "inherited_cases": [
+    "T01",
+    "T02",
+    "T03",
+    "T04",
+    "T05",
+    "T06",
+    "T07",
+    "T08"
+  ],
+  "rerun_checks": {
+    "T02_rerun": {
+      "ids": [
+        "D04",
+        "D05",
+        "D06"
+      ],
+      "chipText": "Từ khóa:\n\"DANG NHAP\"",
+      "pass": true
+    },
+    "T07_rerun": {
+      "activeId": "doc-card-D05",
+      "actualIds": [
+        "D04",
+        "D05",
+        "D06"
+      ],
+      "focusRestoredToD05": true,
+      "pass": true
+    }
+  },
+  "f01_plain_text_check": {
+    "inputKeyword": "<bản mẫu & \"test\">",
+    "displayedTextContent": "\"<bản mẫu & \"test\">\"",
+    "rawHtml": "<span class=\"filter-chip\">Từ khóa: <strong>\"&lt;bản mẫu &amp; \"test\"&gt;\"</strong></span>",
+    "hasInjectedTags": false,
+    "isExactPlainText": true,
+    "pass": true
+  },
+  "t09_status_filter_check": {
+    "id": "T09",
+    "description": "Bộ lọc trạng thái kết hợp tìm kiếm (Step 1-4)",
+    "preconditions": "Nhóm Tất cả, lưu trữ tắt, từ khóa \"dang nhap\"",
+    "steps": [
+      {
+        "query": "dang nhap",
+        "status": "all",
+        "ids": [
+          "D04",
+          "D05",
+          "D06"
+        ],
+        "count": 3
+      },
+      {
+        "action": "Chọn #filter-status = \"Đang soạn\"",
+        "targetedElement": "filter-status",
+        "activeElementBefore": "filter-status",
+        "activeElementAfter": "filter-status",
+        "expectedIds": [
+          "D04"
+        ],
+        "actualIds": [
+          "D04"
+        ],
+        "count": 1,
+        "pass": true
+      },
+      {
+        "action": "Đổi #filter-status = \"Hiện hành\"",
+        "targetedElement": "filter-status",
+        "activeElementBefore": "filter-status",
+        "activeElementAfter": "filter-status",
+        "expectedIds": [
+          "D05",
+          "D06"
+        ],
+        "actualIds": [
+          "D05",
+          "D06"
+        ],
+        "count": 2,
+        "pass": true
+      },
+      {
+        "action": "Click #btn-clear-filters",
+        "targetedElement": "btn-clear-filters",
+        "activeElementBefore": "filter-status",
+        "activeElementAfter": "search-input",
+        "searchReset": true,
+        "statusReset": true,
+        "groupReset": true,
+        "expectedIds": [
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "D05",
+          "D06",
+          "D07",
+          "D08",
+          "D09",
+          "D10"
+        ],
+        "actualIds": [
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "D05",
+          "D06",
+          "D07",
+          "D08",
+          "D09",
+          "D10"
+        ],
+        "count": 10,
+        "pass": true
+      }
+    ],
+    "inputMethod": "keyboard + select change + button click",
+    "pass": true
+  },
+  "tablet_768px_measurements": {
+    "viewport": "768x1024",
+    "dpr": 2,
+    "innerWidth": 768,
+    "clientWidth": 753,
+    "scrollWidth": 753,
+    "bodyScrollWidth": 753,
+    "horizontalOverflow": false,
+    "isBodyOverflow": false,
+    "isTabOpsAccessibleByKeyboard": true,
+    "isTabOpsInViewport": true,
+    "fontLoaded": true,
+    "pass": true
+  },
+  "cases": [
+    {
+      "id": "T01",
+      "preconditions": "Trang mở mới, nhóm Tất cả, từ khóa rỗng, không lọc lưu trữ",
+      "action": "Load ban đầu trang web",
+      "expectedIds": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10"
+      ],
+      "actualIds": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10"
+      ],
+      "count": 10,
+      "countLabel": "Hiển thị 10 tài liệu",
+      "pass": true,
+      "inputMethod": "Browser page navigation"
+    },
+    {
+      "id": "T02",
+      "targetedElement": "search-input",
+      "activeElementBefore": "",
+      "preconditions": "Nhóm Tất cả, không lọc trạng thái, mặc định không gồm lưu trữ",
+      "action": "Gõ phím vào #search-input chuỗi \"  DANG NHAP  \"",
+      "activeElementAfter": "search-input",
+      "expectedIds": [
+        "D04",
+        "D05",
+        "D06"
+      ],
+      "actualIds": [
+        "D04",
+        "D05",
+        "D06"
+      ],
+      "count": 3,
+      "countLabel": "Hiển thị 3 tài liệu",
+      "pass": true,
+      "inputMethod": "keyboard.type (Bàn phím tự động hóa)"
+    },
+    {
+      "id": "T03",
+      "targetedElement": "filter-archive",
+      "activeElementBefore": "search-input",
+      "preconditions": "Từ khóa \"  DANG NHAP  \", nhóm Tất cả, bật checkbox Lưu trữ",
+      "action": "Kích hoạt hộp kiểm #filter-archive",
+      "activeElementAfter": "search-input",
+      "expectedIds": [
+        "D04",
+        "D05",
+        "D06",
+        "D12"
+      ],
+      "actualIds": [
+        "D04",
+        "D05",
+        "D06",
+        "D12"
+      ],
+      "count": 4,
+      "countLabel": "Hiển thị 4 tài liệu",
+      "pass": true,
+      "inputMethod": "UI Checkbox Toggle"
+    },
+    {
+      "id": "T04",
+      "preconditions": "Nhóm tab-qa (Chất lượng & Kiểm thử), không lưu trữ",
+      "action": "Click tab-qa & keyboard.type \"kịch bản\" vào #search-input",
+      "targetedElement": "tab-qa & search-input",
+      "activeElementAfter": "search-input",
+      "expectedIds": [
+        "D05"
+      ],
+      "actualIds": [
+        "D05"
+      ],
+      "count": 1,
+      "countLabel": "Hiển thị 1 tài liệu",
+      "pass": true,
+      "inputMethod": "tab click + keyboard.type"
+    },
+    {
+      "id": "T05",
+      "preconditions": "Nhóm Tất cả, không lưu trữ",
+      "action": "keyboard.type \"không có tài liệu xyz\" vào #search-input",
+      "targetedElement": "search-input",
+      "activeElementAfter": "search-input",
+      "expectedCount": 0,
+      "actualCount": 0,
+      "isEmptyStateVisible": true,
+      "hasClearAction": true,
+      "pass": true,
+      "inputMethod": "keyboard.type"
+    },
+    {
+      "id": "T06",
+      "targetedElement": "btn-empty-clear",
+      "activeElementBefore": "search-input",
+      "preconditions": "Từ trạng thái T05 (0 kết quả)",
+      "action": "Click nút #btn-empty-clear",
+      "activeElementAfter": "search-input",
+      "expectedCount": 10,
+      "actualCount": 10,
+      "searchQueryReset": true,
+      "groupReset": true,
+      "expectedIds": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10"
+      ],
+      "actualIds": [
+        "D01",
+        "D02",
+        "D03",
+        "D04",
+        "D05",
+        "D06",
+        "D07",
+        "D08",
+        "D09",
+        "D10"
+      ],
+      "pass": true,
+      "inputMethod": "UI Button Click"
+    },
+    {
+      "id": "T07",
+      "targetedElement": "doc-card-D05",
+      "activeElementBeforeOpen": "doc-card-D05",
+      "preconditions": "Từ trạng thái T02 (kết quả D04, D05, D06)",
+      "action": "Enter mở chi tiết doc-card-D05 -> Enter trên btn-back-to-list để quay lại",
+      "isDetailVisible": true,
+      "detailTitle": "Kịch bản kiểm thử đăng nhập",
+      "activeElementInDetail": "btn-back-to-list",
+      "isCatalogRestored": true,
+      "searchPreserved": true,
+      "actualIds": [
+        "D04",
+        "D05",
+        "D06"
+      ],
+      "activeElementAfterReturn": "doc-card-D05",
+      "focusRestoredToD05": true,
+      "pass": true,
+      "inputMethod": "keyboard (Enter open & Enter back)"
+    },
+    {
+      "id": "T08",
+      "preconditions": "Bật filter-archive, gõ \"bản cũ\" vào search-input",
+      "action": "Enter mở chi tiết doc-card-D12 trên mobile 390x844",
+      "listIds": [
+        "D11",
+        "D12"
+      ],
+      "isDetailVisible": true,
+      "detailId": "D12",
+      "detailTitle": "Bản mẫu màn hình đăng nhập bản cũ",
+      "statusText": "Lưu trữ",
+      "isArchiveBannerVisible": true,
+      "archiveBannerSnippet": "⚠️ LƯU TRỮ (HẾT HIỆU LỰC): Đây là tài liệu thuộc d",
+      "pass": true,
+      "inputMethod": "keyboard (Enter on doc-card-D12)"
+    },
+    {
+      "id": "T09",
+      "description": "Bộ lọc trạng thái kết hợp tìm kiếm (Step 1-4)",
+      "preconditions": "Nhóm Tất cả, lưu trữ tắt, từ khóa \"dang nhap\"",
+      "steps": [
+        {
+          "query": "dang nhap",
+          "status": "all",
+          "ids": [
+            "D04",
+            "D05",
+            "D06"
+          ],
+          "count": 3
+        },
+        {
+          "action": "Chọn #filter-status = \"Đang soạn\"",
+          "targetedElement": "filter-status",
+          "activeElementBefore": "filter-status",
+          "activeElementAfter": "filter-status",
+          "expectedIds": [
+            "D04"
+          ],
+          "actualIds": [
+            "D04"
+          ],
+          "count": 1,
+          "pass": true
+        },
+        {
+          "action": "Đổi #filter-status = \"Hiện hành\"",
+          "targetedElement": "filter-status",
+          "activeElementBefore": "filter-status",
+          "activeElementAfter": "filter-status",
+          "expectedIds": [
+            "D05",
+            "D06"
+          ],
+          "actualIds": [
+            "D05",
+            "D06"
+          ],
+          "count": 2,
+          "pass": true
+        },
+        {
+          "action": "Click #btn-clear-filters",
+          "targetedElement": "btn-clear-filters",
+          "activeElementBefore": "filter-status",
+          "activeElementAfter": "search-input",
+          "searchReset": true,
+          "statusReset": true,
+          "groupReset": true,
+          "expectedIds": [
+            "D01",
+            "D02",
+            "D03",
+            "D04",
+            "D05",
+            "D06",
+            "D07",
+            "D08",
+            "D09",
+            "D10"
+          ],
+          "actualIds": [
+            "D01",
+            "D02",
+            "D03",
+            "D04",
+            "D05",
+            "D06",
+            "D07",
+            "D08",
+            "D09",
+            "D10"
+          ],
+          "count": 10,
+          "pass": true
+        }
+      ],
+      "inputMethod": "keyboard + select change + button click",
+      "pass": true
+    }
+  ]
+}

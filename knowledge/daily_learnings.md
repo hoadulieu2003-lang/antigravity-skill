@@ -300,3 +300,54 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Đúc Rút Tri Thức Kỹ Thuật (Engineering Masterclass): `2026-09-13 08:56:00`
+
+### 🎨 Bộ Công Thức Động Học & Bố Cục Mobile-First Độc Bản (Tabio & Editorial Motion Arsenal)
+> **Dự án áp dụng**: `ANH ATELIER // Dệt Nắng 2026SS` (Portfolio Showcase của Anh)  
+> **Tác quyền & Chủ sở hữu**: Lead Architect Anh Nguyen // Senior Pair-Programmer Antigravity
+
+#### 1. Động Học Lò Xo Nảy Nhẹ Chuẩn Nhật Bản (Spring Elastic Overshoot Engine)
+- **Công thức Easing**: `cubic-bezier(0.22, 1.61, 0.36, 1.0)`
+  - Điểm kiểm soát $Y_1 = 1.61 > 1.0$ tạo hiệu ứng vượt ngưỡng (overshoot ~5%), giúp phần tử nảy nhẹ đàn hồi như cao su non khi cuộn tới đích.
+- **Biến đổi Kép**: `transform: translateY(4.5rem) scale(0.86)` $\to$ `translateY(0) scale(1.0)`.
+  - Không chỉ bay từ dưới lên mà còn bung nở từ 86% lên 100%, tạo chiều sâu không gian 3D.
+- **Thời gian Bất đối xứng**: `opacity 0.35s ease-out`, `transform 0.65s cubic-bezier(...)`.
+  - Hiện hình tức thì ($350\text{ms}$) để loại bỏ cảm giác trễ (zero latency), trong khi chuyển động nảy kéo dài $650\text{ms}$ để dao động mềm mại.
+- **Chuỗi trễ So le (Cascading Stagger Delays)**:
+  - `.vn-delay-1 (0.1s)`, `.vn-delay-2 (0.2s)`, `.vn-delay-3 (0.35s)`, `.vn-delay-4 (0.5s)` tạo làn sóng domino gối đầu nhau khi cuộn trang.
+
+#### 2. Hai Bố Cục Tạp Chí Thời Trang Kinh Điển (High-End Fashion Editorial Layouts)
+- **Bố Cục 1: Danh Sách Sản Phẩm Zig-zag So Le (Alternating Zig-zag Showcase)**:
+  - Hàng chẵn (0, 2): Ảnh bên Trái, Nội dung bên Phải.
+  - Hàng lẻ (1, 3): Nội dung bên Trái, Ảnh bên Phải (`row-reverse`).
+  - Ngăn cách bằng đường chỉ nét đứt mảnh (`border-bottom: 1px dashed #D5E5DC`).
+  - Nút bấm con thoi viền nét đứt tinh xảo (`border: 1.5px dashed #0D5C46; border-radius: 9999px`).
+- **Bố Cục 2: Cắt Dán Đa Hình Khối Phi Đối Xứng (Asymmetric Organic Shape Mosaic Lookbook)**:
+  - Hình con thoi / viên nang dáng dài (`Tall Capsule Pill`): `border-radius: 9999px; border: 3px solid #FFF` khoe đôi chân và quai sandal.
+  - Khung tròn độc bản (`Perfect Circle Cutout`): `border-radius: 50%; aspect-ratio: 1/1` lồng người mẫu ngồi thư thái.
+  - Khung bo góc lớn (`rounded-2xl`): Người mẫu ngồi ghế cầm túi cói thủ công và chi tiết cận cảnh sản phẩm.
+
+#### 3. Kỹ Thuật Cuộn Ảo GPU 60 FPS Trên Desktop (Desktop Virtual Scroll Compositor)
+- Trên màn hình lớn ($W \ge 1280\text{px}$), thẻ cha giữ nguyên chiều cao ảo `container.style.height = ${mainInner.offsetHeight}px`.
+- Đồng bộ cuộn bằng `translateY(-${window.scrollY}px)` được bọc trong `window.requestAnimationFrame`.
+- Đẩy toàn bộ tác vụ render sang GPU compositor thread, giữ vững 60 FPS mượt mà tuyệt đối không giật lag CPU.
+
+---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-13 17:52:22`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (506 ⭐)]** [duckbugio/flock](https://github.com/duckbugio/flock)
+  > Autonomous AI dev-team bot
+- **[GitHub (293 ⭐)]** [oneshot-agent/oneshot-gtm](https://github.com/oneshot-agent/oneshot-gtm)
+  > GTM agent for technical founders. Pay-per-result. Signed receipts. Two surfaces: terminal CLI + local web dashboard.
+- **[GitHub (73 ⭐)]** [CatCatUncle/openworkbuddy](https://github.com/CatCatUncle/openworkbuddy)
+  > Local-first AI office agent that hands you files, not chat logs: swap any LLM (or use local Claude Code/Codex), keep data on your machine, add a skill with o...
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [Edge0/Edge0-35B-A3B-preview](https://huggingface.co/Edge0/Edge0-35B-A3B-preview)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---

@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dự án Mẫu — Thư viện Tài liệu (DESIGN_TRAINING_003)</title>
+  
+  <!-- Typography chuẩn Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       1. DESIGN TOKENS & SYSTEM VARIABLES (Light Theme Default)
+       ═══════════════════════════════════════════════════════════════ */
+    :root {
+      --bg-page: #FAF9F6;
+      --bg-surface: #FFFFFF;
+      --bg-surface-elevated: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --bg-active: #E6FFFA;
+
+      --text-main: #0F172A;
+      --text-subtle: #475569;
+      --text-muted: #64748B;
+      --text-on-teal: #FFFFFF;
+
+      --border-subtle: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --border-focus: #0F766E;
+
+      --primary-teal: #0F766E;
+      --primary-teal-light: #CCFBF1;
+      --primary-teal-dark: #115E59;
+
+      --status-active-bg: #ECFDF5;
+      --status-active-text: #065F46;
+      --status-active-border: #A7F3D0;
+
+      --status-draft-bg: #EFF6FF;
+      --status-draft-text: #1E40AF;
+      --status-draft-border: #BFDBFE;
+
+      --status-archived-bg: #F1F5F9;
+      --status-archived-text: #475569;
+      --status-archived-border: #CBD5E1;
+
+      --warning-bg: #FFFBEB;
+      --warning-text: #92400E;
+      --warning-border: #FDE68A;
+
+      --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --space-xxs: 0.25rem;
+      --space-xs: 0.5rem;
+      --space-s: 0.75rem;
+      --space-m: 1rem;
+      --space-l: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      --radius-s: 6px;
+      --radius-m: 8px;
+      --radius-l: 12px;
+      --radius-full: 9999px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       2. ZERO MOTION INVARIANT (Triệt tiêu 100% chuyển động)
+       ═══════════════════════════════════════════════════════════════ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: none !important;
+      animation: none !important;
+      scroll-behavior: auto !important;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: var(--space-2xl);
+    }
+
+    /* Focus Rings rõ ràng cho trợ năng (WCAG SC 2.4.7) */
+    :focus-visible {
+      outline: 3px solid var(--border-focus) !important;
+      outline-offset: 3px !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       3. HEADER & HERO
+       ═══════════════════════════════════════════════════════════════ */
+    .app-header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: var(--space-s) var(--space-m);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-m);
+    }
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: var(--space-s);
+    }
+    .brand-badge {
+      background: var(--primary-teal);
+      color: var(--text-on-teal);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-s);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .brand-title {
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .brand-sub {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      display: none;
+    }
+    @media (min-width: 640px) {
+      .brand-sub { display: inline; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       4. MAIN CONTAINER & CONTROLS
+       ═══════════════════════════════════════════════════════════════ */
+    .main-layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-l) var(--space-m);
+    }
+
+    .page-heading-block {
+      margin-bottom: var(--space-l);
+    }
+    .page-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      margin-bottom: var(--space-xxs);
+    }
+    .page-desc {
+      font-size: 0.9375rem;
+      color: var(--text-subtle);
+    }
+
+    /* Control Panel Box */
+    .control-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-l);
+      padding: var(--space-m);
+      margin-bottom: var(--space-l);
+    }
+
+    /* Search Box Row */
+    .search-row {
+      margin-bottom: var(--space-m);
+    }
+    .search-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .search-icon {
+      position: absolute;
+      left: var(--space-m);
+      color: var(--text-muted);
+      pointer-events: none;
+      font-size: 1rem;
+    }
+    .search-input {
+      width: 100%;
+      min-height: 46px;
+      padding: 0.65rem var(--space-m) 0.65rem 2.6rem;
+      font-size: 0.9375rem;
+      font-family: var(--font-family);
+      color: var(--text-main);
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-strong);
+      border-radius: var(--radius-m);
+    }
+    .search-input:focus {
+      border-color: var(--primary-teal);
+      outline: none;
+    }
+    .search-clear-btn {
+      position: absolute;
+      right: var(--space-xs);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: var(--space-xs);
+      font-size: 0.875rem;
+      display: none;
+    }
+    .search-clear-btn.show {
+      display: block;
+    }
+
+    /* Navigation Group Tabs (Phân nhóm cấp 1 duy nhất) */
+    .group-nav-row {
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: var(--space-m);
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+    .tab-list {
+      display: flex;
+      gap: var(--space-xs);
+      list-style: none;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: var(--space-xs) var(--space-m);
+      font-family: var(--font-family);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-subtle);
+      border-bottom: 2.5px solid transparent;
+      cursor: pointer;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: var(--bg-subtle);
+      border-radius: var(--radius-s) var(--radius-s) 0 0;
+    }
+    .tab-btn.active {
+      color: var(--primary-teal);
+      border-bottom-color: var(--primary-teal);
+      font-weight: 700;
+    }
+    .tab-count {
+      font-size: 0.75rem;
+      padding: 0.1rem 0.45rem;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-full);
+      color: var(--text-muted);
+    }
+    .tab-btn.active .tab-count {
+      background: var(--primary-teal-light);
+      color: var(--primary-teal-dark);
+    }
+
+    /* Secondary Attributes & Filters Row */
+    .filter-options-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-m);
+    }
+    .filter-left-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-m);
+    }
+    .filter-select-wrapper {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .filter-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-subtle);
+    }
+    .filter-select {
+      min-height: 38px;
+      padding: 0.4rem 2rem 0.4rem 0.75rem;
+      font-size: 0.875rem;
+      font-family: var(--font-family);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-s);
+      background-color: var(--bg-surface);
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    /* Archive Checkbox Filter */
+    .checkbox-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-main);
+      padding: 0.35rem 0.6rem;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-s);
+      background: var(--bg-surface);
+    }
+    .checkbox-wrapper:hover {
+      background: var(--bg-subtle);
+    }
+    .checkbox-input {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--primary-teal);
+      cursor: pointer;
+    }
+
+    /* Active Filter Summary Bar */
+    .filter-summary-bar {
+      margin-top: var(--space-s);
+      padding-top: var(--space-s);
+      border-top: 1px solid var(--bg-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-s);
+      font-size: 0.8125rem;
+    }
+    .summary-left {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .result-count-label {
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: var(--bg-subtle);
+      color: var(--text-subtle);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-s);
+      font-size: 0.75rem;
+      font-weight: 500;
+      border: 1px solid var(--border-subtle);
+    }
+    .filter-chip strong {
+      color: var(--text-main);
+    }
+    .btn-clear-filters {
+      background: none;
+      border: 1px solid var(--border-strong);
+      color: var(--text-subtle);
+      font-family: var(--font-family);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-s);
+      cursor: pointer;
+      min-height: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .btn-clear-filters:hover {
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      border-color: var(--text-muted);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       5. DOCUMENT CARDS GRID & ITEM STYLING
+       ═══════════════════════════════════════════════════════════════ */
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--space-m);
+      list-style: none;
+    }
+    @media (max-width: 639px) {
+      .docs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .doc-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-l);
+      padding: var(--space-m);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .doc-card:hover {
+      border-color: var(--primary-teal);
+      background: #FAFCFC;
+    }
+    .doc-card.is-archived {
+      background: #F8FAFC;
+      border-color: var(--border-strong);
+      opacity: 0.95;
+    }
+    .doc-card.is-archived:hover {
+      border-color: #64748B;
+    }
+
+    .doc-card-top {
+      margin-bottom: var(--space-s);
+    }
+    .doc-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-xs);
+    }
+    .doc-id-type {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .doc-id {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      padding: 0.15rem 0.45rem;
+      border-radius: var(--radius-s);
+      letter-spacing: 0.05em;
+    }
+    .doc-type-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary-teal-dark);
+      background: var(--primary-teal-light);
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-s);
+    }
+    .doc-card.is-archived .doc-type-badge {
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+    }
+
+    /* Status Badges */
+    .status-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-s);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .status-badge.active {
+      background: var(--status-active-bg);
+      color: var(--status-active-text);
+      border: 1px solid var(--status-active-border);
+    }
+    .status-badge.draft {
+      background: var(--status-draft-bg);
+      color: var(--status-draft-text);
+      border: 1px solid var(--status-draft-border);
+    }
+    .status-badge.archived {
+      background: var(--status-archived-bg);
+      color: var(--status-archived-text);
+      border: 1px solid var(--status-archived-border);
+      font-style: italic;
+    }
+
+    .doc-title {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.35;
+      margin-bottom: var(--space-xs);
+    }
+    .doc-card.is-archived .doc-title {
+      color: #334155;
+    }
+    .doc-summary {
+      font-size: 0.875rem;
+      color: var(--text-subtle);
+      line-height: 1.45;
+    }
+
+    .doc-card-bottom {
+      margin-top: var(--space-m);
+      padding-top: var(--space-xs);
+      border-top: 1px solid var(--bg-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .doc-group-tag {
+      font-weight: 600;
+    }
+    .doc-action-hint {
+      color: var(--primary-teal);
+      font-weight: 600;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       6. EMPTY STATE (Trạng thái không có kết quả)
+       ═══════════════════════════════════════════════════════════════ */
+    .empty-state-card {
+      background: var(--bg-surface);
+      border: 2px dashed var(--border-strong);
+      border-radius: var(--radius-l);
+      padding: var(--space-2xl) var(--space-m);
+      text-align: center;
+      margin-top: var(--space-m);
+      display: none;
+    }
+    .empty-state-card.show {
+      display: block;
+    }
+    .empty-icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--space-s);
+      color: var(--text-muted);
+    }
+    .empty-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: var(--space-xs);
+    }
+    .empty-desc {
+      font-size: 0.9375rem;
+      color: var(--text-subtle);
+      max-width: 480px;
+      margin: 0 auto var(--space-l) auto;
+    }
+    .empty-action-btn {
+      min-height: 44px;
+      padding: 0.6rem 1.4rem;
+      background: var(--primary-teal);
+      color: var(--text-on-teal);
+      border: none;
+      border-radius: var(--radius-m);
+      font-family: var(--font-family);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .empty-action-btn:hover {
+      background: var(--primary-teal-dark);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       7. DETAIL VIEW (Bảng / Vùng xem chi tiết tài liệu)
+       ═══════════════════════════════════════════════════════════════ */
+    .detail-view-container {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-l);
+      padding: var(--space-l);
+      margin-top: var(--space-m);
+    }
+    .detail-view-container.show {
+      display: block;
+    }
+
+    .detail-top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-l);
+      padding-bottom: var(--space-s);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .btn-back-list {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-strong);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      font-size: 0.875rem;
+      font-weight: 700;
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius-m);
+      cursor: pointer;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-back-list:hover {
+      background: #E2E8F0;
+    }
+
+    .detail-archive-banner {
+      display: none;
+      background: var(--warning-bg);
+      border: 1.5px solid var(--warning-border);
+      border-radius: var(--radius-m);
+      padding: var(--space-m);
+      margin-bottom: var(--space-l);
+      color: var(--warning-text);
+      font-size: 0.9375rem;
+      font-weight: 600;
+    }
+    .detail-archive-banner.show {
+      display: block;
+    }
+
+    .detail-header-block {
+      margin-bottom: var(--space-l);
+    }
+    .detail-meta-tags {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-s);
+    }
+    .detail-id-large {
+      font-size: 0.875rem;
+      font-weight: 800;
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-s);
+      border: 1px solid var(--border-strong);
+    }
+    .detail-title-large {
+      font-size: 1.625rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.3;
+      margin-bottom: var(--space-s);
+    }
+    .detail-summary-large {
+      font-size: 1.0625rem;
+      color: var(--text-subtle);
+      line-height: 1.6;
+      background: var(--bg-subtle);
+      padding: var(--space-m);
+      border-radius: var(--radius-m);
+      border-left: 4px solid var(--primary-teal);
+      margin-bottom: var(--space-l);
+    }
+    .detail-summary-large.archived {
+      border-left-color: #64748B;
+    }
+
+    .detail-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: var(--space-l);
+    }
+    .detail-table th, .detail-table td {
+      padding: 0.75rem 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      text-align: left;
+      font-size: 0.9375rem;
+    }
+    .detail-table th {
+      width: 25%;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .detail-table td {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .detail-footer-note {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-subtle);
+      padding-top: var(--space-m);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- APP HEADER -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand-block">
+        <span class="brand-badge">Dự án Mẫu</span>
+        <h1 class="brand-title">Thư viện Tài liệu</h1>
+        <span class="brand-sub">Hệ thống Quản trị Tri thức & Khả năng Tìm lại</span>
+      </div>
+      <div class="header-status">
+        <span class="status-badge active" style="font-size:0.7rem;">Mô phỏng bài tập</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-layout">
+    <!-- PAGE HEADING -->
+    <div class="page-heading-block" id="top-heading-block">
+      <h2 class="page-title" id="main-heading" tabindex="-1">Kho Tài liệu Dự án Mẫu</h2>
+      <p class="page-desc">Tổ chức theo Miền công việc, tìm kiếm tiếng Việt không dấu và quản lý phân cấp trạng thái vòng đời tài liệu.</p>
+    </div>
+
+    <!-- MAIN INTERFACE VIEW (Search, Filter & List) -->
+    <div id="catalog-view">
+      <!-- CONTROL PANEL -->
+      <section class="control-panel" aria-label="Bộ điều khiển tìm kiếm và lọc">
+        <!-- Search Row -->
+        <div class="search-row">
+          <div class="search-input-wrapper">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input 
+              type="text" 
+              id="search-input" 
+              class="search-input" 
+              placeholder="Tìm theo tiêu đề hoặc tóm tắt (ví dụ: dang nhap, kịch bản, bản cũ...)"
+              aria-label="Ô tìm kiếm tài liệu"
+              autocomplete="off"
+            />
+            <button id="search-clear-btn" class="search-clear-btn" aria-label="Xóa nội dung tìm kiếm" type="button">✕</button>
+          </div>
+        </div>
+
+        <!-- Single-Level Navigation Group Tabs (Tối đa 4 nhóm chính ngoài Tất cả) -->
+        <div class="group-nav-row" role="navigation" aria-label="Phân nhóm tài liệu">
+          <ul class="tab-list" role="tablist">
+            <li role="presentation">
+              <button class="tab-btn active" id="tab-all" role="tab" aria-selected="true" data-group="all">
+                Tất cả <span class="tab-count" id="count-tab-all">12</span>
+              </button>
+            </li>
+            <li role="presentation">
+              <button class="tab-btn" id="tab-req" role="tab" aria-selected="false" data-group="req">
+                Yêu cầu & Đặc tả <span class="tab-count" id="count-tab-req">3</span>
+              </button>
+            </li>
+            <li role="presentation">
+              <button class="tab-btn" id="tab-ui" role="tab" aria-selected="false" data-group="ui">
+                Giao diện & Trải nghiệm <span class="tab-count" id="count-tab-ui">3</span>
+              </button>
+            </li>
+            <li role="presentation">
+              <button class="tab-btn" id="tab-qa" role="tab" aria-selected="false" data-group="qa">
+                Chất lượng & Kiểm thử <span class="tab-count" id="count-tab-qa">2</span>
+              </button>
+            </li>
+            <li role="presentation">
+              <button class="tab-btn" id="tab-ops" role="tab" aria-selected="false" data-group="ops">
+                Vận hành & Dự án <span class="tab-count" id="count-tab-ops">4</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Secondary Attributes & Filters Row (Tối đa 2 bộ lọc theo giới hạn đề bài) -->
+        <div class="filter-options-row">
+          <div class="filter-left-group">
+            <!-- Filter 1: Trạng thái tài liệu -->
+            <div class="filter-select-wrapper">
+              <label for="filter-status" class="filter-label">Trạng thái:</label>
+              <select id="filter-status" class="filter-select" aria-label="Lọc theo trạng thái">
+                <option value="all">Tất cả trạng thái</option>
+                <option value="Hiện hành">Hiện hành</option>
+                <option value="Đang soạn">Đang soạn</option>
+              </select>
+            </div>
+
+            <!-- Filter 2: Hộp kiểm tài liệu Lưu trữ (Mặc định: không gồm lưu trữ) -->
+            <label class="checkbox-wrapper" for="filter-archive">
+              <input type="checkbox" id="filter-archive" class="checkbox-input" />
+              <span>Bao gồm tài liệu lưu trữ</span>
+            </label>
+          </div>
+
+          <!-- Reset Filter Button -->
+          <button id="btn-clear-filters" class="btn-clear-filters" type="button" aria-label="Xóa toàn bộ điều kiện lọc">
+            ↺ Xóa điều kiện
+          </button>
+        </div>
+
+        <!-- Filter Summary & Results Count Bar -->
+        <div class="filter-summary-bar" id="filter-summary-bar">
+          <div class="summary-left">
+            <span class="result-count-label" id="results-count-label">Hiển thị 10 tài liệu</span>
+            <div id="active-filter-chips" style="display:inline-flex; gap:0.25rem; flex-wrap:wrap;"></div>
+          </div>
+          <div class="summary-right">
+            <span style="color:var(--text-muted); font-size:0.75rem;">Phép giao AND đồng thời</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- DOCUMENT LIST -->
+      <section aria-label="Danh sách tài liệu phù hợp">
+        <ul class="docs-grid" id="docs-grid">
+          <!-- Rendered via JavaScript -->
+        </ul>
+
+        <!-- Empty State View -->
+        <div class="empty-state-card" id="empty-state">
+          <div class="empty-icon" aria-hidden="true">📂</div>
+          <h3 class="empty-title">Không tìm thấy tài liệu phù hợp với điều kiện</h3>
+          <p class="empty-desc" id="empty-desc">Không có tài liệu nào khớp với từ khóa tìm kiếm và các bộ lọc đang được áp dụng đồng thời.</p>
+          <button class="empty-action-btn" id="btn-empty-clear" type="button">Xóa điều kiện và xem lại tất cả</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- DETAIL VIEW (Trang xem chi tiết tài liệu chuyên sâu) -->
+    <article class="detail-view-container" id="doc-detail-view" aria-label="Chi tiết tài liệu">
+      <div class="detail-top-nav">
+        <button class="btn-back-list" id="btn-back-to-list" type="button" aria-label="Quay lại danh sách tài liệu">
+          ← Quay lại danh sách
+        </button>
+        <span class="detail-id-large" id="detail-id">D01</span>
+      </div>
+
+      <!-- Warning Banner for Archived Documents -->
+      <div class="detail-archive-banner" id="detail-archive-banner">
+        ⚠️ <strong>LƯU TRỮ (HẾT HIỆU LỰC):</strong> Đây là tài liệu thuộc diện lưu trữ lịch sử, không dùng làm căn cứ thực thi hay nghiệm thu hiện hành của Dự án Mẫu.
+      </div>
+
+      <div class="detail-header-block">
+        <div class="detail-meta-tags">
+          <span class="doc-type-badge" id="detail-type">Đặc tả</span>
+          <span class="status-badge" id="detail-status-badge">Hiện hành</span>
+          <span class="filter-chip" id="detail-group-chip">Nhóm: <strong>Yêu cầu & Đặc tả</strong></span>
+        </div>
+        <h3 class="detail-title-large" id="detail-title" tabindex="-1">Yêu cầu sản phẩm</h3>
+        <div class="detail-summary-large" id="detail-summary">
+          Mục tiêu, phạm vi và điều kiện nghiệm thu sản phẩm.
+        </div>
+      </div>
+
+      <table class="detail-table">
+        <tbody>
+          <tr>
+            <th>Mã tài liệu (ID):</th>
+            <td id="detail-table-id">D01</td>
+          </tr>
+          <tr>
+            <th>Phân loại:</th>
+            <td id="detail-table-type">Đặc tả</td>
+          </tr>
+          <tr>
+            <th>Trạng thái:</th>
+            <td id="detail-table-status">Hiện hành</td>
+          </tr>
+          <tr>
+            <th>Miền công việc:</th>
+            <td id="detail-table-group">Yêu cầu & Đặc tả</td>
+          </tr>
+          <tr>
+            <th>Phạm vi hiệu lực:</th>
+            <td id="detail-table-scope">Dự án Mẫu — Toàn dự án</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="detail-footer-note">
+        💡 <em>Nhấn phím <code>Escape</code> hoặc bấm nút "Quay lại danh sách" để trở về danh sách tài liệu với nguyên vẹn từ khóa, bộ lọc và trạng thái focus ban đầu.</em>
+      </div>
+    </article>
+  </main>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    /* ═══════════════════════════════════════════════════════════════
+       1. CANONICAL FIXED DATA (12 Tài Liệu Cố Định D01 - D12)
+       ═══════════════════════════════════════════════════════════════ */
+    const DOCUMENTS_DATA = [
+      {
+        id: "D01",
+        title: "Yêu cầu sản phẩm",
+        type: "Đặc tả",
+        status: "Hiện hành",
+        summary: "Mục tiêu, phạm vi và điều kiện nghiệm thu sản phẩm.",
+        group: "req",
+        groupName: "Yêu cầu & Đặc tả"
+      },
+      {
+        id: "D02",
+        title: "Luồng tạo tài khoản",
+        type: "Đặc tả",
+        status: "Hiện hành",
+        summary: "Các bước đăng ký tài khoản và xác nhận thông tin.",
+        group: "req",
+        groupName: "Yêu cầu & Đặc tả"
+      },
+      {
+        id: "D03",
+        title: "Quy chuẩn màu và chữ",
+        type: "Thiết kế",
+        status: "Hiện hành",
+        summary: "Màu, kiểu chữ và nguyên tắc trình bày giao diện.",
+        group: "ui",
+        groupName: "Giao diện & Trải nghiệm"
+      },
+      {
+        id: "D04",
+        title: "Bản mẫu màn hình đăng nhập",
+        type: "Thiết kế",
+        status: "Đang soạn",
+        summary: "Bản mẫu giao diện đăng nhập chưa được chốt.",
+        group: "ui",
+        groupName: "Giao diện & Trải nghiệm"
+      },
+      {
+        id: "D05",
+        title: "Kịch bản kiểm thử đăng nhập",
+        type: "Kiểm thử",
+        status: "Hiện hành",
+        summary: "Các tình huống kiểm tra đăng nhập và kết quả mong đợi.",
+        group: "qa",
+        groupName: "Chất lượng & Kiểm thử"
+      },
+      {
+        id: "D06",
+        title: "Báo cáo kiểm thử đăng nhập",
+        type: "Kiểm thử",
+        status: "Hiện hành",
+        summary: "Kết quả chạy các tình huống đăng nhập và lỗi đã ghi nhận.",
+        group: "qa",
+        groupName: "Chất lượng & Kiểm thử"
+      },
+      {
+        id: "D07",
+        title: "Hướng dẫn sử dụng",
+        type: "Hướng dẫn",
+        status: "Hiện hành",
+        summary: "Chỉ dẫn thao tác dành cho người sử dụng sản phẩm.",
+        group: "ops",
+        groupName: "Vận hành & Dự án"
+      },
+      {
+        id: "D08",
+        title: "Hướng dẫn triển khai",
+        type: "Hướng dẫn",
+        status: "Hiện hành",
+        summary: "Các bước chuẩn bị môi trường và triển khai bản bàn giao.",
+        group: "ops",
+        groupName: "Vận hành & Dự án"
+      },
+      {
+        id: "D09",
+        title: "Biên bản bàn giao",
+        type: "Biên bản",
+        status: "Đang soạn",
+        summary: "Danh sách hạng mục và xác nhận bàn giao đang chuẩn bị.",
+        group: "ops",
+        groupName: "Vận hành & Dự án"
+      },
+      {
+        id: "D10",
+        title: "Biên bản họp khởi động",
+        type: "Biên bản",
+        status: "Hiện hành",
+        summary: "Mục tiêu và thống nhất ban đầu của dự án.",
+        group: "ops",
+        groupName: "Vận hành & Dự án"
+      },
+      {
+        id: "D11",
+        title: "Yêu cầu sản phẩm bản cũ",
+        type: "Đặc tả",
+        status: "Lưu trữ",
+        summary: "Bản yêu cầu trước đây, không dùng làm căn cứ hiện hành.",
+        group: "req",
+        groupName: "Yêu cầu & Đặc tả"
+      },
+      {
+        id: "D12",
+        title: "Bản mẫu màn hình đăng nhập bản cũ",
+        type: "Thiết kế",
+        status: "Lưu trữ",
+        summary: "Bản mẫu trước đây, được giữ để tham khảo lịch sử.",
+        group: "ui",
+        groupName: "Giao diện & Trải nghiệm"
+      }
+    ];
+
+    /* ═══════════════════════════════════════════════════════════════
+       2. APPLICATION STATE
+       ═══════════════════════════════════════════════════════════════ */
+    const state = {
+      searchQuery: '',
+      activeGroup: 'all',       // 'all', 'req', 'ui', 'qa', 'ops'
+      activeStatus: 'all',      // 'all', 'Hiện hành', 'Đang soạn'
+      includeArchive: false,    // boolean: mặc định không gồm tài liệu lưu trữ
+      openedDocId: null,        // ID tài liệu đang mở chi tiết
+      lastFocusedDocId: null,   // Lưu ID thẻ để hoàn trả focus chính xác
+      savedScrollY: 0           // Lưu vị trí cuộn khi xem chi tiết
+    };
+
+    /* ═══════════════════════════════════════════════════════════════
+       3. VIETNAMESE ACCENT NORMALIZATION (Khả năng tìm kiếm tiếng Việt không dấu)
+       ═══════════════════════════════════════════════════════════════ */
+    function removeVietnameseTones(str) {
+      if (!str) return '';
+      str = str.toLowerCase();
+      str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
+      str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, 'e');
+      str = str.replace(/ì|í|ị|ỉ|ĩ/g, 'i');
+      str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, 'o');
+      str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, 'u');
+      str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, 'y');
+      str = str.replace(/đ/g, 'd');
+      str = str.replace(/Đ/g, 'd');
+      // Thêm NFD Unicode chuẩn hóa phòng ngừa
+      str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      // Gom nhiều khoảng trắng thừa thành 1 khoảng trắng và cắt đầu đuôi
+      str = str.replace(/\s+/g, ' ').trim();
+      return str;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       4. CONJUNCTION FILTERING ENGINE (Phép Giao AND Đồng Thời)
+       ═══════════════════════════════════════════════════════════════ */
+    function filterDocuments() {
+      const normQuery = removeVietnameseTones(state.searchQuery);
+
+      return DOCUMENTS_DATA.filter(doc => {
+        // 1. Điều kiện Lưu trữ: Mặc định không gồm lưu trữ trừ khi bật hộp kiểm
+        if (!state.includeArchive && doc.status === 'Lưu trữ') {
+          return false;
+        }
+
+        // 2. Điều kiện Nhóm điều hướng
+        if (state.activeGroup !== 'all' && doc.group !== state.activeGroup) {
+          return false;
+        }
+
+        // 3. Điều kiện Bộ lọc Trạng thái
+        if (state.activeStatus !== 'all' && doc.status !== state.activeStatus) {
+          return false;
+        }
+
+        // 4. Điều kiện Tìm kiếm trên Tiêu đề và Tóm tắt
+        if (normQuery) {
+          const normTitle = removeVietnameseTones(doc.title);
+          const normSummary = removeVietnameseTones(doc.summary);
+          if (!normTitle.includes(normQuery) && !normSummary.includes(normQuery)) {
+            return false;
+          }
+        }
+
+        return true;
+      });
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       5. RENDER FUNCTIONS
+       ═══════════════════════════════════════════════════════════════ */
+    function render() {
+      const results = filterDocuments();
+      const grid = document.getElementById('docs-grid');
+      const emptyState = document.getElementById('empty-state');
+      const countLabel = document.getElementById('results-count-label');
+      const chipsContainer = document.getElementById('active-filter-chips');
+
+      // 1. Cập nhật nhãn số lượng kết quả
+      countLabel.innerText = `Hiển thị ${results.length} tài liệu`;
+
+      // 2. Cập nhật các chip điều kiện đang áp dụng bằng DOM API an toàn (F01: textContent)
+      chipsContainer.innerHTML = '';
+      function appendChip(labelText, valueText, customStyle) {
+        const chip = document.createElement('span');
+        chip.className = 'filter-chip';
+        if (customStyle) {
+          Object.assign(chip.style, customStyle);
+        }
+        chip.appendChild(document.createTextNode(labelText + ' '));
+        const strong = document.createElement('strong');
+        strong.textContent = valueText;
+        chip.appendChild(strong);
+        chipsContainer.appendChild(chip);
+      }
+
+      if (state.activeGroup !== 'all') {
+        const groupLabels = {
+          req: 'Yêu cầu & Đặc tả',
+          ui: 'Giao diện & Trải nghiệm',
+          qa: 'Chất lượng & Kiểm thử',
+          ops: 'Vận hành & Dự án'
+        };
+        appendChip('Nhóm:', groupLabels[state.activeGroup]);
+      }
+      if (state.activeStatus !== 'all') {
+        appendChip('Trạng thái:', state.activeStatus);
+      }
+      if (state.includeArchive) {
+        appendChip('Gồm:', 'Lưu trữ', { background: '#FEF3C7', color: '#92400E', borderColor: '#FDE68A' });
+      }
+      if (state.searchQuery.trim()) {
+        appendChip('Từ khóa:', `"${state.searchQuery.trim()}"`);
+      }
+
+      // 3. Xử lý trạng thái 0 kết quả
+      if (results.length === 0) {
+        grid.innerHTML = '';
+        grid.style.display = 'none';
+        emptyState.classList.add('show');
+        return;
+      }
+
+      grid.style.display = 'grid';
+      emptyState.classList.remove('show');
+
+      // 4. Render danh sách thẻ tài liệu
+      grid.innerHTML = results.map(doc => {
+        const isArchived = doc.status === 'Lưu trữ';
+        let statusBadgeClass = 'active';
+        if (doc.status === 'Đang soạn') statusBadgeClass = 'draft';
+        if (doc.status === 'Lưu trữ') statusBadgeClass = 'archived';
+
+        return `
+          <li class="doc-card ${isArchived ? 'is-archived' : ''}" 
+              id="doc-card-${doc.id}" 
+              role="button" 
+              tabindex="0" 
+              data-id="${doc.id}"
+              aria-label="Tài liệu ${doc.id}: ${doc.title}. Trạng thái: ${doc.status}. Nhấn Enter để xem chi tiết."
+              onclick="openDocDetail('${doc.id}')"
+              onkeydown="if(event.key==='Enter'||event.key===' '){ openDocDetail('${doc.id}'); event.preventDefault(); }">
+            <div class="doc-card-top">
+              <div class="doc-meta-row">
+                <div class="doc-id-type">
+                  <span class="doc-id">${doc.id}</span>
+                  <span class="doc-type-badge">${doc.type}</span>
+                </div>
+                <span class="status-badge ${statusBadgeClass}">${doc.status}</span>
+              </div>
+              <h3 class="doc-title">${doc.title}</h3>
+              <p class="doc-summary">${doc.summary}</p>
+            </div>
+            <div class="doc-card-bottom">
+              <span class="doc-group-tag">${doc.groupName}</span>
+              <span class="doc-action-hint">Chi tiết →</span>
+            </div>
+          </li>
+        `;
+      }).join('');
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       6. DETAIL VIEW INTERACTION & FOCUS MANAGEMENT
+       ═══════════════════════════════════════════════════════════════ */
+    function openDocDetail(docId) {
+      const doc = DOCUMENTS_DATA.find(d => d.id === docId);
+      if (!doc) return;
+
+      state.lastFocusedDocId = docId;
+      state.openedDocId = docId;
+      state.savedScrollY = window.scrollY;
+
+      // Điền dữ liệu vào bảng chi tiết
+      document.getElementById('detail-id').innerText = doc.id;
+      document.getElementById('detail-table-id').innerText = doc.id;
+      document.getElementById('detail-title').innerText = doc.title;
+      document.getElementById('detail-summary').innerText = doc.summary;
+      document.getElementById('detail-type').innerText = doc.type;
+      document.getElementById('detail-table-type').innerText = doc.type;
+      document.getElementById('detail-table-status').innerText = doc.status;
+      document.getElementById('detail-table-group').innerText = doc.groupName;
+      document.getElementById('detail-group-chip').innerHTML = `Nhóm: <strong>${doc.groupName}</strong>`;
+
+      // Cập nhật huy hiệu trạng thái & banner lưu trữ
+      const statusBadge = document.getElementById('detail-status-badge');
+      statusBadge.innerText = doc.status;
+      statusBadge.className = 'status-badge';
+      const archiveBanner = document.getElementById('detail-archive-banner');
+      const summaryBox = document.getElementById('detail-summary');
+
+      if (doc.status === 'Hiện hành') {
+        statusBadge.classList.add('active');
+        archiveBanner.classList.remove('show');
+        summaryBox.classList.remove('archived');
+      } else if (doc.status === 'Đang soạn') {
+        statusBadge.classList.add('draft');
+        archiveBanner.classList.remove('show');
+        summaryBox.classList.remove('archived');
+      } else if (doc.status === 'Lưu trữ') {
+        statusBadge.classList.add('archived');
+        archiveBanner.classList.add('show');
+        summaryBox.classList.add('archived');
+      }
+
+      // Ẩn Catalog View và hiển thị Detail View
+      document.getElementById('catalog-view').style.display = 'none';
+      const detailView = document.getElementById('doc-detail-view');
+      detailView.classList.add('show');
+
+      // Cuộn tức thì lên đầu và focus vào nút Quay lại
+      window.scrollTo(0, 0);
+      const backBtn = document.getElementById('btn-back-to-list');
+      if (backBtn) backBtn.focus();
+    }
+
+    function closeDocDetail() {
+      // Ẩn Detail View và hiển thị Catalog View
+      document.getElementById('doc-detail-view').classList.remove('show');
+      document.getElementById('catalog-view').style.display = 'block';
+
+      // Khôi phục vị trí cuộn ban đầu tức thì (Zero Motion)
+      window.scrollTo(0, state.savedScrollY);
+
+      // Hoàn trả focus về chính thẻ tài liệu đã được mở
+      if (state.lastFocusedDocId) {
+        const targetCard = document.getElementById(`doc-card-${state.lastFocusedDocId}`);
+        if (targetCard) {
+          targetCard.focus();
+        } else {
+          document.getElementById('main-heading').focus();
+        }
+      }
+      state.openedDocId = null;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       7. RESET / CLEAR FILTERS
+       ═══════════════════════════════════════════════════════════════ */
+    function resetFilters() {
+      state.searchQuery = '';
+      state.activeGroup = 'all';
+      state.activeStatus = 'all';
+      state.includeArchive = false;
+
+      document.getElementById('search-input').value = '';
+      document.getElementById('search-clear-btn').classList.remove('show');
+      document.getElementById('filter-status').value = 'all';
+      document.getElementById('filter-archive').checked = false;
+
+      // Cập nhật tab active
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        const isAll = btn.dataset.group === 'all';
+        btn.classList.toggle('active', isAll);
+        btn.setAttribute('aria-selected', isAll ? 'true' : 'false');
+      });
+
+      render();
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       8. EVENT LISTENERS
+       ═══════════════════════════════════════════════════════════════ */
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('search-input');
+      const searchClearBtn = document.getElementById('search-clear-btn');
+      const filterStatus = document.getElementById('filter-status');
+      const filterArchive = document.getElementById('filter-archive');
+      const btnClearFilters = document.getElementById('btn-clear-filters');
+      const btnEmptyClear = document.getElementById('btn-empty-clear');
+      const btnBackToList = document.getElementById('btn-back-to-list');
+
+      // Tìm kiếm theo thời gian thực (hỗ trợ nhập tiếng Việt và gõ phím)
+      searchInput.addEventListener('input', (e) => {
+        state.searchQuery = e.target.value;
+        searchClearBtn.classList.toggle('show', state.searchQuery.length > 0);
+        render();
+      });
+
+      searchClearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        state.searchQuery = '';
+        searchClearBtn.classList.remove('show');
+        searchInput.focus();
+        render();
+      });
+
+      // Điều hướng nhóm tab
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-btn').forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+          state.activeGroup = btn.dataset.group;
+          render();
+        });
+      });
+
+      // Lọc theo trạng thái
+      filterStatus.addEventListener('change', (e) => {
+        state.activeStatus = e.target.value;
+        render();
+      });
+
+      // Hộp kiểm lưu trữ
+      filterArchive.addEventListener('change', (e) => {
+        state.includeArchive = e.target.checked;
+        render();
+      });
+
+      // Nút xóa bộ lọc
+      btnClearFilters.addEventListener('click', () => {
+        resetFilters();
+        searchInput.focus();
+      });
+      btnEmptyClear.addEventListener('click', () => {
+        resetFilters();
+        searchInput.focus();
+      });
+
+      // Nút quay lại từ trang chi tiết
+      btnBackToList.addEventListener('click', () => {
+        closeDocDetail();
+      });
+
+      // Hỗ trợ phím Escape để thoát xem chi tiết
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && state.openedDocId) {
+          closeDocDetail();
+        }
+      });
+
+      // Khởi tạo hiển thị ban đầu
+      render();
+    });
+  </script>
+</body>
+</html>

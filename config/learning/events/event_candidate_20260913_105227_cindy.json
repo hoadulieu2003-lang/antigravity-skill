@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-13T10:52:27.504604+00:00",
+  "skill_name": "cindy",
+  "source_repo": "makecindy/cindy",
+  "stars": 2663,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\cindy\\SKILL.md",
+  "human_promotion_required": true
+}

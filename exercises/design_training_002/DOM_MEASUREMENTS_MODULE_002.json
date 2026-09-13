@@ -1,0 +1,85 @@
+{
+  "test_run": "FINAL_KEYBOARD_AND_FOCUS_AUDIT",
+  "timestamp": "2026-09-13T09:41:40.377Z",
+  "viewport": "390x844 (Mobile)",
+  "deviceScaleFactor": 2,
+  "scenarios": [
+    {
+      "scenario": "Mode A: Kích hoạt CTA T01 bằng phím Enter",
+      "mode": "a",
+      "inputMethod": "keyboard (Enter)",
+      "targetedElement": "btn-action-t01",
+      "activeElementBefore": "btn-action-t01",
+      "bannerVisibleBefore": false,
+      "scrollY": 0,
+      "activeElementAfter": "btn-action-t01",
+      "bannerVisibleAfter": true,
+      "feedbackText": "Đã chọn T01 để bắt đầu — thao tác mô phỏng",
+      "bannerTop": 345.84375,
+      "screenshot": "option_a_mobile_after_cta.png"
+    },
+    {
+      "scenario": "Mode A: Bấm Đặt lại bằng phím Enter & Focus trả về CTA",
+      "mode": "a",
+      "inputMethod": "keyboard (Enter)",
+      "targetedElement": "btn-reset-feedback",
+      "activeElementBefore": "btn-reset-feedback",
+      "activeElementAfter": "btn-action-t01",
+      "bannerVisibleAfter": false,
+      "focusSuccessfullyRestored": true
+    },
+    {
+      "scenario": "Mode B: Kích hoạt CTA T02 bằng phím Space",
+      "mode": "b",
+      "inputMethod": "keyboard (Space)",
+      "targetedElement": "btn-action-t02",
+      "activeElementBefore": "btn-action-t02",
+      "bannerVisibleBefore": false,
+      "scrollY": 0,
+      "activeElementAfter": "btn-action-t02",
+      "bannerVisibleAfter": true,
+      "feedbackText": "Bước tiếp theo: chuẩn bị tài khoản thử nghiệm cho T02 — hướng dẫn mô phỏng",
+      "bannerTop": 345.84375,
+      "screenshot": "option_b_mobile_after_cta.png"
+    },
+    {
+      "scenario": "Mode B: Bấm Đặt lại bằng phím Enter & Focus trả về CTA T02",
+      "mode": "b",
+      "inputMethod": "keyboard (Enter)",
+      "targetedElement": "btn-reset-feedback",
+      "activeElementBefore": "btn-reset-feedback",
+      "activeElementAfter": "btn-action-t02",
+      "bannerVisibleAfter": false,
+      "focusSuccessfullyRestored": true
+    },
+    {
+      "scenario": "Chọn công việc trong hàng đợi bằng phím Enter -> Tự cuộn tức thì và Focus vào Bảng chi tiết",
+      "mode": "b",
+      "inputMethod": "keyboard (Enter on queue item)",
+      "targetedElement": "first task-item in queue (T01)",
+      "activeElementBefore": "LI",
+      "activeElementAfter": "task-detail-panel",
+      "selectedTaskId": "T01",
+      "detailStatus": "Có thể làm",
+      "detailDeadline": "10:00 hôm nay",
+      "panelTop": 384.671875,
+      "panelBottom": 804.390625,
+      "isPanelInViewport": true,
+      "scrollY": 1110,
+      "screenshot": "option_mobile_detail_scrolled.png"
+    },
+    {
+      "scenario": "Bấm nút Quay lại đầu trang bằng phím Enter -> Cuộn tức thì lên đầu và Focus về Tiêu đề chính",
+      "mode": "b",
+      "inputMethod": "keyboard (Enter on btn-back-top)",
+      "targetedElement": "btn-back-top",
+      "activeElementBefore": "btn-back-top",
+      "scrollYBefore": 1110,
+      "activeElementAfter": "main-page-heading",
+      "scrollYAfter": 0,
+      "headingTop": 243.6875,
+      "isHeadingVisible": true,
+      "isStickyHeaderObscuring": false
+    }
+  ]
+}
