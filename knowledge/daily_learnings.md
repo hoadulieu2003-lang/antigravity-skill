@@ -492,3 +492,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-14 05:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (62 ⭐)]** [mochow13/keen-code](https://github.com/mochow13/keen-code)
+  > A context-aware terminal-based coding agent written in Go. Supports multiple-providers, MCPs, Subagents, Agent Skills, controllable tool output retention, ha...
+- **[GitHub (495 ⭐)]** [rome-os/rome](https://github.com/rome-os/rome)
+  > A compounding agent OS for recursive agents. Also an open source alternative to Grok Bot and Meta's Muse.
+
+</untrusted_external_content>
+
+---
