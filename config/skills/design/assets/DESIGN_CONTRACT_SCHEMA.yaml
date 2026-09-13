@@ -1,0 +1,122 @@
+# ==============================================================================
+# CANONICAL DESIGN CONTRACT SCHEMA — PHASE C & ANTIGRAVITY DESIGN BRAIN
+# ==============================================================================
+schema_version: "2.0"
+governance: "Lead Architect (Anh) Authority & Design Director ($design)"
+
+project:
+  id: "string (e.g. project_aurapay_fintech)"
+  name: "string"
+  client_persona: "string (e.g. Enterprise B2B, Creative Agency, SME Local)"
+  status: "DRAFT | LOCKED | CHANGE_REQUESTED"
+
+art_direction:
+  visual_thesis: "string (One compelling sentence defining the core visual soul)"
+  signature_experience: "string (One unforgettable moment within 3s of interaction)"
+  brand_perception:
+    - "string (e.g. authoritative)"
+    - "string (e.g. surgical)"
+    - "string (e.g. airy)"
+  avoid:
+    - "generic_saas_card_grid"
+    - "excessive_bento_box"
+    - "purple_ai_gradient"
+    - "unrequested_dark_theme"
+    - "arbitrary_magic_numbers"
+    - "3d_without_information_value"
+
+color_system:
+  theme_mode: "LIGHT_ONLY" # Mặc định 100% Light Theme; Dark Theme chỉ khi Anh yêu cầu
+  canvas_background: "string (e.g. #FAF9F6 - Warm Alabaster)"
+  surface_background: "string (e.g. #FFFFFF - Crisp Surface)"
+  primary_text: "string (e.g. #0F172A - Deep Slate)"
+  secondary_text: "string (e.g. #64748B - Muted Slate)"
+  border_subtle: "string (e.g. #E2E8F0 - Delicate Border)"
+  brand_accent: "string (e.g. #0D9488 - Deep Emerald Teal)"
+  chromatic_accents:
+    - "string (e.g. #F59E0B - Warm Amber)"
+    - "string (e.g. #4338CA - Royal Cobalt)"
+
+typography:
+  primary_font:
+    family: "string (e.g. Plus Jakarta Sans)"
+    category: "Geometric Sans"
+    source: "fontsource"
+    role: "Body copy, UI labels, buttons"
+  secondary_font:
+    family: "string (e.g. Fraunces / Cabinet Grotesk)"
+    category: "Display Editorial"
+    source: "fontsource"
+    role: "Hero headlines, expressive callouts"
+  mono_font:
+    family: "string (e.g. JetBrains Mono)"
+    category: "Monospace"
+    source: "fontsource"
+    role: "Financial metrics, timestamps, technical metadata"
+  scale:
+    type: "fluid_modular"
+    ratio_mobile: 1.200 # Minor Third
+    ratio_desktop: 1.250 # Major Third
+    base_size: "1rem (16px)"
+    clamp_display: "clamp(2.75rem, 2.0rem + 3.75vw, 5.0rem)"
+    clamp_h1: "clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem)"
+    clamp_h2: "clamp(1.75rem, 1.5rem + 1.25vw, 2.25rem)"
+    clamp_h3: "clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem)"
+    clamp_body: "clamp(1.0rem, 0.95rem + 0.25vw, 1.125rem)"
+    clamp_caption: "clamp(0.75rem, 0.72rem + 0.15vw, 0.875rem)"
+  constraints:
+    max_reading_width: "65ch"
+    heading_leading: "1.05 - 1.15"
+    body_leading: "1.5 - 1.65"
+    uppercase_tracking: "+0.1em"
+
+spacing_system:
+  system: "utopia_open_props_hybrid"
+  base_unit: "4px / 8px"
+  fluid: true
+  tokens:
+    space_3xs: "clamp(0.25rem, 0.23rem + 0.1vw, 0.3125rem)" # 4px -> 5px
+    space_2xs: "clamp(0.5rem, 0.45rem + 0.2vw, 0.625rem)"   # 8px -> 10px
+    space_xs: "clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem)"   # 12px -> 14px
+    space_s: "clamp(1.0rem, 0.9rem + 0.5vw, 1.25rem)"       # 16px -> 20px
+    space_m: "clamp(1.5rem, 1.35rem + 0.75vw, 1.875rem)"    # 24px -> 30px
+    space_l: "clamp(2.0rem, 1.8rem + 1.0vw, 2.5rem)"        # 32px -> 40px
+    space_xl: "clamp(3.0rem, 2.7rem + 1.5vw, 3.75rem)"      # 48px -> 60px
+    space_2xl: "clamp(4.0rem, 3.6rem + 2.0vw, 5.0rem)"      # 64px -> 80px
+    space_3xl: "clamp(6.0rem, 5.4rem + 3.0vw, 7.5rem)"      # 96px -> 120px
+
+layout_primitives:
+  allowed_primitives:
+    - "Stack (Vertical Flow)"
+    - "Cluster (Horizontal Flex Wrap)"
+    - "Sidebar (Asymmetric Flex Split)"
+    - "Switcher (Threshold Layout Toggle)"
+    - "Cover (Vertical Pinned Container)"
+    - "Center (Bounded Inline Measure)"
+    - "Grid (Auto-fit Minmax)"
+    - "Frame (Aspect Ratio Media Wrapper)"
+  grid_strategy:
+    max_container_width: "1280px"
+    content_reading_width: "65ch"
+    gutter: "var(--space-m)"
+    columns: 12
+
+composition_rules:
+  density: "comfortable" # compact | comfortable | expansive
+  whitespace_ratio: 0.35 # Tỉ lệ tối thiểu 35% khoảng trắng âm trên trang
+  asymmetry_allowed: true
+  alignment_strategy: "strong_left_anchor_with_staggered_accents"
+
+pre_motion_verification:
+  typography_pass: false
+  spacing_pass: false
+  grid_pass: false
+  hierarchy_pass: false
+  responsive_pass: false
+  composition_pass: false
+
+visual_execution:
+  motion_allowed: true # Chỉ bật sau khi pre_motion_verification đạt 100% PASS
+  motion_tool: "gsap" # gsap | none
+  three_d_allowed: true # Chỉ bật sau khi pre_motion_verification đạt 100% PASS
+  three_d_tool: "r3f-pmndrs" # r3f-pmndrs | threejs | none
