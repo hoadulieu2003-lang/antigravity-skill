@@ -100,7 +100,8 @@
         "read_url(mobbin.com)",
         "read_url(llm.codorai.com)",
         "mcp(cdp-bridge/get_ast_repo_map)",
-        "read_url(linear.app)"
+        "read_url(linear.app)",
+        "read_url(tabio.com)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

@@ -264,3 +264,23 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-13 07:23:00`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (600 ⭐)]** [AgentiLoop/Agent](https://github.com/AgentiLoop/Agent)
+  > AgentiLoop Agent! An Autonomous Agentic Agent for Mac, and exclusive Apple only harnesss. Suppprtd automation, scripting, coding, build anything and more. Po...
+- **[GitHub (100 ⭐)]** [gaixianggeng/mimi-remote](https://github.com/gaixianggeng/mimi-remote)
+  > Open-source native iPhone/iPad client for OpenAI Codex CLI and Claude Code — review diffs, approve actions, steer sessions, and manage Git remotely.
+- **[GitHub (51733 ⭐)]** [CherryHQ/cherry-studio](https://github.com/CherryHQ/cherry-studio)
+  > AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [A Multi-Stage Rule-Chaining Framework for Compositional and Interpretable Cognitive Reasoning](https://arxiv.org/abs/2609.10654)
+  > arXiv:2609.10654v1 Announce Type: new Abstract: The Abstraction and Reasoning Corpus (ARC) benchmarks cognitive generalization, the ability to infer and appl...
+- **[ArXiv CS.AI]** [Understanding LoRA Rank Trade-offs in Diffusion Model Fine-Tuning](https://arxiv.org/abs/2609.10656)
+  > arXiv:2609.10656v1 Announce Type: new Abstract: Selecting LoRA rank for diffusion fine-tuning requires balancing quality and compute cost. We present a contr...
+
+</untrusted_external_content>
+
+---

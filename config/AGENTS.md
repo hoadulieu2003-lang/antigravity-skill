@@ -72,6 +72,13 @@
   4. **Ủy ban Kiểm toán Chất lượng & Thẩm định Độc lập (`Independent QA Commission`)**: Phân hệ `$test` (Audit-only, Fresh context, Evidence ledger).
   5. **Trung tâm Quản trị Tri thức & Tự học Doanh nghiệp (`Corporate Knowledge Vault`)**: `knowledge/daily_learnings.md`.
 
+### 1.8. Quy Chuẩn Không Bắt Anh Gõ Lệnh & Tự Động Mở Chrome (Zero-Manual-CLI & Autonomous Browser Launch Protocol)
+
+* **Nguyên tắc Bất biến (`Zero-Manual-CLI Invariant`)**: Tuyệt đối **KHÔNG BAO GIỜ BẮT ANH PHẢI GÕ LỆNH TERMINAL THỦ CÔNG** (như `npm run dev`, `vite`, `python`, v.v.) để chạy ứng dụng hoặc trải nghiệm giao diện.
+* **Tự động Khởi chạy Khép kín (`Autonomous Local Server & Chrome Launch`)**:
+  * Khi hoàn tất tính năng, bản mẫu hoặc sẵn sàng demo, Em chủ động tự động khởi động tiến trình server nền (`background daemon process`) và tự động kích hoạt trình duyệt Google Chrome mở thẳng tới địa chỉ ứng dụng (ví dụ: `http://localhost:5173`) để Anh trải nghiệm trực quan ngay lập tức.
+  * Anh chỉ việc quan sát, thao tác trực tiếp trên giao diện trình duyệt và đưa ra ý kiến chỉ đạo.
+
 ## 2. Thứ tự ưu tiên
 
 Khi có xung đột, áp dụng thứ tự sau:
