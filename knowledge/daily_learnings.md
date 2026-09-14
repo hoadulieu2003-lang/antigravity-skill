@@ -554,3 +554,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-14 18:25:11`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (68 ⭐)]** [laolaoshiren/ai-hot](https://github.com/laolaoshiren/ai-hot)
+  > 🔥 AI热榜：面向中文用户的 AI 工具、模型、Agent、新闻导航站，GitHub + 网站双向信息流，每6小时自动更新
+- **[GitHub (74 ⭐)]** [dentalpin/dentalpin](https://github.com/dentalpin/dentalpin)
+  > The open source agentic dental software. Built for AI.
+- **[GitHub (94 ⭐)]** [zmy15/DeepSeek-for-VisualStudio](https://github.com/zmy15/DeepSeek-for-VisualStudio)
+  > DeepSeek AI Coding Agent extension for Visual Studio
+
+</untrusted_external_content>
+
+---
