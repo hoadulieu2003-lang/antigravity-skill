@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIPFLOW Daily Departure Brief — Hướng B: Hệ thống Tín hiệu Lộ trình</title>
+  <style>
+    /* ==========================================================================
+       STRICT STATIC INVARIANT (ZERO-MOTION MANDATE)
+       Module 12 Directive Sections 11 & 17 (Test T12)
+       ========================================================================== */
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0s !important;
+      animation-delay: 0s !important;
+      animation-iteration-count: 1 !important;
+      animation-name: none !important;
+      transition-duration: 0s !important;
+      transition-delay: 0s !important;
+      transition-property: none !important;
+      scroll-behavior: auto !important;
+    }
+
+    /* ==========================================================================
+       DESIGN TOKENS — DIRECTION B: ROUTE SIGNAL SYSTEM (CARTOGRAPHIC B2B)
+       Technical slate substrate, graphite ink, navigational cobalt, geometric sans
+       ========================================================================== */
+    :root {
+      /* Surface & Substrate */
+      --color-surface-base: #F8FAFC;
+      --color-surface-panel: #FFFFFF;
+      --color-surface-rail: #F1F5F9;
+      --color-surface-active: #E2E8F0;
+      --color-border-tech: #CBD5E1;
+      --color-border-subtle: #E2E8F0;
+      --color-border-focus: #1D4ED8;
+
+      /* Typography & Ink */
+      --color-text-primary: #0F172A;   /* Technical graphite (WCAG AA: 15.3:1 on #F8FAFC) */
+      --color-text-secondary: #334155; /* Dark slate (WCAG AA: 10.4:1 on #F8FAFC) */
+      --color-text-muted: #64748B;     /* Neutral slate (WCAG AA: 4.8:1 on #F8FAFC) */
+
+      /* Navigational Cobalt Accents */
+      --color-accent-cobalt: #1D4ED8;  /* Navigational cobalt (WCAG AA: 5.6:1 on #F8FAFC) */
+      --color-accent-dark: #1E40AF;
+      --color-accent-light: #EFF6FF;
+
+      /* Semantic Signal Status */
+      --status-hazard-bg: #FEF9C3;
+      --status-hazard-text: #854D0E;   /* Contrast: 7.2:1 on #FEF9C3 */
+      --status-hazard-border: #EAB308;
+
+      --status-telemetry-bg: #DCFCE7;
+      --status-telemetry-text: #166534; /* Contrast: 7.8:1 on #DCFCE7 */
+      --status-telemetry-border: #22C55E;
+
+      --status-fault-bg: #FEE2E2;
+      --status-fault-text: #991B1B;    /* Contrast: 8.4:1 on #FEE2E2 */
+      --status-fault-border: #EF4444;
+
+      --status-prep-bg: #E0F2FE;
+      --status-prep-text: #075985;     /* Contrast: 7.6:1 on #E0F2FE */
+      --status-prep-border: #0EA5E9;
+
+      --status-archived-bg: #F1F5F9;
+      --status-archived-text: #334155; /* Contrast: 9.8:1 on #F1F5F9 */
+      --status-archived-border: #CBD5E1;
+
+      /* Typography Stacks */
+      --font-family-sans: "Segoe UI", Inter, system-ui, -apple-system, sans-serif;
+      --font-family-mono: Consolas, "Liberation Mono", "Courier New", monospace;
+
+      /* Focus Ring */
+      --focus-ring: 2px solid #1D4ED8;
+      --focus-offset: 2px;
+    }
+
+    /* Base Layout & Reset */
+    html {
+      box-sizing: border-box;
+      font-family: var(--font-family-sans);
+      background-color: var(--color-surface-base);
+      color: var(--color-text-primary);
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--color-surface-base);
+      background-image: url("../../assets/textures/grid_matrix_pattern.svg");
+      background-repeat: repeat;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Master Container for 1440x900 Viewport */
+    .carto-shell {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 20px 24px 44px;
+    }
+
+    /* Screen reader only utility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Focus visible standard */
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: var(--focus-ring);
+      outline-offset: var(--focus-offset);
+    }
+
+    /* Brand Header Block */
+    .brand-header-grid {
+      border-bottom: 2px solid var(--color-border-tech);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .header-top-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .brand-main-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .brand-id-group h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin: 0;
+      color: var(--color-text-primary);
+      letter-spacing: -0.2px;
+    }
+
+    .direction-badge-b {
+      font-size: 12px;
+      font-weight: 700;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      color: var(--color-accent-cobalt);
+      padding: 6px 14px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-promise-banner {
+      font-size: 13.5px;
+      color: var(--color-text-secondary);
+      background: #FFFFFF;
+      padding: 10px 16px;
+      border-radius: 4px;
+      border: 1px solid var(--color-border-tech);
+      border-left: 4px solid var(--color-accent-cobalt);
+    }
+
+    .brand-promise-banner strong {
+      color: var(--color-text-primary);
+    }
+
+    /* ==========================================================================
+       CARTOGRAPHIC MODULAR 12-COLUMN GRID
+       ========================================================================== */
+    .cartographic-matrix {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    /* Primary Focal Panel T01 spans 8 columns */
+    .focal-signal-hub {
+      grid-column: span 8;
+      background: var(--color-surface-panel);
+      border: 1.5px solid var(--color-border-tech);
+      border-radius: 8px;
+      padding: 20px;
+      position: relative;
+    }
+
+    /* Sidebar spans 4 columns */
+    .carto-sidebar {
+      grid-column: span 4;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (max-width: 1024px) {
+      .focal-signal-hub {
+        grid-column: span 12;
+      }
+      .carto-sidebar {
+        grid-column: span 12;
+      }
+    }
+
+    /* Tech Module Card */
+    .tech-module-box {
+      background: var(--color-surface-panel);
+      border: 1px solid var(--color-border-tech);
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    /* Focal Header */
+    .focal-signal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tour-code-tag {
+      font-family: var(--font-family-mono);
+      font-size: 15px;
+      font-weight: 800;
+      color: #0F172A;
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .focal-route-title {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      margin: 0 0 6px 0;
+      letter-spacing: -0.2px;
+    }
+
+    .focal-route-meta {
+      font-size: 13.5px;
+      color: var(--color-text-secondary);
+      margin: 0 0 14px 0;
+    }
+
+    .focal-route-meta strong {
+      color: var(--color-text-primary);
+    }
+
+    /* Cartographic Visual Wrap */
+    .carto-image-wrap {
+      width: 100%;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--color-border-tech);
+      background: #F8FAFC;
+      aspect-ratio: 16 / 9;
+      margin-bottom: 16px;
+    }
+
+    .carto-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 72% 30%;
+      display: block;
+    }
+
+    /* Bottleneck Alert Panel */
+    .bottleneck-alert-panel {
+      background: #FEF2F2;
+      border: 1.5px solid #EF4444;
+      border-left: 6px solid #DC2626;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .bottleneck-alert-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 4px;
+      background: #FFFFFF;
+      border: 1.5px solid #DC2626;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .bottleneck-alert-body h3 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #991B1B;
+      margin: 0 0 4px 0;
+      text-transform: uppercase;
+    }
+
+    .bottleneck-alert-body p {
+      font-size: 13.5px;
+      color: #7F1D1D;
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    /* Schematic Diagram Wrap */
+    .schematic-diagram-wrap {
+      margin: 16px 0;
+      border: 1px solid var(--color-border-tech);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--color-surface-base);
+    }
+
+    .schematic-diagram-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Action Controls Bar (min 44x44px target) */
+    .controls-action-bar {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action-primary {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 8px 18px;
+      background: var(--color-accent-cobalt);
+      color: #FFFFFF;
+      border: 1px solid var(--color-accent-dark);
+      border-radius: 4px;
+      font-family: var(--font-family-sans);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-action-primary:hover {
+      background: var(--color-accent-dark);
+    }
+
+    .btn-action-secondary {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 8px 16px;
+      background: var(--color-surface-panel);
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border-tech);
+      border-radius: 4px;
+      font-family: var(--font-family-sans);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-action-secondary:hover {
+      background: var(--color-surface-rail);
+    }
+
+    /* ==========================================================================
+       SIDEBAR: OPERATOR PROFILE & ROUTE STATUS
+       ========================================================================== */
+    .operator-profile-box {
+      border: 1.5px solid var(--color-border-tech);
+      border-radius: 6px;
+      padding: 16px;
+      background: #FFFFFF;
+    }
+
+    .operator-header-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .operator-avatar-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 4px;
+      border: 1.5px solid var(--color-border-tech);
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #E2E8F0;
+    }
+
+    .operator-avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 35%;
+      display: block;
+    }
+
+    .operator-id-text h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 0 0 2px 0;
+    }
+
+    .operator-role-tag {
+      font-size: 12px;
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+
+    .fictional-pill {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #854D0E;
+      background: #FEF9C3;
+      padding: 2px 6px;
+      border: 1px solid #EAB308;
+      border-radius: 2px;
+      margin-top: 4px;
+    }
+
+    .metrics-spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--color-border-subtle);
+      font-size: 12px;
+    }
+
+    .spec-cell {
+      background: var(--color-surface-rail);
+      padding: 6px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--color-border-subtle);
+    }
+
+    .spec-cell span {
+      display: block;
+      color: var(--color-text-muted);
+      font-size: 10.5px;
+      text-transform: uppercase;
+    }
+
+    .spec-cell strong {
+      color: var(--color-text-primary);
+      font-size: 13px;
+    }
+
+    /* Capacity Status Bar */
+    .capacity-bar-wrap {
+      margin-top: 12px;
+    }
+
+    .capacity-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 4px;
+    }
+
+    .capacity-track {
+      height: 8px;
+      background: #E2E8F0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .capacity-fill {
+      height: 100%;
+      width: 62.5%;
+      background: #1D4ED8;
+    }
+
+    /* Coordination Feed */
+    .coordination-feed-list {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0 0;
+      font-size: 12.5px;
+    }
+
+    .feed-node {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--color-border-subtle);
+      line-height: 1.45;
+    }
+
+    .feed-node:last-child {
+      border-bottom: none;
+    }
+
+    .feed-timestamp {
+      font-family: var(--font-family-mono);
+      color: #1D4ED8;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    /* ==========================================================================
+       DATA MATRIX GRID (CANONICAL T01–T08 TABLE)
+       Crisp millimeter borders, tabular monospace data for codes/times
+       ========================================================================== */
+    .data-matrix-section {
+      background: var(--color-surface-panel);
+      border: 1.5px solid var(--color-border-tech);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .data-matrix-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .matrix-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.25px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .matrix-scroll-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      background: #FFFFFF;
+    }
+
+    .matrix-table th,
+    .matrix-table td {
+      border: 1px solid var(--color-border-tech);
+      padding: 10px 14px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .matrix-table th {
+      background: var(--color-surface-rail);
+      color: var(--color-text-secondary);
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .matrix-table tbody tr:hover {
+      background-color: #F8FAFC;
+    }
+
+    .matrix-table tr.focal-row {
+      background-color: #FEF9C3;
+      outline: 1.5px solid #EAB308;
+    }
+
+    .mono-cell {
+      font-family: var(--font-family-mono);
+      font-size: 13px;
+    }
+
+    /* Status Badges */
+    .signal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .badge-hazard {
+      background: var(--status-hazard-bg);
+      color: var(--status-hazard-text);
+      border: 1px solid var(--status-hazard-border);
+    }
+
+    .badge-telemetry {
+      background: var(--status-telemetry-bg);
+      color: var(--status-telemetry-text);
+      border: 1px solid var(--status-telemetry-border);
+    }
+
+    .badge-fault {
+      background: var(--status-fault-bg);
+      color: var(--status-fault-text);
+      border: 1px solid var(--status-fault-border);
+    }
+
+    .badge-prep {
+      background: var(--status-prep-bg);
+      color: var(--status-prep-text);
+      border: 1px solid var(--status-prep-border);
+    }
+
+    .badge-archived {
+      background: var(--status-archived-bg);
+      color: var(--status-archived-text);
+      border: 1px solid var(--status-archived-border);
+    }
+
+    .matrix-action-link {
+      color: var(--color-accent-cobalt);
+      font-weight: 700;
+      font-size: 12.5px;
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      min-width: 44px;
+      min-height: 44px;
+      line-height: 36px;
+      text-align: center;
+    }
+
+    .matrix-action-link:hover {
+      text-decoration: underline;
+      background: #EFF6FF;
+    }
+
+    /* Disclosure Box */
+    .disclosure-box {
+      margin-top: 24px;
+      border: 1px solid var(--color-border-tech);
+      border-radius: 6px;
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+
+    .disclosure-summary-bar {
+      padding: 12px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      background: var(--color-surface-rail);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .disclosure-body {
+      padding: 16px 18px;
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      border-top: 1px solid var(--color-border-tech);
+    }
+
+    .disclosure-grid-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .disclosure-grid-table th,
+    .disclosure-grid-table td {
+      border: 1px solid var(--color-border-tech);
+      padding: 8px 10px;
+      font-size: 12px;
+    }
+
+    .disclosure-grid-table th {
+      background: var(--color-surface-rail);
+      text-align: left;
+    }
+
+    /* Footer */
+    .carto-footer {
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid var(--color-border-tech);
+      font-size: 12px;
+      color: var(--color-text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="carto-shell">
+
+    <!-- BRAND HEADER & CONTRACT ANCHOR -->
+    <header class="brand-header-grid">
+      <div class="header-top-meta">
+        <span>TRIPFLOW OPERATIONAL SUITE · ĐIỀU PHỐI LỘ TRÌNH LỮ HÀNH B2B</span>
+        <span>MỐC ĐỐI SOÁT: 13/09/2026 18:00 ICT</span>
+      </div>
+      <div class="brand-main-row">
+        <div class="brand-id-group">
+          <h1>TRIPFLOW Daily Departure Brief</h1>
+        </div>
+        <div class="direction-badge-b">
+          <img src="../../assets/icons/departure.svg" alt="" aria-hidden="true" width="14" height="14">
+          <span>Hướng B: Hệ Thống Tín Hiệu Lộ Trình (Route Signal System)</span>
+        </div>
+      </div>
+      <div class="brand-promise-banner">
+        <strong>Lời hứa sản phẩm:</strong> “TRIPFLOW giúp đội vận hành nhìn thấy điều chưa sẵn sàng trước giờ khởi hành.”
+      </div>
+    </header>
+
+    <!-- MAIN CARTOGRAPHIC MATRIX (12-COLUMN MODULAR) -->
+    <main class="cartographic-matrix">
+
+      <!-- LEFT 8 COLUMNS: FOCAL SIGNAL HUB (TOUR T01) -->
+      <section class="focal-signal-hub" id="focal-t01-signal" aria-labelledby="t01-heading">
+        <div class="focal-signal-header">
+          <div>
+            <span class="tour-code-tag">TOUR TRỌNG TÂM: T01</span>
+          </div>
+          <div class="signal-badge badge-hazard">
+            <img src="../../assets/icons/waiting_partner.svg" alt="" aria-hidden="true" width="14" height="14">
+            <span>Chờ đối tác xác nhận</span>
+          </div>
+        </div>
+
+        <h2 id="t01-heading" class="focal-route-title">HẠ LONG 2N1Đ — HÀNH LANG DU LỊCH ĐÔNG BẮC</h2>
+        <p class="focal-route-meta">
+          Khởi hành: <strong>14/09/2026 lúc 07:30 ICT</strong> · Điều phối viên: <strong>Lan</strong> · Điểm tập trung: <strong>Nhà hát Lớn Hà Nội</strong>
+        </p>
+
+        <!-- CARTOGRAPHIC ROUTE VISUAL -->
+        <figure class="carto-image-wrap" style="margin: 0 0 16px 0;">
+          <img src="../../assets/images/route_signal_abstract.svg" 
+               alt="Bản đồ lộ trình trực giao hành lang Hà Nội - Hải Dương - Hạ Long với mốc cảnh báo chờ xác nhận phòng tại Bãi Cháy"
+               width="640" height="360" loading="eager">
+          <figcaption class="sr-only">Bản đồ hành lang giao thông Hà Nội - Hạ Long với điểm chờ xác nhận đối tác tại Bãi Cháy</figcaption>
+        </figure>
+
+        <!-- BOTTLENECK ALERT CALLOUT -->
+        <div class="bottleneck-alert-panel" role="alert">
+          <div class="bottleneck-alert-icon" aria-hidden="true">
+            <img src="../../assets/icons/missing_dossier.svg" alt="" width="22" height="22">
+          </div>
+          <div class="bottleneck-alert-body">
+            <h3>ĐIỂM NGHẼN CẦN GIẢI QUYẾT: Khách sạn chưa xác nhận 4 phòng</h3>
+            <p>
+              Khách sạn chưa gửi văn bản xác nhận cho 4 phòng ngủ đêm của đoàn tour T01. Điều phối viên Lan đang liên hệ trực tiếp bộ phận đặt phòng của đối tác để hoàn tất xác nhận trước giờ khởi hành sáng mai.
+            </p>
+          </div>
+        </div>
+
+        <!-- SCHEMATIC TRANSIT ROUTE DIAGRAM -->
+        <div aria-labelledby="schematic-heading">
+          <h3 id="schematic-heading" style="font-size: 14px; font-weight: 700; text-transform: uppercase; color: var(--color-text-primary); margin: 16px 0 8px 0; display: flex; align-items: center; gap: 8px;">
+            <img src="../../assets/icons/departure.svg" alt="" aria-hidden="true" width="16" height="16">
+            <span>Sơ Đồ Chuỗi Mốc Lộ Trình Tuyến T01 (Route Sequence Schematic)</span>
+          </h3>
+          <div class="schematic-diagram-wrap">
+            <img src="../../assets/diagrams/t01_route_schematic.svg" 
+                 alt="Sơ đồ 4 mốc lộ trình đoàn T01: Hà Nội xuất phát lúc 07:30, Hải Dương nghỉ chân lúc 09:00, Bãi Cháy chờ xác nhận 4 phòng lúc 11:45, Cảng Tuần Châu đón đoàn lúc 13:30"
+                 width="840" height="180">
+          </div>
+
+          <!-- Accessible Ordered List Text Equivalent (W3C Complex Images) -->
+          <ol class="sr-only">
+            <li>Mốc 1: Hà Nội (Khởi hành 07:30 ngày 14/09). Trạng thái: Chuẩn bị hồ sơ — Sẵn sàng.</li>
+            <li>Mốc 2: Hải Dương (Dừng chân nghỉ 09:00). Trạng thái: Hậu cần theo kế hoạch.</li>
+            <li>Mốc 3: Khách sạn Bãi Cháy (Đến lúc 11:45). Trạng thái: Điểm nghẽn cần giải quyết — Chờ khách sạn xác nhận 4 phòng.</li>
+            <li>Mốc 4: Cảng Tuần Châu (Xuống tàu lúc 13:30). Trạng thái: Chờ thông tuyến từ mốc Bãi Cháy.</li>
+          </ol>
+        </div>
+
+        <!-- INTERACTIVE CONTROLS BAR (min 44x44px target) -->
+        <div class="controls-action-bar">
+          <button type="button" class="btn-action-primary" id="btn-dispatch-call">
+            <img src="../../assets/icons/waiting_partner.svg" alt="" aria-hidden="true" width="16" height="16">
+            <span>Liên hệ đối tác khách sạn (Xác nhận 4 phòng)</span>
+          </button>
+          <button type="button" class="btn-action-secondary" id="btn-dispatch-reroute">
+            <img src="../../assets/icons/contact_log.svg" alt="" aria-hidden="true" width="16" height="16">
+            <span>Cập nhật nhật ký điều phối</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- RIGHT 4 COLUMNS: SIDEBAR -->
+      <aside class="carto-sidebar" aria-label="Bảng thông số điều phối và năng lực nhân sự">
+
+        <!-- OPERATOR PROFILE BOX (LAN) -->
+        <div class="operator-profile-box">
+          <div class="operator-header-row">
+            <div class="operator-avatar-wrap">
+              <img src="../../assets/images/lan_avatar.svg" 
+                   alt="Chân dung minh họa điều phối viên Lan phụ trách tour T01 (Nhân vật giả lập đào tạo)"
+                   width="56" height="56" loading="eager">
+            </div>
+            <div class="operator-id-text">
+              <h3>Lan — Điều Phối Viên Chính</h3>
+              <p class="operator-role-tag">Tổ điều phối tour Đông Bắc &amp; Miền Trung</p>
+              <span class="fictional-pill">Nhân vật điều phối giả lập / Fictional Operator</span>
+            </div>
+          </div>
+
+          <!-- Specs Grid -->
+          <div class="metrics-spec-grid">
+            <div class="spec-cell">
+              <span>Đoàn Đang Quản Lý</span>
+              <strong>3 Tour Phụ Trách</strong>
+            </div>
+            <div class="spec-cell">
+              <span>Điểm Nghẽn T01</span>
+              <strong style="color: #DC2626;">Chờ 4 Phòng</strong>
+            </div>
+            <div class="spec-cell">
+              <span>Tour Cần Chú Ý</span>
+              <strong>3 / 8 Tour Mạng Lưới</strong>
+            </div>
+            <div class="spec-cell">
+              <span>Mốc Đối Soát</span>
+              <strong class="mono-cell">13/09 18:00 ICT</strong>
+            </div>
+          </div>
+
+          <!-- Capacity Bar -->
+          <div class="capacity-bar-wrap">
+            <div class="capacity-label-row">
+              <span>Tiến độ rà soát mạng lưới</span>
+              <span>5/8 Tour sẵn sàng (62.5%)</span>
+            </div>
+            <div class="capacity-track">
+              <div class="capacity-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COORDINATION FEED -->
+        <div class="tech-module-box">
+          <h3 style="font-size: 13.5px; font-weight: 700; text-transform: uppercase; margin: 0 0 10px 0; color: var(--color-text-primary); display: flex; align-items: center; gap: 8px;">
+            <img src="../../assets/icons/contact_log.svg" alt="" aria-hidden="true" width="16" height="16">
+            <span>Nhật Ký Điều Phối Tuyến (T01)</span>
+          </h3>
+          <ul class="coordination-feed-list">
+            <li class="feed-node">
+              <span class="feed-timestamp">17:45</span>
+              <span>Theo dõi đối tác khách sạn: Gửi yêu cầu phản hồi văn bản xác nhận 4 phòng ngủ đêm cho đoàn.</span>
+            </li>
+            <li class="feed-node">
+              <span class="feed-timestamp">16:30</span>
+              <span>Rà soát phương tiện: Kiểm tra phương tiện di chuyển và lịch trình đưa đón T01 sẵn sàng.</span>
+            </li>
+            <li class="feed-node">
+              <span class="feed-timestamp">15:15</span>
+              <span>Đối soát hành trình: Danh sách đoàn và dịch vụ tham quan đã được rà soát đầy đủ.</span>
+            </li>
+            <li class="feed-node">
+              <span class="feed-timestamp">14:00</span>
+              <span>Hậu cần vận hành: Kiểm tra thông tin suất ăn và các điều kiện dịch vụ kèm theo.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- SIGNAL KEY -->
+        <div class="tech-module-box" style="font-size: 12px;">
+          <h4 style="margin: 0 0 8px 0; text-transform: uppercase; font-size: 12px; color: var(--color-text-primary); display: flex; align-items: center; gap: 6px;">
+            <img src="../../assets/icons/departure.svg" alt="" aria-hidden="true" width="14" height="14">
+            <span>Quy Ước Ký Hiệu Trạng Thái</span>
+          </h4>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="signal-badge badge-telemetry" style="padding: 2px 8px;">● Sẵn sàng</span>
+              <span style="color: var(--color-text-secondary);">Đủ điều kiện khởi hành</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="signal-badge badge-hazard" style="padding: 2px 8px;">▲ Chờ đối tác</span>
+              <span style="color: var(--color-text-secondary);">Chờ đối tác phản hồi</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="signal-badge badge-fault" style="padding: 2px 8px;">■ Thiếu hồ sơ</span>
+              <span style="color: var(--color-text-secondary);">Chưa đủ CCCD / giấy tờ</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="signal-badge badge-prep" style="padding: 2px 8px;">◆ Đang chuẩn bị</span>
+              <span style="color: var(--color-text-secondary);">Đang hoàn tất checklist</span>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+    </main>
+
+    <!-- DATA MATRIX GRID: CANONICAL T01–T08 TABLE -->
+    <section class="data-matrix-section" aria-labelledby="data-matrix-title">
+      <div class="data-matrix-header">
+        <h2 id="data-matrix-title" class="matrix-title">
+          <img src="../../assets/icons/departure.svg" alt="" aria-hidden="true" width="20" height="20">
+          <span>Bảng Vận Hành Khởi Hành 8 Đoàn (Canonical Snapshot T01–T08)</span>
+        </h2>
+        <span style="font-size: 12px; color: var(--color-text-muted);">
+          Mốc cố định: 13/09/2026 18:00 ICT · 8 Đoàn Tour
+        </span>
+      </div>
+
+      <div class="matrix-scroll-wrapper">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th scope="col">Mã Tour</th>
+              <th scope="col">Tuyến Hành Trình</th>
+              <th scope="col">Giờ Khởi Hành</th>
+              <th scope="col">Phụ Trách</th>
+              <th scope="col">Trạng Thái Vận Hành</th>
+              <th scope="col">Ghi Chú Nghiệp Vụ</th>
+              <th scope="col">Thao Tác</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- T01: Critical Node -->
+            <tr class="focal-row">
+              <td class="mono-cell"><strong>T01</strong></td>
+              <td>Hạ Long 2N1Đ</td>
+              <td class="mono-cell">14/09/2026 07:30</td>
+              <td>Lan</td>
+              <td>
+                <span class="signal-badge badge-hazard">
+                  <img src="../../assets/icons/waiting_partner.svg" alt="" aria-hidden="true" width="14" height="14">
+                  <span>Chờ đối tác</span>
+                </span>
+              </td>
+              <td><strong>Khách sạn chưa xác nhận 4 phòng</strong></td>
+              <td>
+                <a href="#focal-t01-signal" class="matrix-action-link" aria-label="Chi tiết điểm nghẽn T01">Chi tiết</a>
+              </td>
+            </tr>
+
+            <!-- T02 -->
+            <tr>
+              <td class="mono-cell"><strong>T02</strong></td>
+              <td>Ninh Bình 1 ngày</td>
+              <td class="mono-cell">14/09/2026 06:00</td>
+              <td>Minh</td>
+              <td>
+                <span class="signal-badge badge-telemetry">
+                  <img src="../../assets/icons/ready.svg" alt="" aria-hidden="true" width="14" height="14">
+                  <span>Sẵn sàng</span>
+                </span>
+              </td>
+              <td>Đã đủ xe, hướng dẫn viên và danh sách khách</td>
+              <td>
+                <a href="#t02" class="matrix-action-link" aria-label="Xem T02">Xem</a>
+              </td>
+            </tr>
+
+            <!-- T03 -->
+            <tr>
+              <td class="mono-cell"><strong>T03</strong></td>
+              <td>Sapa 3N2Đ</td>
+              <td class="mono-cell">15/09/2026 21:30</td>
+              <td>Huy</td>
+              <td>
+                <span class="signal-badge badge-fault">
+                  <img src="../../assets/icons/missing_dossier.svg" alt="" aria-hidden="true" width="14" height="14">
+                  <span>Thiếu hồ sơ</span>
+                </span>
+              </td>
+              <td>2 khách chưa gửi CCCD</td>
+              <td>
+                <a href="#t03" class="matrix-action-link" aria-label="Xem T03">Xem</a>
+              </td>
+            </tr>
+
+            <!-- T04 -->
+            <tr>
+              <td class="mono-cell"><strong>T04</strong></td>
+              <td>Đà Nẵng 4N3Đ</td>
+              <td class="mono-cell">16/09/2026 08:00</td>
+              <td>Lan</td>
+              <td>
+                <span class="signal-badge badge-prep">
+                  <img src="../../assets/icons/departure.svg" alt="" aria-hidden="true" width="14" height="14">
+                  <span>Đang chuẩn bị</span>
+                </span>
+              </td>
+              <td>Chờ chốt danh sách suất ăn</td>
+              <td>
+                <a href="#t04" class="matrix-action-link" aria-label="Xem T04">Xem</a>
+              </td>
+            </tr>
+
+            <!-- T05 -->
+            <tr>
+              <td class="mono-cell"><strong>T05</strong></td>
+              <td>Hà Giang 3N2Đ</td>
+              <td class="mono-cell">17/09/2026 05:30</td>
+              <td>Minh</td>
+              <td>
+                <span class="signal-badge badge-telemetry">
+                  <img src="../../assets/icons/ready.svg" alt="" aria-hidden="true" width="14" height="14">
+                  <span>Sẵn sàng</span>
+                </span>
+              </td>
+              <td>Đã hoàn tất checklist khởi hành</td>
+              <td>
+                <a href="#t05" class="matrix-action-link" aria-label="Xem T05">Xem</a>
+              </td>
+            </tr>
+
+            <!-- T06 -->
+            <tr>
+              <td class="mono-cell"><strong>T06</strong></td>
+              <td>Phú Quốc 3N2Đ</td>
+              <td class="mono-cell">18/09/2026 09:10</td>
+              <td>Huy</td>
+              <td>
+                <span class="signal-badge badge-hazard">
+                  <img src="../../assets/icons/waiting_partner.svg" alt="" aria-hidden="true" width="14" height="14">
+                  <span>Chờ đối tác</span>
+                </span>
+              </td>
+              <td>Nhà xe trung chuyển chưa xác nhận</td>
+              <td>
+                <a href="#t06" class="matrix-action-link" aria-label="Xem T06">Xem</a>
+              </td>
+            </tr>
+
+            <!-- T07 -->
+            <tr>
+              <td class="mono-cell"><strong>T07</strong></td>
+              <td>Mộc Châu 2N1Đ</td>
+              <td class="mono-cell">19/09/2026 06:30</td>
+              <td>Lan</td>
+              <td>
+                <span class="signal-badge badge-prep">
+                  <img src="../../assets/icons/departure.svg" alt="" aria-hidden="true" width="14" height="14">
+                  <span>Đang chuẩn bị</span>
+                </span>
+              </td>
+              <td>Đang rà soát danh sách phòng</td>
+              <td>
+                <a href="#t07" class="matrix-action-link" aria-label="Xem T07">Xem</a>
+              </td>
+            </tr>
+
+            <!-- T08 -->
+            <tr>
+              <td class="mono-cell"><strong>T08</strong></td>
+              <td>Huế 3N2Đ</td>
+              <td class="mono-cell">12/09/2026 07:00</td>
+              <td>An</td>
+              <td>
+                <span class="signal-badge badge-archived">
+                  <img src="../../assets/icons/ready.svg" alt="" aria-hidden="true" width="14" height="14">
+                  <span>Hoàn thành</span>
+                </span>
+              </td>
+              <td>Đoàn đã khởi hành và bàn giao nhật ký</td>
+              <td>
+                <a href="#t08" class="matrix-action-link" aria-label="Xem T08">Xem</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ASSET PROVENANCE & DISCLOSURE PANEL (COLLAPSIBLE) -->
+    <section class="disclosure-box" aria-label="Minh bạch nguồn gốc tài sản hình ảnh kỹ thuật">
+      <details id="asset-disclosure-details-b">
+        <summary class="disclosure-summary-bar">
+          <span>Minh Bạch Nguồn Gốc Tài Sản &amp; Bản Quyền (Asset Provenance &amp; Disclosure Panel)</span>
+          <span style="font-size: 11.5px; font-weight: normal; color: var(--color-text-muted);">Nhấp để xem chi tiết manifest</span>
+        </summary>
+        <div class="disclosure-body">
+          <p style="margin-top: 0;">
+            100% tài nguyên đồ họa trong bản mẫu Hướng B (Route Signal System) được lưu trữ cục bộ tại thư mục <code>assets/</code>, không phát sinh bất kỳ yêu cầu mạng từ xa nào (0 remote requests). Toàn bộ dữ liệu tuân thủ nghiêm ngặt chuẩn mực đạo đức thiết kế: nhân vật Lan là nhân vật giả lập phục vụ đào tạo, không sử dụng logo thương mại đối tác thật.
+          </p>
+          <table class="disclosure-grid-table">
+            <thead>
+              <tr>
+                <th>Mã Asset</th>
+                <th>Tệp Tin</th>
+                <th>Vai Trò</th>
+                <th>Nguồn Gốc</th>
+                <th>Tuyên Bố Minh Bạch</th>
+                <th>Mã Băm SHA-256 (6 ký tự đầu)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AST_IMG_003</td>
+                <td>assets/images/route_signal_abstract.svg</td>
+                <td>hero_context</td>
+                <td>authored_vector</td>
+                <td>Cartographic route signal matrix</td>
+                <td><code>...</code></td>
+              </tr>
+              <tr>
+                <td>AST_IMG_001</td>
+                <td>assets/images/lan_avatar.svg</td>
+                <td>fictional_person</td>
+                <td>authored_vector</td>
+                <td>Fictional authored persona</td>
+                <td><code>a77828...</code></td>
+              </tr>
+              <tr>
+                <td>AST_DIAG_002</td>
+                <td>assets/diagrams/t01_route_schematic.svg</td>
+                <td>route_diagram</td>
+                <td>authored_vector</td>
+                <td>Schematic transit sequence diagram</td>
+                <td><code>...</code></td>
+              </tr>
+              <tr>
+                <td>AST_ICON_001..006</td>
+                <td>assets/icons/*.svg</td>
+                <td>icon_family</td>
+                <td>authored_vector</td>
+                <td>6 Technical vector icons</td>
+                <td><code>d37146...</code></td>
+              </tr>
+              <tr>
+                <td>AST_TEX_002</td>
+                <td>assets/textures/grid_matrix_pattern.svg</td>
+                <td>texture_accent</td>
+                <td>authored_vector</td>
+                <td>Drafting grid pattern</td>
+                <td><code>f63af9...</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="carto-footer">
+      <div>TRIPFLOW OPERATIONAL SUITE · ĐIỀU PHỐI LỘ TRÌNH LỮ HÀNH B2B (STREAM B)</div>
+      <div>QUY CHUẨN TĨNH BẤT BIẾN · ZERO-MOTION DURATION: 0.0s</div>
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,369 @@
+{
+  "verification_type": "DESIGN_TRAINING_012_CHECKPOINT_12_1_VERIFICATION",
+  "checkpoint": "12.1",
+  "scope": "PHASE_0_TO_2_ONLY",
+  "executed_at": "2026-09-14T09:42:00Z",
+  "provenance_identity": {
+    "source_archive_path": "source_snapshot/design_training_007_submission_r04.zip",
+    "source_archive_sha256": "e76ab08f4d1e72865f4210299594e175b94f471d3f8960c3f0c61d4259283c76",
+    "source_candidate_relative_path": "candidate/index.html",
+    "source_candidate_sha256": "ee5294b94f37e2b4945743ab3215af238dde9e3b97af10a357872c1a85506800",
+    "source_candidate_size_bytes": 38024,
+    "source_candidate_usage": "REFERENCE_ONLY"
+  },
+  "executed_checkpoint_checks": [
+    {
+      "check_id": "CHK_01_SNAPSHOT_INTEGRITY",
+      "description": "Verify frozen source snapshot zip archive and SHA-256",
+      "measured": "e76ab08f4d1e72865f4210299594e175b94f471d3f8960c3f0c61d4259283c76",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_02_ISOLATION_WORKSPACE",
+      "description": "Confirm isolated work in stream-b/module-012 with zero cross-stream leaks",
+      "measured": "Zero touches to stream-a/",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_03_DIRECTIVE_INTEGRITY",
+      "description": "Directive file matches authoritative SHA-256 byte-identical",
+      "measured": "8f6cc77d13ac3ce376ad7d429bf7f1f6340dc8c57ee1c7785dd8d970a8f35dbb",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_04_ASSET_MANIFEST_EXISTENCE",
+      "description": "All 14 manifest entries exist on filesystem",
+      "measured": "14/14 files exist",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_05_ASSET_HASH_INTEGRITY",
+      "description": "All 14 asset SHA-256 hashes match declared manifest values",
+      "measured": "14/14 hashes match",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_06_ASSET_RUNTIME_BUDGET",
+      "description": "Runtime asset budget <= 3.5 MB, single file <= 600 KB",
+      "measured": "total_bytes=44573, largest_file=6921",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_07_ZERO_REMOTE_NETWORK",
+      "description": "Zero external remote network requests in prototypes",
+      "measured": 0,
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_08_INLINE_SVG_GOVERNANCE",
+      "description": "Zero unregistered inline SVG elements in runtime HTML",
+      "measured": "option_a=0, option_b=0",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_09_DIRECTION_A_PRESERVATION",
+      "description": "Direction A preserved in accepted selection pool with editorial layout",
+      "measured": "Option A intact, editorial grid 62:38 preserved",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_10_DIRECTION_B_DEMILITARIZATION",
+      "description": "Direction B de-militarized: telemetry rail, crosshairs and pseudo codes removed",
+      "measured": "vanity_metrics_present=False",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_11_VANITY_METRIC_REMOVAL",
+      "description": "Fabricated 98.4% index vanity metric completely removed",
+      "measured": "0 fabricated metrics",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_12_CANONICAL_DATA_FIDELITY",
+      "description": "T01-T08 canonical data preserved, noncanonical partner/fleet details removed",
+      "measured": "Canonical fidelity verified",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_13_SCREENSHOT_A_DPR2",
+      "description": "Option A screenshot achieves authoritative DPR=2 bitmap (2880x1800)",
+      "measured": "2880x1800",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_14_SCREENSHOT_B_DPR2",
+      "description": "Option B screenshot achieves authoritative DPR=2 bitmap (2880x1800)",
+      "measured": "2880x1800",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_15_ABSOLUTE_AUTHOR_PATHS_ZERO",
+      "description": "Zero absolute author filesystem paths across repository text files",
+      "measured": 0,
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_16_CONTROL_CHARACTERS_ZERO",
+      "description": "Zero invalid control characters (0x00-0x08, 0x0B, 0x0C, 0x0E-0x1F)",
+      "measured": 0,
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_17_CLAIM_TAXONOMY_INTEGRITY",
+      "description": "All claims bound to DESIGN_INTENT, 1-second scanning claim removed",
+      "measured": "Claim taxonomy verified",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_18_ZERO_MOTION_MANDATE",
+      "description": "100% CSS animation and transition durations locked to 0s",
+      "measured": "option_a_zero_motion=True, option_b_zero_motion=True",
+      "status": "PASS"
+    }
+  ],
+  "executed_checkpoint_summary": {
+    "executed_checks_total": 18,
+    "executed_checks_passed": 18,
+    "executed_checks_failed": 0,
+    "conjunction_status": "PASS"
+  },
+  "screenshots_evidence": {
+    "option_a_desktop_1440x900_dpr2.png": {
+      "css_viewport": "1440x900",
+      "device_scale_factor": 2,
+      "bitmap_width": 2880,
+      "bitmap_height": 1800,
+      "bytes": 517373,
+      "sha256": "d3a4eb3728d50237f699a8bdf0584f252530ee33a826a276bde027d2289d3fa6",
+      "dpr2_compliant": true
+    },
+    "option_b_desktop_1440x900_dpr2.png": {
+      "css_viewport": "1440x900",
+      "device_scale_factor": 2,
+      "bitmap_width": 2880,
+      "bitmap_height": 1800,
+      "bytes": 498187,
+      "sha256": "b246c014a9252bdbbe3b8ee830625c58647661a37b8b251168197b6381f7d131",
+      "dpr2_compliant": true
+    }
+  },
+  "assets_evidence": [
+    {
+      "asset_id": "AST_ICON_001",
+      "file": "assets/icons/departure.svg",
+      "role": "icon_family",
+      "size_bytes": 720,
+      "declared_sha256": "d37146008d598e6af840ac45f93c8e62bb7accd824e002b3297962824a6d8f43",
+      "measured_sha256": "d37146008d598e6af840ac45f93c8e62bb7accd824e002b3297962824a6d8f43",
+      "match": true
+    },
+    {
+      "asset_id": "AST_ICON_002",
+      "file": "assets/icons/waiting_partner.svg",
+      "role": "icon_family",
+      "size_bytes": 927,
+      "declared_sha256": "9c2767c5378caadea8346aa2b4590420ad7d40274326c278c35cb1fade3ce936",
+      "measured_sha256": "9c2767c5378caadea8346aa2b4590420ad7d40274326c278c35cb1fade3ce936",
+      "match": true
+    },
+    {
+      "asset_id": "AST_ICON_003",
+      "file": "assets/icons/missing_dossier.svg",
+      "role": "icon_family",
+      "size_bytes": 892,
+      "declared_sha256": "8e4cccd71cf0c99fad61e816797b98cae024eb4339061fff88ccc24b62309166",
+      "measured_sha256": "8e4cccd71cf0c99fad61e816797b98cae024eb4339061fff88ccc24b62309166",
+      "match": true
+    },
+    {
+      "asset_id": "AST_ICON_004",
+      "file": "assets/icons/ready.svg",
+      "role": "icon_family",
+      "size_bytes": 625,
+      "declared_sha256": "bba1bef79b1f20fc6cf61b792c01bd48104b8a37d4255b70c7510b90038d3249",
+      "measured_sha256": "bba1bef79b1f20fc6cf61b792c01bd48104b8a37d4255b70c7510b90038d3249",
+      "match": true
+    },
+    {
+      "asset_id": "AST_ICON_005",
+      "file": "assets/icons/person_lan.svg",
+      "role": "icon_family",
+      "size_bytes": 885,
+      "declared_sha256": "9603c06951407f1979b3bb7d2d0ddb22656bf4cac8e250672e3fb2792571ac1e",
+      "measured_sha256": "9603c06951407f1979b3bb7d2d0ddb22656bf4cac8e250672e3fb2792571ac1e",
+      "match": true
+    },
+    {
+      "asset_id": "AST_ICON_006",
+      "file": "assets/icons/contact_log.svg",
+      "role": "icon_family",
+      "size_bytes": 877,
+      "declared_sha256": "7e640a14277f5953314aafb26833a787e8edfc471ea472a85b4a5be668773aef",
+      "measured_sha256": "7e640a14277f5953314aafb26833a787e8edfc471ea472a85b4a5be668773aef",
+      "match": true
+    },
+    {
+      "asset_id": "AST_DIAG_001",
+      "file": "assets/diagrams/t01_route_narrative.svg",
+      "role": "route_diagram",
+      "size_bytes": 6274,
+      "declared_sha256": "14f90175e5d390ac8999d03d9c5c0f3e906058fc2409caf35e4cfc1c8da740ab",
+      "measured_sha256": "14f90175e5d390ac8999d03d9c5c0f3e906058fc2409caf35e4cfc1c8da740ab",
+      "match": true
+    },
+    {
+      "asset_id": "AST_DIAG_002",
+      "file": "assets/diagrams/t01_route_schematic.svg",
+      "role": "route_diagram",
+      "size_bytes": 6144,
+      "declared_sha256": "f5f62118ec2380d51883ce3d9e0ed8f4ec9206ad3af956a7035896036f9fb9cf",
+      "measured_sha256": "f5f62118ec2380d51883ce3d9e0ed8f4ec9206ad3af956a7035896036f9fb9cf",
+      "match": true
+    },
+    {
+      "asset_id": "AST_IMG_001",
+      "file": "assets/images/lan_avatar.svg",
+      "role": "fictional_person",
+      "size_bytes": 4455,
+      "declared_sha256": "a77828268c11e9d85d3f79558059966fe90227e44c444bb752b77d13e0213ae5",
+      "measured_sha256": "a77828268c11e9d85d3f79558059966fe90227e44c444bb752b77d13e0213ae5",
+      "match": true
+    },
+    {
+      "asset_id": "AST_IMG_002",
+      "file": "assets/images/halong_field_documentary.svg",
+      "role": "hero_context",
+      "size_bytes": 6897,
+      "declared_sha256": "7e919a8651a62cc6c1af044e3cf9a3ac216b68f8fac08db804a7fec4aa4dcea7",
+      "measured_sha256": "7e919a8651a62cc6c1af044e3cf9a3ac216b68f8fac08db804a7fec4aa4dcea7",
+      "match": true
+    },
+    {
+      "asset_id": "AST_IMG_003",
+      "file": "assets/images/route_signal_abstract.svg",
+      "role": "hero_context",
+      "size_bytes": 5971,
+      "declared_sha256": "03843752c4145d3c0040b5dd7dc225afcdbeb8771bce53471d57c0df43139d07",
+      "measured_sha256": "03843752c4145d3c0040b5dd7dc225afcdbeb8771bce53471d57c0df43139d07",
+      "match": true
+    },
+    {
+      "asset_id": "AST_IMG_004",
+      "file": "assets/images/operational_scene_prep.svg",
+      "role": "operational_scene",
+      "size_bytes": 6921,
+      "declared_sha256": "989886df0f9c4c1f1471665435406dfa3d88eb204d66fa68e73603549bf1ce12",
+      "measured_sha256": "989886df0f9c4c1f1471665435406dfa3d88eb204d66fa68e73603549bf1ce12",
+      "match": true
+    },
+    {
+      "asset_id": "AST_TEX_001",
+      "file": "assets/textures/paper_grain_subtle.svg",
+      "role": "texture_accent",
+      "size_bytes": 1445,
+      "declared_sha256": "fc09c4ef5e6a16622c6b06dae47c74908831678d8abbee8551efb0ee0298a613",
+      "measured_sha256": "fc09c4ef5e6a16622c6b06dae47c74908831678d8abbee8551efb0ee0298a613",
+      "match": true
+    },
+    {
+      "asset_id": "AST_TEX_002",
+      "file": "assets/textures/grid_matrix_pattern.svg",
+      "role": "texture_accent",
+      "size_bytes": 1540,
+      "declared_sha256": "f63af9b0aa538bb2ef94f393dabc004160fc5d93d9a8e06586f74f42c30215a6",
+      "measured_sha256": "f63af9b0aa538bb2ef94f393dabc004160fc5d93d9a8e06586f74f42c30215a6",
+      "match": true
+    }
+  ],
+  "planned_final_tests_scope": {
+    "note": "The following 14 locked tests (T01-T14) with 79 assertions constitute the test plan for Phase 4-6 candidate verification. They are NOT RUN at Checkpoint 12.1.",
+    "status": "PLANNED_NOT_RUN",
+    "tests": [
+      {
+        "id": "T01",
+        "name": "Workspace & Source Integrity",
+        "assertions": 5,
+        "status": "PLANNED"
+      },
+      {
+        "id": "T02",
+        "name": "Canonical Operational Content",
+        "assertions": 10,
+        "status": "PLANNED"
+      },
+      {
+        "id": "T03",
+        "name": "Strategic Divergence (7 Trục)",
+        "assertions": 7,
+        "status": "PLANNED"
+      },
+      {
+        "id": "T04",
+        "name": "Brand Traceability (VD_01–08)",
+        "assertions": 8,
+        "status": "PLANNED"
+      },
+      {
+        "id": "T05",
+        "name": "Asset Manifest & Zero-Remote",
+        "assertions": 15,
+        "status": "PLANNED"
+      },
+      {
+        "id": "T06",
+        "name": "Crop & Viewport Behavior",
+        "assertions": 6,
+        "status": "PLANNED"
+      },
+      {
+        "id": "T07",
+        "name": "Image Failure Parity (SVG & Raster)",
+        "assertions": 4,
+        "status": "PLANNED"
+      },
+      {
+        "id": "T08",
+        "name": "Alternative Text Semantics",
+        "assertions": 6,
+        "status": "PLANNED"
+      },
+      {
+        "id": "T09",
+        "name": "Iconography Consistency",
+        "assertions": 6,
+        "status": "PLANNED"
+      },
+      {
+        "id": "T10",
+        "name": "Responsive & Touch Targets",
+        "assertions": 4,
+        "status": "PLANNED"
+      },
+      {
+        "id": "T11",
+        "name": "Contrast & Focus Accessibility",
+        "assertions": 4,
+        "status": "PLANNED"
+      },
+      {
+        "id": "T12",
+        "name": "Absolute Zero-Motion Mandate",
+        "assertions": 2,
+        "status": "PLANNED"
+      },
+      {
+        "id": "T13",
+        "name": "Asset Performance Budget",
+        "assertions": 4,
+        "status": "PLANNED"
+      },
+      {
+        "id": "T14",
+        "name": "Evidence & Package Parity",
+        "assertions": 2,
+        "status": "PLANNED"
+      }
+    ],
+    "total_planned_assertions": 79
+  }
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Khởi hành / Departure">
+  <title>Khởi hành / Departure</title>
+  <desc>Biểu tượng giờ khởi hành: Mặt đồng hồ mốc và mũi tên xuất phát / Departure clock and launch arrow</desc>
+  <!-- Clock dial / Mặt đồng hồ -->
+  <circle cx="12" cy="12" r="9" />
+  <!-- Clock hands / Kim đồng hồ mốc 07:30 -->
+  <polyline points="12 7 12 12 9.5 14.5" />
+  <!-- Forward departure dynamic indicator / Mũi tên hướng hành trình -->
+  <path d="M16 16l3-3m0 0l-3-3m3 3h-4" />
+</svg>

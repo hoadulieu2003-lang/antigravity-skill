@@ -1,0 +1,1051 @@
+{
+  "contract_math": {
+    "pairs_audited": 15,
+    "passing_pairs": 15,
+    "failing_pairs": 0,
+    "razor_thin_margins": [
+      {
+        "id": "PAIR-05",
+        "role": "Focus Ring on Alabaster Canvas",
+        "fg": "#D97706",
+        "bg": "#FAF9F6",
+        "cr64": 3.0259,
+        "required": 3,
+        "margin": 0.0259
+      },
+      {
+        "id": "PAIR-06",
+        "role": "Attention Badge Text on Attention Bg",
+        "fg": "#B45309",
+        "bg": "#FEF3C7",
+        "cr64": 4.5097,
+        "required": 4.5,
+        "margin": 0.0097
+      },
+      {
+        "id": "PAIR-08",
+        "role": "Success Badge Text on Success Bg",
+        "fg": "#15803D",
+        "bg": "#DCFCE7",
+        "cr64": 4.5669,
+        "required": 4.5,
+        "margin": 0.0669
+      }
+    ],
+    "float32_divergences": [],
+    "details": [
+      {
+        "id": "PAIR-01",
+        "role": "Text Primary on Canvas",
+        "fgHex": "#0F172A",
+        "bgHex": "#FAF9F6",
+        "claimed": 16.9564,
+        "calc64": 16.9564,
+        "calc32": 16.9564,
+        "req": 4.5,
+        "pass64": true,
+        "pass32": true,
+        "margin": 12.4564,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-02",
+        "role": "Text Secondary on Canvas",
+        "fgHex": "#475569",
+        "bgHex": "#FAF9F6",
+        "claimed": 7.1973,
+        "calc64": 7.1973,
+        "calc32": 7.1973,
+        "req": 4.5,
+        "pass64": true,
+        "pass32": true,
+        "margin": 2.6973,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-03",
+        "role": "Brand Primary on White Surface",
+        "fgHex": "#3730A3",
+        "bgHex": "#FFFFFF",
+        "claimed": 9.9333,
+        "calc64": 9.9333,
+        "calc32": 9.9333,
+        "req": 4.5,
+        "pass64": true,
+        "pass32": true,
+        "margin": 5.4333,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-04",
+        "role": "Focus Ring on Slate Canvas",
+        "fgHex": "#2563EB",
+        "bgHex": "#F8FAFC",
+        "claimed": 4.94,
+        "calc64": 4.94,
+        "calc32": 4.94,
+        "req": 3,
+        "pass64": true,
+        "pass32": true,
+        "margin": 1.94,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-05",
+        "role": "Focus Ring on Alabaster Canvas",
+        "fgHex": "#D97706",
+        "bgHex": "#FAF9F6",
+        "claimed": 3.0259,
+        "calc64": 3.0259,
+        "calc32": 3.0259,
+        "req": 3,
+        "pass64": true,
+        "pass32": true,
+        "margin": 0.0259,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-06",
+        "role": "Attention Badge Text on Attention Bg",
+        "fgHex": "#B45309",
+        "bgHex": "#FEF3C7",
+        "claimed": 4.5097,
+        "calc64": 4.5097,
+        "calc32": 4.5097,
+        "req": 4.5,
+        "pass64": true,
+        "pass32": true,
+        "margin": 0.0097,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-07",
+        "role": "Error Badge Text on Error Bg",
+        "fgHex": "#BE123C",
+        "bgHex": "#FFE4E6",
+        "claimed": 5.2352,
+        "calc64": 5.2352,
+        "calc32": 5.2352,
+        "req": 4.5,
+        "pass64": true,
+        "pass32": true,
+        "margin": 0.7352,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-08",
+        "role": "Success Badge Text on Success Bg",
+        "fgHex": "#15803D",
+        "bgHex": "#DCFCE7",
+        "claimed": 4.5669,
+        "calc64": 4.5669,
+        "calc32": 4.5669,
+        "req": 4.5,
+        "pass64": true,
+        "pass32": true,
+        "margin": 0.0669,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-09",
+        "role": "Attention Badge Text on Attention Bg",
+        "fgHex": "#9A3412",
+        "bgHex": "#FFEDD5",
+        "claimed": 6.3768,
+        "calc64": 6.3768,
+        "calc32": 6.3768,
+        "req": 4.5,
+        "pass64": true,
+        "pass32": true,
+        "margin": 1.8768,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-10",
+        "role": "Error Badge Text on Error Bg",
+        "fgHex": "#9F1239",
+        "bgHex": "#FFE4E6",
+        "claimed": 6.6769,
+        "calc64": 6.6769,
+        "calc32": 6.6769,
+        "req": 4.5,
+        "pass64": true,
+        "pass32": true,
+        "margin": 2.1769,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-11",
+        "role": "Success Badge Text on Success Bg",
+        "fgHex": "#115E59",
+        "bgHex": "#CCFBF1",
+        "claimed": 6.73,
+        "calc64": 6.73,
+        "calc32": 6.73,
+        "req": 4.5,
+        "pass64": true,
+        "pass32": true,
+        "margin": 2.23,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-12",
+        "role": "Normal Badge Text on Normal Bg",
+        "fgHex": "#1E293B",
+        "bgHex": "#E2E8F0",
+        "claimed": 11.8664,
+        "calc64": 11.8664,
+        "calc32": 11.8664,
+        "req": 4.5,
+        "pass64": true,
+        "pass32": true,
+        "margin": 7.3664,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-13",
+        "role": "Normal Badge Text on Normal Bg",
+        "fgHex": "#475569",
+        "bgHex": "#F1F5F9",
+        "claimed": 6.917,
+        "calc64": 6.917,
+        "calc32": 6.917,
+        "req": 4.5,
+        "pass64": true,
+        "pass32": true,
+        "margin": 2.417,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-14",
+        "role": "Focus Ring on White Surface",
+        "fgHex": "#D97706",
+        "bgHex": "#FFFFFF",
+        "claimed": 3.1858,
+        "calc64": 3.1858,
+        "calc32": 3.1858,
+        "req": 3,
+        "pass64": true,
+        "pass32": true,
+        "margin": 0.1858,
+        "deltaClaim": 0
+      },
+      {
+        "id": "PAIR-15",
+        "role": "Focus Ring on White Surface",
+        "fgHex": "#2563EB",
+        "bgHex": "#FFFFFF",
+        "claimed": 5.1686,
+        "calc64": 5.1686,
+        "calc32": 5.1686,
+        "req": 3,
+        "pass64": true,
+        "pass32": true,
+        "margin": 2.1686,
+        "deltaClaim": 0
+      }
+    ]
+  },
+  "provenance_audit": {
+    "static_css_primitive_violations": [],
+    "component_token_primitive_violations": [],
+    "inline_style_primitive_violations": [],
+    "inline_style_raw_color_violations": [],
+    "svg_attribute_violations": [],
+    "badge_svg_accessibility": {
+      "total_badge_svgs": 12,
+      "compliant_badge_svgs": 12,
+      "violations": []
+    },
+    "non_badge_svg_accessibility": {
+      "total": 36,
+      "missing_aria_or_focusable": [
+        {
+          "file": "option_a.html",
+          "svgAttrs": "width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"",
+          "ariaHidden": false,
+          "focusableFalse": false
+        },
+        {
+          "file": "option_b.html",
+          "svgAttrs": "viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"",
+          "ariaHidden": false,
+          "focusableFalse": false
+        },
+        {
+          "file": "option_b.html",
+          "svgAttrs": "class=\"spinner-icon\" viewBox=\"0 0 16 16\" width=\"12\" height=\"12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"",
+          "ariaHidden": true,
+          "focusableFalse": false
+        },
+        {
+          "file": "option_b.html",
+          "svgAttrs": "viewBox=\"0 0 16 16\" width=\"12\" height=\"12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"",
+          "ariaHidden": true,
+          "focusableFalse": false
+        },
+        {
+          "file": "option_b.html",
+          "svgAttrs": "viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"",
+          "ariaHidden": true,
+          "focusableFalse": false
+        },
+        {
+          "file": "option_b.html",
+          "svgAttrs": "viewBox=\"0 0 16 16\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"",
+          "ariaHidden": true,
+          "focusableFalse": false
+        },
+        {
+          "file": "option_b.html",
+          "svgAttrs": "viewBox=\"0 0 16 16\" width=\"12\" height=\"12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"",
+          "ariaHidden": true,
+          "focusableFalse": false
+        },
+        {
+          "file": "index.html",
+          "svgAttrs": "width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"",
+          "ariaHidden": false,
+          "focusableFalse": false
+        }
+      ]
+    }
+  },
+  "live_dom_audits": {
+    "option_a": {
+      "total": 23,
+      "passed": 23,
+      "failed": 0,
+      "pairs": [
+        {
+          "category": "badge_text_on_badge_bg",
+          "selector": "badge[NORMAL]",
+          "text": "Bình thường",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(241, 245, 249)",
+          "contrast_ratio": 6.917,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "badge_text_on_badge_bg",
+          "selector": "badge[ATTENTION]",
+          "text": "Cần chú ý",
+          "fg": "rgb(180, 83, 9)",
+          "bg": "rgb(254, 243, 199)",
+          "contrast_ratio": 4.5097,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "badge_text_on_badge_bg",
+          "selector": "badge[ERROR]",
+          "text": "Lỗi đối tác",
+          "fg": "rgb(190, 18, 60)",
+          "bg": "rgb(255, 228, 230)",
+          "contrast_ratio": 5.2352,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "badge_text_on_badge_bg",
+          "selector": "badge[SUCCESS]",
+          "text": "Hoàn tất điều phối",
+          "fg": "rgb(21, 128, 61)",
+          "bg": "rgb(220, 252, 231)",
+          "contrast_ratio": 4.5669,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#btn-global-dispatch.dispatch-action-primary",
+          "text": "Kích hoạt điều phối tổng thể",
+          "fg": "rgb(255, 255, 255)",
+          "bg": "rgb(15, 23, 42)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-all.filter-tab",
+          "text": "Tất cả (4)",
+          "fg": "rgb(255, 255, 255)",
+          "bg": "rgb(15, 23, 42)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-normal.filter-tab",
+          "text": "Bình thường (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-attention.filter-tab",
+          "text": "Cần chú ý (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-error.filter-tab",
+          "text": "Lỗi đối tác (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-success.filter-tab",
+          "text": "Hoàn tất (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#action-btn-tf802.dispatch-tour-action",
+          "text": "Rà soát xe trung chuyển",
+          "fg": "rgb(15, 23, 42)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#action-btn-tf803.dispatch-tour-action",
+          "text": "Kích hoạt phương án dự phòng",
+          "fg": "rgb(190, 18, 60)",
+          "bg": "rgb(255, 228, 230)",
+          "contrast_ratio": 5.2352,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab active",
+          "text": "Tất cả (4)",
+          "fg": "rgb(255, 255, 255)",
+          "bg": "rgb(15, 23, 42)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab",
+          "text": "Bình thường (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab",
+          "text": "Cần chú ý (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab",
+          "text": "Lỗi đối tác (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab",
+          "text": "Hoàn tất (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "heading_h1",
+          "selector": "h1",
+          "text": "TRIPFLOW DISPATCH LEDGER — SỔ ",
+          "fg": "rgb(15, 23, 42)",
+          "bg": "rgb(250, 249, 246)",
+          "contrast_ratio": 16.9564,
+          "threshold": 3,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": ".fixture-notice",
+          "text": "DATA_CLASSIFICATION: SYNTHETIC",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(245, 244, 240)",
+          "contrast_ratio": 6.8852,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": ".tour-code-cell",
+          "text": "TF-801\nHAN-NBI-01",
+          "fg": "rgb(15, 23, 42)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": ".tour-desc-cell",
+          "text": "Tour Tràng An - Bái Đính 1 Ngà",
+          "fg": "rgb(15, 23, 42)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": "TD",
+          "text": "Bình thường",
+          "fg": "rgb(15, 23, 42)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": ".tour-pax-cell",
+          "text": "35/35 khách",
+          "fg": "rgb(15, 23, 42)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        }
+      ]
+    },
+    "option_b": {
+      "total": 23,
+      "passed": 23,
+      "failed": 0,
+      "pairs": [
+        {
+          "category": "badge_text_on_badge_bg",
+          "selector": "badge[NORMAL]",
+          "text": "[STD]\nBình thường",
+          "fg": "rgb(30, 41, 59)",
+          "bg": "rgb(226, 232, 240)",
+          "contrast_ratio": 11.8664,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "badge_text_on_badge_bg",
+          "selector": "badge[ATTENTION]",
+          "text": "[WARN]\nCần chú ý",
+          "fg": "rgb(154, 52, 18)",
+          "bg": "rgb(255, 237, 213)",
+          "contrast_ratio": 6.3768,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "badge_text_on_badge_bg",
+          "selector": "badge[ERROR]",
+          "text": "[ERR]\nLỗi đối tác",
+          "fg": "rgb(159, 18, 57)",
+          "bg": "rgb(255, 228, 230)",
+          "contrast_ratio": 6.6769,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "badge_text_on_badge_bg",
+          "selector": "badge[SUCCESS]",
+          "text": "[OK]\nHoàn tất điều phối",
+          "fg": "rgb(17, 94, 89)",
+          "bg": "rgb(204, 251, 241)",
+          "contrast_ratio": 6.73,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#btn-global-dispatch.dispatch-action-primary",
+          "text": "Kích hoạt điều phối tổng thể",
+          "fg": "rgb(255, 255, 255)",
+          "bg": "rgb(55, 48, 163)",
+          "contrast_ratio": 9.9333,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-all.filter-tab",
+          "text": "Tất cả\n4",
+          "fg": "rgb(255, 255, 255)",
+          "bg": "rgb(55, 48, 163)",
+          "contrast_ratio": 9.9333,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-normal.filter-tab",
+          "text": "Bình thường\n1",
+          "fg": "rgb(51, 65, 85)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 10.3547,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-attention.filter-tab",
+          "text": "Cần chú ý\n1",
+          "fg": "rgb(51, 65, 85)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 10.3547,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-error.filter-tab",
+          "text": "Lỗi đối tác\n1",
+          "fg": "rgb(51, 65, 85)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 10.3547,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-success.filter-tab",
+          "text": "Hoàn tất\n1",
+          "fg": "rgb(51, 65, 85)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 10.3547,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#action-btn-tf802.dispatch-tour-action",
+          "text": "Rà soát xe trung chuyển",
+          "fg": "rgb(2, 6, 23)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 20.1728,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#action-btn-tf803.dispatch-tour-action",
+          "text": "Kích hoạt phương án dự phòng",
+          "fg": "rgb(159, 18, 57)",
+          "bg": "rgb(255, 228, 230)",
+          "contrast_ratio": 6.6769,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab active",
+          "text": "Tất cả\n4",
+          "fg": "rgb(255, 255, 255)",
+          "bg": "rgb(55, 48, 163)",
+          "contrast_ratio": 9.9333,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab",
+          "text": "Bình thường\n1",
+          "fg": "rgb(51, 65, 85)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 10.3547,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab",
+          "text": "Cần chú ý\n1",
+          "fg": "rgb(51, 65, 85)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 10.3547,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab",
+          "text": "Lỗi đối tác\n1",
+          "fg": "rgb(51, 65, 85)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 10.3547,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab",
+          "text": "Hoàn tất\n1",
+          "fg": "rgb(51, 65, 85)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 10.3547,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "heading_h1",
+          "selector": "h1",
+          "text": "TRIPFLOW DISPATCH LEDGER — SỔ ",
+          "fg": "rgb(2, 6, 23)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 20.1728,
+          "threshold": 3,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": ".fixture-notice",
+          "text": "DATA_CLASSIFICATION: SYNTHETIC",
+          "fg": "rgb(51, 65, 85)",
+          "bg": "rgb(241, 245, 249)",
+          "contrast_ratio": 9.4519,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": "TD",
+          "text": "TF-801\nHAN-NBI-01",
+          "fg": "rgb(2, 6, 23)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 20.1728,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": "TD",
+          "text": "Tour Tràng An - Bái Đính 1 Ngà",
+          "fg": "rgb(2, 6, 23)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 20.1728,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": ".tour-desc",
+          "text": "Tour Tràng An - Bái Đính 1 Ngà",
+          "fg": "rgb(2, 6, 23)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 20.1728,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": "TD",
+          "text": "[STD]\nBình thường",
+          "fg": "rgb(2, 6, 23)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 20.1728,
+          "threshold": 4.5,
+          "passed": true
+        }
+      ]
+    },
+    "index": {
+      "total": 23,
+      "passed": 23,
+      "failed": 0,
+      "pairs": [
+        {
+          "category": "badge_text_on_badge_bg",
+          "selector": "badge[NORMAL]",
+          "text": "Bình thường",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(241, 245, 249)",
+          "contrast_ratio": 6.917,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "badge_text_on_badge_bg",
+          "selector": "badge[ATTENTION]",
+          "text": "Cần chú ý",
+          "fg": "rgb(180, 83, 9)",
+          "bg": "rgb(254, 243, 199)",
+          "contrast_ratio": 4.5097,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "badge_text_on_badge_bg",
+          "selector": "badge[ERROR]",
+          "text": "Lỗi đối tác",
+          "fg": "rgb(190, 18, 60)",
+          "bg": "rgb(255, 228, 230)",
+          "contrast_ratio": 5.2352,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "badge_text_on_badge_bg",
+          "selector": "badge[SUCCESS]",
+          "text": "Hoàn tất điều phối",
+          "fg": "rgb(21, 128, 61)",
+          "bg": "rgb(220, 252, 231)",
+          "contrast_ratio": 4.5669,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#btn-global-dispatch.dispatch-action-primary",
+          "text": "Kích hoạt điều phối tổng thể",
+          "fg": "rgb(255, 255, 255)",
+          "bg": "rgb(15, 23, 42)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-all.filter-tab",
+          "text": "Tất cả (4)",
+          "fg": "rgb(255, 255, 255)",
+          "bg": "rgb(15, 23, 42)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-normal.filter-tab",
+          "text": "Bình thường (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-attention.filter-tab",
+          "text": "Cần chú ý (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-error.filter-tab",
+          "text": "Lỗi đối tác (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#tab-success.filter-tab",
+          "text": "Hoàn tất (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#action-btn-tf802.dispatch-tour-action",
+          "text": "Rà soát xe trung chuyển",
+          "fg": "rgb(15, 23, 42)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "button_text",
+          "selector": "BUTTON#action-btn-tf803.dispatch-tour-action",
+          "text": "Kích hoạt phương án dự phòng",
+          "fg": "rgb(190, 18, 60)",
+          "bg": "rgb(255, 228, 230)",
+          "contrast_ratio": 5.2352,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab active",
+          "text": "Tất cả (4)",
+          "fg": "rgb(255, 255, 255)",
+          "bg": "rgb(15, 23, 42)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab",
+          "text": "Bình thường (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab",
+          "text": "Cần chú ý (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab",
+          "text": "Lỗi đối tác (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "filter_tab",
+          "selector": "tab.filter-tab",
+          "text": "Hoàn tất (1)",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 7.5777,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "heading_h1",
+          "selector": "h1",
+          "text": "TRIPFLOW DISPATCH LEDGER — SỔ ",
+          "fg": "rgb(15, 23, 42)",
+          "bg": "rgb(250, 249, 246)",
+          "contrast_ratio": 16.9564,
+          "threshold": 3,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": ".fixture-notice",
+          "text": "DATA_CLASSIFICATION: SYNTHETIC",
+          "fg": "rgb(71, 85, 105)",
+          "bg": "rgb(245, 244, 240)",
+          "contrast_ratio": 6.8852,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": ".tour-code-cell",
+          "text": "TF-801\nHAN-NBI-01",
+          "fg": "rgb(15, 23, 42)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": ".tour-desc-cell",
+          "text": "Tour Tràng An - Bái Đính 1 Ngà",
+          "fg": "rgb(15, 23, 42)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": "TD",
+          "text": "Bình thường",
+          "fg": "rgb(15, 23, 42)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "category": "body_text",
+          "selector": ".tour-pax-cell",
+          "text": "35/35 khách",
+          "fg": "rgb(15, 23, 42)",
+          "bg": "rgb(255, 255, 255)",
+          "contrast_ratio": 17.8525,
+          "threshold": 4.5,
+          "passed": true
+        }
+      ]
+    }
+  },
+  "advisory_stress_findings": [
+    {
+      "category": "RAZOR_THIN_CONTRAST_MARGIN",
+      "id": "PAIR-05",
+      "role": "Focus Ring on Alabaster Canvas",
+      "margin": 0.0259,
+      "detail": "Pair PAIR-05 (Focus Ring on Alabaster Canvas) has a razor-thin contrast buffer of +0.0259 over threshold 3:1."
+    },
+    {
+      "category": "RAZOR_THIN_CONTRAST_MARGIN",
+      "id": "PAIR-06",
+      "role": "Attention Badge Text on Attention Bg",
+      "margin": 0.0097,
+      "detail": "Pair PAIR-06 (Attention Badge Text on Attention Bg) has a razor-thin contrast buffer of +0.0097 over threshold 4.5:1."
+    },
+    {
+      "category": "RAZOR_THIN_CONTRAST_MARGIN",
+      "id": "PAIR-08",
+      "role": "Success Badge Text on Success Bg",
+      "margin": 0.0669,
+      "detail": "Pair PAIR-08 (Success Badge Text on Success Bg) has a razor-thin contrast buffer of +0.0669 over threshold 4.5:1."
+    }
+  ],
+  "verdict": "APPROVE"
+}

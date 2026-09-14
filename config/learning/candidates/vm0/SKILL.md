@@ -1,7 +1,7 @@
 ---
 name: vm0
 description: >-
-  Kỹ năng chuyên gia vận hành cho vm0-ai/vm0 (1152 ⭐).
+  Kỹ năng chuyên gia vận hành cho vm0-ai/vm0 (1151 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở vm0 vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control
@@ -12,9 +12,9 @@ description: >-
 # vm0-ai/vm0 — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/vm0-ai/vm0`  
-> **Độ uy tín cộng đồng**: 1152 ⭐  
+> **Độ uy tín cộng đồng**: 1151 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-13 16:42:08Z
+> **Tự động đóng gói lúc**: 2026-09-14 06:25:40Z
 
 ---
 

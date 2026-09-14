@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-labelledby="signal-abstract-title signal-abstract-desc">
+  <title id="signal-abstract-title">Bản đồ Lộ trình Tuyến T01 — Cartographic Route Matrix</title>
+  <desc id="signal-abstract-desc">Bản đồ học trực giao hành lang lữ hành Hà Nội - Hải Dương - Hạ Long (158 km) với các đường đẳng cao địa hình, lưới trắc địa và mốc cảnh báo chờ xác nhận phòng tại Bãi Cháy.</desc>
+
+  <defs>
+    <!-- Fine technical grid pattern / Lưới tọa độ trắc địa 20x20 -->
+    <pattern id="telemetry-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#E2E8F0" stroke-width="0.75" />
+      <circle cx="20" cy="20" r="0.8" fill="#CBD5E1" />
+    </pattern>
+    <!-- Darker sub-grid 100x100 / Lưới chính 100x100 -->
+    <pattern id="major-grid" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#CBD5E1" stroke-width="1.25" />
+    </pattern>
+  </defs>
+
+  <!-- Technical slate background / Nền bảng đo đạc kỹ thuật -->
+  <rect x="0" y="0" width="640" height="360" fill="#F8FAFC" />
+  <rect x="0" y="0" width="640" height="360" fill="url(#telemetry-grid)" />
+  <rect x="0" y="0" width="640" height="360" fill="url(#major-grid)" />
+
+  <!-- Topographic Contour Curves (Red River Delta to Halong Coast) -->
+  <path d="M 0 60 Q 140 100 280 40 T 560 90 T 640 60" fill="none" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="3 3" />
+  <path d="M 0 120 Q 160 180 320 110 T 540 160 T 640 130" fill="none" stroke="#94A3B8" stroke-width="1.25" />
+  <path d="M 0 200 Q 180 240 360 170 T 520 220 T 640 190" fill="none" stroke="#94A3B8" stroke-width="1" stroke-dasharray="6 2" />
+  <path d="M 0 280 Q 200 310 400 250 T 580 300 T 640 270" fill="none" stroke="#CBD5E1" stroke-width="1.5" />
+
+  <!-- Coastal water zone (Halong Bay Estuary) -->
+  <path d="M 480 0 Q 460 120 490 200 T 530 360 L 640 360 L 640 0 Z" fill="#EFF6FF" opacity="0.75" />
+  <!-- Islet clusters -->
+  <polygon points="560,80 575,70 590,85 580,95 565,90" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1" />
+  <polygon points="530,150 545,140 555,155 540,165" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1" />
+  <polygon points="580,180 605,170 615,190 595,205 575,195" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1" />
+  <polygon points="540,240 560,230 575,250 550,260" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1" />
+
+  <!-- EXPRESSWAY ROUTE (Hanoi - Haiphong - Halong Highway) -->
+  <!-- Segment 1: Hanoi to Hai Duong -->
+  <path d="M 60 270 L 220 200" fill="none" stroke="#1D4ED8" stroke-width="5" stroke-linecap="round" />
+  <path d="M 60 270 L 220 200" fill="none" stroke="#DBEAFE" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Segment 2: Hai Duong to Bai Chay -->
+  <path d="M 220 200 L 440 115" fill="none" stroke="#1D4ED8" stroke-width="4" stroke-linecap="round" />
+
+  <!-- Segment 3 (Bottleneck): Bai Chay area -->
+  <line x1="440" y1="115" x2="490" y2="95" stroke="#DC2626" stroke-width="4" stroke-dasharray="4 4" />
+  <!-- Route Marker at Bai Chay (Interruption Node) -->
+  <circle cx="465" cy="105" r="22" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.85" />
+  <circle cx="465" cy="105" r="11" fill="#DC2626" />
+  <circle cx="465" cy="105" r="4" fill="#FFFFFF" />
+
+  <!-- Segment 4: Bai Chay to Tuan Chau -->
+  <path d="M 490 95 L 540 85" fill="none" stroke="#94A3B8" stroke-width="3" stroke-dasharray="2 4" />
+
+  <!-- NODE 1: HANOI -->
+  <g transform="translate(60, 270)">
+    <rect x="-10" y="-10" width="20" height="20" fill="#FFFFFF" stroke="#0F172A" stroke-width="2" rx="3" />
+    <circle cx="0" cy="0" r="3" fill="#1D4ED8" />
+    <text x="18" y="-4" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#0F172A">HÀ NỘI (XUẤT PHÁT)</text>
+    <text x="18" y="10" font-family="'Consolas', monospace" font-size="9.5" fill="#475569">21°01'N 105°51'E · KM 000</text>
+  </g>
+
+  <!-- NODE 2: HAI DUONG -->
+  <g transform="translate(220, 200)">
+    <circle cx="0" cy="0" r="7" fill="#FFFFFF" stroke="#0F172A" stroke-width="2" />
+    <circle cx="0" cy="0" r="2.5" fill="#0F172A" />
+    <text x="-15" y="-14" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#0F172A" text-anchor="middle">HẢI DƯƠNG</text>
+    <text x="-15" y="20" font-family="'Consolas', monospace" font-size="9.5" fill="#475569" text-anchor="middle">KM 058 · TRẠM NGHỈ</text>
+  </g>
+
+  <!-- NODE 3: BAI CHAY BOTTLENECK READOUT -->
+  <g transform="translate(465, 105)">
+    <rect x="-105" y="32" width="210" height="34" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5" rx="4" />
+    <text x="0" y="46" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="800" fill="#991B1B" text-anchor="middle">BÃI CHÁY · ĐIỂM CHỜ XÁC NHẬN</text>
+    <text x="0" y="60" font-family="'Segoe UI', sans-serif" font-size="9.5" font-weight="700" fill="#B91C1C" text-anchor="middle">CHƯA XÁC NHẬN 4 PHÒNG</text>
+  </g>
+
+  <!-- NODE 4: TUAN CHAU -->
+  <g transform="translate(540, 85)">
+    <rect x="-8" y="-8" width="16" height="16" fill="#FFFFFF" stroke="#64748B" stroke-width="2" rx="2" />
+    <text x="14" y="-2" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#475569">CẢNG TUẦN CHÂU</text>
+    <text x="14" y="11" font-family="'Consolas', monospace" font-size="9.5" fill="#64748B">20°57'N 107°02'E</text>
+  </g>
+
+  <!-- Header Label Overlay -->
+  <g transform="translate(24, 28)">
+    <rect x="0" y="0" width="280" height="26" fill="#1E293B" rx="4" />
+    <text x="12" y="17" font-family="'Segoe UI', sans-serif" font-size="10.5" font-weight="700" fill="#F8FAFC" letter-spacing="0.3">
+      HÀNH LANG LỘ TRÌNH: HÀ NỘI — HẠ LONG
+    </text>
+  </g>
+</svg>

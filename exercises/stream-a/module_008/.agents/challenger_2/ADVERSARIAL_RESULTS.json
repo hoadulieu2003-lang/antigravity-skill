@@ -1,0 +1,200 @@
+{
+  "timestamp": "2026-09-14T01:53:54.582Z",
+  "fsm_concurrent_clicks": {
+    "total_rapid_clicks_sent": 20,
+    "evicted_to_body_count": 0,
+    "final_state": {
+      "ariaDisabled": "false",
+      "ariaBusy": "false",
+      "text": "Đã xác nhận thành công",
+      "isConfirmedText": true,
+      "activeTag": "button",
+      "activeId": "action-btn-tf802",
+      "isEvictedToBody": false
+    },
+    "all_clicks_intercepted": true,
+    "passed": true
+  },
+  "fsm_error_recovery": {
+    "failure_audit": {
+      "activeIsBody": false,
+      "activeTag": "button",
+      "activeId": "action-btn-retry-tf-802",
+      "activeClass": "btn-retry btn-action",
+      "activeText": "Lỗi kết nối — Thử lại",
+      "retryBtnFound": true,
+      "retryBtnId": "action-btn-retry-tf-802",
+      "isRetryButton": true,
+      "announcerText": "Lỗi kết nối đối tác cho TF-802. Vui lòng bấm Thử lại."
+    },
+    "post_retry_state": {
+      "activeTag": "button",
+      "activeId": "action-btn-retry-tf-802",
+      "activeText": "Đang kiểm tra tham số...",
+      "ariaDisabled": "true",
+      "ariaBusy": "true",
+      "isBody": false
+    },
+    "passed": true
+  },
+  "adversarial_viewports": [
+    {
+      "viewport_name": "iPhone SE (1st gen / narrow min)",
+      "width": 320,
+      "height": 568,
+      "dpr": 2,
+      "scroll_width": 320,
+      "inner_width": 320,
+      "client_width": 320,
+      "overflow_px": 0,
+      "overflowing_elements": [
+        {
+          "tag": "table",
+          "id": null,
+          "className": "dispatch-table",
+          "right": 923,
+          "excessPx": 603
+        },
+        {
+          "tag": "caption",
+          "id": null,
+          "className": null,
+          "right": 923,
+          "excessPx": 603
+        },
+        {
+          "tag": "thead",
+          "id": null,
+          "className": null,
+          "right": 923,
+          "excessPx": 603
+        }
+      ],
+      "passed": true
+    },
+    {
+      "viewport_name": "Android Narrow (Samsung A-series)",
+      "width": 360,
+      "height": 800,
+      "dpr": 2,
+      "scroll_width": 360,
+      "inner_width": 360,
+      "client_width": 360,
+      "overflow_px": 0,
+      "overflowing_elements": [
+        {
+          "tag": "table",
+          "id": null,
+          "className": "dispatch-table",
+          "right": 923,
+          "excessPx": 563
+        },
+        {
+          "tag": "caption",
+          "id": null,
+          "className": null,
+          "right": 923,
+          "excessPx": 563
+        },
+        {
+          "tag": "thead",
+          "id": null,
+          "className": null,
+          "right": 923,
+          "excessPx": 563
+        }
+      ],
+      "passed": true
+    },
+    {
+      "viewport_name": "iPhone 8 / SE2 (Standard compact)",
+      "width": 375,
+      "height": 667,
+      "dpr": 2,
+      "scroll_width": 375,
+      "inner_width": 375,
+      "client_width": 375,
+      "overflow_px": 0,
+      "overflowing_elements": [
+        {
+          "tag": "table",
+          "id": null,
+          "className": "dispatch-table",
+          "right": 923,
+          "excessPx": 548
+        },
+        {
+          "tag": "caption",
+          "id": null,
+          "className": null,
+          "right": 923,
+          "excessPx": 548
+        },
+        {
+          "tag": "thead",
+          "id": null,
+          "className": null,
+          "right": 923,
+          "excessPx": 548
+        }
+      ],
+      "passed": true
+    },
+    {
+      "viewport_name": "Full HD Standard (1080p)",
+      "width": 1920,
+      "height": 1080,
+      "dpr": 1,
+      "scroll_width": 1920,
+      "inner_width": 1920,
+      "client_width": 1920,
+      "overflow_px": 0,
+      "overflowing_elements": [],
+      "passed": true
+    },
+    {
+      "viewport_name": "4K / QHD Ultra-wide (2560x1440)",
+      "width": 2560,
+      "height": 1440,
+      "dpr": 1,
+      "scroll_width": 2560,
+      "inner_width": 2560,
+      "client_width": 2560,
+      "overflow_px": 0,
+      "overflowing_elements": [],
+      "passed": true
+    },
+    {
+      "viewport_name": "Ultrawide 21:9 Cinema (3440x1440)",
+      "width": 3440,
+      "height": 1440,
+      "dpr": 1,
+      "scroll_width": 3440,
+      "inner_width": 3440,
+      "client_width": 3440,
+      "overflow_px": 0,
+      "overflowing_elements": [],
+      "passed": true
+    }
+  ],
+  "keyboard_focus_stress": {
+    "tests": [
+      {
+        "viewport_width": 320,
+        "element_id": "btn-global-dispatch",
+        "outline_width": 2,
+        "outline_style": "solid",
+        "passed": true
+      },
+      {
+        "viewport_width": 2560,
+        "element_id": "btn-global-dispatch",
+        "outline_width": 2,
+        "outline_style": "solid",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "all_passed": true
+}

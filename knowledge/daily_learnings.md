@@ -516,3 +516,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-14 13:25:28`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (59 ⭐)]** [liiiiiiiiil/agent-from-scratch](https://github.com/liiiiiiiiil/agent-from-scratch)
+  > Build an AI Coding Agent from Scratch, Step by Step | 从零一步步搭建 AI 编程 Agent，边实现边理解 Agent 的工作原理
+- **[GitHub (6703 ⭐)]** [genspark-ai/genoffice](https://github.com/genspark-ai/genoffice)
+  > Free, open-source AI Office suite: Docs, Sheets, Slides, PDF, Markdown and HTML editors with a built-in AI agent, plus a `genoffice` CLI and agent skill so C...
+- **[GitHub (233 ⭐)]** [scitix/siclaw](https://github.com/scitix/siclaw)
+  > AI-powered SRE platform — read-only infrastructure diagnostics with deep investigation, security governance, and team collaboration
+
+</untrusted_external_content>
+
+---

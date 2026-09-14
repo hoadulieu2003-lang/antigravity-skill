@@ -1,0 +1,869 @@
+# ==============================================================================
+# TRIPFLOW DISPATCH LEDGER — AUTHORITATIVE COLOR SYSTEM CONTRACT
+# Module: DESIGN_TRAINING_008 (Color System)
+# Stream: FOUNDATION_INTEGRITY (Stream A)
+# Authority: ChatGPT Architectural Controller (Sol) — Review 001 (Locked Corrections P01–P07)
+# Standard: W3C Design Tokens Community Group (DTCG) & W3C WCAG 2.2 AA Baseline
+# ==============================================================================
+
+schema_version: "1.0.0"
+contract_id: "DESIGN_TRAINING_008_COLOR_CONTRACT"
+module_id: "DESIGN_TRAINING_008"
+module_name: "COLOR_SYSTEM"
+stream_id: "FOUNDATION_INTEGRITY"
+branch_id: "TAB_A"
+last_updated: "2026-09-14T01:38:00Z"
+
+# ------------------------------------------------------------------------------
+# 1. METADATA & DATA GOVERNANCE
+# ------------------------------------------------------------------------------
+governance:
+  classification: "SYNTHETIC_TRAINING_FIXTURE"
+  real_customer_data: false
+  business_performance_claims: "none"
+  notice_statement: >
+    All dispatch ledger entries (TF-801 through TF-804) are synthetic training
+    fixtures created solely for architectural evaluation and color system validation.
+    No commercial performance, operational claim, or clinical ergonomics claim is made.
+  invariants:
+    theme: "LIGHT_THEME_DEFAULT_ONLY"
+    motion: "ZERO_MOTION_UNTIL_STREAM_B_AUTHORIZES"
+    overflow: "ZERO_HORIZONTAL_OVERFLOW_ALL_VIEWPORTS"
+    accessibility_baseline: "WCAG_2_2_AA_BASELINE"
+
+# ------------------------------------------------------------------------------
+# 2. ARCHITECTURAL POLICIES & LOCKED CORRECTIONS (P01–P07)
+# ------------------------------------------------------------------------------
+policies:
+  P01_state_taxonomy_segregation:
+    operational_status_taxonomy:
+      description: "Semantic classification of tour operational condition. Strictly domain status, NOT an interaction state machine."
+      allowed_values:
+        - "NORMAL"
+        - "ATTENTION"
+        - "ERROR"
+        - "SUCCESS"
+    interaction_fsm_states:
+      description: "Asynchronous interaction state machine for user dispatch actions (e.g. task submission, retry, network sync)."
+      allowed_values:
+        - "IDLE"
+        - "VALIDATING"
+        - "SAVING"
+        - "FAILURE"
+        - "CONFIRMED"
+    invariant: "Never merge tour operational status with button interaction FSM in a single state variable."
+
+  P02_bounded_language_and_context:
+    rule: "Avoid unproven empirical assertions. Label environmental claims as Design Hypotheses or Target Contexts."
+    direction_a_hypothesis: "Target Context: Reduced luminance glare in extended indoor dispatch shifts via warm alabaster paper tones (#FAF9F6)."
+    direction_b_hypothesis: "Target Context: Maximum boundary legibility and high contrast in ambient lighting environments via cool ice slate (#F8FAFC) and structural borders."
+
+  P03_mathematical_contrast_compliance:
+    luminance_formula: "W3C WCAG 2.2 sRGB Relative Luminance: L = 0.2126*R_lin + 0.7152*G_lin + 0.0722*B_lin"
+    contrast_formula: "Contrast Ratio = (L1 + 0.05) / (L2 + 0.05), where L1 >= L2"
+    thresholds:
+      normal_text: 4.5
+      large_text: 3.0
+      ui_boundaries_and_focus: 3.0
+
+  P04_token_provenance_architecture:
+    hierarchy: "Primitive (--primitive-*) -> Semantic (--color-*) -> Component (--dispatch-*)"
+    static_audit_rule: "Zero primitive tokens allowed inside component CSS rule selectors. Component classes consume component or semantic tokens exclusively."
+    runtime_audit_rule: "Computed DOM styles must resolve to exact hex values declared in the token mapping."
+
+  P05_substantive_direction_divergence:
+    evaluation: "Divergence proven by distinct canvas temperatures, brand primary identity, border strategies, and visual theses. Arbitrary Delta L cutoffs are discarded."
+
+  P06_color_independence_redundant_cues:
+    requirement: "Every operational status must present 3 synchronized sensory layers:"
+    layer_1_text: "Explicit Vietnamese copy ('Bình thường', 'Cần chú ý', 'Lỗi đối tác', 'Hoàn tất điều phối')."
+    layer_2_geometry: "Standalone inline SVG shape with aria-hidden='true' and focusable='false' (Circle, Warning Triangle, Stop Octagon, Check Shield)."
+    layer_3_color: "High-contrast semantic background, text, and border tokens satisfying WCAG 2.2 AA."
+    simulation_review: "Grayscale inspection and CVD simulations (Deuteranopia, Protanopia via feColorMatrix) provided for Controller visual review."
+
+  P07_context_aware_focus_verification:
+    indicator_rule: "outline: 2px solid <color>; outline-offset: 2px; activated via native keyboard Tab traversal."
+    contrast_requirement: "Contrast ratio >= 3.0:1 against immediate adjacent background."
+    required_contexts:
+      - "Primary Action CTA (Button)"
+      - "Secondary Action / Filter Tab"
+      - "Interactive Tour Row / Card"
+
+# ------------------------------------------------------------------------------
+# 3. TIER 1: PRIMITIVE TOKENS (--primitive-*)
+# Raw physical color hex values structured in 50-950 luminance steps.
+# Invariant: Never reference primitive tokens directly in component CSS selectors!
+# ------------------------------------------------------------------------------
+primitive_tokens:
+  slate:
+    description: "Neutral cool slate scale for framing, typography, borders, and Option A brand identity."
+    steps:
+      50:  { token: "--primitive-slate-50",  hex: "#F8FAFC", relative_luminance: 0.953559, role: "Option B canvas background" }
+      100: { token: "--primitive-slate-100", hex: "#F1F5F9", relative_luminance: 0.908451, role: "Option A normal badge bg / surface subtle" }
+      200: { token: "--primitive-slate-200", hex: "#E2E8F0", relative_luminance: 0.801732, role: "Option A subtle border / Option B normal badge bg" }
+      300: { token: "--primitive-slate-300", hex: "#CBD5E1", relative_luminance: 0.657213, role: "Option A structural border / normal badge border" }
+      400: { token: "--primitive-slate-400", hex: "#94A3B8", relative_luminance: 0.359510, role: "Option B structural border / normal badge border" }
+      500: { token: "--primitive-slate-500", hex: "#64748B", relative_luminance: 0.170642, role: "Muted metadata text" }
+      600: { token: "--primitive-slate-600", hex: "#475569", relative_luminance: 0.088565, role: "Secondary body text / Option A normal badge text" }
+      700: { token: "--primitive-slate-700", hex: "#334155", relative_luminance: 0.051403, role: "Option B secondary body text" }
+      800: { token: "--primitive-slate-800", hex: "#1E293B", relative_luminance: 0.021777, role: "Option B normal badge text / button hover state" }
+      900: { token: "--primitive-slate-900", hex: "#0F172A", relative_luminance: 0.008815, role: "Option A brand primary / primary headings" }
+      950: { token: "--primitive-slate-950", hex: "#020617", relative_luminance: 0.002050, role: "Option B primary headings / high-contrast text" }
+
+  warm_neutral:
+    description: "Alabaster warm neutral scale for Option A editorial paper canvas and warm surfaces."
+    steps:
+      50:  { token: "--primitive-warm-neutral-50",  hex: "#FAF9F6", relative_luminance: 0.947292, role: "Option A warm alabaster canvas" }
+      100: { token: "--primitive-warm-neutral-100", hex: "#F5F4F0", relative_luminance: 0.904051, role: "Option A warm subtle surface" }
+      200: { token: "--primitive-warm-neutral-200", hex: "#E7E5E0", relative_luminance: 0.784094, role: "Option A warm border subtle" }
+      300: { token: "--primitive-warm-neutral-300", hex: "#D7D3CB", relative_luminance: 0.653474, role: "Option A warm border structural" }
+      400: { token: "--primitive-warm-neutral-400", hex: "#A8A29E", relative_luminance: 0.366341, role: "Option A warm border strong" }
+      500: { token: "--primitive-warm-neutral-500", hex: "#78716C", relative_luminance: 0.168860, role: "Option A warm muted text" }
+      600: { token: "--primitive-warm-neutral-600", hex: "#57534E", relative_luminance: 0.087628, role: "Option A warm secondary text" }
+      700: { token: "--primitive-warm-neutral-700", hex: "#44403C", relative_luminance: 0.052220, role: "Option A warm dark neutral" }
+      800: { token: "--primitive-warm-neutral-800", hex: "#292524", relative_luminance: 0.019219, role: "Option A warm dark surface" }
+      900: { token: "--primitive-warm-neutral-900", hex: "#1C1917", relative_luminance: 0.010040, role: "Option A warm dark ink text" }
+      950: { token: "--primitive-warm-neutral-950", hex: "#0C0A09", relative_luminance: 0.003150, role: "Option A warm deepest black" }
+
+  amber:
+    description: "Amber scale for Option A focus ring and Option A Attention operational status."
+    steps:
+      50:  { token: "--primitive-amber-50",  hex: "#FFFBEB", relative_luminance: 0.962525, role: "Amber ultra-light tint" }
+      100: { token: "--primitive-amber-100", hex: "#FEF3C7", relative_luminance: 0.892955, role: "Option A Attention badge background" }
+      200: { token: "--primitive-amber-200", hex: "#FDE68A", relative_luminance: 0.793113, role: "Amber light tint" }
+      300: { token: "--primitive-amber-300", hex: "#FCD34D", relative_luminance: 0.678198, role: "Amber medium tint" }
+      400: { token: "--primitive-amber-400", hex: "#FBBF24", relative_luminance: 0.578982, role: "Amber accent tint" }
+      500: { token: "--primitive-amber-500", hex: "#F59E0B", relative_luminance: 0.438904, role: "Option A Attention badge border" }
+      600: { token: "--primitive-amber-600", hex: "#D97706", relative_luminance: 0.279585, role: "Option A keyboard focus visible ring" }
+      700: { token: "--primitive-amber-700", hex: "#B45309", relative_luminance: 0.159095, role: "Option A Attention badge text (4.51:1)" }
+      800: { token: "--primitive-amber-800", hex: "#92400E", relative_luminance: 0.098095, role: "Amber dark shade" }
+      900: { token: "--primitive-amber-900", hex: "#78350F", relative_luminance: 0.065738, role: "Amber deeper shade" }
+      950: { token: "--primitive-amber-950", hex: "#451A03", relative_luminance: 0.020106, role: "Amber deepest shade" }
+
+  blue:
+    description: "Cobalt blue scale for Option B keyboard focus ring and technical accents."
+    steps:
+      50:  { token: "--primitive-blue-50",  hex: "#EFF6FF", relative_luminance: 0.914823, role: "Blue ultra-light tint" }
+      100: { token: "--primitive-blue-100", hex: "#DBEAFE", relative_luminance: 0.810615, role: "Blue light tint" }
+      200: { token: "--primitive-blue-200", hex: "#BFDBFE", relative_luminance: 0.688952, role: "Blue soft tint" }
+      300: { token: "--primitive-blue-300", hex: "#93C5FD", relative_luminance: 0.532274, role: "Blue medium tint" }
+      400: { token: "--primitive-blue-400", hex: "#60A5FA", relative_luminance: 0.362992, role: "Blue bright tint" }
+      500: { token: "--primitive-blue-500", hex: "#3B82F6", relative_luminance: 0.235489, role: "Blue standard accent" }
+      600: { token: "--primitive-blue-600", hex: "#2563EB", relative_luminance: 0.153152, role: "Option B keyboard focus visible ring (4.94:1)" }
+      700: { token: "--primitive-blue-700", hex: "#1D4ED8", relative_luminance: 0.106679, role: "Blue dark accent" }
+      800: { token: "--primitive-blue-800", hex: "#1E40AF", relative_luminance: 0.070380, role: "Blue deeper shade" }
+      900: { token: "--primitive-blue-900", hex: "#1E3A8A", relative_luminance: 0.051371, role: "Blue deep shade" }
+      950: { token: "--primitive-blue-950", hex: "#172554", relative_luminance: 0.021454, role: "Blue deepest shade" }
+
+  indigo:
+    description: "Technical Indigo scale for Option B Brand Primary identity and Primary Action CTAs."
+    steps:
+      50:  { token: "--primitive-indigo-50",  hex: "#EEF2FF", relative_luminance: 0.889014, role: "Indigo ultra-light tint" }
+      100: { token: "--primitive-indigo-100", hex: "#E0E7FF", relative_luminance: 0.802191, role: "Indigo light tint" }
+      200: { token: "--primitive-indigo-200", hex: "#C7D2FE", relative_luminance: 0.653911, role: "Indigo soft tint" }
+      300: { token: "--primitive-indigo-300", hex: "#A5B4FC", relative_luminance: 0.476701, role: "Indigo medium tint" }
+      400: { token: "--primitive-indigo-400", hex: "#818CF8", relative_luminance: 0.302006, role: "Indigo bright tint" }
+      500: { token: "--primitive-indigo-500", hex: "#6366F1", relative_luminance: 0.185063, role: "Indigo standard accent" }
+      600: { token: "--primitive-indigo-600", hex: "#4F46E5", relative_luminance: 0.116997, role: "Indigo active state" }
+      700: { token: "--primitive-indigo-700", hex: "#4338CA", relative_luminance: 0.082859, role: "Option B brand hover state" }
+      800: { token: "--primitive-indigo-800", hex: "#3730A3", relative_luminance: 0.055705, role: "Option B brand primary CTA (9.93:1 on white)" }
+      900: { token: "--primitive-indigo-900", hex: "#312E81", relative_luminance: 0.041919, role: "Option B brand active state" }
+      950: { token: "--primitive-indigo-950", hex: "#1E1B4B", relative_luminance: 0.015679, role: "Indigo deepest shade" }
+
+  rose:
+    description: "Rose scale for ERROR operational status across Option A and Option B."
+    steps:
+      50:  { token: "--primitive-rose-50",  hex: "#FFF1F2", relative_luminance: 0.905814, role: "Rose ultra-light tint" }
+      100: { token: "--primitive-rose-100", hex: "#FFE4E6", relative_luminance: 0.824600, role: "Error badge background (Option A & B)" }
+      200: { token: "--primitive-rose-200", hex: "#FECDD3", relative_luminance: 0.694366, role: "Rose light tint" }
+      300: { token: "--primitive-rose-300", hex: "#FDA4AF", relative_luminance: 0.505287, role: "Rose soft tint" }
+      400: { token: "--primitive-rose-400", hex: "#FB7185", relative_luminance: 0.340129, role: "Rose medium tint" }
+      500: { token: "--primitive-rose-500", hex: "#F43F5E", relative_luminance: 0.235963, role: "Option A Error badge border" }
+      600: { token: "--primitive-rose-600", hex: "#E11D48", relative_luminance: 0.173542, role: "Option B Error badge border (1.5px)" }
+      700: { token: "--primitive-rose-700", hex: "#BE123C", relative_luminance: 0.117060, role: "Option A Error badge text (5.24:1 on #FFE4E6)" }
+      800: { token: "--primitive-rose-800", hex: "#9F1239", relative_luminance: 0.080989, role: "Option B Error badge text (6.68:1 on #FFE4E6)" }
+      900: { token: "--primitive-rose-900", hex: "#881337", relative_luminance: 0.059758, role: "Rose deep shade" }
+      950: { token: "--primitive-rose-950", hex: "#4C0519", relative_luminance: 0.017152, role: "Rose deepest shade" }
+
+  orange:
+    description: "Industrial orange scale for Option B ATTENTION operational status."
+    steps:
+      50:  { token: "--primitive-orange-50",  hex: "#FFF7ED", relative_luminance: 0.938960, role: "Orange ultra-light tint" }
+      100: { token: "--primitive-orange-100", hex: "#FFEDD5", relative_luminance: 0.866325, role: "Option B Attention badge background" }
+      200: { token: "--primitive-orange-200", hex: "#FED7AA", relative_luminance: 0.725740, role: "Orange light tint" }
+      300: { token: "--primitive-orange-300", hex: "#FDBA74", relative_luminance: 0.572614, role: "Orange soft tint" }
+      400: { token: "--primitive-orange-400", hex: "#FB923C", relative_luminance: 0.413932, role: "Orange medium tint" }
+      500: { token: "--primitive-orange-500", hex: "#F97316", relative_luminance: 0.324591, role: "Orange bright accent" }
+      600: { token: "--primitive-orange-600", hex: "#EA580C", relative_luminance: 0.244984, role: "Option B Attention badge border (1.5px)" }
+      700: { token: "--primitive-orange-700", hex: "#C2410C", relative_luminance: 0.152765, role: "Orange dark accent" }
+      800: { token: "--primitive-orange-800", hex: "#9A3412", relative_luminance: 0.093697, role: "Option B Attention badge text (6.38:1 on #FFEDD5)" }
+      900: { token: "--primitive-orange-900", hex: "#7C2D12", relative_luminance: 0.062055, role: "Orange deep shade" }
+      950: { token: "--primitive-orange-950", hex: "#431407", relative_luminance: 0.017089, role: "Orange deepest shade" }
+
+  green:
+    description: "Emerald green scale for Option A SUCCESS operational status."
+    steps:
+      50:  { token: "--primitive-green-50",  hex: "#F0FDF4", relative_luminance: 0.953075, role: "Green ultra-light tint" }
+      100: { token: "--primitive-green-100", hex: "#DCFCE7", relative_luminance: 0.906060, role: "Option A Success badge background" }
+      200: { token: "--primitive-green-200", hex: "#BBF7D0", relative_luminance: 0.816404, role: "Green light tint" }
+      300: { token: "--primitive-green-300", hex: "#86EFAC", relative_luminance: 0.697799, role: "Green soft tint" }
+      400: { token: "--primitive-green-400", hex: "#4ADE80", relative_luminance: 0.552569, role: "Green medium tint" }
+      500: { token: "--primitive-green-500", hex: "#22C55E", relative_luminance: 0.410807, role: "Option A Success badge border" }
+      600: { token: "--primitive-green-600", hex: "#16A34A", relative_luminance: 0.268594, role: "Green bright accent" }
+      700: { token: "--primitive-green-700", hex: "#15803D", relative_luminance: 0.159347, role: "Option A Success badge text (4.57:1 on #DCFCE7)" }
+      800: { token: "--primitive-green-800", hex: "#166534", relative_luminance: 0.097259, role: "Green dark shade" }
+      900: { token: "--primitive-green-900", hex: "#14532D", relative_luminance: 0.065247, role: "Green deep shade" }
+      950: { token: "--primitive-green-950", hex: "#052E16", relative_luminance: 0.020442, role: "Green deepest shade" }
+
+  teal:
+    description: "Technical teal/cyan scale for Option B SUCCESS operational status."
+    steps:
+      50:  { token: "--primitive-teal-50",  hex: "#F0FDFA", relative_luminance: 0.956780, role: "Teal ultra-light tint" }
+      100: { token: "--primitive-teal-100", hex: "#CCFBF1", relative_luminance: 0.881826, role: "Option B Success badge background" }
+      200: { token: "--primitive-teal-200", hex: "#99F6E4", relative_luminance: 0.782853, role: "Teal light tint" }
+      300: { token: "--primitive-teal-300", hex: "#5EEAD4", relative_luminance: 0.659788, role: "Teal soft tint" }
+      400: { token: "--primitive-teal-400", hex: "#2DD4BF", relative_luminance: 0.514064, role: "Teal medium tint" }
+      500: { token: "--primitive-teal-500", hex: "#14B8A6", relative_luminance: 0.371829, role: "Teal standard accent" }
+      600: { token: "--primitive-teal-600", hex: "#0D9488", relative_luminance: 0.230429, role: "Option B Success badge border (1.5px)" }
+      700: { token: "--primitive-teal-700", hex: "#0F766E", relative_luminance: 0.141842, role: "Teal dark shade" }
+      800: { token: "--primitive-teal-800", hex: "#115E59", relative_luminance: 0.088458, role: "Option B Success badge text (6.73:1 on #CCFBF1)" }
+      900: { token: "--primitive-teal-900", hex: "#134E4A", relative_luminance: 0.060816, role: "Teal deep shade" }
+      950: { token: "--primitive-teal-950", hex: "#042F2E", relative_luminance: 0.022561, role: "Teal deepest shade" }
+
+  static_neutral:
+    description: "Absolute static values for pure white surfaces and universal high-contrast anchors."
+    values:
+      white: { token: "--primitive-static-white", hex: "#FFFFFF", relative_luminance: 1.000000, role: "Pure surface background / inverse text" }
+
+# ------------------------------------------------------------------------------
+# 4. TIER 2: SEMANTIC TOKENS (--color-*)
+# Intent-driven tokens mapped to primitive tokens per theme profile.
+# ------------------------------------------------------------------------------
+semantic_tokens:
+  canvas_and_surface:
+    --color-canvas-bg:
+      description: "Default page background behind all ledger cards and containers."
+      category: "surface"
+    --color-surface-bg:
+      description: "Surface background for tour cards, data tables, and modal dialogs."
+      category: "surface"
+    --color-surface-subtle:
+      description: "Subtle background for table headers, inactive tabs, and synthetic fixture notice."
+      category: "surface"
+    --color-surface-raised:
+      description: "Elevated surface for tooltips, dropdown menus, and floating action bars."
+      category: "surface"
+
+  text:
+    --color-text-primary:
+      description: "Highest-contrast text for tour titles, ledger headers, and critical metrics."
+      category: "text"
+      min_contrast_target: 4.5
+    --color-text-secondary:
+      description: "Secondary text for coordinators, route notes, and metadata labels."
+      category: "text"
+      min_contrast_target: 4.5
+    --color-text-muted:
+      description: "Tertiary text for timestamps, secondary IDs, and non-essential descriptors."
+      category: "text"
+      min_contrast_target: 4.5
+    --color-text-inverse:
+      description: "High-contrast text on dark brand primary CTA buttons and badge tags."
+      category: "text"
+      min_contrast_target: 4.5
+
+  border:
+    --color-border-subtle:
+      description: "Fine dividing lines between table rows and card sections."
+      category: "border"
+    --color-border-structural:
+      description: "Strong structural boundaries defining card containers and inputs."
+      category: "border"
+      min_contrast_target: 3.0
+    --color-border-strong:
+      description: "High-visibility boundary for interactive elements in high-contrast mode."
+      category: "border"
+      min_contrast_target: 3.0
+
+  brand_and_action:
+    --color-brand-primary:
+      description: "Brand identity anchor and primary CTA button fill. STRICTLY SEGREGATED: Never used as a status color!"
+      category: "brand"
+      usage_restriction: "CTA_AND_IDENTITY_ONLY"
+    --color-brand-hover:
+      description: "Interactive hover state for primary action buttons."
+      category: "brand"
+    --color-brand-active:
+      description: "Interactive pressed state for primary action buttons."
+      category: "brand"
+    --color-action-primary-bg:
+      description: "Background for primary interactive CTA triggers."
+      category: "action"
+    --color-action-primary-text:
+      description: "Text inside primary interactive CTA triggers."
+      category: "action"
+      min_contrast_target: 4.5
+    --color-action-secondary-bg:
+      description: "Background for secondary interactive buttons and filter tabs."
+      category: "action"
+    --color-action-secondary-text:
+      description: "Text for secondary interactive buttons and filter tabs."
+      category: "action"
+      min_contrast_target: 4.5
+    --color-action-secondary-border:
+      description: "Border for secondary interactive buttons and filter tabs."
+      category: "action"
+      min_contrast_target: 3.0
+
+  focus_ring:
+    --color-focus-ring:
+      description: "Dedicated high-visibility focus outline color activated via keyboard Tab."
+      category: "accessibility"
+      min_contrast_target: 3.0
+    --color-focus-ring-offset:
+      description: "Contrast offset buffer between focus ring and adjacent background."
+      category: "accessibility"
+
+  operational_status_taxonomy:
+    NORMAL:
+      description: "Tour schedule executing on time, no manual intervention required."
+      tokens:
+        text:   "--color-status-normal-text"
+        bg:     "--color-status-normal-bg"
+        border: "--color-status-normal-border"
+      redundant_cues:
+        vietnamese_label: "Bình thường"
+        svg_shape: "circle"
+        svg_role: "aria-hidden='true' focusable='false'"
+    ATTENTION:
+      description: "Upcoming deadline or pending resource (e.g. transfer van unconfirmed)."
+      tokens:
+        text:   "--color-status-attention-text"
+        bg:     "--color-status-attention-bg"
+        border: "--color-status-attention-border"
+      redundant_cues:
+        vietnamese_label: "Cần chú ý"
+        svg_shape: "warning-triangle"
+        svg_role: "aria-hidden='true' focusable='false'"
+    ERROR:
+      description: "Partner service failure or emergency impediment requiring immediate intervention."
+      tokens:
+        text:   "--color-status-error-text"
+        bg:     "--color-status-error-bg"
+        border: "--color-status-error-border"
+      redundant_cues:
+        vietnamese_label: "Lỗi đối tác"
+        svg_shape: "stop-octagon"
+        svg_role: "aria-hidden='true' focusable='false'"
+    SUCCESS:
+      description: "All services 100% confirmed by partners, tour file locked and archived."
+      tokens:
+        text:   "--color-status-success-text"
+        bg:     "--color-status-success-bg"
+        border: "--color-status-success-border"
+      redundant_cues:
+        vietnamese_label: "Hoàn tất điều phối"
+        svg_shape: "check-shield"
+        svg_role: "aria-hidden='true' focusable='false'"
+
+  interaction_fsm_states:
+    IDLE:
+      description: "Standard quiescent state. Controls fully interactive."
+      opacity: 1.0
+      cursor: "pointer"
+      aria_disabled: "false"
+      aria_busy: "false"
+      focus_behavior: "Normal Tab order"
+      announcer: "Silent"
+    VALIDATING:
+      description: "Client-side pre-flight parameter verification."
+      opacity: 0.85
+      cursor: "wait"
+      aria_disabled: "true"
+      aria_busy: "true"
+      focus_behavior: "Preserved on trigger element (never evicted to body)"
+      announcer: "Đang kiểm tra tham số điều phối..."
+    SAVING:
+      description: "Asynchronous network dispatch to partner booking services."
+      opacity: 0.75
+      cursor: "not-allowed"
+      aria_disabled: "true"
+      aria_busy: "true"
+      focus_behavior: "Preserved on trigger element via aria-disabled without HTML disabled"
+      announcer: "Đang đồng bộ dữ liệu với hệ thống điều phối..."
+    FAILURE:
+      description: "Network timeout or partner rejection. Action failed."
+      opacity: 1.0
+      cursor: "pointer"
+      aria_disabled: "false"
+      aria_busy: "false"
+      focus_behavior: "Programmatic focus shift to Retry button (retryBtn.focus())"
+      announcer: "Lỗi kết nối đối tác. Vui lòng bấm Thử lại."
+    CONFIRMED:
+      description: "Action committed successfully. Tour status updated."
+      opacity: 1.0
+      cursor: "default"
+      aria_disabled: "false"
+      aria_busy: "false"
+      focus_behavior: "Programmatic focus shift to confirmed tour container or notice"
+      announcer: "Thao tác điều phối đã được xác nhận thành công."
+
+# ------------------------------------------------------------------------------
+# 5. TIER 3: COMPONENT TOKENS (--dispatch-*)
+# Scoped specifically to UI components.
+# Strict Invariant: MUST reference Semantic Tokens (--color-*), NEVER Primitive Tokens!
+# ------------------------------------------------------------------------------
+component_tokens:
+  card_container:
+    --dispatch-card-bg: "var(--color-surface-bg)"
+    --dispatch-card-border: "var(--color-border-subtle)"
+    --dispatch-card-shadow: "0 1px 3px rgba(15, 23, 42, 0.05)"
+    --dispatch-card-radius: "8px"
+    --dispatch-card-padding: "16px"
+
+  table_header:
+    --dispatch-table-header-bg: "var(--color-surface-subtle)"
+    --dispatch-table-header-text: "var(--color-text-secondary)"
+    --dispatch-table-header-border: "var(--color-border-subtle)"
+    --dispatch-table-header-font-size: "13px"
+    --dispatch-table-header-font-weight: "600"
+
+  table_row:
+    --dispatch-table-row-bg: "var(--color-surface-bg)"
+    --dispatch-table-row-hover-bg: "var(--color-surface-subtle)"
+    --dispatch-table-row-border: "var(--color-border-subtle)"
+    --dispatch-table-row-padding: "12px 16px"
+
+  status_badge:
+    base:
+      --dispatch-badge-padding: "4px 10px"
+      --dispatch-badge-radius: "9999px"
+      --dispatch-badge-font-size: "12px"
+      --dispatch-badge-font-weight: "600"
+      --dispatch-badge-icon-size: "14px"
+    normal:
+      --dispatch-badge-normal-text: "var(--color-status-normal-text)"
+      --dispatch-badge-normal-bg: "var(--color-status-normal-bg)"
+      --dispatch-badge-normal-border: "var(--color-status-normal-border)"
+    attention:
+      --dispatch-badge-attention-text: "var(--color-status-attention-text)"
+      --dispatch-badge-attention-bg: "var(--color-status-attention-bg)"
+      --dispatch-badge-attention-border: "var(--color-status-attention-border)"
+    error:
+      --dispatch-badge-error-text: "var(--color-status-error-text)"
+      --dispatch-badge-error-bg: "var(--color-status-error-bg)"
+      --dispatch-badge-error-border: "var(--color-status-error-border)"
+    success:
+      --dispatch-badge-success-text: "var(--color-status-success-text)"
+      --dispatch-badge-success-bg: "var(--color-status-success-bg)"
+      --dispatch-badge-success-border: "var(--color-status-success-border)"
+
+  action_button:
+    primary:
+      --dispatch-btn-primary-bg: "var(--color-action-primary-bg)"
+      --dispatch-btn-primary-text: "var(--color-action-primary-text)"
+      --dispatch-btn-primary-border: "transparent"
+      --dispatch-btn-primary-hover-bg: "var(--color-brand-hover)"
+      --dispatch-btn-primary-active-bg: "var(--color-brand-active)"
+      --dispatch-btn-primary-focus-ring: "var(--color-focus-ring)"
+    secondary:
+      --dispatch-btn-secondary-bg: "var(--color-action-secondary-bg)"
+      --dispatch-btn-secondary-text: "var(--color-action-secondary-text)"
+      --dispatch-btn-secondary-border: "var(--color-action-secondary-border)"
+      --dispatch-btn-secondary-hover-bg: "var(--color-surface-subtle)"
+    fsm_saving_state:
+      --dispatch-btn-disabled-opacity: "0.75"
+      --dispatch-btn-disabled-cursor: "not-allowed"
+
+  filter_tab:
+    default:
+      --dispatch-filter-tab-bg: "transparent"
+      --dispatch-filter-tab-text: "var(--color-text-secondary)"
+      --dispatch-filter-tab-border: "var(--color-border-subtle)"
+    active:
+      --dispatch-filter-tab-active-bg: "var(--color-action-primary-bg)"
+      --dispatch-filter-tab-active-text: "var(--color-action-primary-text)"
+      --dispatch-filter-tab-active-border: "var(--color-action-primary-bg)"
+
+  notice_banner:
+    --dispatch-notice-banner-bg: "var(--color-surface-subtle)"
+    --dispatch-notice-banner-text: "var(--color-text-secondary)"
+    --dispatch-notice-banner-border: "var(--color-border-subtle)"
+    --dispatch-notice-tag-bg: "var(--color-text-primary)"
+    --dispatch-notice-tag-text: "var(--color-text-inverse)"
+
+  aria_live_region:
+    --dispatch-live-region-bg: "var(--color-surface-bg)"
+    --dispatch-live-region-text: "var(--color-text-primary)"
+    --dispatch-live-region-border: "var(--color-border-structural)"
+
+# ------------------------------------------------------------------------------
+# 6. THEME PROFILES (Option A, Option B, Candidate)
+# Complete semantic mapping definitions for each visual direction.
+# ------------------------------------------------------------------------------
+theme_profiles:
+  option_a:
+    direction_id: "DIRECTION_A"
+    direction_name: "Editorial Warm Dispatch (Sổ Cái Giấy Ấm)"
+    thesis: >
+      Warm Alabaster paper foundation (#FAF9F6) paired with deep Slate Ink (#0F172A),
+      warm Amber keyboard focus ring (#D97706), and soft pastel status badges bounded
+      by subtle, high-saturation 1px borders. Prioritizes visual calmness for long-form
+      editorial review and administrative ledger logging.
+    canvas_temperature: "Warm (Hue ~45deg, Alabaster #FAF9F6)"
+    border_strategy: "1.0px subtle pastel / warm neutral borders"
+    typography_stack: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+    badge_border_width: "1.0px"
+    semantic_mapping:
+      --color-canvas-bg: "var(--primitive-warm-neutral-50)"
+      --color-surface-bg: "var(--primitive-static-white)"
+      --color-surface-subtle: "var(--primitive-warm-neutral-100)"
+      --color-surface-raised: "var(--primitive-static-white)"
+
+      --color-text-primary: "var(--primitive-slate-900)"
+      --color-text-secondary: "var(--primitive-slate-600)"
+      --color-text-muted: "var(--primitive-slate-500)"
+      --color-text-inverse: "var(--primitive-static-white)"
+
+      --color-border-subtle: "var(--primitive-slate-200)"
+      --color-border-structural: "var(--primitive-slate-500)"
+      --color-border-strong: "var(--primitive-slate-400)"
+
+      --color-brand-primary: "var(--primitive-slate-900)"
+      --color-brand-hover: "var(--primitive-slate-800)"
+      --color-brand-active: "var(--primitive-slate-950)"
+      --color-action-primary-bg: "var(--primitive-slate-900)"
+      --color-action-primary-text: "var(--primitive-static-white)"
+      --color-action-secondary-bg: "var(--primitive-static-white)"
+      --color-action-secondary-text: "var(--primitive-slate-900)"
+      --color-action-secondary-border: "var(--primitive-slate-300)"
+
+      --color-focus-ring: "var(--primitive-amber-600)"
+      --color-focus-ring-offset: "var(--primitive-static-white)"
+
+      --color-status-normal-text: "var(--primitive-slate-600)"
+      --color-status-normal-bg: "var(--primitive-slate-100)"
+      --color-status-normal-border: "var(--primitive-slate-300)"
+
+      --color-status-attention-text: "var(--primitive-amber-700)"
+      --color-status-attention-bg: "var(--primitive-amber-100)"
+      --color-status-attention-border: "var(--primitive-amber-500)"
+
+      --color-status-error-text: "var(--primitive-rose-700)"
+      --color-status-error-bg: "var(--primitive-rose-100)"
+      --color-status-error-border: "var(--primitive-rose-500)"
+
+      --color-status-success-text: "var(--primitive-green-700)"
+      --color-status-success-bg: "var(--primitive-green-100)"
+      --color-status-success-border: "var(--primitive-green-500)"
+
+  option_b:
+    direction_id: "DIRECTION_B"
+    direction_name: "Technical Slate High-Contrast (Bảng Giám Sát Kỹ Thuật)"
+    thesis: >
+      Cool Ice Slate foundation (#F8FAFC) paired with vibrant Technical Indigo (#3730A3),
+      electric Cobalt keyboard focus ring (#2563EB), and high-contrast status badges
+      bounded by bold 1.5px structural borders. Engineered for mission-critical
+      monitoring, high ambient illumination readability, and rapid scannability.
+    canvas_temperature: "Cool (Hue ~215deg, Ice Slate #F8FAFC)"
+    border_strategy: "1.5px bold structural borders, zero soft shadows"
+    typography_stack: "ui-monospace, 'SF Mono', Menlo, Consolas, monospace (for codes/metrics) and Inter, system-ui, sans-serif"
+    badge_border_width: "1.5px"
+    semantic_mapping:
+      --color-canvas-bg: "var(--primitive-slate-50)"
+      --color-surface-bg: "var(--primitive-static-white)"
+      --color-surface-subtle: "var(--primitive-slate-100)"
+      --color-surface-raised: "var(--primitive-static-white)"
+
+      --color-text-primary: "var(--primitive-slate-950)"
+      --color-text-secondary: "var(--primitive-slate-700)"
+      --color-text-muted: "var(--primitive-slate-600)"
+      --color-text-inverse: "var(--primitive-static-white)"
+
+      --color-border-subtle: "var(--primitive-slate-300)"
+      --color-border-structural: "var(--primitive-slate-400)"
+      --color-border-strong: "var(--primitive-slate-600)"
+
+      --color-brand-primary: "var(--primitive-indigo-800)"
+      --color-brand-hover: "var(--primitive-indigo-700)"
+      --color-brand-active: "var(--primitive-indigo-900)"
+      --color-action-primary-bg: "var(--primitive-indigo-800)"
+      --color-action-primary-text: "var(--primitive-static-white)"
+      --color-action-secondary-bg: "var(--primitive-static-white)"
+      --color-action-secondary-text: "var(--primitive-slate-950)"
+      --color-action-secondary-border: "var(--primitive-slate-400)"
+
+      --color-focus-ring: "var(--primitive-blue-600)"
+      --color-focus-ring-offset: "var(--primitive-static-white)"
+
+      --color-status-normal-text: "var(--primitive-slate-800)"
+      --color-status-normal-bg: "var(--primitive-slate-200)"
+      --color-status-normal-border: "var(--primitive-slate-400)"
+
+      --color-status-attention-text: "var(--primitive-orange-800)"
+      --color-status-attention-bg: "var(--primitive-orange-100)"
+      --color-status-attention-border: "var(--primitive-orange-600)"
+
+      --color-status-error-text: "var(--primitive-rose-800)"
+      --color-status-error-bg: "var(--primitive-rose-100)"
+      --color-status-error-border: "var(--primitive-rose-600)"
+
+      --color-status-success-text: "var(--primitive-teal-800)"
+      --color-status-success-bg: "var(--primitive-teal-100)"
+      --color-status-success-border: "var(--primitive-teal-600)"
+
+  candidate:
+    direction_id: "DIRECTION_CANDIDATE"
+    direction_name: "TRIPFLOW Dispatch Ledger Release Candidate (Refined Option A)"
+    thesis: >
+      Refined production release candidate based on Option A (Editorial Warm Dispatch).
+      Harmonizes the soothing warm alabaster canvas with robust WCAG 2.2 AA contrast ratios,
+      three redundant sensory layers on all operational badges, resilient asynchronous
+      interaction FSM without focus eviction, and strict zero horizontal overflow across
+      all responsive viewports.
+    canvas_temperature: "Warm (Hue ~45deg, Alabaster #FAF9F6)"
+    border_strategy: "1.0px subtle pastel / warm neutral borders"
+    typography_stack: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+    badge_border_width: "1.0px"
+    semantic_mapping:
+      --color-canvas-bg: "var(--primitive-warm-neutral-50)"
+      --color-surface-bg: "var(--primitive-static-white)"
+      --color-surface-subtle: "var(--primitive-warm-neutral-100)"
+      --color-surface-raised: "var(--primitive-static-white)"
+
+      --color-text-primary: "var(--primitive-slate-900)"
+      --color-text-secondary: "var(--primitive-slate-600)"
+      --color-text-muted: "var(--primitive-slate-500)"
+      --color-text-inverse: "var(--primitive-static-white)"
+
+      --color-border-subtle: "var(--primitive-slate-200)"
+      --color-border-structural: "var(--primitive-slate-500)"
+      --color-border-strong: "var(--primitive-slate-400)"
+
+      --color-brand-primary: "var(--primitive-slate-900)"
+      --color-brand-hover: "var(--primitive-slate-800)"
+      --color-brand-active: "var(--primitive-slate-950)"
+      --color-action-primary-bg: "var(--primitive-slate-900)"
+      --color-action-primary-text: "var(--primitive-static-white)"
+      --color-action-secondary-bg: "var(--primitive-static-white)"
+      --color-action-secondary-text: "var(--primitive-slate-900)"
+      --color-action-secondary-border: "var(--primitive-slate-300)"
+
+      --color-focus-ring: "var(--primitive-amber-600)"
+      --color-focus-ring-offset: "var(--primitive-static-white)"
+
+      --color-status-normal-text: "var(--primitive-slate-600)"
+      --color-status-normal-bg: "var(--primitive-slate-100)"
+      --color-status-normal-border: "var(--primitive-slate-300)"
+
+      --color-status-attention-text: "var(--primitive-amber-700)"
+      --color-status-attention-bg: "var(--primitive-amber-100)"
+      --color-status-attention-border: "var(--primitive-amber-500)"
+
+      --color-status-error-text: "var(--primitive-rose-700)"
+      --color-status-error-bg: "var(--primitive-rose-100)"
+      --color-status-error-border: "var(--primitive-rose-500)"
+
+      --color-status-success-text: "var(--primitive-green-700)"
+      --color-status-success-bg: "var(--primitive-green-100)"
+      --color-status-success-border: "var(--primitive-green-500)"
+
+# ------------------------------------------------------------------------------
+# 7. MATHEMATICAL CONTRAST VERIFICATION MATRIX (Gate C03 / Locked P03)
+# Exact sRGB Relative Luminance & Contrast Ratios verified against Sol Review 001.
+# ------------------------------------------------------------------------------
+contrast_verification_matrix:
+  formula_reference: "W3C WCAG 2.2 Specification SC 1.4.3 & SC 1.4.11"
+  verification_date: "2026-09-14"
+  pairs:
+    - id: "PAIR-01"
+      direction: "Option A / Candidate"
+      role: "Text Primary on Canvas"
+      foreground: { token: "--primitive-slate-900", hex: "#0F172A", luminance: 0.008815 }
+      background: { token: "--primitive-warm-neutral-50", hex: "#FAF9F6", luminance: 0.947292 }
+      computed_contrast_ratio: 16.9564
+      required_threshold: 4.5
+      threshold_type: "NORMAL_TEXT"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-02"
+      direction: "Option A / Candidate"
+      role: "Text Secondary on Canvas"
+      foreground: { token: "--primitive-slate-600", hex: "#475569", luminance: 0.088565 }
+      background: { token: "--primitive-warm-neutral-50", hex: "#FAF9F6", luminance: 0.947292 }
+      computed_contrast_ratio: 7.1973
+      required_threshold: 4.5
+      threshold_type: "NORMAL_TEXT"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-03"
+      direction: "Option B"
+      role: "Brand Primary on White Surface"
+      foreground: { token: "--primitive-indigo-800", hex: "#3730A3", luminance: 0.055705 }
+      background: { token: "--primitive-static-white", hex: "#FFFFFF", luminance: 1.000000 }
+      computed_contrast_ratio: 9.9333
+      required_threshold: 4.5
+      threshold_type: "NORMAL_TEXT"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-04"
+      direction: "Option B"
+      role: "Focus Ring on Slate Canvas"
+      foreground: { token: "--primitive-blue-600", hex: "#2563EB", luminance: 0.153152 }
+      background: { token: "--primitive-slate-50", hex: "#F8FAFC", luminance: 0.953559 }
+      computed_contrast_ratio: 4.9400
+      required_threshold: 3.0
+      threshold_type: "FOCUS_INDICATOR"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-05"
+      direction: "Option A / Candidate"
+      role: "Focus Ring on Alabaster Canvas"
+      foreground: { token: "--primitive-amber-600", hex: "#D97706", luminance: 0.279585 }
+      background: { token: "--primitive-warm-neutral-50", hex: "#FAF9F6", luminance: 0.947292 }
+      computed_contrast_ratio: 3.0259
+      required_threshold: 3.0
+      threshold_type: "FOCUS_INDICATOR"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-06"
+      direction: "Option A / Candidate"
+      role: "Attention Badge Text on Attention Bg"
+      foreground: { token: "--primitive-amber-700", hex: "#B45309", luminance: 0.159095 }
+      background: { token: "--primitive-amber-100", hex: "#FEF3C7", luminance: 0.892955 }
+      computed_contrast_ratio: 4.5097
+      required_threshold: 4.5
+      threshold_type: "NORMAL_TEXT"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-07"
+      direction: "Option A / Candidate"
+      role: "Error Badge Text on Error Bg"
+      foreground: { token: "--primitive-rose-700", hex: "#BE123C", luminance: 0.117060 }
+      background: { token: "--primitive-rose-100", hex: "#FFE4E6", luminance: 0.824600 }
+      computed_contrast_ratio: 5.2352
+      required_threshold: 4.5
+      threshold_type: "NORMAL_TEXT"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-08"
+      direction: "Option A / Candidate"
+      role: "Success Badge Text on Success Bg"
+      foreground: { token: "--primitive-green-700", hex: "#15803D", luminance: 0.159347 }
+      background: { token: "--primitive-green-100", hex: "#DCFCE7", luminance: 0.906060 }
+      computed_contrast_ratio: 4.5669
+      required_threshold: 4.5
+      threshold_type: "NORMAL_TEXT"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-09"
+      direction: "Option B"
+      role: "Attention Badge Text on Attention Bg"
+      foreground: { token: "--primitive-orange-800", hex: "#9A3412", luminance: 0.093697 }
+      background: { token: "--primitive-orange-100", hex: "#FFEDD5", luminance: 0.866325 }
+      computed_contrast_ratio: 6.3768
+      required_threshold: 4.5
+      threshold_type: "NORMAL_TEXT"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-10"
+      direction: "Option B"
+      role: "Error Badge Text on Error Bg"
+      foreground: { token: "--primitive-rose-800", hex: "#9F1239", luminance: 0.080989 }
+      background: { token: "--primitive-rose-100", hex: "#FFE4E6", luminance: 0.824600 }
+      computed_contrast_ratio: 6.6769
+      required_threshold: 4.5
+      threshold_type: "NORMAL_TEXT"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-11"
+      direction: "Option B"
+      role: "Success Badge Text on Success Bg"
+      foreground: { token: "--primitive-teal-800", hex: "#115E59", luminance: 0.088458 }
+      background: { token: "--primitive-teal-100", hex: "#CCFBF1", luminance: 0.881826 }
+      computed_contrast_ratio: 6.7300
+      required_threshold: 4.5
+      threshold_type: "NORMAL_TEXT"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-12"
+      direction: "Option B"
+      role: "Normal Badge Text on Normal Bg"
+      foreground: { token: "--primitive-slate-800", hex: "#1E293B", luminance: 0.021777 }
+      background: { token: "--primitive-slate-200", hex: "#E2E8F0", luminance: 0.801732 }
+      computed_contrast_ratio: 11.8664
+      required_threshold: 4.5
+      threshold_type: "NORMAL_TEXT"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-13"
+      direction: "Option A / Candidate"
+      role: "Normal Badge Text on Normal Bg"
+      foreground: { token: "--primitive-slate-600", hex: "#475569", luminance: 0.088565 }
+      background: { token: "--primitive-slate-100", hex: "#F1F5F9", luminance: 0.908451 }
+      computed_contrast_ratio: 6.9170
+      required_threshold: 4.5
+      threshold_type: "NORMAL_TEXT"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-14"
+      direction: "Option A / Candidate"
+      role: "Focus Ring on White Surface"
+      foreground: { token: "--primitive-amber-600", hex: "#D97706", luminance: 0.279585 }
+      background: { token: "--primitive-static-white", hex: "#FFFFFF", luminance: 1.000000 }
+      computed_contrast_ratio: 3.1858
+      required_threshold: 3.0
+      threshold_type: "FOCUS_INDICATOR"
+      p03_locked_match: true
+      verdict: "PASS"
+
+    - id: "PAIR-15"
+      direction: "Option B"
+      role: "Focus Ring on White Surface"
+      foreground: { token: "--primitive-blue-600", hex: "#2563EB", luminance: 0.153152 }
+      background: { token: "--primitive-static-white", hex: "#FFFFFF", luminance: 1.000000 }
+      computed_contrast_ratio: 5.1686
+      required_threshold: 3.0
+      threshold_type: "FOCUS_INDICATOR"
+      p03_locked_match: true
+      verdict: "PASS"
+
+# ------------------------------------------------------------------------------
+# 8. GATE C01 STATIC AUDIT RULES & INVARIANT ENFORCEMENT
+# RegEx patterns for automated test runner verify_module_008.js
+# ------------------------------------------------------------------------------
+static_audit_invariants:
+  rule_1_zero_primitive_in_component_selectors:
+    description: "Component selectors in CSS must never reference --primitive-* directly."
+    regex_pattern: "\\.(?:dispatch|badge|btn|table|card|tour|filter|fixture)[^{]*\\{[^}]*var\\(--primitive-[^)]+\\)"
+    expected_matches: 0
+    enforcement: "HARD_FAIL_ON_MATCH"
+
+  rule_2_component_tokens_consume_semantic:
+    description: "Component tokens defined on :root must reference var(--color-*) exclusively."
+    regex_pattern: "--dispatch-[a-z0-9-]+:\\s*var\\(--color-[a-z0-9-]+\\)"
+    enforcement: "REQUIRED_STRUCTURE"
+
+  rule_3_brand_status_segregation:
+    description: "Brand primary token must not be used as any operational status color."
+    enforcement: "SEGREGATED_TOKENS"
+
+  rule_4_operational_status_redundancy:
+    description: "Every badge markup must include visible text copy and inline SVG with aria-hidden."
+    required_elements:
+      - "span.badge-text (Explicit Vietnamese string)"
+      - "svg.status-icon[aria-hidden='true'][focusable='false']"
+    enforcement: "HARD_FAIL_IF_MISSING"

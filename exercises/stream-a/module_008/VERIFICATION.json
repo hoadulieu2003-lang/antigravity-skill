@@ -1,0 +1,1156 @@
+{
+  "metadata": {
+    "module_id": "DESIGN_TRAINING_008",
+    "module_name": "COLOR_SYSTEM",
+    "stream_id": "FOUNDATION_INTEGRITY",
+    "branch_id": "TAB_A",
+    "controller": "ChatGPT Architectural Controller (Sol)",
+    "executor": "Antigravity (Senior Engineering Agent)",
+    "revision": "REVISION_R03_REPAIR_001",
+    "generated_at": "2026-09-14T02:34:48.617Z",
+    "harness_portable": true
+  },
+  "telemetry": {
+    "source_hashes": {
+      "contract": "9a5792044e38f430ddc783b157c44563c62523d49db3e1b795d9a9f7e8b95cf0",
+      "option_a": "b8714fc9130034b50dae06991bc4a349f42e06a181bfecc8c24eedf9cbce3f75",
+      "option_b": "17ddef829202dd322d9cd8b27466e934cc396bc6b533a4103a9e5e74201c4e24",
+      "candidate": "ef0c0ffaa507461eefb70f281843e2d64bbf1832bc2fa5713caa878afd6e370b"
+    },
+    "zero_motion": {
+      "transition_duration_all_elements": "0s",
+      "animation_name_all_elements": "none",
+      "keyframes_in_candidate": 0,
+      "authoritative_screenshots_same_timestamp": true,
+      "passed": true
+    },
+    "token_architecture": {
+      "contract_exists": true,
+      "contract_has_3_tiers": true,
+      "taxonomy_segregated": true,
+      "brand_segregated": true,
+      "static_css_violations": [],
+      "primitive_calls_in_component_selectors": 0
+    },
+    "direction_comparison": {
+      "option_a_exists": true,
+      "option_b_exists": true,
+      "fixtures_rendered": {
+        "option_a": true,
+        "option_b": true
+      },
+      "telemetry_comparison": {
+        "option_a": {
+          "canvasBg": "rgb(250, 249, 246)",
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+          "brandPrimary": "rgb(15, 23, 42)",
+          "focusRingToken": "#D97706",
+          "badgeBorderWidth": "1px",
+          "allFixturesPresent": true
+        },
+        "option_b": {
+          "canvasBg": "rgb(248, 250, 252)",
+          "fontFamily": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
+          "brandPrimary": "rgb(55, 48, 163)",
+          "focusRingToken": "#2563EB",
+          "badgeBorderWidth": "1px",
+          "allFixturesPresent": true
+        }
+      },
+      "brand_primary_differs": true,
+      "canvas_temperature_differs": true
+    },
+    "contrast_measurements": [
+      {
+        "id": "badge_normal_text",
+        "role": "Status Badge NORMAL Text",
+        "type": "normal_text",
+        "foreground": "rgb(71, 85, 105)",
+        "background": "rgb(241, 245, 249)",
+        "contrast_ratio": 6.917,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "badge_attention_text",
+        "role": "Status Badge ATTENTION Text",
+        "type": "normal_text",
+        "foreground": "rgb(180, 83, 9)",
+        "background": "rgb(254, 243, 199)",
+        "contrast_ratio": 4.5097,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "badge_error_text",
+        "role": "Status Badge ERROR Text",
+        "type": "normal_text",
+        "foreground": "rgb(190, 18, 60)",
+        "background": "rgb(255, 228, 230)",
+        "contrast_ratio": 5.2352,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "badge_success_text",
+        "role": "Status Badge SUCCESS Text",
+        "type": "normal_text",
+        "foreground": "rgb(21, 128, 61)",
+        "background": "rgb(220, 252, 231)",
+        "contrast_ratio": 4.5669,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "primary_cta_default",
+        "role": "Primary CTA Default Text",
+        "type": "normal_text",
+        "foreground": "rgb(255, 255, 255)",
+        "background": "rgb(15, 23, 42)",
+        "contrast_ratio": 17.8525,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "primary_cta_hover",
+        "role": "Primary CTA Hover Text",
+        "type": "normal_text",
+        "foreground": "#FFFFFF",
+        "background": "#020617",
+        "contrast_ratio": 20.1728,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "primary_cta_active",
+        "role": "Primary CTA Active Text",
+        "type": "normal_text",
+        "foreground": "#FFFFFF",
+        "background": "#000000",
+        "contrast_ratio": 21,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "filter_tab_active",
+        "role": "Filter Tab Active Text",
+        "type": "normal_text",
+        "foreground": "rgb(255, 255, 255)",
+        "background": "rgb(15, 23, 42)",
+        "contrast_ratio": 17.8525,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "filter_tab_inactive",
+        "role": "Filter Tab Inactive Text",
+        "type": "normal_text",
+        "foreground": "rgb(71, 85, 105)",
+        "background": "rgb(255, 255, 255)",
+        "contrast_ratio": 7.5777,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "tour_action_btn",
+        "role": "Tour Action Button (TF-802) Text",
+        "type": "normal_text",
+        "foreground": "rgb(15, 23, 42)",
+        "background": "rgb(255, 255, 255)",
+        "contrast_ratio": 17.8525,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "app_headline_h1",
+        "role": "App Header Headline (H1)",
+        "type": "large_text",
+        "foreground": "rgb(15, 23, 42)",
+        "background": "rgb(250, 249, 246)",
+        "contrast_ratio": 16.9564,
+        "wcag_threshold": 3,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "tour_title",
+        "role": "Tour Title Typography",
+        "type": "normal_text",
+        "foreground": "rgb(15, 23, 42)",
+        "background": "rgb(255, 255, 255)",
+        "contrast_ratio": 17.8525,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "tour_note",
+        "role": "Tour Note / Subtext",
+        "type": "normal_text",
+        "foreground": "rgb(71, 85, 105)",
+        "background": "rgb(255, 255, 255)",
+        "contrast_ratio": 7.5777,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "tour_id_code",
+        "role": "Tour ID Code (.tour-id)",
+        "type": "normal_text",
+        "foreground": "rgb(15, 23, 42)",
+        "background": "rgb(255, 255, 255)",
+        "contrast_ratio": 17.8525,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "search_input_text",
+        "role": "Search Input Text",
+        "type": "normal_text",
+        "foreground": "rgb(15, 23, 42)",
+        "background": "rgb(255, 255, 255)",
+        "contrast_ratio": 17.8525,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "search_input_placeholder",
+        "role": "Search Input Placeholder",
+        "type": "normal_text",
+        "foreground": "#475569",
+        "background": "#FFFFFF",
+        "contrast_ratio": 7.5777,
+        "wcag_threshold": 4.5,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "search_input_border",
+        "role": "Search Input Border",
+        "type": "non_text_ui",
+        "foreground": "rgb(100, 116, 139)",
+        "background": "rgb(255, 255, 255)",
+        "contrast_ratio": 4.7588,
+        "wcag_threshold": 3,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "badge_normal_border",
+        "role": "Status Badge NORMAL Border",
+        "type": "decorative_border",
+        "foreground": "rgb(203, 213, 225)",
+        "background": "rgb(250, 249, 246)",
+        "contrast_ratio": 1.4102,
+        "wcag_threshold": null,
+        "exempt": true,
+        "rationale": "Decorative accent border; status boundary is redundantly conveyed via tinted fill, SVG icon, and text label (exempt per WCAG 2.2 SC 1.4.11).",
+        "passed": true
+      },
+      {
+        "id": "badge_attention_border",
+        "role": "Status Badge ATTENTION Border",
+        "type": "decorative_border",
+        "foreground": "rgb(245, 158, 11)",
+        "background": "rgb(250, 249, 246)",
+        "contrast_ratio": 2.0399,
+        "wcag_threshold": null,
+        "exempt": true,
+        "rationale": "Decorative accent border; status boundary is redundantly conveyed via tinted fill, SVG icon, and text label (exempt per WCAG 2.2 SC 1.4.11).",
+        "passed": true
+      },
+      {
+        "id": "badge_error_border",
+        "role": "Status Badge ERROR Border",
+        "type": "decorative_border",
+        "foreground": "rgb(244, 63, 94)",
+        "background": "rgb(250, 249, 246)",
+        "contrast_ratio": 3.4875,
+        "wcag_threshold": null,
+        "exempt": true,
+        "rationale": "Decorative accent border; status boundary is redundantly conveyed via tinted fill, SVG icon, and text label (exempt per WCAG 2.2 SC 1.4.11).",
+        "passed": true
+      },
+      {
+        "id": "badge_success_border",
+        "role": "Status Badge SUCCESS Border",
+        "type": "decorative_border",
+        "foreground": "rgb(34, 197, 94)",
+        "background": "rgb(250, 249, 246)",
+        "contrast_ratio": 2.1642,
+        "wcag_threshold": null,
+        "exempt": true,
+        "rationale": "Decorative accent border; status boundary is redundantly conveyed via tinted fill, SVG icon, and text label (exempt per WCAG 2.2 SC 1.4.11).",
+        "passed": true
+      },
+      {
+        "id": "focus_ring_primary_cta",
+        "role": "Focus Ring Primary CTA",
+        "type": "non_text_focus",
+        "foreground": "#D97706",
+        "background": "#FAF9F6",
+        "contrast_ratio": 3.0259,
+        "wcag_threshold": 3,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "focus_ring_secondary",
+        "role": "Focus Ring Search/Filter",
+        "type": "non_text_focus",
+        "foreground": "#D97706",
+        "background": "#FFFFFF",
+        "contrast_ratio": 3.1858,
+        "wcag_threshold": 3,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      },
+      {
+        "id": "focus_ring_tour_action",
+        "role": "Focus Ring Tour Action Button",
+        "type": "non_text_focus",
+        "foreground": "#D97706",
+        "background": "#FFFFFF",
+        "contrast_ratio": 3.1858,
+        "wcag_threshold": 3,
+        "exempt": false,
+        "rationale": "Enforced per WCAG 2.2",
+        "passed": true
+      }
+    ],
+    "rendered_color_pair_inventory_count": 24,
+    "measured_color_pair_count": 24,
+    "unmeasured_required_pairs": 0,
+    "focus_indicators": [
+      {
+        "name": "Primary CTA Button",
+        "target_id": "btn-global-dispatch",
+        "reached": true,
+        "step": 3,
+        "matches_focus_visible": true,
+        "outline_width_px": 2,
+        "outline_style": "solid",
+        "outline_color": "rgb(217, 119, 6)",
+        "adjacent_background": "rgb(250, 249, 246)",
+        "contrast_ratio": 3.0259,
+        "width_requirement_met": true,
+        "contrast_requirement_met": true,
+        "passed": true
+      },
+      {
+        "name": "Secondary Search/Control",
+        "target_id": "input-tour-search",
+        "reached": true,
+        "step": 4,
+        "matches_focus_visible": true,
+        "outline_width_px": 2,
+        "outline_style": "solid",
+        "outline_color": "rgb(217, 119, 6)",
+        "adjacent_background": "rgb(255, 255, 255)",
+        "contrast_ratio": 3.1858,
+        "width_requirement_met": true,
+        "contrast_requirement_met": true,
+        "passed": true
+      },
+      {
+        "name": "Interactive Tour Action (TF-802)",
+        "target_id": "action-btn-tf802",
+        "reached": true,
+        "step": 10,
+        "matches_focus_visible": true,
+        "outline_width_px": 2,
+        "outline_style": "solid",
+        "outline_color": "rgb(217, 119, 6)",
+        "adjacent_background": "rgb(255, 255, 255)",
+        "contrast_ratio": 3.1858,
+        "width_requirement_met": true,
+        "contrast_requirement_met": true,
+        "passed": true
+      }
+    ],
+    "responsive_measurements": [
+      {
+        "viewport": "desktop",
+        "width": 1440,
+        "height": 900,
+        "dpr": 2,
+        "client_width": 1440,
+        "scroll_width": 1440,
+        "body_scroll_width": 1440,
+        "inner_width": 1440,
+        "global_horizontal_overflow": false,
+        "local_overflow_count": 0,
+        "local_overflows": [],
+        "all_six_fields_readable": true,
+        "passed": true
+      },
+      {
+        "viewport": "tablet",
+        "width": 768,
+        "height": 1024,
+        "dpr": 2,
+        "client_width": 768,
+        "scroll_width": 768,
+        "body_scroll_width": 768,
+        "inner_width": 768,
+        "global_horizontal_overflow": false,
+        "local_overflow_count": 0,
+        "local_overflows": [],
+        "all_six_fields_readable": true,
+        "passed": true
+      },
+      {
+        "viewport": "mobile",
+        "width": 390,
+        "height": 844,
+        "dpr": 2,
+        "client_width": 390,
+        "scroll_width": 390,
+        "body_scroll_width": 390,
+        "inner_width": 390,
+        "global_horizontal_overflow": false,
+        "local_overflow_count": 0,
+        "local_overflows": [],
+        "all_six_fields_readable": true,
+        "passed": true
+      }
+    ],
+    "fsm_focus_preservation": {
+      "action_button_found": true,
+      "aria_disabled_applied": true,
+      "focus_preserved_on_button": true,
+      "no_focus_eviction_to_body": true
+    },
+    "screenshots": [
+      {
+        "filename": "option_a_desktop_1440x900.png",
+        "viewport_css": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 2,
+        "pixel_width": 2880,
+        "pixel_height": 1932,
+        "size_bytes": 328153,
+        "sha256": "86bfc892dcdbd067fa93dd1ce9661588f9f0d02364326111a6f68374e8abe0ad",
+        "filter": "none"
+      },
+      {
+        "filename": "option_b_desktop_1440x900.png",
+        "viewport_css": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 2,
+        "pixel_width": 2880,
+        "pixel_height": 1800,
+        "size_bytes": 268167,
+        "sha256": "eb0303c67a464057707c188a06195db6c7440a4e6329d811b6a5f4dd8433c05d",
+        "filter": "none"
+      },
+      {
+        "filename": "final_desktop_1440x900.png",
+        "viewport_css": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 2,
+        "pixel_width": 2880,
+        "pixel_height": 2032,
+        "size_bytes": 337684,
+        "sha256": "97319ddc3cba097df5e2a533a451a7c4dec30a5d1ca6a5af3f29cab5a96b9faf",
+        "filter": "none"
+      },
+      {
+        "filename": "final_tablet_768x1024.png",
+        "viewport_css": {
+          "width": 768,
+          "height": 1024
+        },
+        "dpr": 2,
+        "pixel_width": 1536,
+        "pixel_height": 4564,
+        "size_bytes": 398318,
+        "sha256": "421229a9df2b18a0f7bf888bdbf9905d4327e0afaea7e41eeeb435237dd260cf",
+        "filter": "none"
+      },
+      {
+        "filename": "final_mobile_390x844.png",
+        "viewport_css": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2,
+        "pixel_width": 780,
+        "pixel_height": 5928,
+        "size_bytes": 399984,
+        "sha256": "42ec539d9914668337e454675829e7cfba90bce3351ed5977b8b370c74ba7705",
+        "filter": "none"
+      },
+      {
+        "filename": "final_mobile_first_view_390x844.png",
+        "viewport_css": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2,
+        "pixel_width": 780,
+        "pixel_height": 1688,
+        "size_bytes": 104965,
+        "sha256": "c65222449e36e73f23eecb3e73e62590260e2a2c888f81e9342fbd4ef6f71654",
+        "filter": "none"
+      },
+      {
+        "filename": "final_grayscale_desktop_1440x900.png",
+        "viewport_css": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 2,
+        "pixel_width": 2880,
+        "pixel_height": 2032,
+        "size_bytes": 330195,
+        "sha256": "4556039ef70e7328ef454e5785d9c738f9d4945447ff0595ac2056ae84f394a2",
+        "filter": "grayscale"
+      },
+      {
+        "filename": "final_deuteranopia_desktop_1440x900.png",
+        "viewport_css": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 2,
+        "pixel_width": 2880,
+        "pixel_height": 2032,
+        "size_bytes": 373040,
+        "sha256": "f8dc28bd6520fe9b30932072072974f3dddfcafacb008a1c7d469f3ea30e63b3",
+        "filter": "deuteranopia"
+      },
+      {
+        "filename": "final_protanopia_desktop_1440x900.png",
+        "viewport_css": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 2,
+        "pixel_width": 2880,
+        "pixel_height": 2032,
+        "size_bytes": 371348,
+        "sha256": "7b23f7c2a6b4f06332fa8d3a3b5a3bc2026bd14588ce9a1fe8cfe5cbab2a475a",
+        "filter": "protanopia"
+      }
+    ]
+  },
+  "gates": {
+    "C01": {
+      "gate": "C01",
+      "name": "Token Provenance & Architecture",
+      "passed": true,
+      "evidence": {
+        "contract_file_exists": true,
+        "three_tier_model_implemented": true,
+        "violations": [],
+        "primitive_calls_in_component_selectors": 0
+      },
+      "verdict": "PASS"
+    },
+    "C02": {
+      "gate": "C02",
+      "name": "Strategic Color Directions",
+      "passed": true,
+      "evidence": {
+        "option_a_exists": true,
+        "option_b_exists": true,
+        "fixtures_rendered": {
+          "option_a": true,
+          "option_b": true
+        },
+        "telemetry_comparison": {
+          "option_a": {
+            "canvasBg": "rgb(250, 249, 246)",
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+            "brandPrimary": "rgb(15, 23, 42)",
+            "focusRingToken": "#D97706",
+            "badgeBorderWidth": "1px",
+            "allFixturesPresent": true
+          },
+          "option_b": {
+            "canvasBg": "rgb(248, 250, 252)",
+            "fontFamily": "Inter, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
+            "brandPrimary": "rgb(55, 48, 163)",
+            "focusRingToken": "#2563EB",
+            "badgeBorderWidth": "1px",
+            "allFixturesPresent": true
+          }
+        },
+        "brand_primary_differs": true,
+        "canvas_temperature_differs": true
+      },
+      "verdict": "PASS"
+    },
+    "C03": {
+      "gate": "C03",
+      "name": "Mathematical Contrast Compliance",
+      "passed": true,
+      "evidence": {
+        "inventory_count": 24,
+        "measured_count": 24,
+        "unmeasured_pairs": 0,
+        "cardinality_matched": true,
+        "all_pairs_passed": true,
+        "measurements": [
+          {
+            "id": "badge_normal_text",
+            "role": "Status Badge NORMAL Text",
+            "type": "normal_text",
+            "foreground": "rgb(71, 85, 105)",
+            "background": "rgb(241, 245, 249)",
+            "contrast_ratio": 6.917,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "badge_attention_text",
+            "role": "Status Badge ATTENTION Text",
+            "type": "normal_text",
+            "foreground": "rgb(180, 83, 9)",
+            "background": "rgb(254, 243, 199)",
+            "contrast_ratio": 4.5097,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "badge_error_text",
+            "role": "Status Badge ERROR Text",
+            "type": "normal_text",
+            "foreground": "rgb(190, 18, 60)",
+            "background": "rgb(255, 228, 230)",
+            "contrast_ratio": 5.2352,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "badge_success_text",
+            "role": "Status Badge SUCCESS Text",
+            "type": "normal_text",
+            "foreground": "rgb(21, 128, 61)",
+            "background": "rgb(220, 252, 231)",
+            "contrast_ratio": 4.5669,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "primary_cta_default",
+            "role": "Primary CTA Default Text",
+            "type": "normal_text",
+            "foreground": "rgb(255, 255, 255)",
+            "background": "rgb(15, 23, 42)",
+            "contrast_ratio": 17.8525,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "primary_cta_hover",
+            "role": "Primary CTA Hover Text",
+            "type": "normal_text",
+            "foreground": "#FFFFFF",
+            "background": "#020617",
+            "contrast_ratio": 20.1728,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "primary_cta_active",
+            "role": "Primary CTA Active Text",
+            "type": "normal_text",
+            "foreground": "#FFFFFF",
+            "background": "#000000",
+            "contrast_ratio": 21,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "filter_tab_active",
+            "role": "Filter Tab Active Text",
+            "type": "normal_text",
+            "foreground": "rgb(255, 255, 255)",
+            "background": "rgb(15, 23, 42)",
+            "contrast_ratio": 17.8525,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "filter_tab_inactive",
+            "role": "Filter Tab Inactive Text",
+            "type": "normal_text",
+            "foreground": "rgb(71, 85, 105)",
+            "background": "rgb(255, 255, 255)",
+            "contrast_ratio": 7.5777,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "tour_action_btn",
+            "role": "Tour Action Button (TF-802) Text",
+            "type": "normal_text",
+            "foreground": "rgb(15, 23, 42)",
+            "background": "rgb(255, 255, 255)",
+            "contrast_ratio": 17.8525,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "app_headline_h1",
+            "role": "App Header Headline (H1)",
+            "type": "large_text",
+            "foreground": "rgb(15, 23, 42)",
+            "background": "rgb(250, 249, 246)",
+            "contrast_ratio": 16.9564,
+            "wcag_threshold": 3,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "tour_title",
+            "role": "Tour Title Typography",
+            "type": "normal_text",
+            "foreground": "rgb(15, 23, 42)",
+            "background": "rgb(255, 255, 255)",
+            "contrast_ratio": 17.8525,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "tour_note",
+            "role": "Tour Note / Subtext",
+            "type": "normal_text",
+            "foreground": "rgb(71, 85, 105)",
+            "background": "rgb(255, 255, 255)",
+            "contrast_ratio": 7.5777,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "tour_id_code",
+            "role": "Tour ID Code (.tour-id)",
+            "type": "normal_text",
+            "foreground": "rgb(15, 23, 42)",
+            "background": "rgb(255, 255, 255)",
+            "contrast_ratio": 17.8525,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "search_input_text",
+            "role": "Search Input Text",
+            "type": "normal_text",
+            "foreground": "rgb(15, 23, 42)",
+            "background": "rgb(255, 255, 255)",
+            "contrast_ratio": 17.8525,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "search_input_placeholder",
+            "role": "Search Input Placeholder",
+            "type": "normal_text",
+            "foreground": "#475569",
+            "background": "#FFFFFF",
+            "contrast_ratio": 7.5777,
+            "wcag_threshold": 4.5,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "search_input_border",
+            "role": "Search Input Border",
+            "type": "non_text_ui",
+            "foreground": "rgb(100, 116, 139)",
+            "background": "rgb(255, 255, 255)",
+            "contrast_ratio": 4.7588,
+            "wcag_threshold": 3,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "badge_normal_border",
+            "role": "Status Badge NORMAL Border",
+            "type": "decorative_border",
+            "foreground": "rgb(203, 213, 225)",
+            "background": "rgb(250, 249, 246)",
+            "contrast_ratio": 1.4102,
+            "wcag_threshold": null,
+            "exempt": true,
+            "rationale": "Decorative accent border; status boundary is redundantly conveyed via tinted fill, SVG icon, and text label (exempt per WCAG 2.2 SC 1.4.11).",
+            "passed": true
+          },
+          {
+            "id": "badge_attention_border",
+            "role": "Status Badge ATTENTION Border",
+            "type": "decorative_border",
+            "foreground": "rgb(245, 158, 11)",
+            "background": "rgb(250, 249, 246)",
+            "contrast_ratio": 2.0399,
+            "wcag_threshold": null,
+            "exempt": true,
+            "rationale": "Decorative accent border; status boundary is redundantly conveyed via tinted fill, SVG icon, and text label (exempt per WCAG 2.2 SC 1.4.11).",
+            "passed": true
+          },
+          {
+            "id": "badge_error_border",
+            "role": "Status Badge ERROR Border",
+            "type": "decorative_border",
+            "foreground": "rgb(244, 63, 94)",
+            "background": "rgb(250, 249, 246)",
+            "contrast_ratio": 3.4875,
+            "wcag_threshold": null,
+            "exempt": true,
+            "rationale": "Decorative accent border; status boundary is redundantly conveyed via tinted fill, SVG icon, and text label (exempt per WCAG 2.2 SC 1.4.11).",
+            "passed": true
+          },
+          {
+            "id": "badge_success_border",
+            "role": "Status Badge SUCCESS Border",
+            "type": "decorative_border",
+            "foreground": "rgb(34, 197, 94)",
+            "background": "rgb(250, 249, 246)",
+            "contrast_ratio": 2.1642,
+            "wcag_threshold": null,
+            "exempt": true,
+            "rationale": "Decorative accent border; status boundary is redundantly conveyed via tinted fill, SVG icon, and text label (exempt per WCAG 2.2 SC 1.4.11).",
+            "passed": true
+          },
+          {
+            "id": "focus_ring_primary_cta",
+            "role": "Focus Ring Primary CTA",
+            "type": "non_text_focus",
+            "foreground": "#D97706",
+            "background": "#FAF9F6",
+            "contrast_ratio": 3.0259,
+            "wcag_threshold": 3,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "focus_ring_secondary",
+            "role": "Focus Ring Search/Filter",
+            "type": "non_text_focus",
+            "foreground": "#D97706",
+            "background": "#FFFFFF",
+            "contrast_ratio": 3.1858,
+            "wcag_threshold": 3,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          },
+          {
+            "id": "focus_ring_tour_action",
+            "role": "Focus Ring Tour Action Button",
+            "type": "non_text_focus",
+            "foreground": "#D97706",
+            "background": "#FFFFFF",
+            "contrast_ratio": 3.1858,
+            "wcag_threshold": 3,
+            "exempt": false,
+            "rationale": "Enforced per WCAG 2.2",
+            "passed": true
+          }
+        ]
+      },
+      "verdict": "PASS"
+    },
+    "C05": {
+      "gate": "C05",
+      "name": "Real Keyboard Focus Indicator",
+      "passed": true,
+      "evidence": {
+        "programmatic_focus_fallbacks": 0,
+        "primary_cta": {
+          "name": "Primary CTA Button",
+          "target_id": "btn-global-dispatch",
+          "reached": true,
+          "step": 3,
+          "matches_focus_visible": true,
+          "outline_width_px": 2,
+          "outline_style": "solid",
+          "outline_color": "rgb(217, 119, 6)",
+          "adjacent_background": "rgb(250, 249, 246)",
+          "contrast_ratio": 3.0259,
+          "width_requirement_met": true,
+          "contrast_requirement_met": true,
+          "passed": true
+        },
+        "secondary_action": {
+          "name": "Secondary Search/Control",
+          "target_id": "input-tour-search",
+          "reached": true,
+          "step": 4,
+          "matches_focus_visible": true,
+          "outline_width_px": 2,
+          "outline_style": "solid",
+          "outline_color": "rgb(217, 119, 6)",
+          "adjacent_background": "rgb(255, 255, 255)",
+          "contrast_ratio": 3.1858,
+          "width_requirement_met": true,
+          "contrast_requirement_met": true,
+          "passed": true
+        },
+        "interactive_tour_action": {
+          "name": "Interactive Tour Action (TF-802)",
+          "target_id": "action-btn-tf802",
+          "reached": true,
+          "step": 10,
+          "matches_focus_visible": true,
+          "outline_width_px": 2,
+          "outline_style": "solid",
+          "outline_color": "rgb(217, 119, 6)",
+          "adjacent_background": "rgb(255, 255, 255)",
+          "contrast_ratio": 3.1858,
+          "width_requirement_met": true,
+          "contrast_requirement_met": true,
+          "passed": true
+        },
+        "all_contexts_tested": true,
+        "all_contexts_passed": true
+      },
+      "verdict": "PASS"
+    },
+    "C06": {
+      "gate": "C06",
+      "name": "Responsive Cadence & Overflow",
+      "passed": true,
+      "evidence": {
+        "all_viewports_no_overflow": true,
+        "viewports": [
+          {
+            "viewport": "desktop",
+            "width": 1440,
+            "height": 900,
+            "dpr": 2,
+            "client_width": 1440,
+            "scroll_width": 1440,
+            "body_scroll_width": 1440,
+            "inner_width": 1440,
+            "global_horizontal_overflow": false,
+            "local_overflow_count": 0,
+            "local_overflows": [],
+            "all_six_fields_readable": true,
+            "passed": true
+          },
+          {
+            "viewport": "tablet",
+            "width": 768,
+            "height": 1024,
+            "dpr": 2,
+            "client_width": 768,
+            "scroll_width": 768,
+            "body_scroll_width": 768,
+            "inner_width": 768,
+            "global_horizontal_overflow": false,
+            "local_overflow_count": 0,
+            "local_overflows": [],
+            "all_six_fields_readable": true,
+            "passed": true
+          },
+          {
+            "viewport": "mobile",
+            "width": 390,
+            "height": 844,
+            "dpr": 2,
+            "client_width": 390,
+            "scroll_width": 390,
+            "body_scroll_width": 390,
+            "inner_width": 390,
+            "global_horizontal_overflow": false,
+            "local_overflow_count": 0,
+            "local_overflows": [],
+            "all_six_fields_readable": true,
+            "passed": true
+          }
+        ]
+      },
+      "verdict": "PASS"
+    },
+    "C04": {
+      "gate": "C04",
+      "name": "Color-Independent Usability",
+      "passed": true,
+      "evidence": {
+        "status_layers_audited": [
+          {
+            "status": "NORMAL",
+            "expected_label": "Bình thường",
+            "actual_text": "Bình thường",
+            "has_layer1_text": true,
+            "has_layer2_svg": true,
+            "svg_aria_hidden": true,
+            "svg_focusable_false": true,
+            "has_layer3_color": true,
+            "accessible_label": "Trạng thái: Bình thường",
+            "all_three_layers_present": true
+          },
+          {
+            "status": "ATTENTION",
+            "expected_label": "Cần chú ý",
+            "actual_text": "Cần chú ý",
+            "has_layer1_text": true,
+            "has_layer2_svg": true,
+            "svg_aria_hidden": true,
+            "svg_focusable_false": true,
+            "has_layer3_color": true,
+            "accessible_label": "Trạng thái: Cần chú ý",
+            "all_three_layers_present": true
+          },
+          {
+            "status": "ERROR",
+            "expected_label": "Lỗi đối tác",
+            "actual_text": "Lỗi đối tác",
+            "has_layer1_text": true,
+            "has_layer2_svg": true,
+            "svg_aria_hidden": true,
+            "svg_focusable_false": true,
+            "has_layer3_color": true,
+            "accessible_label": "Trạng thái: Lỗi đối tác",
+            "all_three_layers_present": true
+          },
+          {
+            "status": "SUCCESS",
+            "expected_label": "Hoàn tất điều phối",
+            "actual_text": "Hoàn tất điều phối",
+            "has_layer1_text": true,
+            "has_layer2_svg": true,
+            "svg_aria_hidden": true,
+            "svg_focusable_false": true,
+            "has_layer3_color": true,
+            "accessible_label": "Trạng thái: Hoàn tất điều phối",
+            "all_three_layers_present": true
+          }
+        ],
+        "visible_text_label": true,
+        "non_color_marker_present": true,
+        "accessible_name_contains_status": true,
+        "color_not_sole_signal": true,
+        "cvd_matrices_declared": {
+          "deuteranopia": {
+            "name": "Deuteranopia (Green-blind)",
+            "matrix": "0.625 0.375 0 0 0 0.70 0.30 0 0 0 0 0.30 0.70 0 0 0 0 0 1 0",
+            "method": "Brettel et al. (1997) approximate projection for computer simulations"
+          },
+          "protanopia": {
+            "name": "Protanopia (Red-blind)",
+            "matrix": "0.56667 0.43333 0 0 0 0.55833 0.44167 0 0 0 0 0.24167 0.75833 0 0 0 0 0 1 0",
+            "method": "Brettel et al. (1997) approximate projection for computer simulations"
+          }
+        },
+        "cvd_simulation_disclaimer": "Approximate computer simulation artifact for visual inspection; does not constitute clinical vision or user research proof.",
+        "cvd_simulations_generated": true,
+        "grayscale_artifact_verified": true,
+        "deuteranopia_artifact_verified": true,
+        "protanopia_artifact_verified": true,
+        "controller_visual_review": "PENDING_INDEPENDENT_REVIEW"
+      },
+      "verdict": "PASS"
+    },
+    "C07": {
+      "gate": "C07",
+      "name": "Evidence Ledger & Report Segregation",
+      "passed": true,
+      "evidence": {
+        "telemetry_keys": [
+          "source_hashes",
+          "zero_motion",
+          "token_architecture",
+          "direction_comparison",
+          "contrast_measurements",
+          "rendered_color_pair_inventory_count",
+          "measured_color_pair_count",
+          "unmeasured_required_pairs",
+          "focus_indicators",
+          "responsive_measurements",
+          "fsm_focus_preservation",
+          "screenshots"
+        ],
+        "visual_review_declared": true,
+        "design_hypotheses_declared": true,
+        "output_file": "VERIFICATION.json"
+      },
+      "verdict": "PASS"
+    }
+  },
+  "visual_review": {
+    "status": "AWAITING_CONTROLLER_INDEPENDENT_AUDIT",
+    "reviewer": "ChatGPT Architectural Controller (Sol)",
+    "review_scope": "Independent inspection of 9 authoritative DPR=2 screenshots in screenshots/"
+  },
+  "design_hypotheses": {
+    "hypothesis_01_warm_dispatch": "Option A Warm Alabaster (#FAF9F6) canvas reduces glare during extended dispatch shifts.",
+    "hypothesis_02_technical_slate": "Option B Technical Slate (#F8FAFC) canvas and tabular-numeric typography maximize speed of code scanning under strong ambient lighting.",
+    "data_notice": "DATA_CLASSIFICATION: SYNTHETIC_TRAINING_FIXTURE. Real customer data: false. Business performance claims: none.",
+    "tripflow_brand_policy": "Brand Primary is strictly segregated for identity and primary action CTAs; never used for operational status."
+  },
+  "overall_verdict": "PASS"
+}

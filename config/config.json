@@ -103,7 +103,8 @@
         "read_url(linear.app)",
         "read_url(tabio.com)",
         "read_url(yusukefukunaga.com)",
-        "read_url(192.168.1.99)"
+        "read_url(192.168.1.99)",
+        "read_url(takeprofit.com)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

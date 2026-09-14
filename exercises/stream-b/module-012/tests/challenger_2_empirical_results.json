@@ -1,0 +1,1238 @@
+{
+  "timestamp": "2026-09-14T02:05:32.507Z",
+  "option_a": {
+    "targetEval": {
+      "totalInteractive": 11,
+      "violations": [],
+      "details": [
+        {
+          "tag": "button",
+          "id": "btn-resolve-hotel",
+          "className": "btn-action-primary",
+          "text": "Gọi Khách sạn Bãi Cháy (Ms. Hương)",
+          "width": 303.67,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "button",
+          "id": "btn-update-t01-log",
+          "className": "btn-action-secondary",
+          "text": "Cập nhật Nhật ký Đoàn",
+          "width": 215.95,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "table-action-btn",
+          "text": "Chi tiết",
+          "width": 55.8,
+          "height": 59.19,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "table-action-btn",
+          "text": "Xem",
+          "width": 51.5,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "table-action-btn",
+          "text": "Xem",
+          "width": 51.5,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "table-action-btn",
+          "text": "Xem",
+          "width": 51.5,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "table-action-btn",
+          "text": "Xem",
+          "width": 51.5,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "table-action-btn",
+          "text": "Xem",
+          "width": 51.5,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "table-action-btn",
+          "text": "Xem",
+          "width": 51.5,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "table-action-btn",
+          "text": "Xem",
+          "width": 51.5,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "summary",
+          "id": null,
+          "className": "disclosure-summary",
+          "text": "Minh Bạch Nguồn Gốc Tài Sản & Bản Quyền ",
+          "width": 1314,
+          "height": 72,
+          "isVisible": true,
+          "meetsTarget": true
+        }
+      ]
+    },
+    "contrastEval": {
+      "totalTested": 24,
+      "fails": [],
+      "results": [
+        {
+          "selector": "body",
+          "text": "TRIPFLOW OPERATIONAL SUITE · M",
+          "fg": "rgb(28,25,23)",
+          "bg": "rgb(250,248,245)",
+          "ratio": 16.5,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".brand-logo-text, .brand-id-group h1",
+          "text": "TRIPFLOW Daily Departure Brief",
+          "fg": "rgb(28,25,23)",
+          "bg": "rgb(250,248,245)",
+          "ratio": 16.5,
+          "required": 3,
+          "isLarge": true,
+          "passes": true
+        },
+        {
+          "selector": ".brand-badge, .direction-badge-b",
+          "text": "Hướng A: Trí tuệ Thực địa Nhân",
+          "fg": "rgb(194,65,12)",
+          "bg": "rgb(245,240,232)",
+          "ratio": 4.56,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".brand-promise-quote, .brand-promise-terminal",
+          "text": "“TRIPFLOW giúp đội vận hành nh",
+          "fg": "rgb(28,25,23)",
+          "bg": "rgb(255,253,249)",
+          "ratio": 17.21,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".brand-promise-author",
+          "text": "Lời hứa sản phẩm cốt lõi — Hợp",
+          "fg": "rgb(120,113,108)",
+          "bg": "rgb(255,253,249)",
+          "ratio": 4.72,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".hero-heading, .focal-route-title",
+          "text": "Khởi hành: 14/09/2026 lúc 07:3",
+          "fg": "rgb(28,25,23)",
+          "bg": "rgb(255,253,249)",
+          "ratio": 17.21,
+          "required": 3,
+          "isLarge": true,
+          "passes": true
+        },
+        {
+          "selector": ".tour-id-pill, .tour-code-tag",
+          "text": "TOUR TRỌNG TÂM: T01 · HẠ LONG ",
+          "fg": "rgb(146,64,14)",
+          "bg": "rgb(254,243,199)",
+          "ratio": 6.37,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".bottleneck-alert-box h3, .signal-break-body h3",
+          "text": "ĐIỂM NGHẼN CẦN GIẢI QUYẾT: Khá",
+          "fg": "rgb(146,64,14)",
+          "bg": "rgb(254,243,199)",
+          "ratio": 6.37,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".bottleneck-alert-box p, .signal-break-body p",
+          "text": "Khách sạn Bãi Cháy chưa gửi em",
+          "fg": "rgb(120,53,15)",
+          "bg": "rgb(254,243,199)",
+          "ratio": 8.15,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".status-badge.badge-waiting, .signal-badge.badge-hazard",
+          "text": "Chờ đối tác",
+          "fg": "rgb(146,64,14)",
+          "bg": "rgb(254,243,199)",
+          "ratio": 6.37,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".status-badge.badge-ready, .signal-badge.badge-telemetry",
+          "text": "Sẵn sàng",
+          "fg": "rgb(6,95,70)",
+          "bg": "rgb(236,253,245)",
+          "ratio": 7.29,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".status-badge.badge-missing, .signal-badge.badge-fault",
+          "text": "Thiếu hồ sơ",
+          "fg": "rgb(153,27,27)",
+          "bg": "rgb(254,242,242)",
+          "ratio": 7.6,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".status-badge.badge-prep, .signal-badge.badge-prep",
+          "text": "Đang chuẩn bị",
+          "fg": "rgb(30,64,175)",
+          "bg": "rgb(239,246,255)",
+          "ratio": 8.01,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".status-badge.badge-done, .signal-badge.badge-archived",
+          "text": "Hoàn thành",
+          "fg": "rgb(68,64,60)",
+          "bg": "rgb(245,245,244)",
+          "ratio": 9.42,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".btn-action-primary, .btn-terminal-primary",
+          "text": "Gọi Khách sạn Bãi Cháy (Ms. Hư",
+          "fg": "rgb(255,255,255)",
+          "bg": "rgb(194,65,12)",
+          "ratio": 5.18,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".btn-action-secondary, .btn-terminal-secondary",
+          "text": "Cập nhật Nhật ký Đoàn",
+          "fg": "rgb(28,25,23)",
+          "bg": "rgb(255,255,255)",
+          "ratio": 17.49,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".snapshot-table th, .matrix-table th",
+          "text": "Mã Tour",
+          "fg": "rgb(28,25,23)",
+          "bg": "rgb(245,240,232)",
+          "ratio": 15.42,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".snapshot-table td, .matrix-table td",
+          "text": "T01",
+          "fg": "rgb(28,25,23)",
+          "bg": "rgb(255,253,247)",
+          "ratio": 17.19,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".table-action-btn, .matrix-action-link",
+          "text": "Chi tiết",
+          "fg": "rgb(194,65,12)",
+          "bg": "rgb(255,253,247)",
+          "ratio": 5.09,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".coordinator-info h3, .operator-id-text h3",
+          "text": "Lan — Điều Phối Viên Chính",
+          "fg": "rgb(28,25,23)",
+          "bg": "rgb(255,255,255)",
+          "ratio": 17.49,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".fictional-disclosure-pill, .operator-badge-box span",
+          "text": "Nhân vật điều phối giả lập / F",
+          "fg": "rgb(146,64,14)",
+          "bg": "rgb(254,243,199)",
+          "ratio": 6.37,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".disclosure-summary, .disclosure-summary-bar",
+          "text": "Minh Bạch Nguồn Gốc Tài Sản & ",
+          "fg": "rgb(68,64,60)",
+          "bg": "rgb(245,240,232)",
+          "ratio": 9.05,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".site-footer, .telemetry-footer",
+          "text": "TRIPFLOW · Hệ Thống Điều Phối ",
+          "fg": "rgb(120,113,108)",
+          "bg": "rgb(250,248,245)",
+          "ratio": 4.53,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".log-time, .feed-timestamp",
+          "text": "17:45",
+          "fg": "rgb(194,65,12)",
+          "bg": "rgb(255,255,255)",
+          "ratio": 5.18,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        }
+      ]
+    },
+    "nonColorEval": {
+      "totalBadges": 9,
+      "nonCompliant": [],
+      "audit": [
+        {
+          "text": "Chờ đối tác",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "Chờ đối tác",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "Sẵn sàng",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "Thiếu hồ sơ",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "Đang chuẩn bị",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "Sẵn sàng",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "Chờ đối tác",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "Đang chuẩn bị",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "Hoàn thành",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        }
+      ]
+    },
+    "diagramEval": [
+      {
+        "imgSrc": "../../assets/diagrams/t01_route_narrative.svg",
+        "hasAlt": true,
+        "altText": "Sơ đồ chuỗi lộ trình T01 Hạ Long 4 mốc: Hà Nội (07:30 Sẵn sàng), Hải Dương (09:00 Sẵn sàng), Khách sạn Bãi Cháy (11:45 Điểm nghẽn: Chưa xác nhận 4 phòng), Cảng Tuần Châu (13:30 Sẵn sàng)",
+        "hasOrderedList": true,
+        "isAccessibleToSr": true,
+        "itemCount": 4,
+        "olItems": [
+          "Mốc 1: Hà Nội — Khởi hành lúc 07:30 ngày 14/09 tại Nhà hát Lớn. Trạng thái: Sẵn sàng xe 29 chỗ.",
+          "Mốc 2: Trạm dừng Hải Dương — Nghỉ chân lúc 09:00 (20 phút). Trạng thái: Sẵn sàng hậu cần.",
+          "Mốc 3: Khách sạn Bãi Cháy — Check-in lúc 11:45. Trạng thái: Điểm nghẽn — Chờ đối tác xác nhận 4 phòng.",
+          "Mốc 4: Cảng Tuần Châu — Xuống du thuyền lúc 13:30. Trạng thái: Đã giữ 28 chỗ tàu VIP."
+        ]
+      }
+    ],
+    "imageFailureEval": {
+      "preScrollWidth": 1425,
+      "preClientWidth": 1425,
+      "postScrollWidth": 1425,
+      "postClientWidth": 1425,
+      "noHorizontalOverflow": true,
+      "heroPreHeight": 1058,
+      "heroPostHeight": 897,
+      "tablePreHeight": 656,
+      "tablePostHeight": 656,
+      "t01TextPreserved": true,
+      "t08TextPreserved": true,
+      "buttonsUsable": true,
+      "layoutStableWithoutImages": true
+    },
+    "dataParityEval": {
+      "hasTimeAnchor": true,
+      "forbiddenCheck": {
+        "hasRevenueOrMoney": false,
+        "hasFakeAwards": false,
+        "hasFakeRatings": false
+      },
+      "extractedCount": 8,
+      "extractedTours": [
+        {
+          "rawCells": [
+            "T01",
+            "Hạ Long 2N1Đ",
+            "14/09/2026 07:30",
+            "Lan",
+            "Chờ đối tác",
+            "Khách sạn chưa xác nhận 4 phòng",
+            "Chi tiết"
+          ],
+          "id": "T01",
+          "tour": "Hạ Long 2N1Đ",
+          "departure": "14/09/2026 07:30",
+          "assignee": "Lan",
+          "status": "Chờ đối tác",
+          "note": "Khách sạn chưa xác nhận 4 phòng"
+        },
+        {
+          "rawCells": [
+            "T02",
+            "Ninh Bình 1 ngày",
+            "14/09/2026 06:00",
+            "Minh",
+            "Sẵn sàng",
+            "Đã đủ xe, hướng dẫn viên và danh sách khách",
+            "Xem"
+          ],
+          "id": "T02",
+          "tour": "Ninh Bình 1 ngày",
+          "departure": "14/09/2026 06:00",
+          "assignee": "Minh",
+          "status": "Sẵn sàng",
+          "note": "Đã đủ xe, hướng dẫn viên và danh sách khách"
+        },
+        {
+          "rawCells": [
+            "T03",
+            "Sapa 3N2Đ",
+            "15/09/2026 21:30",
+            "Huy",
+            "Thiếu hồ sơ",
+            "2 khách chưa gửi CCCD",
+            "Xem"
+          ],
+          "id": "T03",
+          "tour": "Sapa 3N2Đ",
+          "departure": "15/09/2026 21:30",
+          "assignee": "Huy",
+          "status": "Thiếu hồ sơ",
+          "note": "2 khách chưa gửi CCCD"
+        },
+        {
+          "rawCells": [
+            "T04",
+            "Đà Nẵng 4N3Đ",
+            "16/09/2026 08:00",
+            "Lan",
+            "Đang chuẩn bị",
+            "Chờ chốt danh sách suất ăn",
+            "Xem"
+          ],
+          "id": "T04",
+          "tour": "Đà Nẵng 4N3Đ",
+          "departure": "16/09/2026 08:00",
+          "assignee": "Lan",
+          "status": "Đang chuẩn bị",
+          "note": "Chờ chốt danh sách suất ăn"
+        },
+        {
+          "rawCells": [
+            "T05",
+            "Hà Giang 3N2Đ",
+            "17/09/2026 05:30",
+            "Minh",
+            "Sẵn sàng",
+            "Đã hoàn tất checklist khởi hành",
+            "Xem"
+          ],
+          "id": "T05",
+          "tour": "Hà Giang 3N2Đ",
+          "departure": "17/09/2026 05:30",
+          "assignee": "Minh",
+          "status": "Sẵn sàng",
+          "note": "Đã hoàn tất checklist khởi hành"
+        },
+        {
+          "rawCells": [
+            "T06",
+            "Phú Quốc 3N2Đ",
+            "18/09/2026 09:10",
+            "Huy",
+            "Chờ đối tác",
+            "Nhà xe trung chuyển chưa xác nhận",
+            "Xem"
+          ],
+          "id": "T06",
+          "tour": "Phú Quốc 3N2Đ",
+          "departure": "18/09/2026 09:10",
+          "assignee": "Huy",
+          "status": "Chờ đối tác",
+          "note": "Nhà xe trung chuyển chưa xác nhận"
+        },
+        {
+          "rawCells": [
+            "T07",
+            "Mộc Châu 2N1Đ",
+            "19/09/2026 06:30",
+            "Lan",
+            "Đang chuẩn bị",
+            "Đang rà soát danh sách phòng",
+            "Xem"
+          ],
+          "id": "T07",
+          "tour": "Mộc Châu 2N1Đ",
+          "departure": "19/09/2026 06:30",
+          "assignee": "Lan",
+          "status": "Đang chuẩn bị",
+          "note": "Đang rà soát danh sách phòng"
+        },
+        {
+          "rawCells": [
+            "T08",
+            "Huế 3N2Đ",
+            "12/09/2026 07:00",
+            "An",
+            "Hoàn thành",
+            "Đoàn đã khởi hành và bàn giao nhật ký",
+            "Xem"
+          ],
+          "id": "T08",
+          "tour": "Huế 3N2Đ",
+          "departure": "12/09/2026 07:00",
+          "assignee": "An",
+          "status": "Hoàn thành",
+          "note": "Đoàn đã khởi hành và bàn giao nhật ký"
+        }
+      ]
+    }
+  },
+  "option_b": {
+    "targetEval": {
+      "totalInteractive": 11,
+      "violations": [],
+      "details": [
+        {
+          "tag": "button",
+          "id": "btn-dispatch-call",
+          "className": "btn-terminal-primary",
+          "text": "KÍCH HOẠT CUỘC GỌI ĐỐI TÁC KS BÃI CHÁY",
+          "width": 333.61,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "button",
+          "id": "btn-dispatch-reroute",
+          "className": "btn-terminal-secondary",
+          "text": "XEM NHẬT KÝ TÍN HIỆU T01",
+          "width": 229.55,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "matrix-action-link",
+          "text": "CHI TIẾT",
+          "width": 78.78,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "matrix-action-link",
+          "text": "XEM",
+          "width": 45.8,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "matrix-action-link",
+          "text": "XEM",
+          "width": 45.8,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "matrix-action-link",
+          "text": "XEM",
+          "width": 45.8,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "matrix-action-link",
+          "text": "XEM",
+          "width": 45.8,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "matrix-action-link",
+          "text": "XEM",
+          "width": 45.8,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "matrix-action-link",
+          "text": "XEM",
+          "width": 45.8,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "a",
+          "id": null,
+          "className": "matrix-action-link",
+          "text": "XEM",
+          "width": 45.8,
+          "height": 44,
+          "isVisible": true,
+          "meetsTarget": true
+        },
+        {
+          "tag": "summary",
+          "id": null,
+          "className": "disclosure-summary-bar",
+          "text": "MINH BẠCH NGUỒN GỐC TÀI NGUYÊN (ASSET PR",
+          "width": 1330,
+          "height": 68,
+          "isVisible": true,
+          "meetsTarget": true
+        }
+      ]
+    },
+    "contrastEval": {
+      "totalTested": 23,
+      "fails": [],
+      "results": [
+        {
+          "selector": "body",
+          "text": "TRIPFLOW_DISPATCH_TELEMETRY //",
+          "fg": "rgb(15,23,42)",
+          "bg": "rgb(248,250,252)",
+          "ratio": 17.06,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".brand-logo-text, .brand-id-group h1",
+          "text": "TRIPFLOW DAILY DEPARTURE BRIEF",
+          "fg": "rgb(15,23,42)",
+          "bg": "rgb(248,250,252)",
+          "ratio": 17.06,
+          "required": 3,
+          "isLarge": true,
+          "passes": true
+        },
+        {
+          "selector": ".brand-badge, .direction-badge-b",
+          "text": "[DIRECTION_B: ROUTE_SIGNAL_SYS",
+          "fg": "rgb(51,65,85)",
+          "bg": "rgb(241,245,249)",
+          "ratio": 9.45,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".brand-promise-quote, .brand-promise-terminal",
+          "text": "> PROMISE: \"TRIPFLOW giúp đội ",
+          "fg": "rgb(29,78,216)",
+          "bg": "rgb(239,246,255)",
+          "ratio": 6.16,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".hero-heading, .focal-route-title",
+          "text": "HẠ LONG 2N1Đ — HÀNH LANG DU LỊ",
+          "fg": "rgb(15,23,42)",
+          "bg": "rgb(255,255,255)",
+          "ratio": 17.85,
+          "required": 3,
+          "isLarge": true,
+          "passes": true
+        },
+        {
+          "selector": ".tour-id-pill, .tour-code-tag",
+          "text": "CRIT_NODE: T01",
+          "fg": "rgb(15,23,42)",
+          "bg": "rgb(241,245,249)",
+          "ratio": 16.3,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".bottleneck-alert-box h3, .signal-break-body h3",
+          "text": "ĐIỂM ĐỨT GÃY TÍN HIỆU LỘ TRÌNH",
+          "fg": "rgb(153,27,27)",
+          "bg": "rgb(254,242,242)",
+          "ratio": 7.6,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".bottleneck-alert-box p, .signal-break-body p",
+          "text": "Tín hiệu giữ chỗ buồng phòng t",
+          "fg": "rgb(127,29,29)",
+          "bg": "rgb(254,242,242)",
+          "ratio": 9.16,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".status-badge.badge-waiting, .signal-badge.badge-hazard",
+          "text": "CHỜ ĐỐI TÁC",
+          "fg": "rgb(133,77,14)",
+          "bg": "rgb(254,249,195)",
+          "ratio": 6.38,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".status-badge.badge-ready, .signal-badge.badge-telemetry",
+          "text": "SẴN SÀNG",
+          "fg": "rgb(22,101,52)",
+          "bg": "rgb(220,252,231)",
+          "ratio": 6.49,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".status-badge.badge-missing, .signal-badge.badge-fault",
+          "text": "THIẾU HỒ SƠ",
+          "fg": "rgb(153,27,27)",
+          "bg": "rgb(254,226,226)",
+          "ratio": 6.8,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".status-badge.badge-prep, .signal-badge.badge-prep",
+          "text": "ĐANG CHUẨN BỊ",
+          "fg": "rgb(7,89,133)",
+          "bg": "rgb(224,242,254)",
+          "ratio": 6.59,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".status-badge.badge-done, .signal-badge.badge-archived",
+          "text": "HOÀN THÀNH",
+          "fg": "rgb(51,65,85)",
+          "bg": "rgb(241,245,249)",
+          "ratio": 9.45,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".btn-action-primary, .btn-terminal-primary",
+          "text": "KÍCH HOẠT CUỘC GỌI ĐỐI TÁC KS ",
+          "fg": "rgb(255,255,255)",
+          "bg": "rgb(29,78,216)",
+          "ratio": 6.7,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".btn-action-secondary, .btn-terminal-secondary",
+          "text": "XEM NHẬT KÝ TÍN HIỆU T01",
+          "fg": "rgb(15,23,42)",
+          "bg": "rgb(255,255,255)",
+          "ratio": 17.85,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".snapshot-table th, .matrix-table th",
+          "text": "MÃ TOUR",
+          "fg": "rgb(15,23,42)",
+          "bg": "rgb(241,245,249)",
+          "ratio": 16.3,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".snapshot-table td, .matrix-table td",
+          "text": "T01",
+          "fg": "rgb(15,23,42)",
+          "bg": "rgb(255,251,235)",
+          "ratio": 17.22,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".table-action-btn, .matrix-action-link",
+          "text": "CHI TIẾT",
+          "fg": "rgb(29,78,216)",
+          "bg": "rgb(255,255,255)",
+          "ratio": 6.7,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".coordinator-info h3, .operator-id-text h3",
+          "text": "ĐIỀU PHỐI VIÊN: LAN",
+          "fg": "rgb(15,23,42)",
+          "bg": "rgb(255,255,255)",
+          "ratio": 17.85,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".fictional-disclosure-pill, .operator-badge-box span",
+          "text": "Nhân vật điều phối giả lập / F",
+          "fg": "rgb(133,77,14)",
+          "bg": "rgb(254,249,195)",
+          "ratio": 6.38,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".disclosure-summary, .disclosure-summary-bar",
+          "text": "MINH BẠCH NGUỒN GỐC TÀI NGUYÊN",
+          "fg": "rgb(15,23,42)",
+          "bg": "rgb(241,245,249)",
+          "ratio": 16.3,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".site-footer, .telemetry-footer",
+          "text": "TRIPFLOW DISPATCH TELEMETRY SY",
+          "fg": "rgb(100,116,139)",
+          "bg": "rgb(248,250,252)",
+          "ratio": 4.55,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        },
+        {
+          "selector": ".log-time, .feed-timestamp",
+          "text": "17:45:12",
+          "fg": "rgb(29,78,216)",
+          "bg": "rgb(255,255,255)",
+          "ratio": 6.7,
+          "required": 4.5,
+          "isLarge": false,
+          "passes": true
+        }
+      ]
+    },
+    "nonColorEval": {
+      "totalBadges": 9,
+      "nonCompliant": [],
+      "audit": [
+        {
+          "text": "CHỜ ĐỐI TÁC",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "CHỜ ĐỐI TÁC",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "SẴN SÀNG",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "THIẾU HỒ SƠ",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "ĐANG CHUẨN BỊ",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "SẴN SÀNG",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "CHỜ ĐỐI TÁC",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "ĐANG CHUẨN BỊ",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        },
+        {
+          "text": "HOÀN THÀNH",
+          "hasSvgOrImg": true,
+          "hasText": true,
+          "hasBorder": true,
+          "shapeDistinct": true,
+          "fullyCompliant": true
+        }
+      ]
+    },
+    "diagramEval": [
+      {
+        "imgSrc": "../../assets/diagrams/t01_route_schematic.svg",
+        "hasAlt": true,
+        "altText": "Sơ đồ tín hiệu kỹ thuật tuyến T01 Hạ Long với điểm ngắt tín hiệu cảnh báo tại ga Bãi Cháy do chưa xác nhận 4 phòng",
+        "hasOrderedList": true,
+        "isAccessibleToSr": true,
+        "itemCount": 4,
+        "olItems": [
+          "Ga 01: Hà Nội (Khởi hành 07:30 14/09). Trạng thái: Tín hiệu thông suốt [SẴN SÀNG].",
+          "Trạm đo 02: Hải Dương (Waypoint 09:00). Trạng thái: Tín hiệu thông suốt [SẴN SÀNG].",
+          "Ga 03: Khách sạn Bãi Cháy (Checkpoint 11:45). Trạng thái: Đứt gãy tín hiệu [CHỜ ĐỐI TÁC: 4 PHÒNG CHƯA XÁC NHẬN].",
+          "Ga 04: Cảng Tuần Châu (Terminal 13:30). Trạng thái: Tạm dừng phụ thuộc ga 03 [PENDING BC]."
+        ]
+      }
+    ],
+    "imageFailureEval": {
+      "preScrollWidth": 1425,
+      "preClientWidth": 1425,
+      "postScrollWidth": 1425,
+      "postClientWidth": 1425,
+      "noHorizontalOverflow": true,
+      "heroPreHeight": 1026,
+      "heroPostHeight": 846,
+      "tablePreHeight": 558,
+      "tablePostHeight": 558,
+      "t01TextPreserved": true,
+      "t08TextPreserved": true,
+      "buttonsUsable": true,
+      "layoutStableWithoutImages": true
+    },
+    "dataParityEval": {
+      "hasTimeAnchor": true,
+      "forbiddenCheck": {
+        "hasRevenueOrMoney": false,
+        "hasFakeAwards": false,
+        "hasFakeRatings": false
+      },
+      "extractedCount": 8,
+      "extractedTours": [
+        {
+          "rawCells": [
+            "T01",
+            "Hạ Long 2N1Đ",
+            "14/09/2026 07:30",
+            "Lan",
+            "CHỜ ĐỐI TÁC",
+            "Khách sạn chưa xác nhận 4 phòng",
+            "CHI TIẾT"
+          ],
+          "id": "T01",
+          "tour": "Hạ Long 2N1Đ",
+          "departure": "14/09/2026 07:30",
+          "assignee": "Lan",
+          "status": "CHỜ ĐỐI TÁC",
+          "note": "Khách sạn chưa xác nhận 4 phòng"
+        },
+        {
+          "rawCells": [
+            "T02",
+            "Ninh Bình 1 ngày",
+            "14/09/2026 06:00",
+            "Minh",
+            "SẴN SÀNG",
+            "Đã đủ xe, hướng dẫn viên và danh sách khách",
+            "XEM"
+          ],
+          "id": "T02",
+          "tour": "Ninh Bình 1 ngày",
+          "departure": "14/09/2026 06:00",
+          "assignee": "Minh",
+          "status": "SẴN SÀNG",
+          "note": "Đã đủ xe, hướng dẫn viên và danh sách khách"
+        },
+        {
+          "rawCells": [
+            "T03",
+            "Sapa 3N2Đ",
+            "15/09/2026 21:30",
+            "Huy",
+            "THIẾU HỒ SƠ",
+            "2 khách chưa gửi CCCD",
+            "XEM"
+          ],
+          "id": "T03",
+          "tour": "Sapa 3N2Đ",
+          "departure": "15/09/2026 21:30",
+          "assignee": "Huy",
+          "status": "THIẾU HỒ SƠ",
+          "note": "2 khách chưa gửi CCCD"
+        },
+        {
+          "rawCells": [
+            "T04",
+            "Đà Nẵng 4N3Đ",
+            "16/09/2026 08:00",
+            "Lan",
+            "ĐANG CHUẨN BỊ",
+            "Chờ chốt danh sách suất ăn",
+            "XEM"
+          ],
+          "id": "T04",
+          "tour": "Đà Nẵng 4N3Đ",
+          "departure": "16/09/2026 08:00",
+          "assignee": "Lan",
+          "status": "ĐANG CHUẨN BỊ",
+          "note": "Chờ chốt danh sách suất ăn"
+        },
+        {
+          "rawCells": [
+            "T05",
+            "Hà Giang 3N2Đ",
+            "17/09/2026 05:30",
+            "Minh",
+            "SẴN SÀNG",
+            "Đã hoàn tất checklist khởi hành",
+            "XEM"
+          ],
+          "id": "T05",
+          "tour": "Hà Giang 3N2Đ",
+          "departure": "17/09/2026 05:30",
+          "assignee": "Minh",
+          "status": "SẴN SÀNG",
+          "note": "Đã hoàn tất checklist khởi hành"
+        },
+        {
+          "rawCells": [
+            "T06",
+            "Phú Quốc 3N2Đ",
+            "18/09/2026 09:10",
+            "Huy",
+            "CHỜ ĐỐI TÁC",
+            "Nhà xe trung chuyển chưa xác nhận",
+            "XEM"
+          ],
+          "id": "T06",
+          "tour": "Phú Quốc 3N2Đ",
+          "departure": "18/09/2026 09:10",
+          "assignee": "Huy",
+          "status": "CHỜ ĐỐI TÁC",
+          "note": "Nhà xe trung chuyển chưa xác nhận"
+        },
+        {
+          "rawCells": [
+            "T07",
+            "Mộc Châu 2N1Đ",
+            "19/09/2026 06:30",
+            "Lan",
+            "ĐANG CHUẨN BỊ",
+            "Đang rà soát danh sách phòng",
+            "XEM"
+          ],
+          "id": "T07",
+          "tour": "Mộc Châu 2N1Đ",
+          "departure": "19/09/2026 06:30",
+          "assignee": "Lan",
+          "status": "ĐANG CHUẨN BỊ",
+          "note": "Đang rà soát danh sách phòng"
+        },
+        {
+          "rawCells": [
+            "T08",
+            "Huế 3N2Đ",
+            "12/09/2026 07:00",
+            "An",
+            "HOÀN THÀNH",
+            "Đoàn đã khởi hành và bàn giao nhật ký",
+            "XEM"
+          ],
+          "id": "T08",
+          "tour": "Huế 3N2Đ",
+          "departure": "12/09/2026 07:00",
+          "assignee": "An",
+          "status": "HOÀN THÀNH",
+          "note": "Đoàn đã khởi hành và bàn giao nhật ký"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "totalTests": 0,
+    "passed": 0,
+    "failed": 0
+  }
+}

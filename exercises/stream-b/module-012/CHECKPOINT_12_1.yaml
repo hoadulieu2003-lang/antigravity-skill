@@ -1,0 +1,41 @@
+submission_type: DESIGN_TRAINING_012_CHECKPOINT_12_1_R02
+stream_id: B
+workspace: design-training/stream-b/module-012/
+source_snapshot:
+  source_archive_sha256: "e76ab08f4d1e72865f4210299594e175b94f471d3f8960c3f0c61d4259283c76"
+  source_candidate_relative_path: "candidate/index.html"
+  source_candidate_sha256: "ee5294b94f37e2b4945743ab3215af238dde9e3b97af10a357872c1a85506800"
+  source_candidate_size_bytes: 38024
+  source_candidate_usage: "REFERENCE_ONLY"
+brand_thesis_draft:
+  audience: "Điều phối viên và trưởng nhóm vận hành tại doanh nghiệp du lịch lữ hành quy mô vừa và nhỏ (SMEs), phụ trách quản lý đồng thời từ 8 đến 15 đoàn tour khởi hành trong vòng 24–72 giờ tới trong môi trường áp lực cao và thường xuyên bị gián đoạn."
+  promise: "TRIPFLOW giúp đội vận hành nhìn thấy điều chưa sẵn sàng trước giờ khởi hành."
+  personality:
+    - "Bình tĩnh (Calm)"
+    - "Chính xác (Precise)"
+    - "Có chuẩn bị (Prepared)"
+    - "Gần gũi với người làm vận hành (Approachable & Grounded)"
+  anti_personality:
+    - "Hãng du lịch nghỉ dưỡng xa xỉ (Luxury hospitality / Travel brochure postcard)"
+    - "Bảng điều khiển quân sự / Phòng chỉ huy (Military command center / Sci-Fi terminal)"
+    - "Sản phẩm AI tím–xanh phát sáng chung chung (Generic glowing purple-blue AI SaaS)"
+    - "Dashboard thành tích với số liệu tăng trưởng bịa đặt (Fabricated vanity metric dashboard)"
+direction_a:
+  name: "Human Field Intelligence (Trí tuệ Thực địa Nhân văn)"
+  strategy: "Tiếp cận vấn đề điều phối từ góc nhìn con người và bối cảnh thực địa. Bố cục editorial bất đối xứng 2 cột (62% nội dung chính : 38% thanh bên thực địa), typography Georgia serif ấm áp kết hợp sans-serif nhân văn, đồ họa vector tự tạo mô phỏng bối cảnh thực địa tại bến Tuần Châu và bàn làm việc của nhân vật giả lập Lan, mang lại cảm giác bình tĩnh, đáng tin cậy và không gian làm việc gần gũi cho đội ngũ vận hành theo mục tiêu thiết kế DESIGN_INTENT."
+  five_axis_summary: "Phân kỳ toàn diện trên cả 7 trục: (1) Personality ấm áp & quan sát thực địa; (2) Composition báo chí biên tập bất đối xứng 62:38 khoảng thở rộng rãi; (3) Typography kết hợp Georgia Serif tiêu đề & Humanist Sans nội dung line-height 1.6; (4) Image đồ họa vector tự tạo mô phỏng bến tàu Tuần Châu ánh sáng tự nhiên chiều tà (authored_vector); (5) Crop ngang tầm mắt chân thực không gian mở; (6) Icon nét vẽ bo mềm mại 1.75px & sơ đồ dòng thời gian uốn lượn hữu cơ; (7) Surface chất liệu giấy xúc giác ấm áp #FAF8F5 kèm vân sợi tự nhiên."
+direction_b:
+  name: "Route Signal System (Hệ thống Tín hiệu Lộ trình)"
+  strategy: "Tiếp cận vấn đề điều phối dưới góc độ chuỗi mốc lộ trình và trật tự trắc địa lữ hành B2B (loại trừ hoàn toàn phong cách quân sự hay viễn tưởng). Bố cục lưới bản đồ học 12 cột module hóa chặt chẽ, thanh tiêu đề thương hiệu lữ hành trang nhã, typography Segoe UI rõ ràng kết hợp monospace cho mã số tour và giờ xuất phát, đồ họa bản đồ trực giao hành lang lữ hành và sơ đồ chuỗi mốc lộ trình 4 bước với điểm cảnh báo chờ xác nhận phòng tại Bãi Cháy, với mục tiêu thiết kế DESIGN_INTENT hỗ trợ điều phối viên nhận diện nhanh điểm cần xử lý."
+  five_axis_summary: "Phân kỳ toàn diện trên cả 7 trục: (1) Personality kỷ luật, phân tích & định hướng trắc địa lữ hành B2B; (2) Composition lưới bản đồ 12 cột module hóa sáng rõ với header thương hiệu lữ hành chuẩn mực; (3) Typography Geometric Sans cho tiêu đề/nội dung kết hợp Tabular Monospace cho mã ID/giờ giấc; (4) Image bản đồ học trực giao hành lang lữ hành và sơ đồ chuỗi mốc 4 bước (authored_vector không crosshair); (5) Crop thẳng đứng góc nhìn bản đồ quy hoạch; (6) Icon hình học đồng bộ 1.75px & sơ đồ mốc lộ trình tuần tự; (7) Surface bảng điều phối kỹ thuật #F8FAFC phân tầng kèm lưới chia tọa độ tinh tế."
+image_language_roles:
+  - hero_context
+  - operational_scene
+  - route_diagram
+  - fictional_person
+  - icon_family
+  - texture_accent
+asset_acquisition_plan: "Toàn bộ 14 tài sản đồ họa được sản xuất dưới dạng vector SVG nguyên bản tự kiến tạo cục bộ tại thư mục assets/ (gồm 6 icons 24x24, 2 sơ đồ lộ trình, 1 avatar nhân vật giả lập Lan, 3 đồ họa hiện trường/bản đồ và 2 texture nền). Đăng ký 100% trong ASSET_MANIFEST.yaml với origin_type: authored_vector và disclosure: 'Authored SVG vector asset simulating field scene for training exercise' kèm mã băm SHA-256 thực tế, 0 yêu cầu mạng từ xa (zero remote requests), tuân thủ ngân sách dưới 600KB/file và dưới 3.5MB tổng runtime."
+test_matrix_draft_path: "TEST_MATRIX_DRAFT.md"
+checkpoint_verification_path: "CHECKPOINT_VERIFICATION.json"
+open_questions: []

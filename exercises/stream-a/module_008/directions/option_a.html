@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIPFLOW DISPATCH LEDGER — SỔ CÁI ĐIỀU PHỐI TOUR (Hướng A: Editorial Warm Dispatch)</title>
+  <style>
+    /* ==========================================================================
+       THREE-TIER CSS CUSTOM PROPERTY HIERARCHY
+       Tier 1: Primitive Tokens (--primitive-*)
+       Tier 2: Semantic Tokens (--color-*)
+       Tier 3: Component Tokens (--dispatch-*)
+       ========================================================================== */
+    :root {
+      /* --- TIER 1: PRIMITIVE TOKENS --- */
+      /* Slate Scale */
+      --primitive-slate-50: #F8FAFC;
+      --primitive-slate-100: #F1F5F9;
+      --primitive-slate-200: #E2E8F0;
+      --primitive-slate-300: #CBD5E1;
+      --primitive-slate-400: #94A3B8;
+      --primitive-slate-500: #64748B;
+      --primitive-slate-600: #475569;
+      --primitive-slate-700: #334155;
+      --primitive-slate-800: #1E293B;
+      --primitive-slate-900: #0F172A;
+      --primitive-slate-950: #020617;
+
+      /* Warm Alabaster Neutral Scale */
+      --primitive-warm-neutral-50: #FAF9F6;
+      --primitive-warm-neutral-100: #F5F4F0;
+      --primitive-warm-neutral-200: #E7E5E0;
+      --primitive-warm-neutral-300: #D7D3CB;
+      --primitive-warm-neutral-400: #A8A29E;
+      --primitive-warm-neutral-500: #78716C;
+      --primitive-warm-neutral-600: #57534E;
+      --primitive-warm-neutral-700: #44403C;
+      --primitive-warm-neutral-800: #292524;
+      --primitive-warm-neutral-900: #1C1917;
+      --primitive-warm-neutral-950: #0C0A09;
+
+      /* Amber Scale */
+      --primitive-amber-50: #FFFBEB;
+      --primitive-amber-100: #FEF3C7;
+      --primitive-amber-200: #FDE68A;
+      --primitive-amber-300: #FCD34D;
+      --primitive-amber-400: #FBBF24;
+      --primitive-amber-500: #F59E0B;
+      --primitive-amber-600: #D97706;
+      --primitive-amber-700: #B45309;
+      --primitive-amber-800: #92400E;
+      --primitive-amber-900: #78350F;
+      --primitive-amber-950: #451A03;
+
+      /* Rose Scale */
+      --primitive-rose-50: #FFF1F2;
+      --primitive-rose-100: #FFE4E6;
+      --primitive-rose-200: #FECDD3;
+      --primitive-rose-300: #FDA4AF;
+      --primitive-rose-400: #FB7185;
+      --primitive-rose-500: #F43F5E;
+      --primitive-rose-600: #E11D48;
+      --primitive-rose-700: #BE123C;
+      --primitive-rose-800: #9F1239;
+      --primitive-rose-900: #881337;
+      --primitive-rose-950: #4C0519;
+
+      /* Green Scale */
+      --primitive-green-50: #F0FDF4;
+      --primitive-green-100: #DCFCE7;
+      --primitive-green-200: #BBF7D0;
+      --primitive-green-300: #86EFAC;
+      --primitive-green-400: #4ADE80;
+      --primitive-green-500: #22C55E;
+      --primitive-green-600: #16A34A;
+      --primitive-green-700: #15803D;
+      --primitive-green-800: #166534;
+      --primitive-green-900: #14532D;
+      --primitive-green-950: #052E16;
+
+      /* Static Neutral */
+      --primitive-static-white: #FFFFFF;
+
+      /* --- TIER 2: SEMANTIC TOKENS (OPTION A PROFILE) --- */
+      --color-canvas-bg: var(--primitive-warm-neutral-50);
+      --color-surface-bg: var(--primitive-static-white);
+      --color-surface-subtle: var(--primitive-warm-neutral-100);
+      --color-surface-raised: var(--primitive-static-white);
+
+      --color-text-primary: var(--primitive-slate-900);
+      --color-text-secondary: var(--primitive-slate-600);
+      --color-text-muted: var(--primitive-slate-500);
+      --color-text-inverse: var(--primitive-static-white);
+
+      --color-border-subtle: var(--primitive-slate-200);
+      --color-border-structural: var(--primitive-slate-300);
+      --color-border-strong: var(--primitive-slate-400);
+
+      /* Brand Primary strictly segregated from Operational Status */
+      --color-brand-primary: var(--primitive-slate-900);
+      --color-brand-hover: var(--primitive-slate-800);
+      --color-brand-active: var(--primitive-slate-950);
+      --color-action-primary-bg: var(--primitive-slate-900);
+      --color-action-primary-text: var(--primitive-static-white);
+      --color-action-secondary-bg: var(--primitive-static-white);
+      --color-action-secondary-text: var(--primitive-slate-900);
+      --color-action-secondary-border: var(--primitive-slate-300);
+
+      /* Focus Indicator */
+      --color-focus-ring: var(--primitive-amber-600);
+      --color-focus-ring-offset: var(--primitive-static-white);
+
+      /* Operational Status Taxonomy */
+      --color-status-normal-text: var(--primitive-slate-600);
+      --color-status-normal-bg: var(--primitive-slate-100);
+      --color-status-normal-border: var(--primitive-slate-300);
+
+      --color-status-attention-text: var(--primitive-amber-700);
+      --color-status-attention-bg: var(--primitive-amber-100);
+      --color-status-attention-border: var(--primitive-amber-500);
+
+      --color-status-error-text: var(--primitive-rose-700);
+      --color-status-error-bg: var(--primitive-rose-100);
+      --color-status-error-border: var(--primitive-rose-500);
+
+      --color-status-success-text: var(--primitive-green-700);
+      --color-status-success-bg: var(--primitive-green-100);
+      --color-status-success-border: var(--primitive-green-500);
+
+      /* --- TIER 3: COMPONENT TOKENS --- */
+      --dispatch-card-bg: var(--color-surface-bg);
+      --dispatch-card-border: var(--color-border-subtle);
+      --dispatch-card-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --dispatch-card-radius: 8px;
+      --dispatch-card-padding: 20px;
+
+      --dispatch-table-header-bg: var(--color-surface-subtle);
+      --dispatch-table-header-text: var(--color-text-secondary);
+      --dispatch-table-header-border: var(--color-border-subtle);
+      --dispatch-table-row-bg: var(--color-surface-bg);
+      --dispatch-table-row-hover-bg: var(--color-surface-subtle);
+      --dispatch-table-row-border: var(--color-border-subtle);
+
+      --dispatch-badge-padding: 4px 10px;
+      --dispatch-badge-radius: 9999px;
+      --dispatch-badge-font-size: 12px;
+      --dispatch-badge-font-weight: 600;
+      --dispatch-badge-icon-size: 14px;
+      --dispatch-badge-border-width: 1px;
+
+      --dispatch-badge-normal-text: var(--color-status-normal-text);
+      --dispatch-badge-normal-bg: var(--color-status-normal-bg);
+      --dispatch-badge-normal-border: var(--color-status-normal-border);
+
+      --dispatch-badge-attention-text: var(--color-status-attention-text);
+      --dispatch-badge-attention-bg: var(--color-status-attention-bg);
+      --dispatch-badge-attention-border: var(--color-status-attention-border);
+
+      --dispatch-badge-error-text: var(--color-status-error-text);
+      --dispatch-badge-error-bg: var(--color-status-error-bg);
+      --dispatch-badge-error-border: var(--color-status-error-border);
+
+      --dispatch-badge-success-text: var(--color-status-success-text);
+      --dispatch-badge-success-bg: var(--color-status-success-bg);
+      --dispatch-badge-success-border: var(--color-status-success-border);
+
+      --dispatch-btn-primary-bg: var(--color-action-primary-bg);
+      --dispatch-btn-primary-text: var(--color-action-primary-text);
+      --dispatch-btn-primary-border: transparent;
+      --dispatch-btn-primary-hover-bg: var(--color-brand-hover);
+      --dispatch-btn-primary-active-bg: var(--color-brand-active);
+
+      --dispatch-btn-secondary-bg: var(--color-action-secondary-bg);
+      --dispatch-btn-secondary-text: var(--color-action-secondary-text);
+      --dispatch-btn-secondary-border: var(--color-action-secondary-border);
+      --dispatch-btn-secondary-hover-bg: var(--color-surface-subtle);
+
+      --dispatch-filter-tab-bg: transparent;
+      --dispatch-filter-tab-text: var(--color-text-secondary);
+      --dispatch-filter-tab-border: var(--color-border-subtle);
+      --dispatch-filter-tab-active-bg: var(--color-action-primary-bg);
+      --dispatch-filter-tab-active-text: var(--color-action-primary-text);
+      --dispatch-filter-tab-active-border: var(--color-action-primary-bg);
+
+      --dispatch-notice-banner-bg: var(--color-surface-subtle);
+      --dispatch-notice-banner-text: var(--color-text-secondary);
+      --dispatch-notice-banner-border: var(--color-border-subtle);
+      --dispatch-notice-tag-bg: var(--color-text-primary);
+      --dispatch-notice-tag-text: var(--color-text-inverse);
+    }
+
+    /* ==========================================================================
+       BASE & RESET STYLES (Zero direct primitive calls in component selectors)
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--color-canvas-bg);
+      color: var(--color-text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Accessibility Skip Link */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 16px;
+      background-color: var(--color-action-primary-bg);
+      color: var(--color-action-primary-text);
+      padding: 8px 16px;
+      border-radius: 4px;
+      z-index: 1000;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 2px;
+    }
+
+    /* Screen Reader Only Utility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Keyboard Focus Indicator (WCAG 2.2 AA SC 2.4.7 / SC 1.4.11) */
+    :focus-visible {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 2px;
+    }
+
+    /* ==========================================================================
+       APP CONTAINER & LAYOUT SHELL
+       ========================================================================== */
+    .app-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 24px 20px 48px;
+    }
+
+    /* Fixture Notice Banner */
+    .fixture-notice {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      margin-bottom: 24px;
+      background-color: var(--dispatch-notice-banner-bg);
+      color: var(--dispatch-notice-banner-text);
+      border: 1px solid var(--dispatch-notice-banner-border);
+      border-radius: 6px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .fixture-notice .badge-tag {
+      background-color: var(--dispatch-notice-tag-bg);
+      color: var(--dispatch-notice-tag-text);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* Header Section */
+    .app-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-border-subtle);
+      margin-bottom: 24px;
+    }
+
+    .brand-identity {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--color-brand-primary);
+      text-decoration: none;
+    }
+
+    .brand-direction-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      background-color: var(--color-surface-subtle);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--color-border-subtle);
+    }
+
+    .app-header h1.ledger-title {
+      margin: 4px 0 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      letter-spacing: -0.3px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .live-clock-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      color: var(--color-text-secondary);
+      background-color: var(--color-surface-bg);
+      border: 1px solid var(--color-border-subtle);
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+
+    .live-clock-badge .clock-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--color-status-success-text);
+      display: inline-block;
+    }
+
+    /* Buttons */
+    .dispatch-action-primary,
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: var(--dispatch-btn-primary-bg);
+      color: var(--dispatch-btn-primary-text);
+      border: 1px solid var(--dispatch-btn-primary-border);
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .dispatch-action-primary:hover,
+    .btn-primary:hover {
+      background-color: var(--dispatch-btn-primary-hover-bg);
+    }
+
+    .dispatch-action-primary:active,
+    .btn-primary:active {
+      background-color: var(--dispatch-btn-primary-active-bg);
+    }
+
+    .dispatch-btn-secondary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--dispatch-btn-secondary-bg);
+      color: var(--dispatch-btn-secondary-text);
+      border: 1px solid var(--dispatch-btn-secondary-border);
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .dispatch-btn-secondary:hover,
+    .btn-secondary:hover {
+      background-color: var(--dispatch-btn-secondary-hover-bg);
+    }
+
+    /* Tour Action Buttons */
+    .dispatch-tour-action,
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--color-surface-bg);
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border-structural);
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .dispatch-tour-action:hover,
+    .btn-action:hover {
+      background-color: var(--color-surface-subtle);
+    }
+
+    .dispatch-tour-action.btn-emergency {
+      background-color: var(--color-status-error-bg);
+      color: var(--color-status-error-text);
+      border-color: var(--color-status-error-border);
+    }
+
+    .dispatch-tour-action.btn-emergency:hover {
+      background-color: var(--color-surface-subtle);
+    }
+
+    /* Asynchronous FSM state styling via aria-disabled (NO FOCUS EVICTION) */
+    .dispatch-tour-action[aria-disabled="true"],
+    .dispatch-action-primary[aria-disabled="true"],
+    .btn-action[aria-disabled="true"] {
+      opacity: 0.75;
+      cursor: not-allowed;
+      pointer-events: auto; /* Preserve keyboard events & focus */
+    }
+
+    /* Static Indicator (Zero Motion Compliance) */
+    .action-spinner {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    /* ==========================================================================
+       SUMMARY METRICS / KPI CARDS
+       ========================================================================== */
+    .kpi-section {
+      margin-bottom: 24px;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .kpi-card {
+      background-color: var(--dispatch-card-bg);
+      border: 1px solid var(--dispatch-card-border);
+      border-radius: var(--dispatch-card-radius);
+      padding: 16px 20px;
+      box-shadow: var(--dispatch-card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .kpi-card .kpi-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .kpi-card .kpi-value {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--color-text-primary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .kpi-card .kpi-subtext {
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    .kpi-card.kpi-normal { border-left: 4px solid var(--color-status-normal-border); }
+    .kpi-card.kpi-attention { border-left: 4px solid var(--color-status-attention-border); }
+    .kpi-card.kpi-error { border-left: 4px solid var(--color-status-error-border); }
+    .kpi-card.kpi-success { border-left: 4px solid var(--color-status-success-border); }
+
+    /* ==========================================================================
+       CONTROLS BAR: SEARCH & FILTER TABS
+       ========================================================================== */
+    .controls-panel {
+      background-color: var(--dispatch-card-bg);
+      border: 1px solid var(--dispatch-card-border);
+      border-radius: var(--dispatch-card-radius);
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: var(--dispatch-card-shadow);
+    }
+
+    .search-box {
+      flex: 1 1 280px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 8px 14px 8px 36px;
+      font-size: 14px;
+      border: 1px solid var(--color-border-structural);
+      border-radius: 6px;
+      background-color: var(--color-surface-bg);
+      color: var(--color-text-primary);
+      outline-offset: 2px;
+    }
+
+    .search-input::placeholder {
+      color: var(--color-text-muted);
+    }
+
+    .search-icon-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      color: var(--color-text-muted);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .filter-tablist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-tab {
+      background-color: var(--dispatch-filter-tab-bg);
+      color: var(--dispatch-filter-tab-text);
+      border: 1px solid var(--dispatch-filter-tab-border);
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .filter-tab:hover {
+      background-color: var(--color-surface-subtle);
+      color: var(--color-text-primary);
+    }
+
+    .filter-tab.active,
+    .filter-tab[aria-selected="true"] {
+      background-color: var(--dispatch-filter-tab-active-bg);
+      color: var(--dispatch-filter-tab-active-text);
+      border-color: var(--dispatch-filter-tab-active-border);
+    }
+
+    /* ==========================================================================
+       DISPATCH LEDGER TABLE & STATUS BADGES
+       ========================================================================== */
+    .ledger-container {
+      background-color: var(--dispatch-card-bg);
+      border: 1px solid var(--dispatch-card-border);
+      border-radius: var(--dispatch-card-radius);
+      box-shadow: var(--dispatch-card-shadow);
+      overflow: hidden;
+    }
+
+    .table-responsive-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .dispatch-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .dispatch-table caption {
+      text-align: left;
+      padding: 16px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .dispatch-table th {
+      background-color: var(--dispatch-table-header-bg);
+      color: var(--dispatch-table-header-text);
+      font-weight: 600;
+      font-size: 13px;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--dispatch-table-header-border);
+      white-space: nowrap;
+    }
+
+    .dispatch-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--dispatch-table-row-border);
+      background-color: var(--dispatch-table-row-bg);
+      color: var(--color-text-primary);
+      vertical-align: middle;
+    }
+
+    .dispatch-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .dispatch-table tbody tr:hover td {
+      background-color: var(--dispatch-table-row-hover-bg);
+    }
+
+    /* Column Typography */
+    .tour-code-cell {
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tour-code-cell .tour-id {
+      display: block;
+      color: var(--color-text-primary);
+      font-size: 14px;
+    }
+
+    .tour-code-cell .tour-subcode {
+      display: block;
+      color: var(--color-text-muted);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .tour-desc-cell .tour-title {
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 2px;
+    }
+
+    .tour-desc-cell .tour-note {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+    }
+
+    .tour-pax-cell {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    .tour-coordinator-cell {
+      white-space: nowrap;
+      color: var(--color-text-secondary);
+      font-weight: 500;
+    }
+
+    /* --- SYNCHRONIZED THREE-TIER STATUS BADGES --- */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: var(--dispatch-badge-padding);
+      border-radius: var(--dispatch-badge-radius);
+      font-size: var(--dispatch-badge-font-size);
+      font-weight: var(--dispatch-badge-font-weight);
+      border: var(--dispatch-badge-border-width) solid transparent;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+
+    .status-badge .status-icon {
+      flex-shrink: 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .status-badge .badge-text {
+      display: inline-block;
+    }
+
+    /* NORMAL Badge */
+    .status-badge.status-normal,
+    .status-badge[data-status="NORMAL"] {
+      background-color: var(--dispatch-badge-normal-bg);
+      color: var(--dispatch-badge-normal-text);
+      border-color: var(--dispatch-badge-normal-border);
+    }
+
+    /* ATTENTION Badge */
+    .status-badge.status-attention,
+    .status-badge[data-status="ATTENTION"] {
+      background-color: var(--dispatch-badge-attention-bg);
+      color: var(--dispatch-badge-attention-text);
+      border-color: var(--dispatch-badge-attention-border);
+    }
+
+    /* ERROR Badge */
+    .status-badge.status-error,
+    .status-badge[data-status="ERROR"] {
+      background-color: var(--dispatch-badge-error-bg);
+      color: var(--dispatch-badge-error-text);
+      border-color: var(--dispatch-badge-error-border);
+    }
+
+    /* SUCCESS Badge */
+    .status-badge.status-success,
+    .status-badge[data-status="SUCCESS"] {
+      background-color: var(--dispatch-badge-success-bg);
+      color: var(--dispatch-badge-success-text);
+      border-color: var(--dispatch-badge-success-border);
+    }
+
+    /* Empty state notice */
+    .no-results-row td {
+      text-align: center;
+      padding: 36px 20px;
+      color: var(--color-text-muted);
+      font-size: 14px;
+    }
+
+    /* Footer Note */
+    .app-footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE CADENCE (Zero Horizontal Overflow across 1440, 768, 390)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .app-wrapper {
+        padding: 16px 12px 32px;
+      }
+      .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .controls-panel {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-box {
+        width: 100%;
+      }
+      .filter-tablist {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .kpi-grid {
+        grid-template-columns: 1fr;
+      }
+      .dispatch-table th,
+      .dispatch-table td {
+        padding: 10px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Accessibility Skip Navigation -->
+  <a href="#main-dispatch-ledger" class="skip-link">Chuyển đến sổ cái điều phối chính</a>
+
+  <div class="app-wrapper">
+    <!-- Canonical Synthetic Fixture Notice Banner (P02 & Governance Compliance) -->
+    <aside class="fixture-notice" role="note" aria-label="Thông báo dữ liệu thử nghiệm">
+      <span class="badge-tag">DATA_CLASSIFICATION: SYNTHETIC_TRAINING_FIXTURE</span>
+      <span>Dữ liệu giả lập huấn luyện nội bộ — Không đại diện cho khách hàng hoặc hiệu suất thực tế.</span>
+    </aside>
+
+    <!-- Header Section -->
+    <header class="app-header" role="banner">
+      <div>
+        <div class="brand-identity">
+          <a href="#" class="brand-logo" aria-label="TRIPFLOW Trang chủ">TRIPFLOW</a>
+          <span class="brand-direction-tag">Hướng A: Editorial Warm Dispatch</span>
+        </div>
+        <h1 class="ledger-title">TRIPFLOW DISPATCH LEDGER — SỔ CÁI ĐIỀU PHỐI TOUR</h1>
+      </div>
+
+      <div class="header-actions">
+        <div class="live-clock-badge" aria-label="Đồng hồ hệ thống thời gian thực">
+          <span class="clock-indicator" aria-hidden="true"></span>
+          <span id="live-clock">2026-09-14 08:45:00</span>
+        </div>
+        <button type="button" 
+                id="btn-global-dispatch" 
+                class="dispatch-action-primary btn-primary"
+                aria-label="Kích hoạt điều phối tổng thể toàn bộ tour">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <span>Kích hoạt điều phối tổng thể</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Landmark -->
+    <main id="main-dispatch-ledger" role="main">
+      <!-- KPI Overview Cards -->
+      <section class="kpi-section" aria-label="Thống kê chỉ số điều phối tổng quan">
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>Tổng tour điều phối</span>
+            </div>
+            <div class="kpi-value" id="kpi-total">4</div>
+            <div class="kpi-subtext">Hồ sơ kế hoạch hôm nay</div>
+          </div>
+
+          <div class="kpi-card kpi-normal">
+            <div class="kpi-label">
+              <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                <circle cx="8" cy="8" r="5" fill="var(--color-status-normal-text)"></circle>
+              </svg>
+              <span>Bình thường</span>
+            </div>
+            <div class="kpi-value" id="kpi-normal">1</div>
+            <div class="kpi-subtext">Vận hành đúng tiến độ (TF-801)</div>
+          </div>
+
+          <div class="kpi-card kpi-attention">
+            <div class="kpi-label">
+              <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                <path d="M8 2L15 14H1L8 2Z" stroke="var(--color-status-attention-text)" stroke-width="1.5" fill="none"></path>
+                <line x1="8" y1="6" x2="8" y2="9.5" stroke="var(--color-status-attention-text)" stroke-width="1.5" stroke-linecap="round"></line>
+                <circle cx="8" cy="12" r="0.75" fill="var(--color-status-attention-text)"></circle>
+              </svg>
+              <span>Cần chú ý</span>
+            </div>
+            <div class="kpi-value" id="kpi-attention">1</div>
+            <div class="kpi-subtext">Chờ xe trung chuyển (TF-802)</div>
+          </div>
+
+          <div class="kpi-card kpi-error">
+            <div class="kpi-label">
+              <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                <polygon points="5,2 11,2 14,5 14,11 11,14 5,14 2,11 2,5" stroke="var(--color-status-error-text)" stroke-width="1.5" fill="none"></polygon>
+                <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" stroke="var(--color-status-error-text)" stroke-width="1.5" stroke-linecap="round"></line>
+                <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" stroke="var(--color-status-error-text)" stroke-width="1.5" stroke-linecap="round"></line>
+              </svg>
+              <span>Lỗi đối tác</span>
+            </div>
+            <div class="kpi-value" id="kpi-error">1</div>
+            <div class="kpi-subtext">Cảng dông lốc (TF-803)</div>
+          </div>
+
+          <div class="kpi-card kpi-success">
+            <div class="kpi-label">
+              <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                <circle cx="8" cy="8" r="6" stroke="var(--color-status-success-text)" stroke-width="1.5" fill="none"></circle>
+                <path d="M5 8.2L7 10.2L11 6.2" stroke="var(--color-status-success-text)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <span>Hoàn tất điều phối</span>
+            </div>
+            <div class="kpi-value" id="kpi-success">1</div>
+            <div class="kpi-subtext">Đã khóa hồ sơ (TF-804)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Search & Filters Control Panel -->
+      <section class="controls-panel" aria-label="Bảng điều khiển và bộ lọc sổ cái">
+        <div class="search-box">
+          <label for="input-tour-search" class="sr-only">Tìm kiếm theo mã tour, tuyến điểm hoặc điều phối viên</label>
+          <div class="search-icon-wrapper" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <input type="search" 
+                 id="input-tour-search" 
+                 class="search-input" 
+                 placeholder="Tìm theo mã tour, tuyến điểm hoặc điều phối viên..."
+                 aria-label="Tìm kiếm theo mã tour, tuyến điểm hoặc điều phối viên">
+        </div>
+
+        <div class="filter-tablist" role="tablist" aria-label="Bộ lọc trạng thái điều phối">
+          <button type="button" role="tab" id="tab-all" class="filter-tab active" aria-selected="true" data-filter="ALL">Tất cả (4)</button>
+          <button type="button" role="tab" id="tab-normal" class="filter-tab" aria-selected="false" data-filter="NORMAL">Bình thường (1)</button>
+          <button type="button" role="tab" id="tab-attention" class="filter-tab" aria-selected="false" data-filter="ATTENTION">Cần chú ý (1)</button>
+          <button type="button" role="tab" id="tab-error" class="filter-tab" aria-selected="false" data-filter="ERROR">Lỗi đối tác (1)</button>
+          <button type="button" role="tab" id="tab-success" class="filter-tab" aria-selected="false" data-filter="SUCCESS">Hoàn tất (1)</button>
+        </div>
+      </section>
+
+      <!-- Ledger Table (Desktop & Tablet with full semantics, responsive wrapper) -->
+      <section class="ledger-container" aria-label="Danh sách sổ cái điều phối tour">
+        <div class="table-responsive-wrapper">
+          <table class="dispatch-table" role="table">
+            <caption>Bảng điều phối tour synthetic (TF-801 đến TF-804)</caption>
+            <thead>
+              <tr>
+                <th scope="col">Mã Tour</th>
+                <th scope="col">Tuyến Điểm &amp; Lịch Trình</th>
+                <th scope="col">Trạng Thái Vận Hành</th>
+                <th scope="col">Số Khách</th>
+                <th scope="col">Điều Phối Viên</th>
+                <th scope="col">Thao Tác Điều Phối</th>
+              </tr>
+            </thead>
+            <tbody id="dispatch-table-body">
+              <!-- TF-801: NORMAL -->
+              <tr data-tour-id="TF-801" data-row-status="NORMAL">
+                <td class="tour-code-cell">
+                  <span class="tour-id">TF-801</span>
+                  <span class="tour-subcode">HAN-NBI-01</span>
+                </td>
+                <td class="tour-desc-cell">
+                  <div class="tour-title">Tour Tràng An - Bái Đính 1 Ngày</div>
+                  <div class="tour-note">Xe 45 chỗ xuất bến đúng 07:30. Lộ trình ổn định, ăn trưa nhà hàng Hoa Lư.</div>
+                </td>
+                <td>
+                  <span class="status-badge status-normal" data-status="NORMAL" aria-label="Trạng thái: Bình thường">
+                    <svg class="status-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+                      <circle cx="8" cy="8" r="5" fill="currentColor"></circle>
+                    </svg>
+                    <span class="badge-text">Bình thường</span>
+                  </span>
+                </td>
+                <td class="tour-pax-cell">35/35 khách</td>
+                <td class="tour-coordinator-cell">Huy Trần</td>
+                <td>
+                  <span style="font-size: 13px; color: var(--color-text-muted);">Xe xuất bến đúng giờ</span>
+                </td>
+              </tr>
+
+              <!-- TF-802: ATTENTION -->
+              <tr data-tour-id="TF-802" data-row-status="ATTENTION">
+                <td class="tour-code-cell">
+                  <span class="tour-id">TF-802</span>
+                  <span class="tour-subcode">HAN-SAP-02</span>
+                </td>
+                <td class="tour-desc-cell">
+                  <div class="tour-title">Tour Fansipan Sapa 2 Ngày 1 Đêm</div>
+                  <div class="tour-note">Chưa chốt xe trung chuyển bản Cát Cát. Cần đối tác vận chuyển xác nhận trước 11:00.</div>
+                </td>
+                <td>
+                  <span class="status-badge status-attention" data-status="ATTENTION" aria-label="Trạng thái: Cần chú ý">
+                    <svg class="status-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+                      <path d="M8 2L15 14H1L8 2Z" stroke="currentColor" stroke-width="1.5" fill="none"></path>
+                      <line x1="8" y1="6" x2="8" y2="9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></line>
+                      <circle cx="8" cy="12" r="0.75" fill="currentColor"></circle>
+                    </svg>
+                    <span class="badge-text">Cần chú ý</span>
+                  </span>
+                </td>
+                <td class="tour-pax-cell">18/20 khách</td>
+                <td class="tour-coordinator-cell">Lan Nguyễn</td>
+                <td>
+                  <button type="button" 
+                          id="action-btn-tf802" 
+                          class="dispatch-tour-action btn-action" 
+                          data-action-tour="TF-802" 
+                          aria-disabled="false" 
+                          aria-busy="false"
+                          aria-label="Rà soát xe trung chuyển cho tour TF-802 Fansipan Sapa">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <span>Rà soát xe trung chuyển</span>
+                  </button>
+                </td>
+              </tr>
+
+              <!-- TF-803: ERROR -->
+              <tr data-tour-id="TF-803" data-row-status="ERROR">
+                <td class="tour-code-cell">
+                  <span class="tour-id">TF-803</span>
+                  <span class="tour-subcode">HPH-HLB-03</span>
+                </td>
+                <td class="tour-desc-cell">
+                  <div class="tour-title">Tour Hạ Long Du Thuyền 5 Sao</div>
+                  <div class="tour-note">Cảng vụ Tuần Châu tạm hoãn cấp phép rời bến do dông lốc biển. Cần kích hoạt phương án dự phòng.</div>
+                </td>
+                <td>
+                  <span class="status-badge status-error" data-status="ERROR" aria-label="Trạng thái: Lỗi đối tác">
+                    <svg class="status-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+                      <polygon points="5,2 11,2 14,5 14,11 11,14 5,14 2,11 2,5" stroke="currentColor" stroke-width="1.5" fill="none"></polygon>
+                      <line x1="5.5" y1="5.5" x2="10.5" y2="10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></line>
+                      <line x1="10.5" y1="5.5" x2="5.5" y2="10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></line>
+                    </svg>
+                    <span class="badge-text">Lỗi đối tác</span>
+                  </span>
+                </td>
+                <td class="tour-pax-cell">24/24 khách</td>
+                <td class="tour-coordinator-cell">Huy Trần</td>
+                <td>
+                  <button type="button" 
+                          id="action-btn-tf803" 
+                          class="dispatch-tour-action btn-action btn-emergency" 
+                          data-action-tour="TF-803" 
+                          aria-disabled="false" 
+                          aria-busy="false"
+                          aria-label="Kích hoạt phương án dự phòng cho tour TF-803 Hạ Long">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+                      <polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon>
+                      <line x1="12" y1="8" x2="12" y2="12"></line>
+                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <span>Kích hoạt phương án dự phòng</span>
+                  </button>
+                </td>
+              </tr>
+
+              <!-- TF-804: SUCCESS -->
+              <tr data-tour-id="TF-804" data-row-status="SUCCESS">
+                <td class="tour-code-cell">
+                  <span class="tour-id">TF-804</span>
+                  <span class="tour-subcode">SGN-PQU-04</span>
+                </td>
+                <td class="tour-desc-cell">
+                  <div class="tour-title">Tour Đảo Phú Quốc Sunset 3 Ngày 2 Đêm</div>
+                  <div class="tour-note">100% đối tác vé bay &amp; resort đã xác nhận mã dịch vụ.</div>
+                </td>
+                <td>
+                  <span class="status-badge status-success" data-status="SUCCESS" aria-label="Trạng thái: Hoàn tất điều phối">
+                    <svg class="status-icon" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+                      <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"></circle>
+                      <path d="M5 8.2L7 10.2L11 6.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <span class="badge-text">Hoàn tất điều phối</span>
+                  </span>
+                </td>
+                <td class="tour-pax-cell">42/42 khách</td>
+                <td class="tour-coordinator-cell">Lan Nguyễn</td>
+                <td>
+                  <span style="font-size: 13px; color: var(--color-status-success-text); font-weight: 600;">Đã đóng hồ sơ</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- ARIA Live Region for Screen Readers -->
+    <div role="status" aria-live="polite" id="dispatch-announcer" class="sr-only">Hệ thống sổ cái điều phối sẵn sàng.</div>
+
+    <!-- Footer Information -->
+    <footer class="app-footer" role="contentinfo">
+      <div>Mô hình thực nghiệm: TRIPFLOW Module 08 Color System &bull; Option A (Editorial Warm Dispatch)</div>
+      <div>Tiêu chuẩn thẩm định: WCAG 2.2 AA Baseline &bull; W3C Design Tokens Community Group</div>
+    </footer>
+  </div>
+
+  <!-- Client-side Logic: FSM, Focus Preservation, Search, Filtering -->
+  <script>
+    (function() {
+      'use strict';
+
+      // Canonical Frozen Timestamp Fixture (Zero Motion & Screenshot Determinism Compliance)
+      const clockEl = document.getElementById('live-clock');
+      if (clockEl) {
+        clockEl.textContent = '2026-09-14 07:30:00 ICT';
+      }
+
+      // Screen Reader Announcer Helper
+      const announcer = document.getElementById('dispatch-announcer');
+      function announce(message) {
+        if (announcer) {
+          announcer.textContent = message;
+        }
+      }
+
+      // Filter Tabs Logic
+      const filterTabs = document.querySelectorAll('.filter-tab');
+      const tableRows = document.querySelectorAll('#dispatch-table-body tr');
+
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          filterTabs.forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          this.classList.add('active');
+          this.setAttribute('aria-selected', 'true');
+
+          const filterValue = this.getAttribute('data-filter');
+          applyFilter(filterValue);
+          announce('Đang hiển thị bộ lọc: ' + this.innerText.trim());
+        });
+      });
+
+      function applyFilter(filter) {
+        const query = (document.getElementById('input-tour-search').value || '').trim().toLowerCase();
+        let visibleCount = 0;
+
+        tableRows.forEach(row => {
+          const rowStatus = row.getAttribute('data-row-status');
+          const rowText = row.innerText.toLowerCase();
+
+          const matchesFilter = (filter === 'ALL' || rowStatus === filter);
+          const matchesQuery = !query || rowText.includes(query);
+
+          if (matchesFilter && matchesQuery) {
+            row.style.display = '';
+            visibleCount++;
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      }
+
+      // Search Input Logic
+      const searchInput = document.getElementById('input-tour-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          const activeTab = document.querySelector('.filter-tab.active');
+          const activeFilter = activeTab ? activeTab.getAttribute('data-filter') : 'ALL';
+          applyFilter(activeFilter);
+        });
+      }
+
+      // Asynchronous FSM Action Buttons with Focus Preservation (NO FOCUS EVICTION)
+      const actionButtons = document.querySelectorAll('.dispatch-tour-action, #btn-global-dispatch');
+
+      actionButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          // If already in an asynchronous transition, intercept click
+          if (this.getAttribute('aria-disabled') === 'true') {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+          }
+
+          const tourId = this.getAttribute('data-action-tour') || 'GLOBAL';
+          const originalText = this.querySelector('span') ? this.querySelector('span').innerText : this.innerText;
+          const originalHtml = this.innerHTML;
+
+          // 1. Transition to VALIDATING state
+          this.setAttribute('aria-disabled', 'true');
+          this.setAttribute('aria-busy', 'true');
+          this.innerHTML = `
+            <svg class="action-spinner" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+              <circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="12"></circle>
+            </svg>
+            <span>Đang kiểm tra tham số...</span>
+          `;
+          announce('Đang kiểm tra tham số điều phối cho ' + tourId + '...');
+
+          // Keep focus on the active element (NO FOCUS EVICTION to document.body)
+          this.focus();
+
+          // 2. Transition to SAVING after 600ms
+          setTimeout(() => {
+            this.innerHTML = `
+              <svg class="action-spinner" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="12"></circle>
+              </svg>
+              <span>Đang đồng bộ đối tác...</span>
+            `;
+            announce('Đang đồng bộ dữ liệu với hệ thống điều phối...');
+            this.focus();
+
+            // 3. Transition to CONFIRMED after 800ms
+            setTimeout(() => {
+              this.setAttribute('aria-disabled', 'false');
+              this.setAttribute('aria-busy', 'false');
+              this.innerHTML = `
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
+                  <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                </svg>
+                <span>Đã xác nhận thành công</span>
+              `;
+              this.style.borderColor = 'var(--color-status-success-border)';
+              this.style.color = 'var(--color-status-success-text)';
+              announce('Thao tác điều phối cho ' + tourId + ' đã hoàn tất thành công.');
+              this.focus();
+            }, 800);
+          }, 600);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

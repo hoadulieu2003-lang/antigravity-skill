@@ -1,0 +1,224 @@
+{
+  "timestamp": "2026-09-14T02:02:12.082Z",
+  "c01": {
+    "contract_has_primitive": true,
+    "contract_has_semantic": true,
+    "contract_has_component": true,
+    "contract_has_op_status": true,
+    "contract_has_fsm": true,
+    "contract_has_brand_seg": true,
+    "static_css_violations_count": 0,
+    "static_css_violations": [],
+    "passed": true
+  },
+  "c02": {
+    "option_a_has_fixtures": true,
+    "option_b_has_fixtures": true,
+    "optA_brand": "var(--primitive-slate-900)",
+    "optB_brand": "var(--primitive-indigo-800)",
+    "optA_canvas": "var(--primitive-warm-neutral-50)",
+    "optB_canvas": "var(--primitive-slate-50)",
+    "optA_focus": "var(--primitive-amber-600)",
+    "optB_focus": "var(--primitive-blue-600)",
+    "passed": true
+  },
+  "c03": {
+    "pairs_tested": 15,
+    "all_pass": false,
+    "calculated_pairs": [
+      {
+        "name": "Normal text on canvas (warm alabaster)",
+        "fg": "#0F172A",
+        "bg": "#FAF9F6",
+        "min": 4.5,
+        "cr": 16.9564,
+        "pass": true
+      },
+      {
+        "name": "Secondary text on canvas",
+        "fg": "#475569",
+        "bg": "#FAF9F6",
+        "min": 4.5,
+        "cr": 7.1973,
+        "pass": true
+      },
+      {
+        "name": "Muted text on canvas",
+        "fg": "#64748B",
+        "bg": "#FAF9F6",
+        "min": 4.5,
+        "cr": 4.52,
+        "pass": true
+      },
+      {
+        "name": "Primary CTA button text on bg",
+        "fg": "#FFFFFF",
+        "bg": "#0F172A",
+        "min": 4.5,
+        "cr": 17.8525,
+        "pass": true
+      },
+      {
+        "name": "Normal status badge text on bg",
+        "fg": "#475569",
+        "bg": "#F1F5F9",
+        "min": 4.5,
+        "cr": 6.917,
+        "pass": true
+      },
+      {
+        "name": "Attention status badge text on bg",
+        "fg": "#B45309",
+        "bg": "#FEF3C7",
+        "min": 4.5,
+        "cr": 4.5097,
+        "pass": true
+      },
+      {
+        "name": "Error status badge text on bg",
+        "fg": "#BE123C",
+        "bg": "#FFE4E6",
+        "min": 4.5,
+        "cr": 5.2352,
+        "pass": true
+      },
+      {
+        "name": "Success status badge text on bg",
+        "fg": "#15803D",
+        "bg": "#DCFCE7",
+        "min": 4.5,
+        "cr": 4.5669,
+        "pass": true
+      },
+      {
+        "name": "Amber focus ring on canvas",
+        "fg": "#D97706",
+        "bg": "#FAF9F6",
+        "min": 3,
+        "cr": 3.0259,
+        "pass": true
+      },
+      {
+        "name": "Cobalt focus ring on ice slate canvas",
+        "fg": "#2563EB",
+        "bg": "#F8FAFC",
+        "min": 3,
+        "cr": 4.94,
+        "pass": true
+      },
+      {
+        "name": "Secondary button text on white",
+        "fg": "#0F172A",
+        "bg": "#FFFFFF",
+        "min": 4.5,
+        "cr": 17.8525,
+        "pass": true
+      },
+      {
+        "name": "Attention badge border on warm surface",
+        "fg": "#F59E0B",
+        "bg": "#FFFFFF",
+        "min": 3,
+        "cr": 2.1477,
+        "pass": false
+      },
+      {
+        "name": "Error badge border on warm surface",
+        "fg": "#F43F5E",
+        "bg": "#FFFFFF",
+        "min": 3,
+        "cr": 3.6718,
+        "pass": true
+      },
+      {
+        "name": "Success badge border on warm surface",
+        "fg": "#22C55E",
+        "bg": "#FFFFFF",
+        "min": 3,
+        "cr": 2.2786,
+        "pass": false
+      },
+      {
+        "name": "Normal badge border on warm surface",
+        "fg": "#CBD5E1",
+        "bg": "#FFFFFF",
+        "min": 1.2,
+        "cr": 1.4847,
+        "pass": true
+      }
+    ]
+  },
+  "c04": {
+    "status_findings": [
+      {
+        "status": "NORMAL",
+        "valid_badge": true
+      },
+      {
+        "status": "ATTENTION",
+        "valid_badge": true
+      },
+      {
+        "status": "ERROR",
+        "valid_badge": true
+      },
+      {
+        "status": "SUCCESS",
+        "valid_badge": true
+      }
+    ],
+    "all_statuses_have_3_layers": true,
+    "missing_screenshots": [],
+    "passed": true
+  },
+  "c05": {
+    "has_focus_visible_rule": true,
+    "optA_focus_contrast": 3.0259,
+    "optB_focus_contrast": 4.94,
+    "optA_focus_contrast_pass": true,
+    "optB_focus_contrast_pass": true,
+    "passed": true
+  },
+  "c06": {
+    "responsive_telemetry_present": true,
+    "responsive_all_zero_overflow": true,
+    "viewports_tested": [
+      {
+        "vp": "desktop",
+        "overflow": 0,
+        "passed": true
+      },
+      {
+        "vp": "tablet",
+        "overflow": 0,
+        "passed": true
+      },
+      {
+        "vp": "mobile",
+        "overflow": 0,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "c07": {
+    "report_exists": true,
+    "required_sections_count": 8,
+    "found_sections_count": 0,
+    "missing_sections": [
+      "1. Objective & Synthetic Data Notice",
+      "2. Bounded Aesthetic & Architectural Principles",
+      "3. Visual Direction Comparison & Trade-off Analysis",
+      "4. Selected Art Direction & Implementation Details",
+      "5. Requirement-to-Evidence Mapping Ledger",
+      "6. Programmatic Verification & Evidence Limits",
+      "7. Architectural Self-Critique",
+      "8. Final Verdict & Release Recommendation"
+    ],
+    "zip_exists": true,
+    "zip_size_bytes": 5262298,
+    "verification_json_exists": true,
+    "passed": false
+  },
+  "forensics": {}
+}
