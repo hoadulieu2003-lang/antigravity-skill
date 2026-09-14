@@ -80,17 +80,23 @@
 
       /* Static Neutral */
       --primitive-static-white: #FFFFFF;
+      --primitive-shadow-color: rgba(15, 23, 42, 0.05);
 
       /* --- TIER 2: SEMANTIC TOKENS (OPTION A PROFILE) --- */
       --color-canvas-bg: var(--primitive-warm-neutral-50);
       --color-surface-bg: var(--primitive-static-white);
       --color-surface-subtle: var(--primitive-warm-neutral-100);
       --color-surface-raised: var(--primitive-static-white);
+      --color-surface-hover: var(--primitive-warm-neutral-100);
+      --color-surface-shadow: var(--primitive-shadow-color);
+      --color-surface-transparent: transparent;
+      --color-border-transparent: transparent;
 
       --color-text-primary: var(--primitive-slate-900);
       --color-text-secondary: var(--primitive-slate-600);
       --color-text-muted: var(--primitive-slate-500);
       --color-text-inverse: var(--primitive-static-white);
+      --color-text-emphasized: var(--primitive-slate-900);
 
       --color-border-subtle: var(--primitive-slate-200);
       --color-border-structural: var(--primitive-slate-300);
@@ -130,7 +136,7 @@
       /* --- TIER 3: COMPONENT TOKENS --- */
       --dispatch-card-bg: var(--color-surface-bg);
       --dispatch-card-border: var(--color-border-subtle);
-      --dispatch-card-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --dispatch-card-shadow: 0 1px 3px var(--color-surface-shadow);
       --dispatch-card-radius: 8px;
       --dispatch-card-padding: 20px;
 
@@ -166,7 +172,7 @@
 
       --dispatch-btn-primary-bg: var(--color-action-primary-bg);
       --dispatch-btn-primary-text: var(--color-action-primary-text);
-      --dispatch-btn-primary-border: transparent;
+      --dispatch-btn-primary-border: var(--color-border-transparent);
       --dispatch-btn-primary-hover-bg: var(--color-brand-hover);
       --dispatch-btn-primary-active-bg: var(--color-brand-active);
 
@@ -175,7 +181,7 @@
       --dispatch-btn-secondary-border: var(--color-action-secondary-border);
       --dispatch-btn-secondary-hover-bg: var(--color-surface-subtle);
 
-      --dispatch-filter-tab-bg: transparent;
+      --dispatch-filter-tab-bg: var(--color-surface-transparent);
       --dispatch-filter-tab-text: var(--color-text-secondary);
       --dispatch-filter-tab-border: var(--color-border-subtle);
       --dispatch-filter-tab-active-bg: var(--color-action-primary-bg);

@@ -234,6 +234,7 @@ primitive_tokens:
     description: "Absolute static values for pure white surfaces and universal high-contrast anchors."
     values:
       white: { token: "--primitive-static-white", hex: "#FFFFFF", relative_luminance: 1.000000, role: "Pure surface background / inverse text" }
+      shadow: { token: "--primitive-shadow-color", role: "Ambient shadow tint value" }
 
 # ------------------------------------------------------------------------------
 # 4. TIER 2: SEMANTIC TOKENS (--color-*)
@@ -253,6 +254,15 @@ semantic_tokens:
     --color-surface-raised:
       description: "Elevated surface for tooltips, dropdown menus, and floating action bars."
       category: "surface"
+    --color-surface-hover:
+      description: "Subtle interactive surface hover state for table rows and cards."
+      category: "surface"
+    --color-surface-shadow:
+      description: "Subtle ambient shadow color for elevated cards."
+      category: "surface"
+    --color-surface-transparent:
+      description: "Transparent surface background for outline/ghost elements."
+      category: "surface"
 
   text:
     --color-text-primary:
@@ -271,6 +281,10 @@ semantic_tokens:
       description: "High-contrast text on dark brand primary CTA buttons and badge tags."
       category: "text"
       min_contrast_target: 4.5
+    --color-text-emphasized:
+      description: "Emphasized bold headline and metric text."
+      category: "text"
+      min_contrast_target: 4.5
 
   border:
     --color-border-subtle:
@@ -284,6 +298,9 @@ semantic_tokens:
       description: "High-visibility boundary for interactive elements in high-contrast mode."
       category: "border"
       min_contrast_target: 3.0
+    --color-border-transparent:
+      description: "Transparent border token for borderless interactive states."
+      category: "border"
 
   brand_and_action:
     --color-brand-primary:
@@ -397,7 +414,7 @@ semantic_tokens:
       cursor: "pointer"
       aria_disabled: "false"
       aria_busy: "false"
-      focus_behavior: "Programmatic focus shift to Retry button (retryBtn.focus())"
+      focus_behavior: "Single stable action node preserved in DOM without replacement; focus remains on trigger element without focus stealing"
       announcer: "Lỗi kết nối đối tác. Vui lòng bấm Thử lại."
     CONFIRMED:
       description: "Action committed successfully. Tour status updated."
@@ -405,7 +422,7 @@ semantic_tokens:
       cursor: "default"
       aria_disabled: "false"
       aria_busy: "false"
-      focus_behavior: "Programmatic focus shift to confirmed tour container or notice"
+      focus_behavior: "Single stable action node updated in-place; no focus stealing if user moved focus to another element"
       announcer: "Thao tác điều phối đã được xác nhận thành công."
 
 # ------------------------------------------------------------------------------
@@ -417,7 +434,7 @@ component_tokens:
   card_container:
     --dispatch-card-bg: "var(--color-surface-bg)"
     --dispatch-card-border: "var(--color-border-subtle)"
-    --dispatch-card-shadow: "0 1px 3px rgba(15, 23, 42, 0.05)"
+    --dispatch-card-shadow: "0 1px 3px var(--color-surface-shadow)"
     --dispatch-card-radius: "8px"
     --dispatch-card-padding: "16px"
 
@@ -430,7 +447,7 @@ component_tokens:
 
   table_row:
     --dispatch-table-row-bg: "var(--color-surface-bg)"
-    --dispatch-table-row-hover-bg: "var(--color-surface-subtle)"
+    --dispatch-table-row-hover-bg: "var(--color-surface-hover)"
     --dispatch-table-row-border: "var(--color-border-subtle)"
     --dispatch-table-row-padding: "12px 16px"
 
@@ -462,7 +479,7 @@ component_tokens:
     primary:
       --dispatch-btn-primary-bg: "var(--color-action-primary-bg)"
       --dispatch-btn-primary-text: "var(--color-action-primary-text)"
-      --dispatch-btn-primary-border: "transparent"
+      --dispatch-btn-primary-border: "var(--color-border-transparent)"
       --dispatch-btn-primary-hover-bg: "var(--color-brand-hover)"
       --dispatch-btn-primary-active-bg: "var(--color-brand-active)"
       --dispatch-btn-primary-focus-ring: "var(--color-focus-ring)"
@@ -477,7 +494,7 @@ component_tokens:
 
   filter_tab:
     default:
-      --dispatch-filter-tab-bg: "transparent"
+      --dispatch-filter-tab-bg: "var(--color-surface-transparent)"
       --dispatch-filter-tab-text: "var(--color-text-secondary)"
       --dispatch-filter-tab-border: "var(--color-border-subtle)"
     active:
@@ -557,6 +574,12 @@ theme_profiles:
       --color-status-success-bg: "var(--primitive-green-100)"
       --color-status-success-border: "var(--primitive-green-500)"
 
+      --color-surface-hover: "var(--primitive-warm-neutral-100)"
+      --color-surface-shadow: "var(--primitive-shadow-color)"
+      --color-surface-transparent: "transparent"
+      --color-border-transparent: "transparent"
+      --color-text-emphasized: "var(--primitive-slate-900)"
+
   option_b:
     direction_id: "DIRECTION_B"
     direction_name: "Technical Slate High-Contrast (Bảng Giám Sát Kỹ Thuật)"
@@ -611,6 +634,12 @@ theme_profiles:
       --color-status-success-text: "var(--primitive-teal-800)"
       --color-status-success-bg: "var(--primitive-teal-100)"
       --color-status-success-border: "var(--primitive-teal-600)"
+
+      --color-surface-hover: "var(--primitive-slate-100)"
+      --color-surface-shadow: "var(--primitive-shadow-color)"
+      --color-surface-transparent: "transparent"
+      --color-border-transparent: "transparent"
+      --color-text-emphasized: "var(--primitive-slate-950)"
 
   candidate:
     direction_id: "DIRECTION_CANDIDATE"
@@ -667,6 +696,12 @@ theme_profiles:
       --color-status-success-text: "var(--primitive-green-700)"
       --color-status-success-bg: "var(--primitive-green-100)"
       --color-status-success-border: "var(--primitive-green-500)"
+
+      --color-surface-hover: "var(--primitive-warm-neutral-100)"
+      --color-surface-shadow: "var(--primitive-shadow-color)"
+      --color-surface-transparent: "transparent"
+      --color-border-transparent: "transparent"
+      --color-text-emphasized: "var(--primitive-slate-900)"
 
 # ------------------------------------------------------------------------------
 # 7. MATHEMATICAL CONTRAST VERIFICATION MATRIX (Gate C03 / Locked P03)
@@ -867,3 +902,34 @@ static_audit_invariants:
       - "span.badge-text (Explicit Vietnamese string)"
       - "svg.status-icon[aria-hidden='true'][focusable='false']"
     enforcement: "HARD_FAIL_IF_MISSING"
+
+# ------------------------------------------------------------------------------
+# 9. FSM VERIFICATION CONTRACT (A03 / F03)
+# Explicit machine-readable contract for asynchronous interactive state machine.
+# ------------------------------------------------------------------------------
+fsm_verification_contract:
+  stable_action_selector: "#action-btn-tf802"
+  initial_state: "IDLE"
+  states:
+    - "IDLE"
+    - "VALIDATING"
+    - "SAVING"
+    - "FAILURE"
+    - "CONFIRMED"
+  allowed_transitions:
+    IDLE:
+      - "VALIDATING"
+    VALIDATING:
+      - "SAVING"
+    SAVING:
+      - "FAILURE"
+      - "CONFIRMED"
+    FAILURE:
+      - "VALIDATING"
+    CONFIRMED: []
+  saving_guard:
+    aria_disabled: "true"
+    duplicate_activation_blocked: true
+  no_steal_on_async_completion: true
+  node_identity_rule: "SINGLE_STABLE_NODE_PRESERVED_ACROSS_ALL_STATES"
+

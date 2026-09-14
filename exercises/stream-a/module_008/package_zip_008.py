@@ -24,7 +24,7 @@ def compute_sha256(filepath):
 
 def build_submission_zip():
     base_dir = Path(__file__).resolve().parent
-    zip_path = base_dir / "design_training_008_submission_r03.zip"
+    zip_path = base_dir / "design_training_008_verification_audit_correction_001.zip"
 
     # Explicit list of root and subfolder files to package
     explicit_files = [
@@ -33,9 +33,14 @@ def build_submission_zip():
         "directions/option_b.html",
         "COLOR_CONTRACT.yaml",
         "DESIGN_TRAINING_008_REPORT.md",
+        "AUDIT_CHANGE_LEDGER.md",
         "DESIGN_TRAINING_008_INITIAL_REVIEW_001.md",
         "DESIGN_TRAINING_008_INTAKE_HOLD_001.md",
         "DESIGN_TRAINING_008_REVIEW_001.md",
+        "DESIGN_TRAINING_008_REVIEW_002.md",
+        "DESIGN_TRAINING_008_FINAL_REVIEW_003.md",
+        "DESIGN_TRAINING_008_VERIFICATION_REMEDIATION_AUTHORIZATION_004.md",
+        "DESIGN_TRAINING_008_VERIFICATION_AUDIT_REVIEW_001.md",
         "VERIFICATION.json",
         "verify_module_008.js"
     ]

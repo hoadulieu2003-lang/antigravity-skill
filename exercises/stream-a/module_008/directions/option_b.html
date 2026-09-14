@@ -92,6 +92,7 @@
       --primitive-teal-950: #042F2E;
 
       --primitive-static-white: #FFFFFF;
+      --primitive-shadow-color: rgba(2, 6, 23, 0.08);
 
       /* ------------------------------------------------------------------------
          TIER 2: SEMANTIC TOKENS (--color-*)
@@ -110,6 +111,11 @@
       --color-border-subtle: var(--primitive-slate-300);
       --color-border-structural: var(--primitive-slate-400);
       --color-border-strong: var(--primitive-slate-600);
+      --color-surface-hover: var(--primitive-slate-100);
+      --color-surface-shadow: var(--primitive-shadow-color);
+      --color-surface-transparent: transparent;
+      --color-border-transparent: transparent;
+      --color-text-emphasized: var(--primitive-slate-950);
 
       /* Brand Primary strictly segregated from status tokens */
       --color-brand-primary: var(--primitive-indigo-800);
@@ -183,7 +189,7 @@
 
       --dispatch-btn-primary-bg: var(--color-action-primary-bg);
       --dispatch-btn-primary-text: var(--color-action-primary-text);
-      --dispatch-btn-primary-border: transparent;
+      --dispatch-btn-primary-border: var(--color-border-transparent);
       --dispatch-btn-primary-hover-bg: var(--color-brand-hover);
       --dispatch-btn-primary-active-bg: var(--color-brand-active);
 
@@ -192,7 +198,7 @@
       --dispatch-btn-secondary-border: var(--color-action-secondary-border);
       --dispatch-btn-secondary-hover-bg: var(--color-surface-subtle);
 
-      --dispatch-filter-tab-bg: transparent;
+      --dispatch-filter-tab-bg: var(--color-surface-transparent);
       --dispatch-filter-tab-text: var(--color-text-secondary);
       --dispatch-filter-tab-border: var(--color-border-structural);
       --dispatch-filter-tab-active-bg: var(--color-action-primary-bg);
@@ -949,6 +955,19 @@
         overflow: hidden;
         clip: rect(0, 0, 0, 0);
         border: 0;
+      }
+
+      .dispatch-table caption {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: left;
+        padding: 16px 16px 12px;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--color-text-primary);
+        border-bottom: 1.5px solid var(--color-border-structural);
+        line-height: 1.4;
       }
 
       .dispatch-table tbody tr {

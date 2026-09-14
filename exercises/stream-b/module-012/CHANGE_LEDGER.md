@@ -140,10 +140,55 @@ Toàn bộ dữ liệu 8 tour được đóng băng nguyên trạng từ Mục 4
   - **F12**: Loại bỏ claim "chỉ trong 1 giây quét mắt" ở dòng 96 của `IMAGE_LANGUAGE_MATRIX.md`, chuẩn hóa sang phân loại `DESIGN_INTENT`.
   - Bảo toàn tuyệt đối `Direction A` (`ACCEPTED_FOR_SELECTION_POOL`).
   - Đóng gói và phát hành gói nộp sửa chữa duy nhất: `design_training_012_checkpoint_12_1_r02.zip`.
+- **Thực hiện Owner-Authorized Evidence Closure (Option 1 theo khuyến nghị Controller Sol & phê duyệt trực tiếp của Anh — Lead Architect)**:
+  - **F03 (Làm sạch vi mô dữ liệu trong SVG & Manifest)**:
+    - `assets/images/operational_scene_prep.svg`: Loại bỏ hoàn toàn biển số xe `29B-184.22` (thay bằng `Phương tiện di chuyển`), nhân sự `Nguyễn Tuấn` (thay bằng `Hướng dẫn viên theo đoàn`), tàu `VIP 28` (thay bằng `Tàu tham quan vịnh`), phòng `Superior` (thay bằng `Khách sạn chưa xác nhận 4 phòng`), `Ms. Hương` (thay bằng `Đang theo dõi xác nhận trước giờ khởi hành`), và chuỗi số điện thoại bàn (thay bằng `XAC NHAN PHONG`).
+    - `assets/diagrams/t01_route_narrative.svg`: Loại bỏ toàn bộ các mốc giờ phi canonical `09:00`, `11:45`, `13:30` và tàu `VIP 28`. Đồng bộ 4 mốc lộ trình trung tính chuẩn xác: (1) Hà Nội (07:30 · 14/09); (2) Lộ trình di chuyển (Theo kế hoạch); (3) Khách sạn Bãi Cháy (Chờ đối tác — Điểm nghẽn chưa xác nhận 4 phòng); (4) Cảng Tuần Châu (Theo lịch trình — Xuống du thuyền tham quan vịnh).
+    - `assets/diagrams/t01_route_schematic.svg`: Loại bỏ các mốc giờ phi canonical `09:00`, `11:45`, `13:30`. Đồng bộ các nhãn mốc kỹ thuật trung tính: Hà Nội 07:30 ICT, Lộ trình di chuyển (Kế hoạch), Bãi Cháy (Chờ đối tác), Tuần Châu (Lịch trình).
+    - `assets/ASSET_MANIFEST.yaml`: Làm sạch toàn diện các chuỗi phi canonical khỏi alt_text, cập nhật lại mã băm SHA-256 thực tế cho 3 SVG đã hiệu chỉnh.
+  - **F02 (Sửa Derived Readiness Metric trong Direction B)**:
+    - Trong `directions/option_b/index.html`: Sửa chỉ số tiến độ mạng lưới từ sai lệch `5/8 Tour sẵn sàng (62.5%)` thành chính xác canonical `2/8 Tour sẵn sàng (T02, T05) · 3 Cần xử lý`, cập nhật độ rộng thanh tiến độ CSS `.capacity-fill` từ 62.5% về đúng `25%` (2/8).
+  - **F04 (Nâng cấp Checker Depth trong CHECKPOINT_VERIFICATION.json)**:
+    - Nâng cấp bộ kiểm thử lên 20/20 checks PASS, bổ sung `CHK_19_DEEP_SVG_TEXT_INSPECTION` (quét sâu 100% text/desc/title trong SVG và manifest, xác nhận 0 vi phạm) và `CHK_20_CANONICAL_DERIVED_METRIC_FIDELITY` (xác thực chỉ số 2/8 và thanh 25% khớp 100% canonical).
+  - **DPR=2 Screenshots & Manifest Integrity**:
+    - Chụp lại 2 ảnh màn hình authoritative DPR=2 bitmap 2880×1800 (`option_a_desktop_1440x900_dpr2.png` và `option_b_desktop_1440x900_dpr2.png`), đo đạc và cập nhật mã băm vào `CHECKPOINT_VERIFICATION.json`.
+  - **Bảo toàn phong cách thị giác**:
+    - Giữ nguyên 100% bố cục và phong cách thiết kế đã được chấp thuận: Direction A (`ACCEPTED_FOR_SELECTION_POOL`) và Direction B (`VISUAL REMEDIATION ACCEPTED`). Tuyệt đối không tái thiết kế hai hướng.
+- **Phê duyệt Quyết định Miễn trừ Quản trị (Owner Governance Waiver Approval — Option A)**:
+  - **Thời gian**: 2026-09-14T14:10:00+07:00.
+  - **Cơ quan phê duyệt**: Anh — Lead Architect / Product Owner.
+  - **Căn cứ**: Khuyến nghị từ Controller Sol tại `DESIGN_TRAINING_012_OWNER_CLOSURE_REVIEW_004.md` (SHA-256: `b281f954353d8d871faf5e2892f9c43d91b7fc2b33c9f37874d863ade4191127`).
+  - **Nội dung phê duyệt**:
+    1. Chấp thuận ban hành `Governance Waiver (Miễn trừ Quản trị)` cho phần kỹ nghệ bằng chứng phụ tại Checkpoint 12.1 để chính thức mở khóa **Phase 3 (Selection Gate)** và **Phase 4 (Final Candidate Build)**, ghi nhận việc cả hai hướng Direction A và Direction B đã đạt chuẩn (`PASS`) về Brand Thesis và Visual Remediation.
+    2. Ghi nhận chính thức khoản **`Evidence Debt (Nợ Kỹ thuật Bằng chứng)`** gồm 5 mục: (a) Bổ sung script chạy kiểm thử thực thi `verify_checkpoint_12_1.js` hoặc runner tự động vào candidate; (b) Xử lý dứt điểm 4 timestamp tương đối trong nhật ký điều phối; (c) Quy chuẩn hóa activity facts và địa điểm theo allowlist; (d) Nâng cấp CHK_19 sang cơ chế kiểm tra `Canonical Allowlist`; (e) Trích xuất chi tiết từng tuple cho CHK_12.
+    3. Cam kết giải quyết 100% khoản Evidence Debt này trong bộ kiểm thử tự động toàn diện `verify_module_012.js` (14 bài test T01–T14 với 79 assertions) trước khi xuất xưởng candidate tại Phase 5–6.
+    4. Khóa cứng `Invariant (Điều kiện bất biến)`: Tuyệt đối không thay đổi bố cục và phong cách thị giác đã được chấp thuận của Hướng A và Hướng B.
 
 ### Giai đoạn M3 — Bản Ứng Viên Hoàn Thiện & Kiểm Thử Tự Động (Candidate & Verification)
-- **Kế hoạch (Chờ mở khóa sau Checkpoint 12.1 R02)**:
-  - Kích hoạt Phase 3 Selection Gate theo rubric 8 tiêu chí Mục 15 của Directive.
-  - Xây dựng `candidate/pre_critique.html` và `candidate/index.html`.
-  - Thực thi kiểm thử tự động bằng `verify_module_012.js`, xuất `VERIFICATION.json` và 10 ảnh authoritative DPR=2.
-  - Biên soạn báo cáo nghiệm thu `DESIGN_TRAINING_012_REPORT.md` và đóng gói nộp R01.
+- **Thực thi Hoàn tất (Completed 2026-09-14)**:
+  - **Phase 3 (Selection Gate)**:
+    - Biên soạn `SELECTION_DECISION.md` đối chiếu chấm điểm 8 nhóm rubric Mục 15: Hướng A đạt 94/100 điểm, Hướng B đạt 86/100 điểm (ngưỡng yêu cầu >= 80/100).
+    - Tuyên bố phán quyết chính thức: `SELECT_DIRECTION_A` (Human Field Intelligence).
+    - 3 lý do cốt lõi: (1) Đồng cảm nghiệp vụ sâu sắc với điều phối viên B2B SME Lan và điểm nghẽn T01; (2) Hệ thống hình ảnh tư liệu thực địa chân thực, ấm áp, tránh mọi cạm bẫy thiết kế cấm; (3) Cấu trúc tự sự lộ trình rõ nét với tỷ lệ biên tập 62:38.
+    - 2 đánh đổi chấp nhận: Tốc độ quét 8 tour chậm hơn một nhịp để ưu tiên không gian thở cho T01, và yêu cầu khắt khe về nguồn ảnh tư liệu.
+    - 1 thế mạnh lưu trữ: Nhịp tín hiệu lộ trình chuỗi mốc của Hướng B được lưu trữ làm tư liệu tham khảo, **tuyệt đối không lai ghép (No Hybridization)** vào candidate.
+  - **Phase 4 (Final Candidate Build)**:
+    - Ban hành hợp đồng `BRAND_IMAGE_CONTRACT.yaml` chuẩn hóa toàn bộ design tokens, 6 vai trò hình ảnh, quy tắc crop 3 viewports và điều kiện bất biến tĩnh Zero-Motion.
+    - Lập trình `candidate/pre_critique.html` kế thừa 100% DNA Hướng A, hỗ trợ mượt mà 3 viewports (1440, 768, 390px), zero-motion (`0s` animation/transition), target tương tác >= 44x44px.
+  - **Phase 5 (Critique & Refinement)**:
+    - Thực hiện self-critique 6 nhận xét theo taxonomy chuẩn (strength, tradeoff, defect, preference).
+    - Đặt giả thuyết duy nhất: Tăng cường độ tương phản viền quang học của `.bottleneck-alert-box` (2px solid #D97706, padding 18px 22px) và nâng cấp nút hành động chính `.btn-action-primary` (min-height 48px, viền đáy 3px solid #9A3412) nhằm tối ưu nhận diện khi in ấn đơn sắc và xúc giác thao tác dưới áp lực cao.
+    - Quyết định: `ADOPT` và hoàn thiện tệp xuất xưởng `candidate/index.html`.
+  - **Phase 6 (Tất toán Nợ Bằng chứng & Kiểm thử Tự Động)**:
+    - **Tất toán 100% Evidence Debt (ED-01 đến ED-05)**:
+      * `ED-01`: Bổ sung executable test runner `verify_module_012.js` portable chuẩn Node.js tại thư mục gốc gói nộp. Chạy độc lập không phụ thuộc thư viện ngoài, xuất `VERIFICATION.json` và trả về exit code 0 khi 79/79 assertions PASS.
+      * `ED-02`: Chuyển đổi 4 mốc giờ nhật ký sang relative deltas: `15 phút trước`, `1 giờ 30 phút trước`, `2 giờ 45 phút trước`, `4 giờ trước` kèm thuộc tính `data-relative-delta`.
+      * `ED-03`: 100% dữ liệu hiển thị trong Candidate và SVG thuộc canonical fixture hoặc gắn nhãn fictional fixture minh bạch (Lan là fictional operator).
+      * `ED-04`: Bộ kiểm thử nâng cấp sang cơ chế Allowlist & Schema validation đối chiếu toàn bộ 14 assets, 8 tour và bảng tokens.
+      * `ED-05`: T02 thực hiện so sánh sâu chi tiết expected vs actual cho từng tuple T01–T08.
+    - **Authoritative Screenshots**:
+      * Chụp đầy đủ 10 ảnh DPR=2 authoritative screenshots trong `screenshots/` bằng Puppeteer kết nối browser runtime thực tế.
+      * Xuất `SCREENSHOT_MANIFEST.json` ghi nhận filename, dimensions, DPR=2, dung lượng và mã băm SHA-256 xác thực.
+    - **Report & Đóng gói**:
+      * Biên soạn báo cáo nghiệm thu 20 mục `DESIGN_TRAINING_012_REPORT.md`.
+      * Đóng gói bản nộp cuối cùng `design_training_012_final_submission_r01.zip`.

@@ -530,3 +530,13 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-14 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (3460 ⭐)]** [vastsa/PI-Desktop](https://github.com/vastsa/PI-Desktop)
+  > Local-first AI coding agent desktop: Electron + Rust host core + pi Agent Harness + user-installable plugins
+
+</untrusted_external_content>
+
+---

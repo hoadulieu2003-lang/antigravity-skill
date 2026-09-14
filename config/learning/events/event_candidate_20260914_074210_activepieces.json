@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-14T07:42:10.412664+00:00",
+  "skill_name": "activepieces",
+  "source_repo": "activepieces/activepieces",
+  "stars": 24432,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\activepieces\\SKILL.md",
+  "human_promotion_required": true
+}

@@ -1,0 +1,970 @@
+{
+  "verification_id": "MODULE_012_FINAL_VERIFICATION_R01",
+  "timestamp": "2026-09-14T07:22:25.679Z",
+  "stream_id": "B",
+  "module": "DESIGN_TRAINING_012_BRAND_AND_IMAGE_DIRECTION",
+  "total_tests": 14,
+  "total_assertions": 79,
+  "passed_assertions": 79,
+  "failed_assertions": 0,
+  "all_passed": true,
+  "evidence_debt_resolution": {
+    "ED-01_executable_test_runner": "RESOLVED (verify_module_012.js in ZIP root)",
+    "ED-02_relative_delta_timestamps": "RESOLVED (relative deltas in candidate HTML)",
+    "ED-03_canonical_facts_allowlist": "RESOLVED (zero ungrounded facts, transparent fixtures)",
+    "ED-04_allowlist_validation": "RESOLVED (schema validation enforced)",
+    "ED-05_deep_tuple_comparison": "RESOLVED (expected vs actual comparison recorded in T02)"
+  },
+  "tests": [
+    {
+      "test_id": "T01",
+      "name": "Workspace and source integrity",
+      "precondition": "Stream B workspace isolation and frozen source snapshot existence",
+      "method": "Filesystem boundary audit, SHA-256 verification and path hygiene check",
+      "assertions": [
+        {
+          "assertion_number": 1,
+          "assertion_name": "A01: Workspace isolated in Stream B",
+          "passed": true,
+          "measured": "C:\\Users\\game\\.gemini\\exercises\\stream-b\\module-012",
+          "expected": "Contains stream-b or module-012"
+        },
+        {
+          "assertion_number": 2,
+          "assertion_name": "A02: Source snapshot archive exists",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 3,
+          "assertion_name": "A03: Source snapshot matches exact canonical SHA-256",
+          "passed": true,
+          "measured": "e76ab08f4d1e72865f4210299594e175b94f471d3f8960c3f0c61d4259283c76",
+          "expected": "e76ab08f4d1e72865f4210299594e175b94f471d3f8960c3f0c61d4259283c76"
+        },
+        {
+          "assertion_number": 4,
+          "assertion_name": "A04: Zero cross-stream leakage into stream-a",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 5,
+          "assertion_name": "A05: Zero absolute author filesystem paths across text files",
+          "passed": true,
+          "measured": 0,
+          "expected": 0
+        },
+        {
+          "assertion_number": 6,
+          "assertion_name": "A06: Zero invalid ASCII control characters across codebase",
+          "passed": true,
+          "measured": 0,
+          "expected": 0
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "source_snapshot/design_training_007_submission_r04.zip",
+        "CHANGE_LEDGER.md"
+      ],
+      "measured": {
+        "snapshotHash": "e76ab08f4d1e72865f4210299594e175b94f471d3f8960c3f0c61d4259283c76",
+        "absoluteAuthorMatches": 0,
+        "controlCharViolations": 0
+      }
+    },
+    {
+      "test_id": "T02",
+      "name": "Canonical content integrity",
+      "precondition": "Directive Section 4.6 Canonical Operational Snapshot baseline (13/09/2026 18:00)",
+      "method": "Deep tuple-by-tuple expected vs actual comparison of T01–T08 in Candidate DOM",
+      "assertions": [
+        {
+          "assertion_number": 7,
+          "assertion_name": "A07: Deep tuple parity for canonical T01 (Hạ Long 2N1Đ)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 8,
+          "assertion_name": "A08: Deep tuple parity for canonical T02 (Ninh Bình 1 ngày)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 9,
+          "assertion_name": "A09: Deep tuple parity for canonical T03 (Sapa 3N2Đ)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 10,
+          "assertion_name": "A010: Deep tuple parity for canonical T04 (Đà Nẵng 4N3Đ)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 11,
+          "assertion_name": "A011: Deep tuple parity for canonical T05 (Hà Giang 3N2Đ)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 12,
+          "assertion_name": "A012: Deep tuple parity for canonical T06 (Phú Quốc 3N2Đ)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 13,
+          "assertion_name": "A013: Deep tuple parity for canonical T07 (Mộc Châu 2N1Đ)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 14,
+          "assertion_name": "A014: Deep tuple parity for canonical T08 (Huế 3N2Đ)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "candidate/index.html"
+      ],
+      "measured": {
+        "T01": {
+          "expected": {
+            "id": "T01",
+            "dest": "Hạ Long 2N1Đ",
+            "time": "14/09/2026 07:30",
+            "assignee": "Lan",
+            "status": "Chờ đối tác",
+            "note": "Khách sạn chưa xác nhận 4 phòng"
+          },
+          "actual": {
+            "id": true,
+            "dest": true,
+            "time": true,
+            "assignee": true,
+            "status": true,
+            "note": true
+          },
+          "match": true
+        },
+        "T02": {
+          "expected": {
+            "id": "T02",
+            "dest": "Ninh Bình 1 ngày",
+            "time": "14/09/2026 06:00",
+            "assignee": "Minh",
+            "status": "Sẵn sàng",
+            "note": "Đã đủ xe, hướng dẫn viên và danh sách khách"
+          },
+          "actual": {
+            "id": true,
+            "dest": true,
+            "time": true,
+            "assignee": true,
+            "status": true,
+            "note": true
+          },
+          "match": true
+        },
+        "T03": {
+          "expected": {
+            "id": "T03",
+            "dest": "Sapa 3N2Đ",
+            "time": "15/09/2026 21:30",
+            "assignee": "Huy",
+            "status": "Thiếu hồ sơ",
+            "note": "2 khách chưa gửi CCCD"
+          },
+          "actual": {
+            "id": true,
+            "dest": true,
+            "time": true,
+            "assignee": true,
+            "status": true,
+            "note": true
+          },
+          "match": true
+        },
+        "T04": {
+          "expected": {
+            "id": "T04",
+            "dest": "Đà Nẵng 4N3Đ",
+            "time": "16/09/2026 08:00",
+            "assignee": "Lan",
+            "status": "Đang chuẩn bị",
+            "note": "Chờ chốt danh sách suất ăn"
+          },
+          "actual": {
+            "id": true,
+            "dest": true,
+            "time": true,
+            "assignee": true,
+            "status": true,
+            "note": true
+          },
+          "match": true
+        },
+        "T05": {
+          "expected": {
+            "id": "T05",
+            "dest": "Hà Giang 3N2Đ",
+            "time": "17/09/2026 05:30",
+            "assignee": "Minh",
+            "status": "Sẵn sàng",
+            "note": "Đã hoàn tất checklist khởi hành"
+          },
+          "actual": {
+            "id": true,
+            "dest": true,
+            "time": true,
+            "assignee": true,
+            "status": true,
+            "note": true
+          },
+          "match": true
+        },
+        "T06": {
+          "expected": {
+            "id": "T06",
+            "dest": "Phú Quốc 3N2Đ",
+            "time": "18/09/2026 09:10",
+            "assignee": "Huy",
+            "status": "Chờ đối tác",
+            "note": "Nhà xe trung chuyển chưa xác nhận"
+          },
+          "actual": {
+            "id": true,
+            "dest": true,
+            "time": true,
+            "assignee": true,
+            "status": true,
+            "note": true
+          },
+          "match": true
+        },
+        "T07": {
+          "expected": {
+            "id": "T07",
+            "dest": "Mộc Châu 2N1Đ",
+            "time": "19/09/2026 06:30",
+            "assignee": "Lan",
+            "status": "Đang chuẩn bị",
+            "note": "Đang rà soát danh sách phòng"
+          },
+          "actual": {
+            "id": true,
+            "dest": true,
+            "time": true,
+            "assignee": true,
+            "status": true,
+            "note": true
+          },
+          "match": true
+        },
+        "T08": {
+          "expected": {
+            "id": "T08",
+            "dest": "Huế 3N2Đ",
+            "time": "12/09/2026 07:00",
+            "assignee": "An",
+            "status": "Hoàn thành",
+            "note": "Đoàn đã khởi hành và bàn giao nhật ký"
+          },
+          "actual": {
+            "id": true,
+            "dest": true,
+            "time": true,
+            "assignee": true,
+            "status": true,
+            "note": true
+          },
+          "match": true
+        }
+      }
+    },
+    {
+      "test_id": "T03",
+      "name": "Direction strategic divergence",
+      "precondition": "Two complete direction prototypes preserved in directions/ directory",
+      "method": "Comparative AST and semantic token analysis across 7 required divergence axes",
+      "assertions": [
+        {
+          "assertion_number": 15,
+          "assertion_name": "A15: Axis 1 Brand personality divergence verified",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 16,
+          "assertion_name": "A16: Axis 2 Composition model divergence verified (Editorial 62:38 vs Modular 12-col Grid)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 17,
+          "assertion_name": "A17: Axis 3 Typography divergence verified (Serif vs Mono)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 18,
+          "assertion_name": "A18: Axis 4 Image source divergence verified (Field Documentary vs Route Signal Abstract)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 19,
+          "assertion_name": "A19: Axis 5 Crop & perspective divergence verified (Centered contextual vs Offset focal)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 20,
+          "assertion_name": "A20: Axis 6 Icon & accent language divergence verified (Terracotta vs Cobalt)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 21,
+          "assertion_name": "A21: Axis 7 Surface texture divergence verified (Paper grain vs Grid matrix)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "directions/option_a/index.html",
+        "directions/option_b/index.html",
+        "SELECTION_DECISION.md"
+      ],
+      "measured": {
+        "divergent_axes_count": 7,
+        "threshold_required": 5,
+        "passed_gate_b01": true
+      }
+    },
+    {
+      "test_id": "T04",
+      "name": "Brand traceability",
+      "precondition": "BRAND_THESIS.md, BRAND_IMAGE_CONTRACT.yaml and candidate DOM alignment",
+      "method": "Bidirectional mapping verification from thesis statements to DOM selectors & tokens",
+      "assertions": [
+        {
+          "assertion_number": 22,
+          "assertion_name": "A22: Mapping 1: Product promise -> .brand-promise-banner",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 23,
+          "assertion_name": "A23: Mapping 2: Personality \"Calm\" -> Warm substrate #FAF8F5 & ink #1C1917",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 24,
+          "assertion_name": "A24: Mapping 3: Personality \"Precise\" -> .snapshot-table 8 tours",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 25,
+          "assertion_name": "A25: Mapping 4: Personality \"Prepared\" -> Route narrative timeline diagram",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 26,
+          "assertion_name": "A26: Mapping 5: Personality \"Operator Empathy\" -> Lan coordinator profile card",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 27,
+          "assertion_name": "A27: Mapping 6: Anti-personality \"No Luxury Brochure\" -> Authentic preparation scene",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 28,
+          "assertion_name": "A28: Mapping 7: Anti-personality \"No Military Command\" -> Warm terracotta accent",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 29,
+          "assertion_name": "A29: Mapping 8: Anti-personality \"No Generic AI / Vanity Metrics\" -> 0 fabricated data",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "BRAND_THESIS.md",
+        "BRAND_IMAGE_CONTRACT.yaml",
+        "candidate/index.html"
+      ],
+      "measured": {
+        "verified_mappings": 8,
+        "target_required": 8
+      }
+    },
+    {
+      "test_id": "T05",
+      "name": "Asset manifest integrity",
+      "precondition": "assets/ASSET_MANIFEST.yaml schema and assets directory files",
+      "method": "Disk presence audit, cryptographic SHA-256 verification and remote URL audit",
+      "assertions": [
+        {
+          "assertion_number": 30,
+          "assertion_name": "A30: All 14 runtime asset files exist on disk",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 31,
+          "assertion_name": "A31: Asset SHA-256 hashes match ASSET_MANIFEST.yaml entries",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 32,
+          "assertion_name": "A32: Zero external CDN or remote runtime URLs in Candidate",
+          "passed": true,
+          "measured": 0,
+          "expected": 0
+        },
+        {
+          "assertion_number": 33,
+          "assertion_name": "A33: Assets declare origin_type: authored_vector",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 34,
+          "assertion_name": "A34: Assets declare standard licensing terms (Proprietary Exercise Asset)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 35,
+          "assertion_name": "A35: All asset paths use Unix forward-slashes /",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 36,
+          "assertion_name": "A36: Collapsible disclosure panel rendered in DOM",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "assets/ASSET_MANIFEST.yaml",
+        "assets/"
+      ],
+      "measured": {
+        "asset_count": 14,
+        "remote_requests": 0
+      }
+    },
+    {
+      "test_id": "T06",
+      "name": "Image role and crop behavior",
+      "precondition": "6 image roles defined in BRAND_IMAGE_CONTRACT.yaml",
+      "method": "DOM element inspect for aspect-ratio, object-fit, dimensions and role adherence",
+      "assertions": [
+        {
+          "assertion_number": 37,
+          "assertion_name": "A37: Role 1 hero_context preserves 16:9 aspect ratio",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 38,
+          "assertion_name": "A38: Role 2 operational_scene preserves 4:3 dimensions",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 39,
+          "assertion_name": "A39: Role 3 route_diagram preserves structured narrative container",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 40,
+          "assertion_name": "A40: Role 4 fictional_person Lan preserves 1:1 circular crop",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 41,
+          "assertion_name": "A41: Role 5 icon_family preserves 24x24 scalable icons",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 42,
+          "assertion_name": "A42: Role 6 texture_accent applied to body background",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "candidate/index.html",
+        "BRAND_IMAGE_CONTRACT.yaml"
+      ],
+      "measured": {
+        "validated_roles_count": 6,
+        "contract_roles_count": 6
+      }
+    },
+    {
+      "test_id": "T07",
+      "name": "Image failure parity",
+      "precondition": "Simulated raster/vector load failure mode in browser runtime",
+      "method": "Structural layout containment audit when image elements fail to render",
+      "assertions": [
+        {
+          "assertion_number": 43,
+          "assertion_name": "A43: Hero image container maintains background fallback #EAE4DA",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 44,
+          "assertion_name": "A44: Operational scene maintains structural border during failure",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 45,
+          "assertion_name": "A45: Diagram provides independent ordered list text equivalent",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 46,
+          "assertion_name": "A46: T01 critical priority remains fully understandable on image loss",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "screenshots/08_candidate_image_failure_mobile.png"
+      ],
+      "measured": {
+        "fallback_substrate_preserved": true,
+        "text_equivalent_present": true
+      }
+    },
+    {
+      "test_id": "T08",
+      "name": "Alternative text semantics",
+      "precondition": "W3C Web Accessibility Guidelines for accessible image alternatives",
+      "method": "AST inspection of alt, aria-hidden, aria-label and caption semantics",
+      "assertions": [
+        {
+          "assertion_number": 47,
+          "assertion_name": "A47: Decorative inline icons declare alt=\"\" and aria-hidden=\"true\"",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 48,
+          "assertion_name": "A48: Informative hero image provides contextual descriptive alt text",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 49,
+          "assertion_name": "A49: Route diagram provides full narrative alt description",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 50,
+          "assertion_name": "A50: Lan avatar explicitly identified as fictional training character in alt",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 51,
+          "assertion_name": "A51: Operational desk scene provides descriptive bottleneck alt text",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "candidate/index.html"
+      ],
+      "measured": {
+        "descriptive_alts_verified": true,
+        "decorative_alts_cleared": true
+      }
+    },
+    {
+      "test_id": "T09",
+      "name": "Iconography consistency",
+      "precondition": "6 icons family defined in ASSET_MANIFEST.yaml and BRAND_IMAGE_CONTRACT.yaml",
+      "method": "ViewBox geometry, SVG stroke weight and optical parity inspection",
+      "assertions": [
+        {
+          "assertion_number": 52,
+          "assertion_name": "A52: Icon family directory contains 6 operational icons",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 53,
+          "assertion_name": "A53: All 6 icons strictly adhere to 24x24 viewBox grid",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 54,
+          "assertion_name": "A54: All icons maintain uniform 2px optical stroke geometry",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 55,
+          "assertion_name": "A55: Zero emoji or third-party font-icons used",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 56,
+          "assertion_name": "A56: All status indicators pair icons with textual meaning",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "assets/icons/",
+        "candidate/index.html"
+      ],
+      "measured": {
+        "icon_family_count": 6,
+        "viewBox": "0 0 24 24",
+        "stroke_weight": "2px"
+      }
+    },
+    {
+      "test_id": "T10",
+      "name": "Responsive and target integrity",
+      "precondition": "Three target viewports: 1440x900 desktop, 768x1024 tablet, 390x844 mobile",
+      "method": "CSS AST inspection for media queries, overflow constraints and touch targets",
+      "assertions": [
+        {
+          "assertion_number": 57,
+          "assertion_name": "A57: Breakpoints defined for tablet (1024px) and mobile (600px)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 58,
+          "assertion_name": "A58: Data table safely wrapped in scrollable container to prevent page overflow",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 59,
+          "assertion_name": "A59: Primary CTA touch target exceeds WCAG 44x44px standard (48px height)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 60,
+          "assertion_name": "A60: Secondary CTA touch target meets minimum 44x44px standard",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 61,
+          "assertion_name": "A61: Table action links meet minimum 44x44px standard",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 62,
+          "assertion_name": "A62: Provenance summary toggle meets minimum 44px height standard",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "candidate/index.html",
+        "screenshots/04_candidate_tablet_768x1024.png",
+        "screenshots/05_candidate_mobile_390x844.png"
+      ],
+      "measured": {
+        "target_min_size": "44x44px",
+        "primary_cta_size": "48px",
+        "overflow_x_contained": true
+      }
+    },
+    {
+      "test_id": "T11",
+      "name": "Contrast and non-color meaning",
+      "precondition": "WCAG 2.2 AA Contrast Standards (4.5:1 text, 3.0:1 controls/graphics)",
+      "method": "Mathematical relative luminance calculation of design tokens on paper substrate",
+      "assertions": [
+        {
+          "assertion_number": 63,
+          "assertion_name": "A63: Primary ink (#1C1917) achieves WCAG AAA contrast on paper (#FAF8F5) (16.5:1 >= 7.0:1)",
+          "passed": true,
+          "measured": 16.5,
+          "expected": ">= 7.0:1"
+        },
+        {
+          "assertion_number": 64,
+          "assertion_name": "A64: Secondary ink (#44403C) achieves WCAG AA contrast on paper (#FAF8F5) (9.7:1 >= 4.5:1)",
+          "passed": true,
+          "measured": 9.7,
+          "expected": ">= 4.5:1"
+        },
+        {
+          "assertion_number": 65,
+          "assertion_name": "A65: Accent terracotta (#C2410C) achieves WCAG AA contrast on paper (#FAF8F5) (4.9:1 >= 4.5:1)",
+          "passed": true,
+          "measured": 4.9,
+          "expected": ">= 4.5:1"
+        },
+        {
+          "assertion_number": 66,
+          "assertion_name": "A66: Status waiting text (#92400E) achieves WCAG AA contrast on bg (#FEF3C7) (6.4:1 >= 4.5:1)",
+          "passed": true,
+          "measured": 6.4,
+          "expected": ">= 4.5:1"
+        },
+        {
+          "assertion_number": 67,
+          "assertion_name": "A67: Status ready text (#065F46) achieves WCAG AA contrast on bg (#ECFDF5) (7.3:1 >= 4.5:1)",
+          "passed": true,
+          "measured": 7.3,
+          "expected": ">= 4.5:1"
+        },
+        {
+          "assertion_number": 68,
+          "assertion_name": "A68: High-contrast focus indicator explicitly defined (2px solid #C2410C)",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "candidate/index.html",
+        "BRAND_IMAGE_CONTRACT.yaml"
+      ],
+      "measured": {
+        "cPrimary": 16.5,
+        "cSecondary": 9.7,
+        "cTerracotta": 4.9,
+        "cWaiting": 6.4,
+        "cReady": 7.3
+      }
+    },
+    {
+      "test_id": "T12",
+      "name": "Static-module boundary",
+      "precondition": "Directive Section 11 & 17 Zero-Motion mandate",
+      "method": "CSS AST verification of animation and transition suppression rules",
+      "assertions": [
+        {
+          "assertion_number": 69,
+          "assertion_name": "A69: Global CSS locks animation-duration to 0s !important",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 70,
+          "assertion_name": "A70: Global CSS locks transition-duration to 0s !important",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 71,
+          "assertion_name": "A71: Smooth scroll disabled via scroll-behavior: auto !important",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 72,
+          "assertion_name": "A72: Zero non-zero animation or transition durations in stylesheet",
+          "passed": true,
+          "measured": 0,
+          "expected": 0
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "candidate/index.html"
+      ],
+      "measured": {
+        "zero_animation": true,
+        "zero_transition": true,
+        "nonzero_violations": 0
+      }
+    },
+    {
+      "test_id": "T13",
+      "name": "Asset performance budget",
+      "precondition": "Directive Section 14.2: single asset <= 600KB, total payload <= 3.5MB",
+      "method": "Filesystem byte measurement and loading attribute audit",
+      "assertions": [
+        {
+          "assertion_number": 73,
+          "assertion_name": "A73: Max single asset (6931 bytes) within 600,000 bytes budget",
+          "passed": true,
+          "measured": 6931,
+          "expected": "<= 600000"
+        },
+        {
+          "assertion_number": 74,
+          "assertion_name": "A74: Total runtime assets (44722 bytes) within 3,500,000 bytes budget",
+          "passed": true,
+          "measured": 44722,
+          "expected": "<= 3500000"
+        },
+        {
+          "assertion_number": 75,
+          "assertion_name": "A75: Eager loading for hero context and lazy loading for below-fold images",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "assets/"
+      ],
+      "measured": {
+        "maxSingleBytes": 6931,
+        "totalAssetBytes": 44722,
+        "budget_ok": true
+      }
+    },
+    {
+      "test_id": "T14",
+      "name": "Evidence, Evidence Debt & Package parity",
+      "precondition": "Resolution of all 5 Evidence Debt items (ED-01 to ED-05) and 10 screenshots manifest",
+      "method": "Conjunction assertion evaluation, debt ledger audit and screenshot manifest parity",
+      "assertions": [
+        {
+          "assertion_number": 76,
+          "assertion_name": "A76: Evidence Debt ED-02 cleared: 4 timestamps strictly converted to relative deltas",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 77,
+          "assertion_name": "A77: 10 authoritative DPR=2 screenshots exist and match SCREENSHOT_MANIFEST.json",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 78,
+          "assertion_name": "A78: SELECTION_DECISION.md and BRAND_IMAGE_CONTRACT.yaml exist and valid",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        },
+        {
+          "assertion_number": 79,
+          "assertion_name": "A79: Conjunction of all test assertions (T01–T14) evaluates strictly to PASS",
+          "passed": true,
+          "measured": true,
+          "expected": true
+        }
+      ],
+      "pass": true,
+      "evidence_paths": [
+        "CHANGE_LEDGER.md",
+        "SCREENSHOT_MANIFEST.json",
+        "screenshots/"
+      ],
+      "measured": {
+        "relative_deltas_ok": true,
+        "screenshots_count": 10,
+        "all_preceding_ok": true
+      }
+    }
+  ]
+}

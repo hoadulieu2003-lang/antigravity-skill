@@ -2,41 +2,49 @@
 ## Functional Color System with Measurable Contrast Constraints (TRIPFLOW Dispatch Ledger)
 
 ```yaml
-REPORT_ID: DESIGN_TRAINING_008_REPORT_R03
+REPORT_ID: DESIGN_TRAINING_008_REPORT_R06_AUDIT_CORRECTION_001
 MODULE_ID: DESIGN_TRAINING_008
 MODULE_NAME: COLOR_SYSTEM
 STREAM_ID: FOUNDATION_INTEGRITY
 BRANCH_ID: TAB_A
 CONTROLLER: ChatGPT Architectural Controller (Sol)
 EXECUTOR: Antigravity (Senior Engineering Agent)
-STAGE: REPAIR_ROUND_1_REVISION_R03
-DELIVERABLE_ARCHIVE: design_training_008_submission_r03.zip
-VERDICT_PROPOSED: PASS
-TIMESTAMP: 2026-09-14T02:35:00Z
+DELIVERABLE_ARCHIVE: design_training_008_verification_audit_correction_001.zip
+SUBMISSION_ID: DESIGN_TRAINING_008_VERIFICATION_AUDIT_CORRECTION_001
+VERDICT_PROPOSED: SELF_CHECK_PASS / SUBMITTED_FOR_CONTROLLER_AUDIT
+TIMESTAMP: 2026-09-14T07:40:00Z
+AUTHORIZATION: DESIGN_TRAINING_008_VERIFICATION_AUDIT_REVIEW_001 (One Final Audit Correction 1/1)
+RELATION: ONE_FINAL_AUDIT_CORRECTION_SEPARATE_AUDIT
+AUDIT_STATUS: COMPLETED_PENDING_CONTROLLER_VERDICT
 ```
 
 ---
 
-## 0. BÁO CÁO KHẮC PHỤC SỬA ĐỔI ĐỢT 1 (REPAIR ROUND 1 / REVISION R03 — RESOLUTION OF FINDINGS F01–F07)
+## 0. BÁO CÁO KHẮC PHỤC SỬA ĐỔI & KIỂM TOÁN (REMEDIATION & REPAIR RESOLUTION)
 
-Thực hiện nghiêm túc phán quyết `CONDITIONAL_PASS` và bản chỉ thị kỹ thuật chi tiết `DESIGN_TRAINING_008_REVIEW_001.md` do Architectural Controller Sol ban hành trên Tab A (ChatGPT), Antigravity đã đóng trọn vẹn toàn bộ 7/7 phát hiện kỹ thuật (Findings F01 đến F07):
+### 0.1. Tuyên Bố Đóng Băng Thẩm Mỹ & Phạm Vi Thị Giác (Visual Frozen Scope)
+1. **Hướng Nghệ Thuật & Trực Quan**: Option A Refined (Warm Alabaster) đã được Architectural Controller Sol chính thức chấp nhận (`ACCEPTED_FOR_EXERCISE` tại Review 003 và tái khẳng định tại Audit Review 001). Toàn bộ giao diện trực quan trong `index.html`, `directions/option_a.html`, và 9 ảnh authoritative DPR=2 được đóng băng hoàn toàn (`visual_candidate_hash_unchanged: true`).
+2. **Các Gates Nền Tảng Đã Được Thẩm Định**: Sol đã thẩm định và xác nhận đạt cho Gate C02 (Two Directions), Gate C03 (Contrast Inventory 42 roles), Gate C04 (Color Independence & CVD Artifacts), Gate C05 (Focus Indicator trên 3 target IDs), Gate C06 (Responsive Cadence & Caption Block), và Invariant Zero Motion.
 
-| Mã Phát Hiện | Trọng Tâm Chỉ Thị Của Sol | Biện Pháp Triển Khai Trong R03 | Bằng Chứng Kiểm Chứng Thực Nghiệm | Trạng Thái Đóng |
-|---|---|---|---|:---:|
-| **F01** | Zero Motion Invariant: Xóa toàn bộ transition, animation, @keyframes; đóng băng live clock. | Đã xóa 100% thuộc tính transition, animation, @keyframes khỏi `index.html`, `option_a.html`, `option_b.html`. Đồng hồ chuyển thành fixture tĩnh `2026-09-14 07:30:00 ICT`. | Harness quét toàn bộ DOM computed styles: `transitions: 0`, `animations: 0`, `keyframes: 0`, `clockFrozen: true`. Đưa trực tiếp vào công thức boolean conjunction pass. | **CLOSED** |
-| **F02** | Native Exact Focus (Gate C05): Bỏ skip-link heuristic và programmatic focus fallback (`el.focus()`). | Khóa 3 target IDs tường minh: Primary CTA (`#btn-global-dispatch`), Search Input (`#input-tour-search`), Tour Action (`#action-btn-tf802`). Duyệt bằng `page.keyboard.press('Tab')` bản địa. | 0 programmatic focus fallback; 3/3 target kích hoạt `:focus-visible` tự nhiên; viền 2px solid với tương phản 3.0259:1 và 3.1858:1 trên nền tiếp giáp. | **CLOSED** |
-| **F03** | Responsive Cadence & Local Overflow (Gate C06): Sửa search box excess height và table card mobile. | Sửa `.search-box` thành `flex: 0 0 auto; width: 100%` trên mobile; chuyển cấu trúc table thành card dọc hiển thị đủ 6 trường thông tin. Bỏ `body { overflow-x: hidden; }`. | `scrollWidth <= clientWidth` trên Desktop (1440), Tablet (768), Mobile (390); 0px overflow; 0 local scrollers trong search box, filter tablist, ledger container và từng tour row. | **CLOSED** |
-| **F04** | CVD Evidence Conjunction (Gate C04): Chụp và kiểm tra ảnh trước khi đánh giá; gán nguồn matrix rõ ràng. | Quy trình harness chụp và ghi nhận file ảnh đầy đủ (`size_bytes > 0`, SHA-256) trước khi kết luận Gate C04. Ghi rõ thuật toán xấp xỉ Brettel et al. (1997). | `cvd_simulations_generated: true`, 3 ảnh Grayscale/Deuteranopia/Protanopia xác thực trên đĩa; ghi rõ giới hạn mô phỏng máy tính không thay thế người dùng thật. | **CLOSED** |
-| **F05** | Contrast State Inventory (Gate C03): Lập inventory đủ các state thực tế; phân loại viền trang trí. | Lập danh mục 24 cặp màu thực tế bao phủ normal text, large text, non-text UI, focus indicators và viền trang trí. Viền badge phân loại `decorative_border` (miễn trừ SC 1.4.11). | Khớp cardinality: 24/24 cặp được đo, 0 cặp sót. Chữ đạt từ 4.5097:1 đến 21.0000:1; viền ô tìm kiếm đạt 4.7588:1 (>= 3.0:1); focus đạt >= 3.0:1. | **CLOSED** |
-| **F06** | Harness Portability: Xóa hardcoded author path; hỗ trợ `--connect=<port>`, `CDP_PORT`, `CHROME_PATH`. | Chuẩn hóa `require('puppeteer-core')`; hỗ trợ tham số CLI `--connect=<port>` và biến môi trường `CDP_PORT`, `CHROME_PATH`; đường dẫn tương đối resolve từ `__dirname`. | 0 author-specific paths (`C:/Users/...` cứng); harness tự động phát hiện Chrome trên Windows/Linux hoặc kết nối trực tiếp cổng CDP. | **CLOSED** |
-| **F07** | Evidence Synchronization: Đồng bộ kích thước pixel, byte size, hash; xóa alias; xóa self-certification. | Giữ đúng 9 ảnh authoritative (8 ảnh chuẩn + 1 ảnh first view mobile). Trích xuất kích thước từ binary header PNG. Đồng bộ 100% dữ liệu vào JSON và Report. | Không còn file alias dư thừa; số đo pixel và mã băm SHA-256 trùng khớp từng byte giữa files, JSON và Báo cáo; ghi nhận thẩm định thị giác đang chờ Sol nghiệm thu. | **CLOSED** |
+---
+
+### 0.2. Báo Cáo Khắc Phục 5 Blocking Findings F01–F05 (Audit Review 001 Resolution)
+Căn cứ phán quyết `DESIGN_TRAINING_008_VERIFICATION_AUDIT_REVIEW_001.md`, Antigravity đã hoàn thành trọn vẹn đợt sửa đổi kiểm toán cuối cùng (**One Final Audit Correction 1/1**):
+
+| Mã Finding | Trọng Tâm Chỉ Thị Của Sol | Biện Pháp Triển Khai Kỹ Thuật (Engineering Implementation) | Bằng Chứng Viễn Trắc Thực Tế (`VERIFICATION.json`) | Trạng Thái Tự Kiểm |
+|:---:|---|---|---|:---:|
+| **F01** | **A01 FSM Native Keyboard Journey**: 11 bước `fsm_focus_sequence[]`, 7 trạng thái `state_timeline[]`, Enter native, duplicate guard, single stable node, no focus stealing, 0 body focus. | Tái thiết kế `auditFsmFocusPreservation()`: Đo đạc đủ 11 bước chuyển dịch focus từ trang sạch. Kích hoạt kịch bản lỗi bằng test hook `dataset.simulateFailure = 'true'` và bấm `Enter` native (xóa bỏ hoàn toàn phím tắt tổ hợp `Shift+Enter`). Bấm `Enter` thử trong trạng thái `SAVING` chứng minh bị chặn (`duplicateBlocked: true`). Duy trì `window.__fsmInitNode === btn` xuyên suốt vòng đời. Kiểm chứng không cướp focus khi hoàn tất (`input-tour-search` được bảo toàn). | `steps_count: 11`; `timeline: IDLE -> VALIDATING -> SAVING -> FAILURE -> VALIDATING_RETRY -> SAVING_RETRY -> CONFIRMED`; `stable_node_identity_verified: true`; `no_steal_verified: true`; `body_focus_events: 0`. | **SELF_CHECK_REMEDIATED (PENDING CONTROLLER AUDIT)** |
+| **F02** | **A02 Programmatic Focus Scanner**: Máy quét tĩnh mã nguồn `verify_module_008.js` có positive control fixture (bắt đúng 2 calls) + runtime tracker. Tổng số lệnh gọi lập trình phải bằng 0. | 1. Xây dựng `scanSourceForProgrammaticFocusCalls()` quét tĩnh toàn bộ file harness, loại bỏ comment và bóc tách định nghĩa fixture để không tự đếm chuỗi thử nghiệm. Kết quả phát hiện: **0** calls.<br>2. Xây dựng `runProgrammaticFocusPositiveControl()` với fixture bẩn chứa đúng 2 lệnh `page.focus()` và `btn.focus()`. Bộ phát hiện bắt đúng $2/2$ vi phạm (`passed: true`).<br>3. Runtime hook trong trang ghi nhận **0** lệnh gọi. | `harness_source_programmatic_focus_calls: 0`; `page_runtime_programmatic_focus_calls: 0`; `native_scenario_programmatic_focus_total: 0`; `detector_positive_control_passed: true`. | **SELF_CHECK_REMEDIATED (PENDING CONTROLLER AUDIT)** |
+| **F03** | **A03 Structured Contract Parity**: Bổ sung khối `fsm_verification_contract` có cấu trúc vào `COLOR_CONTRACT.yaml` và xây dựng parser + parity comparator trong harness. | 1. Bổ sung khối `fsm_verification_contract` vào `COLOR_CONTRACT.yaml` định nghĩa: selector `#action-btn-tf802`, `initial_state: IDLE`, 5 states, đồ thị `allowed_transitions`, `saving_guard`, và `no_steal_on_async_completion: true`.<br>2. Viết hàm `parseFsmContractBlock()` và `verifyStructuredFsmParity()` đối chiếu có cấu trúc với runtime timeline và focus sequence. | `contract_matches_runtime_fsm: true`; `contract_runtime_mismatches: []`; Không có bất kỳ sai lệch nào giữa hợp đồng và thực thi. | **SELF_CHECK_REMEDIATED (PENDING CONTROLLER AUDIT)** |
+| **F04** | **A04/A05 Token Provenance & Classification**: Semantic tokens phải là `var(--primitive-*)` hoặc sentinel (`transparent`, `currentColor`), 0 literal colors. Phân loại đủ 51 component tokens (45 color-bearing, 6 non-color spatial như `icon-size: 14px`). Mọi color token phải phân giải về semantic. Có positive control test fixture. | 1. Gate C01 kiểm toán 38 semantic tokens trong Candidate (114 system-wide across 3 files): 0 literal colors, 0 invalid non-var, 0 unresolved. Tất cả đều trỏ về primitive hoặc sentinel.<br>2. Mở rộng từ khóa `nonColorPropKeywords` bao gồm `icon-size`, `border-width`, `size`, phân loại chính xác: Option A có 40 color + 8 non-color (40/40 resolved); Candidate có 45 color + 6 non-color (45/45 resolved); Option B có 39 color + 7 non-color (39/39 resolved).<br>3. Viết `runTokenDetectorPositiveControl()` với fixture CSS bẩn chứa đúng 5 vi phạm. Bộ phát hiện bắt chính xác $5/5$ vi phạm (`passed: true`). | `token_detector_positive_control_passed: true`; Candidate component tokens: `color_bearing: 45`, `non_color_spatial: 6`, `resolved: 45`, `unresolved: 0`, `component_to_primitive_direct_refs: 0`; Semantic tokens: `total: 38`, `literal_colors: 0`, `invalid_non_var: 0`. C01 PASS. | **SELF_CHECK_REMEDIATED (PENDING CONTROLLER AUDIT)** |
+| **F05** | **Gate C07 Evidence Integrity**: Kiểm toán độc lập mã băm nguồn đóng băng, 5 văn bản Controller byte-identical, 9 screenshots nguyên vẹn, quét report governance (0 phán quyết PASS đơn phương, 0 self-closed findings), đồng bộ cross-ledger. | Tích hợp khối kiểm toán C07 độc lập trong `verify_module_008.js`: kiểm tra tự động mã băm của candidate và option A, kiểm tra 5 tệp review của Sol, kiểm tra 9 tệp ảnh, quét nội dung báo cáo bảo đảm không chứa từ khóa phán quyết trái quyền và không có self-closed findings, đối soát các số lượng token/role giữa báo cáo và ledger. | `frozen_hashes_verified: true`; `official_document_hashes_verified: true`; `screenshot_integrity_verified: true`; `report_governance_verified: true`; `report_verification_mismatches: []`; `hardcoded_evidence_booleans: 0`. C07 SELF_CHECK_PASS. | **SELF_CHECK_REMEDIATED (PENDING CONTROLLER AUDIT)** |
 
 ---
 
 ## 1. MỤC TIÊU & DỮ LIỆU CHUẨN (OBJECTIVE & CANONICAL FIXTURE)
 
 ### 1.1. Tuyên Bố Phân Loại Dữ Liệu & Miễn Trừ Trách Nhiệm (Governance & Disclaimer)
-Căn cứ chỉ thị tối cao từ `DESIGN_TRAINING_STREAM_A_DIRECTIVE.md` và hiệu chỉnh khóa chặt `P02` trong `DESIGN_TRAINING_008_INITIAL_REVIEW_001.md`:
+Căn cứ chỉ thị tối cao từ `DESIGN_TRAINING_STREAM_A_DIRECTIVE.md` và `DESIGN_TRAINING_008_FINAL_REVIEW_003.md`:
 
 ```yaml
 DATA_CLASSIFICATION: SYNTHETIC_TRAINING_FIXTURE
@@ -50,294 +58,221 @@ BUSINESS_PERFORMANCE_CLAIMS: none
 ### 1.2. Mục Tiêu Cốt Lõi Của Module 08 (Core Objective)
 Chuyển hóa màu sắc từ một yếu tố trang trí giao diện ngẫu hứng mang tính cảm tính thành một **Hệ Thống Màu Chức Năng Với Ràng Buộc Tương Phản Đo Lường Được (`Functional Color System with Measurable Contrast Constraints`)**:
 1. Có khả năng giải thích nguồn gốc toán học thông qua độ chói tương đối sRGB (`sRGB Relative Luminance`).
-2. Có thể kiểm tra viễn trắc tự động (`Programmatic Telemetry Verification`) thông qua công cụ kiểm thử pháp y độc lập.
+2. Có thể kiểm tra viễn trắc tự động (`Programmatic Telemetry Verification`) thông qua công cụ kiểm thử độc lập.
 3. Có khả năng thay đổi toàn bộ hướng thẩm mỹ nghệ thuật (`Art Direction`) mà không làm gãy vỡ linh kiện UI hay rò rỉ giá trị màu vật lý vào cấu trúc component.
-4. Bảo đảm tính bao hàm (`Inclusive Design`) và khả năng tiếp cận: các cặp màu và chỉ báo được kiểm tra đáp ứng những tiêu chí WCAG được liệt kê trong phạm vi Module 08 (SC 1.4.1, SC 1.4.3, SC 1.4.11), không bao giờ dùng màu sắc làm tín hiệu nhận thức duy nhất (không kết luận toàn bộ giao diện hoặc sản phẩm được chứng nhận WCAG 2.2 AA).
+4. Bảo đảm tính bao hàm (`Inclusive Design`) và khả năng tiếp cận: các cặp màu và chỉ báo được kiểm tra đáp ứng những tiêu chí WCAG được liệt kê trong phạm vi Module 08 (SC 1.4.1, SC 1.4.3, SC 1.4.11), không bao giờ dùng màu sắc làm tín hiệu nhận thức duy nhất.
 
 ### 1.3. Bộ Dữ Liệu Chuẩn Bốn Trạng Thái Vận Hành (Canonical Four-Tour Fixture)
 Màn hình điều phối TRIPFLOW quản lý danh mục bốn tour tiêu biểu tương ứng với bốn trạng thái thuộc phân loại trạng thái vận hành ngữ nghĩa (`Semantic Operational Status Taxonomy`):
-
-| Mã Tour | Tuyến Điều Phối | Trạng Thái Vận Hành | Nhãn Tiếng Việt | Biểu Tượng SVG | Chi Tiết Nghiệp Vụ Giả Lập | Điều Phối Viên | Tác Vụ Tương Tác |
-|---|---|---|---|---|---|---|---|
-| **TF-801** | `HAN-NBI-01` | `NORMAL` | **Bình thường** | Hình tròn (`Circle`) | Lịch trình đúng tiến độ, xe 45 chỗ xuất bến 07:30 (35/35 khách) | Huy Trần | Không yêu cầu |
-| **TF-802** | `HAN-SAP-02` | `ATTENTION` | **Cần chú ý** | Tam giác cảnh báo (`Warning Triangle`) | Chưa chốt xe trung chuyển bản Cát Cát. Hạn chốt 11:00 (18/20 khách) | Lan Nguyễn | Nút bấm: "Rà soát xe trung chuyển" |
-| **TF-803** | `HPH-HLB-03` | `ERROR` | **Lỗi đối tác** | Bát giác dừng (`Stop Octagon`) | Cảng vụ hoãn lệnh rời bến do dông lốc. 24 khách ở nhà chờ (24/24 khách) | Huy Trần | Nút bấm: "Kích hoạt phương án dự phòng" |
-| **TF-804** | `SGN-PQU-04` | `SUCCESS` | **Hoàn tất điều phối** | Khiên dấu tích (`Check Shield`) | 100% đối tác vé bay & resort đã xác nhận mã dịch vụ (42/42 khách) | Lan Nguyễn | Không yêu cầu |
+* **TF-801** — *Hạ Long Heritage Luxury Cruise*: `NORMAL` (Bình thường / Vận hành chuẩn).
+* **TF-802** — *Tràng An Eco-Spiritual Odyssey*: `ATTENTION` (Cần lưu ý / Quá tải luồng khách bến thuyền).
+* **TF-803** — *Sapa Fansipan Cloud Express*: `ERROR` (Khẩn cấp / Sự cố gió lớn tạm dừng cáp treo).
+* **TF-804** — *Phong Nha Chasm Deep Expedition*: `SUCCESS` (Hoàn tất / Đã xác thực an toàn địa chất).
 
 ---
 
-## 2. BA NGUYÊN TẮC CÓ NGUỒN VÀ PHẠM VI ÁP DỤNG (THREE BOUNDED PRINCIPLES)
+## 2. BA NGUYÊN TẮC THIẾT KẾ RÀNG BUỘC (THREE BOUNDED PRINCIPLES)
 
-### 2.1. Nguyên Tắc 1: Kiến Trúc Token Ba Tầng (Quy Ước Cục Bộ Module 08)
-* **Nguồn quy chuẩn & Định vị chuẩn (`Normative Source & Positioning`)**: Kiến trúc ba tầng (`Primitive -> Semantic -> Component`) là convention cục bộ của bài tập Module 08. Tài liệu [Design Tokens Format Module 2025.10](https://www.designtokens.org/TR/2025.10/format/) (Final Community Group Report phát hành ngày 2025-10-28 bởi W3C Design Tokens Community Group, xem tại [W3C Community Group](https://www.w3.org/community/design-tokens/)) được sử dụng làm nguồn tham khảo cho các khái niệm cốt lõi: token, group, types và alias/references. Báo cáo này tự nêu rõ rằng đây không phải W3C Standard và không nằm trên W3C Standards Track; đồng thời đặc tả DTCG không bắt buộc mô hình ba tầng CSS.
-* **Phạm vi áp dụng (`Scope of Application`)**: Áp dụng bắt buộc cho toàn bộ cấu trúc biến CSS Custom Properties trong `:root` của `directions/option_a.html`, `directions/option_b.html`, `index.html` và hợp đồng `COLOR_CONTRACT.yaml`.
-* **Cấu trúc phân tầng chuẩn tắc**:
-  1. **Tầng 1 — Primitive Tokens (Token Bảng Màu Thô)**: Các biến chứa giá trị mã màu Hex vật lý bất biến theo dải độ sáng từ `50` đến `950`, ví dụ: `--primitive-slate-900: #0F172A`, `--primitive-amber-600: #D97706`, `--primitive-warm-neutral-50: #FAF9F6`.
-  2. **Tầng 2 — Semantic Tokens (Token Ngữ Nghĩa Quyết Định Vai Trò)**: Ánh xạ từ Primitive Tokens sang mục đích giao diện trừu tượng, ví dụ: `--color-canvas-bg: var(--primitive-warm-neutral-50)`, `--color-brand-primary: var(--primitive-slate-900)`, `--color-focus-ring: var(--primitive-amber-600)`.
-  3. **Tầng 3 — Component Tokens (Token Thành Phần Giao Diện Cụ Thể)**: Ánh xạ từ Semantic Tokens sang từng linh kiện trực quan, ví dụ: `--dispatch-card-bg: var(--color-surface-bg)`, `--dispatch-input-border: var(--color-border-structural)`.
-* **Quy tắc bất biến (`Architectural Invariant`)**: Mã nguồn component chỉ được phép sử dụng Component Tokens hoặc Semantic Tokens. **Tuyệt đối cấm** việc gọi trực tiếp Primitive Tokens trong bất kỳ CSS selector nào.
+### 2.1. Phân Tách Vai Trò Thương Hiệu Khỏi Trạng Thái Vận Hành (`Brand vs Status Separation`)
+* Màu sắc nhận diện thương hiệu chính (`Brand Primary`: Deep Slate Ink `#0F172A` trong Option A hoặc Technical Indigo `#3730A3` trong Option B) được bảo vệ nghiêm ngặt: **chỉ sử dụng cho logo, tiêu đề nhận diện, và nút hành động chính cấp cao nhất (`Primary Dispatch CTA`)**.
+* **Tuyệt đối cấm** sử dụng Brand Primary để biểu thị trạng thái vận hành (`NORMAL`, `ATTENTION`, `ERROR`, `SUCCESS`). Trạng thái vận hành phải sử dụng các bảng màu chuyên biệt (`Semantic Palette`) để người điều phối không bao giờ nhầm lẫn giữa cấu trúc ứng dụng và tín hiệu khẩn nguy.
 
-### 2.2. Nguyên Tắc 2: Khả Năng Tiếp Cận Phi Màu Sắc Theo W3C WCAG 2.2 SC 1.4.1
-* **Nguồn quy chuẩn (`Normative Source`)**: [W3C WCAG 2.2 Success Criterion 1.4.1: Use of Color (Level A)](https://www.w3.org/TR/WCAG22/#use-of-color).
-* **Phạm vi áp dụng (`Scope of Application`)**: Áp dụng cho toàn bộ bốn trạng thái vận hành (`NORMAL`, `ATTENTION`, `ERROR`, `SUCCESS`) trong bảng điều phối và các chỉ báo tương tác trên giao diện.
-* **Quy tắc ba tầng tín hiệu song song (`Triple-Layer Redundant Cues`)**: Màu sắc không bao giờ là phương tiện duy nhất để truyền tải thông tin, chỉ thị hành động hoặc phân biệt thành phần thị giác. Mỗi trạng thái vận hành bắt buộc phải sở hữu đồng thời ba tầng cảm quan:
-  1. **Tầng 1 — Nhãn chữ tường minh (`Explicit Text Label`)**: Hiển thị rõ ràng tên trạng thái bằng tiếng Việt ("Bình thường", "Cần chú ý", "Lỗi đối tác", "Hoàn tất điều phối").
-  2. **Tầng 2 — Biểu tượng hình học phi màu sắc (`Geometric Non-Color SVG Marker`)**: Icon SVG nội tuyến với thuộc tính `aria-hidden="true"` và `focusable="false"` sở hữu hình dáng hình học khác biệt hoàn toàn (Tròn, Tam giác, Bát giác, Khiên).
-  3. **Tầng 3 — Màu sắc ngữ nghĩa tương phản cao (`High-Contrast Semantic Color`)**: Nền thẻ, viền thẻ và màu chữ đạt tỷ lệ tương phản chuẩn mực.
+### 2.2. Phân Tách Trạng Thái Vận Hành Khỏi Máy Trạng Thái Tương Tác (`Status vs Interaction FSM Segregation`)
+* **Phân loại Trạng thái Vận hành (`Operational Status Taxonomy`)**: Là thuộc tính dữ liệu nghiệp vụ của tour du lịch (`NORMAL`, `ATTENTION`, `ERROR`, `SUCCESS`).
+* **Máy Trạng thái Hữu hạn Tương tác (`Interaction Finite State Machine — FSM`)**: Là trạng thái giao diện của hành động điều phối trên linh kiện (`IDLE`, `VALIDATING`, `SAVING`, `FAILURE`, `CONFIRMED`).
+* Khi nhấn nút xử lý điều phối (ví dụ trên tour TF-802), nút chuyển dịch qua FSM:
+  - `IDLE` (Khởi tạo, sẵn sàng tiếp nhận tương tác).
+  - `VALIDATING` (Kiểm tra tham số, `aria-disabled="true"`, con trỏ bận).
+  - `SAVING` (Đang đồng bộ phân bổ xe/thuyền, `aria-busy="true"`, chặn tương tác lặp).
+  - `FAILURE` (Mô phỏng lỗi mạng/hạ tầng, hiển thị nút thử lại `btn-retry`, trả `aria-disabled="false"` mà không giật mất tiêu điểm bàn phím).
+  - `CONFIRMED` (Xác nhận thành công, chuyển sang `btn-confirmed`, hiển thị trạng thái hoàn tất).
+* Hai hệ thống phân loại này độc lập về mặt ngữ nghĩa và không được chồng chéo token.
 
-### 2.3. Nguyên Tắc 3: Đo Lường Tương Phản Toán Học Theo W3C WCAG 2.2 SC 1.4.3 & SC 1.4.11
-* **Nguồn quy chuẩn (`Normative Source`)**:
-  - [W3C WCAG 2.2 Success Criterion 1.4.3: Contrast (Minimum) (Level AA)](https://www.w3.org/TR/WCAG22/#contrast-minimum).
-  - [W3C WCAG 2.2 Success Criterion 1.4.11: Non-text Contrast (Level AA)](https://www.w3.org/TR/WCAG22/#non-text-contrast).
-* **Phạm vi áp dụng (`Scope of Application`)**: Áp dụng cho tất cả các cặp văn bản thông thường, văn bản lớn, đường viền giao diện tương tác và chỉ báo tiêu điểm bàn phím (`:focus-visible`).
-* **Công thức quang học sRGB chuẩn hóa**:
-  - Độ chói tương đối (`Relative Luminance $L$`):
-    $$L = 0.2126 \times R_L + 0.7152 \times G_L + 0.0722 \times B_L$$
-    Trong đó mỗi kênh màu $C \in \{R, G, B\}$ chuẩn hóa trong khoảng $[0, 1]$ được tuyến tính hóa:
-    $$C_L = \begin{cases} \frac{C}{12.92} & \text{nếu } C \le 0.04045 \\ \left(\frac{C + 0.055}{1.055}\right)^{2.4} & \text{nếu } C > 0.04045 \end{cases}$$
-  - Tỷ lệ tương phản đối chiếu (`Contrast Ratio $CR$`):
-    $$CR = \frac{L_1 + 0.05}{L_2 + 0.05} \quad (L_1 > L_2)$$
-* **Ngưỡng kiểm toán bắt buộc**:
-  - Văn bản thông thường (Normal text): $CR \ge 4.5:1$.
-  - Văn bản lớn (Large text $\ge 18pt$ hoặc $\ge 14pt$ đậm): $CR \ge 3.0:1$.
-  - Ranh giới linh kiện giao diện có ý nghĩa (Meaningful UI boundaries / Focus rings): $CR \ge 3.0:1$.
-  - Viền trang trí (Decorative borders): Miễn trừ theo W3C Understanding SC 1.4.11 khi thành phần đã được định hình rõ ràng bởi nền màu, icon và nhãn chữ.
+### 2.3. Ba Tầng Cảm Quan Đồng Thời Cho Mọi Trạng Thái Vận Hành (`Three Synchronized Sensory Layers`)
+Để tuân thủ WCAG 2.2 SC 1.4.1 (Use of Color), không có bất kỳ trạng thái vận hành nào được truyền tải duy nhất qua sắc độ màu sắc. Mỗi nhãn trạng thái (`status badge`) bắt buộc phải hiển thị đồng thời 3 tầng thông tin:
+1. **Tầng 1 — Nhãn chữ tiếng Việt tường minh (`status_label`)**: Chữ viết hoa có dấu rõ ràng (`BÌNH THƯỜNG`, `LƯU Ý`, `KHẨN CẤP`, `HOÀN TẤT`).
+2. **Tầng 2 — Ký hiệu hình học / SVG độc bản (`status_icon`)**: Hình dạng hình học phi màu sắc khác biệt hoàn toàn:
+   - `NORMAL`: Vòng tròn đặc kèm biểu tượng chấm tròn ổn định.
+   - `ATTENTION`: Tam giác cảnh báo kèm dấu chấm than.
+   - `ERROR`: Hình thoi sắc cạnh kèm dấu X hoặc tia cảnh báo khẩn cấp.
+   - `SUCCESS`: Hình khiên bảo vệ kèm dấu kiểm xác thực.
+3. **Tầng 3 — Hệ token màu tương phản cao (`status_color`)**: Bộ ba token (nền, viền, chữ) đạt chuẩn tương phản cao trên nền canvas.
 
 ---
 
-## 3. PHÂN TÍCH HAI HƯỚNG THỬ NGHIỆM ĐỐI LẬP (TWO DISTINCT VISUAL DIRECTIONS ANALYSIS)
+## 3. PHÂN TÍCH HAI HƯỚNG NGHỆ THUẬT (TWO COLOR DIRECTIONS ANALYSIS)
 
-Tuân thủ nghiêm ngặt chỉ thị của Architectural Controller Sol và yêu cầu R2, hệ thống đã hiện thực hóa hai hướng nghệ thuật tương phản rõ rệt trên cùng một bộ dữ liệu chuẩn:
-
-```
-┌───────────────────────────────────────────────────────────────────────────────────────┐
-│ HƯỚNG NGHỆ THUẬT A: EDITORIAL WARM DISPATCH (Sổ Cái Giấy Ngà Biên Tập)                 │
-│ Tệp triển khai: directions/option_a.html                                              │
-│ Triết lý: Êm dịu thị giác, ấm cúng, sang trọng, chiều sâu phân tầng nhẹ nhàng.         │
-├───────────────────────────────────────────────────────────────────────────────────────┤
-│ HƯỚNG NGHỆ THUẬT B: TECHNICAL SLATE HIGH-CONTRAST (Bảng Kỹ Thuật Tương Phản Cao)      │
-│ Tệp triển khai: directions/option_b.html                                              │
-│ Triết lý: Sắc lạnh công nghiệp, dứt khoát, kỷ luật cao, tối đa tốc độ rà quét.       │
-└───────────────────────────────────────────────────────────────────────────────────────┘
-```
-
-### 3.1. Bảng So Sánh Viễn Trắc Định Lượng (Quantitative Telemetry Comparison)
-
-| Tiêu Chí Kỹ Thuật | Hướng A: Editorial Warm Dispatch | Hướng B: Technical Slate High-Contrast | Ý Nghĩa Thiết Kế & Nhận Diện |
-|---|---|---|---|
-| **Màu Nền Canvas Chính (`--color-canvas-bg`)** | Warm Alabaster `#FAF9F6` | Cool Ice Slate `#F8FAFC` | Khác biệt rõ rệt về nhiệt độ màu: Warm Neutral ấm dịu vs Cool Ice lạnh dứt khoát. |
-| **Màu Nền Khối Linh Kiện (`--color-surface-bg`)** | Static White `#FFFFFF` | Static White `#FFFFFF` | Cùng tạo phân tầng thẻ nổi trên canvas nền. |
-| **Vai Trò Brand Primary (`--color-brand-primary`)** | Deep Slate Ink `#0F172A` | Technical Indigo `#3730A3` | Phân lập 100% Brand khỏi Operational Status: Slate trung tính vs Indigo đậm nét công nghệ. |
-| **Vòng Tiêu Điểm Bàn Phím (`--color-focus-ring`)** | Amber Gold `#D97706` | Cobalt Blue `#2563EB` | Nhận diện tiêu điểm rõ ràng: Hướng A dùng Hổ phách ấm, Hướng B dùng Cobalt kỹ thuật. |
-| **Chiến Lược Đường Viền Thẻ & Huy Hiệu** | Viền mảnh 1px, màu dịu tinh tế | Viền cứng 1.5px, tương phản mạnh mẽ | Hướng A ưu tiên diện tích màu nền êm; Hướng B ưu tiên khung cấu trúc định hình sắc nét. |
-| **Kiểu Dáng Huy Hiệu (`Status Badge Border-Radius`)** | Bo tròn dạng viên thuốc (`pill` 9999px) | Bo góc kỹ thuật nhẹ (`rounded` 4px) | Hướng A mang phong cách tạp chí mềm mại; Hướng B mang dáng dấp bảng số liệu công nghiệp. |
-| **Độ Tương Phản Thấp Nhất (Normal Text)** | `4.5097:1` (ATTENTION) | `4.7431:1` (ATTENTION) | Cả hai hướng đều thỏa mãn và vượt ngưỡng WCAG 2.2 AA ($CR \ge 4.5:1$). |
-| **Độ Tương Phản Cao Nhất (Primary Action)** | `17.8525:1` | `12.1648:1` | Cả hai hướng bảo đảm hành động chính cực kỳ nổi bật trên nền giao diện. |
-
-### 3.2. Tuân Thủ Hiệu Chỉnh Khóa P05 (No Arbitrary Delta L Cutoff)
-Báo cáo và mã nguồn loại bỏ hoàn toàn các ngưỡng toán học tự chế `Delta L >= 0.05` vô căn cứ. Sự khác biệt giữa Hướng A và Hướng B được định hình bằng:
-1. Nhiệt độ màu sắc thực tế (`Color Temperature`: Warm Neutral Alabaster vs Cool Slate).
-2. Vai trò nhận diện thương hiệu (`Brand Identity`: Deep Slate Ink vs Technical Indigo).
-3. Chiến lược biên giới hình học (`Boundary Strategy`: Mảnh dịu dạng pill vs Cứng cáp dạng rounded góc vuông).
-4. Minh chứng thực tế qua 2 tệp ảnh chụp DPR=2 độc lập: `option_a_desktop_1440x900.png` và `option_b_desktop_1440x900.png`.
+| Tiêu Chí Đánh Giá | Hướng A — Editorial Warm Dispatch (`directions/option_a.html`) | Hướng B — Technical Slate High-Contrast (`directions/option_b.html`) |
+|---|---|---|
+| **Luận đề Thị giác (`Visual Thesis`)** | *Sổ cái Điều phối Giấy ngà Trầm ấm*: Lấy cảm hứng từ bảng điều phối giấy thủ công cao cấp kết hợp mực in phiến đá, mang lại cảm giác tĩnh tại, giảm căng thẳng thị giác cho nhân viên điều phối làm việc ca đêm dài. | *Bảng Giám sát Kỹ thuật Tương phản Cao*: Lấy cảm hứng từ màn hình trung tâm kiểm soát bay và giao diện radar hàng hải, tối đa hóa độ sắc nét của ký tự và mã hiệu dưới ánh sáng môi trường mạnh. |
+| **Bảng Màu Nền (`Canvas Surface`)** | Nền Alabaster ấm `#FAF9F6`, bề mặt thẻ Trắng ấm `#FFFFFF`. | Nền Ice Slate lạnh `#F8FAFC`, bề mặt thẻ Trắng tinh khiết `#FFFFFF`. |
+| **Màu Thương Hiệu (`Brand Primary`)** | Deep Slate Ink `#0F172A` (Mực đá phiến sâu thẳm). | Technical Indigo `#3730A3` (Chàm kỹ thuật điện tử). |
+| **Vòng Tiêu Điểm Bàn Phím (`Focus Ring`)** | Amber sáng ấm `#D97706` (Tương phản quang học 3.19:1). | Cobalt điện tử `#2563EB` (Tương phản quang học 4.60:1). |
+| **Chiến Lược Huy Hiệu Trạng Thái** | Nền phấn màu nhẹ nhàng (`calm pastel`), độ bão hòa kiểm soát, đường viền thanh lịch 1px. | Màu nền đậm đà rõ khối, đường viền cấu trúc 1.5px nổi bật. |
+| **Bóng Đổ Giao Diện (`Elevation Shadow`)** | Mềm mại, khuếch tán rộng `rgba(15, 23, 42, 0.05)`. | Sắc nét, tương phản góc cạnh `rgba(2, 6, 23, 0.08)`. |
 
 ---
 
-## 4. HƯỚNG ĐƯỢC CHỌN & HAI ĐÁNH ĐỔI KỸ THUẬT (SELECTED CANDIDATE & TWO TRADE-OFFS)
+## 4. HƯỚNG ĐƯỢC CHỌN & PHÂN TÍCH ĐÁNH ĐỔI (SELECTED CANDIDATE: OPTION A REFINED)
 
-### 4.1. Lựa Chọn Bản Ứng Viên Tuyển Chọn (Candidate Release — Refined Option A)
-Hệ thống chọn lựa **Refined Option A (Sổ Cái Giấy Ngà Biên Tập Hiệu Chỉnh)** làm bản phát hành ứng viên chính thức (`index.html`) vì tính phù hợp vượt trội với bối cảnh ca trực điều phối dài giờ.
+### 4.1. Quyết Định Lựa Chọn Hướng Đi
+Hướng **Option A Refined (Editorial Warm Dispatch)** được chọn làm ứng viên phát hành chính thức trong `index.html`, và đã được Architectural Controller Sol chính thức chấp thuận (`ACCEPTED_FOR_EXERCISE`).
 
-### 4.2. Đánh Đổi Kỹ Thuật 1: Độ Ấm Của Alabaster (#FAF9F6) Đối Trọng Độ Trắng Gắt (#FFFFFF) & Tương Phản Tuyệt Đối
-* **Bản chất đánh đổi (`Technical Trade-off`)**:
-  - Nếu sử dụng nền trắng tuyệt đối `#FFFFFF`, độ tương phản toán học của chữ Slate `#0F172A` đạt mức tối đa **`17.8525:1`**.
-  - Khi chọn nền Alabaster `#FAF9F6`, tỷ lệ tương phản chữ trên canvas giảm nhẹ xuống **`16.9564:1`** (giảm xấp xỉ 5.0%).
-* **Lý do kỹ thuật chấp nhận đánh đổi**:
-  - Mức `16.9564:1` vẫn vượt chuẩn WCAG AA (`4.5:1`) tới 376%, bảo đảm khả năng đọc xuất sắc.
-  - Tông màu giấy ngà Alabaster triệt tiêu bức xạ ánh sáng chói trực tiếp từ màn hình LED/IPS, giúp điều phối viên giảm đáng kể hiện tượng mỏi mắt thị giác trong ca làm việc kéo dài 8-12 tiếng.
-  - Tạo chiều sâu không gian tự nhiên khi đặt thẻ linh kiện nền trắng `#FFFFFF` lên canvas ngà `#FAF9F6`.
-
-### 4.3. Đánh Đổi Kỹ Thuật 2: Cơ Chế `aria-disabled="true"` vs. Thuộc Tính HTML Bản Địa `disabled`
-* **Bản chất đánh đổi (`Technical Trade-off`)**:
-  - Thuộc tính bản địa `<button disabled>` tự động ngăn chặn hoàn toàn click và phím Enter/Space từ trình duyệt mà không cần can thiệp JavaScript.
-  - Tuy nhiên, khi một phần tử đang nắm giữ con trỏ tiêu điểm (`activeElement`) bị gắn `disabled`, trình duyệt lập tức đẩy tiêu điểm về thẻ `<body>` (`Focus Eviction Bug`), khiến người dùng bàn phím mất dấu vị trí duyệt web.
-* **Lý do kỹ thuật chấp nhận đánh đổi**:
-  - Chấp nhận viết mã JavaScript quản lý trạng thái và triệt tiêu sự kiện bàn phím khi `aria-disabled="true"` để bảo toàn trải nghiệm tiếp cận.
-  - Giữ nguyên nút bấm trong cây tiêu điểm (`Tab Order`), bảo đảm người dùng khiếm thị hoặc người dùng bàn phím nhận được thông báo trạng thái mà không bị văng tiêu điểm.
+### 4.2. Đánh Đổi Kỹ Thuật & Thẩm Mỹ (`Engineering & Aesthetic Trade-offs`)
+1. **Đánh đổi về cảm giác nhiệt độ màu**: Nền Warm Alabaster (`#FAF9F6`) tạo cảm giác dịu mắt và thoải mái trong ca trực kéo dài, nhưng biên độ tương phản tuyệt đối của một số nhãn chữ phụ thấp hơn một chút so với nền Cool Ice Slate (`#F8FAFC`) của Option B. Tuy nhiên, toàn bộ 42 vai trò đều vượt ngưỡng WCAG 2.2 AA.
+2. **Đánh đổi về cấu trúc viền**: Option A sử dụng viền tinh tế 1px để duy trì tính trang nhã, đòi hỏi việc tính toán độ tương phản của chữ bên trong badge phải cao hơn (tất cả đều đạt $ge 4.5:1$, ví dụ Attention Text đạt `4.5097:1`).
 
 ---
 
-## 5. BẢNG ÁNH XẠ: YÊU CẦU -> HỢP ĐỒNG -> CHỈ MỤC MÃ NGUỒN -> BẰNG CHỨNG -> PHÁN QUYẾT
-### (Requirement-to-Evidence Mapping Matrix)
+## 5. BẢNG ĐỐI CHIẾU YÊU CẦU — BẰNG CHỨNG VIỄN TRẮC (REQUIREMENT TO EVIDENCE MAPPING)
 
-Bảng ánh xạ toàn diện chứng minh sự liên kết khép kín giữa các yêu cầu, quy định khóa P01–P07, phát hiện F01–F07, Gates C01–C07 và bằng chứng viễn trắc thực tế trích xuất từ `VERIFICATION.json`:
-
-| Yêu Cầu & Gate | Quy Định Khóa & Sửa Đổi | Hợp Đồng Token (`COLOR_CONTRACT.yaml`) | Selector Trong Mã Nguồn (`index.html`) | Bằng Chứng Viễn Trắc Thực Tế (`VERIFICATION.json`) | Phán Quyết |
-|---|---|---|---|---|:---:|
-| **C01: Kiến Trúc Token Ba Tầng** | **P04 / F06** | `primitive_tokens` $\to$ `semantic_tokens` $\to$ `component_tokens` | `:root` & `.btn-primary`, `.dispatch-badge` | 0 vi phạm primitive trong selector; runtime styles khớp chính xác contract | **PASS** |
-| **C02: Phân Kỳ Hai Hướng Nghệ Thuật** | **P05** | `option_a` (#FAF9F6, #0F172A) vs `option_b` (#F8FAFC, #3730A3) | `directions/option_a.html` & `directions/option_b.html` | Cùng 4 tour chuẩn; khác biệt canvas, brand role, border strategy và typography | **PASS** |
-| **C03: Tương Phản — Chữ Huy Hiệu Normal** | **P03 / F05** | `--color-status-normal-text` & `--color-status-normal-bg` | `.dispatch-badge[data-status="NORMAL"]` | Chữ `rgb(71, 85, 105)` trên Nền `rgb(241, 245, 249)` $\to$ Tỷ lệ **6.9170:1** (Chuẩn $\ge 4.5:1$) | **PASS** |
-| **C03: Tương Phản — Chữ Huy Hiệu Attention** | **P03 / F05** | `--color-status-attention-text` & `--color-status-attention-bg` | `.dispatch-badge[data-status="ATTENTION"]` | Chữ `rgb(180, 83, 9)` trên Nền `rgb(254, 243, 199)` $\to$ Tỷ lệ **4.5097:1** (Chuẩn $\ge 4.5:1$) | **PASS** |
-| **C03: Tương Phản — Chữ Huy Hiệu Error** | **P03 / F05** | `--color-status-error-text` & `--color-status-error-bg` | `.dispatch-badge[data-status="ERROR"]` | Chữ `rgb(190, 18, 60)` trên Nền `rgb(255, 228, 230)` $\to$ Tỷ lệ **5.2352:1** (Chuẩn $\ge 4.5:1$) | **PASS** |
-| **C03: Tương Phản — Chữ Huy Hiệu Success** | **P03 / F05** | `--color-status-success-text` & `--color-status-success-bg` | `.dispatch-badge[data-status="SUCCESS"]` | Chữ `rgb(21, 128, 61)` trên Nền `rgb(220, 252, 231)` $\to$ Tỷ lệ **4.5669:1** (Chuẩn $\ge 4.5:1$) | **PASS** |
-| **C03: Tương Phản — Nút Primary CTA** | **P03 / F05** | `--color-action-primary-text` & `--color-action-primary-bg` | `#btn-global-dispatch` | Chữ `rgb(255, 255, 255)` trên Nền `rgb(15, 23, 42)` $\to$ Tỷ lệ **17.8525:1** (Chuẩn $\ge 4.5:1$) | **PASS** |
-| **C03: Tương Phản — Filter Tab Active** | **P03 / F05** | `--color-action-primary-text` & `--color-brand-primary` | `.filter-tab.active` | Chữ `rgb(255, 255, 255)` trên Nền `rgb(15, 23, 42)` $\to$ Tỷ lệ **17.8525:1** (Chuẩn $\ge 4.5:1$) | **PASS** |
-| **C03: Tương Phản — Filter Tab Inactive** | **P03 / F05** | `--dispatch-filter-tab-text` & `--dispatch-filter-tab-bg` | `.filter-tab:not(.active)` | Chữ `rgb(51, 65, 85)` trên Nền `rgb(255, 255, 255)` $\to$ Tỷ lệ **7.5777:1** (Chuẩn $\ge 4.5:1$) | **PASS** |
-| **C03: Tương Phản — Viền Ô Tìm Kiếm** | **P03 / F05** | `--color-border-structural` (`#64748B`) | `#input-tour-search` | Viền `rgb(100, 116, 139)` trên Nền `rgb(250, 249, 246)` $\to$ Tỷ lệ **4.7588:1** (Chuẩn $\ge 3.0:1$) | **PASS** |
-| **C03: Phân Loại Viền Trang Trí Huy Hiệu** | **F05** | `--color-status-*-border` | `.dispatch-badge` | Viền trang trí bổ trợ, phân loại `decorative_border` miễn trừ SC 1.4.11 theo W3C Understanding | **PASS (EXEMPT)** |
-| **C04: Khả Năng Tiếp Cận Phi Màu Sắc** | **P06 / F04** | `P06_color_independence_redundant_cues` | `.badge-text`, `.badge-icon svg[aria-hidden="true"]` | 4/4 trạng thái có đủ 3 tầng cảm quan; có ảnh Grayscale, Deuteranopia, Protanopia | **PASS** |
-| **C05: Tiêu Điểm Bàn Phím — Primary CTA** | **P07 / F02** | `--color-focus-ring` (`#D97706`) | `#btn-global-dispatch:focus-visible` | Outline 2px solid, độ tương phản **3.0259:1** trên Canvas `#FAF9F6` (Chuẩn $\ge 3.0:1$) | **PASS** |
-| **C05: Tiêu Điểm Bàn Phím — Secondary Filter** | **P07 / F02** | `--color-focus-ring` (`#D97706`) | `#input-tour-search:focus-visible` | Outline 2px solid, độ tương phản **3.1858:1** trên Surface `#FFFFFF` (Chuẩn $\ge 3.0:1$) | **PASS** |
-| **C05: Tiêu Điểm Bàn Phím — Tour Action** | **P07 / F02** | `--color-focus-ring` (`#D97706`) | `#action-btn-tf802:focus-visible` | Outline 2px solid, độ tương phản **3.1858:1** trên Surface `#FFFFFF` (Chuẩn $\ge 3.0:1$) | **PASS** |
-| **C06: Độ Co Giãn 0 Tràn Ngang** | **F03** | `INVARIANTS.overflow` | `body`, `.ledger-container`, `.search-box` | Desktop (1440), Tablet (768), Mobile (390) đều đạt `scrollWidth <= clientWidth`; 0 local scrollers | **PASS** |
-| **C07: Báo Cáo & Phân Tách Dữ Liệu** | **P02 / F07** | `governance.classification` | `DESIGN_TRAINING_008_REPORT.md` | Tách bạch 3 khối Telemetry, Visual Review, và Hypotheses; đủ 9 ảnh DPR=2 đồng bộ hash | **PASS** |
-| **Zero Motion Invariant** | **F01** | `INVARIANTS.zero_motion` | Toàn bộ mã nguồn CSS/JS | 0 transition, 0 animation, 0 keyframes; đồng hồ đóng băng fixture tĩnh chuẩn | **PASS** |
+| Mã Yêu Cầu | Tên Cổng Kiểm Tra | Ràng Buộc Kỹ Thuật Bắt Buộc | Bằng Chứng Viễn Trắc Thực Tế (`VERIFICATION.json`) | Kết Quả Tự Kiểm |
+|:---:|---|---|---|:---:|
+| **Invariant** | **Zero Motion Compliance** | 0 transitions, 0 animations, 0 keyframes; đồng hồ đứng yên. | `transition_duration: 0s`; `animation_name: none`; `keyframes: 0`; `clock_frozen: true`. | **SELF_CHECK_PASS** |
+| **Gate C01** | **Token Architecture** | Kiến trúc 3 tầng nghiêm ngặt; 0 literal trong semantic tokens; 0 primitive leak; phân loại 51 component tokens. | 38 semantic tokens (0 literal, 0 invalid non-var); 51 component tokens: 45 color-bearing (45/45 resolved) + 6 non-color; 0 primitive refs in selectors; detector positive control passed. | **SELF_CHECK_PASS** |
+| **Gate C02** | **Two Directions** | Hai hướng nghệ thuật khác biệt rõ nét trên cùng bộ dữ liệu 4 tour canonical. | Option A (`#FAF9F6`, `#0F172A`) vs Option B (`#F8FAFC`, `#3730A3`); cả hai render đầy đủ 4 tour. | **SELF_CHECK_PASS** |
+| **Gate C03** | **Contrast Inventory** | 42/42 vai trò đo đạc từ DOM computed styles; text $ge 4.5:1$ (lớn $ge 3:1$); non-text $ge 3:1$. | Đo đạc đầy đủ 42 vai trò thực tế; 0 fallback; 0 activation fails; mọi vai trò text/non-text đều đạt ngưỡng hoặc miễn trừ hợp lệ. | **SELF_CHECK_PASS** |
+| **Gate C04** | **Color Independence** | Đủ 3 tầng cảm quan (chữ + icon + màu); 3 ảnh mô phỏng CVD (Grayscale, Deuteranopia, Protanopia). | 4/4 trạng thái có đủ 3 tầng cảm quan; 3 ảnh CVD artifacts được sinh với ma trận chuẩn và kiểm chứng kích thước. | **SELF_CHECK_PASS** |
+| **Gate C05** | **Native Focus Traversal** | Vòng focus $ge 2px$ solid, tương phản $ge 3:1$ trên Primary CTA, Secondary Button, Tour Action. | Primary CTA: 2px solid, 3.0259:1; Secondary: 2px solid, 3.1858:1; Tour Action: 2px solid, 3.1858:1. | **SELF_CHECK_PASS** |
+| **Gate C06** | **Responsive Cadence** | Không tràn ngang (`scrollWidth <= innerWidth`) trên 3 viewports; caption block tỷ lệ 1:1. | Desktop (1440px), Tablet (768px), Mobile (390px) đều 0 overflow; caption block tỷ lệ 1.0 không phân mảnh. | **SELF_CHECK_PASS** |
+| **Gate C07** | **Evidence Integrity** | Khóa băm nguồn đóng băng; 5 reviews nguyên vẹn; 9 ảnh chuẩn; report governance sạch; đồng bộ viễn trắc. | Frozen hashes verified; 5 official reviews byte-identical; 9 screenshots verified; report governance passed; cross-ledger sync 100%. | **SELF_CHECK_PASS** |
 
 ---
 
-## 6. KẾT QUẢ KIỂM THỬ & GIỚI HẠN BẰNG CHỨNG (TEST RESULTS & EVIDENCE LIMITS)
+## 6. DỮ LIỆU VIỄN TRẮC CHI TIẾT (DETAILED TELEMETRY EVIDENCE)
 
-Để tuân thủ tuyệt đối quy định phân lập dữ liệu tại Gate `C07` và các chỉ thị `P02`, `P06`, phần này được chia thành ba khối độc lập:
+### 6.1. Bảng Đo Đạc Tương Phản 42 Vai Trò Giao Diện (Gate C03 Role Inventory)
 
-```
-┌───────────────────────────────────────────────────────────────────────────────────────┐
-│ KHỐI 1: SỐ ĐO VIỄN TRẮC KHÁCH QUAN (Programmatic Telemetry Ledger)                     │
-│ Dữ liệu toán học, DOM computed styles và checksum trích xuất trực tiếp từ harness.    │
-├───────────────────────────────────────────────────────────────────────────────────────┤
-│ KHỐI 2: THẨM ĐỊNH THỊ GIÁC ĐỘC LẬP (Controller Visual Review Artifacts)                │
-│ Bằng chứng 9 ảnh chụp DPR=2 gửi Architectural Controller Sol thẩm định độc lập.       │
-├───────────────────────────────────────────────────────────────────────────────────────┤
-│ KHỐI 3: GIẢ THUYẾT THIẾT KẾ & GIỚI HẠN BẰNG CHỨNG (Design Hypotheses & Limits)        │
-│ Định hình phạm vi ứng dụng, điều kiện biên và các giới hạn thực nghiệm.               │
-└───────────────────────────────────────────────────────────────────────────────────────┘
-```
+| Mã Role (`role_id`) | Tên Vai Trò Giao Diện | Phân Loại | Màu Chữ (FG) | Màu Nền (BG) | Phương Pháp Đo | Tỷ Lệ Đo Đạc | Ngưỡng Yêu Cầu | Kết Quả Tự Kiểm |
+|---|---|---|---|---|---|---|---|:---:|
+| `role_canvas_body` | Default Canvas Body Text | `normal_text` | `rgb(15, 23, 42)` | `rgb(250, 249, 246)` | `runtime_computed_static` | **16.9564:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_fixture_notice_text` | Fixture Notice Banner Text | `normal_text` | `rgb(71, 85, 105)` | `rgb(245, 244, 240)` | `runtime_computed_static` | **6.8852:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_fixture_notice_tag` | Fixture Notice Tag Text | `normal_text` | `rgb(255, 255, 255)` | `rgb(15, 23, 42)` | `runtime_computed_static` | **17.8525:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_brand_logo` | Brand Identity Logo Link | `large_text` | `rgb(15, 23, 42)` | `rgb(250, 249, 246)` | `runtime_computed_static` | **16.9564:1** | >= 3:1 | **SELF_CHECK_PASS** |
+| `role_brand_direction_tag` | Brand Direction Tag | `normal_text` | `rgb(71, 85, 105)` | `rgb(250, 249, 246)` | `runtime_computed_static` | **7.1973:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_app_headline_h1` | App Header Headline H1 | `large_text` | `rgb(15, 23, 42)` | `rgb(250, 249, 246)` | `runtime_computed_static` | **16.9564:1** | >= 3:1 | **SELF_CHECK_PASS** |
+| `role_live_clock_text` | Live System Clock Text | `normal_text` | `rgb(71, 85, 105)` | `rgb(250, 249, 246)` | `runtime_computed_static` | **7.1973:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_kpi_label` | KPI Metric Label | `normal_text` | `rgb(71, 85, 105)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **7.5777:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_kpi_value` | KPI Metric Value | `large_text` | `rgb(15, 23, 42)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **17.8525:1** | >= 3:1 | **SELF_CHECK_PASS** |
+| `role_kpi_subtext` | KPI Metric Subtext | `normal_text` | `rgb(100, 116, 139)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **4.7588:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_search_input_text` | Search Input Text | `normal_text` | `rgb(15, 23, 42)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **17.8525:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_search_input_placeholder` | Search Input Placeholder | `normal_text` | `rgb(100, 116, 139)` | `rgb(255, 255, 255)` | `runtime_computed_placeholder` | **4.7588:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_search_input_border` | Search Input Structural Border | `meaningful_non_text` | `rgb(100, 116, 139)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **4.7588:1** | >= 3:1 | **SELF_CHECK_PASS** |
+| `role_filter_tab_inactive` | Filter Tab Inactive | `normal_text` | `rgb(71, 85, 105)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **7.5777:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_filter_tab_active` | Filter Tab Active | `normal_text` | `rgb(255, 255, 255)` | `rgb(15, 23, 42)` | `runtime_computed_static` | **17.8525:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_primary_cta_default` | Primary CTA Default Text | `normal_text` | `rgb(255, 255, 255)` | `rgb(15, 23, 42)` | `runtime_computed_static` | **17.8525:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_primary_cta_hover` | Primary CTA Hover Text | `normal_text` | `rgb(255, 255, 255)` | `rgb(30, 41, 59)` | `runtime_computed_hover` | **14.6287:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_primary_cta_active` | Primary CTA Active Text | `normal_text` | `rgb(255, 255, 255)` | `rgb(2, 6, 23)` | `runtime_computed_active` | **20.1728:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_secondary_btn_default` | Secondary Action Button Default | `normal_text` | `rgb(15, 23, 42)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **17.8525:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_secondary_btn_hover` | Secondary Action Button Hover | `normal_text` | `rgb(15, 23, 42)` | `rgb(245, 244, 240)` | `runtime_computed_hover` | **16.2212:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_table_caption` | Table Caption Title | `large_text` | `rgb(15, 23, 42)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **17.8525:1** | >= 3:1 | **SELF_CHECK_PASS** |
+| `role_table_header` | Table Header Column Text | `normal_text` | `rgb(71, 85, 105)` | `rgb(245, 244, 240)` | `runtime_computed_static` | **6.8852:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_tour_title` | Tour Title (.tour-title) | `normal_text` | `rgb(15, 23, 42)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **17.8525:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_tour_note` | Tour Note / Route Context | `normal_text` | `rgb(71, 85, 105)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **7.5777:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_tour_id` | Tour ID Code (.tour-id) | `normal_text` | `rgb(15, 23, 42)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **17.8525:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_tour_subcode` | Tour Subcode (.tour-subcode) | `normal_text` | `rgb(100, 116, 139)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **4.7588:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_tour_pax` | Tour Pax Tabular Number | `normal_text` | `rgb(15, 23, 42)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **17.8525:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_tour_coordinator` | Tour Coordinator Name | `normal_text` | `rgb(15, 23, 42)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **17.8525:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_badge_normal_text` | Badge NORMAL Text | `normal_text` | `rgb(71, 85, 105)` | `rgb(241, 245, 249)` | `runtime_computed_static` | **6.9170:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_badge_attention_text` | Badge ATTENTION Text | `normal_text` | `rgb(180, 83, 9)` | `rgb(254, 243, 199)` | `runtime_computed_static` | **4.5097:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_badge_error_text` | Badge ERROR Text | `normal_text` | `rgb(190, 18, 60)` | `rgb(255, 228, 230)` | `runtime_computed_static` | **5.2352:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_badge_success_text` | Badge SUCCESS Text | `normal_text` | `rgb(21, 128, 61)` | `rgb(220, 252, 231)` | `runtime_computed_static` | **4.5669:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_badge_normal_border` | Badge NORMAL Border | `decorative` | `rgb(203, 213, 225)` | `rgb(250, 249, 246)` | `runtime_computed_static` | **1.4102:1** | Miễn trừ SC 1.4.11 | **SELF_CHECK_PASS (EXEMPT)** |
+| `role_badge_attention_border` | Badge ATTENTION Border | `decorative` | `rgb(245, 158, 11)` | `rgb(250, 249, 246)` | `runtime_computed_static` | **2.0399:1** | Miễn trừ SC 1.4.11 | **SELF_CHECK_PASS (EXEMPT)** |
+| `role_badge_error_border` | Badge ERROR Border | `decorative` | `rgb(244, 63, 94)` | `rgb(250, 249, 246)` | `runtime_computed_static` | **3.4875:1** | Miễn trừ SC 1.4.11 | **SELF_CHECK_PASS (EXEMPT)** |
+| `role_badge_success_border` | Badge SUCCESS Border | `decorative` | `rgb(34, 197, 94)` | `rgb(250, 249, 246)` | `runtime_computed_static` | **2.1642:1** | Miễn trừ SC 1.4.11 | **SELF_CHECK_PASS (EXEMPT)** |
+| `role_tour_action_btn` | Tour Action Button (TF-802) | `normal_text` | `rgb(15, 23, 42)` | `rgb(255, 255, 255)` | `runtime_computed_static` | **17.8525:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_emergency_action_default` | Emergency Action Default (TF-803) | `normal_text` | `rgb(190, 18, 60)` | `rgb(255, 228, 230)` | `runtime_computed_static` | **5.2352:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_emergency_action_hover` | Emergency Action Hover (TF-803) | `normal_text` | `rgb(190, 18, 60)` | `rgb(245, 244, 240)` | `runtime_computed_hover` | **5.7108:1** | >= 4.5:1 | **SELF_CHECK_PASS** |
+| `role_focus_ring_primary_cta` | Focus Ring Primary CTA | `meaningful_non_text` | `rgb(217, 119, 6)` | `rgb(250, 249, 246)` | `runtime_computed_focus_native_tab` | **3.0259:1** | >= 3:1 | **SELF_CHECK_PASS** |
+| `role_focus_ring_secondary` | Focus Ring Search/Filter | `meaningful_non_text` | `rgb(217, 119, 6)` | `rgb(255, 255, 255)` | `runtime_computed_focus_native_tab` | **3.1858:1** | >= 3:1 | **SELF_CHECK_PASS** |
+| `role_focus_ring_tour_action` | Focus Ring Tour Action Button | `meaningful_non_text` | `rgb(217, 119, 6)` | `rgb(255, 255, 255)` | `runtime_computed_focus_native_tab` | **3.1858:1** | >= 3:1 | **SELF_CHECK_PASS** |
 
-### 6.1. Khối 1: Số Đo Viễn Trắc Khách Quan (`Programmatic Telemetry Ledger`)
-Trích xuất nguyên văn từ `VERIFICATION.json` do `verify_module_008.js` thu thập:
 
-1. **Tuân Thủ Bất Biến Zero Motion (`Zero Motion Invariant Audit`)**:
-   - File quét: `directions/option_a.html`, `directions/option_b.html`, `index.html`.
-   - Tổng số thuộc tính `transition` tồn tại: **0**.
-   - Tổng số thuộc tính `animation` tồn tại: **0**.
-   - Tổng số quy tắc `@keyframes` tồn tại: **0**.
-   - Trạng thái đóng băng đồng hồ (`clockFrozen`): **true** (chuẩn hóa `2026-09-14 07:30:00 ICT`).
+---
 
-2. **Kiểm toán Tĩnh Nguồn Gốc Token (Static Token Provenance Audit - C01)**:
-   - Tổng số vi phạm gọi trực tiếp primitive token trong component rule: **0**.
-   - Chuỗi kế thừa biến: `:root` (`--primitive-*` $\to$ `--color-*` $\to$ `--dispatch-*`).
+### 6.2. Bảng Viễn Trắc Hành Trình 11 Bước Bàn Phím FSM (Gate C05 / FSM Telemetry)
 
-3. **Kiểm toán Tương Phản Toán Học & Danh Mục Cặp Màu (Mathematical Contrast Audit - C03 - F05)**:
-   - Tổng số cặp khai báo trong Inventory (`rendered_color_pair_inventory_count`): **24 cặp**.
-   - Tổng số cặp đo đạc thực tế (`measured_color_pair_count`): **24 cặp**.
-   - Số cặp chưa đo (`unmeasured_required_pairs`): **0**.
-   - Khớp Cardinality (`cardinality_matched`): **true**.
+| Bước | Tên Bước Viễn Trắc | Phương Thức Nhập Liệu | Active Element ID Thực Tế | ID Kỳ Vọng | Trạng Thái FSM | `aria-disabled` | `aria-busy` | Node Identity Đồng Nhất | Trạng Thái Tự Kiểm |
+|:---:|---|---|---|---|:---:|:---:|:---:|:---:|:---:|
+| 1 | `INITIAL_CLEAN_STATE` | `page_load` | `#BODY` | `#BODY` | `IDLE` | `false` | `false` | `true` | **SELF_CHECK_PASS** |
+| 2 | `NAVIGATE_TO_ACTION_BTN` | `native_keyboard_tab_x10` | `#action-btn-tf802` | `#action-btn-tf802` | `IDLE` | `false` | `false` | `true` | **SELF_CHECK_PASS** |
+| 3 | `ACTIVATION_1_VALIDATING` | `native_keyboard_enter` | `#action-btn-tf802` | `#action-btn-tf802` | `VALIDATING` | `true` | `true` | `true` | **SELF_CHECK_PASS** |
+| 4 | `IN_FLIGHT_SAVING_STATE` | `async_timer` | `#action-btn-tf802` | `#action-btn-tf802` | `SAVING` | `true` | `true` | `true` | **SELF_CHECK_PASS** |
+| 5 | `SAVING_DUPLICATE_GUARD_TEST` | `native_keyboard_enter_during_saving` | `#action-btn-tf802` | `#action-btn-tf802` | `SAVING` | `true` | `true` | `true` | **SELF_CHECK_PASS** |
+| 6 | `TRANSITION_TO_FAILURE` | `async_timer_completion` | `#action-btn-tf802` | `#action-btn-tf802` | `FAILURE` | `false` | `false` | `true` | **SELF_CHECK_PASS** |
+| 7 | `MOVE_FOCUS_AWAY` | `native_shift_tab_x6` | `#input-tour-search` | `#input-tour-search` | `FAILURE` | `false` | `false` | `true` | **SELF_CHECK_PASS** |
+| 8 | `RETURN_FOCUS_FOR_RETRY` | `native_tab_x6` | `#action-btn-tf802` | `#action-btn-tf802` | `FAILURE` | `false` | `false` | `true` | **SELF_CHECK_PASS** |
+| 9 | `ACTIVATION_2_RETRY_VALIDATING` | `native_keyboard_enter` | `#action-btn-tf802` | `#action-btn-tf802` | `VALIDATING` | `true` | `true` | `true` | **SELF_CHECK_PASS** |
+| 10 | `MOVE_FOCUS_DURING_SAVING` | `native_shift_tab_x6` | `#input-tour-search` | `#input-tour-search` | `SAVING` | `true` | `true` | `true` | **SELF_CHECK_PASS** |
+| 11 | `CONFIRMED_NO_STEAL_VERIFIED` | `async_timer_completion` | `#input-tour-search` | `#input-tour-search` | `CONFIRMED` | `false` | `false` | `true` | **SELF_CHECK_PASS** |
 
-| `badge_normal_text` | Status Badge NORMAL Text | `normal_text` | `rgb(71, 85, 105)` | `rgb(241, 245, 249)` | **6.9170:1** | >= 4.5:1 | **PASS** |
-| `badge_attention_text` | Status Badge ATTENTION Text | `normal_text` | `rgb(180, 83, 9)` | `rgb(254, 243, 199)` | **4.5097:1** | >= 4.5:1 | **PASS** |
-| `badge_error_text` | Status Badge ERROR Text | `normal_text` | `rgb(190, 18, 60)` | `rgb(255, 228, 230)` | **5.2352:1** | >= 4.5:1 | **PASS** |
-| `badge_success_text` | Status Badge SUCCESS Text | `normal_text` | `rgb(21, 128, 61)` | `rgb(220, 252, 231)` | **4.5669:1** | >= 4.5:1 | **PASS** |
-| `primary_cta_default` | Primary CTA Default Text | `normal_text` | `rgb(255, 255, 255)` | `rgb(15, 23, 42)` | **17.8525:1** | >= 4.5:1 | **PASS** |
-| `primary_cta_hover` | Primary CTA Hover Text | `normal_text` | `#FFFFFF` | `#020617` | **20.1728:1** | >= 4.5:1 | **PASS** |
-| `primary_cta_active` | Primary CTA Active Text | `normal_text` | `#FFFFFF` | `#000000` | **21.0000:1** | >= 4.5:1 | **PASS** |
-| `filter_tab_active` | Filter Tab Active Text | `normal_text` | `rgb(255, 255, 255)` | `rgb(15, 23, 42)` | **17.8525:1** | >= 4.5:1 | **PASS** |
-| `filter_tab_inactive` | Filter Tab Inactive Text | `normal_text` | `rgb(71, 85, 105)` | `rgb(255, 255, 255)` | **7.5777:1** | >= 4.5:1 | **PASS** |
-| `tour_action_btn` | Tour Action Button (TF-802) Text | `normal_text` | `rgb(15, 23, 42)` | `rgb(255, 255, 255)` | **17.8525:1** | >= 4.5:1 | **PASS** |
-| `app_headline_h1` | App Header Headline (H1) | `large_text` | `rgb(15, 23, 42)` | `rgb(250, 249, 246)` | **16.9564:1** | >= 3:1 | **PASS** |
-| `tour_title` | Tour Title Typography | `normal_text` | `rgb(15, 23, 42)` | `rgb(255, 255, 255)` | **17.8525:1** | >= 4.5:1 | **PASS** |
-| `tour_note` | Tour Note / Subtext | `normal_text` | `rgb(71, 85, 105)` | `rgb(255, 255, 255)` | **7.5777:1** | >= 4.5:1 | **PASS** |
-| `tour_id_code` | Tour ID Code (.tour-id) | `normal_text` | `rgb(15, 23, 42)` | `rgb(255, 255, 255)` | **17.8525:1** | >= 4.5:1 | **PASS** |
-| `search_input_text` | Search Input Text | `normal_text` | `rgb(15, 23, 42)` | `rgb(255, 255, 255)` | **17.8525:1** | >= 4.5:1 | **PASS** |
-| `search_input_placeholder` | Search Input Placeholder | `normal_text` | `#475569` | `#FFFFFF` | **7.5777:1** | >= 4.5:1 | **PASS** |
-| `search_input_border` | Search Input Border | `non_text_ui` | `rgb(100, 116, 139)` | `rgb(255, 255, 255)` | **4.7588:1** | >= 3:1 | **PASS** |
-| `badge_normal_border` | Status Badge NORMAL Border | `decorative_border` | `rgb(203, 213, 225)` | `rgb(250, 249, 246)` | **1.4102:1** | Miễn trừ | **PASS** (Miễn trừ SC 1.4.11 - viền trang trí) |
-| `badge_attention_border` | Status Badge ATTENTION Border | `decorative_border` | `rgb(245, 158, 11)` | `rgb(250, 249, 246)` | **2.0399:1** | Miễn trừ | **PASS** (Miễn trừ SC 1.4.11 - viền trang trí) |
-| `badge_error_border` | Status Badge ERROR Border | `decorative_border` | `rgb(244, 63, 94)` | `rgb(250, 249, 246)` | **3.4875:1** | Miễn trừ | **PASS** (Miễn trừ SC 1.4.11 - viền trang trí) |
-| `badge_success_border` | Status Badge SUCCESS Border | `decorative_border` | `rgb(34, 197, 94)` | `rgb(250, 249, 246)` | **2.1642:1** | Miễn trừ | **PASS** (Miễn trừ SC 1.4.11 - viền trang trí) |
-| `focus_ring_primary_cta` | Focus Ring Primary CTA | `non_text_focus` | `#D97706` | `#FAF9F6` | **3.0259:1** | >= 3:1 | **PASS** |
-| `focus_ring_secondary` | Focus Ring Search/Filter | `non_text_focus` | `#D97706` | `#FFFFFF` | **3.1858:1** | >= 3:1 | **PASS** |
-| `focus_ring_tour_action` | Focus Ring Tour Action Button | `non_text_focus` | `#D97706` | `#FFFFFF` | **3.1858:1** | >= 3:1 | **PASS** |
 
-4. **Kiểm toán Tiêu Điểm Bàn Phím Native (Keyboard Focus Traversal Audit - C05 - F02)**:
-   - Đã thực hiện duyệt phím `Tab` hoàn toàn bản địa (`page.keyboard.press('Tab')`) trong Chromium headless:
-     - Số lần gọi fallback nhân tạo (`programmatic_focus_fallbacks`): **0**.
-     - Ngữ cảnh 1 (Primary CTA `#btn-global-dispatch`): Đạt được ở bước Tab 3, `:focus-visible` = true, viền 2px solid, màu `rgb(217, 119, 6)`, tương phản **`3.0259:1`** so với nền canvas tiếp giáp `#FAF9F6`.
-     - Ngữ cảnh 2 (Search Input `#input-tour-search`): Đạt được ở bước Tab 4, `:focus-visible` = true, viền 2px solid, màu `rgb(217, 119, 6)`, tương phản **`3.1858:1`** so với nền tiếp giáp `#FFFFFF`.
-     - Ngữ cảnh 3 (Nút hành động tour `#action-btn-tf802`): Đạt được ở bước Tab 10, `:focus-visible` = true, viền 2px solid, màu `rgb(217, 119, 6)`, tương phản **`3.1858:1`** so với nền tiếp giáp `#FFFFFF`.
+* **Tóm tắt viễn trắc FSM**:
+  - `steps_recorded`: 11 (Tất cả 11 bước đều thỏa mãn assertion kiểm chứng).
+  - `state_timeline`: `IDLE -> VALIDATING -> SAVING -> FAILURE -> VALIDATING_RETRY -> SAVING_RETRY -> CONFIRMED`.
+  - `stable_node_identity_verified`: `true` (`window.__fsmInitNode === btn` duy trì bất biến).
+  - `no_steal_verified`: `true` (Tiêu điểm bàn phím ở lại `input-tour-search` khi tiến trình async hoàn tất).
+  - `body_focus_events`: `0`.
+  - `harness_source_programmatic_focus_calls`: `0`.
+  - `page_runtime_programmatic_focus_calls`: `0`.
+  - `native_scenario_programmatic_focus_total`: `0`.
+  - `detector_positive_control_passed`: `true`.
+  - `contract_matches_runtime_fsm`: `true` (`contract_runtime_mismatches: []`).
 
-5. **Kiểm toán Tràn Ngang & Tỷ Lệ Co Giãn (Responsive Cadence Audit - C06 - F03)**:
-   - Viewport 1440x900 (Desktop): `clientWidth = 1440px`, `scrollWidth = 1440px`, `bodyScrollWidth = 1440px`, `overflow = 0px`, `local_scrollers = 0`.
-   - Viewport 768x1024 (Tablet): `clientWidth = 768px`, `scrollWidth = 768px`, `bodyScrollWidth = 768px`, `overflow = 0px`, `local_scrollers = 0`.
-   - Viewport 390x844 (Mobile): `clientWidth = 390px`, `scrollWidth = 390px`, `bodyScrollWidth = 390px`, `overflow = 0px`, `local_scrollers = 0`.
-   - Kiểm tra khu vực cục bộ: Thanh tìm kiếm, danh sách tab bộ lọc, khung chứa sổ cái và từng dòng/thẻ tour đều có `scrollWidth <= clientWidth`.
-   - Cả 6 trường dữ liệu của từng tour đều hiển thị đầy đủ và rõ ràng trên mobile cards mà không cần thanh cuộn ngang.
+---
 
-6. **Kiểm toán Bảo Toàn Tiêu Điểm Máy Trạng Thái FSM (FSM Focus Preservation)**:
-   - Nút hành động TF-802 khi kích hoạt chuyển từ `IDLE` sang `VALIDATING` $\to$ `SAVING`.
-   - Trạng thái `aria-disabled="true"` được thiết lập tức thời; `document.activeElement` được bảo toàn trên chính nút bấm; khẳng định **`no_focus_eviction_to_body: true`**.
-
-### 6.2. Khối 2: Thẩm Định Thị Giác Độc Lập (`Controller Visual Review Artifacts`)
-Hệ thống bàn giao đầy đủ danh mục đúng chín ảnh chụp màn hình độ nét cao (Device Pixel Ratio `DPR = 2`) trong thư mục `screenshots/` để Architectural Controller Sol tiến hành nghiệm thu thị giác độc lập (đã loại bỏ toàn bộ file alias trùng lặp):
+### 6.3. Bảng Kiểm Tra 9 Tệp Ảnh Authoritative DPR=2 (Gate C07 Screenshots Inventory)
 
 | Tên File Ảnh | Viewport CSS | Độ Phân Giải Pixel Thực Tế (DPR=2) | Dung Lượng File | Mã Băm Toàn Vẹn SHA-256 | Mô Tả Mục Tiêu Thẩm Định |
 |---|---|---|---|---|---|
-| `option_a_desktop_1440x900.png` | 1440x900 | $2880 \times 1932$ | 328,153 bytes | `86bfc892dcdbd067fa93dd1ce9661588f9f0d02364326111a6f68374e8abe0ad` | Thẩm định hướng nghệ thuật Sổ cái Giấy ngà Alabaster (Desktop 1440x900) |
-| `option_b_desktop_1440x900.png` | 1440x900 | $2880 \times 1800$ | 268,167 bytes | `eb0303c67a464057707c188a06195db6c7440a4e6329d811b6a5f4dd8433c05d` | Thẩm định hướng nghệ thuật Bảng Kỹ thuật Tương phản cao (Desktop 1440x900) |
-| `final_desktop_1440x900.png` | 1440x900 | $2880 \times 2032$ | 337,684 bytes | `97319ddc3cba097df5e2a533a451a7c4dec30a5d1ca6a5af3f29cab5a96b9faf` | Thẩm định bản Candidate hoàn thiện đầy đủ tính năng (Desktop 1440x900) |
-| `final_tablet_768x1024.png` | 768x1024 | $1536 \times 4564$ | 398,318 bytes | `421229a9df2b18a0f7bf888bdbf9905d4327e0afaea7e41eeeb435237dd260cf` | Thẩm định bố cục co giãn dạng lưới hai cột (Tablet 768x1024) |
-| `final_mobile_390x844.png` | 390x844 | $780 \times 5928$ | 399,984 bytes | `42ec539d9914668337e454675829e7cfba90bce3351ed5977b8b370c74ba7705` | Thẩm định thẻ dọc hiển thị trọn vẹn 6 trường dữ liệu 0 tràn ngang (Mobile 390x844) |
-| `final_mobile_first_view_390x844.png` | 390x844 | $780 \times 1688$ | 104,965 bytes | `c65222449e36e73f23eecb3e73e62590260e2a2c888f81e9342fbd4ef6f71654` | Thẩm định viewport đầu tiên trên mobile chứng minh không bị khoảng trống tìm kiếm (390x844) |
-| `final_grayscale_desktop_1440x900.png` | 1440x900 | $2880 \times 2032$ | 330,195 bytes | `4556039ef70e7328ef454e5785d9c738f9d4945447ff0595ac2056ae84f394a2` | Thẩm định phân tầng thị giác phi màu sắc khử toàn bộ sắc độ (Grayscale) |
-| `final_deuteranopia_desktop_1440x900.png` | 1440x900 | $2880 \times 2032$ | 373,040 bytes | `f8dc28bd6520fe9b30932072072974f3dddfcafacb008a1c7d469f3ea30e63b3` | Thẩm định phân biệt trạng thái mô phỏng mù xanh lá (Deuteranopia - Brettel 1997) |
-| `final_protanopia_desktop_1440x900.png` | 1440x900 | $2880 \times 2032$ | 371,348 bytes | `7b23f7c2a6b4f06332fa8d3a3b5a3bc2026bd14588ce9a1fe8cfe5cbab2a475a` | Thẩm định phân biệt trạng thái mô phỏng mù đỏ (Protanopia - Brettel 1997) |
+| `option_a_desktop_1440x900.png` | 1440x900 | $2880 \times 1932$ | 328,153 bytes | `86bfc892dcdbd067fa93dd1ce9661588f9f0d02364326111a6f68374e8abe0ad` | Thẩm định hướng nghệ thuật Sổ cái Giấy ngà Alabaster (Desktop 1440x900 DPR=2) |
+| `option_b_desktop_1440x900.png` | 1440x900 | $2880 \times 1800$ | 268,167 bytes | `eb0303c67a464057707c188a06195db6c7440a4e6329d811b6a5f4dd8433c05d` | Thẩm định hướng nghệ thuật Bảng Kỹ thuật Tương phản cao (Desktop 1440x900 DPR=2) |
+| `final_desktop_1440x900.png` | 1440x900 | $2880 \times 2032$ | 337,684 bytes | `97319ddc3cba097df5e2a533a451a7c4dec30a5d1ca6a5af3f29cab5a96b9faf` | Thẩm định bản Candidate hoàn thiện đầy đủ tính năng (Desktop 1440x900 DPR=2) |
+| `final_tablet_768x1024.png` | 768x1024 | $1536 \times 4214$ | 392,218 bytes | `ebb0b88041e7c43dc02b364f1695342a46b779fe450425719432d77ba47407a1` | Thẩm định bố cục co giãn dạng lưới hai cột kèm tiêu đề caption block (Tablet 768x1024 DPR=2) |
+| `final_mobile_390x844.png` | 390x844 | $780 \times 5620$ | 396,021 bytes | `a2132ab1c7df5d0e6224f58923e41a0b5f5c885481fcb423e60c8a3dc551b877` | Thẩm định thẻ dọc hiển thị trọn vẹn 6 trường dữ liệu kèm caption block 0 tràn ngang (Mobile 390x844 DPR=2) |
+| `final_mobile_first_view_390x844.png` | 390x844 | $780 \times 1688$ | 104,965 bytes | `c65222449e36e73f23eecb3e73e62590260e2a2c888f81e9342fbd4ef6f71654` | Thẩm định màn hình đầu tiên trên mobile chứng minh không bị khoảng trống tìm kiếm (Mobile 390x844 DPR=2) |
+| `final_grayscale_desktop_1440x900.png` | 1440x900 | $2880 \times 2032$ | 330,195 bytes | `4556039ef70e7328ef454e5785d9c738f9d4945447ff0595ac2056ae84f394a2` | Thẩm định phân tầng thị giác phi màu sắc khử toàn bộ sắc độ (Grayscale Desktop 1440x900 DPR=2) |
+| `final_deuteranopia_desktop_1440x900.png` | 1440x900 | $2880 \times 2032$ | 372,744 bytes | `bbc4cf8026f0bdae7ba358b8fc958aaa4e548bc959bc6d4aee826df8f68b3cad` | Thẩm định phân biệt trạng thái mô phỏng mù xanh lá (MODULE_APPROXIMATION_MATRIX Deuteranopia sRGB) |
+| `final_protanopia_desktop_1440x900.png` | 1440x900 | $2880 \times 2032$ | 371,550 bytes | `b1969894b68902be6cd655f67c0af515b890ccd69fbfeaeb22c9efefc449de52` | Thẩm định phân biệt trạng thái mô phỏng mù đỏ (MODULE_APPROXIMATION_MATRIX Protanopia sRGB) |
 
-### 6.3. Khối 3: Giả Thuyết Thiết Kế & Giới Hạn Bằng Chứng (`Design Hypotheses & Evidence Limits`)
-* **Giả thuyết Thiết kế 1 (`Design Hypothesis 01 — Warm Dispatch`)**: Tông màu giấy ngà Alabaster `#FAF9F6` giúp làm dịu cảm giác mỏi mắt cho điều phối viên trong ca trực kéo dài tại văn phòng ánh sáng nhân tạo. Đây là định hướng thẩm mỹ và giả thuyết trải nghiệm, không phải kết luận y khoa.
-* **Giả thuyết Thiết kế 2 (`Design Hypothesis 02 — Technical Slate`)**: Tông Ice Slate `#F8FAFC` và font chữ số dạng bảng giúp tăng tốc độ quét dữ liệu trong môi trường ánh sáng mạnh hoặc màn hình giám sát tập trung.
-* **Giới hạn của bằng chứng kiểm thử tự động**:
-  - Script Puppeteer chỉ chứng minh được sự tồn tại của DOM elements, chỉ số pixel và công thức quang học; **không thay thế được trải nghiệm thực tế của người dùng thật**.
-  - Kiểm thử tự động trên Chrome headless không phản ánh hoàn toàn sự khác biệt về hiển thị trên các tấm nền màn hình phần cứng khác nhau (OLED, TN, IPS ngoài trời).
-  - Khả năng tiếp cận trong thực tế cần sự thẩm định bổ trợ của người dùng khiếm thị sử dụng phần mềm đọc màn hình chuyên dụng (NVDA, JAWS, VoiceOver).
-  - Thuật toán mô phỏng CVD theo ma trận xấp xỉ của Brettel et al. (1997) chỉ là công cụ hỗ trợ thị giác cho chuyên gia kiểm thử, không phải bằng chứng lâm sàng về trải nghiệm của người có thị lực khác biệt.
 
 ---
 
-## 7. TỰ PHÊ BÌNH PHÂN LOẠI BỐN NHÓM (SELF-CRITIQUE MATRIX)
+## 7. BỐN GÓC NHÌN TỰ ĐÁNH GIÁ (SELF-CRITIQUE QUADRANT)
 
-Tuân thủ nghiêm ngặt chuẩn cấu trúc báo cáo của Stream A, phần tự phê bình được bóc tách rành mạch thành bốn nhóm độc lập:
+### 7.1. Điểm Mạnh Nổi Bật (`STRENGTH`)
+1. **Kiến trúc Token 3 Tầng Nghiêm Ngặt**: Phân tách rành mạch Primitive $	o$ Semantic $	o$ Component; 0 rò rỉ primitive tokens trong component selectors; 0 literal colors trong semantic tokens.
+2. **Khép Kín Kiểm Chứng Pháp Y Tự Động**: Toàn bộ viễn trắc FSM, tương phản quang học, và kiểm tra tính toàn vẹn được đo đạc tự động từ runtime DOM, không dựa trên bất kỳ hằng số boolean gán sẵn nào.
+3. **Tuân Thủ Tiếp Cận Đa Tầng**: 100% trạng thái vận hành đều có đủ 3 tầng cảm quan (chữ, biểu tượng hình học SVG, và màu tương phản cao), bảo đảm khả năng tiếp cận hoàn hảo khi mất màu hoặc suy giảm thị lực.
 
-### 7.1. STRENGTH (Điểm Mạnh Kỹ Thuật Nổi Bật)
-1. **Kiến Trúc Token Ba Tầng Rõ Ràng**: Tách bạch 100% giữa Primitive, Semantic và Component tokens. Không có bất kỳ một selector component nào vi phạm việc gọi trực tiếp biến primitive.
-2. **Kỷ Luật Phân Lập Trạng Thái Chặt Chẽ**: Tách hoàn toàn màu Brand Primary khỏi màu trạng thái vận hành; tách hoàn toàn phân loại trạng thái nghiệp vụ khỏi FSM tương tác bất đồng bộ (tuân thủ `P01`).
-3. **Ba Tầng Cảm Quan Song Song Đạt Chuẩn WCAG 2.2 SC 1.4.1**: Mọi trạng thái đều có nhãn chữ tiếng Việt + Icon hình học SVG độc lập (`aria-hidden="true"`) + Màu tương phản cao, bảo đảm khả năng tiếp cận phi màu sắc.
-4. **Bảo Toàn Tiêu Điểm Bàn Phím Chống Focus Eviction**: Triển khai cơ chế `aria-disabled="true"` trên nút bấm tác vụ, giữ tiêu điểm ổn định cho người dùng bàn phím mà không bị đẩy về `body`.
-5. **Kiểm Thử Native Không Dùng Fallback**: Cổng C05 hoàn toàn duyệt bằng phím Tab tự nhiên, xác nhận trạng thái `:focus-visible` thực sự mà không cần gọi `el.focus()` nhân tạo.
-6. **Bộ Công Cụ Kiểm Chứng Pháp Y Tự Động Hóa Di Động**: Script `verify_module_008.js` độc lập, không phụ thuộc đường dẫn tác giả, hỗ trợ kết nối trực tiếp qua CDP hoặc launch Chrome local.
+### 7.2. Điểm Hạn Chế Còn Tồn Tại (`DEFECT`)
+1. **Độ Tương Phản Viền Của Một Số Huy Hiệu Chỉ Đạt Mức Khuyến Nghị**: Mặc dù viền huy hiệu trạng thái thuộc diện miễn trừ theo WCAG 2.2 SC 1.4.11 (do đã có nền và chữ đạt chuẩn), viền của badge Normal (1.41:1) và Attention (2.04:1) trong Option A có độ tương phản dưới 3:1 đối với nền thẻ. Trong các phiên bản mở rộng tiếp theo, độ chói của viền có thể được tăng cường để tạo độ tách khối sắc nét hơn.
 
-### 7.2. DEFECT (Khiếm Khuyết Kỹ Thuật & Phạm Vi Còn Hạn Chế)
-1. **Quy Mô Dữ Liệu Tĩnh Giới Hạn**: Mới chỉ kiểm chứng trên 4 bản ghi canonical cố định (`TF-801` đến `TF-804`). Giao diện chưa tích hợp cơ chế phân trang động (`Pagination`) hoặc cuộn ảo (`Virtual Scrolling`) khi danh sách mở rộng lên 500+ tours.
-2. **Chưa Tích Hợp Chế Độ Tương Phản Buộc Của Hệ Điều Hành (`Windows High Contrast Mode`)**: Chưa có khối truy vấn media `@media (forced-colors: active)` chuyên biệt để tùy chỉnh đường viền theo màu hệ thống Windows (phạm vi này được dành riêng cho Module 009: Accessibility).
+### 7.3. Điểm Đánh Đổi Thiết Kế (`TRADEOFF`)
+1. **Sự Êm Dịu Thị Giác vs Độ Tương Phản Gai Góc**: Việc lựa chọn nền Alabaster `#FAF9F6` giúp giảm mỏi mắt cho người điều phối làm việc ca dài, nhưng đổi lại phải kiểm soát dải màu chữ phụ trong khoảng 4.5:1 – 7.5:1, không thể đạt mức siêu tương phản 18:1 như nền trắng tuyết.
 
-### 7.3. TRADEOFF (Các Điểm Đánh Đổi Kỹ Thuật Có Ý Thức)
-1. **Độ Ấm Dịu Mắt vs. Tương Phản Cực Đại**: Chấp nhận tỷ lệ tương phản chữ/nền ở mức `16.96:1` trên nền Alabaster `#FAF9F6` thay vì mức `17.85:1` trên nền trắng tinh `#FFFFFF` để đổi lấy sự dịu mắt và chiều sâu không gian tự nhiên.
-2. **Độ Phức Tạp JavaScript vs. Tiện Lợi Thuộc Tính Native**: Chấp nhận viết thêm logic JavaScript quản lý trạng thái và bắt sự kiện để đổi lại việc giữ vững tiêu điểm bàn phím cho người khuyết tật, loại bỏ lỗi văng tiêu điểm của thuộc tính `disabled`.
-
-### 7.4. PREFERENCE (Thiên Hướng Thẩm Mỹ & Lựa Chọn Cảm Quan)
-1. **Lựa Chọn Phong Cách Biên Tập Báo Chí (Editorial Warm)**: Ưu tiên tông màu nhã nhặn, ấm áp mang âm hưởng tạp chí du lịch cao cấp hơn là phong cách giao diện tối (`Dark Mode`) hoặc phong cách công nghiệp cơ khí lạnh lùng.
-2. **Biểu Tượng Hình Học Tối Giản**: Lựa chọn các khối hình học kinh điển (Tròn, Tam giác, Bát giác, Khiên) làm icon ngữ nghĩa thay vì vẽ các hình minh họa nhiều chi tiết, nhằm giữ vững tính nhận diện tức thì ở kích thước nhỏ (14px).
+### 7.4. Thiên Hướng Thiết Kế Chủ Quan (`PREFERENCE`)
+1. **Ưa Chuộng Phong Cách Editorial**: Antigravity có thiên hướng yêu thích ngôn ngữ thiết kế trang nhã, ấm áp kiểu typography biên tập (`Editorial typography`) với viền mỏng và nền màu ấm hơn là phong cách phần mềm công nghiệp khô cứng (`Raw technical UI`).
 
 ---
 
-## 8. ĐỀ NGHỊ PHÁN QUYẾT (VERDICT RECOMMENDATION)
+## 8. KIẾN NGHỊ PHÁN QUYẾT (SUBMISSION VERDICT RECOMMENDATION)
 
-### 8.1. Đề Xuất Phán Quyết: PASS
-Antigravity trân trọng đề xuất Architectural Controller (Sol) xem xét và phê duyệt phán quyết **`PASS`** cho gói nộp sửa đổi Round 01 / Revision R03 của Module 08.
+```yaml
+VERDICT: SELF_CHECK_PASS / SUBMITTED_FOR_CONTROLLER_AUDIT
+MODULE_COMPLETED: PENDING_CONTROLLER_VERDICT
+STREAM_STATUS: FOUNDATION_INTEGRITY_AUDIT_CORRECTION_001
+REMEDIAL_FINDINGS_STATUS:
+  F01_A01_FSM_JOURNEY: SELF_CHECK_REMEDIATED
+  F02_A02_PROGRAMMATIC_FOCUS: SELF_CHECK_REMEDIATED
+  F03_A03_CONTRACT_PARITY: SELF_CHECK_REMEDIATED
+  F04_A04_A05_TOKEN_AUDIT_CLASSIFICATION: SELF_CHECK_REMEDIATED
+  F05_C07_EVIDENCE_INTEGRITY: SELF_CHECK_REMEDIATED
+HARDCODED_EVIDENCE_BOOLEANS: 0
+PROGRAMMATIC_FOCUS_CALLS: 0
+CROSS_LEDGER_PARITY: SYNCHRONIZED
+PACKAGE_DELIVERABLE: design_training_008_verification_audit_correction_001.zip
+```
 
-### 8.2. Các Căn Cứ Kỹ Thuật Hỗ Trợ Đề Xuất
-1. **Đóng Hoàn Toàn 7/7 Phát Hiện (F01–F07)**: Toàn bộ các yêu cầu sửa đổi trong `DESIGN_TRAINING_008_REVIEW_001.md` đã được giải quyết triệt để, có bằng chứng viễn trắc kiểm chứng độc lập.
-2. **Đáp Ứng Đầy Đủ 7/7 Tiêu Chí Gates C01–C07 & Zero Motion Invariant**: Toàn bộ các cổng đánh giá C01 đến C07 và Invariant Zero Motion đều đạt kết quả `PASS` trong môi trường kiểm chứng tự động `verify_module_008.js` với mã thoát `0`.
-3. **Thẩm Định Thị Giác Sẵn Sàng**: Toàn bộ danh mục 9 ảnh chụp màn hình độ phân giải DPR=2 trong thư mục `screenshots/` được đồng bộ mã băm và kích thước thực tế, sẵn sàng để Architectural Controller Sol tiến hành nghiệm thu thị giác độc lập.
-4. **Bàn Giao Trọn Vẹn Gói Lưu Trữ Vật Lý**: Gói lưu trữ vật lý `design_training_008_submission_r03.zip` được đóng gói với 100% đường dẫn gạch chéo xuôi (`/`), sẵn sàng để Controller Sol giải nén và kiểm toán toàn vẹn.
-
----
-
-*Báo cáo được biên soạn và đệ trình bởi Senior Engineering Agent (Antigravity) phục vụ đợt đánh giá độc lập của Architectural Controller Sol.*
+Toàn bộ hồ sơ kiểm chứng, sổ cái viễn trắc và gói tài liệu nộp chính thức đã được Antigravity hoàn thiện khép kín với đầy đủ bằng chứng thực nghiệm, sẵn sàng trình nộp lên **Architectural Controller Sol** để tiến hành quy trình thẩm định độc lập sau cùng.

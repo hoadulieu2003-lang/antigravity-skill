@@ -1,0 +1,88 @@
+{
+  "manifest_id": "SCREENSHOT_MANIFEST_MODULE_012",
+  "timestamp": "2026-09-14T07:19:33.579Z",
+  "total_screenshots": 10,
+  "device_scale_factor": 2,
+  "screenshots": {
+    "01_option_a_desktop_1440x900.png": {
+      "filename": "01_option_a_desktop_1440x900.png",
+      "css_viewport": "1440x900",
+      "device_scale_factor": 2,
+      "file_size_bytes": 507706,
+      "sha256": "51027d7c559aff740881da56da41b1a1db8ed9f3547495095c59f6dea6709f02",
+      "description": "Direction A Desktop Initial Full Viewport"
+    },
+    "02_option_b_desktop_1440x900.png": {
+      "filename": "02_option_b_desktop_1440x900.png",
+      "css_viewport": "1440x900",
+      "device_scale_factor": 2,
+      "file_size_bytes": 467173,
+      "sha256": "4c65e150bbd4464faec662a6a1d0912174309a6f5310ab23b46cfebce8798639",
+      "description": "Direction B Desktop Initial Full Viewport"
+    },
+    "03_candidate_desktop_1440x900.png": {
+      "filename": "03_candidate_desktop_1440x900.png",
+      "css_viewport": "1440x900",
+      "device_scale_factor": 2,
+      "file_size_bytes": 512346,
+      "sha256": "b8b55277c91ab500356a3986612ab9039a8c0d8bcf29c722758d52d753cad74a",
+      "description": "Final Candidate Desktop Full Viewport"
+    },
+    "04_candidate_tablet_768x1024.png": {
+      "filename": "04_candidate_tablet_768x1024.png",
+      "css_viewport": "768x1024",
+      "device_scale_factor": 2,
+      "file_size_bytes": 286452,
+      "sha256": "92873120f906847f2c46650ce35b294c1ca185fd6d4d0fe7bb96a87cab860e46",
+      "description": "Final Candidate Tablet Viewport"
+    },
+    "05_candidate_mobile_390x844.png": {
+      "filename": "05_candidate_mobile_390x844.png",
+      "css_viewport": "390x844",
+      "device_scale_factor": 2,
+      "file_size_bytes": 195860,
+      "sha256": "6ed30bb367dbf62cde7690137afaa2356973bfa4e9cdb165677f75b3181ce520",
+      "description": "Final Candidate Mobile Viewport"
+    },
+    "06_candidate_t01_detail_desktop.png": {
+      "filename": "06_candidate_t01_detail_desktop.png",
+      "css_viewport": "element",
+      "device_scale_factor": 2,
+      "file_size_bytes": 282332,
+      "sha256": "6aeccef7b102b682f244b8fdd57c890387303ba6933a964c78cd1a153872f713",
+      "description": "Tour T01 Focal Component Detail (Desktop)"
+    },
+    "07_candidate_t01_detail_mobile.png": {
+      "filename": "07_candidate_t01_detail_mobile.png",
+      "css_viewport": "element",
+      "device_scale_factor": 2,
+      "file_size_bytes": 188345,
+      "sha256": "0065de97fd6c612c744715be28f4ebcf8292b2b155ce1ea1c1b21b1dcb6f8a94",
+      "description": "Tour T01 Focal Component Detail (Mobile)"
+    },
+    "08_candidate_image_failure_mobile.png": {
+      "filename": "08_candidate_image_failure_mobile.png",
+      "css_viewport": "390x844",
+      "device_scale_factor": 2,
+      "file_size_bytes": 192965,
+      "sha256": "832ce82e4635b4cdc5843933d6d98d1da74890e534b340d6a42c787bab5f840e",
+      "description": "Image Failure & Fallback Mode (Mobile)"
+    },
+    "09_candidate_icon_family.png": {
+      "filename": "09_candidate_icon_family.png",
+      "css_viewport": "element",
+      "device_scale_factor": 2,
+      "file_size_bytes": 68471,
+      "sha256": "82383d4e1db42230c98df9ea3b6f1e861ecd83d2e20e23113ac6528b8e333b09",
+      "description": "Consistent Icon Family in Table & Status Badges"
+    },
+    "10_candidate_asset_disclosure.png": {
+      "filename": "10_candidate_asset_disclosure.png",
+      "css_viewport": "element",
+      "device_scale_factor": 2,
+      "file_size_bytes": 170442,
+      "sha256": "595438664e8ee4db4681a60af7848ff6dfca3cd980099e7c3eb5cc4c9d1b4a5b",
+      "description": "Expanded Asset Provenance & Disclosure Panel"
+    }
+  }
+}

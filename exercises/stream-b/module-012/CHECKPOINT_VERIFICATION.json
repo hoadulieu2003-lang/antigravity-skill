@@ -2,7 +2,7 @@
   "verification_type": "DESIGN_TRAINING_012_CHECKPOINT_12_1_VERIFICATION",
   "checkpoint": "12.1",
   "scope": "PHASE_0_TO_2_ONLY",
-  "executed_at": "2026-09-14T09:42:00Z",
+  "executed_at": "2026-09-14T10:15:00Z",
   "provenance_identity": {
     "source_archive_path": "source_snapshot/design_training_007_submission_r04.zip",
     "source_archive_sha256": "e76ab08f4d1e72865f4210299594e175b94f471d3f8960c3f0c61d4259283c76",
@@ -45,7 +45,7 @@
     {
       "check_id": "CHK_06_ASSET_RUNTIME_BUDGET",
       "description": "Runtime asset budget <= 3.5 MB, single file <= 600 KB",
-      "measured": "total_bytes=44573, largest_file=6921",
+      "measured": "total_bytes=44722, largest_file=6931",
       "status": "PASS"
     },
     {
@@ -119,11 +119,23 @@
       "description": "100% CSS animation and transition durations locked to 0s",
       "measured": "option_a_zero_motion=True, option_b_zero_motion=True",
       "status": "PASS"
+    },
+    {
+      "check_id": "CHK_19_DEEP_SVG_TEXT_INSPECTION",
+      "description": "Deep scan of 100% SVG text elements and manifest alt texts for noncanonical data",
+      "measured": "violations=0 (zero 29B, Nguyễn Tuấn, Ms. Hương, Superior, VIP, 09:00, 11:45, 13:30)",
+      "status": "PASS"
+    },
+    {
+      "check_id": "CHK_20_CANONICAL_DERIVED_METRIC_FIDELITY",
+      "description": "Direction B derived network metric strictly matches canonical ready tours (2/8 ready: T02, T05; width: 25%)",
+      "measured": "2/8 Tour sẵn sàng (T02, T05) · 3 Cần xử lý, progress_width=25%",
+      "status": "PASS"
     }
   ],
   "executed_checkpoint_summary": {
-    "executed_checks_total": 18,
-    "executed_checks_passed": 18,
+    "executed_checks_total": 20,
+    "executed_checks_passed": 20,
     "executed_checks_failed": 0,
     "conjunction_status": "PASS"
   },
@@ -133,8 +145,8 @@
       "device_scale_factor": 2,
       "bitmap_width": 2880,
       "bitmap_height": 1800,
-      "bytes": 517373,
-      "sha256": "d3a4eb3728d50237f699a8bdf0584f252530ee33a826a276bde027d2289d3fa6",
+      "bytes": 516047,
+      "sha256": "b461e34402a96558c7a54b41146f9e70a7ca03d8ca053256162dc052d657d584",
       "dpr2_compliant": true
     },
     "option_b_desktop_1440x900_dpr2.png": {
@@ -142,8 +154,8 @@
       "device_scale_factor": 2,
       "bitmap_width": 2880,
       "bitmap_height": 1800,
-      "bytes": 498187,
-      "sha256": "b246c014a9252bdbbe3b8ee830625c58647661a37b8b251168197b6381f7d131",
+      "bytes": 500601,
+      "sha256": "9d6b0d278ea9f6b8694f0e4d5d1d8c88b6d41897b96163a5f3ae255e54b6c5a2",
       "dpr2_compliant": true
     }
   },
@@ -206,18 +218,18 @@
       "asset_id": "AST_DIAG_001",
       "file": "assets/diagrams/t01_route_narrative.svg",
       "role": "route_diagram",
-      "size_bytes": 6274,
-      "declared_sha256": "14f90175e5d390ac8999d03d9c5c0f3e906058fc2409caf35e4cfc1c8da740ab",
-      "measured_sha256": "14f90175e5d390ac8999d03d9c5c0f3e906058fc2409caf35e4cfc1c8da740ab",
+      "size_bytes": 6379,
+      "declared_sha256": "3085de8b4f7ef8d0a937aba3429645b6a10e8726d936638d59eaac8dea69342d",
+      "measured_sha256": "3085de8b4f7ef8d0a937aba3429645b6a10e8726d936638d59eaac8dea69342d",
       "match": true
     },
     {
       "asset_id": "AST_DIAG_002",
       "file": "assets/diagrams/t01_route_schematic.svg",
       "role": "route_diagram",
-      "size_bytes": 6144,
-      "declared_sha256": "f5f62118ec2380d51883ce3d9e0ed8f4ec9206ad3af956a7035896036f9fb9cf",
-      "measured_sha256": "f5f62118ec2380d51883ce3d9e0ed8f4ec9206ad3af956a7035896036f9fb9cf",
+      "size_bytes": 6178,
+      "declared_sha256": "a7b5da4f21c19d6de90ac4d77fe29f0c47c86ccdfb5241ff22aff52f9052d045",
+      "measured_sha256": "a7b5da4f21c19d6de90ac4d77fe29f0c47c86ccdfb5241ff22aff52f9052d045",
       "match": true
     },
     {
@@ -251,9 +263,9 @@
       "asset_id": "AST_IMG_004",
       "file": "assets/images/operational_scene_prep.svg",
       "role": "operational_scene",
-      "size_bytes": 6921,
-      "declared_sha256": "989886df0f9c4c1f1471665435406dfa3d88eb204d66fa68e73603549bf1ce12",
-      "measured_sha256": "989886df0f9c4c1f1471665435406dfa3d88eb204d66fa68e73603549bf1ce12",
+      "size_bytes": 6931,
+      "declared_sha256": "5857d221f85c80904e4b57e02e46c127fb6edc693aae7c7a91ca60131f6229f1",
+      "measured_sha256": "5857d221f85c80904e4b57e02e46c127fb6edc693aae7c7a91ca60131f6229f1",
       "match": true
     },
     {

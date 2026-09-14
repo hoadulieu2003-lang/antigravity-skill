@@ -1,0 +1,23 @@
+yaml
+submission_type: DESIGN_TRAINING_012_CHECKPOINT_12_1_R02
+stream_id: B
+package: design_training_012_checkpoint_12_1_r02.zip
+package_sha256: "b6468cd97d31dca64f5c97d186aaec7ad7b6a70457ab3bfd234f1724e6a00821"
+package_bytes: 2928878
+files_count: 30
+source_archive_sha256: "e76ab08f4d1e72865f4210299594e175b94f471d3f8960c3f0c61d4259283c76"
+source_candidate_sha256: "ee5294b94f37e2b4945743ab3215af238dde9e3b97af10a357872c1a85506800"
+direction_a_preserved: true
+direction_b_command_center_removed: true
+fabricated_vanity_metrics: 0
+noncanonical_partner_person_data: 0
+absolute_author_paths: 0
+invalid_control_characters: 0
+inline_unregistered_svg_assets: 0
+screenshot_css_viewport: "1440x900"
+screenshot_dpr: 2
+screenshot_bitmap_dimensions: "2880x1800"
+checkpoint_checks_passed: 18
+checkpoint_checks_total: 18
+planned_final_tests_status: NOT_RUN
+open_risks: []

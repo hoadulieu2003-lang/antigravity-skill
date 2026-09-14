@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 180" width="840" height="180" role="img" aria-labelledby="t01-schematic-title t01-schematic-desc">
   <title id="t01-schematic-title">Sơ đồ Mốc Lộ trình Tuyến T01 Hạ Long — Route Sequence Schematic</title>
-  <desc id="t01-schematic-desc">Sơ đồ chuỗi 4 mốc lộ trình đoàn T01: (1) Hà Nội lúc 07:30 [Chuẩn bị hồ sơ - Sẵn sàng]; (2) Hải Dương lúc 09:00 [Nghỉ chân hậu cần]; (3) Bãi Cháy lúc 11:45 [Chờ đối tác xác nhận 4 phòng - Điểm nghẽn]; (4) Cảng Tuần Châu lúc 13:30 [Sẵn sàng đón đoàn].</desc>
+  <desc id="t01-schematic-desc">Sơ đồ chuỗi 4 mốc lộ trình đoàn T01: (1) Hà Nội lúc 07:30 [Chuẩn bị hồ sơ - Sẵn sàng]; (2) Lộ trình di chuyển [Hành trình theo kế hoạch]; (3) Bãi Cháy [Chờ đối tác xác nhận 4 phòng - Điểm nghẽn]; (4) Cảng Tuần Châu [Sẵn sàng đón đoàn - Chờ thông tuyến].</desc>
 
   <defs>
     <!-- Hatching pattern for pending segment -->
@@ -41,35 +41,35 @@
     <text x="0" y="49" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="700" fill="#166534" text-anchor="middle">SẴN SÀNG</text>
   </g>
 
-  <!-- MỐC 2: HẢI DƯƠNG (09:00) -->
+  <!-- MỐC 2: LỘ TRÌNH DI CHUYỂN -->
   <g transform="translate(330, 90)">
     <rect x="-12" y="-12" width="24" height="24" fill="#FFFFFF" stroke="#0F172A" stroke-width="2" rx="3" />
     <circle cx="0" cy="0" r="4" fill="#0F172A" />
-    <text x="0" y="-26" font-family="'Consolas', monospace" font-size="11" font-weight="bold" fill="#0F172A" text-anchor="middle">09:00 ICT</text>
-    <text x="0" y="-40" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#0F172A" text-anchor="middle">HẢI DƯƠNG</text>
-    <text x="0" y="28" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#475569" text-anchor="middle">Nghỉ chân hậu cần</text>
+    <text x="0" y="-26" font-family="'Consolas', monospace" font-size="10" font-weight="bold" fill="#0F172A" text-anchor="middle">KẾ HOẠCH</text>
+    <text x="0" y="-40" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="700" fill="#0F172A" text-anchor="middle">LỘ TRÌNH DI CHUYỂN</text>
+    <text x="0" y="28" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#475569" text-anchor="middle">Hành trình thông suốt</text>
     <rect x="-42" y="34" width="84" height="18" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1" rx="2" />
     <text x="0" y="47" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="700" fill="#334155" text-anchor="middle">THEO KẾ HOẠCH</text>
   </g>
 
-  <!-- MỐC 3: BÃI CHÁY (11:45) — ĐIỂM CHỜ XÁC NHẬN -->
+  <!-- MỐC 3: BÃI CHÁY (KHÁCH SẠN) — ĐIỂM CHỜ XÁC NHẬN -->
   <g transform="translate(550, 90)">
     <!-- Warning diamond -->
     <polygon points="0,-20 20,0 0,20 -20,0" fill="#FEF2F2" stroke="#DC2626" stroke-width="2" />
     <rect x="-5" y="-5" width="10" height="10" fill="#DC2626" rx="1" />
     <text x="0" y="-42" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="800" fill="#991B1B" text-anchor="middle">BÃI CHÁY (KHÁCH SẠN)</text>
-    <text x="0" y="-26" font-family="'Consolas', monospace" font-size="11" font-weight="bold" fill="#DC2626" text-anchor="middle">11:45 ICT</text>
+    <text x="0" y="-26" font-family="'Consolas', monospace" font-size="10" font-weight="bold" fill="#DC2626" text-anchor="middle">CHỜ ĐỐI TÁC</text>
     <!-- Schematic alert readout card -->
     <rect x="-95" y="28" width="190" height="38" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5" rx="4" />
     <text x="0" y="43" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="800" fill="#991B1B" text-anchor="middle">CHỜ XÁC NHẬN 4 PHÒNG</text>
     <text x="0" y="58" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="700" fill="#B91C1C" text-anchor="middle">ĐIỂM NGHẼN CẦN XỬ LÝ</text>
   </g>
 
-  <!-- MỐC 4: TUẦN CHÂU (13:30) -->
+  <!-- MỐC 4: TUẦN CHÂU -->
   <g transform="translate(750, 90)">
     <rect x="-12" y="-12" width="24" height="24" fill="#FFFFFF" stroke="#64748B" stroke-width="2" rx="3" />
     <circle cx="0" cy="0" r="4" fill="#64748B" />
-    <text x="0" y="-26" font-family="'Consolas', monospace" font-size="11" font-weight="bold" fill="#475569" text-anchor="middle">13:30 ICT</text>
+    <text x="0" y="-26" font-family="'Consolas', monospace" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">LỊCH TRÌNH</text>
     <text x="0" y="-40" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="700" fill="#475569" text-anchor="middle">CẢNG TUẦN CHÂU</text>
     <text x="0" y="28" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#64748B" text-anchor="middle">Sẵn sàng đón đoàn</text>
     <rect x="-42" y="34" width="84" height="18" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" rx="2" />

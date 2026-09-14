@@ -1,0 +1,164 @@
+# TRIPFLOW BRAND & IMAGE DIRECTION CONTRACT (MODULE 12)
+# Standard: DESIGN_TRAINING_MODULE_012_DIRECTIVE.md (Mục 14.4 & 17)
+# Direction: Direction A (Human Field Intelligence)
+
+contract_id: BRAND_IMAGE_CONTRACT_MODULE_012_R01
+stream_id: B
+module: DESIGN_TRAINING_012_BRAND_AND_IMAGE_DIRECTION
+chosen_direction: DIRECTION_A
+direction_name: "Human Field Intelligence (Trí tuệ Thực địa Nhân văn)"
+version: "1.0.0"
+status: ACTIVE_PRODUCTION
+
+brand_identity:
+  target_audience: "B2B SME Tour Dispatchers & Operational Teams"
+  product_promise: "TRIPFLOW giúp đội vận hành nhìn thấy điều chưa sẵn sàng trước giờ khởi hành."
+  personality_seed:
+    - calm: "Bình tĩnh trước mọi biến cố và thay đổi lộ trình"
+    - precise: "Chính xác từng dữ liệu phòng, xe, hướng dẫn viên và khách"
+    - prepared: "Có chuẩn bị trước mọi điểm nghẽn với phương án dự phòng"
+    - operator_empathy: "Gần gũi và thấu hiểu áp lực của nhân sự vận hành thực địa"
+  anti_personality_locks:
+    - no_luxury_travel_brochure: "Không phải hãng nghỉ dưỡng xa xỉ hay trang bán tour"
+    - no_military_command_center: "Không thiết kế kiểu phòng điều khiển chiến dịch quân sự"
+    - no_generic_glowing_ai: "Không dùng gradient tím-xanh neon hoặc AI phát sáng chung chung"
+    - no_adventure_cliche: "Không dùng họa tiết la bàn, máy bay, đồi núi trang trí vô nghĩa"
+    - no_vanity_metrics: "Không bịa đặt số liệu doanh thu, tăng trưởng hay đối tác thương mại"
+
+design_tokens:
+  surfaces:
+    base: "#FAF8F5"           # Warm tactile paper substrate
+    card: "#FFFFFF"           # Clean operational surface
+    subtle: "#F5F0E8"         # Muted parchment fill
+    hover: "#F0EAE0"          # Interactive warmth
+    border_warm: "#E7E2DA"    # Hairline structural border
+    border_strong: "#D6CEC2"  # Distinct divider rule
+  ink:
+    primary: "#1C1917"        # Deep charcoal ink (14.2:1 contrast on #FAF8F5)
+    secondary: "#44403C"      # Muted ink (8.8:1 contrast on #FAF8F5)
+    tertiary: "#78716C"       # Warm stone metadata (4.6:1 contrast on #FAF8F5)
+  accent:
+    terracotta: "#C2410C"     # Natural terracotta earth (5.1:1 contrast on #FAF8F5)
+    hover: "#9A3412"          # Dark brick interactive focus
+    subtle: "#FFEDD5"         # Warm amber highlight
+  semantics:
+    waiting_partner:
+      bg: "#FEF3C7"
+      text: "#92400E"
+      border: "#F59E0B"
+      icon: "assets/icons/waiting_partner.svg"
+      label: "Chờ đối tác"
+    ready:
+      bg: "#ECFDF5"
+      text: "#065F46"
+      border: "#10B981"
+      icon: "assets/icons/ready.svg"
+      label: "Sẵn sàng"
+    missing_dossier:
+      bg: "#FEF2F2"
+      text: "#991B1B"
+      border: "#EF4444"
+      icon: "assets/icons/missing_dossier.svg"
+      label: "Thiếu hồ sơ"
+    in_preparation:
+      bg: "#EFF6FF"
+      text: "#1E40AF"
+      border: "#3B82F6"
+      icon: "assets/icons/departure.svg"
+      label: "Đang chuẩn bị"
+    completed:
+      bg: "#F5F5F4"
+      text: "#44403C"
+      border: "#D6D3D1"
+      icon: "assets/icons/ready.svg"
+      label: "Hoàn thành"
+  typography:
+    family_serif: "\"Times New Roman\", Georgia, Cambria, serif"
+    family_sans: "system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif"
+    weights:
+      regular: 400
+      medium: 500
+      bold: 700
+  focus_ring:
+    outline: "2px solid #C2410C"
+    offset: "2px"
+    contrast_ratio: "5.1:1"
+
+image_system_matrix:
+  roles_count: 6
+  roles:
+    hero_context:
+      asset_path: "assets/images/halong_field_documentary.svg"
+      purpose: "Bối cảnh thực địa bến Tuần Châu mốc 18:00 trước ngày khởi hành T01"
+      dimensions: { width: 640, height: 360 }
+      aspect_ratio: "16:9"
+      loading_behavior: "eager"
+      desktop_crop: "Toàn cảnh bến thuyền và vịnh chập tối, giữ trọn đường chân trời"
+      mobile_crop: "Cắt cúp lấy tâm điểm cụm thuyền chuẩn bị tại bến"
+      alt_text: "Bối cảnh bến tàu Tuần Châu và vịnh Hạ Long lúc chập tối mốc 18:00 ICT trước ngày khởi hành của đoàn T01"
+      fallback_behavior: "Khung tỷ lệ 16:9 giữ nguyên, màu nền #EAE4DA và văn bản alt rõ ràng"
+
+    operational_scene:
+      asset_path: "assets/images/operational_scene_prep.svg"
+      purpose: "Hiện trường bàn làm việc điều phối: hồ sơ lệnh tour T01, bút và điện thoại"
+      dimensions: { width: 400, height: 300 }
+      aspect_ratio: "4:3"
+      loading_behavior: "lazy"
+      desktop_crop: "Góc nhìn nghiêng tài liệu, nổi bật nhãn kiểm tra 4 phòng ngủ đêm"
+      mobile_crop: "Trung tâm tập hồ sơ điều phối"
+      alt_text: "Hiện trường bàn điều phối: Bìa kẹp hồ sơ lệnh tour T01 với 4 phòng khách sạn chờ xác nhận được đánh dấu màu hổ phách và điện thoại liên lạc"
+      fallback_behavior: "Giữ khung tỷ lệ 4:3 với viền ngăn cách và chú thích nghiệp vụ"
+
+    route_diagram:
+      asset_path: "assets/diagrams/t01_route_narrative.svg"
+      purpose: "Chuỗi 4 mốc lộ trình đoàn T01 (Hà Nội -> Tuyến đường -> Bãi Cháy -> Tuần Châu)"
+      dimensions: { width: 840, height: 180 }
+      aspect_ratio: "14:3"
+      loading_behavior: "lazy"
+      text_equivalent_required: true
+      text_equivalent_markup: "<ol class=\"sr-only\"><li>Mốc 1: Hà Nội (Khởi hành 07:30 ngày 14/09)...</li></ol>"
+      alt_text: "Sơ đồ chuỗi lộ trình T01 Hạ Long 4 mốc: (1) Hà Nội lúc 07:30 ngày 14/09; (2) Lộ trình di chuyển theo kế hoạch; (3) Khách sạn Bãi Cháy chờ xác nhận 4 phòng; (4) Cảng Tuần Châu xuống du thuyền tham quan vịnh"
+      fallback_behavior: "Danh sách 4 mốc có cấu trúc HTML đảm bảo không mất thông tin khi vector không tải"
+
+    fictional_person:
+      asset_path: "assets/images/lan_avatar.svg"
+      purpose: "Nhân vật điều phối viên Lan phụ trách tour Đông Bắc & T01"
+      dimensions: { width: 64, height: 64 }
+      aspect_ratio: "1:1"
+      loading_behavior: "eager"
+      disclosure_tag: "Nhân vật điều phối giả lập / Fictional Operator"
+      alt_text: "Chân dung minh họa điều phối viên Lan phụ trách tour T01 (Nhân vật giả lập đào tạo)"
+      fallback_behavior: "Hiển thị khung tròn chữ cái viết tắt [L] kèm tên và chức danh"
+
+    icon_family:
+      base_grid: "24x24"
+      stroke_weight: "2px"
+      style: "Consistent optical weight and geometry"
+      icons:
+        - { id: "AST_ICON_001", file: "assets/icons/departure.svg", label: "Khởi hành / Đang chuẩn bị" }
+        - { id: "AST_ICON_002", file: "assets/icons/ready.svg", label: "Sẵn sàng / Hoàn thành" }
+        - { id: "AST_ICON_003", file: "assets/icons/waiting_partner.svg", label: "Chờ đối tác" }
+        - { id: "AST_ICON_004", file: "assets/icons/missing_dossier.svg", label: "Thiếu hồ sơ" }
+        - { id: "AST_ICON_005", file: "assets/icons/person_lan.svg", label: "Người phụ trách / Điều phối viên" }
+        - { id: "AST_ICON_006", file: "assets/icons/contact_log.svg", label: "Nhật ký liên hệ điều phối" }
+      rule: "Không dùng icon độc lập không có nhãn văn bản đi kèm"
+
+    texture_accent:
+      asset_path: "assets/textures/paper_grain_subtle.svg"
+      purpose: "Chất liệu bề mặt hạt giấy tự nhiên cho toàn bộ trang"
+      application: "CSS background-repeat on body"
+      fallback_behavior: "Nền màu phẳng #FAF8F5 khi SVG không tải"
+
+responsive_spec:
+  viewports:
+    desktop: { width: 1440, height: 900, layout: "asymmetric_grid_62_38" }
+    tablet: { width: 768, height: 1024, layout: "stacked_single_column" }
+    mobile: { width: 390, height: 844, layout: "fluid_compact_column" }
+  horizontal_overflow_tolerance: 0
+  touch_target_minimum: { width: 44, height: 44 }
+
+static_boundaries:
+  animation_duration: "0s !important"
+  transition_duration: "0s !important"
+  motion_allowed: false
+  remote_runtime_requests: 0
