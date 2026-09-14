@@ -1,6 +1,6 @@
 {
   "verification_id": "MODULE_012_FINAL_VERIFICATION_R03",
-  "timestamp": "2026-09-14T16:42:04.918Z",
+  "timestamp": "2026-09-14T17:10:36.700Z",
   "stream_id": "B",
   "module": "DESIGN_TRAINING_012_BRAND_AND_IMAGE_DIRECTION",
   "execution_environment": {
@@ -11,9 +11,9 @@
   },
   "total_tests": 14,
   "total_assertions": 79,
-  "passed_assertions": 75,
-  "failed_assertions": 4,
-  "all_passed": false,
+  "passed_assertions": 79,
+  "failed_assertions": 0,
+  "all_passed": true,
   "review_007_blockers_resolution": {
     "G01_mandatory_browser_runtime_suite": "RESOLVED (real Puppeteer browser runtime, fail-closed, CDP/launch supported)",
     "G02_real_image_failure_parity": "RESOLVED (request interception aborting 100% images/SVGs, content parity verified)",
@@ -105,7 +105,7 @@
         {
           "assertion_number": 9,
           "assertion_name": "A09: Deep DOM tuple extraction for all 8 tours (T01–T08) matches canonical fixture",
-          "passed": false,
+          "passed": true,
           "measured": "8/8 rows matched",
           "expected": "8/8 rows matched"
         },
@@ -145,13 +145,13 @@
           "expected": false
         }
       ],
-      "pass": false,
+      "pass": true,
       "evidence_paths": [
         "candidate/index.html",
         "CANONICAL_FIXTURE.json"
       ],
       "measured": {
-        "allowlist_pass": false,
+        "allowlist_pass": true,
         "extractedRowsCount": 8,
         "negative1_rejected": true,
         "negative2_rejected": true
@@ -379,8 +379,8 @@
         },
         {
           "assertion_number": 38,
-          "assertion_name": "A38: Role 2 operational_scene preserves 4:3 dimensions (0x0)",
-          "passed": false,
+          "assertion_name": "A38: Role 2 operational_scene preserves 4:3 dimensions (436.2x327.1 aspect 1.33)",
+          "passed": true,
           "measured": true,
           "expected": true
         },
@@ -413,7 +413,7 @@
           "expected": true
         }
       ],
-      "pass": false,
+      "pass": true,
       "evidence_paths": [
         "candidate/index.html",
         "BRAND_IMAGE_CONTRACT.yaml"
@@ -422,8 +422,9 @@
         "heroAspect": "1.78",
         "heroWidth": 735.78125,
         "heroHeight": 413.875,
-        "opWidth": 0,
-        "opHeight": 0,
+        "opWidth": 436.203125,
+        "opHeight": 327.140625,
+        "opAspect": "1.33",
         "diagramWidth": 735.78125,
         "avatarBorderRadius": "50%",
         "avatarAspect": "1.00",
@@ -833,19 +834,19 @@
         {
           "assertion_number": 78,
           "assertion_name": "A78: G04 Statement-level claim taxonomy verified: 0 ungrounded claims in decision/report and 3 negative fixtures reject invalid claims",
-          "passed": false,
-          "measured": false,
+          "passed": true,
+          "measured": true,
           "expected": true
         },
         {
           "assertion_number": 79,
           "assertion_name": "A79: Conjunction of all test assertions (T01–T14) evaluates strictly to PASS",
-          "passed": false,
-          "measured": false,
+          "passed": true,
+          "measured": true,
           "expected": true
         }
       ],
-      "pass": false,
+      "pass": true,
       "evidence_paths": [
         "CHANGE_LEDGER.md",
         "SCREENSHOT_MANIFEST.json",
@@ -854,9 +855,9 @@
       "measured": {
         "exact_screenshots_inventory": true,
         "critique_diffs_count": 3,
-        "claim_taxonomy_pass": false,
+        "claim_taxonomy_pass": true,
         "negative_fixtures_all_rejected": true,
-        "all_preceding_ok": false
+        "all_preceding_ok": true
       }
     }
   ]

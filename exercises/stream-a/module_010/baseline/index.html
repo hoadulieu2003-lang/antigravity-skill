@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIPFLOW Disruption Board - Baseline Audit</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #FAF9F6;
+      color: #0F172A;
+      transition: all 0.3s ease;
+    }
+
+    #baseline-disclaimer-banner {
+      background-color: #FEF2F2;
+      color: #991B1B;
+      border-bottom: 2px solid #DC2626;
+      padding: 12px 16px;
+      font-weight: 700;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* DEF-R01: App shell has rigid min-width: 1180px causing horizontal overflow on 320px/390px */
+    #app-shell {
+      min-width: 1180px;
+      padding: 24px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    p.desc {
+      color: #475569;
+      font-size: 14px;
+    }
+
+    .controls-panel {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* DEF-R06: Target size only 32x32px */
+    .btn, .tab-btn {
+      height: 32px;
+      padding: 0 10px;
+      font-size: 13px;
+      border: 1px solid #CBD5E1;
+      background: #FFFFFF;
+      border-radius: 4px;
+      cursor: pointer;
+      /* DEF-R07: Fixed height clips on text-spacing */
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: #0F172A;
+      color: #FFFFFF;
+    }
+
+    #search-input {
+      height: 32px;
+      padding: 0 10px;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      width: 280px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+    }
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #E2E8F0;
+      text-align: left;
+      font-size: 13px;
+      vertical-align: middle;
+    }
+    th {
+      background: #F8FAFC;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    /* DEF-R03: Tour title and assignee truncated with ellipsis */
+    .tour-title {
+      max-width: 150px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 600;
+    }
+    .assignee-name {
+      max-width: 100px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* DEF-R06: Color-only attention circles */
+    .attention-circle {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .att-CRITICAL { background: #DC2626; }
+    .att-HIGH { background: #D97706; }
+    .att-MEDIUM { background: #2563EB; }
+    .att-LOW { background: #16A34A; }
+    .att-RESOLVED { background: #64748B; }
+
+    /* DEF-R02: Mobile hides "Khách" and "Việc tiếp theo" columns */
+    @media (max-width: 768px) {
+      .col-passengers, .col-next-action {
+        display: none !important;
+      }
+    }
+
+    /* DEF-R04: Rotate device overlay on portrait orientation */
+    @media (orientation: portrait) and (max-width: 600px) {
+      #rotate-device-overlay {
+        display: flex !important;
+      }
+    }
+    #rotate-device-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.95);
+      color: #FFFFFF;
+      z-index: 99999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      font-size: 16px;
+    }
+
+    /* DEF-R05: Sticky action bar obscuring focused elements */
+    #sticky-action-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 56px;
+      background: #FFFFFF;
+      border-top: 2px solid #CBD5E1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="baseline-disclaimer-banner" role="region" aria-label="Cảnh báo phiên bản kiểm toán">
+    PHIÊN BẢN CƠ SỞ ĐANG KIỂM TOÁN — CHỨA 7 KHUYẾT TẬT ĐỂ ĐỐI SOÁT
+  </div>
+
+  <div id="rotate-device-overlay">
+    <h2>Vui lòng xoay ngang thiết bị</h2>
+    <p>Giao diện bảng điều phối được tối ưu hóa cho màn hình ngang.</p>
+  </div>
+
+  <div id="app-shell">
+    <header>
+      <h1>Bảng xử lý gián đoạn tour</h1>
+      <p class="desc">Theo dõi tình huống ảnh hưởng đến hành trình và giữ nguyên ngữ cảnh xử lý trên mọi kích thước màn hình.</p>
+    </header>
+
+    <div class="controls-panel">
+      <input type="text" id="search-input" placeholder="Tìm theo mã tour, tên tour hoặc nội dung sự cố">
+      <button class="tab-btn active" data-filter="ALL">Tất cả</button>
+      <button class="tab-btn" data-filter="Cần xử lý">Cần xử lý</button>
+      <button class="tab-btn" data-filter="Đang phối hợp">Đang phối hợp</button>
+      <button class="tab-btn" data-filter="Chờ cập nhật">Chờ cập nhật</button>
+      <button class="tab-btn" data-filter="Đã ổn định">Đã ổn định</button>
+      <button class="btn" id="reset-filters-btn">Xóa điều kiện</button>
+    </div>
+
+    <table id="disruption-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Mức chú ý</th>
+          <th>Tour</th>
+          <th>Khởi hành</th>
+          <th>Phụ trách</th>
+          <th class="col-passengers">Khách</th>
+          <th>Sự cố</th>
+          <th class="col-next-action">Việc tiếp theo</th>
+          <th>Trạng thái</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody id="disruption-records">
+        <tr data-incident-id="IR-1001">
+          <td>IR-1001</td>
+          <td><span class="attention-circle att-CRITICAL" title="CRITICAL"></span></td>
+          <td><div class="tour-title">TF-802 · Tour Fansipan Sapa 2 Ngày 1 Đêm</div></td>
+          <td>2026-09-15 06:30 ICT</td>
+          <td><div class="assignee-name">Lan Nguyễn</div></td>
+          <td class="col-passengers">18</td>
+          <td>Chưa chốt được xe trung chuyển phù hợp cho hành khách sử dụng xe lăn tại điểm đón số 3.</td>
+          <td class="col-next-action">Xác nhận phương án xe thay thế trước 04:30.</td>
+          <td>Cần xử lý</td>
+          <td><button class="btn">Xem chi tiết</button></td>
+        </tr>
+        <tr data-incident-id="IR-1002">
+          <td>IR-1002</td>
+          <td><span class="attention-circle att-HIGH" title="HIGH"></span></td>
+          <td><div class="tour-title">TF-803 · Tour Hạ Long Du Thuyền 5 Sao</div></td>
+          <td>2026-09-15 08:00 ICT</td>
+          <td><div class="assignee-name">Huy Trần</div></td>
+          <td class="col-passengers">24</td>
+          <td>Cảng vụ phát cảnh báo dông lốc; giờ rời bến có thể thay đổi.</td>
+          <td class="col-next-action">Kiểm tra thông báo cảng vụ lúc 05:30 và cập nhật cho đoàn.</td>
+          <td>Chờ cập nhật</td>
+          <td><button class="btn">Xem chi tiết</button></td>
+        </tr>
+        <tr data-incident-id="IR-1003">
+          <td>IR-1003</td>
+          <td><span class="attention-circle att-MEDIUM" title="MEDIUM"></span></td>
+          <td><div class="tour-title">TF-804 · Tour Đảo Phú Quốc Sunset 3 Ngày 2 Đêm</div></td>
+          <td>2026-09-16 09:45 ICT</td>
+          <td><div class="assignee-name">Mai Đỗ</div></td>
+          <td class="col-passengers">42</td>
+          <td>Hai hành khách cần lối lên xuống ít bậc và vị trí ngồi gần cửa.</td>
+          <td class="col-next-action">Xác nhận xe đón có bậc hỗ trợ và giữ hai ghế hàng đầu.</td>
+          <td>Đang phối hợp</td>
+          <td><button class="btn">Xem chi tiết</button></td>
+        </tr>
+        <tr data-incident-id="IR-1004">
+          <td>IR-1004</td>
+          <td><span class="attention-circle att-MEDIUM" title="MEDIUM"></span></td>
+          <td><div class="tour-title">TF-805 · Tour Tràng An - Bái Đính 1 Ngày</div></td>
+          <td>2026-09-16 07:30 ICT</td>
+          <td><div class="assignee-name">An Phạm</div></td>
+          <td class="col-passengers">35</td>
+          <td>Nhà hàng đề nghị chuyển giờ ăn trưa từ 11:30 sang 12:15.</td>
+          <td class="col-next-action">Đối chiếu lịch tham quan trước khi chấp thuận thay đổi.</td>
+          <td>Đang phối hợp</td>
+          <td><button class="btn">Xem chi tiết</button></td>
+        </tr>
+        <tr data-incident-id="IR-1005">
+          <td>IR-1005</td>
+          <td><span class="attention-circle att-LOW" title="LOW"></span></td>
+          <td><div class="tour-title">TF-806 · Hành trình Di sản miền Trung dành cho nhóm gia đình nhiều thế hệ</div></td>
+          <td>2026-09-17 05:45 ICT</td>
+          <td><div class="assignee-name">Nguyễn Hoàng Minh Anh</div></td>
+          <td class="col-passengers">31</td>
+          <td>Danh sách phòng có một tên hành khách dài hơn giới hạn hiển thị dự kiến của bản cũ.</td>
+          <td class="col-next-action">Giữ nguyên tên đầy đủ; không cắt bằng dấu ba chấm nếu không có cách xem lại.</td>
+          <td>Chờ cập nhật</td>
+          <td><button class="btn">Xem chi tiết</button></td>
+        </tr>
+        <tr data-incident-id="IR-1006">
+          <td>IR-1006</td>
+          <td><span class="attention-circle att-RESOLVED" title="RESOLVED"></span></td>
+          <td><div class="tour-title">TF-807 · Tour Mekong Buổi Sáng</div></td>
+          <td>2026-09-18 06:00 ICT</td>
+          <td><div class="assignee-name">Bình Lê</div></td>
+          <td class="col-passengers">16</td>
+          <td>Điểm đón cũ tạm đóng để sửa đường; điểm đón thay thế đã được xác nhận.</td>
+          <td class="col-next-action">Không cần hành động thêm.</td>
+          <td>Đã ổn định</td>
+          <td><button class="btn">Xem chi tiết</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="sticky-action-bar">
+      <span>Thanh tác vụ nhanh điều hành viên (Che khuất phần tử bên dưới)</span>
+      <button class="btn">Thao tác nhanh</button>
+    </div>
+  </div>
+</body>
+</html>

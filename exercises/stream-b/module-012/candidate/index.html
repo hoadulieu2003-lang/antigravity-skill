@@ -1237,7 +1237,8 @@
           <div style="border-radius: 8px; overflow: hidden; border: 1px solid var(--color-border-warm); margin-bottom: 12px;">
             <img src="../assets/images/operational_scene_prep.svg" 
                  alt="Hiện trường bàn điều phối: Bìa kẹp hồ sơ lệnh tour T01 với 4 phòng khách sạn chờ xác nhận được đánh dấu màu hổ phách và điện thoại liên lạc"
-                 width="400" height="300" loading="lazy" style="width: 100%; height: auto; display: block;">
+                 width="400" height="300" loading="lazy" style="width: 100%; height: auto; display: block;"
+                 onerror="this.classList.add('asset-failed'); this.style.display='none';">
           </div>
           <p style="font-size: 13px; color: var(--color-text-secondary); margin: 0; line-height: 1.5;">
             Hồ sơ lệnh tour T01 đang được Lan rà soát: tập trung giải quyết xác nhận 4 phòng khách sạn trước giờ khởi hành 07:30.
@@ -1362,7 +1363,7 @@
   <script>
     window.addEventListener('load', () => {
       document.querySelectorAll('img').forEach(img => {
-        if (!img.complete || img.naturalWidth === 0) {
+        if (img.complete && img.naturalWidth === 0) {
           img.classList.add('asset-failed');
           img.style.display = 'none';
           const p = img.parentElement;

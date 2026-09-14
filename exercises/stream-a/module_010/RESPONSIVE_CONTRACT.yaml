@@ -1,0 +1,98 @@
+SCHEMA_VERSION: 1.0.0
+MODULE: DESIGN_TRAINING_010_RESPONSIVE_INCLUSIVE_DESIGN
+MODULE_NAME: RESPONSIVE_INCLUSIVE_DESIGN
+STREAM: FOUNDATION_INTEGRITY
+BRANCH: TAB_A
+CANDIDATE_DIRECTION: DIRECTION_A_ADAPTIVE_LEDGER
+
+CANONICAL_REFERENCE_TIME: "2026-09-14 18:00 ICT"
+
+DESIGN_TOKENS:
+  CANVAS:
+    primitive: "#FAF9F6"
+    semantic: "var(--color-canvas)"
+    role: "Warm Alabaster Canvas Background"
+  SURFACE:
+    primitive: "#FFFFFF"
+    semantic: "var(--color-surface)"
+    role: "Card and Panel Surface"
+  SURFACE_SUBTLE:
+    primitive: "#F8FAFC"
+    semantic: "var(--color-surface-subtle)"
+    role: "Zebra Striping and Inactive Tabs"
+  TEXT_PRIMARY:
+    primitive: "#0F172A"
+    semantic: "var(--color-text-primary)"
+    contrast_on_canvas: 16.96
+    wcag_compliance: "AAA"
+  TEXT_SECONDARY:
+    primitive: "#475569"
+    semantic: "var(--color-text-secondary)"
+    contrast_on_canvas: 7.20
+    wcag_compliance: "AAA"
+  BORDER_DECORATIVE:
+    primitive: "#CBD5E1"
+    semantic: "var(--color-border-subtle)"
+    contrast_on_canvas: 1.41
+    role: "Subtle decorative divider (non-essential)"
+  BORDER_STRUCTURAL:
+    primitive: "#64748B"
+    semantic: "var(--color-border-structural)"
+    contrast_on_canvas: 4.62
+    wcag_compliance: "AA_NON_TEXT"
+    role: "Essential interactive boundaries and focus context (>= 3.0:1)"
+  FOCUS_RING:
+    primitive: "#0F172A"
+    semantic: "var(--color-focus-ring)"
+    contrast_on_canvas: 16.96
+    width: "2px solid"
+    offset: "2px"
+
+ATTENTION_SYSTEM:
+  CRITICAL:
+    bg: "#FEF2F2"
+    border: "#DC2626"
+    text: "#991B1B"
+    label: "Khẩn cấp"
+    marker: "⛔"
+  HIGH:
+    bg: "#FFFBEB"
+    border: "#D97706"
+    text: "#92400E"
+    label: "Cao"
+    marker: "⚠️"
+  MEDIUM:
+    bg: "#EFF6FF"
+    border: "#2563EB"
+    text: "#1E40AF"
+    label: "Trung bình"
+    marker: "🔷"
+  LOW:
+    bg: "#F0FDF4"
+    border: "#16A34A"
+    text: "#166534"
+    label: "Thấp"
+    marker: "ℹ️"
+  RESOLVED:
+    bg: "#F8FAFC"
+    border: "#64748B"
+    text: "#334155"
+    label: "Đã ổn định"
+    marker: "✅"
+
+BREAKPOINTS:
+  MOBILE: "320px - 767px"
+  TABLET: "768px - 1023px"
+  DESKTOP: "1024px - 1440px+"
+
+PROJECT_INVARIANTS:
+  LIGHT_THEME_DEFAULT: true
+  DARK_THEME_FORBIDDEN: true
+  STRICT_ZERO_MOTION:
+    transition_duration: "0s"
+    animation_duration: "0s"
+    scroll_behavior: "auto"
+  MINIMUM_TARGET_SIZE: "44px"
+  HORIZONTAL_SCROLL_FORBIDDEN: true
+  ORIENTATION_LOCK_FORBIDDEN: true
+  FOCUS_NOT_OBSCURED: true

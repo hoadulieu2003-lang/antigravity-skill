@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Dirty Overlap Fixture (Positive Control)</title>
+  <style>
+    body { font-family: sans-serif; background: #fff; padding: 20px; }
+    .overlap-container { position: relative; width: 300px; height: 100px; }
+    .box-a {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 200px;
+      height: 50px;
+      background: rgba(255, 0, 0, 0.3);
+    }
+    .box-b {
+      position: absolute;
+      top: 25px;
+      left: 30px;
+      width: 200px;
+      height: 50px;
+      background: rgba(0, 0, 255, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="overlap-container">
+    <div class="box-a" id="overlap-box-a"><p>Khối văn bản thứ nhất</p></div>
+    <div class="box-b" id="overlap-box-b"><p>Khối văn bản thứ hai đè lên</p></div>
+  </div>
+</body>
+</html>

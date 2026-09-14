@@ -1,0 +1,571 @@
+{
+  "canonical_parity": {},
+  "tests": {
+    "T01": {
+      "pass": true,
+      "count": 6,
+      "spotlightText": "Spotlight mặc định: IR-1001"
+    },
+    "T02": {
+      "pass": true,
+      "query": "  LAN NGUYEN  ",
+      "matched": [
+        "IR-1001"
+      ]
+    },
+    "T03": {
+      "pass": true,
+      "workflow": "Đang phối hợp",
+      "matched": [
+        "IR-1003",
+        "IR-1004"
+      ]
+    },
+    "T04": {
+      "pass": true,
+      "matched": [
+        "IR-1005"
+      ]
+    },
+    "T05": {
+      "pass": true,
+      "emptyText": "Không có tình huống phù hợp với điều kiện hiện tại.",
+      "restoredCount": 6,
+      "focus": "search-input"
+    },
+    "T06": {
+      "pass": true,
+      "detailData": {
+        "disruption_id": "IR-1005",
+        "attention_level": "LOW",
+        "tour_code_and_name": "TF-806 · Hành trình Di sản miền Trung dành cho nhóm gia đình nhiều thế hệ",
+        "departure_time": "2026-09-17 05:45 ICT",
+        "assignee": "Nguyễn Hoàng Minh Anh",
+        "passenger_count": "31",
+        "incident_summary": "Danh sách phòng có một tên hành khách dài hơn giới hạn hiển thị dự kiến của bản cũ.",
+        "next_action": "Giữ nguyên tên đầy đủ; không cắt bằng dấu ba chấm nếu không có cách xem lại.",
+        "operational_status": "Chờ cập nhật"
+      }
+    },
+    "T07": {
+      "pass": true,
+      "ackBtnInitial": {
+        "pressed": "false",
+        "text": "Đánh dấu đã xem"
+      },
+      "ackBtnPressed": {
+        "pressed": "true",
+        "text": "Đã xem"
+      },
+      "opStatusAfterAck": "Chờ cập nhật"
+    },
+    "T08": {
+      "pass": true,
+      "restoredFocus": {
+        "tag": "BUTTON",
+        "incidentId": "IR-1005",
+        "action": "view-detail"
+      }
+    },
+    "T09": {
+      "pass": true,
+      "stopsCount": 12,
+      "bodyFocusCount": 0
+    },
+    "T10": {
+      "pass": true,
+      "cellsCount": 25
+    },
+    "T11": {
+      "pass": true,
+      "textScaleOverflow": {
+        "hasOverflow": false,
+        "scrollWidth": 305,
+        "clientWidth": 305
+      }
+    },
+    "T12": {
+      "pass": true,
+      "textSpacingOverflow": {
+        "hasOverflow": false,
+        "scrollWidth": 305,
+        "clientWidth": 305
+      }
+    },
+    "T13": {
+      "pass": true,
+      "item": "IR-1005"
+    },
+    "T14": {
+      "pass": true,
+      "positive_controls": {
+        "PC1_overflow": {
+          "pass": true,
+          "caught": true
+        },
+        "PC2_missing_selector": {
+          "pass": true,
+          "caught": true
+        },
+        "PC3_focus_obscuration": {
+          "pass": true,
+          "caught": true
+        },
+        "PC4_ledger_tamper": {
+          "pass": true,
+          "caught": true,
+          "validHash": "19f31f3db3169b062b8bfb1729bae800df4209db6122510f1a625b637a6a0a28",
+          "tamperedHash": "b05e4ebfc78e989fb028645a9969265e304a04746fa0d1334f678cc8e0188331"
+        },
+        "PC5_clipping": {
+          "pass": true,
+          "caught": true
+        },
+        "PC6_overlap": {
+          "pass": true,
+          "caught": true
+        },
+        "PC7_zero_motion": {
+          "pass": true,
+          "caught": true
+        }
+      }
+    }
+  },
+  "reflow_matrix": [
+    {
+      "viewport": "desktop_1440x900",
+      "state": "initial",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1425,
+      "clientWidth": 1425,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "desktop_1440x900",
+      "state": "filtered",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "desktop_1440x900",
+      "state": "empty",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "desktop_1440x900",
+      "state": "detail",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "desktop_1440x900",
+      "state": "acknowledged",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "tablet_768x1024",
+      "state": "initial",
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 753,
+      "clientWidth": 753,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "tablet_768x1024",
+      "state": "filtered",
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "tablet_768x1024",
+      "state": "empty",
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "tablet_768x1024",
+      "state": "detail",
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "tablet_768x1024",
+      "state": "acknowledged",
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "mobile_portrait_390x844",
+      "state": "initial",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "mobile_portrait_390x844",
+      "state": "filtered",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "mobile_portrait_390x844",
+      "state": "empty",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "mobile_portrait_390x844",
+      "state": "detail",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "mobile_portrait_390x844",
+      "state": "acknowledged",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "reflow_320x800",
+      "state": "initial",
+      "width": 320,
+      "height": 800,
+      "scrollWidth": 305,
+      "clientWidth": 305,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "reflow_320x800",
+      "state": "filtered",
+      "width": 320,
+      "height": 800,
+      "scrollWidth": 305,
+      "clientWidth": 305,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "reflow_320x800",
+      "state": "empty",
+      "width": 320,
+      "height": 800,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "reflow_320x800",
+      "state": "detail",
+      "width": 320,
+      "height": 800,
+      "scrollWidth": 305,
+      "clientWidth": 305,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "reflow_320x800",
+      "state": "acknowledged",
+      "width": 320,
+      "height": 800,
+      "scrollWidth": 305,
+      "clientWidth": 305,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "mobile_landscape_844x390",
+      "state": "initial",
+      "width": 844,
+      "height": 390,
+      "scrollWidth": 829,
+      "clientWidth": 829,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "mobile_landscape_844x390",
+      "state": "filtered",
+      "width": 844,
+      "height": 390,
+      "scrollWidth": 829,
+      "clientWidth": 829,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "mobile_landscape_844x390",
+      "state": "empty",
+      "width": 844,
+      "height": 390,
+      "scrollWidth": 829,
+      "clientWidth": 829,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "mobile_landscape_844x390",
+      "state": "detail",
+      "width": 844,
+      "height": 390,
+      "scrollWidth": 829,
+      "clientWidth": 829,
+      "localOverflows": [],
+      "pass": true
+    },
+    {
+      "viewport": "mobile_landscape_844x390",
+      "state": "acknowledged",
+      "width": 844,
+      "height": 390,
+      "scrollWidth": 829,
+      "clientWidth": 829,
+      "localOverflows": [],
+      "pass": true
+    }
+  ],
+  "invariants": {
+    "required_selectors": {
+      "pass": true,
+      "verifiedCount": 16
+    },
+    "zero_motion": {
+      "pass": true,
+      "zeroMotionAudit": {
+        "animatedCount": 0,
+        "animatedElements": [],
+        "scrollBehavior": "auto"
+      }
+    },
+    "target_size": {
+      "pass": true,
+      "totalAudited": 16
+    },
+    "live_contrast": {
+      "pass": true,
+      "liveContrast": {
+        "bodyBg": "rgb(250, 249, 246)",
+        "bodyText": "rgb(15, 23, 42)",
+        "btnBorder": "rgb(100, 116, 139)",
+        "textContrast": 16.96,
+        "borderContrast": 4.52
+      }
+    },
+    "focus_obscuration": {
+      "pass": true,
+      "fixedStickyCount": 0
+    }
+  },
+  "positive_controls": {
+    "PC1_overflow": {
+      "pass": true,
+      "caught": true
+    },
+    "PC2_missing_selector": {
+      "pass": true,
+      "caught": true
+    },
+    "PC3_focus_obscuration": {
+      "pass": true,
+      "caught": true
+    },
+    "PC4_ledger_tamper": {
+      "pass": true,
+      "caught": true,
+      "validHash": "19f31f3db3169b062b8bfb1729bae800df4209db6122510f1a625b637a6a0a28",
+      "tamperedHash": "b05e4ebfc78e989fb028645a9969265e304a04746fa0d1334f678cc8e0188331"
+    },
+    "PC5_clipping": {
+      "pass": true,
+      "caught": true
+    },
+    "PC6_overlap": {
+      "pass": true,
+      "caught": true
+    },
+    "PC7_zero_motion": {
+      "pass": true,
+      "caught": true
+    }
+  },
+  "authoritative_screenshots": [
+    {
+      "filename": "baseline_desktop_1440x900.png",
+      "bytes": 296585,
+      "sha256": "b8e1a9c7916ffdea47f9d151e97c2b0ef925e9d2ba26cb60a338f2f1aef9c16c",
+      "deviceScaleFactor": 2
+    },
+    {
+      "filename": "baseline_mobile_390x844.png",
+      "bytes": 101934,
+      "sha256": "3a9e4b09c05de99a811453fefa58f752c289be6ed71fcf0fdb60b2934f591e02",
+      "deviceScaleFactor": 2
+    },
+    {
+      "filename": "direction_a_desktop_1440x900.png",
+      "bytes": 366865,
+      "sha256": "4eac2456705074a08e38029d3bd7bf3105d3b2b0b9dd9f3d3bb59f207bad30ba",
+      "deviceScaleFactor": 2
+    },
+    {
+      "filename": "direction_a_mobile_390x844.png",
+      "bytes": 130761,
+      "sha256": "a7f8917cb7fc6ab5a773aa1367af17b738307864dc51bc5abc838635519c31b2",
+      "deviceScaleFactor": 2
+    },
+    {
+      "filename": "direction_b_desktop_1440x900.png",
+      "bytes": 366802,
+      "sha256": "9cb81faffea851f011731c7883003feaf2ed6ad595cf67d38ff07ed7b83e8313",
+      "deviceScaleFactor": 2
+    },
+    {
+      "filename": "direction_b_mobile_390x844.png",
+      "bytes": 130752,
+      "sha256": "f2e6a18ae04937e659a1442f8497ee506402115312c533907e0f62189124b786",
+      "deviceScaleFactor": 2
+    },
+    {
+      "filename": "final_desktop_1440x900.png",
+      "bytes": 366865,
+      "sha256": "4eac2456705074a08e38029d3bd7bf3105d3b2b0b9dd9f3d3bb59f207bad30ba",
+      "deviceScaleFactor": 2
+    },
+    {
+      "filename": "final_long_content_mobile_390x844.png",
+      "bytes": 106500,
+      "sha256": "c91d6ce25d8e16ac1f90b7c9bbf58a6cf1247f2812e9167e9bb77f0b3684453c",
+      "deviceScaleFactor": 2
+    },
+    {
+      "filename": "final_mobile_landscape_844x390.png",
+      "bytes": 78092,
+      "sha256": "04ae29ecd2b1b06235fa71e349f9d8d68f2ea6ecd783e368a53f3dfe91977165",
+      "deviceScaleFactor": 2
+    },
+    {
+      "filename": "final_mobile_portrait_390x844.png",
+      "bytes": 130761,
+      "sha256": "a7f8917cb7fc6ab5a773aa1367af17b738307864dc51bc5abc838635519c31b2",
+      "deviceScaleFactor": 2
+    },
+    {
+      "filename": "final_reflow_320x800.png",
+      "bytes": 114747,
+      "sha256": "10a1e7a55ed5e2537c498fa4045fe7aa7585396a90e2784de7b51c7421d8dce5",
+      "deviceScaleFactor": 2
+    },
+    {
+      "filename": "final_tablet_768x1024.png",
+      "bytes": 157949,
+      "sha256": "f7381f56f2ab39f6f97c44453301088ba754d2e2cffbae45b0745abfd8da13ad",
+      "deviceScaleFactor": 2
+    },
+    {
+      "filename": "final_text_scale_200_percent_320x800.png",
+      "bytes": 124628,
+      "sha256": "a9723cee29df2f0c594edac80a93dd81a49c2ec606b8f6f58d5e236c4e5f0602",
+      "deviceScaleFactor": 2
+    },
+    {
+      "filename": "final_text_spacing_320x800.png",
+      "bytes": 97778,
+      "sha256": "eab9439645439138ab89492e36ded34e850b440226344b767ce340e59bb9a0e0",
+      "deviceScaleFactor": 2
+    }
+  ],
+  "source_manifest": [
+    {
+      "path": "index.html",
+      "bytes": 30846,
+      "sha256": "19f31f3db3169b062b8bfb1729bae800df4209db6122510f1a625b637a6a0a28"
+    },
+    {
+      "path": "baseline/index.html",
+      "bytes": 10628,
+      "sha256": "69340ec43afa3ff4a6cb41c12f6fcef73804031f66b5714749ae2572f23b5073"
+    },
+    {
+      "path": "directions/option_a.html",
+      "bytes": 30846,
+      "sha256": "19f31f3db3169b062b8bfb1729bae800df4209db6122510f1a625b637a6a0a28"
+    },
+    {
+      "path": "directions/option_b.html",
+      "bytes": 30863,
+      "sha256": "7008bb90bd715ec21f48c73a68664981f5ca8f9cabeff80708299b3939231a4a"
+    },
+    {
+      "path": "RESPONSIVE_CONTRACT.yaml",
+      "bytes": 2465,
+      "sha256": "fa58eb0e56de7452c8976c048c07d01c40917aa579432a48772bdd9812ead0ac"
+    },
+    {
+      "path": "package.json",
+      "bytes": 311,
+      "sha256": "b45ca2db613298144a8d70275de1b494abb55027a5b003e3a34d1ed70a681471"
+    }
+  ],
+  "final_verdict": "SELF_CHECK_PASS",
+  "timestamp": "2026-09-14T18:57:16.316Z"
+}

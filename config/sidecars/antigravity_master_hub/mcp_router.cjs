@@ -215,7 +215,7 @@ module.exports = { McpRouter };
 if (require.main === module) {
   const router = new McpRouter({
     mcpConfigPath: 'C:\\Users\\game\\.gemini\\config\\mcp_config.json',
-    enabledServers: ['cdp-bridge']
+    enabledServers: ['cdp-bridge', 'ai-engineering-team']
   });
 
   router.initialize().then(() => {

@@ -1,0 +1,12 @@
+{
+  "name": "tripflow-disruption-response-board",
+  "version": "1.0.0",
+  "description": "Module 10: Responsive & Inclusive Design - TRIPFLOW Disruption Response Board",
+  "main": "index.html",
+  "scripts": {
+    "test": "node verify_module_010.js"
+  },
+  "dependencies": {
+    "puppeteer-core": "^23.0.0"
+  }
+}

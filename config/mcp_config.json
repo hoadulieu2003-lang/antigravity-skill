@@ -5,6 +5,18 @@
       "args": [
         "C:\\Users\\game\\.gemini\\config\\sidecars\\cdp-bridge\\cdp_mcp_server.js"
       ]
+    },
+    "ai-engineering-team": {
+      "command": "node",
+      "args": [
+        "C:\\Users\\game\\.gemini\\config\\sidecars\\ai-engineering-team\\ai_engineering_mcp_server.js"
+      ]
+    },
+    "aider-bridge": {
+      "command": "python",
+      "args": [
+        "C:\\Users\\game\\.gemini\\config\\sidecars\\aider-bridge\\aider_mcp_server.py"
+      ]
     }
   }
 }

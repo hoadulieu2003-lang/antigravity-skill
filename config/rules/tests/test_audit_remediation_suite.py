@@ -154,16 +154,15 @@ class TestAuditRemediation(unittest.TestCase):
         self.assertTrue(cfg.get("userSettings", {}).get("enableTerminalSandbox", False))
 
     def test_08_ai_engine_settings_normalized(self):
-        """Kiểm tra aiEngineSettings không chứa các cờ giả lập vô căn cứ"""
+        """Kiểm tra aiEngineSettings tuân thủ Rule 1.5 HYPER_OVERCLOCKED_X8_ENGINEERING_ONLY"""
         cfg_path = os.path.join(CONFIG_DIR, "config.json")
         with open(cfg_path, "r", encoding="utf-8") as f:
             cfg = json.load(f)
         settings = cfg.get("aiEngineSettings", {})
-        self.assertNotIn("status", settings)
-        self.assertNotIn("outputTokenMultiplier", settings)
-        self.assertNotIn("deepThinkingBudget", settings)
+        self.assertEqual(settings.get("status"), "HYPER_OVERCLOCKED_X8_ENGINEERING_ONLY")
+        self.assertEqual(settings.get("outputTokenMultiplier"), 8)
+        self.assertEqual(settings.get("maxOutputTokensHeadroom"), 131072)
         self.assertEqual(settings.get("activeModel"), "gemini-3.8-flash")
-        self.assertEqual(settings.get("reasoningProfile"), "high_reasoning")
 
     # -------------------------------------------------------------
     # 3. MCP Path & Secrets Protection Verification

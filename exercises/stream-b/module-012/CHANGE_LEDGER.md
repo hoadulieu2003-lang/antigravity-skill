@@ -217,3 +217,32 @@ Toàn bộ dữ liệu 8 tour được đóng băng nguyên trạng từ Mục 4
     * Test runner `verify_module_012.js` đạt **79/79 ASSERTIONS PASSED (Exit code 0)** [MEASURED].
     * Đóng gói xuất xưởng `design_training_012_submission_r02.zip`.
 
+### Giai đoạn M5 — Khắc Phục Triệt Để 5 Blockers Review 007 (Repair Round 2/2 Final — R03)
+- **Thực thi Hoàn tất (Completed 2026-09-15)**:
+  - **G01 (Mandatory Browser Runtime Suite)**:
+    * Nâng cấp `verify_module_012.js` tích hợp Puppeteer browser automation thực tế, hỗ trợ kết nối CDP qua `--cdp-port <port>` (e.g. 9223) hoặc khởi chạy headless Chromium qua `--chrome-path <path>`.
+    * Áp dụng quy tắc `FAIL_CLOSED`: Nếu không khởi chạy hoặc kết nối được trình duyệt, runner lập tức dừng với exit code 1; tuyệt đối cấm static fallback PASS.
+    * Các bài kiểm thử T06, T07, T10, T11, T12, T13 đo lường trực tiếp từ Chromium page và xuất đầy đủ structured runtime measurements vào `VERIFICATION.json`.
+  - **G02 (Real Image Failure Parity & Request Interception)**:
+    * Kích hoạt request interception trong Puppeteer chặn và hủy (abort) 100% yêu cầu ảnh và SVG ở mobile viewport 390x844.
+    * Cơ chế fallback hiển thị `.image-fallback-placeholder` và `.diagram-fallback-panel` tự động; ẩn toàn bộ thẻ ảnh lỗi; triệt tiêu 100% broken-image glyphs.
+    * Đo kiểm thực tế: T01 ID, tiến độ mạng lưới, cảnh báo điểm nghẽn khách sạn 4 phòng, nút hành động CTA và các mốc lộ trình đều hiển thị rõ ràng, zero horizontal overflow (`scrollWidth: 375 <= 375`).
+    * Chụp ảnh failure authoritative mới `screenshots/08_candidate_image_failure_mobile.png` trực tiếp từ test state.
+  - **G03 (Allowlist Membership Validator & Negative Fixture)**:
+    * Tách module kiểm định `validateAllowlistMembership` độc lập, trích xuất visible text, alt, SVGs và table rows đối chiếu với `CANONICAL_FIXTURE.json`.
+    * Kiểm tra thành viên nghiêm ngặt: mọi tour ID, điều phối viên, trạng thái, địa điểm và facts vận hành bắt buộc thuộc allowlist.
+    * Hai negative fixtures (đột biến status và chèn fact ngoài luồng "Bãi Cháy") được kiểm chứng bị từ chối bởi chính hàm validator sản xuất.
+  - **G04 (Statement-level Claim Taxonomy Validator)**:
+    * Tách hàm kiểm định `validateClaimTaxonomy` kiểm tra 100% câu đánh giá trong `SELECTION_DECISION.md` và `DESIGN_TRAINING_012_REPORT.md`.
+    * Toàn bộ 31 nhãn `[MEASURED]` được bổ sung con trỏ bằng chứng cụ thể `[MEASURED: pointer]`.
+    * Ba negative fixtures (phát biểu không nhãn, nhãn `[MEASURED]` thiếu pointer, nhãn `[USER_RESEARCH]` thiếu dữ liệu) được kiểm chứng bị từ chối.
+  - **G05 (Controller Documents Byte-Identical & Exact Inventory)**:
+    * Tệp Review 006 khôi phục byte-identical: SHA-256 `fcf2c25c2295efda93b71fcb5df9682457f130afa1bb8f0c4144dbfa4ddb318e`.
+    * Tệp Review 007 tích hợp byte-identical: SHA-256 `c713b928430f981d611b28334ad77d5727e7d85d4eda62be282c85094307aaec`.
+    * Thư mục `screenshots/` chứa đúng chuẩn xác 10 tệp PNG authoritative; xóa bỏ toàn bộ tệp dư thừa.
+    * Test A76 kiểm tra chính xác `readdir` 10 tệp và đối chiếu SHA-256, byte sizes, dimensions và DPR=2.
+  - **Kết quả Kiểm chứng Tự động R03**:
+    * Test runner `verify_module_012.js` đạt **79/79 ASSERTIONS PASSED (Exit code 0)** [MEASURED: T01–T14/VERIFICATION.json] với browser runtime thực tế.
+    * Đóng gói xuất xưởng `design_training_012_submission_r03.zip`.
+
+

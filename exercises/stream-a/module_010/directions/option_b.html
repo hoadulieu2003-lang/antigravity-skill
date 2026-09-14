@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIPFLOW Disruption Response Board — Direction B (Priority Stack)</title>
+  <style>
+    :root {
+      --color-canvas: #F8FAFC;
+      --color-surface: #FFFFFF;
+      --color-surface-subtle: #F8FAFC;
+      --color-text-primary: #0F172A;
+      --color-text-secondary: #475569;
+      --color-border-subtle: #CBD5E1;
+      --color-border-structural: #64748B;
+      --color-focus-ring: #2563EB;
+
+      --attention-critical-bg: #FEF2F2;
+      --attention-critical-border: #DC2626;
+      --attention-critical-text: #991B1B;
+
+      --attention-high-bg: #FFFBEB;
+      --attention-high-border: #D97706;
+      --attention-high-text: #92400E;
+
+      --attention-medium-bg: #EFF6FF;
+      --attention-medium-border: #2563EB;
+      --attention-medium-text: #1E40AF;
+
+      --attention-low-bg: #F0FDF4;
+      --attention-low-border: #16A34A;
+      --attention-low-text: #166534;
+
+      --attention-resolved-bg: #F8FAFC;
+      --attention-resolved-border: #64748B;
+      --attention-resolved-text: #334155;
+
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --min-target-size: 44px;
+
+      --space-xxs: clamp(2px, 0.5vw, 4px);
+      --space-xs: clamp(4px, 1vw, 8px);
+      --space-sm: clamp(8px, 1.5vw, 12px);
+      --space-md: clamp(12px, 2vw, 16px);
+      --space-lg: clamp(16px, 3vw, 24px);
+
+      --font-sm: clamp(0.8125rem, 0.75rem + 0.25vw, 0.875rem);
+      --font-base: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --font-lg: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+      --font-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition-duration: 0s !important;
+      transition: none !important;
+      animation-duration: 0s !important;
+      animation: none !important;
+    }
+
+    html {
+      scroll-behavior: auto !important;
+      background-color: var(--color-canvas);
+      color: var(--color-text-primary);
+      font-family: var(--font-family);
+      forced-color-adjust: auto;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--color-canvas);
+      line-height: 1.5;
+      font-size: var(--font-base);
+    }
+
+    p {
+      margin-bottom: 1em;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--color-focus-ring) !important;
+      outline-offset: 2px !important;
+    }
+
+    #app-shell {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      min-width: 0;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    h1 {
+      font-size: var(--font-xl);
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+
+    p.page-desc {
+      color: var(--color-text-secondary);
+      font-size: var(--font-base);
+      max-width: 80ch;
+      margin-bottom: 0;
+    }
+
+    .controls-panel {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 8px;
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      min-width: 0;
+    }
+
+    .search-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-items: center;
+      min-width: 0;
+    }
+
+    .search-group {
+      flex: 1 1 280px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xxs);
+      min-width: 0;
+    }
+
+    .search-group label {
+      font-size: var(--font-sm);
+      font-weight: 600;
+      color: var(--color-text-secondary);
+    }
+
+    #search-input {
+      min-height: var(--min-target-size);
+      padding: 0 var(--space-md);
+      font-size: var(--font-base);
+      border: 1.5px solid var(--color-border-structural);
+      border-radius: 6px;
+      background-color: var(--color-surface);
+      color: var(--color-text-primary);
+      width: 100%;
+      min-width: 0;
+    }
+
+    .btn {
+      min-height: var(--min-target-size);
+      min-width: var(--min-target-size);
+      padding: 0 var(--space-md);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-sm);
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      background: var(--color-surface);
+      border: 1.5px solid var(--color-border-structural);
+      color: var(--color-text-primary);
+      text-align: center;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .btn-primary {
+      background-color: #0F172A;
+      color: #FFFFFF;
+      border-color: #0F172A;
+    }
+
+    .btn-secondary {
+      background-color: var(--color-surface-subtle);
+      border-color: var(--color-border-structural);
+    }
+
+    .workflow-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      align-items: center;
+      min-width: 0;
+    }
+
+    .tab-btn {
+      min-height: var(--min-target-size);
+      min-width: var(--min-target-size);
+      padding: 0 var(--space-md);
+      border-radius: 6px;
+      font-size: var(--font-sm);
+      font-weight: 600;
+      cursor: pointer;
+      background-color: var(--color-surface);
+      border: 1.5px solid var(--color-border-structural);
+      color: var(--color-text-secondary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .tab-btn.active {
+      background-color: #0F172A;
+      color: #FFFFFF;
+      border-color: #0F172A;
+    }
+
+    .feedback-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      font-size: var(--font-sm);
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      min-width: 0;
+    }
+
+    .ledger-container {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 8px;
+      overflow: visible;
+      min-width: 0;
+    }
+
+    table#disruption-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      min-width: 0;
+    }
+
+    thead th {
+      background-color: var(--color-surface-subtle);
+      color: var(--color-text-secondary);
+      font-size: var(--font-sm);
+      font-weight: 700;
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: 1px solid var(--color-border-subtle);
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    tbody tr.ledger-row {
+      border-bottom: 1px solid var(--color-border-subtle);
+      vertical-align: middle;
+    }
+
+    tbody tr.ledger-row:last-child {
+      border-bottom: none;
+    }
+
+    tbody tr.ledger-row:nth-child(even) {
+      background-color: #FAFAFA;
+    }
+
+    td {
+      padding: var(--space-sm) var(--space-md);
+      font-size: var(--font-sm);
+      color: var(--color-text-primary);
+      vertical-align: middle;
+      word-break: break-word;
+    }
+
+    .tour-cell {
+      font-weight: 600;
+      max-width: 260px;
+    }
+
+    .incident-cell {
+      max-width: 320px;
+      color: var(--color-text-secondary);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .badge-critical { background-color: var(--attention-critical-bg); border-color: var(--attention-critical-border); color: var(--attention-critical-text); }
+    .badge-high { background-color: var(--attention-high-bg); border-color: var(--attention-high-border); color: var(--attention-high-text); }
+    .badge-medium { background-color: var(--attention-medium-bg); border-color: var(--attention-medium-border); color: var(--attention-medium-text); }
+    .badge-low { background-color: var(--attention-low-bg); border-color: var(--attention-low-border); color: var(--attention-low-text); }
+    .badge-resolved { background-color: var(--attention-resolved-bg); border-color: var(--attention-resolved-border); color: var(--attention-resolved-text); }
+
+    .status-tag {
+      display: inline-block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 4px;
+      padding: 2px 8px;
+      white-space: nowrap;
+    }
+
+    .action-cell .btn {
+      min-height: var(--min-target-size);
+      min-width: var(--min-target-size);
+    }
+
+    @media (max-width: 1023.98px) {
+      table#disruption-table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+        width: 100%;
+        min-width: 0;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tbody tr.ledger-row {
+        margin-bottom: var(--space-md);
+        border: 1.5px solid var(--color-border-structural);
+        border-radius: 8px;
+        padding: var(--space-xs);
+        background: var(--color-surface) !important;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs);
+      }
+
+      td {
+        padding: var(--space-xxs) 0;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      td::before {
+        content: attr(data-label);
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--color-text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .mobile-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-xs);
+        border-bottom: 1px solid var(--color-border-subtle);
+        padding-bottom: var(--space-xs);
+      }
+
+      .mobile-card-header td {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .mobile-card-header td::before {
+        display: none;
+      }
+
+      .tier-action {
+        margin-top: var(--space-xs);
+        padding-top: var(--space-xs);
+        border-top: 1px solid var(--color-border-subtle);
+      }
+
+      .tier-action .btn {
+        width: 100%;
+      }
+    }
+
+    #empty-state-container {
+      display: none;
+      padding: var(--space-lg);
+      text-align: center;
+      background: var(--color-surface);
+      border-radius: 8px;
+    }
+
+    #empty-state-container p {
+      font-size: var(--font-base);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-md);
+    }
+
+    #incident-detail-view {
+      display: none;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 8px;
+      padding: var(--space-md);
+      min-width: 0;
+    }
+
+    .detail-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding-bottom: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+
+    .detail-header-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .detail-title {
+      font-size: var(--font-lg);
+      font-weight: 700;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+      min-width: 0;
+    }
+
+    @media (min-width: 768px) {
+      .detail-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+    }
+
+    .detail-card {
+      background: var(--color-surface-subtle);
+      border: 1.5px solid var(--color-border-structural);
+      border-radius: 6px;
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xxs);
+      min-width: 0;
+    }
+
+    .detail-card-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+    }
+
+    .detail-card-value {
+      font-size: var(--font-base);
+      color: var(--color-text-primary);
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    .detail-full-card {
+      grid-column: 1 / -1;
+      background: #FFFFFF;
+      border: 1.5px solid var(--color-border-structural);
+      border-radius: 6px;
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xxs);
+      min-width: 0;
+    }
+
+    .detail-actions-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      border-top: 1px solid var(--color-border-subtle);
+      padding-top: var(--space-md);
+    }
+
+    .ack-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      background-color: #E2E8F0;
+      color: #0F172A;
+      border: 1px solid #94A3B8;
+    }
+  </style>
+</head>
+<body>
+  <div id="app-shell">
+    <header>
+      <h1>Bảng xử lý gián đoạn tour</h1>
+      <p class="page-desc">Theo dõi tình huống ảnh hưởng đến hành trình và giữ nguyên ngữ cảnh xử lý trên mọi kích thước màn hình.</p>
+    </header>
+
+    <main id="board-view">
+      <section class="controls-panel" aria-label="Bộ lọc và tìm kiếm tình huống">
+        <div class="search-row">
+          <div class="search-group">
+            <label for="search-input">Tìm theo mã tour, tên tour hoặc nội dung sự cố</label>
+            <input type="text" id="search-input" placeholder="Nhập từ khóa tìm kiếm...">
+          </div>
+          <button class="btn btn-secondary" id="clear-filters-btn">Xóa điều kiện</button>
+        </div>
+
+        <div class="workflow-tabs" role="tablist" aria-label="Phân nhóm trạng thái xử lý">
+          <button class="tab-btn active" role="tab" aria-selected="true" data-workflow="ALL">Tất cả</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-workflow="Cần xử lý">Cần xử lý</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-workflow="Đang phối hợp">Đang phối hợp</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-workflow="Chờ cập nhật">Chờ cập nhật</button>
+          <button class="tab-btn" role="tab" aria-selected="false" data-workflow="Đã ổn định">Đã ổn định</button>
+        </div>
+
+        <div class="feedback-row">
+          <span id="result-count" aria-live="polite">6 tình huống</span>
+          <span id="spotlight-indicator">Spotlight mặc định: IR-1001</span>
+        </div>
+      </section>
+
+      <section class="ledger-container" aria-label="Danh sách sự cố gián đoạn">
+        <table id="disruption-table">
+          <thead>
+            <tr>
+              <th scope="col">Mã sự cố</th>
+              <th scope="col">Mức chú ý</th>
+              <th scope="col">Tour & Khởi hành</th>
+              <th scope="col">Phụ trách</th>
+              <th scope="col">Số khách</th>
+              <th scope="col">Tóm tắt sự cố</th>
+              <th scope="col">Hành động tiếp theo</th>
+              <th scope="col">Trạng thái</th>
+              <th scope="col">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="disruption-records">
+            <!-- Rendered by JS -->
+          </tbody>
+        </table>
+
+        <div id="empty-state-container" role="status" aria-live="polite">
+          <p>Không có tình huống phù hợp với điều kiện hiện tại.</p>
+          <button class="btn btn-primary" id="reset-filters-btn">Xóa điều kiện</button>
+        </div>
+      </section>
+    </main>
+
+    <article id="incident-detail-view" aria-label="Chi tiết sự cố gián đoạn" tabindex="-1">
+      <div class="detail-header">
+        <div class="detail-header-left">
+          <span class="detail-title" id="dt-disruption-id"></span>
+          <span id="dt-attention-badge"></span>
+          <span class="status-tag" id="dt-operational-status"></span>
+        </div>
+        <div class="detail-actions-group">
+          <button class="btn btn-secondary" id="acknowledge-btn" aria-pressed="false">Đánh dấu đã xem</button>
+          <button class="btn btn-primary" id="back-to-board-btn">Quay lại bảng xử lý</button>
+        </div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-card">
+          <span class="detail-card-label">Mức chú ý</span>
+          <span class="detail-card-value" id="dt-attention-level"></span>
+        </div>
+        <div class="detail-card">
+          <span class="detail-card-label">Tour</span>
+          <span class="detail-card-value" id="dt-tour-code-and-name"></span>
+        </div>
+        <div class="detail-card">
+          <span class="detail-card-label">Thời gian khởi hành</span>
+          <span class="detail-card-value" id="dt-departure-time"></span>
+        </div>
+        <div class="detail-card">
+          <span class="detail-card-label">Người phụ trách</span>
+          <span class="detail-card-value" id="dt-assignee"></span>
+        </div>
+        <div class="detail-card">
+          <span class="detail-card-label">Số lượng khách</span>
+          <span class="detail-card-value" id="dt-passenger-count"></span>
+        </div>
+        <div class="detail-full-card">
+          <span class="detail-card-label">Tóm tắt sự cố</span>
+          <p class="detail-card-value" id="dt-incident-summary"></p>
+        </div>
+        <div class="detail-full-card">
+          <span class="detail-card-label">Việc tiếp theo</span>
+          <p class="detail-card-value" id="dt-next-action"></p>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    const CANONICAL_FIXTURES = [
+      {
+        disruption_id: "IR-1001",
+        attention_level: "CRITICAL",
+        tour_code_and_name: "TF-802 · Tour Fansipan Sapa 2 Ngày 1 Đêm",
+        departure_time: "2026-09-15 06:30 ICT",
+        assignee: "Lan Nguyễn",
+        passenger_count: 18,
+        incident_summary: "Chưa chốt được xe trung chuyển phù hợp cho hành khách sử dụng xe lăn tại điểm đón số 3.",
+        next_action: "Xác nhận phương án xe thay thế trước 04:30.",
+        operational_status: "Cần xử lý"
+      },
+      {
+        disruption_id: "IR-1002",
+        attention_level: "HIGH",
+        tour_code_and_name: "TF-803 · Tour Hạ Long Du Thuyền 5 Sao",
+        departure_time: "2026-09-15 08:00 ICT",
+        assignee: "Huy Trần",
+        passenger_count: 24,
+        incident_summary: "Cảng vụ phát cảnh báo dông lốc; giờ rời bến có thể thay đổi.",
+        next_action: "Kiểm tra thông báo cảng vụ lúc 05:30 và cập nhật cho đoàn.",
+        operational_status: "Chờ cập nhật"
+      },
+      {
+        disruption_id: "IR-1003",
+        attention_level: "MEDIUM",
+        tour_code_and_name: "TF-804 · Tour Đảo Phú Quốc Sunset 3 Ngày 2 Đêm",
+        departure_time: "2026-09-16 09:45 ICT",
+        assignee: "Mai Đỗ",
+        passenger_count: 42,
+        incident_summary: "Hai hành khách cần lối lên xuống ít bậc và vị trí ngồi gần cửa.",
+        next_action: "Xác nhận xe đón có bậc hỗ trợ và giữ hai ghế hàng đầu.",
+        operational_status: "Đang phối hợp"
+      },
+      {
+        disruption_id: "IR-1004",
+        attention_level: "MEDIUM",
+        tour_code_and_name: "TF-805 · Tour Tràng An - Bái Đính 1 Ngày",
+        departure_time: "2026-09-16 07:30 ICT",
+        assignee: "An Phạm",
+        passenger_count: 35,
+        incident_summary: "Nhà hàng đề nghị chuyển giờ ăn trưa từ 11:30 sang 12:15.",
+        next_action: "Đối chiếu lịch tham quan trước khi chấp thuận thay đổi.",
+        operational_status: "Đang phối hợp"
+      },
+      {
+        disruption_id: "IR-1005",
+        attention_level: "LOW",
+        tour_code_and_name: "TF-806 · Hành trình Di sản miền Trung dành cho nhóm gia đình nhiều thế hệ",
+        departure_time: "2026-09-17 05:45 ICT",
+        assignee: "Nguyễn Hoàng Minh Anh",
+        passenger_count: 31,
+        incident_summary: "Danh sách phòng có một tên hành khách dài hơn giới hạn hiển thị dự kiến của bản cũ.",
+        next_action: "Giữ nguyên tên đầy đủ; không cắt bằng dấu ba chấm nếu không có cách xem lại.",
+        operational_status: "Chờ cập nhật"
+      },
+      {
+        disruption_id: "IR-1006",
+        attention_level: "RESOLVED",
+        tour_code_and_name: "TF-807 · Tour Mekong Buổi Sáng",
+        departure_time: "2026-09-18 06:00 ICT",
+        assignee: "Bình Lê",
+        passenger_count: 16,
+        incident_summary: "Điểm đón cũ tạm đóng để sửa đường; điểm đón thay thế đã được xác nhận.",
+        next_action: "Không cần hành động thêm.",
+        operational_status: "Đã ổn định"
+      }
+    ];
+
+    const ATTENTION_METADATA = {
+      CRITICAL: { label: "Khẩn cấp", marker: "⛔", badgeClass: "badge-critical" },
+      HIGH: { label: "Cao", marker: "⚠️", badgeClass: "badge-high" },
+      MEDIUM: { label: "Trung bình", marker: "🔷", badgeClass: "badge-medium" },
+      LOW: { label: "Thấp", marker: "ℹ️", badgeClass: "badge-low" },
+      RESOLVED: { label: "Đã ổn định", marker: "✅", badgeClass: "badge-resolved" }
+    };
+
+    const state = {
+      searchQuery: "",
+      workflowFilter: "ALL",
+      activeDetailId: null,
+      lastFocusedTrigger: null,
+      acknowledgedMap: {}
+    };
+
+    const searchInput = document.getElementById("search-input");
+    const clearFiltersBtn = document.getElementById("clear-filters-btn");
+    const resetFiltersBtn = document.getElementById("reset-filters-btn");
+    const workflowTabs = document.querySelectorAll(".tab-btn");
+    const resultCountEl = document.getElementById("result-count");
+    const recordsTbody = document.getElementById("disruption-records");
+    const tableEl = document.getElementById("disruption-table");
+    const emptyStateContainer = document.getElementById("empty-state-container");
+    const boardView = document.getElementById("board-view");
+    const detailView = document.getElementById("incident-detail-view");
+    const backToBoardBtn = document.getElementById("back-to-board-btn");
+    const acknowledgeBtn = document.getElementById("acknowledge-btn");
+
+    function removeAccents(str) {
+      return str.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D").toLowerCase();
+    }
+
+    function getFilteredItems() {
+      const queryTrim = state.searchQuery.trim();
+      const queryNorm = removeAccents(queryTrim);
+
+      return CANONICAL_FIXTURES.filter(item => {
+        if (state.workflowFilter !== "ALL" && item.operational_status !== state.workflowFilter) {
+          return false;
+        }
+
+        if (!queryNorm) return true;
+
+        const haystacks = [
+          item.disruption_id,
+          item.tour_code_and_name,
+          item.incident_summary,
+          item.next_action,
+          item.assignee
+        ];
+
+        return haystacks.some(text => removeAccents(String(text)).includes(queryNorm));
+      });
+    }
+
+    function renderBoard() {
+      const items = getFilteredItems();
+
+      if (items.length === 0) {
+        tableEl.style.display = "none";
+        emptyStateContainer.style.display = "block";
+        resultCountEl.textContent = "0 tình huống";
+      } else {
+        tableEl.style.display = "";
+        emptyStateContainer.style.display = "none";
+        resultCountEl.textContent = items.length === 1 ? "1 tình huống" : `${items.length} tình huống`;
+
+        recordsTbody.innerHTML = items.map(item => {
+          const meta = ATTENTION_METADATA[item.attention_level];
+          const isAck = !!state.acknowledgedMap[item.disruption_id];
+
+          return `
+            <tr class="ledger-row" data-incident-id="${item.disruption_id}">
+              <td data-label="Mã sự cố"><strong>${item.disruption_id}</strong></td>
+              <td data-label="Mức chú ý">
+                <span class="badge ${meta.badgeClass}" role="status">
+                  <span aria-hidden="true">${meta.marker}</span>
+                  <span>${meta.label}</span>
+                </span>
+              </td>
+              <td class="tour-cell" data-label="Tour & Khởi hành">
+                <div>${item.tour_code_and_name}</div>
+                <small style="color:var(--color-text-secondary);">${item.departure_time}</small>
+              </td>
+              <td data-label="Phụ trách">${item.assignee}</td>
+              <td data-label="Số khách">${item.passenger_count}</td>
+              <td class="incident-cell" data-label="Tóm tắt sự cố">${item.incident_summary}</td>
+              <td data-label="Hành động tiếp theo">${item.next_action}</td>
+              <td data-label="Trạng thái">
+                <span class="status-tag">${item.operational_status}</span>
+                ${isAck ? '<span class="ack-badge" style="margin-left:4px;">Đã xem</span>' : ''}
+              </td>
+              <td class="tier-action" data-label="Thao tác">
+                <button class="btn btn-secondary" data-action="view-detail" data-incident-id="${item.disruption_id}">
+                  Xem chi tiết
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join("");
+      }
+    }
+
+    function openDetailView(id, triggerElement) {
+      const item = CANONICAL_FIXTURES.find(i => i.disruption_id === id);
+      if (!item) return;
+
+      state.activeDetailId = id;
+      state.lastFocusedTrigger = triggerElement || document.activeElement;
+
+      const meta = ATTENTION_METADATA[item.attention_level];
+      const isAck = !!state.acknowledgedMap[id];
+
+      document.getElementById("dt-disruption-id").textContent = item.disruption_id;
+      document.getElementById("dt-attention-level").textContent = item.attention_level;
+      document.getElementById("dt-tour-code-and-name").textContent = item.tour_code_and_name;
+      document.getElementById("dt-departure-time").textContent = item.departure_time;
+      document.getElementById("dt-assignee").textContent = item.assignee;
+      document.getElementById("dt-passenger-count").textContent = String(item.passenger_count);
+      document.getElementById("dt-incident-summary").textContent = item.incident_summary;
+      document.getElementById("dt-next-action").textContent = item.next_action;
+      document.getElementById("dt-operational-status").textContent = item.operational_status;
+
+      document.getElementById("dt-attention-badge").innerHTML = `
+        <span class="badge ${meta.badgeClass}">
+          <span aria-hidden="true">${meta.marker}</span>
+          <span>${meta.label}</span>
+        </span>
+        ${isAck ? '<span class="ack-badge" id="detail-ack-indicator">Đã xem</span>' : ''}
+      `;
+
+      updateAcknowledgeButtonState(isAck);
+
+      boardView.style.display = "none";
+      detailView.style.display = "block";
+      detailView.focus();
+    }
+
+    function updateAcknowledgeButtonState(isAck) {
+      if (isAck) {
+        acknowledgeBtn.setAttribute("aria-pressed", "true");
+        acknowledgeBtn.textContent = "Đã xem";
+        acknowledgeBtn.style.backgroundColor = "#E2E8F0";
+      } else {
+        acknowledgeBtn.setAttribute("aria-pressed", "false");
+        acknowledgeBtn.textContent = "Đánh dấu đã xem";
+        acknowledgeBtn.style.backgroundColor = "";
+      }
+    }
+
+    function closeDetailView() {
+      const returnId = state.activeDetailId;
+      detailView.style.display = "none";
+      boardView.style.display = "block";
+      state.activeDetailId = null;
+
+      renderBoard();
+
+      const freshTrigger = returnId ? document.querySelector('button[data-action="view-detail"][data-incident-id="' + returnId + '"]') : null;
+      if (freshTrigger) {
+        freshTrigger.focus();
+      } else if (state.lastFocusedTrigger && typeof state.lastFocusedTrigger.focus === "function") {
+        state.lastFocusedTrigger.focus();
+      }
+    }
+
+    searchInput.addEventListener("input", (e) => {
+      state.searchQuery = e.target.value;
+      renderBoard();
+    });
+
+    clearFiltersBtn.addEventListener("click", () => {
+      resetFilters();
+    });
+
+    resetFiltersBtn.addEventListener("click", () => {
+      resetFilters();
+    });
+
+    function resetFilters() {
+      state.searchQuery = "";
+      state.workflowFilter = "ALL";
+      searchInput.value = "";
+
+      workflowTabs.forEach(tab => {
+        const isAll = tab.getAttribute("data-workflow") === "ALL";
+        tab.classList.toggle("active", isAll);
+        tab.setAttribute("aria-selected", isAll ? "true" : "false");
+      });
+
+      renderBoard();
+      searchInput.focus();
+    }
+
+    workflowTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        workflowTabs.forEach(t => {
+          t.classList.remove("active");
+          t.setAttribute("aria-selected", "false");
+        });
+        tab.classList.add("active");
+        tab.setAttribute("aria-selected", "true");
+
+        state.workflowFilter = tab.getAttribute("data-workflow");
+        renderBoard();
+      });
+    });
+
+    recordsTbody.addEventListener("click", (e) => {
+      const btn = e.target.closest('button[data-action="view-detail"]');
+      if (btn) {
+        const id = btn.getAttribute("data-incident-id");
+        openDetailView(id, btn);
+      }
+    });
+
+    backToBoardBtn.addEventListener("click", closeDetailView);
+
+    acknowledgeBtn.addEventListener("click", () => {
+      if (!state.activeDetailId) return;
+      const current = !!state.acknowledgedMap[state.activeDetailId];
+      state.acknowledgedMap[state.activeDetailId] = !current;
+      updateAcknowledgeButtonState(!current);
+
+      const existingAck = document.getElementById("detail-ack-indicator");
+      if (!current) {
+        if (!existingAck) {
+          const span = document.createElement("span");
+          span.className = "ack-badge";
+          span.id = "detail-ack-indicator";
+          span.textContent = "Đã xem";
+          document.getElementById("dt-attention-badge").appendChild(span);
+        }
+      } else {
+        if (existingAck) existingAck.remove();
+      }
+    });
+
+    renderBoard();
+  </script>
+</body>
+</html>

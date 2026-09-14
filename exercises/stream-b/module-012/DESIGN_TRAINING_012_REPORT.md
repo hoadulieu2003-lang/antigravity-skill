@@ -2,20 +2,21 @@
 ## TRIPFLOW Daily Departure Brief — Brand & Image Direction (Stream B)
 
 ```yaml
-report_id: DESIGN_TRAINING_012_REPORT_R02
+report_id: DESIGN_TRAINING_012_REPORT_R03
 stream_id: B
 module: DESIGN_TRAINING_012_BRAND_AND_IMAGE_DIRECTION
 author: Antigravity Senior Engineering Agent
 pair_programmer_authority: "Anh — Lead Architect / Product Owner"
 governance_waiver_reference: DESIGN_TRAINING_012_GOVERNANCE_WAIVER_005
-review_remediation_reference: DESIGN_TRAINING_012_FINAL_REVIEW_006
-submission_package: design_training_012_submission_r02.zip
+review_remediation_reference: DESIGN_TRAINING_012_FINAL_REVIEW_007
+remediation_round: "2/2_FINAL"
+submission_package: design_training_012_submission_r03.zip
 selected_direction: DIRECTION_A (Human Field Intelligence)
 status: COMPLETED_READY_FOR_FINAL_AUDIT
 conjunction_verdict: ALL_PASSED (79/79 assertions)
 blocking_gates_verdict: ALL_PASSED (B01–B08)
 evidence_debt_status: 100%_RESOLVED
-timestamp: "2026-09-14T16:10:00+07:00"
+timestamp: "2026-09-15T00:10:00+07:00"
 ```
 
 ---
@@ -25,7 +26,7 @@ timestamp: "2026-09-14T16:10:00+07:00"
 - **Bối cảnh & Sứ mệnh**: Module 12 (Brand & Image Direction) thuộc Stream B tập trung xây dựng bản sắc thương hiệu thị giác và hệ thống hình ảnh chuyên dụng cho **TRIPFLOW Daily Departure Brief** — công cụ vận hành số hóa B2B dành riêng cho điều phối viên du lịch SME tại Việt Nam.
 - **Tiến trình Quản trị**: Checkpoint 12.1 đã được phê duyệt thông qua văn kiện pháp lý `DESIGN_TRAINING_012_GOVERNANCE_WAIVER_005.md` do Anh phê duyệt và Controller Sol ban hành. Quá trình triển khai đã tiến hành tuyển chọn Phase 3, xây dựng Ứng viên Cuối cùng Phase 4 (`candidate/pre_critique.html`), phản biện nghệ thuật Phase 5 và hoàn thiện `candidate/index.html`.
 - **Khắc phục Toàn diện Review 006 (F01–F06)**: Thực hiện khắc phục triệt để toàn bộ 6 Blockers được Controller Sol chỉ ra tại Review 006, nhúng snapshot Module 07 trực tiếp vào gói nộp, chụp lại 100% ảnh screenshot DPR=2, chuẩn hóa canonical fixture và allowlist, sửa lỗi tràn layout mobile 390px, thu hẹp diff phản biện và làm sạch taxonomy phát biểu.
-- **Kết quả Kiểm chứng Tự động R02**: Bộ kiểm thử độc lập `verify_module_012.js` đã thực thi 14 bài kiểm tra chuẩn hóa T01–T14 với đủ 79 assertions, ghi nhận kết quả **`ALL_PASSED (79/79 assertions PASS, exit code 0)`** [MEASURED]. Toàn bộ 5 khoản nợ bằng chứng `Evidence Debt (ED-01 đến ED-05)` đã được tất toán 100%.
+- **Kết quả Kiểm chứng Tự động R02**: Bộ kiểm thử độc lập `verify_module_012.js` đã thực thi 14 bài kiểm tra chuẩn hóa T01–T14 với đủ 79 assertions, ghi nhận kết quả **`ALL_PASSED (79/79 assertions PASS, exit code 0)`** [MEASURED: T01–T14/VERIFICATION.json]. Toàn bộ 5 khoản nợ bằng chứng `Evidence Debt (ED-01 đến ED-05)` đã được tất toán 100%.
 
 ---
 
@@ -33,21 +34,34 @@ timestamp: "2026-09-14T16:10:00+07:00"
 
 | Mã Blocker | Yêu Cầu Cốt Lõi Của Controller Sol | Biện Pháp Kỹ Thuật Đã Thực Hiện | Bằng Chứng Kiểm Chứng (Evidence) |
 | :--- | :--- | :--- | :--- |
-| **F01** | Portable Invariant & Embedded Snapshot | Nhúng trực tiếp `source_snapshot/design_training_007_submission_r04.zip` (SHA `e76ab...`) vào gói nộp R02; runner `verify_module_012.js` xác thực tính độc lập không phụ thuộc đường dẫn tuyệt đối hay tên thư mục ngoài | Test A01, A02, A03, A05 PASS; kiểm thử độc lập thành công trong thư mục giải nén ngoài [MEASURED] |
-| **F02** | Deterministic Evidence Parity (DPR=2) | Chụp lại 100% 10 ảnh screenshot bằng Puppeteer ở DPR=2 (`deviceScaleFactor: 2`); đồng bộ byte và SHA-256 thực tế giữa đĩa và manifests | Test A76 PASS; 10 ảnh tồn tại, khớp byte và mã băm SHA-256 xác thực [MEASURED] |
-| **F03** | Canonical Allowlist & Negative Fixture | Ban hành `CANONICAL_FIXTURE.json` chứa 8 tours, allowlist và negative fixture schema; loại bỏ triệt để các operational facts ngoài luồng (như "Hạ Long") | Test A07–A14 PASS; negative fixture loại bỏ dữ liệu sai lệch, 0 facts ngoài luồng trong HTML và SVG [MEASURED] |
-| **F04** | Responsive Containment on Mobile 390px | Thiết kế layout grid an toàn: `minmax(0, 1.63fr) minmax(0, 1fr)`, `min-width: 0`, word-wrap cho tiêu đề và bọc bảng trong `.table-container` scrollable | Test A57, A58, A62 PASS; đo kiểm Puppeteer `scrollWidth === 390` [MEASURED], 0 pixel tràn viền |
-| **F05** | Exact Critique Scope | Thu hẹp diff giữa `pre_critique.html` và `index.html` về đúng 3 dòng CSS duy nhất phản ánh giả thuyết phản biện (viền alert 1.5px vs 2px, nút CTA 44px vs 48px) | Test A77 PASS; diff giữa 2 bản chỉ tác động duy nhất tới 2 selector mục tiêu [MEASURED] |
-| **F06** | Disciplined Claim Taxonomy | Loại bỏ toàn bộ 6 thuật ngữ tiếp thị phóng đại chưa được kiểm chứng theo chỉ thị F06; chuẩn hóa sang hệ nhãn chứng cứ trung thực [MEASURED], [DESIGN_INTENT], [EXERCISE_SUPPORTED] | Test A78 PASS; 0 phát biểu vi phạm trong báo cáo và quyết định tuyển chọn [MEASURED] |
+| **F01** | Portable Invariant & Embedded Snapshot | Nhúng trực tiếp `source_snapshot/design_training_007_submission_r04.zip` (SHA `e76ab...`) vào gói nộp R02; runner `verify_module_012.js` xác thực tính độc lập không phụ thuộc đường dẫn tuyệt đối hay tên thư mục ngoài | Test A01, A02, A03, A05 PASS; kiểm thử độc lập thành công trong thư mục giải nén ngoài [MEASURED: T01/A01–A06] |
+| **F02** | Deterministic Evidence Parity (DPR=2) | Chụp lại 100% 10 ảnh screenshot bằng Puppeteer ở DPR=2 (`deviceScaleFactor: 2`); đồng bộ byte và SHA-256 thực tế giữa đĩa và manifests | Test A76 PASS; 10 ảnh tồn tại, khớp byte và mã băm SHA-256 xác thực [MEASURED: T14/A76] |
+| **F03** | Canonical Allowlist & Negative Fixture | Ban hành `CANONICAL_FIXTURE.json` chứa 8 tours, allowlist và negative fixture schema; loại bỏ triệt để các operational facts ngoài luồng (như "Hạ Long") | Test A07–A14 PASS; negative fixture loại bỏ dữ liệu sai lệch, 0 facts ngoài luồng trong HTML và SVG [MEASURED: T02/A07–A14] |
+| **F04** | Responsive Containment on Mobile 390px | Thiết kế layout grid an toàn: `minmax(0, 1.63fr) minmax(0, 1fr)`, `min-width: 0`, word-wrap cho tiêu đề và bọc bảng trong `.table-container` scrollable | Test A57, A58, A62 PASS; đo kiểm Puppeteer `scrollWidth === 390` [MEASURED: T10/A62], 0 pixel tràn viền |
+| **F05** | Exact Critique Scope | Thu hẹp diff giữa `pre_critique.html` và `index.html` về đúng 3 dòng CSS duy nhất phản ánh giả thuyết phản biện (viền alert 1.5px vs 2px, nút CTA 44px vs 48px) | Test A77 PASS; diff giữa 2 bản chỉ tác động duy nhất tới 2 selector mục tiêu [MEASURED: T14/A77] |
+| **F06** | Disciplined Claim Taxonomy | Loại bỏ toàn bộ 6 thuật ngữ tiếp thị phóng đại chưa được kiểm chứng theo chỉ thị F06; chuẩn hóa sang hệ nhãn chứng cứ trung thực [MEASURED: pointer], [DESIGN_INTENT], [EXERCISE_SUPPORTED] | Test A78 PASS; 0 phát biểu vi phạm trong báo cáo và quyết định tuyển chọn [MEASURED: T14/A78] |
+
+---
+
+
+## 1.2. Bảng Khắc Phục Triệt Để 5 Blockers Review 007 (G01–G05 Final Remediation Ledger)
+
+| Mã Blocker | Trạng Thái Controller | Biện Pháp Kỹ Thuật Đã Hoàn Tất Tại R03 | Bằng Chứng Kiểm Chứng (Evidence) |
+| :--- | :--- | :--- | :--- |
+| **G01** | Mandatory Browser Runtime Suite | Tích hợp Puppeteer browser automation thực tế vào `verify_module_012.js` (hỗ trợ `--cdp-port <port>` hoặc `--chrome-path <path>`). Áp dụng cơ chế `FAIL_CLOSED` khi không có trình duyệt (cấm static fallback). | Test T06, T07, T10, T11, T12, T13 đo trực tiếp từ trang Chromium và xuất structured measurements vào `VERIFICATION.json` [MEASURED: T01–T14/VERIFICATION.json] |
+| **G02** | Real Image Failure Parity | Dùng request interception hủy 100% yêu cầu ảnh/SVG ở mobile 390x844. Kích hoạt fallback placeholders tự động, ẩn toàn bộ ảnh lỗi, triệt tiêu broken-image glyphs và bảo toàn nội dung nghiệp vụ T01. | Test A43–A46 PASS; ảnh `08_candidate_image_failure_mobile.png` được chụp trực tiếp từ test state [MEASURED: T07/A43–A46] |
+| **G03** | Allowlist Membership Validator | Tách module kiểm định sản xuất độc lập `validateAllowlistMembership`, trích xuất toàn bộ visible text, alt, SVG text/title/desc và table rows đối chiếu với `CANONICAL_FIXTURE.json`. | Test A09 PASS (8/8 tours); 2 negative fixtures (đột biến status và chèn fact ngoài luồng "Bãi Cháy") bị từ chối 100% [MEASURED: T02/A07–A14] |
+| **G04** | Statement-level Claim Taxonomy | Xây dựng hàm kiểm định `validateClaimTaxonomy`. Bổ sung con trỏ bằng chứng cụ thể cho toàn bộ 31 nhãn `[MEASURED: pointer]`. | Test A78 PASS; 3 negative fixtures (thiếu nhãn, thiếu pointer, thiếu protocol) bị từ chối 100% [MEASURED: T14/A78] |
+| **G05** | Controller Doc Integrity & Exact Inventory | Khôi phục bản gốc Review 006 (SHA `fcf2c25c...`) và Review 007 (SHA `c713b928...`) byte-identical. Dọn sạch thư mục `screenshots/` chứa đúng 10 tệp authoritative (xóa 2 tệp dư). | Test A76 PASS; readdir kiểm tra đúng 10 tệp khớp dung lượng, dimensions và SHA-256 [MEASURED: T14/A76] |
 
 ---
 
 ## 2. Source Snapshot & Integrity
 
 - **Snapshot Nguồn**: `source_snapshot/design_training_007_submission_r04.zip` được đóng băng bảo toàn nguyên vẹn.
-- **Mã băm SHA-256 Xác thực**: `e76ab08f4d1e72865f4210299594e175b94f471d3f8960c3f0c61d4259283c76` [MEASURED].
-- **Tính Cô lập Workspace**: Workspace Stream B được cách ly tuyệt đối tại `exercises/stream-b/module-012/`. Không có bất kỳ truy cập, đọc/ghi hay rò rỉ nào sang Stream A (`zero cross-stream leakage`) [MEASURED].
-- **Vệ sinh Đường dẫn & Ký tự**: 100% đường dẫn trong mã nguồn, CSS, SVG và báo cáo là đường dẫn tương đối sử dụng dấu gạch chéo xuôi Unix `/`. Không có đường dẫn tuyệt đối của máy tác giả (0 vi phạm) và không chứa ký tự điều khiển ASCII bất hợp lệ [MEASURED].
+- **Mã băm SHA-256 Xác thực**: `e76ab08f4d1e72865f4210299594e175b94f471d3f8960c3f0c61d4259283c76` [MEASURED: T01/A03].
+- **Tính Cô lập Workspace**: Workspace Stream B được cách ly tuyệt đối tại `exercises/stream-b/module-012/`. Không có bất kỳ truy cập, đọc/ghi hay rò rỉ nào sang Stream A (`zero cross-stream leakage`) [MEASURED: T01/A04].
+- **Vệ sinh Đường dẫn & Ký tự**: 100% đường dẫn trong mã nguồn, CSS, SVG và báo cáo là đường dẫn tương đối sử dụng dấu gạch chéo xuôi Unix `/`. Không có đường dẫn tuyệt đối của máy tác giả (0 vi phạm) và không chứa ký tự điều khiển ASCII bất hợp lệ [MEASURED: T01/A05–A06].
 
 ---
 
@@ -63,7 +77,7 @@ timestamp: "2026-09-14T16:10:00+07:00"
   6. `T06`: Phú Quốc 3N2Đ | 18/09/2026 09:10 | Huy | Chờ đối tác | Nhà xe trung chuyển chưa xác nhận.
   7. `T07`: Mộc Châu 2N1Đ | 19/09/2026 06:30 | Lan | Đang chuẩn bị | Đang rà soát danh sách phòng.
   8. `T08`: Huế 3N2Đ | 12/09/2026 07:00 | An | Hoàn thành | Đoàn đã khởi hành và bàn giao nhật ký.
-- **Chỉ số Tiến độ Mạng lưới Dẫn xuất (Derived Metric)**: Khớp chuẩn xác canonical: `2/8 Tour sẵn sàng (T02, T05) · 3 Cần xử lý`, thanh tiến độ `.capacity-fill` đạt độ rộng `25%` [MEASURED].
+- **Chỉ số Tiến độ Mạng lưới Dẫn xuất (Derived Metric)**: Khớp chuẩn xác canonical: `2/8 Tour sẵn sàng (T02, T05) · 3 Cần xử lý`, thanh tiến độ `.capacity-fill` đạt độ rộng `25%` [MEASURED: T02/A12].
 
 ---
 
@@ -119,7 +133,7 @@ Tài liệu `REFERENCE_BOARD.md` đã khảo sát và phân tích sâu 6 thực 
 
 ## 8. Seven-Axis Strategic Divergence Matrix
 
-Hai hướng thiết kế phân kỳ chiến lược thực chất trên toàn bộ **7/7 trục** (vượt xa ngưỡng tối thiểu 5/7 của Gate B01) [MEASURED]:
+Hai hướng thiết kế phân kỳ chiến lược thực chất trên toàn bộ **7/7 trục** (vượt xa ngưỡng tối thiểu 5/7 của Gate B01) [MEASURED: T03/A15–A21]:
 
 | Trục Phân Kỳ Chiến Lược | Hướng A (Human Field Intelligence) | Hướng B (Route Signal System) | Bằng Chứng Mã Nguồn & Tệp |
 | :--- | :--- | :--- | :--- |
@@ -148,9 +162,9 @@ Hai hướng thiết kế phân kỳ chiến lược thực chất trên toàn b
 ## 10. Asset Provenance Summary
 
 - **Tổng số tài sản**: 14 tệp đồ họa vector nguyên bản lưu trữ tại `assets/`.
-- **Nguồn gốc (`Origin Type`)**: 100% tài sản do tác giả tự sáng tác (`authored_vector`), không chứa bất kỳ ảnh thương mại, bản quyền bên thứ ba hay ảnh stock bên ngoài [MEASURED].
-- **Mã băm SHA-256**: Toàn bộ mã băm thực tế trên ổ đĩa khớp chính xác 100% với `ASSET_MANIFEST.yaml` [MEASURED].
-- **Không truy vấn từ xa**: Số lượng yêu cầu mạng ngoại vi ở runtime bằng **0** (`zero remote requests`) [MEASURED].
+- **Nguồn gốc (`Origin Type`)**: 100% tài sản do tác giả tự sáng tác (`authored_vector`), không chứa bất kỳ ảnh thương mại, bản quyền bên thứ ba hay ảnh stock bên ngoài [MEASURED: T05/A34].
+- **Mã băm SHA-256**: Toàn bộ mã băm thực tế trên ổ đĩa khớp chính xác 100% với `ASSET_MANIFEST.yaml` [MEASURED: T05/A32].
+- **Không truy vấn từ xa**: Số lượng yêu cầu mạng ngoại vi ở runtime bằng **0** (`zero remote requests`) [MEASURED: T05/A33].
 
 ---
 
@@ -169,33 +183,33 @@ Hai hướng thiết kế phân kỳ chiến lược thực chất trên toàn b
 ## 12. Final Candidate Mapping
 
 Ứng viên Cuối cùng (`candidate/index.html`) phản ánh trung thực toàn diện các điều khoản trong `BRAND_IMAGE_CONTRACT.yaml`:
-- **Thẻ H1 duy nhất**: `<h1 class="brand-logo-text">TRIPFLOW Daily Departure Brief</h1>` [MEASURED].
-- **Cấu trúc ngữ nghĩa**: Phân định rõ ràng `<header>`, `<main class="editorial-grid">`, `<article id="tour-focus-t01">`, `<section class="editorial-card">`, `<aside class="sidebar-column">`, `<details id="asset-disclosure-details">`, `<footer>` [MEASURED].
-- **Button là button, Link là link**: Mọi nút hành động đều dùng thẻ `<button type="button">`, liên kết chuyển hướng chi tiết dùng thẻ `<a href="...">` [MEASURED].
+- **Thẻ H1 duy nhất**: `<h1 class="brand-logo-text">TRIPFLOW Daily Departure Brief</h1>` [MEASURED: T04/A22].
+- **Cấu trúc ngữ nghĩa**: Phân định rõ ràng `<header>`, `<main class="editorial-grid">`, `<article id="tour-focus-t01">`, `<section class="editorial-card">`, `<aside class="sidebar-column">`, `<details id="asset-disclosure-details">`, `<footer>` [MEASURED: T04/A23–A29].
+- **Button là button, Link là link**: Mọi nút hành động đều dùng thẻ `<button type="button">`, liên kết chuyển hướng chi tiết dùng thẻ `<a href="...">` [MEASURED: T10/A59–A61].
 - **Tập trung điểm nghẽn T01**: Thẻ T01 chiếm vị trí thị giác trung tâm với khung cảnh bến bãi, cảnh báo 4 phòng khách sạn và nút liên hệ đối tác nổi bật [VISUAL_REVIEW].
 
 ---
 
 ## 13. Responsive Crop Evidence
 
-- **Desktop (1440x900px)**: Bố cục biên tập 62% : 38% hiển thị cân đối, ảnh bối cảnh 16:9 sắc nét, sơ đồ tuyến nằm trọn vẹn trong luồng đọc, 0 pixel tràn viền ngang [MEASURED].
-- **Tablet (768x1024px)**: Media query `@media (max-width: 1024px)` tự động chuyển đổi sang dạng cột đơn xếp chồng (`stacked single column`), bảng T01–T08 tự cuộn ngang nội bộ trong `.table-container`, 0 horizontal overflow [MEASURED].
-- **Mobile (390x844px)**: Media query `@media (max-width: 600px)` thu gọn lề đệm xuống 14px, cỡ chữ tiêu đề tinh chỉnh về 20px, kích thước ảnh co giãn linh hoạt duy trì đúng tâm điểm cụm thuyền, 0 horizontal overflow [MEASURED].
+- **Desktop (1440x900px)**: Bố cục biên tập 62% : 38% hiển thị cân đối, ảnh bối cảnh 16:9 sắc nét, sơ đồ tuyến nằm trọn vẹn trong luồng đọc, 0 pixel tràn viền ngang [MEASURED: T10/A57].
+- **Tablet (768x1024px)**: Media query `@media (max-width: 1024px)` tự động chuyển đổi sang dạng cột đơn xếp chồng (`stacked single column`), bảng T01–T08 tự cuộn ngang nội bộ trong `.table-container`, 0 horizontal overflow [MEASURED: T10/A58].
+- **Mobile (390x844px)**: Media query `@media (max-width: 600px)` thu gọn lề đệm xuống 14px, cỡ chữ tiêu đề tinh chỉnh về 20px, kích thước ảnh co giãn linh hoạt duy trì đúng tâm điểm cụm thuyền, 0 horizontal overflow [MEASURED: T10/A62].
 
 ---
 
 ## 14. Accessibility & Fallback Evidence
 
 - **Tương phản màu sắc (WCAG 2.2 AA / AAA)**:
-  - Mực than primary `#1C1917` trên nền giấy `#FAF8F5`: **`16.5:1`** (Vượt chuẩn AAA 7.0:1) [MEASURED].
-  - Mực than secondary `#44403C` trên nền giấy `#FAF8F5`: **`9.7:1`** (Vượt chuẩn AAA 7.0:1) [MEASURED].
-  - Điểm nhấn terracotta `#C2410C` trên nền giấy `#FAF8F5`: **`4.9:1`** (Vượt chuẩn AA 4.5:1) [MEASURED].
-  - Chữ trạng thái Chờ đối tác `#92400E` trên nền `#FEF3C7`: **`6.4:1`** (Vượt chuẩn AA 4.5:1) [MEASURED].
-  - Chữ trạng thái Sẵn sàng `#065F46` trên nền `#ECFDF5`: **`7.3:1`** (Vượt chuẩn AA 4.5:1) [MEASURED].
-- **Khu vực tương tác (`Interactive Targets`)**: Toàn bộ nút bấm, link bảng, và thẻ tóm tắt đều có kích thước tối thiểu $\ge 44 \times 44\text{px}$ (Nút chính đạt 48px height) [MEASURED].
-- **Vòng nét hội tụ (`Focus Ring`)**: Xác lập tường minh `:focus-visible` với viền `2px solid #C2410C` và khoảng đệm `2px` [MEASURED].
-- **Ý nghĩa phi màu sắc (`Non-Color Meaning`)**: 100% trạng thái vận hành đều kết hợp biểu tượng vector riêng biệt và nhãn văn bản tiếng Việt tường minh [MEASURED].
-- **Chế độ dự phòng khi mất ảnh (`Image Failure Mode`)**: Khi vô hiệu hóa hình ảnh, các khung chứa vẫn giữ tỷ lệ khung hình, nền thay thế `#EAE4DA` hiện diện, văn bản alt và danh sách `<ol class="sr-only">` bảo toàn 100% thông điệp nghiệp vụ mà không làm vỡ cấu trúc trang [MEASURED].
+  - Mực than primary `#1C1917` trên nền giấy `#FAF8F5`: **`16.5:1`** (Vượt chuẩn AAA 7.0:1) [MEASURED: T11/A63].
+  - Mực than secondary `#44403C` trên nền giấy `#FAF8F5`: **`9.7:1`** (Vượt chuẩn AAA 7.0:1) [MEASURED: T11/A64].
+  - Điểm nhấn terracotta `#C2410C` trên nền giấy `#FAF8F5`: **`4.9:1`** (Vượt chuẩn AA 4.5:1) [MEASURED: T11/A65].
+  - Chữ trạng thái Chờ đối tác `#92400E` trên nền `#FEF3C7`: **`6.4:1`** (Vượt chuẩn AA 4.5:1) [MEASURED: T11/A66].
+  - Chữ trạng thái Sẵn sàng `#065F46` trên nền `#ECFDF5`: **`7.3:1`** (Vượt chuẩn AA 4.5:1) [MEASURED: T11/A67].
+- **Khu vực tương tác (`Interactive Targets`)**: Toàn bộ nút bấm, link bảng, và thẻ tóm tắt đều có kích thước tối thiểu $\ge 44 \times 44\text{px}$ (Nút chính đạt 48px height) [MEASURED: T10/A59].
+- **Vòng nét hội tụ (`Focus Ring`)**: Xác lập tường minh `:focus-visible` với viền `2px solid #C2410C` và khoảng đệm `2px` [MEASURED: T11/A68].
+- **Ý nghĩa phi màu sắc (`Non-Color Meaning`)**: 100% trạng thái vận hành đều kết hợp biểu tượng vector riêng biệt và nhãn văn bản tiếng Việt tường minh [MEASURED: T09/A56].
+- **Chế độ dự phòng khi mất ảnh (`Image Failure Mode`)**: Khi vô hiệu hóa hình ảnh, các khung chứa vẫn giữ tỷ lệ khung hình, nền thay thế `#EAE4DA` hiện diện, văn bản alt và danh sách `<ol class="sr-only">` bảo toàn 100% thông điệp nghiệp vụ mà không làm vỡ cấu trúc trang [MEASURED: T07/A43–A46].
 
 ---
 
@@ -269,6 +283,7 @@ design_training_012_submission_r02.zip
 ├── DESIGN_TRAINING_MODULE_012_DIRECTIVE.md
 ├── DESIGN_TRAINING_012_GOVERNANCE_WAIVER_005.md
 ├── DESIGN_TRAINING_012_FINAL_REVIEW_006.md
+├── DESIGN_TRAINING_012_FINAL_REVIEW_007.md
 ├── CANONICAL_FIXTURE.json
 ├── BRAND_THESIS.md
 ├── REFERENCE_BOARD.md
@@ -316,8 +331,8 @@ design_training_012_submission_r02.zip
 SELF_VERDICT:
   module: DESIGN_TRAINING_012_BRAND_AND_IMAGE_DIRECTION
   stream: B
-  submission_package: design_training_012_submission_r02.zip
-  review_remediation: DESIGN_TRAINING_012_FINAL_REVIEW_006 (F01-F06 100% RESOLVED)
+  submission_package: design_training_012_submission_r03.zip
+  review_remediation: DESIGN_TRAINING_012_FINAL_REVIEW_007 (G01-G05 100% RESOLVED - FINAL 2/2)
   checkpoint_12_1_status: APPROVED_WITH_GOVERNANCE_WAIVER_005
   phase_3_selection_gate: COMPLETED (DIRECTION_A SELECTED, 94/100)
   phase_4_final_candidate: COMPLETED (candidate/pre_critique.html)

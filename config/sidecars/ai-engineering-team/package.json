@@ -1,0 +1,10 @@
+{
+  "name": "ai-engineering-team-mcp",
+  "version": "1.0.0",
+  "description": "Antigravity Specialist AI Engineering Team MCP Server (9Router & Local Ast Engine)",
+  "main": "ai_engineering_mcp_server.js",
+  "scripts": {
+    "start": "node ai_engineering_mcp_server.js"
+  },
+  "dependencies": {}
+}

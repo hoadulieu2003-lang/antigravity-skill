@@ -2,39 +2,8 @@
 > Quản trị: Antigravity Autonomous Learning Engine
 > Tự động cập nhật mỗi khi Anh khởi động máy tính.
 
-## 📅 Phiên Học Tập: `2026-09-11 16:42:47`
+> *[Ghi chú: Đã nén các phiên học tập cũ hơn để tối ưu bộ nhớ]*
 
-### 🌐 Tin tức Nổi bật từ Google & Frontier Labs
-- **[Google AI Official]** [3 ways to prep for your next big race with Search](https://blog.google/products-and-platforms/products/search/running-race-training-tips/)
-  > 
-- **[Google AI Official]** [Get ready for the game with new football features in Search](https://blog.google/products-and-platforms/products/search/football-features-google-search/)
-  > 
-- **[Google AI Official]** [Recreating a 70-year love story frame by frame](https://blog.google/innovation-and-ai/technology/ai/love-rendered-film/)
-  > 
-
-### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
-- **[GitHub (27766 ⭐)]** [QwenLM/qwen-code](https://github.com/QwenLM/qwen-code)
-  > An open-source AI coding agent that lives in your terminal.
-- **[GitHub (191 ⭐)]** [SudoJacky/tinybot](https://github.com/SudoJacky/tinybot)
-  > Tinybot is a lightweight personal AI Agent that is constantly evolving
-- **[GitHub (125 ⭐)]** [Lincb522/GitGatto](https://github.com/Lincb522/GitGatto)
-  > 原生 macOS Git 客户端，以 Agent 驱动仓库管理、审阅与协作。
-
-### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
-- **[HuggingFace (Model)]** [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)
-  > Trending model on Hugging Face hub.
-- **[HuggingFace (Model)]** [openbmb/MiniCPM5-2B](https://huggingface.co/openbmb/MiniCPM5-2B)
-  > Trending model on Hugging Face hub.
-- **[HuggingFace (Model)]** [XHToken/Spark-X2.5-4B](https://huggingface.co/XHToken/Spark-X2.5-4B)
-  > Trending model on Hugging Face hub.
-
-### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
-- **[ArXiv CS.AI]** [OpenDiscoveryTrace: Process Traces for Evaluating AI Scientist Workflows](https://arxiv.org/abs/2609.09203)
-  > Cutting-edge preprint in Artificial Intelligence.
-- **[ArXiv CS.AI]** [Adaptive Entangled Game Modules in Artificial General Intelligence](https://arxiv.org/abs/2609.09226)
-  > Cutting-edge preprint in Artificial Intelligence.
-
----
 ## 📅 Phiên Học Tập: `2026-09-11 18:26:45`
 
 ### 🌐 Tin tức Nổi bật từ Google & Frontier Labs
@@ -592,6 +561,20 @@
   > AI pair programming in your terminal — one static binary, sub-ms startup, any model
 - **[GitHub (158 ⭐)]** [cerul-ai/cerul](https://github.com/cerul-ai/cerul)
   > Open-source video processing core and CLI. Search and annotate local videos with your own model endpoints.
+
+</untrusted_external_content>
+
+---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-15 02:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (196 ⭐)]** [blogminhquy/javis-os](https://github.com/blogminhquy/javis-os)
+  > No description provided.
+- **[GitHub (148 ⭐)]** [vaibhavarora14/job-application-agent](https://github.com/vaibhavarora14/job-application-agent)
+  > Privacy-first job Agent Skill for Claude/Cursor/Codex: verified facts only, OS secrets, confirmed submissions.
+- **[GitHub (37349 ⭐)]** [CopilotKit/CopilotKit](https://github.com/CopilotKit/CopilotKit)
+  > The Frontend Stack for Agents & Generative UI. React, Angular, Mobile, Slack, and more. Makers of the AG-UI Protocol
 
 </untrusted_external_content>
 

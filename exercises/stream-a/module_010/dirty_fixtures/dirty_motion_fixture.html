@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Dirty Motion Fixture (Positive Control)</title>
+  <style>
+    body { font-family: sans-serif; scroll-behavior: smooth; }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .motion-button {
+      transition: background-color 0.3s ease;
+      animation: pulse 1s infinite;
+    }
+  </style>
+</head>
+<body>
+  <button class="motion-button" id="dirty-motion-btn">Nút vi phạm Zero Motion</button>
+</body>
+</html>

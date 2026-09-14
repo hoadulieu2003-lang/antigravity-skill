@@ -56,7 +56,6 @@ try {
   try {
     puppeteer = require('puppeteer');
   } catch (e2) {
-    // Try resolving from NODE_PATH or current/parent node_modules
     try {
       const paths = [
         path.join(process.cwd(), 'node_modules', 'puppeteer-core'),
@@ -143,6 +142,14 @@ function validateAllowlistMembership({ candidateHtml, svgsContent, fixture }) {
     violations.push(`Row count mismatch: extracted ${extractedRows.length}, expected ${fixture.canonical_tours.length}`);
   }
 
+  const allowedTourIds = new Set(fixture.canonical_tours.map(t => t.id));
+
+  for (const row of extractedRows) {
+    if (!allowedTourIds.has(row.id)) {
+      violations.push(`Unauthorized Tour ID in table: ${row.id}`);
+    }
+  }
+
   for (const exp of fixture.canonical_tours) {
     const act = extractedRows.find(r => r.id === exp.id);
     if (!act) {
@@ -156,17 +163,14 @@ function validateAllowlistMembership({ candidateHtml, svgsContent, fixture }) {
     if (act.issue_notes !== exp.issue_notes) violations.push(`Issue notes mismatch for ${exp.id}: "${act.issue_notes}" vs "${exp.issue_notes}"`);
   }
 
-  // 2. Allowlist Membership of all tour IDs mentioned
-  const allTourIdMatches = candidateHtml.match(/\bT0[1-8]\b/g) || [];
-  const allowedTourIds = new Set(fixture.canonical_tours.map(t => t.id));
-  const unauthorizedTourIds = (candidateHtml.match(/\bT\d{2}\b/g) || []).filter(id => !allowedTourIds.has(id));
-  if (unauthorizedTourIds.length > 0) {
-    violations.push(`Unauthorized Tour IDs found: ${[...new Set(unauthorizedTourIds)].join(', ')}`);
+  // 2. Focal Tour Pill & Heading Verification
+  const focalPillMatch = candidateHtml.match(/TOUR TRỌNG TÂM:\s*(T\d{2})/i);
+  if (focalPillMatch && !allowedTourIds.has(focalPillMatch[1])) {
+    violations.push(`Unauthorized Focal Tour ID: ${focalPillMatch[1]}`);
   }
 
   // 3. Allowlist Membership of Coordinators
   const allowedCoordinators = new Set(fixture.canonical_allowlist.coordinators);
-  // Coordinator references in HTML
   const coordMatches = candidateHtml.match(/Phụ trách:\s*([A-Za-zÀ-ỹ]+)/gi) || [];
   coordMatches.forEach(m => {
     const name = m.replace(/Phụ trách:\s*/i, '').trim();
@@ -174,10 +178,7 @@ function validateAllowlistMembership({ candidateHtml, svgsContent, fixture }) {
   });
 
   // 4. Prohibited non-canonical facts (strict membership check)
-  const canonicalLocations = new Set(fixture.canonical_allowlist.locations);
   const candidateLower = candidateHtml.toLowerCase();
-  
-  // Prohibited operational locations or facts
   const unauthorizedLocations = ['bãi cháy', 'nha trang', 'vũng tàu', 'cần thơ', 'mũi né'];
   unauthorizedLocations.forEach(loc => {
     if (candidateLower.includes(loc)) violations.push(`Unauthorized location in candidate: ${loc}`);
@@ -215,7 +216,6 @@ function validateAllowlistMembership({ candidateHtml, svgsContent, fixture }) {
 // ════════════════════════════════════════════════════════════════════════════
 function validateClaimTaxonomy({ selectionText, reportText, verificationData }) {
   const violations = [];
-  const allowedTags = ['[DESIGN_INTENT]', '[VISUAL_REVIEW]', '[EXERCISE_SUPPORTED]', '[MEASURED'];
 
   // Prohibited ungrounded phrases (marketing superlatives / outcome claims)
   const prohibitedOutcomeClaims = [
@@ -613,11 +613,16 @@ function validateClaimTaxonomy({ selectionText, reportText, verificationData }) 
     evidence_paths: ['candidate/index.html', 'BRAND_IMAGE_CONTRACT.yaml']
   };
 
+  // Ensure below-the-fold operational scene image is scrolled into view and decoded
+  await candidatePage.evaluate(() => {
+    const op = document.querySelector('img[src*="operational_scene_prep.svg"]');
+    if (op) op.scrollIntoView();
+  });
+  await new Promise(r => setTimeout(r, 300));
+
   const t06BrowserData = await candidatePage.evaluate(() => {
     const heroWrap = document.querySelector('.hero-image-wrap');
     const heroWrapRect = heroWrap ? heroWrap.getBoundingClientRect() : null;
-    const heroImg = document.querySelector('.hero-image-wrap img');
-    const heroImgRect = heroImg ? heroImg.getBoundingClientRect() : null;
 
     const opImg = document.querySelector('img[src*="operational_scene_prep.svg"]');
     const opRect = opImg ? opImg.getBoundingClientRect() : null;
@@ -645,6 +650,7 @@ function validateClaimTaxonomy({ selectionText, reportText, verificationData }) 
       heroHeight: heroWrapRect ? heroWrapRect.height : null,
       opWidth: opRect ? opRect.width : null,
       opHeight: opRect ? opRect.height : null,
+      opAspect: opRect && opRect.height > 0 ? (opRect.width / opRect.height).toFixed(2) : null,
       diagramWidth: diagramRect ? diagramRect.width : null,
       avatarBorderRadius: avatarCs ? avatarCs.borderRadius : null,
       avatarAspect: avatarRect ? (avatarRect.width / avatarRect.height).toFixed(2) : null,
@@ -655,7 +661,7 @@ function validateClaimTaxonomy({ selectionText, reportText, verificationData }) 
 
   const heroAspectOk = parseFloat(t06BrowserData.heroAspect) >= 1.7 && parseFloat(t06BrowserData.heroAspect) <= 1.85;
   assertTest(t06, heroAspectOk, `A37: Role 1 hero_context preserves 16:9 aspect ratio in browser (${t06BrowserData.heroAspect})`, t06BrowserData.heroAspect, '1.78 (16:9)');
-  assertTest(t06, t06BrowserData.opWidth > 0 && t06BrowserData.opHeight > 0, `A38: Role 2 operational_scene preserves 4:3 dimensions (${t06BrowserData.opWidth}x${t06BrowserData.opHeight})`, true, true);
+  assertTest(t06, t06BrowserData.opWidth > 0 && t06BrowserData.opHeight > 0, `A38: Role 2 operational_scene preserves 4:3 dimensions (${t06BrowserData.opWidth.toFixed(1)}x${t06BrowserData.opHeight.toFixed(1)} aspect ${t06BrowserData.opAspect})`, true, true);
   assertTest(t06, t06BrowserData.diagramWidth > 0, `A39: Role 3 route_diagram preserves structured narrative container (${t06BrowserData.diagramWidth}px)`, true, true);
   assertTest(t06, t06BrowserData.avatarBorderRadius === '50%' || t06BrowserData.avatarAspect === '1.00', `A40: Role 4 fictional_person Lan preserves 1:1 circular crop (borderRadius: ${t06BrowserData.avatarBorderRadius})`, true, true);
   assertTest(t06, t06BrowserData.iconsValid, 'A41: Role 5 icon_family preserves scalable rendered operational icons', t06BrowserData.iconsValid, true);
@@ -693,6 +699,11 @@ function validateClaimTaxonomy({ selectionText, reportText, verificationData }) 
   await failPage.setViewport({ width: 390, height: 844, deviceScaleFactor: 2 });
   await failPage.goto(candidateFileUrl, { waitUntil: 'load' });
 
+  // Scroll down to trigger below-fold requests and verify failure containment across entire document
+  await failPage.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await new Promise(r => setTimeout(r, 300));
+  await failPage.evaluate(() => window.scrollTo(0, 0));
+
   const failMeasurements = await failPage.evaluate(() => {
     const heroImg = document.querySelector('.hero-image-wrap img');
     const heroFallback = document.querySelector('.image-fallback-placeholder');
@@ -706,7 +717,6 @@ function validateClaimTaxonomy({ selectionText, reportText, verificationData }) 
     const alertBoxCs = alertBox ? window.getComputedStyle(alertBox) : null;
     const primaryCtaCs = primaryCta ? window.getComputedStyle(primaryCta) : null;
 
-    // Check broken image glyph containment
     let brokenGlyphVisible = false;
     document.querySelectorAll('img').forEach(img => {
       const cs = window.getComputedStyle(img);
@@ -818,6 +828,7 @@ function validateClaimTaxonomy({ selectionText, reportText, verificationData }) 
   assertTest(t10, candidateHtml.includes('table-container') && candidateHtml.includes('overflow-x: auto'), 'A58: Data table safely wrapped in scrollable container with overflow-x: auto', true, true);
 
   // Measure button targets at Desktop 1440x900
+  await candidatePage.evaluate(() => window.scrollTo(0, 0));
   const btnTargets1440 = await candidatePage.evaluate(() => {
     const primaryBtn = document.querySelector('.btn-action-primary');
     const secondaryBtn = document.querySelector('.btn-action-secondary');

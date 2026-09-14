@@ -13,8 +13,11 @@ const fs = require('fs');
 const path = require('path');
 const screenshot = require('screenshot-desktop');
 
-// Thư mục lưu trữ artifact ảnh chụp màn hình
-const SCREENSHOT_DIR = 'C:\\Users\\game\\.gemini\\antigravity-ide\\brain\\fd77714d-97c6-48db-9c07-b7f387af6b39';
+// Thư mục lưu trữ artifact ảnh chụp màn hình tập trung
+const SCREENSHOT_DIR = path.join(__dirname, 'screenshots');
+if (!fs.existsSync(SCREENSHOT_DIR)) {
+  fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
+}
 
 /**
  * 1. Chạy lệnh Terminal / PowerShell trên hệ thống
