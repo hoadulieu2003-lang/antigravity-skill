@@ -1,32 +1,33 @@
 schema_version: '1.0'
-skill_name: vm0
-source_repo: vm0-ai/vm0
-stars: 1151
+skill_name: mateclaw
+source_repo: mateaix/mateclaw
+stars: 1101
 status: CANDIDATE
-created_at: '2026-09-14T15:43:04.593054+00:00'
+created_at: '2026-09-14T15:43:05.225488+00:00'
 human_promotion_required: true
 evidence_files:
 - SKILL.md
-- references/vm0/README.md
+- references/mateclaw/README.md
 benchmark:
-  total_score: 9.7
+  total_score: 10.0
   rating: RECOMMENDED
   evaluated_at: '2026-09-14T15:43:06Z'
   breakdown:
     structure_metadata: 2.5
     command_safety: 2.5
-    reference_coverage: 2.2
+    reference_coverage: 2.5
     ecosystem_compatibility: 2.5
   notes:
   - Frontmatter YAML hợp lệ (+0.5)
-  - Tên kỹ năng 'vm0' khớp thư mục (+0.5)
+  - Tên kỹ năng 'mateclaw' khớp thư mục (+0.5)
   - Đặc tả Intent-First chuẩn mực (+1.0/1.0)
   - 'Cấu trúc tài liệu Markdown (4 mục chính: +0.50/0.5)'
   - Có 1 khối mã lệnh thực thi (+0.5)
-  - Nhận diện 1 lệnh CLI tiêu chuẩn (+0.5)
+  - Nhận diện 2 lệnh CLI tiêu chuẩn (+0.5)
   - 'An toàn tuyệt đối: Không chứa lệnh phá hoại hệ thống (+1.5)'
-  - Thư mục tham chiếu references/vm0 tồn tại (+0.5)
-  - Tài liệu tham chiếu chi tiết (6048 ký tự) (+1.5)
+  - Thư mục tham chiếu references/mateclaw tồn tại (+0.5)
+  - Tài liệu tham chiếu chi tiết (26568 ký tự) (+1.5)
+  - Tài liệu tham chiếu có kèm ví dụ mã nguồn (+0.3)
   - Tài liệu tham chiếu có cấu trúc rõ ràng (+0.2)
   - 'Tuân thủ AGENTS.md Rule 14 & INV-E07: Không có secret lộ lọt (+1.0)'
   - Khớp các nguyên tắc vận hành an toàn (Sandbox, FAST Mode, Runbook) (+0.75)

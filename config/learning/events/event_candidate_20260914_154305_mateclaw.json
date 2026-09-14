@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-14T15:43:05.226760+00:00",
+  "skill_name": "mateclaw",
+  "source_repo": "mateaix/mateclaw",
+  "stars": 1101,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\mateclaw\\SKILL.md",
+  "human_promotion_required": true
+}

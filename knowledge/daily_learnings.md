@@ -568,3 +568,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-14 22:42:57`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1415 ⭐)]** [tianma-if/edgeever](https://github.com/tianma-if/edgeever)
+  > Open-source, AI-native knowledge base & Evernote alternative with native MCP. Zero-cost on Cloudflare or Docker.
+- **[GitHub (1101 ⭐)]** [mateaix/mateclaw](https://github.com/mateaix/mateclaw)
+  > 🤖 MateClaw — Your second brain with Multi-Agent Orchestration, MCP Protocol, Skills & Memory, Dream, and Multi-Channel Support. Built on Spring AI Alibaba.
+
+</untrusted_external_content>
+
+---

@@ -1,33 +1,34 @@
 ---
-name: vm0
+name: edgeever
 description: >-
-  Kỹ năng chuyên gia vận hành cho vm0-ai/vm0 (1151 ⭐).
+  Kỹ năng chuyên gia vận hành cho tianma-if/edgeever (1415 ⭐).
   Tự động kích hoạt khi người dùng muốn:
-    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở vm0 vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control
-    - Thiết lập cấu hình và vận hành lệnh CLI của vm0-ai/vm0
-  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'vm0'.
+    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở edgeever vào hệ thống
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Open-source, AI-native knowledge base & Evernote alternative with native MCP
+    - Thiết lập cấu hình và vận hành lệnh CLI của tianma-if/edgeever
+  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'edgeever'.
 ---
 
-# vm0-ai/vm0 — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
+# tianma-if/edgeever — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
-> **Nguồn gốc**: GitHub Repository `https://github.com/vm0-ai/vm0`  
-> **Độ uy tín cộng đồng**: 1151 ⭐  
+> **Nguồn gốc**: GitHub Repository `https://github.com/tianma-if/edgeever`  
+> **Độ uy tín cộng đồng**: 1415 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-14 15:43:04Z
+> **Tự động đóng gói lúc**: 2026-09-14 15:43:03Z
 
 ---
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control.
+* **Mục tiêu cốt lõi**: Open-source, AI-native knowledge base & Evernote alternative with native MCP. Zero-cost on Cloudflare or Docker.
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- **Drafts, not sends** — email lands in Gmail unsent; an ad budget shift waits in Meta for approval.
-- **Granular permissions** — read/write per tool, per agent. Okou only touches what you explicitly allow.
-- **Isolated execution** — every task runs in its own Firecracker microVM. Credentials never leave the sandbox.
-- **Fully auditable** — logs, metrics, and network visibility for every run.
-- **Open source** — this repository. Inspect, fork, or self-host.
+* **Memos & Stream Notes**: Clean and simple, but their social-timeline layouts differ fundamentally from the structured productivity of a classic three-pane workflow.
+- **Rich Plugin API**: Extend EdgeEver with the [Plugin API](docs/plugin-development.md).
+- **Unlimited Multi-Device Sync**: No commercial device caps or paywalls. Enjoy seamless synchronization across PC, tablet, and mobile via web, PWA, or browser.
+- **Classic Three-Pane Layout & Focus Mode**: Clean navigation featuring notebook trees, note lists, and an expansive editor, with a desktop focus mode to eliminate distractions.
+- **Unlimited Nested Notebooks**: Organize your knowledge with arbitrary folder depth.
+- **Seamless Dual-View Editor**: Switch effortlessly between intuitive rich text editing and Markdown source code on desktop.
 
 ---
 
@@ -36,8 +37,10 @@ description: >-
 Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
 
 ```bash
-# Tham khảo tài liệu gốc tại GitHub: vm0-ai/vm0
-git clone https://github.com/vm0-ai/vm0.git
+curl -fsSL https://edgeever.org/install.sh | bash
+
+bun install
+bun run dev
 ```
 
 ---
