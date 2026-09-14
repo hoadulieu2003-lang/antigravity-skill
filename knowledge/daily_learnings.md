@@ -504,3 +504,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-14 08:04:26`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (55 ⭐)]** [Miosa-osa/OSA](https://github.com/Miosa-osa/OSA)
+  > An AI agent that lives on your computer and does the work you ask for, in plain words — from writing code to running your business busywork. Local, one comma...
+- **[GitHub (226 ⭐)]** [bitrouter/bitrouter](https://github.com/bitrouter/bitrouter)
+  > The context-aware model router that learns & adapts to your long-horizon coding agent workflows. Lightweight & extensible, works with any harnesses, any mode...
+
+</untrusted_external_content>
+
+---
