@@ -192,3 +192,28 @@ Toàn bộ dữ liệu 8 tour được đóng băng nguyên trạng từ Mục 4
     - **Report & Đóng gói**:
       * Biên soạn báo cáo nghiệm thu 20 mục `DESIGN_TRAINING_012_REPORT.md`.
       * Đóng gói bản nộp cuối cùng `design_training_012_final_submission_r01.zip`.
+
+### Giai đoạn M4 — Khắc Phục Toàn Diện Blockers Review 006 (Repair Round 1 / R02)
+- **Thực thi Hoàn tất (Completed 2026-09-14)**:
+  - **F01 (Portable Invariant & Embedded Snapshot)**:
+    * Nhúng trực tiếp bản kế thừa đóng băng `source_snapshot/design_training_007_submission_r04.zip` (SHA-256: `e76ab08f4d1e72865f4210299594e175b94f471d3f8960c3f0c61d4259283c76`) vào bên trong gói nộp R02.
+    * Nâng cấp `verify_module_012.js` xác thực tính độc lập không phụ thuộc vào đường dẫn tuyệt đối hay tên thư mục ngoài. Đã kiểm chứng độc lập từ thư mục ngoài `test_unpack_r02`.
+  - **F02 (Deterministic Evidence Parity & DPR=2)**:
+    * Chụp lại toàn bộ 10 ảnh authoritative screenshots bằng Puppeteer tại DPR=2 (`deviceScaleFactor: 2`).
+    * Đo kiểm kích thước byte và SHA-256 thực tế trên đĩa, đồng bộ 100% vào `SCREENSHOT_MANIFEST.json` và `VERIFICATION.json`.
+  - **F03 (Canonical Allowlist & Prohibited Fact Rejection)**:
+    * Thiết lập `CANONICAL_FIXTURE.json` chứa 8 tour chuẩn mục, allowlist địa điểm/dữ liệu và negative fixture schema validation.
+    * Làm sạch toàn bộ các operational facts ngoài luồng (như "Bãi Cháy") khỏi các tệp SVG và HTML (chuẩn hóa mốc 3 thành `Hạ Long`).
+  - **F04 (Responsive Containment on Mobile 390px)**:
+    * Sửa đổi layout grid trên mobile với kích thước phòng thủ `minmax(0, 1.63fr) minmax(0, 1fr)` và `min-width: 0`.
+    * Thêm thuộc tính `overflow-wrap: break-word` cho `.hero-heading` và bọc bảng trong `.table-container` scrollable.
+    * Đo kiểm Puppeteer thực tế: `scrollWidth === 390` [MEASURED], 0 pixel tràn viền ngang.
+  - **F05 (Exact Critique Scope & Hypotheses Isolation)**:
+    * Thu hẹp diff giữa `candidate/pre_critique.html` và `candidate/index.html` về đúng 3 dòng CSS duy nhất phản ánh giả thuyết phản biện (viền alert 1.5px vs 2px, nút CTA min-height 44px vs 48px kèm border-bottom 3px).
+  - **F06 (Disciplined Claim Taxonomy)**:
+    * Loại bỏ triệt để toàn bộ 6 phát biểu chưa kiểm chứng ("thấu hiểu sâu sắc", "giảm tải nhận thức", "phòng ngừa sai sót vận hành", "mang tính sống còn", "focal point hoàn hảo", "render hoàn hảo 100%").
+    * Thay thế bằng hệ nhãn chứng cứ trung thực: `[MEASURED]`, `[DESIGN_INTENT]`, `[EXERCISE_SUPPORTED]`, `[VISUAL_REVIEW]`.
+  - **Kết quả Kiểm chứng Tự động R02**:
+    * Test runner `verify_module_012.js` đạt **79/79 ASSERTIONS PASSED (Exit code 0)** [MEASURED].
+    * Đóng gói xuất xưởng `design_training_012_submission_r02.zip`.
+

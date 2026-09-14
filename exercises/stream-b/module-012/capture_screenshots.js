@@ -1,7 +1,16 @@
-const puppeteer = require('C:/Users/game/cdp_reader/node_modules/puppeteer-core');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+let puppeteer;
+try {
+  puppeteer = require('puppeteer-core');
+} catch (e) {
+  try {
+    puppeteer = require(path.join(process.env.USERPROFILE || '', 'cdp_reader/node_modules/puppeteer-core'));
+  } catch (e2) {
+    puppeteer = null;
+  }
+}
 
 const SCREENSHOTS_DIR = path.join(__dirname, 'screenshots');
 if (!fs.existsSync(SCREENSHOTS_DIR)) {

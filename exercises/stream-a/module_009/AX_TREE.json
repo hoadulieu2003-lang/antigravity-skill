@@ -1,0 +1,4565 @@
+[
+  {
+    "nodeId": "359",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "RootWebArea"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 144
+    },
+    "name": {
+      "type": "computedString",
+      "value": "TRIPFLOW — Ghi nhận yêu cầu hỗ trợ (AR-901)",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label",
+          "superseded": true
+        },
+        {
+          "type": "relatedElement",
+          "value": {
+            "type": "computedString",
+            "value": "TRIPFLOW — Ghi nhận yêu cầu hỗ trợ (AR-901)"
+          },
+          "nativeSource": "title"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "focused",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "url",
+        "value": {
+          "type": "string",
+          "value": "file:///C:/Users/game/.gemini/exercises/stream-a/module_009/index.html"
+        }
+      }
+    ],
+    "childIds": [
+      "371"
+    ],
+    "backendDOMNodeId": 359,
+    "frameId": "55195AC31890122661E49D728EA7A6E8"
+  },
+  {
+    "nodeId": "371",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "359",
+    "childIds": [
+      "377"
+    ],
+    "backendDOMNodeId": 371
+  },
+  {
+    "nodeId": "377",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "371",
+    "childIds": [
+      "378",
+      "379",
+      "385",
+      "452",
+      "456",
+      "468",
+      "469"
+    ],
+    "backendDOMNodeId": 377
+  },
+  {
+    "nodeId": "378",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "link"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 110
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Bỏ qua đến nội dung chính",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Bỏ qua đến nội dung chính"
+          }
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "url",
+        "value": {
+          "type": "string",
+          "value": "file:///C:/Users/game/.gemini/exercises/stream-a/module_009/index.html#main-content"
+        }
+      }
+    ],
+    "parentId": "377",
+    "childIds": [
+      "471"
+    ],
+    "backendDOMNodeId": 378
+  },
+  {
+    "nodeId": "379",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "banner"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 7
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "attribute",
+          "attribute": "title"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "377",
+    "childIds": [
+      "380",
+      "383"
+    ],
+    "backendDOMNodeId": 379
+  },
+  {
+    "nodeId": "385",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "main"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 118
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "attribute",
+          "attribute": "title"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "377",
+    "childIds": [
+      "360"
+    ],
+    "backendDOMNodeId": 385
+  },
+  {
+    "nodeId": "452",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "contentinfo"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 26
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "attribute",
+          "attribute": "title"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "377",
+    "childIds": [
+      "453"
+    ],
+    "backendDOMNodeId": 452
+  },
+  {
+    "nodeId": "456",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "notRendered",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "377",
+    "childIds": [
+      "515"
+    ],
+    "backendDOMNodeId": 456
+  },
+  {
+    "nodeId": "515",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "notRendered",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "456",
+    "childIds": [],
+    "backendDOMNodeId": 515
+  },
+  {
+    "nodeId": "468",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "status"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 159
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "attribute",
+          "attribute": "title"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "live",
+        "value": {
+          "type": "token",
+          "value": "polite"
+        }
+      },
+      {
+        "name": "atomic",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      {
+        "name": "relevant",
+        "value": {
+          "type": "tokenList",
+          "value": "additions text"
+        }
+      }
+    ],
+    "parentId": "377",
+    "childIds": [],
+    "backendDOMNodeId": 468
+  },
+  {
+    "nodeId": "469",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "alert"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 2
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "attribute",
+          "attribute": "title"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "live",
+        "value": {
+          "type": "token",
+          "value": "assertive"
+        }
+      },
+      {
+        "name": "atomic",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      {
+        "name": "relevant",
+        "value": {
+          "type": "tokenList",
+          "value": "additions text"
+        }
+      }
+    ],
+    "parentId": "377",
+    "childIds": [],
+    "backendDOMNodeId": 469
+  },
+  {
+    "nodeId": "471",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Bỏ qua đến nội dung chính",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Bỏ qua đến nội dung chính"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "378",
+    "childIds": [
+      "-1000000002"
+    ],
+    "backendDOMNodeId": 471
+  },
+  {
+    "nodeId": "380",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "379",
+    "childIds": [
+      "381",
+      "382"
+    ],
+    "backendDOMNodeId": 380
+  },
+  {
+    "nodeId": "381",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "380",
+    "childIds": [
+      "472"
+    ],
+    "backendDOMNodeId": 381
+  },
+  {
+    "nodeId": "382",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "heading"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 96
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Ghi nhận yêu cầu hỗ trợ",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Ghi nhận yêu cầu hỗ trợ"
+          }
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "level",
+        "value": {
+          "type": "integer",
+          "value": 1
+        }
+      }
+    ],
+    "parentId": "380",
+    "childIds": [
+      "473"
+    ],
+    "backendDOMNodeId": 382
+  },
+  {
+    "nodeId": "383",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "navigation"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 130
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Điều hướng tác nghiệp",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "value": {
+            "type": "computedString",
+            "value": "Điều hướng tác nghiệp"
+          },
+          "attribute": "aria-label",
+          "attributeValue": {
+            "type": "string",
+            "value": "Điều hướng tác nghiệp"
+          }
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "379",
+    "childIds": [
+      "384"
+    ],
+    "backendDOMNodeId": 383
+  },
+  {
+    "nodeId": "360",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "385",
+    "childIds": [
+      "386",
+      "367",
+      "437"
+    ],
+    "backendDOMNodeId": 360
+  },
+  {
+    "nodeId": "386",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "region"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 143
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Thông tin hồ sơ tiếp nhận",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "value": {
+            "type": "computedString",
+            "value": "Thông tin hồ sơ tiếp nhận"
+          },
+          "attribute": "aria-labelledby",
+          "attributeValue": {
+            "type": "idrefList",
+            "value": "case-summary-heading",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 387,
+                "idref": "case-summary-heading",
+                "text": "Thông tin hồ sơ tiếp nhận"
+              }
+            ]
+          }
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label",
+          "superseded": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "labelledby",
+        "value": {
+          "type": "nodeList",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 387,
+              "idref": "case-summary-heading",
+              "text": "Thông tin hồ sơ tiếp nhận"
+            }
+          ]
+        }
+      }
+    ],
+    "parentId": "360",
+    "childIds": [
+      "387",
+      "388"
+    ],
+    "backendDOMNodeId": 386
+  },
+  {
+    "nodeId": "367",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "region"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 143
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Chi tiết nhu cầu hỗ trợ hành khách",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "value": {
+            "type": "computedString",
+            "value": "Chi tiết nhu cầu hỗ trợ hành khách"
+          },
+          "attribute": "aria-labelledby",
+          "attributeValue": {
+            "type": "idrefList",
+            "value": "intake-form-heading",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 410,
+                "idref": "intake-form-heading",
+                "text": "Chi tiết nhu cầu hỗ trợ hành khách"
+              }
+            ]
+          }
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label",
+          "superseded": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "labelledby",
+        "value": {
+          "type": "nodeList",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 410,
+              "idref": "intake-form-heading",
+              "text": "Chi tiết nhu cầu hỗ trợ hành khách"
+            }
+          ]
+        }
+      }
+    ],
+    "parentId": "360",
+    "childIds": [
+      "410",
+      "358"
+    ],
+    "backendDOMNodeId": 367
+  },
+  {
+    "nodeId": "437",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "notRendered",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "360",
+    "childIds": [
+      "504"
+    ],
+    "backendDOMNodeId": 437
+  },
+  {
+    "nodeId": "504",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "notRendered",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "437",
+    "childIds": [],
+    "backendDOMNodeId": 504
+  },
+  {
+    "nodeId": "453",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "452",
+    "childIds": [
+      "514"
+    ],
+    "backendDOMNodeId": 453
+  },
+  {
+    "nodeId": "-1000000002",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Bỏ qua đến nội dung chính"
+    },
+    "properties": [],
+    "parentId": "471",
+    "childIds": []
+  },
+  {
+    "nodeId": "472",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "TRIPFLOW DISPATCH SYSTEM",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "TRIPFLOW DISPATCH SYSTEM"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "381",
+    "childIds": [
+      "-1000000003"
+    ],
+    "backendDOMNodeId": 472
+  },
+  {
+    "nodeId": "473",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Ghi nhận yêu cầu hỗ trợ",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Ghi nhận yêu cầu hỗ trợ"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "382",
+    "childIds": [
+      "-1000000004"
+    ],
+    "backendDOMNodeId": 473
+  },
+  {
+    "nodeId": "384",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "button"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 9
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Xem hướng dẫn hỗ trợ",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "relatedElement",
+          "nativeSource": "label"
+        },
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Xem hướng dẫn hỗ trợ"
+          }
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "invalid",
+        "value": {
+          "type": "token",
+          "value": "false"
+        }
+      },
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "hasPopup",
+        "value": {
+          "type": "token",
+          "value": "dialog"
+        }
+      }
+    ],
+    "parentId": "383",
+    "childIds": [
+      "474"
+    ],
+    "backendDOMNodeId": 384
+  },
+  {
+    "nodeId": "387",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "heading"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 96
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Thông tin hồ sơ tiếp nhận",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Thông tin hồ sơ tiếp nhận"
+          }
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "level",
+        "value": {
+          "type": "integer",
+          "value": 2
+        }
+      }
+    ],
+    "parentId": "386",
+    "childIds": [
+      "475"
+    ],
+    "backendDOMNodeId": 387
+  },
+  {
+    "nodeId": "388",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "386",
+    "childIds": [
+      "389",
+      "392",
+      "395",
+      "398",
+      "401",
+      "404"
+    ],
+    "backendDOMNodeId": 388
+  },
+  {
+    "nodeId": "389",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "388",
+    "childIds": [
+      "390",
+      "391"
+    ],
+    "backendDOMNodeId": 389
+  },
+  {
+    "nodeId": "390",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "389",
+    "childIds": [
+      "476"
+    ],
+    "backendDOMNodeId": 390
+  },
+  {
+    "nodeId": "391",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "389",
+    "childIds": [
+      "477"
+    ],
+    "backendDOMNodeId": 391
+  },
+  {
+    "nodeId": "392",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "388",
+    "childIds": [
+      "393",
+      "394"
+    ],
+    "backendDOMNodeId": 392
+  },
+  {
+    "nodeId": "393",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "392",
+    "childIds": [
+      "478"
+    ],
+    "backendDOMNodeId": 393
+  },
+  {
+    "nodeId": "394",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "392",
+    "childIds": [
+      "479"
+    ],
+    "backendDOMNodeId": 394
+  },
+  {
+    "nodeId": "395",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "388",
+    "childIds": [
+      "396",
+      "397"
+    ],
+    "backendDOMNodeId": 395
+  },
+  {
+    "nodeId": "396",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "395",
+    "childIds": [
+      "480"
+    ],
+    "backendDOMNodeId": 396
+  },
+  {
+    "nodeId": "397",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "395",
+    "childIds": [
+      "481"
+    ],
+    "backendDOMNodeId": 397
+  },
+  {
+    "nodeId": "398",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "388",
+    "childIds": [
+      "399",
+      "400"
+    ],
+    "backendDOMNodeId": 398
+  },
+  {
+    "nodeId": "399",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "398",
+    "childIds": [
+      "482"
+    ],
+    "backendDOMNodeId": 399
+  },
+  {
+    "nodeId": "400",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "398",
+    "childIds": [
+      "483"
+    ],
+    "backendDOMNodeId": 400
+  },
+  {
+    "nodeId": "401",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "388",
+    "childIds": [
+      "402",
+      "403"
+    ],
+    "backendDOMNodeId": 401
+  },
+  {
+    "nodeId": "402",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "401",
+    "childIds": [
+      "484"
+    ],
+    "backendDOMNodeId": 402
+  },
+  {
+    "nodeId": "403",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "401",
+    "childIds": [
+      "485"
+    ],
+    "backendDOMNodeId": 403
+  },
+  {
+    "nodeId": "404",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "388",
+    "childIds": [
+      "405",
+      "406"
+    ],
+    "backendDOMNodeId": 404
+  },
+  {
+    "nodeId": "405",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "404",
+    "childIds": [
+      "486"
+    ],
+    "backendDOMNodeId": 405
+  },
+  {
+    "nodeId": "406",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "404",
+    "childIds": [
+      "487"
+    ],
+    "backendDOMNodeId": 406
+  },
+  {
+    "nodeId": "410",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "heading"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 96
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Chi tiết nhu cầu hỗ trợ hành khách",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Chi tiết nhu cầu hỗ trợ hành khách"
+          }
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "level",
+        "value": {
+          "type": "integer",
+          "value": 2
+        }
+      }
+    ],
+    "parentId": "367",
+    "childIds": [
+      "489"
+    ],
+    "backendDOMNodeId": 410
+  },
+  {
+    "nodeId": "358",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "form"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 87
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "attribute",
+          "attribute": "title"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "367",
+    "childIds": [
+      "411",
+      "370",
+      "428",
+      "434"
+    ],
+    "backendDOMNodeId": 358
+  },
+  {
+    "nodeId": "514",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "TRIPFLOW Dispatch Console · Bản mẫu huấn luyện khả năng tiếp cận — đang chờ thẩm định",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "TRIPFLOW Dispatch Console · Bản mẫu huấn luyện khả năng tiếp cận — đang chờ thẩm định"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "453",
+    "childIds": [
+      "-1000000031"
+    ],
+    "backendDOMNodeId": 514
+  },
+  {
+    "nodeId": "-1000000003",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "TRIPFLOW DISPATCH SYSTEM"
+    },
+    "properties": [],
+    "parentId": "472",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000004",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Ghi nhận yêu cầu hỗ trợ"
+    },
+    "properties": [],
+    "parentId": "473",
+    "childIds": []
+  },
+  {
+    "nodeId": "474",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Xem hướng dẫn hỗ trợ",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Xem hướng dẫn hỗ trợ"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "384",
+    "childIds": [
+      "-1000000005"
+    ],
+    "backendDOMNodeId": 474
+  },
+  {
+    "nodeId": "475",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Thông tin hồ sơ tiếp nhận",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Thông tin hồ sơ tiếp nhận"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "387",
+    "childIds": [
+      "-1000000006"
+    ],
+    "backendDOMNodeId": 475
+  },
+  {
+    "nodeId": "476",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Mã hồ sơ yêu cầu:",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Mã hồ sơ yêu cầu:"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "390",
+    "childIds": [
+      "-1000000007"
+    ],
+    "backendDOMNodeId": 476
+  },
+  {
+    "nodeId": "477",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "AR-901",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "AR-901"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "391",
+    "childIds": [
+      "-1000000008"
+    ],
+    "backendDOMNodeId": 477
+  },
+  {
+    "nodeId": "478",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Mã đặt chỗ:",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Mã đặt chỗ:"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "393",
+    "childIds": [
+      "-1000000009"
+    ],
+    "backendDOMNodeId": 478
+  },
+  {
+    "nodeId": "479",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "BK-24091",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "BK-24091"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "394",
+    "childIds": [
+      "-1000000010"
+    ],
+    "backendDOMNodeId": 479
+  },
+  {
+    "nodeId": "480",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Hành khách:",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Hành khách:"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "396",
+    "childIds": [
+      "-1000000011"
+    ],
+    "backendDOMNodeId": 480
+  },
+  {
+    "nodeId": "481",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Khách A",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Khách A"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "397",
+    "childIds": [
+      "-1000000012"
+    ],
+    "backendDOMNodeId": 481
+  },
+  {
+    "nodeId": "482",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Mã tour & Điểm đến:",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Mã tour & Điểm đến:"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "399",
+    "childIds": [
+      "-1000000013"
+    ],
+    "backendDOMNodeId": 482
+  },
+  {
+    "nodeId": "483",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Tour Fansipan Sapa 2 Ngày 1 Đêm (TF-802)",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Tour Fansipan Sapa 2 Ngày 1 Đêm (TF-802)"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "400",
+    "childIds": [
+      "-1000000014",
+      "-1000000015"
+    ],
+    "backendDOMNodeId": 483
+  },
+  {
+    "nodeId": "484",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Thời gian khởi hành:",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Thời gian khởi hành:"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "402",
+    "childIds": [
+      "-1000000016"
+    ],
+    "backendDOMNodeId": 484
+  },
+  {
+    "nodeId": "485",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "2026-09-15 06:30 ICT",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "2026-09-15 06:30 ICT"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "403",
+    "childIds": [
+      "-1000000017"
+    ],
+    "backendDOMNodeId": 485
+  },
+  {
+    "nodeId": "486",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Trạng thái hồ sơ:",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Trạng thái hồ sơ:"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "405",
+    "childIds": [
+      "-1000000018"
+    ],
+    "backendDOMNodeId": 486
+  },
+  {
+    "nodeId": "487",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Chưa ghi nhận yêu cầu hỗ trợ",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Chưa ghi nhận yêu cầu hỗ trợ"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "406",
+    "childIds": [
+      "-1000000019"
+    ],
+    "backendDOMNodeId": 487
+  },
+  {
+    "nodeId": "489",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Chi tiết nhu cầu hỗ trợ hành khách",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Chi tiết nhu cầu hỗ trợ hành khách"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "410",
+    "childIds": [
+      "-1000000020"
+    ],
+    "backendDOMNodeId": 489
+  },
+  {
+    "nodeId": "411",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "358",
+    "childIds": [
+      "368"
+    ],
+    "backendDOMNodeId": 411
+  },
+  {
+    "nodeId": "368",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "group"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 93
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Hình thức hỗ trợ cần sắp xếp",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "relatedElement",
+          "value": {
+            "type": "computedString",
+            "value": "Hình thức hỗ trợ cần sắp xếp"
+          },
+          "nativeSource": "legend",
+          "nativeSourceValue": {
+            "type": "nodeList",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 369,
+                "idref": "support-type-legend",
+                "text": "Hình thức hỗ trợ cần sắp xếp"
+              }
+            ]
+          }
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "description": {
+      "type": "computedString",
+      "value": "Chọn một phương án phù hợp nhất với điều kiện di chuyển của khách. Chọn hình thức hỗ trợ cần sắp xếp."
+    },
+    "properties": [
+      {
+        "name": "invalid",
+        "value": {
+          "type": "token",
+          "value": "false"
+        }
+      },
+      {
+        "name": "describedby",
+        "value": {
+          "type": "idrefList",
+          "value": "support-type-desc error-support-type",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 361,
+              "idref": "support-type-desc"
+            },
+            {
+              "backendDOMNodeId": 420,
+              "idref": "error-support-type"
+            }
+          ]
+        }
+      },
+      {
+        "name": "labelledby",
+        "value": {
+          "type": "nodeList",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 369,
+              "idref": "support-type-legend",
+              "text": "Hình thức hỗ trợ cần sắp xếp"
+            }
+          ]
+        }
+      }
+    ],
+    "parentId": "411",
+    "childIds": [
+      "369",
+      "361",
+      "362",
+      "363",
+      "364",
+      "365",
+      "420"
+    ],
+    "backendDOMNodeId": 368
+  },
+  {
+    "nodeId": "370",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "358",
+    "childIds": [
+      "421",
+      "422",
+      "366",
+      "425"
+    ],
+    "backendDOMNodeId": 370
+  },
+  {
+    "nodeId": "421",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "LabelText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 104
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "attribute",
+          "attribute": "title"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "370",
+    "childIds": [
+      "497"
+    ],
+    "backendDOMNodeId": 421
+  },
+  {
+    "nodeId": "422",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "370",
+    "childIds": [
+      "498"
+    ],
+    "backendDOMNodeId": 422
+  },
+  {
+    "nodeId": "366",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "textbox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 170
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Chi tiết hỗ trợ",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "relatedElement",
+          "value": {
+            "type": "computedString",
+            "value": "Chi tiết hỗ trợ"
+          },
+          "nativeSource": "labelfor",
+          "nativeSourceValue": {
+            "type": "nodeList",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 421,
+                "idref": "label-details",
+                "text": "Chi tiết hỗ trợ"
+              }
+            ]
+          }
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        },
+        {
+          "type": "placeholder",
+          "attribute": "placeholder",
+          "superseded": true
+        },
+        {
+          "type": "placeholder",
+          "attribute": "aria-placeholder",
+          "superseded": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "description": {
+      "type": "computedString",
+      "value": "Mô tả tóm tắt nhu cầu thực tế cần bố trí (tối đa 200 ký tự). Chi tiết hỗ trợ không được vượt quá 200 ký tự."
+    },
+    "properties": [
+      {
+        "name": "invalid",
+        "value": {
+          "type": "token",
+          "value": "false"
+        }
+      },
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "editable",
+        "value": {
+          "type": "token",
+          "value": "plaintext"
+        }
+      },
+      {
+        "name": "settable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "multiline",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      },
+      {
+        "name": "readonly",
+        "value": {
+          "type": "boolean",
+          "value": false
+        }
+      },
+      {
+        "name": "required",
+        "value": {
+          "type": "boolean",
+          "value": false
+        }
+      },
+      {
+        "name": "describedby",
+        "value": {
+          "type": "idrefList",
+          "value": "details-hint error-details-limit",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 422,
+              "idref": "details-hint"
+            },
+            {
+              "backendDOMNodeId": 426,
+              "idref": "error-details-limit"
+            }
+          ]
+        }
+      },
+      {
+        "name": "labelledby",
+        "value": {
+          "type": "nodeList",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 421,
+              "idref": "label-details",
+              "text": "Chi tiết hỗ trợ"
+            }
+          ]
+        }
+      }
+    ],
+    "parentId": "370",
+    "childIds": [
+      "423"
+    ],
+    "backendDOMNodeId": 366
+  },
+  {
+    "nodeId": "425",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "370",
+    "childIds": [
+      "426"
+    ],
+    "backendDOMNodeId": 425
+  },
+  {
+    "nodeId": "426",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "notRendered",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "425",
+    "childIds": [
+      "499"
+    ],
+    "backendDOMNodeId": 426
+  },
+  {
+    "nodeId": "499",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "notRendered",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "426",
+    "childIds": [],
+    "backendDOMNodeId": 499
+  },
+  {
+    "nodeId": "428",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "358",
+    "childIds": [
+      "429",
+      "433"
+    ],
+    "backendDOMNodeId": 428
+  },
+  {
+    "nodeId": "429",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "description": {
+      "type": "computedString",
+      "value": "Xác nhận rằng yêu cầu đã được trao đổi với khách."
+    },
+    "properties": [
+      {
+        "name": "describedby",
+        "value": {
+          "type": "idrefList",
+          "value": "error-confirmation",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 433,
+              "idref": "error-confirmation"
+            }
+          ]
+        }
+      }
+    ],
+    "parentId": "428",
+    "childIds": [
+      "430"
+    ],
+    "backendDOMNodeId": 429
+  },
+  {
+    "nodeId": "433",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "notRendered",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "428",
+    "childIds": [
+      "502"
+    ],
+    "backendDOMNodeId": 433
+  },
+  {
+    "nodeId": "502",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "notRendered",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "433",
+    "childIds": [],
+    "backendDOMNodeId": 502
+  },
+  {
+    "nodeId": "434",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "358",
+    "childIds": [
+      "435"
+    ],
+    "backendDOMNodeId": 434
+  },
+  {
+    "nodeId": "-1000000031",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "TRIPFLOW Dispatch Console · Bản mẫu huấn luyện khả năng tiếp cận — đang chờ thẩm định"
+    },
+    "properties": [],
+    "parentId": "514",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000005",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Xem hướng dẫn hỗ trợ"
+    },
+    "properties": [],
+    "parentId": "474",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000006",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Thông tin hồ sơ tiếp nhận"
+    },
+    "properties": [],
+    "parentId": "475",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000007",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Mã hồ sơ yêu cầu:"
+    },
+    "properties": [],
+    "parentId": "476",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000008",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "AR-901"
+    },
+    "properties": [],
+    "parentId": "477",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000009",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Mã đặt chỗ:"
+    },
+    "properties": [],
+    "parentId": "478",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000010",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "BK-24091"
+    },
+    "properties": [],
+    "parentId": "479",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000011",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Hành khách:"
+    },
+    "properties": [],
+    "parentId": "480",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000012",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Khách A"
+    },
+    "properties": [],
+    "parentId": "481",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000013",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Mã tour & Điểm đến:"
+    },
+    "properties": [],
+    "parentId": "482",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000014",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Tour Fansipan Sapa 2 Ngày 1 Đêm "
+    },
+    "properties": [],
+    "parentId": "483",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000015",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "(TF-802)"
+    },
+    "properties": [],
+    "parentId": "483",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000016",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Thời gian khởi hành:"
+    },
+    "properties": [],
+    "parentId": "484",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000017",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "2026-09-15 06:30 ICT"
+    },
+    "properties": [],
+    "parentId": "485",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000018",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Trạng thái hồ sơ:"
+    },
+    "properties": [],
+    "parentId": "486",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000019",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Chưa ghi nhận yêu cầu hỗ trợ"
+    },
+    "properties": [],
+    "parentId": "487",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000020",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Chi tiết nhu cầu hỗ trợ hành khách"
+    },
+    "properties": [],
+    "parentId": "489",
+    "childIds": []
+  },
+  {
+    "nodeId": "369",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "Legend"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 108
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "attribute",
+          "attribute": "title"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "368",
+    "childIds": [
+      "490"
+    ],
+    "backendDOMNodeId": 369
+  },
+  {
+    "nodeId": "361",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "368",
+    "childIds": [
+      "491"
+    ],
+    "backendDOMNodeId": 361
+  },
+  {
+    "nodeId": "362",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "368",
+    "childIds": [
+      "412",
+      "413"
+    ],
+    "backendDOMNodeId": 362
+  },
+  {
+    "nodeId": "412",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "radio"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 141
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Hỗ trợ lên xuống phương tiện",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "relatedElement",
+          "value": {
+            "type": "computedString",
+            "value": "Hỗ trợ lên xuống phương tiện"
+          },
+          "nativeSource": "labelfor",
+          "nativeSourceValue": {
+            "type": "nodeList",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 413,
+                "text": "Hỗ trợ lên xuống phương tiện"
+              }
+            ]
+          }
+        },
+        {
+          "type": "contents",
+          "superseded": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "invalid",
+        "value": {
+          "type": "token",
+          "value": "false"
+        }
+      },
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "checked",
+        "value": {
+          "type": "tristate",
+          "value": "false"
+        }
+      },
+      {
+        "name": "labelledby",
+        "value": {
+          "type": "nodeList",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 413,
+              "text": "Hỗ trợ lên xuống phương tiện"
+            }
+          ]
+        }
+      }
+    ],
+    "parentId": "362",
+    "childIds": [],
+    "backendDOMNodeId": 412
+  },
+  {
+    "nodeId": "413",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "labelFor",
+        "value": {
+          "type": "idref",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 412,
+              "idref": "radio-boarding"
+            }
+          ]
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "362",
+    "childIds": [
+      "492"
+    ],
+    "backendDOMNodeId": 413
+  },
+  {
+    "nodeId": "492",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "presentationalRole",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "413",
+    "childIds": [],
+    "backendDOMNodeId": 492
+  },
+  {
+    "nodeId": "363",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "368",
+    "childIds": [
+      "414",
+      "415"
+    ],
+    "backendDOMNodeId": 363
+  },
+  {
+    "nodeId": "414",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "radio"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 141
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Giao tiếp bằng văn bản",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "relatedElement",
+          "value": {
+            "type": "computedString",
+            "value": "Giao tiếp bằng văn bản"
+          },
+          "nativeSource": "labelfor",
+          "nativeSourceValue": {
+            "type": "nodeList",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 415,
+                "text": "Giao tiếp bằng văn bản"
+              }
+            ]
+          }
+        },
+        {
+          "type": "contents",
+          "superseded": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "invalid",
+        "value": {
+          "type": "token",
+          "value": "false"
+        }
+      },
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "checked",
+        "value": {
+          "type": "tristate",
+          "value": "false"
+        }
+      },
+      {
+        "name": "labelledby",
+        "value": {
+          "type": "nodeList",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 415,
+              "text": "Giao tiếp bằng văn bản"
+            }
+          ]
+        }
+      }
+    ],
+    "parentId": "363",
+    "childIds": [],
+    "backendDOMNodeId": 414
+  },
+  {
+    "nodeId": "415",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "labelFor",
+        "value": {
+          "type": "idref",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 414,
+              "idref": "radio-written"
+            }
+          ]
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "363",
+    "childIds": [
+      "493"
+    ],
+    "backendDOMNodeId": 415
+  },
+  {
+    "nodeId": "493",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "presentationalRole",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "415",
+    "childIds": [],
+    "backendDOMNodeId": 493
+  },
+  {
+    "nodeId": "364",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "368",
+    "childIds": [
+      "416",
+      "417"
+    ],
+    "backendDOMNodeId": 364
+  },
+  {
+    "nodeId": "416",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "radio"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 141
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Tài liệu chữ lớn",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "relatedElement",
+          "value": {
+            "type": "computedString",
+            "value": "Tài liệu chữ lớn"
+          },
+          "nativeSource": "labelfor",
+          "nativeSourceValue": {
+            "type": "nodeList",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 417,
+                "text": "Tài liệu chữ lớn"
+              }
+            ]
+          }
+        },
+        {
+          "type": "contents",
+          "superseded": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "invalid",
+        "value": {
+          "type": "token",
+          "value": "false"
+        }
+      },
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "checked",
+        "value": {
+          "type": "tristate",
+          "value": "false"
+        }
+      },
+      {
+        "name": "labelledby",
+        "value": {
+          "type": "nodeList",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 417,
+              "text": "Tài liệu chữ lớn"
+            }
+          ]
+        }
+      }
+    ],
+    "parentId": "364",
+    "childIds": [],
+    "backendDOMNodeId": 416
+  },
+  {
+    "nodeId": "417",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "labelFor",
+        "value": {
+          "type": "idref",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 416,
+              "idref": "radio-large-print"
+            }
+          ]
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "364",
+    "childIds": [
+      "494"
+    ],
+    "backendDOMNodeId": 417
+  },
+  {
+    "nodeId": "494",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "presentationalRole",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "417",
+    "childIds": [],
+    "backendDOMNodeId": 494
+  },
+  {
+    "nodeId": "365",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "368",
+    "childIds": [
+      "418",
+      "419"
+    ],
+    "backendDOMNodeId": 365
+  },
+  {
+    "nodeId": "418",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "radio"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 141
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Hỗ trợ khác",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "relatedElement",
+          "value": {
+            "type": "computedString",
+            "value": "Hỗ trợ khác"
+          },
+          "nativeSource": "labelfor",
+          "nativeSourceValue": {
+            "type": "nodeList",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 419,
+                "text": "Hỗ trợ khác"
+              }
+            ]
+          }
+        },
+        {
+          "type": "contents",
+          "superseded": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "invalid",
+        "value": {
+          "type": "token",
+          "value": "false"
+        }
+      },
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "checked",
+        "value": {
+          "type": "tristate",
+          "value": "false"
+        }
+      },
+      {
+        "name": "labelledby",
+        "value": {
+          "type": "nodeList",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 419,
+              "text": "Hỗ trợ khác"
+            }
+          ]
+        }
+      }
+    ],
+    "parentId": "365",
+    "childIds": [],
+    "backendDOMNodeId": 418
+  },
+  {
+    "nodeId": "419",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "labelFor",
+        "value": {
+          "type": "idref",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 418,
+              "idref": "radio-other"
+            }
+          ]
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "365",
+    "childIds": [
+      "495"
+    ],
+    "backendDOMNodeId": 419
+  },
+  {
+    "nodeId": "495",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "presentationalRole",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "419",
+    "childIds": [],
+    "backendDOMNodeId": 495
+  },
+  {
+    "nodeId": "420",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "notRendered",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "368",
+    "childIds": [
+      "496"
+    ],
+    "backendDOMNodeId": 420
+  },
+  {
+    "nodeId": "496",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "notRendered",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "420",
+    "childIds": [],
+    "backendDOMNodeId": 496
+  },
+  {
+    "nodeId": "497",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Chi tiết hỗ trợ",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Chi tiết hỗ trợ"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "421",
+    "childIds": [
+      "-1000000027"
+    ],
+    "backendDOMNodeId": 497
+  },
+  {
+    "nodeId": "498",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Mô tả tóm tắt nhu cầu thực tế cần bố trí (tối đa 200 ký tự).",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Mô tả tóm tắt nhu cầu thực tế cần bố trí (tối đa 200 ký tự)."
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "422",
+    "childIds": [
+      "-1000000028"
+    ],
+    "backendDOMNodeId": 498
+  },
+  {
+    "nodeId": "423",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "generic"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 88
+    },
+    "name": {
+      "type": "computedString",
+      "value": "",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "editable",
+        "value": {
+          "type": "token",
+          "value": "plaintext"
+        }
+      }
+    ],
+    "parentId": "366",
+    "childIds": [],
+    "backendDOMNodeId": 423
+  },
+  {
+    "nodeId": "430",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "uninteresting",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "429",
+    "childIds": [
+      "431",
+      "432"
+    ],
+    "backendDOMNodeId": 430
+  },
+  {
+    "nodeId": "431",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "checkbox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 14
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Xác nhận rằng yêu cầu đã được trao đổi với khách.",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "relatedElement",
+          "value": {
+            "type": "computedString",
+            "value": "Xác nhận rằng yêu cầu đã được trao đổi với khách."
+          },
+          "nativeSource": "labelfor",
+          "nativeSourceValue": {
+            "type": "nodeList",
+            "relatedNodes": [
+              {
+                "backendDOMNodeId": 432,
+                "idref": "label-confirmation",
+                "text": "Xác nhận rằng yêu cầu đã được trao đổi với khách."
+              }
+            ]
+          }
+        },
+        {
+          "type": "contents",
+          "superseded": true
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "invalid",
+        "value": {
+          "type": "token",
+          "value": "false"
+        }
+      },
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      },
+      {
+        "name": "checked",
+        "value": {
+          "type": "tristate",
+          "value": "false"
+        }
+      },
+      {
+        "name": "labelledby",
+        "value": {
+          "type": "nodeList",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 432,
+              "idref": "label-confirmation",
+              "text": "Xác nhận rằng yêu cầu đã được trao đổi với khách."
+            }
+          ]
+        }
+      }
+    ],
+    "parentId": "430",
+    "childIds": [],
+    "backendDOMNodeId": 431
+  },
+  {
+    "nodeId": "432",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "labelFor",
+        "value": {
+          "type": "idref",
+          "relatedNodes": [
+            {
+              "backendDOMNodeId": 431,
+              "idref": "checkbox-confirmation"
+            }
+          ]
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "430",
+    "childIds": [
+      "501"
+    ],
+    "backendDOMNodeId": 432
+  },
+  {
+    "nodeId": "501",
+    "ignored": true,
+    "ignoredReasons": [
+      {
+        "name": "presentationalRole",
+        "value": {
+          "type": "boolean",
+          "value": true
+        }
+      }
+    ],
+    "role": {
+      "type": "role",
+      "value": "none"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 0
+    },
+    "parentId": "432",
+    "childIds": [],
+    "backendDOMNodeId": 501
+  },
+  {
+    "nodeId": "435",
+    "ignored": false,
+    "role": {
+      "type": "role",
+      "value": "button"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 9
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Lưu yêu cầu hỗ trợ",
+      "sources": [
+        {
+          "type": "relatedElement",
+          "attribute": "aria-labelledby"
+        },
+        {
+          "type": "attribute",
+          "attribute": "aria-label"
+        },
+        {
+          "type": "relatedElement",
+          "nativeSource": "label"
+        },
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Lưu yêu cầu hỗ trợ"
+          }
+        },
+        {
+          "type": "attribute",
+          "attribute": "title",
+          "superseded": true
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "invalid",
+        "value": {
+          "type": "token",
+          "value": "false"
+        }
+      },
+      {
+        "name": "focusable",
+        "value": {
+          "type": "booleanOrUndefined",
+          "value": true
+        }
+      }
+    ],
+    "parentId": "434",
+    "childIds": [
+      "503"
+    ],
+    "backendDOMNodeId": 435
+  },
+  {
+    "nodeId": "490",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Hình thức hỗ trợ cần sắp xếp",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Hình thức hỗ trợ cần sắp xếp"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "369",
+    "childIds": [
+      "-1000000021"
+    ],
+    "backendDOMNodeId": 490
+  },
+  {
+    "nodeId": "491",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Chọn một phương án phù hợp nhất với điều kiện di chuyển của khách.",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Chọn một phương án phù hợp nhất với điều kiện di chuyển của khách."
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "361",
+    "childIds": [
+      "-1000000022"
+    ],
+    "backendDOMNodeId": 491
+  },
+  {
+    "nodeId": "-1000000027",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Chi tiết hỗ trợ"
+    },
+    "properties": [],
+    "parentId": "497",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000028",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Mô tả tóm tắt nhu cầu thực tế cần bố trí (tối đa 200 ký tự)."
+    },
+    "properties": [],
+    "parentId": "498",
+    "childIds": []
+  },
+  {
+    "nodeId": "503",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "StaticText"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 158
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Lưu yêu cầu hỗ trợ",
+      "sources": [
+        {
+          "type": "contents",
+          "value": {
+            "type": "computedString",
+            "value": "Lưu yêu cầu hỗ trợ"
+          }
+        }
+      ]
+    },
+    "properties": [],
+    "parentId": "435",
+    "childIds": [
+      "-1000000030"
+    ],
+    "backendDOMNodeId": 503
+  },
+  {
+    "nodeId": "-1000000021",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Hình thức hỗ trợ cần sắp xếp"
+    },
+    "properties": [],
+    "parentId": "490",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000022",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Chọn một phương án phù hợp nhất với điều kiện di chuyển của khách."
+    },
+    "properties": [],
+    "parentId": "491",
+    "childIds": []
+  },
+  {
+    "nodeId": "-1000000030",
+    "ignored": false,
+    "role": {
+      "type": "internalRole",
+      "value": "InlineTextBox"
+    },
+    "chromeRole": {
+      "type": "internalRole",
+      "value": 101
+    },
+    "name": {
+      "type": "computedString",
+      "value": "Lưu yêu cầu hỗ trợ"
+    },
+    "properties": [],
+    "parentId": "503",
+    "childIds": []
+  }
+]

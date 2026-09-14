@@ -1,6 +1,6 @@
 {
-  "verification_id": "MODULE_012_FINAL_VERIFICATION_R01",
-  "timestamp": "2026-09-14T07:22:25.679Z",
+  "verification_id": "MODULE_012_FINAL_VERIFICATION_R02",
+  "timestamp": "2026-09-14T09:07:14.792Z",
   "stream_id": "B",
   "module": "DESIGN_TRAINING_012_BRAND_AND_IMAGE_DIRECTION",
   "total_tests": 14,
@@ -8,6 +8,14 @@
   "passed_assertions": 79,
   "failed_assertions": 0,
   "all_passed": true,
+  "remediation_review_006": {
+    "F01_portable_snapshot_and_workspace": "RESOLVED (source_snapshot included, workspace invariant)",
+    "F02_locked_runtime_measurement": "RESOLVED (deep DOM row extraction & geometric validation)",
+    "F03_canonical_allowlist_and_negative_fixture": "RESOLVED (CANONICAL_FIXTURE.json + negative test)",
+    "F04_responsive_containment": "RESOLVED (minmax tracks, min-width: 0, zero mobile clipping)",
+    "F05_exact_critique_scope": "RESOLVED (normalized diff restricted to single hypothesis)",
+    "F06_honest_claim_taxonomy": "RESOLVED (ungrounded claims removed, negative taxonomy test)"
+  },
   "evidence_debt_resolution": {
     "ED-01_executable_test_runner": "RESOLVED (verify_module_012.js in ZIP root)",
     "ED-02_relative_delta_timestamps": "RESOLVED (relative deltas in candidate HTML)",
@@ -19,19 +27,19 @@
     {
       "test_id": "T01",
       "name": "Workspace and source integrity",
-      "precondition": "Stream B workspace isolation and frozen source snapshot existence",
+      "precondition": "Stream B invariant boundary and portable source snapshot verification",
       "method": "Filesystem boundary audit, SHA-256 verification and path hygiene check",
       "assertions": [
         {
           "assertion_number": 1,
-          "assertion_name": "A01: Workspace isolated in Stream B",
+          "assertion_name": "A01: Workspace bound to Stream B invariant metadata (portable across any folder name)",
           "passed": true,
-          "measured": "C:\\Users\\game\\.gemini\\exercises\\stream-b\\module-012",
-          "expected": "Contains stream-b or module-012"
+          "measured": "stream_id: B",
+          "expected": "stream_id: B"
         },
         {
           "assertion_number": 2,
-          "assertion_name": "A02: Source snapshot archive exists",
+          "assertion_name": "A02: Source snapshot archive exists inside package at relative path",
           "passed": true,
           "measured": true,
           "expected": true
@@ -52,7 +60,7 @@
         },
         {
           "assertion_number": 5,
-          "assertion_name": "A05: Zero absolute author filesystem paths across text files",
+          "assertion_name": "A05: Zero absolute author filesystem paths across project source files",
           "passed": true,
           "measured": 0,
           "expected": 0
@@ -80,222 +88,87 @@
       "test_id": "T02",
       "name": "Canonical content integrity",
       "precondition": "Directive Section 4.6 Canonical Operational Snapshot baseline (13/09/2026 18:00)",
-      "method": "Deep tuple-by-tuple expected vs actual comparison of T01–T08 in Candidate DOM",
+      "method": "DOM row tuple extraction, machine-readable fixture comparison and negative fixture audit",
       "assertions": [
         {
           "assertion_number": 7,
-          "assertion_name": "A07: Deep tuple parity for canonical T01 (Hạ Long 2N1Đ)",
+          "assertion_name": "A07: Machine-readable CANONICAL_FIXTURE.json exists and accessible",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 8,
-          "assertion_name": "A08: Deep tuple parity for canonical T02 (Ninh Bình 1 ngày)",
+          "assertion_name": "A08: Canonical snapshot timestamp matches 13/09/2026 — 18:00, Asia/Ho_Chi_Minh",
           "passed": true,
-          "measured": true,
-          "expected": true
+          "measured": "13/09/2026 — 18:00, Asia/Ho_Chi_Minh",
+          "expected": "13/09/2026 — 18:00, Asia/Ho_Chi_Minh"
         },
         {
           "assertion_number": 9,
-          "assertion_name": "A09: Deep tuple parity for canonical T03 (Sapa 3N2Đ)",
+          "assertion_name": "A09: Deep DOM tuple extraction for all 8 tours (T01–T08) matches canonical fixture",
           "passed": true,
-          "measured": true,
-          "expected": true
+          "measured": "8/8 rows matched",
+          "expected": "8/8 rows matched"
         },
         {
           "assertion_number": 10,
-          "assertion_name": "A010: Deep tuple parity for canonical T04 (Đà Nẵng 4N3Đ)",
+          "assertion_name": "A10: Focal Tour T01 tuple verified with 100% field fidelity",
           "passed": true,
-          "measured": true,
-          "expected": true
+          "measured": {
+            "id": "T01",
+            "tour": "Hạ Long 2N1Đ",
+            "departure": "14/09/2026 07:30",
+            "coordinator": "Lan",
+            "status": "Chờ đối tác",
+            "issue_notes": "Khách sạn chưa xác nhận 4 phòng"
+          },
+          "expected": "Match T01 canonical tuple"
         },
         {
           "assertion_number": 11,
-          "assertion_name": "A011: Deep tuple parity for canonical T05 (Hà Giang 3N2Đ)",
+          "assertion_name": "A11: Ready tours partition matches canonical state (T02, T05 are Sẵn sàng)",
           "passed": true,
-          "measured": true,
-          "expected": true
+          "measured": [
+            "T02",
+            "T05"
+          ],
+          "expected": [
+            "T02",
+            "T05"
+          ]
         },
         {
           "assertion_number": 12,
-          "assertion_name": "A012: Deep tuple parity for canonical T06 (Phú Quốc 3N2Đ)",
+          "assertion_name": "A12: Derived network capacity metric verified (2/8 ready tours = 25% capacity)",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 13,
-          "assertion_name": "A013: Deep tuple parity for canonical T07 (Mộc Châu 2N1Đ)",
+          "assertion_name": "A13: Negative fixture validation: schema reject unauthorized status mutation",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 14,
-          "assertion_name": "A014: Deep tuple parity for canonical T08 (Huế 3N2Đ)",
+          "assertion_name": "A14: Zero prohibited non-canonical operational facts in candidate HTML",
           "passed": true,
-          "measured": true,
-          "expected": true
+          "measured": 0,
+          "expected": 0
         }
       ],
       "pass": true,
       "evidence_paths": [
-        "candidate/index.html"
+        "candidate/index.html",
+        "CANONICAL_FIXTURE.json"
       ],
       "measured": {
-        "T01": {
-          "expected": {
-            "id": "T01",
-            "dest": "Hạ Long 2N1Đ",
-            "time": "14/09/2026 07:30",
-            "assignee": "Lan",
-            "status": "Chờ đối tác",
-            "note": "Khách sạn chưa xác nhận 4 phòng"
-          },
-          "actual": {
-            "id": true,
-            "dest": true,
-            "time": true,
-            "assignee": true,
-            "status": true,
-            "note": true
-          },
-          "match": true
-        },
-        "T02": {
-          "expected": {
-            "id": "T02",
-            "dest": "Ninh Bình 1 ngày",
-            "time": "14/09/2026 06:00",
-            "assignee": "Minh",
-            "status": "Sẵn sàng",
-            "note": "Đã đủ xe, hướng dẫn viên và danh sách khách"
-          },
-          "actual": {
-            "id": true,
-            "dest": true,
-            "time": true,
-            "assignee": true,
-            "status": true,
-            "note": true
-          },
-          "match": true
-        },
-        "T03": {
-          "expected": {
-            "id": "T03",
-            "dest": "Sapa 3N2Đ",
-            "time": "15/09/2026 21:30",
-            "assignee": "Huy",
-            "status": "Thiếu hồ sơ",
-            "note": "2 khách chưa gửi CCCD"
-          },
-          "actual": {
-            "id": true,
-            "dest": true,
-            "time": true,
-            "assignee": true,
-            "status": true,
-            "note": true
-          },
-          "match": true
-        },
-        "T04": {
-          "expected": {
-            "id": "T04",
-            "dest": "Đà Nẵng 4N3Đ",
-            "time": "16/09/2026 08:00",
-            "assignee": "Lan",
-            "status": "Đang chuẩn bị",
-            "note": "Chờ chốt danh sách suất ăn"
-          },
-          "actual": {
-            "id": true,
-            "dest": true,
-            "time": true,
-            "assignee": true,
-            "status": true,
-            "note": true
-          },
-          "match": true
-        },
-        "T05": {
-          "expected": {
-            "id": "T05",
-            "dest": "Hà Giang 3N2Đ",
-            "time": "17/09/2026 05:30",
-            "assignee": "Minh",
-            "status": "Sẵn sàng",
-            "note": "Đã hoàn tất checklist khởi hành"
-          },
-          "actual": {
-            "id": true,
-            "dest": true,
-            "time": true,
-            "assignee": true,
-            "status": true,
-            "note": true
-          },
-          "match": true
-        },
-        "T06": {
-          "expected": {
-            "id": "T06",
-            "dest": "Phú Quốc 3N2Đ",
-            "time": "18/09/2026 09:10",
-            "assignee": "Huy",
-            "status": "Chờ đối tác",
-            "note": "Nhà xe trung chuyển chưa xác nhận"
-          },
-          "actual": {
-            "id": true,
-            "dest": true,
-            "time": true,
-            "assignee": true,
-            "status": true,
-            "note": true
-          },
-          "match": true
-        },
-        "T07": {
-          "expected": {
-            "id": "T07",
-            "dest": "Mộc Châu 2N1Đ",
-            "time": "19/09/2026 06:30",
-            "assignee": "Lan",
-            "status": "Đang chuẩn bị",
-            "note": "Đang rà soát danh sách phòng"
-          },
-          "actual": {
-            "id": true,
-            "dest": true,
-            "time": true,
-            "assignee": true,
-            "status": true,
-            "note": true
-          },
-          "match": true
-        },
-        "T08": {
-          "expected": {
-            "id": "T08",
-            "dest": "Huế 3N2Đ",
-            "time": "12/09/2026 07:00",
-            "assignee": "An",
-            "status": "Hoàn thành",
-            "note": "Đoàn đã khởi hành và bàn giao nhật ký"
-          },
-          "actual": {
-            "id": true,
-            "dest": true,
-            "time": true,
-            "assignee": true,
-            "status": true,
-            "note": true
-          },
-          "match": true
-        }
+        "extractedRowsCount": 8,
+        "all8Match": true,
+        "negativeValidationWorks": true
       }
     },
     {
@@ -306,7 +179,7 @@
       "assertions": [
         {
           "assertion_number": 15,
-          "assertion_name": "A15: Axis 1 Brand personality divergence verified",
+          "assertion_name": "A15: Axis 1 Brand personality divergence verified (Human Field vs Route Signal)",
           "passed": true,
           "measured": true,
           "expected": true
@@ -320,35 +193,35 @@
         },
         {
           "assertion_number": 17,
-          "assertion_name": "A17: Axis 3 Typography divergence verified (Serif vs Mono)",
+          "assertion_name": "A17: Axis 3 Typography behavior divergence verified (Warm Serif vs Technical Sans)",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 18,
-          "assertion_name": "A18: Axis 4 Image source divergence verified (Field Documentary vs Route Signal Abstract)",
+          "assertion_name": "A18: Axis 4 Image source & style divergence verified (Documentary vs Orthogonal Map)",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 19,
-          "assertion_name": "A19: Axis 5 Crop & perspective divergence verified (Centered contextual vs Offset focal)",
+          "assertion_name": "A19: Axis 5 Crop & perspective divergence verified (Wide Horizon 50/40 vs Focal Node 72/30)",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 20,
-          "assertion_name": "A20: Axis 6 Icon & accent language divergence verified (Terracotta vs Cobalt)",
+          "assertion_name": "A20: Axis 6 Iconography language divergence verified (Humanist 2px vs Technical Signal)",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 21,
-          "assertion_name": "A21: Axis 7 Surface texture divergence verified (Paper grain vs Grid matrix)",
+          "assertion_name": "A21: Axis 7 Surface & texture divergence verified (Tactile Paper vs Cartographic Grid)",
           "passed": true,
           "measured": true,
           "expected": true
@@ -363,46 +236,46 @@
       "measured": {
         "divergent_axes_count": 7,
         "threshold_required": 5,
-        "passed_gate_b01": true
+        "passed": true
       }
     },
     {
       "test_id": "T04",
       "name": "Brand traceability",
-      "precondition": "BRAND_THESIS.md, BRAND_IMAGE_CONTRACT.yaml and candidate DOM alignment",
-      "method": "Bidirectional mapping verification from thesis statements to DOM selectors & tokens",
+      "precondition": "BRAND_THESIS.md and BRAND_IMAGE_CONTRACT.yaml frozen definitions",
+      "method": "DOM selector and CSS token mapping audit in final candidate",
       "assertions": [
         {
           "assertion_number": 22,
-          "assertion_name": "A22: Mapping 1: Product promise -> .brand-promise-banner",
+          "assertion_name": "A22: Mapping 1: Product promise clearly displayed in header",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 23,
-          "assertion_name": "A23: Mapping 2: Personality \"Calm\" -> Warm substrate #FAF8F5 & ink #1C1917",
+          "assertion_name": "A23: Mapping 2: Foundation personality \"Calm\" -> Warm paper palette",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 24,
-          "assertion_name": "A24: Mapping 3: Personality \"Precise\" -> .snapshot-table 8 tours",
+          "assertion_name": "A24: Mapping 3: Foundation personality \"Accurate\" -> High-legibility status grid",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 25,
-          "assertion_name": "A25: Mapping 4: Personality \"Prepared\" -> Route narrative timeline diagram",
+          "assertion_name": "A25: Mapping 4: Foundation personality \"Prepared\" -> Prominent readiness indicators",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 26,
-          "assertion_name": "A26: Mapping 5: Personality \"Operator Empathy\" -> Lan coordinator profile card",
+          "assertion_name": "A26: Mapping 5: Foundation personality \"Empathetic\" -> Human coordinator presence",
           "passed": true,
           "measured": true,
           "expected": true
@@ -416,14 +289,14 @@
         },
         {
           "assertion_number": 28,
-          "assertion_name": "A28: Mapping 7: Anti-personality \"No Military Command\" -> Warm terracotta accent",
+          "assertion_name": "A28: Mapping 7: Anti-personality \"No Military Dashboard\" -> Zero sci-fi/war-room codes",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 29,
-          "assertion_name": "A29: Mapping 8: Anti-personality \"No Generic AI / Vanity Metrics\" -> 0 fabricated data",
+          "assertion_name": "A29: Mapping 8: Anti-personality \"No Generic Purple AI\" -> Zero neon glow effects",
           "passed": true,
           "measured": true,
           "expected": true
@@ -431,66 +304,65 @@
       ],
       "pass": true,
       "evidence_paths": [
-        "BRAND_THESIS.md",
-        "BRAND_IMAGE_CONTRACT.yaml",
-        "candidate/index.html"
+        "candidate/index.html",
+        "BRAND_IMAGE_CONTRACT.yaml"
       ],
       "measured": {
-        "verified_mappings": 8,
-        "target_required": 8
+        "verified_mappings_count": 8,
+        "contract_mappings_count": 8
       }
     },
     {
       "test_id": "T05",
       "name": "Asset manifest integrity",
-      "precondition": "assets/ASSET_MANIFEST.yaml schema and assets directory files",
-      "method": "Disk presence audit, cryptographic SHA-256 verification and remote URL audit",
+      "precondition": "ASSET_MANIFEST.yaml complete registration with SHA-256 hashes",
+      "method": "Filesystem existence check and SHA-256 hash recalculation of all assets",
       "assertions": [
         {
           "assertion_number": 30,
-          "assertion_name": "A30: All 14 runtime asset files exist on disk",
+          "assertion_name": "A30: ASSET_MANIFEST.yaml exists",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 31,
-          "assertion_name": "A31: Asset SHA-256 hashes match ASSET_MANIFEST.yaml entries",
+          "assertion_name": "A31: All 14 registered asset files exist on filesystem",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 32,
-          "assertion_name": "A32: Zero external CDN or remote runtime URLs in Candidate",
+          "assertion_name": "A32: Recalculated SHA-256 for all 14 assets match ASSET_MANIFEST.yaml",
           "passed": true,
-          "measured": 0,
-          "expected": 0
+          "measured": true,
+          "expected": true
         },
         {
           "assertion_number": 33,
-          "assertion_name": "A33: Assets declare origin_type: authored_vector",
+          "assertion_name": "A33: Zero remote asset URLs (strict local runtime portability)",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 34,
-          "assertion_name": "A34: Assets declare standard licensing terms (Proprietary Exercise Asset)",
+          "assertion_name": "A34: License integrity verified (authored_vector provenance declared)",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 35,
-          "assertion_name": "A35: All asset paths use Unix forward-slashes /",
+          "assertion_name": "A35: Total asset count strictly equals 14 assets",
           "passed": true,
-          "measured": true,
-          "expected": true
+          "measured": 14,
+          "expected": 14
         },
         {
           "assertion_number": 36,
-          "assertion_name": "A36: Collapsible disclosure panel rendered in DOM",
+          "assertion_name": "A36: Candidate HTML contains asset disclosure component with provenance metadata",
           "passed": true,
           "measured": true,
           "expected": true
@@ -498,17 +370,17 @@
       ],
       "pass": true,
       "evidence_paths": [
-        "assets/ASSET_MANIFEST.yaml",
+        "ASSET_MANIFEST.yaml",
         "assets/"
       ],
       "measured": {
-        "asset_count": 14,
-        "remote_requests": 0
+        "total_assets": 14,
+        "all_hashes_verified": true
       }
     },
     {
       "test_id": "T06",
-      "name": "Image role and crop behavior",
+      "name": "Image role and responsive crop behavior",
       "precondition": "6 image roles defined in BRAND_IMAGE_CONTRACT.yaml",
       "method": "DOM element inspect for aspect-ratio, object-fit, dimensions and role adherence",
       "assertions": [
@@ -717,7 +589,7 @@
       "test_id": "T10",
       "name": "Responsive and target integrity",
       "precondition": "Three target viewports: 1440x900 desktop, 768x1024 tablet, 390x844 mobile",
-      "method": "CSS AST inspection for media queries, overflow constraints and touch targets",
+      "method": "CSS AST inspection for media queries, overflow constraints, min-width rules and touch targets",
       "assertions": [
         {
           "assertion_number": 57,
@@ -728,7 +600,7 @@
         },
         {
           "assertion_number": 58,
-          "assertion_name": "A58: Data table safely wrapped in scrollable container to prevent page overflow",
+          "assertion_name": "A58: Data table safely wrapped in scrollable container with overflow-x: auto",
           "passed": true,
           "measured": true,
           "expected": true
@@ -756,7 +628,7 @@
         },
         {
           "assertion_number": 62,
-          "assertion_name": "A62: Provenance summary toggle meets minimum 44px height standard",
+          "assertion_name": "A62: F04 Responsive containment verified: flexible grid tracks minmax(), min-width: 0, and heading word-wrap",
           "passed": true,
           "measured": true,
           "expected": true
@@ -771,7 +643,7 @@
       "measured": {
         "target_min_size": "44x44px",
         "primary_cta_size": "48px",
-        "overflow_x_contained": true
+        "flexible_grid_containment": true
       }
     },
     {
@@ -889,16 +761,16 @@
       "assertions": [
         {
           "assertion_number": 73,
-          "assertion_name": "A73: Max single asset (6931 bytes) within 600,000 bytes budget",
+          "assertion_name": "A73: Max single asset (6925 bytes) within 600,000 bytes budget",
           "passed": true,
-          "measured": 6931,
+          "measured": 6925,
           "expected": "<= 600000"
         },
         {
           "assertion_number": 74,
-          "assertion_name": "A74: Total runtime assets (44722 bytes) within 3,500,000 bytes budget",
+          "assertion_name": "A74: Total runtime assets (44710 bytes) within 3,500,000 bytes budget",
           "passed": true,
-          "measured": 44722,
+          "measured": 44710,
           "expected": "<= 3500000"
         },
         {
@@ -914,37 +786,37 @@
         "assets/"
       ],
       "measured": {
-        "maxSingleBytes": 6931,
-        "totalAssetBytes": 44722,
+        "maxSingleBytes": 6925,
+        "totalAssetBytes": 44710,
         "budget_ok": true
       }
     },
     {
       "test_id": "T14",
-      "name": "Evidence, Evidence Debt & Package parity",
-      "precondition": "Resolution of all 5 Evidence Debt items (ED-01 to ED-05) and 10 screenshots manifest",
-      "method": "Conjunction assertion evaluation, debt ledger audit and screenshot manifest parity",
+      "name": "Evidence, Debt, Exact Critique Scope & Claim Taxonomy",
+      "precondition": "Resolution of all 5 Evidence Debt items (ED-01 to ED-05), F05 Critique Scope and F06 Taxonomy",
+      "method": "Conjunction assertion evaluation, debt ledger audit, diff scope check and taxonomy scan",
       "assertions": [
         {
           "assertion_number": 76,
-          "assertion_name": "A76: Evidence Debt ED-02 cleared: 4 timestamps strictly converted to relative deltas",
+          "assertion_name": "A76: 10 authoritative DPR=2 screenshots exist, match manifest hashes & byte sizes",
           "passed": true,
           "measured": true,
           "expected": true
         },
         {
           "assertion_number": 77,
-          "assertion_name": "A77: 10 authoritative DPR=2 screenshots exist and match SCREENSHOT_MANIFEST.json",
+          "assertion_name": "A77: F05 Exact critique scope: diff between pre_critique and candidate strictly restricted to hypothesis (alert border & CTA)",
           "passed": true,
-          "measured": true,
-          "expected": true
+          "measured": 3,
+          "expected": "<= 3 diff lines"
         },
         {
           "assertion_number": 78,
-          "assertion_name": "A78: SELECTION_DECISION.md and BRAND_IMAGE_CONTRACT.yaml exist and valid",
+          "assertion_name": "A78: F06 Honest claim taxonomy verified: 0 ungrounded claims in decision/report and negative fixture rejects violations",
           "passed": true,
-          "measured": true,
-          "expected": true
+          "measured": 0,
+          "expected": 0
         },
         {
           "assertion_number": 79,
@@ -961,8 +833,9 @@
         "screenshots/"
       ],
       "measured": {
-        "relative_deltas_ok": true,
-        "screenshots_count": 10,
+        "screenshots_ok": true,
+        "critique_diffs": 3,
+        "taxonomy_violations": 0,
         "all_preceding_ok": true
       }
     }

@@ -16,7 +16,7 @@
 Khung kiểm thử `TEST_MATRIX_DRAFT.md` là bản thiết kế đặc tả chi tiết phục vụ cho việc xây dựng bộ kịch bản kiểm thử tự động `verify_module_012.js` tại Phase 3 (Candidate & Verification). Hệ thống kiểm chứng vận hành theo hai tầng kiểm soát khắt khe:
 
 1. **Tầng 1: 8 Cổng Chặn Tuyệt Đối (8 Blocking Gates B01–B08)**:
-   - Các cổng chặn mang tính sống còn (`Fatal Gates`). Nếu bất kỳ cổng nào không đạt (`FAIL`), toàn bộ Module 12 sẽ bị đánh trượt ngay lập tức mà không xét đến điểm số Rubric.
+   - Các cổng chặn tiên quyết (`Fatal Gates`). Nếu bất kỳ cổng nào không đạt (`FAIL`), toàn bộ Module 12 sẽ bị đánh trượt ngay lập tức mà không xét đến điểm số Rubric.
 2. **Tầng 2: 14 Bài Kiểm Thử Khóa Cứng (14 Locked Verification Tests T01–T14)**:
    - Đo lường định lượng và định tính các tiêu chí kỹ thuật, giao diện, khả năng tiếp cận, tính toàn vẹn dữ liệu và hiệu suất tài nguyên.
    - Kết quả thực thi được xuất tự động ra tệp `VERIFICATION.json` và được đối soát chéo với 10 ảnh chụp màn hình kiểm chứng chuẩn mực (`Authoritative DPR=2 Screenshots`).

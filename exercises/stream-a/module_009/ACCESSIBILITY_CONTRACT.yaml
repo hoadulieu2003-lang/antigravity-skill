@@ -1,0 +1,131 @@
+# ACCESSIBILITY_CONTRACT.yaml
+# Module 09: Accessibility Task Completion
+# Stream A: Foundation Integrity · TRIPFLOW Passenger Support Intake Desk
+
+contract_version: "1.0.0"
+module_id: "DESIGN_TRAINING_009_ACCESSIBILITY"
+fixture_id: "AR-901"
+
+landmarks:
+  required:
+    - role: "banner"
+      element: "header"
+      selector: "header#site-header"
+    - role: "navigation"
+      element: "nav"
+      selector: "nav#site-nav"
+    - role: "main"
+      element: "main"
+      selector: "main#main-content"
+    - role: "contentinfo"
+      element: "footer"
+      selector: "footer#site-footer"
+
+headings:
+  single_h1: true
+  h1_selector: "h1#page-heading"
+  h1_expected_text: "Ghi nhận yêu cầu hỗ trợ"
+  no_skipped_levels: true
+  hierarchy:
+    - level: 1
+      selector: "h1#page-heading"
+    - level: 2
+      selector: "h2#case-summary-heading"
+    - level: 2
+      selector: "h2#intake-form-heading"
+    - level: 2
+      selector: "h2#guidance-dialog-title"
+
+controls:
+  native_first: true
+  positive_tabindex: forbidden
+  target_min_css_px: 44
+  target_wcag_minimum_sc_2_5_8: 24
+  effective_target_includes_label: true
+  selectors:
+    skip_link: "a#skip-link"
+    open_guidance: "button#btn-open-guidance"
+    close_guidance: "button#btn-close-guidance"
+    radio_boarding: "input#radio-boarding"
+    radio_written: "input#radio-written"
+    radio_large_print: "input#radio-large-print"
+    radio_other: "input#radio-other"
+    field_details: "textarea#field-details"
+    checkbox_confirmation: "input#checkbox-confirmation"
+    btn_save: "button#btn-save-support"
+    btn_edit_saved: "button#btn-edit-saved"
+
+dialog:
+  selector: "dialog#support-guidance-dialog"
+  modal: true
+  strategy: "native_showModal"
+  escape_closes: true
+  focus_restored_to_trigger: true
+  trigger_selector: "button#btn-open-guidance"
+  close_selector: "button#btn-close-guidance"
+  initial_focus_target: "button#btn-close-guidance"
+  initial_focus_rationale: "Project-specific design decision for concise instructional modal"
+  no_ancestor_aria_hidden: true
+
+form:
+  first_invalid_receives_focus: true
+  errors_use_aria_describedby: true
+  invalid_fields_use_aria_invalid: true
+  invalid_submit_focus:
+    destination: "first_invalid_control"
+    first_invalid_control_selector: "input#radio-boarding"
+    error_summary_focusable: true
+    error_summary_auto_focused: false
+    error_summary_links: true
+  radio_group_error:
+    semantic_owner: "fieldset#support-type-group"
+    legend_selector: "legend#support-type-legend"
+    description_relation: "error-support-type"
+    focus_target: "input#radio-boarding"
+
+fsm:
+  stable_action_selector: "button#btn-save-support"
+  no_focus_steal: true
+  no_steal_target_selector: "button#btn-open-guidance"
+  draft_preserved_after_failure: true
+  delay_ms: 800
+  attempt_1: "FAILURE"
+  attempt_2: "SUCCESS"
+  runtime_guard: "isSaving flag prevents duplicate activation"
+  data_layers:
+    draft: "Live values in DOM form controls"
+    payload_snapshot: "Immutable object snapshot created at t=0ms on submit"
+    committed_data: "Saved summary rendered on success matching payload snapshot"
+
+status_messages:
+  single_source_matrix:
+    validation_errors:
+      announcement_source: "error_summary"
+      selector: "div#error-summary"
+      role: "alert"
+      live_alert_region_repeats_validation: false
+    network_error:
+      announcement_source: "live_alert_region"
+      selector: "div#live-alert-region"
+      role: "alert"
+      aria_live: "assertive"
+    saving_progress:
+      announcement_source: "live_status_region"
+      selector: "div#live-status-region"
+      role: "status"
+      aria_live: "polite"
+    success_confirmation:
+      announcement_source: "live_status_region"
+      selector: "div#live-status-region"
+      role: "status"
+      aria_live: "polite"
+    inline_errors:
+      announcement_source: "none"
+      linkage: "aria-describedby"
+
+invariants:
+  theme: "LIGHT_THEME"
+  zero_motion: true
+  horizontal_overflow: "forbidden (scrollWidth <= clientWidth at 320px and 200% text scale)"
+  vertical_scroll_allowed: true
+  text_resize_label: "TEXT_SCALE_SIMULATION"

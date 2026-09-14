@@ -2,18 +2,20 @@
 ## TRIPFLOW Daily Departure Brief — Brand & Image Direction (Stream B)
 
 ```yaml
-report_id: DESIGN_TRAINING_012_REPORT_R01
+report_id: DESIGN_TRAINING_012_REPORT_R02
 stream_id: B
 module: DESIGN_TRAINING_012_BRAND_AND_IMAGE_DIRECTION
 author: Antigravity Senior Engineering Agent
 pair_programmer_authority: "Anh — Lead Architect / Product Owner"
 governance_waiver_reference: DESIGN_TRAINING_012_GOVERNANCE_WAIVER_005
+review_remediation_reference: DESIGN_TRAINING_012_FINAL_REVIEW_006
+submission_package: design_training_012_submission_r02.zip
 selected_direction: DIRECTION_A (Human Field Intelligence)
 status: COMPLETED_READY_FOR_FINAL_AUDIT
 conjunction_verdict: ALL_PASSED (79/79 assertions)
 blocking_gates_verdict: ALL_PASSED (B01–B08)
 evidence_debt_status: 100%_RESOLVED
-timestamp: "2026-09-14T14:25:00+07:00"
+timestamp: "2026-09-14T16:10:00+07:00"
 ```
 
 ---
@@ -22,7 +24,21 @@ timestamp: "2026-09-14T14:25:00+07:00"
 
 - **Bối cảnh & Sứ mệnh**: Module 12 (Brand & Image Direction) thuộc Stream B tập trung xây dựng bản sắc thương hiệu thị giác và hệ thống hình ảnh chuyên dụng cho **TRIPFLOW Daily Departure Brief** — công cụ vận hành số hóa B2B dành riêng cho điều phối viên du lịch SME tại Việt Nam.
 - **Tiến trình Quản trị**: Checkpoint 12.1 đã được phê duyệt thông qua văn kiện pháp lý `DESIGN_TRAINING_012_GOVERNANCE_WAIVER_005.md` do Anh phê duyệt và Controller Sol ban hành. Quá trình triển khai đã tiến hành tuyển chọn Phase 3, xây dựng Ứng viên Cuối cùng Phase 4 (`candidate/pre_critique.html`), phản biện nghệ thuật Phase 5 và hoàn thiện `candidate/index.html`.
-- **Kết quả Kiểm chứng Tự động**: Bộ kiểm thử độc lập `verify_module_012.js` đã thực thi 14 bài kiểm tra chuẩn hóa T01–T14 với đủ 79 assertions, ghi nhận kết quả **`ALL_PASSED (79/79 assertions PASS, exit code 0)`**. Toàn bộ 5 khoản nợ bằng chứng `Evidence Debt (ED-01 đến ED-05)` đã được tất toán 100%.
+- **Khắc phục Toàn diện Review 006 (F01–F06)**: Thực hiện khắc phục triệt để toàn bộ 6 Blockers được Controller Sol chỉ ra tại Review 006, nhúng snapshot Module 07 trực tiếp vào gói nộp, chụp lại 100% ảnh screenshot DPR=2, chuẩn hóa canonical fixture và allowlist, sửa lỗi tràn layout mobile 390px, thu hẹp diff phản biện và làm sạch taxonomy phát biểu.
+- **Kết quả Kiểm chứng Tự động R02**: Bộ kiểm thử độc lập `verify_module_012.js` đã thực thi 14 bài kiểm tra chuẩn hóa T01–T14 với đủ 79 assertions, ghi nhận kết quả **`ALL_PASSED (79/79 assertions PASS, exit code 0)`** [MEASURED]. Toàn bộ 5 khoản nợ bằng chứng `Evidence Debt (ED-01 đến ED-05)` đã được tất toán 100%.
+
+---
+
+## 1.1. Bảng Khắc Phục Toàn Diện Blockers Review 006 (F01–F06 Remediation Ledger)
+
+| Mã Blocker | Yêu Cầu Cốt Lõi Của Controller Sol | Biện Pháp Kỹ Thuật Đã Thực Hiện | Bằng Chứng Kiểm Chứng (Evidence) |
+| :--- | :--- | :--- | :--- |
+| **F01** | Portable Invariant & Embedded Snapshot | Nhúng trực tiếp `source_snapshot/design_training_007_submission_r04.zip` (SHA `e76ab...`) vào gói nộp R02; runner `verify_module_012.js` xác thực tính độc lập không phụ thuộc đường dẫn tuyệt đối hay tên thư mục ngoài | Test A01, A02, A03, A05 PASS; kiểm thử độc lập thành công trong thư mục giải nén ngoài [MEASURED] |
+| **F02** | Deterministic Evidence Parity (DPR=2) | Chụp lại 100% 10 ảnh screenshot bằng Puppeteer ở DPR=2 (`deviceScaleFactor: 2`); đồng bộ byte và SHA-256 thực tế giữa đĩa và manifests | Test A76 PASS; 10 ảnh tồn tại, khớp byte và mã băm SHA-256 xác thực [MEASURED] |
+| **F03** | Canonical Allowlist & Negative Fixture | Ban hành `CANONICAL_FIXTURE.json` chứa 8 tours, allowlist và negative fixture schema; loại bỏ triệt để các operational facts ngoài luồng (như "Bãi Cháy") | Test A07–A14 PASS; negative fixture loại bỏ dữ liệu sai lệch, 0 facts ngoài luồng trong HTML và SVG [MEASURED] |
+| **F04** | Responsive Containment on Mobile 390px | Thiết kế layout grid an toàn: `minmax(0, 1.63fr) minmax(0, 1fr)`, `min-width: 0`, word-wrap cho tiêu đề và bọc bảng trong `.table-container` scrollable | Test A57, A58, A62 PASS; đo kiểm Puppeteer `scrollWidth === 390` [MEASURED], 0 pixel tràn viền |
+| **F05** | Exact Critique Scope | Thu hẹp diff giữa `pre_critique.html` và `index.html` về đúng 3 dòng CSS duy nhất phản ánh giả thuyết phản biện (viền alert 1.5px vs 2px, nút CTA 44px vs 48px) | Test A77 PASS; diff giữa 2 bản chỉ tác động duy nhất tới 2 selector mục tiêu [MEASURED] |
+| **F06** | Disciplined Claim Taxonomy | Loại bỏ toàn bộ 6 thuật ngữ tiếp thị phóng đại chưa được kiểm chứng theo chỉ thị F06; chuẩn hóa sang hệ nhãn chứng cứ trung thực [MEASURED], [DESIGN_INTENT], [EXERCISE_SUPPORTED] | Test A78 PASS; 0 phát biểu vi phạm trong báo cáo và quyết định tuyển chọn [MEASURED] |
 
 ---
 
@@ -239,19 +255,21 @@ Báo cáo kết quả thực thi kiểm thử tự động từ runner `verify_m
 
 ## 18. Known Limitations
 
-1. **Khả năng tương thích trình duyệt cổ điển (`Legacy Browser Graceful Degradation`)**: Thiết kế sử dụng thuộc tính CSS hiện đại như `aspect-ratio: 16/9` và `gap` trong Grid. Trên các trình duyệt Chromium/WebKit/Firefox hiện đại (sau 2021), giao diện render hoàn hảo 100%. Trên các trình duyệt rất cũ không hỗ trợ `aspect-ratio`, chiều cao ảnh sẽ co giãn tự động theo tỷ lệ tự nhiên của SVG [EXERCISE_SUPPORTED].
+1. **Khả năng tương thích trình duyệt cổ điển (`Legacy Browser Graceful Degradation`)**: Thiết kế sử dụng thuộc tính CSS hiện đại như `aspect-ratio: 16/9` và `gap` trong Grid. Trên các trình duyệt Chromium/WebKit/Firefox hiện đại (sau 2021), giao diện hiển thị đúng theo đặc tả CSS [EXERCISE_SUPPORTED]. Trên các trình duyệt rất cũ không hỗ trợ `aspect-ratio`, chiều cao ảnh sẽ co giãn tự động theo tỷ lệ tự nhiên của SVG [EXERCISE_SUPPORTED].
 2. **Kích thước dữ liệu bảng khi mở rộng quy mô (`Scalability Beyond 8 Tours`)**: Bảng vận hành hiện tại được tối ưu hóa cho mô hình SME (8–15 đoàn/ngày). Khi doanh nghiệp mở rộng quy mô lên hơn 50 đoàn/ngày, thiết kế sẽ cần bổ sung thêm bộ lọc trạng thái nhanh hoặc phân trang linh hoạt để duy trì tải nhận thức tối ưu [DESIGN_INTENT].
 
 ---
 
 ## 19. Package Manifest
 
-Cấu trúc gói nộp xuất xưởng chính thức `design_training_012_final_submission_r01.zip`:
+Cấu trúc gói nộp xuất xưởng chính thức `design_training_012_submission_r02.zip`:
 
 ```text
-design_training_012_final_submission_r01.zip
+design_training_012_submission_r02.zip
 ├── DESIGN_TRAINING_MODULE_012_DIRECTIVE.md
 ├── DESIGN_TRAINING_012_GOVERNANCE_WAIVER_005.md
+├── DESIGN_TRAINING_012_FINAL_REVIEW_006.md
+├── CANONICAL_FIXTURE.json
 ├── BRAND_THESIS.md
 ├── REFERENCE_BOARD.md
 ├── IMAGE_LANGUAGE_MATRIX.md
@@ -264,6 +282,8 @@ design_training_012_final_submission_r01.zip
 ├── VERIFICATION.json
 ├── SCREENSHOT_MANIFEST.json
 ├── verify_module_012.js
+├── source_snapshot/
+│   └── design_training_007_submission_r04.zip
 ├── directions/
 │   ├── option_a/index.html
 │   └── option_b/index.html
@@ -296,7 +316,8 @@ design_training_012_final_submission_r01.zip
 SELF_VERDICT:
   module: DESIGN_TRAINING_012_BRAND_AND_IMAGE_DIRECTION
   stream: B
-  submission_package: design_training_012_final_submission_r01.zip
+  submission_package: design_training_012_submission_r02.zip
+  review_remediation: DESIGN_TRAINING_012_FINAL_REVIEW_006 (F01-F06 100% RESOLVED)
   checkpoint_12_1_status: APPROVED_WITH_GOVERNANCE_WAIVER_005
   phase_3_selection_gate: COMPLETED (DIRECTION_A SELECTED, 94/100)
   phase_4_final_candidate: COMPLETED (candidate/pre_critique.html)

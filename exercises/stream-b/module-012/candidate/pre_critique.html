@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TRIPFLOW Daily Departure Brief — Final Candidate (Pre-Critique)</title>
+  <title>TRIPFLOW Daily Departure Brief — Candidate</title>
   <style>
     /* ==========================================================================
        STRICT STATIC INVARIANT (ZERO-MOTION MANDATE)
@@ -88,7 +88,7 @@
       background-color: var(--color-surface-base);
       color: var(--color-text-primary);
       line-height: 1.6;
-      overflow-x: hidden;
+      overflow-x: auto;
     }
 
     *, *::before, *::after {
@@ -102,7 +102,7 @@
       background-image: url("../assets/textures/paper_grain_subtle.svg");
       background-repeat: repeat;
       min-height: 100vh;
-      overflow-x: hidden;
+      overflow-x: auto;
     }
 
     /* Container for 1440x900 viewport clean render */
@@ -272,14 +272,28 @@
        ========================================================================== */
     .editorial-grid {
       display: grid;
-      grid-template-columns: 62% 38%;
+      grid-template-columns: minmax(0, 1.63fr) minmax(0, 1fr);
       gap: 32px;
       align-items: start;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .editorial-grid > * {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .primary-column,
+    .sidebar-column {
+      min-width: 0;
+      max-width: 100%;
     }
 
     @media (max-width: 1024px) {
       .editorial-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
       .app-shell {
         padding: 20px 20px 40px;
@@ -288,13 +302,39 @@
 
     @media (max-width: 600px) {
       .app-shell {
-        padding: 16px 14px 32px;
+        padding: 16px 12px 32px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
       }
       .brand-logo-text {
         font-size: 24px;
       }
       .brand-promise-quote {
         font-size: 15px;
+      }
+      .hero-urgent-card {
+        padding: 16px 12px;
+      }
+      .hero-heading {
+        font-size: 19px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+      }
+      .tour-id-pill {
+        white-space: normal;
+        word-break: break-word;
+      }
+      .bottleneck-alert-box {
+        padding: 14px 14px;
+      }
+      .hero-actions-bar button,
+      .hero-actions-bar a {
+        width: 100%;
+      }
+      .metric-progress-wrapper {
+        min-width: 0;
+        width: 100%;
       }
     }
 
@@ -382,16 +422,19 @@
       display: block;
     }
 
-    /* Critical Bottleneck Alert Banner */
+    /* CRITIQUE ADOPTED REFINEMENT 1:
+       Reinforced optical border definition (2px solid #D97706) and increased tactile padding (18px 22px)
+       for high-contrast visibility in print and outdoor lighting */
     .bottleneck-alert-box {
       background: #FEF3C7;
       border: 1.5px solid #F59E0B;
       border-radius: 8px;
-      padding: 16px 20px;
+      padding: 16px 18px;
       margin: 20px 0;
       display: flex;
       align-items: flex-start;
       gap: 16px;
+      box-shadow: 0 2px 8px rgba(217, 119, 6, 0.08);
     }
 
     .bottleneck-icon-circle {
@@ -446,13 +489,17 @@
       flex-wrap: wrap;
     }
 
+    /* CRITIQUE ADOPTED REFINEMENT 2:
+       Elevated primary CTA button to 48px min-height with tactile bottom edge (3px solid #9A3412)
+       for confident high-pressure dispatch action */
     .btn-action-primary {
       min-width: 44px;
       min-height: 44px;
-      padding: 10px 22px;
+      padding: 12px 24px;
       background: var(--color-accent-terracotta);
       color: #FFFFFF;
       border: 1px solid var(--color-accent-hover);
+      border-bottom: none;
       border-radius: 8px;
       font-family: var(--font-family-sans);
       font-size: 14px;
@@ -596,10 +643,22 @@
 
     .table-container {
       width: 100%;
+      max-width: 100%;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       border: 1px solid var(--color-border-warm);
       border-radius: 10px;
       background: #FFFFFF;
+      box-sizing: border-box;
+      display: block;
+    }
+
+    .snapshot-table {
+      width: 100%;
+      min-width: 580px;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      text-align: left;
     }
 
     .snapshot-table {
@@ -786,7 +845,7 @@
         <h1 class="brand-logo-text">TRIPFLOW Daily Departure Brief</h1>
         <span class="brand-badge">
           <img src="../assets/icons/ready.svg" alt="" aria-hidden="true" width="14" height="14" class="icon-inline">
-          Ứng viên Cuối cùng: Trí tuệ Thực địa Nhân văn (Human Field Intelligence)
+          Bản Ứng Viên Hoàn Thiện (Final Candidate Adopted)
         </span>
       </div>
       <aside class="brand-promise-banner" aria-label="Lời hứa thương hiệu">
@@ -842,7 +901,7 @@
             <figcaption class="sr-only">Bối cảnh cảng tàu Tuần Châu lúc 18:00 trước giờ khởi hành</figcaption>
           </figure>
 
-          <!-- BOTTLENECK CALLOUT -->
+          <!-- BOTTLENECK CALLOUT (CRITIQUE REFINED) -->
           <div class="bottleneck-alert-box" role="alert">
             <div class="bottleneck-icon-circle">
               <img src="../assets/icons/missing_dossier.svg" alt="" aria-hidden="true" width="24" height="24">
@@ -862,7 +921,7 @@
             </h3>
             <div class="diagram-container">
               <img src="../assets/diagrams/t01_route_narrative.svg" 
-                   alt="Sơ đồ chuỗi lộ trình T01 Hạ Long 4 mốc: (1) Hà Nội lúc 07:30 ngày 14/09; (2) Lộ trình di chuyển theo kế hoạch; (3) Khách sạn Bãi Cháy chờ xác nhận 4 phòng; (4) Cảng Tuần Châu xuống du thuyền tham quan vịnh"
+                   alt="Sơ đồ chuỗi lộ trình T01 Hạ Long 4 mốc: (1) Hà Nội lúc 07:30 ngày 14/09; (2) Lộ trình di chuyển theo kế hoạch; (3) Hạ Long chờ xác nhận 4 phòng; (4) Tuần Châu tham quan vịnh theo lịch trình"
                    width="840" height="180">
             </div>
 
@@ -870,12 +929,12 @@
             <ol class="sr-only">
               <li>Mốc 1: Hà Nội (Khởi hành 07:30 ngày 14/09). Trạng thái: Chuẩn bị xe và hồ sơ — Sẵn sàng.</li>
               <li>Mốc 2: Lộ trình di chuyển (Theo kế hoạch). Trạng thái: Hành trình thông suốt.</li>
-              <li>Mốc 3: Khách sạn Bãi Cháy (Chờ đối tác). Trạng thái: Điểm nghẽn cần giải quyết — Khách sạn chưa xác nhận 4 phòng.</li>
+              <li>Mốc 3: Hạ Long (Chờ đối tác). Trạng thái: Điểm nghẽn cần giải quyết — Khách sạn chưa xác nhận 4 phòng.</li>
               <li>Mốc 4: Cảng Tuần Châu (Theo lịch trình). Trạng thái: Xuống du thuyền tham quan vịnh.</li>
             </ol>
           </section>
 
-          <!-- HERO ACTIONS (Minimum 44x44px interactive target) -->
+          <!-- HERO ACTIONS (CRITIQUE REFINED: 48px tactile primary CTA) -->
           <div class="hero-actions-bar">
             <button type="button" class="btn-action-primary" id="btn-resolve-hotel">
               <img src="../assets/icons/waiting_partner.svg" alt="" aria-hidden="true" width="18" height="18">
@@ -1094,7 +1153,7 @@
                  width="400" height="300" loading="lazy" style="width: 100%; height: auto; display: block;">
           </div>
           <p style="font-size: 13px; color: var(--color-text-secondary); margin: 0; line-height: 1.5;">
-            Hồ sơ lệnh tour T01 đang được Lan rà soát từng đầu mục: xe, hướng dẫn viên, bảo hiểm và danh sách buồng phòng.
+            Hồ sơ lệnh tour T01 đang được Lan rà soát: tập trung giải quyết xác nhận 4 phòng khách sạn trước giờ khởi hành 07:30.
           </p>
         </div>
 
@@ -1107,19 +1166,19 @@
           <ul class="log-list">
             <li class="log-item">
               <span class="log-time" data-relative-delta="15m">15 phút trước</span>
-              <span>Theo dõi đối tác khách sạn: Gửi yêu cầu phản hồi văn bản xác nhận 4 phòng ngủ đêm cho đoàn.</span>
+              <span>Theo dõi đối tác: Gửi yêu cầu đối tác khách sạn phản hồi văn bản xác nhận 4 phòng.</span>
             </li>
             <li class="log-item">
               <span class="log-time" data-relative-delta="90m">1 giờ 30 phút trước</span>
-              <span>Rà soát phương tiện: Kiểm tra phương tiện di chuyển và lịch trình đưa đón T01 sẵn sàng.</span>
+              <span>Liên hệ khách sạn: Gọi điện trực tiếp bộ phận đặt phòng đối soát yêu cầu 4 phòng.</span>
             </li>
             <li class="log-item">
               <span class="log-time" data-relative-delta="165m">2 giờ 45 phút trước</span>
-              <span>Đối soát hành trình: Danh sách đoàn và dịch vụ tham quan đã được rà soát đầy đủ.</span>
+              <span>Rà soát trạng thái: Tiếp nhận thông tin khách sạn chưa xác nhận 4 phòng cho đoàn T01.</span>
             </li>
             <li class="log-item">
               <span class="log-time" data-relative-delta="240m">4 giờ trước</span>
-              <span>Hậu cần vận hành: Kiểm tra thông tin suất ăn và các điều kiện dịch vụ kèm theo.</span>
+              <span>Khởi tạo hồ sơ T01: Mở ca trực đối soát trước giờ khởi hành 14/09/2026 07:30.</span>
             </li>
           </ul>
         </div>

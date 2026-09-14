@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIPFLOW — Bàn tiếp nhận yêu cầu hỗ trợ hành khách (Baseline)</title>
+  <style>
+    /* Light Theme Default */
+    :root {
+      --bg: #FAF9F6;
+      --card-bg: #FFFFFF;
+      --text: #0F172A;
+      --muted: #475569;
+      --border: #CBD5E1;
+      --primary: #0F172A;
+      --error-border: #EF4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: none !important;
+      animation: none !important;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    /* Mandatory Disclaimer Banner */
+    .disclaimer-banner {
+      background-color: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #F59E0B;
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* DEF-08: Fixed width causes horizontal overflow at 320px */
+    .container {
+      width: 650px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 24px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .case-info {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* DEF-04: Visual order reversed via column-reverse while DOM order is normal */
+    .form-fields-reversed {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    /* DEF-07: Targets strictly 20x20px with 0 padding */
+    .radio-option, .checkbox-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    input[type="radio"], input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    /* DEF-02: Textarea relies strictly on placeholder with NO label */
+    textarea {
+      width: 100%;
+      height: 90px;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: inherit;
+    }
+
+    /* DEF-03: Error only indicated by red border, no associated text */
+    .has-error {
+      border-color: var(--error-border) !important;
+    }
+
+    /* DEF-01: Save button is a div, not native button */
+    .btn-save {
+      display: inline-block;
+      background-color: var(--primary);
+      color: #FFFFFF;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* DEF-05: Async status in a plain div with NO live-region attributes */
+    .status-box {
+      margin-top: 16px;
+      font-size: 14px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      background: #F1F5F9;
+    }
+
+    .status-error {
+      color: #B91C1C;
+      background: #FEF2F2;
+      border-color: #FCA5A5;
+    }
+
+    .status-success {
+      color: #15803D;
+      background: #F0FDF4;
+      border-color: #86EFAC;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mandatory Training Baseline Disclaimer -->
+  <div class="disclaimer-banner">
+    Bản mẫu huấn luyện có lỗi khả năng tiếp cận có chủ đích — không dùng trong sản phẩm thật.
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>Ghi nhận yêu cầu hỗ trợ</h1>
+      <div class="case-info">
+        Hồ sơ: <strong>AR-901</strong> | Mã đặt: <strong>BK-24091</strong> | Khách: <strong>Khách A</strong><br>
+        Tour: <strong>Tour Fansipan Sapa 2 Ngày 1 Đêm (TF-802)</strong> | Khởi hành: <strong>2026-09-15 06:30 ICT</strong>
+      </div>
+      <button type="button" id="btn-open-guidance">Xem hướng dẫn hỗ trợ</button>
+    </header>
+
+    <main>
+      <form id="support-form" onsubmit="return false;">
+        
+        <!-- DEF-04: DOM order has confirmation first, then details, then radio, but CSS column-reverse flips it visually -->
+        <div class="form-fields-reversed">
+
+          <!-- Section: Confirmation -->
+          <div class="form-group" id="group-confirmation">
+            <div class="checkbox-option">
+              <!-- DEF-07: 20x20px target -->
+              <input type="checkbox" id="checkbox-confirmation" name="confirmation">
+              <span>Xác nhận rằng yêu cầu đã được trao đổi với khách.</span>
+            </div>
+          </div>
+
+          <!-- Section: Details -->
+          <div class="form-group" id="group-details">
+            <!-- DEF-02: Missing <label>, relies solely on placeholder -->
+            <textarea id="field-details" placeholder="Chi tiết hỗ trợ"></textarea>
+          </div>
+
+          <!-- Section: Support Type Radio Group -->
+          <div class="form-group" id="group-support-type">
+            <p style="font-weight:600; margin-bottom:8px;">Chọn hình thức hỗ trợ cần sắp xếp.</p>
+            <div class="radio-option">
+              <!-- DEF-07: 20x20px target -->
+              <input type="radio" id="radio-boarding" name="support_type" value="boarding">
+              <span>Hỗ trợ lên xuống phương tiện</span>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="radio-written" name="support_type" value="written_communication">
+              <span>Giao tiếp bằng văn bản</span>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="radio-large-print" name="support_type" value="large_print">
+              <span>Tài liệu chữ lớn</span>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="radio-other" name="support_type" value="other">
+              <span>Hỗ trợ khác</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top: 24px;">
+          <!-- DEF-01: div click instead of native button -->
+          <!-- DEF-06: clicking sets native disabled on action node or replaces it, dropping focus to body -->
+          <div id="btn-save-support" class="btn-save" onclick="handleSaveClick()">
+            Lưu yêu cầu hỗ trợ
+          </div>
+        </div>
+
+        <!-- DEF-05: Plain div without role=status/alert or aria-live -->
+        <div id="async-message-box" class="status-box" style="display:none;"></div>
+      </form>
+    </main>
+  </div>
+
+  <script>
+    let attempts = 0;
+    let commits = 0;
+    let isSaving = false;
+
+    function handleSaveClick() {
+      if (isSaving) return;
+
+      const supportTypeChecked = document.querySelector('input[name="support_type"]:checked');
+      const detailsVal = document.getElementById('field-details').value.trim();
+      const confirmationChecked = document.getElementById('checkbox-confirmation').checked;
+      const detailsField = document.getElementById('field-details');
+      const supportTypeGroup = document.getElementById('group-support-type');
+      const confirmationGroup = document.getElementById('group-confirmation');
+
+      // Clear visual errors
+      detailsField.classList.remove('has-error');
+      supportTypeGroup.classList.remove('has-error');
+      confirmationGroup.classList.remove('has-error');
+
+      let hasError = false;
+
+      // DEF-03: Errors only indicated by red border, no associated text
+      if (!supportTypeChecked) {
+        supportTypeGroup.classList.add('has-error');
+        hasError = true;
+      }
+      if (detailsVal.length > 200) {
+        detailsField.classList.add('has-error');
+        hasError = true;
+      }
+      if (!confirmationChecked) {
+        confirmationGroup.classList.add('has-error');
+        hasError = true;
+      }
+
+      if (hasError) {
+        return;
+      }
+
+      // Valid submit flow
+      attempts++;
+      isSaving = true;
+
+      const btn = document.getElementById('btn-save-support');
+      // DEF-06: Node replaced with span, immediately evicting focus to body
+      btn.innerHTML = '<span>Đang lưu yêu cầu hỗ trợ…</span>';
+      
+      const msgBox = document.getElementById('async-message-box');
+      msgBox.style.display = 'block';
+      msgBox.className = 'status-box';
+      // DEF-05: Regular text injection without live region
+      msgBox.innerText = 'Đang lưu yêu cầu hỗ trợ…';
+
+      setTimeout(() => {
+        isSaving = false;
+        if (attempts === 1) {
+          // Attempt 1 fails
+          btn.innerHTML = 'Thử lưu lại';
+          msgBox.className = 'status-box status-error';
+          msgBox.innerText = 'Chưa lưu được yêu cầu hỗ trợ. Nội dung đã nhập vẫn được giữ.';
+        } else if (attempts === 2) {
+          // Attempt 2 succeeds
+          commits++;
+          btn.innerHTML = 'Sửa yêu cầu';
+          msgBox.className = 'status-box status-success';
+          msgBox.innerText = 'Đã lưu yêu cầu hỗ trợ cho hồ sơ AR-901.';
+        }
+      }, 800);
+    }
+  </script>
+</body>
+</html>

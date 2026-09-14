@@ -1,0 +1,12 @@
+{
+  "name": "tripflow-module-009-accessibility",
+  "version": "1.0.0",
+  "description": "TRIPFLOW Accessibility Task Completion Harness & Verification Engine",
+  "main": "verify_module_009.js",
+  "scripts": {
+    "test": "node verify_module_009.js"
+  },
+  "dependencies": {
+    "puppeteer-core": "^22.0.0"
+  }
+}

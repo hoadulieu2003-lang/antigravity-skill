@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIPFLOW — Ghi nhận yêu cầu hỗ trợ (Direction B: Guided Review)</title>
+  <style>
+    :root {
+      --color-canvas: #FAF9F6;
+      --color-surface: #FFFFFF;
+      --color-surface-subtle: #F1F5F9;
+      --color-text-primary: #0F172A;
+      --color-text-secondary: #475569;
+      --color-border: #64748B;
+      --color-border-strong: #334155;
+      
+      --color-primary: #0F172A;
+      --color-primary-hover: #1E293B;
+      --color-focus-ring: #2563EB;
+      
+      --color-error-bg: #FEF2F2;
+      --color-error-text: #991B1B;
+      --color-error-border: #DC2626;
+
+      --color-success-bg: #F0FDF4;
+      --color-success-text: #166534;
+      --color-success-border: #16A34A;
+      
+      --target-min-size: 44px;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: none !important;
+      animation: none !important;
+    }
+
+    html {
+      background-color: var(--color-canvas);
+      color: var(--color-text-primary);
+      font-family: var(--font-family);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-canvas);
+      color: var(--color-text-primary);
+    }
+
+    /* Global Fail-Closed Hidden Rule */
+    [hidden] {
+      display: none !important;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      background: var(--color-primary);
+      color: #FFFFFF;
+      padding: 12px 20px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 4px;
+      z-index: 9999;
+      min-height: var(--target-min-size);
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+      outline: 3px solid var(--color-focus-ring);
+      outline-offset: 2px;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--color-focus-ring);
+      outline-offset: 2px;
+    }
+
+    .app-shell {
+      width: 100%;
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      flex: 1;
+    }
+
+    header#site-header {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      margin-bottom: 4px;
+    }
+
+    h1#page-heading {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--color-text-primary);
+    }
+
+    nav#site-nav {
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .case-summary-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+
+    .case-summary-card h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 8px;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px 16px;
+      font-size: 14px;
+    }
+
+    .case-item-label {
+      color: var(--color-text-secondary);
+      font-size: 13px;
+    }
+
+    .case-item-value {
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    /* Direction B Plain Text Step Indicator */
+    .step-indicator-bar {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 12px 20px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+    }
+
+    .flow-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .flow-card h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--color-text-primary);
+      outline: none;
+    }
+
+    .form-section {
+      margin-bottom: 24px;
+    }
+
+    fieldset.form-fieldset {
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    fieldset.form-fieldset[aria-invalid="true"] {
+      border: 2px solid var(--color-error-border);
+      background-color: #FFFDFD;
+    }
+
+    legend {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      padding: 0 8px;
+    }
+
+    .target-container {
+      display: flex;
+      align-items: center;
+      min-height: var(--target-min-size);
+      padding: 6px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 4px;
+    }
+
+    .target-container:hover {
+      background-color: var(--color-surface-subtle);
+    }
+
+    .target-container input[type="radio"],
+    .target-container input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      margin-right: 12px;
+      cursor: pointer;
+      accent-color: var(--color-primary);
+    }
+
+    .target-container label {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      flex: 1;
+      padding: 8px 0;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 6px;
+    }
+
+    .field-hint {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin-bottom: 8px;
+    }
+
+    textarea.form-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 12px;
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--color-text-primary);
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border-strong);
+      border-radius: 6px;
+      resize: vertical;
+    }
+
+    textarea.form-textarea[aria-invalid="true"] {
+      border: 2px solid var(--color-error-border);
+      background-color: var(--color-error-bg);
+    }
+
+    .inline-error {
+      color: var(--color-error-text);
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .inline-error:not([hidden]) {
+      display: flex;
+    }
+
+    .inline-error[hidden] {
+      display: none !important;
+    }
+
+    .error-summary {
+      background-color: var(--color-error-bg);
+      border: 2px solid var(--color-error-border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+
+    .error-summary h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-error-text);
+      margin-bottom: 8px;
+    }
+
+    .error-summary ul {
+      padding-left: 20px;
+    }
+
+    .error-summary a {
+      color: var(--color-error-text);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      min-height: var(--target-min-size);
+      min-width: var(--target-min-size);
+      background-color: var(--color-primary);
+      color: #FFFFFF;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 12px 24px;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary[aria-disabled="true"] {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .btn-secondary {
+      min-height: var(--target-min-size);
+      min-width: var(--target-min-size);
+      background-color: var(--color-surface);
+      color: var(--color-text-primary);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 18px;
+      border: 1px solid var(--color-border-strong);
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    /* Review Table */
+    .review-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    .review-table th, .review-table td {
+      border: 1px solid var(--color-border);
+      padding: 12px;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .review-table th {
+      background: var(--color-surface-subtle);
+      font-weight: 700;
+      width: 30%;
+    }
+
+    .committed-summary {
+      background-color: var(--color-success-bg);
+      border: 2px solid var(--color-success-border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-top: 24px;
+    }
+
+    .committed-summary h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-success-text);
+      margin-bottom: 16px;
+    }
+
+    /* Dialog */
+    dialog#support-guidance-dialog {
+      margin: auto;
+      max-width: 580px;
+      width: calc(100% - 32px);
+      background: var(--color-surface);
+      color: var(--color-text-primary);
+      border: 2px solid var(--color-border-strong);
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    dialog#support-guidance-dialog::backdrop {
+      background-color: rgba(15, 23, 42, 0.6);
+    }
+
+    .dialog-header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    footer#site-footer {
+      background: var(--color-surface);
+      border-top: 1px solid var(--color-border);
+      padding: 16px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <a id="skip-link" href="#main-content" class="skip-link">Bỏ qua đến nội dung chính</a>
+
+  <header id="site-header" role="banner">
+    <div>
+      <div class="brand-title">TRIPFLOW DISPATCH SYSTEM</div>
+      <h1 id="page-heading">Ghi nhận yêu cầu hỗ trợ</h1>
+    </div>
+    <nav id="site-nav" role="navigation" aria-label="Điều hướng tác nghiệp">
+      <button type="button" id="btn-open-guidance" class="btn-secondary" aria-haspopup="dialog">
+        Xem hướng dẫn hỗ trợ
+      </button>
+    </nav>
+  </header>
+
+  <main id="main-content" role="main">
+    <div class="app-shell">
+
+      <section class="case-summary-card" aria-labelledby="case-summary-heading">
+        <h2 id="case-summary-heading">Thông tin hồ sơ tiếp nhận</h2>
+        <div class="case-grid">
+          <div>
+            <div class="case-item-label">Mã hồ sơ yêu cầu:</div>
+            <div class="case-item-value">AR-901</div>
+          </div>
+          <div>
+            <div class="case-item-label">Mã đặt chỗ:</div>
+            <div class="case-item-value">BK-24091</div>
+          </div>
+          <div>
+            <div class="case-item-label">Hành khách:</div>
+            <div class="case-item-value">Khách A</div>
+          </div>
+          <div>
+            <div class="case-item-label">Mã tour:</div>
+            <div class="case-item-value">Tour Fansipan Sapa 2 Ngày 1 Đêm (TF-802)</div>
+          </div>
+          <div>
+            <div class="case-item-label">Thời gian:</div>
+            <div class="case-item-value">2026-09-15 06:30 ICT</div>
+          </div>
+          <div>
+            <div class="case-item-label">Trạng thái:</div>
+            <div class="case-item-value" id="val-current-status">Chưa ghi nhận yêu cầu hỗ trợ</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step Indicator: Plain text, zero color/position reliance -->
+      <div id="step-indicator" class="step-indicator-bar" aria-live="polite">
+        Bước 1 trên 2: Chọn hỗ trợ
+      </div>
+
+      <!-- Error Summary -->
+      <div id="error-summary" class="error-summary" role="alert" tabindex="-1" hidden>
+        <h3 id="error-summary-title">Cần hoàn thiện các thông tin sau:</h3>
+        <ul id="error-summary-list"></ul>
+      </div>
+
+      <!-- Step 1: Chọn hỗ trợ -->
+      <section id="step-1-card" class="flow-card" aria-labelledby="heading-step-1">
+        <h2 id="heading-step-1" tabindex="-1">Bước 1: Chọn hình thức và chi tiết hỗ trợ</h2>
+        
+        <form id="step-1-form" novalidate onsubmit="return false;">
+          <div class="form-section">
+            <fieldset id="support-type-group" class="form-fieldset" aria-describedby="support-type-desc error-support-type">
+              <legend id="support-type-legend">Hình thức hỗ trợ cần sắp xếp</legend>
+              <div id="support-type-desc" class="field-hint">Chọn một phương án phù hợp.</div>
+
+              <div class="target-container">
+                <input type="radio" id="radio-boarding" name="support_type" value="boarding">
+                <label for="radio-boarding">Hỗ trợ lên xuống phương tiện</label>
+              </div>
+              <div class="target-container">
+                <input type="radio" id="radio-written" name="support_type" value="written_communication">
+                <label for="radio-written">Giao tiếp bằng văn bản</label>
+              </div>
+              <div class="target-container">
+                <input type="radio" id="radio-large-print" name="support_type" value="large_print">
+                <label for="radio-large-print">Tài liệu chữ lớn</label>
+              </div>
+              <div class="target-container">
+                <input type="radio" id="radio-other" name="support_type" value="other">
+                <label for="radio-other">Hỗ trợ khác</label>
+              </div>
+              <div id="error-support-type" class="inline-error" hidden>
+                Chọn hình thức hỗ trợ cần sắp xếp.
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="form-section">
+            <label for="field-details" class="field-label">Chi tiết hỗ trợ</label>
+            <div id="details-hint" class="field-hint">Tối đa 200 ký tự ghi chú nhu cầu thực tế.</div>
+            <textarea id="field-details" name="details" class="form-textarea" aria-describedby="details-hint error-details-limit"></textarea>
+            <div id="error-details-limit" class="inline-error" hidden>
+              Chi tiết hỗ trợ không được vượt quá 200 ký tự.
+            </div>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" id="btn-step-next" class="btn-primary">
+              Tiếp tục: Kiểm tra thông tin
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Step 2: Kiểm tra & lưu (Hidden initially) -->
+      <section id="step-2-card" class="flow-card" aria-labelledby="heading-step-2" hidden>
+        <h2 id="heading-step-2" tabindex="-1">Bước 2: Kiểm tra & lưu yêu cầu hỗ trợ</h2>
+        
+        <table class="review-table">
+          <tr>
+            <th>Hồ sơ yêu cầu</th>
+            <td>AR-901 (Khách A - TF-802)</td>
+          </tr>
+          <tr>
+            <th>Hình thức đã chọn</th>
+            <td id="review-support-type">-</td>
+          </tr>
+          <tr>
+            <th>Chi tiết ghi chú</th>
+            <td id="review-details">-</td>
+          </tr>
+        </table>
+
+        <div class="form-section">
+          <div id="confirmation-container" class="target-container" style="padding-left:0;">
+            <input type="checkbox" id="checkbox-confirmation" name="confirmation">
+            <label for="checkbox-confirmation">
+              Xác nhận rằng yêu cầu đã được trao đổi với khách.
+            </label>
+          </div>
+          <div id="error-confirmation" class="inline-error" hidden>
+            Xác nhận rằng yêu cầu đã được trao đổi với khách.
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" id="btn-step-back" class="btn-secondary">
+            Quay lại sửa thông tin
+          </button>
+          <button type="button" id="btn-save-support" class="btn-primary" aria-busy="false" aria-disabled="false">
+            Lưu yêu cầu hỗ trợ
+          </button>
+        </div>
+      </section>
+
+      <!-- Committed Summary -->
+      <section id="committed-summary-section" class="committed-summary" aria-labelledby="committed-heading" hidden>
+        <h2 id="committed-heading">Hồ sơ hỗ trợ đã được lưu thành công</h2>
+        <p style="margin-bottom:12px;">Đã ghi nhận yêu cầu hỗ trợ cho hồ sơ AR-901.</p>
+        <button type="button" id="btn-edit-saved" class="btn-secondary">
+          Sửa yêu cầu
+        </button>
+      </section>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" role="contentinfo">
+    <div>TRIPFLOW Dispatch Console · Direction B Guided Flow Prototype — đang chờ thẩm định</div>
+  </footer>
+
+  <dialog id="support-guidance-dialog" role="dialog" aria-modal="true" aria-labelledby="guidance-dialog-title">
+    <div class="dialog-header">
+      <h2 id="guidance-dialog-title">Xem hướng dẫn hỗ trợ</h2>
+    </div>
+    <div class="dialog-body">
+      <p>Quy trình hai bước giúp kiểm tra cẩn thận nội dung trước khi cam kết vào hồ sơ điều phối.</p>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" id="btn-close-guidance" class="btn-primary">
+        Đóng hướng dẫn
+      </button>
+    </div>
+  </dialog>
+
+  <div id="live-status-region" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+  <div id="live-alert-region" role="alert" aria-live="assertive" aria-atomic="true" class="sr-only"></div>
+
+  <script>
+    (function () {
+      'use strict';
+      const SUPPORT_LABELS = {
+        'boarding': 'Hỗ trợ lên xuống phương tiện',
+        'written_communication': 'Giao tiếp bằng văn bản',
+        'large_print': 'Tài liệu chữ lớn',
+        'other': 'Hỗ trợ khác'
+      };
+
+      let attempts = 0;
+      let commits = 0;
+      let isSaving = false;
+      let payloadSnapshot = null;
+
+      const stepIndicator = document.getElementById('step-indicator');
+      const step1Card = document.getElementById('step-1-card');
+      const step2Card = document.getElementById('step-2-card');
+      const headingStep1 = document.getElementById('heading-step-1');
+      const headingStep2 = document.getElementById('heading-step-2');
+      const btnStepNext = document.getElementById('btn-step-next');
+      const btnStepBack = document.getElementById('btn-step-back');
+      const btnSave = document.getElementById('btn-save-support');
+      const btnEdit = document.getElementById('btn-edit-saved');
+      
+      const detailsField = document.getElementById('field-details');
+      const confirmationCheckbox = document.getElementById('checkbox-confirmation');
+      const supportTypeGroup = document.getElementById('support-type-group');
+      
+      const reviewSupportType = document.getElementById('review-support-type');
+      const reviewDetails = document.getElementById('review-details');
+      const errorSummary = document.getElementById('error-summary');
+      const errorSummaryList = document.getElementById('error-summary-list');
+      const errorSupportType = document.getElementById('error-support-type');
+      const errorDetailsLimit = document.getElementById('error-details-limit');
+      const errorConfirmation = document.getElementById('error-confirmation');
+      
+      const liveStatus = document.getElementById('live-status-region');
+      const liveAlert = document.getElementById('live-alert-region');
+      const committedSection = document.getElementById('committed-summary-section');
+      const currentStatusVal = document.getElementById('val-current-status');
+
+      // Dialog
+      const dialog = document.getElementById('support-guidance-dialog');
+      const btnOpenGuidance = document.getElementById('btn-open-guidance');
+      const btnCloseGuidance = document.getElementById('btn-close-guidance');
+
+      btnOpenGuidance.addEventListener('click', () => {
+        if (typeof dialog.showModal === 'function') dialog.showModal();
+        btnCloseGuidance.focus();
+      });
+      btnCloseGuidance.addEventListener('click', () => {
+        if (typeof dialog.close === 'function') dialog.close();
+        btnOpenGuidance.focus();
+      });
+
+      // Next to Step 2
+      btnStepNext.addEventListener('click', function () {
+        const selectedRadio = document.querySelector('input[name="support_type"]:checked');
+        const detailsText = detailsField.value;
+
+        // Reset errors
+        errorSummary.hidden = true;
+        errorSummaryList.innerHTML = '';
+        supportTypeGroup.removeAttribute('aria-invalid');
+        errorSupportType.hidden = true;
+        detailsField.removeAttribute('aria-invalid');
+        errorDetailsLimit.hidden = true;
+
+        const errors = [];
+        if (!selectedRadio) {
+          errors.push({ targetId: 'radio-boarding', message: 'Chọn hình thức hỗ trợ cần sắp xếp.', set: () => {
+            supportTypeGroup.setAttribute('aria-invalid', 'true');
+            errorSupportType.hidden = false;
+          }});
+        }
+        if (detailsText.length > 200) {
+          errors.push({ targetId: 'field-details', message: 'Chi tiết hỗ trợ không được vượt quá 200 ký tự.', set: () => {
+            detailsField.setAttribute('aria-invalid', 'true');
+            errorDetailsLimit.hidden = false;
+          }});
+        }
+
+        if (errors.length > 0) {
+          errors.forEach(err => {
+            err.set();
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = '#' + err.targetId;
+            a.textContent = err.message;
+            li.appendChild(a);
+            errorSummaryList.appendChild(li);
+          });
+          errorSummary.hidden = false;
+          document.getElementById(errors[0].targetId).focus();
+          return;
+        }
+
+        // Advance to Step 2
+        reviewSupportType.textContent = SUPPORT_LABELS[selectedRadio.value] || selectedRadio.value;
+        reviewDetails.textContent = detailsText || '(Không có ghi chú thêm)';
+
+        step1Card.hidden = true;
+        step2Card.hidden = false;
+        stepIndicator.textContent = 'Bước 2 trên 2: Kiểm tra & lưu';
+        
+        // Focus transition to Step 2 heading
+        headingStep2.focus();
+      });
+
+      // Back to Step 1
+      btnStepBack.addEventListener('click', function () {
+        step2Card.hidden = true;
+        step1Card.hidden = false;
+        stepIndicator.textContent = 'Bước 1 trên 2: Chọn hỗ trợ';
+        headingStep1.focus();
+      });
+
+      // Save in Step 2
+      btnSave.addEventListener('click', function () {
+        if (isSaving) return;
+
+        if (!confirmationCheckbox.checked) {
+          errorSummary.hidden = false;
+          errorSummaryList.innerHTML = '<li><a href="#checkbox-confirmation">Xác nhận rằng yêu cầu đã được trao đổi với khách.</a></li>';
+          errorConfirmation.hidden = false;
+          confirmationCheckbox.focus();
+          return;
+        }
+
+        errorSummary.hidden = true;
+        errorConfirmation.hidden = true;
+
+        const selectedRadio = document.querySelector('input[name="support_type"]:checked');
+        payloadSnapshot = {
+          supportType: selectedRadio.value,
+          details: detailsField.value,
+          confirmed: true
+        };
+
+        attempts++;
+        isSaving = true;
+        btnSave.textContent = 'Đang lưu yêu cầu hỗ trợ…';
+        btnSave.setAttribute('aria-busy', 'true');
+        btnSave.setAttribute('aria-disabled', 'true');
+        liveStatus.textContent = 'Đang lưu yêu cầu hỗ trợ…';
+
+        setTimeout(() => {
+          isSaving = false;
+          btnSave.setAttribute('aria-busy', 'false');
+          btnSave.setAttribute('aria-disabled', 'false');
+
+          if (attempts === 1) {
+            btnSave.textContent = 'Thử lưu lại';
+            liveAlert.textContent = 'Chưa lưu được yêu cầu hỗ trợ. Nội dung đã nhập vẫn được giữ.';
+          } else if (attempts >= 2) {
+            commits++;
+            liveStatus.textContent = 'Đã lưu yêu cầu hỗ trợ cho hồ sơ AR-901.';
+            step2Card.hidden = true;
+            committedSection.hidden = false;
+            currentStatusVal.textContent = 'Đã ghi nhận yêu cầu hỗ trợ';
+          }
+        }, 800);
+      });
+
+      btnEdit.addEventListener('click', () => {
+        committedSection.hidden = true;
+        step1Card.hidden = false;
+        stepIndicator.textContent = 'Bước 1 trên 2: Chọn hỗ trợ';
+        detailsField.focus();
+      });
+    })();
+  </script>
+</body>
+</html>

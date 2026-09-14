@@ -540,3 +540,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-14 17:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1929 ⭐)]** [Pinvou/pinvou-agent](https://github.com/Pinvou/pinvou-agent)
+  > Open-source desktop AI agent for tools, files, knowledge, workflows, and real deliverables.
+- **[GitHub (19666 ⭐)]** [1jehuang/jcode](https://github.com/1jehuang/jcode)
+  > The most RAM efficient harness
+- **[GitHub (77 ⭐)]** [dylanneve1/talon](https://github.com/dylanneve1/talon)
+  > 🦅 Multi-platform agentic AI harness — runs on Telegram, Discord, Teams & Terminal with a pluggable backend (Claude, Kilo, OpenCode, Codex, OpenAI Agents), fu...
+
+</untrusted_external_content>
+
+---

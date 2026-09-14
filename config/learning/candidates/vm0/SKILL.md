@@ -14,7 +14,7 @@ description: >-
 > **Nguồn gốc**: GitHub Repository `https://github.com/vm0-ai/vm0`  
 > **Độ uy tín cộng đồng**: 1151 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-14 07:42:12Z
+> **Tự động đóng gói lúc**: 2026-09-14 10:42:11Z
 
 ---
 
