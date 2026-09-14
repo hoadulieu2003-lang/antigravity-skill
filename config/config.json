@@ -104,7 +104,9 @@
         "read_url(tabio.com)",
         "read_url(yusukefukunaga.com)",
         "read_url(192.168.1.99)",
-        "read_url(takeprofit.com)"
+        "read_url(takeprofit.com)",
+        "mcp(cdp-bridge/cdp_list_tabs)",
+        "mcp(cdp-bridge/send_telegram_notification)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

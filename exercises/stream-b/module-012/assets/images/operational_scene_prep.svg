@@ -44,7 +44,7 @@
     <!-- Item 3: Tàu Tuần Châu -->
     <text x="24" y="104" font-family="system-ui, sans-serif" font-size="8.5" fill="#065F46" font-weight="bold">✓ 03. Khởi hành: 14/09/2026 07:30</text>
     
-    <!-- Item 4: Khách sạn Bãi Cháy (CRITICAL UNCONFIRMED AMBER HIGHLIGHT) -->
+    <!-- Item 4: Khách sạn Hạ Long (CRITICAL UNCONFIRMED AMBER HIGHLIGHT) -->
     <rect x="20" y="112" width="170" height="42" rx="3" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1.25" />
     <text x="26" y="125" font-family="system-ui, sans-serif" font-size="8.5" font-weight="bold" fill="#92400E">⚠ 04. ĐIỂM NGHẼN TOUR T01</text>
     <text x="26" y="138" font-family="system-ui, sans-serif" font-size="8" font-weight="bold" fill="#B45309">Khách sạn chưa xác nhận 4 phòng!</text>

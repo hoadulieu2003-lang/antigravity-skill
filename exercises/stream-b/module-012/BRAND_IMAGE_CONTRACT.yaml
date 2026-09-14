@@ -111,13 +111,13 @@ image_system_matrix:
 
     route_diagram:
       asset_path: "assets/diagrams/t01_route_narrative.svg"
-      purpose: "Chuỗi 4 mốc lộ trình đoàn T01 (Hà Nội -> Tuyến đường -> Bãi Cháy -> Tuần Châu)"
+      purpose: "Chuỗi 4 mốc lộ trình đoàn T01 (Hà Nội -> Tuyến đường -> Hạ Long -> Tuần Châu)"
       dimensions: { width: 840, height: 180 }
       aspect_ratio: "14:3"
       loading_behavior: "lazy"
       text_equivalent_required: true
       text_equivalent_markup: "<ol class=\"sr-only\"><li>Mốc 1: Hà Nội (Khởi hành 07:30 ngày 14/09)...</li></ol>"
-      alt_text: "Sơ đồ chuỗi lộ trình T01 Hạ Long 4 mốc: (1) Hà Nội lúc 07:30 ngày 14/09; (2) Lộ trình di chuyển theo kế hoạch; (3) Khách sạn Bãi Cháy chờ xác nhận 4 phòng; (4) Cảng Tuần Châu xuống du thuyền tham quan vịnh"
+      alt_text: "Sơ đồ chuỗi lộ trình T01 Hạ Long 4 mốc: (1) Hà Nội lúc 07:30 ngày 14/09; (2) Lộ trình di chuyển theo kế hoạch; (3) Khách sạn Hạ Long chờ xác nhận 4 phòng; (4) Cảng Tuần Châu xuống du thuyền tham quan vịnh"
       fallback_behavior: "Danh sách 4 mốc có cấu trúc HTML đảm bảo không mất thông tin khi vector không tải"
 
     fictional_person:

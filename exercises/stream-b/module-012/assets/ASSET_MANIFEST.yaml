@@ -197,23 +197,7 @@
     với điểm nghẽn cảnh báo tại Hạ Long
   sha256: 03843752c4145d3c0040b5dd7dc225afcdbeb8771bce53471d57c0df43139d07
 - asset_id: AST_IMG_004
-  file: assets/images/operational_scene_prep.svg
-  role: operational_scene
-  origin_type: authored_vector
-  source_url: null
-  creator: Antigravity Engineering Agent
-  license: Proprietary Exercise Asset
-  generated_with: null
-  generated_date: null
-  disclosure: Authored vector training operational scene
-  depicts_real_partner: false
-  focal_point_percent:
-    x: 50
-    y: 50
-  alt_strategy: informative
-  alt_text: 'Hiện trường bàn điều phối: Bìa kẹp hồ sơ lệnh tour T01 với 4 phòng khách
-    sạn chờ xác nhận được đánh dấu màu hổ phách và điện thoại liên lạc'
-  sha256: 136f7bd621543b64aa514157fca54abb9353099e5ec7783b407bebf377c81b96
+  88fe6f88de14f74f1df164bd88deaa627054d118a7f1c7a1177d68bf2c150537
 - asset_id: AST_TEX_001
   file: assets/textures/paper_grain_subtle.svg
   role: texture_accent

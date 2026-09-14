@@ -580,3 +580,19 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-14 23:42:02`
+
+<untrusted_external_content>
+### 🌐 Tin tức Sản phẩm Google & Frontier Labs
+- **[Google AI Official]** [DevFest is back](https://blog.google/innovation-and-ai/technology/developers-tools/devfest2026/)
+  > DevFest 2026 is back and here’s how you can connect with one of the more than 800 global events to build, secure, and scale in the agentic AI era.
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (601 ⭐)]** [1ay1/agentty](https://github.com/1ay1/agentty)
+  > AI pair programming in your terminal — one static binary, sub-ms startup, any model
+- **[GitHub (158 ⭐)]** [cerul-ai/cerul](https://github.com/cerul-ai/cerul)
+  > Open-source video processing core and CLI. Search and annotate local videos with your own model endpoints.
+
+</untrusted_external_content>
+
+---

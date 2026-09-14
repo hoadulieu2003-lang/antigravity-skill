@@ -35,7 +35,7 @@ timestamp: "2026-09-14T16:10:00+07:00"
 | :--- | :--- | :--- | :--- |
 | **F01** | Portable Invariant & Embedded Snapshot | Nhúng trực tiếp `source_snapshot/design_training_007_submission_r04.zip` (SHA `e76ab...`) vào gói nộp R02; runner `verify_module_012.js` xác thực tính độc lập không phụ thuộc đường dẫn tuyệt đối hay tên thư mục ngoài | Test A01, A02, A03, A05 PASS; kiểm thử độc lập thành công trong thư mục giải nén ngoài [MEASURED] |
 | **F02** | Deterministic Evidence Parity (DPR=2) | Chụp lại 100% 10 ảnh screenshot bằng Puppeteer ở DPR=2 (`deviceScaleFactor: 2`); đồng bộ byte và SHA-256 thực tế giữa đĩa và manifests | Test A76 PASS; 10 ảnh tồn tại, khớp byte và mã băm SHA-256 xác thực [MEASURED] |
-| **F03** | Canonical Allowlist & Negative Fixture | Ban hành `CANONICAL_FIXTURE.json` chứa 8 tours, allowlist và negative fixture schema; loại bỏ triệt để các operational facts ngoài luồng (như "Bãi Cháy") | Test A07–A14 PASS; negative fixture loại bỏ dữ liệu sai lệch, 0 facts ngoài luồng trong HTML và SVG [MEASURED] |
+| **F03** | Canonical Allowlist & Negative Fixture | Ban hành `CANONICAL_FIXTURE.json` chứa 8 tours, allowlist và negative fixture schema; loại bỏ triệt để các operational facts ngoài luồng (như "Hạ Long") | Test A07–A14 PASS; negative fixture loại bỏ dữ liệu sai lệch, 0 facts ngoài luồng trong HTML và SVG [MEASURED] |
 | **F04** | Responsive Containment on Mobile 390px | Thiết kế layout grid an toàn: `minmax(0, 1.63fr) minmax(0, 1fr)`, `min-width: 0`, word-wrap cho tiêu đề và bọc bảng trong `.table-container` scrollable | Test A57, A58, A62 PASS; đo kiểm Puppeteer `scrollWidth === 390` [MEASURED], 0 pixel tràn viền |
 | **F05** | Exact Critique Scope | Thu hẹp diff giữa `pre_critique.html` và `index.html` về đúng 3 dòng CSS duy nhất phản ánh giả thuyết phản biện (viền alert 1.5px vs 2px, nút CTA 44px vs 48px) | Test A77 PASS; diff giữa 2 bản chỉ tác động duy nhất tới 2 selector mục tiêu [MEASURED] |
 | **F06** | Disciplined Claim Taxonomy | Loại bỏ toàn bộ 6 thuật ngữ tiếp thị phóng đại chưa được kiểm chứng theo chỉ thị F06; chuẩn hóa sang hệ nhãn chứng cứ trung thực [MEASURED], [DESIGN_INTENT], [EXERCISE_SUPPORTED] | Test A78 PASS; 0 phát biểu vi phạm trong báo cáo và quyết định tuyển chọn [MEASURED] |
@@ -99,7 +99,7 @@ Tài liệu `REFERENCE_BOARD.md` đã khảo sát và phân tích sâu 6 thực 
 
 ## 6. Direction A — Human Field Intelligence (Trí Tuệ Thực Địa Nhân Văn)
 
-- **Định vị & Thesis**: Hướng A tập trung vào con người vận hành thực tế trong bối cảnh địa phương. Tạo cảm giác ấm áp, quan sát chân thực, đáng tin cậy, thấu hiểu áp lực của điều phối viên Lan khi xử lý nút thắt 4 phòng khách sạn T01.
+- **Định vị & Thesis**: Hướng A tập trung vào con người vận hành thực tế trong bối cảnh địa phương. Tạo cảm giác ấm áp, quan sát chân thực, đáng tin cậy, tập trung vào nghiệp vụ giải quyết nút thắt 4 phòng khách sạn T01 của điều phối viên Lan [DESIGN_INTENT].
 - **Bố cục (`Composition`)**: Mô hình biên tập báo chí bất đối xứng (`Editorial Asymmetric 62% : 38%`), tạo không gian thở và phân cấp tự sự rõ ràng giữa việc khẩn cấp T01 và bức tranh tổng thể 8 tour.
 - **Kiểu chữ (`Typography`)**: Tiêu đề sử dụng Humanist Serif (`Times New Roman, Georgia, serif`), nội dung bảng sử dụng System Sans (`system-ui, -apple-system, sans-serif`).
 - **Màu sắc & Chất liệu**: Nền giấy ấm `#FAF8F5`, mực than trầm `#1C1917`, điểm nhấn đất nung terracotta `#C2410C` kết hợp texture hạt giấy tự nhiên `paper_grain_subtle.svg`.
@@ -127,7 +127,7 @@ Hai hướng thiết kế phân kỳ chiến lược thực chất trên toàn b
 | **2. Composition Model** | Biên tập báo chí bất đối xứng (62% : 38%) | Lưới tọa độ trắc địa 12 cột (span 8 : span 4) | `grid-template-columns: 62% 38%` vs `repeat(12, 1fr)` |
 | **3. Typography Behavior** | Humanist Serif (Times New Roman / Georgia) | Geometric Sans & Monospace (Consolas / Courier) | `font-family: var(--font-family-serif)` vs `mono` |
 | **4. Image Source & Style** | Ảnh tư liệu phóng sự thực địa (Documentary) | Sơ đồ lát cắt tín hiệu trừu tượng (Cartographic) | `halong_field_documentary.svg` vs `route_signal_abstract.svg` |
-| **5. Crop & Perspective** | Góc nhìn rộng, lấy bối cảnh bến Tuần Châu (50% 40%) | Cắt cúp trực giao, nhấn điểm nút Bãi Cháy (72% 30%) | `object-position: 50% 40%` vs `72% 30%` |
+| **5. Crop & Perspective** | Góc nhìn rộng, lấy bối cảnh bến Tuần Châu (50% 40%) | Cắt cúp trực giao, nhấn điểm nút Hạ Long (72% 30%) | `object-position: 50% 40%` vs `72% 30%` |
 | **6. Icon & Accent Language** | Gam màu đất nung tự nhiên Terracotta (`#C2410C`) | Gam màu định vị hàng hải Navigational Cobalt (`#1D4ED8`) | `--color-accent-terracotta` vs `--color-accent-cobalt` |
 | **7. Surface & Texture** | Bề mặt hạt giấy tactile thủ công (`paper_grain_subtle`) | Bề mặt lưới tọa độ kỹ thuật số (`grid_matrix_pattern`) | `paper_grain_subtle.svg` vs `grid_matrix_pattern.svg` |
 
@@ -161,7 +161,7 @@ Hai hướng thiết kế phân kỳ chiến lược thực chất trên toàn b
   - **Hướng A (Human Field Intelligence)**: **`94 / 100 điểm`** (Đạt chuẩn xuất sắc, vượt ngưỡng $\ge 80$).
   - **Hướng B (Route Signal System)**: **`86 / 100 điểm`** (Đạt chuẩn tốt, vượt ngưỡng $\ge 80$).
 - **Phán quyết chính thức**: Tuyển chọn **HƯỚNG A (`DIRECTION_A`)** làm nền tảng xây dựng Final Candidate [EXERCISE_SUPPORTED].
-- **Lý do lựa chọn**: Đồng cảm sâu sắc với áp lực của điều phối viên Lan trước điểm nghẽn T01; ngôn ngữ phóng sự thực địa ấm áp, đáng tin cậy; bố cục 62:38 phân định rạch ròi thứ tự ưu tiên nghiệp vụ.
+- **Lý do lựa chọn**: Tập trung hỗ trợ điều phối viên Lan giải quyết điểm nghẽn 4 phòng khách sạn T01 [DESIGN_INTENT]; ngôn ngữ phóng sự thực địa ấm áp, đáng tin cậy; bố cục 62:38 phân định rạch ròi thứ tự ưu tiên nghiệp vụ.
 - **Thế mạnh Hướng B lưu trữ**: Nhịp tín hiệu chuỗi mốc được lưu trữ độc lập trong kho hồ sơ cho các module sau, cam kết **không lai ghép (`No Hybridization`)** vào Candidate.
 
 ---
@@ -208,7 +208,7 @@ Hai hướng thiết kế phân kỳ chiến lược thực chất trên toàn b
   4. `[DEFECT / POLISH]`: Khối cảnh báo điểm nghẽn T01 (`.bottleneck-alert-box`) ở bản pre-critique có viền vàng nhạt `1.5px solid #F59E0B`. Trong điều kiện in ấn đơn sắc hoặc ánh sáng ngoài trời gắt, viền này chưa đủ độ sắc nét quang học tách biệt với ảnh bối cảnh.
   5. `[POLISH / RELATED CHANGE]`: Nút hành động chính (`.btn-action-primary` - *Liên hệ đối tác khách sạn*) cần được tăng cường chiều cao tối thiểu lên 48px và bổ sung viền đáy đậm `3px solid #9A3412` để tạo cảm giác bấm xúc giác chắc chắn cho điều phối viên.
   6. `[PREFERENCE]`: Duy trì phông chữ serif cho tiêu đề tạo cảm giác văn hóa lữ hành cổ điển trang trọng và thanh lịch.
-- **Giả thuyết sửa đổi duy nhất (`Single Hypothesis`)**: Nâng cấp viền quang học của `.bottleneck-alert-box` lên `2px solid #D97706` (padding `18px 22px`) và nâng chiều cao nút hành động chính lên `48px` (kèm viền đáy `3px solid #9A3412`) sẽ cải thiện triệt để khả năng nhận diện điểm nghẽn và xúc giác thao tác cho người vận hành.
+- **Giả thuyết sửa đổi duy nhất (`Single Hypothesis`)**: Nâng cấp viền quang học của `.bottleneck-alert-box` lên `2px solid #D97706` (padding `18px 22px`) và nâng chiều cao nút hành động chính lên `48px` (kèm viền đáy `3px solid #9A3412`) nhằm gia tăng độ tương phản quang học của khối cảnh báo và đảm bảo kích thước tiếp cận của nút bấm theo giả thuyết phản biện [DESIGN_INTENT].
 - **Quyết định**: **`ADOPT`** (Áp dụng trọn vẹn vào `candidate/index.html`).
 - **Diff vi mô giữa pre_critique.html và index.html**: Đúng 2 thay đổi CSS trực tiếp, không làm thay đổi cấu trúc HTML hay dữ liệu canonical.
 
