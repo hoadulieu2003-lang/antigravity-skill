@@ -4,24 +4,6 @@
 
 > *[Ghi chú: Đã nén các phiên học tập cũ hơn để tối ưu bộ nhớ]*
 
-## 📅 Phiên Học Tập: `2026-09-12 08:05:14`
-
-<untrusted_external_content>
-### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
-- **[GitHub (3860 ⭐)]** [kirodotdev/KiroCrew](https://github.com/kirodotdev/KiroCrew)
-  > A persistent workspace for development work that self-improves and continues beyond one session.
-- **[GitHub (238 ⭐)]** [Dominic789654/awesome-deepseek-harness](https://github.com/Dominic789654/awesome-deepseek-harness)
-  > A curated list of plugins, skills, MCP servers, patch/profile layers, orchestrators & UIs for DeepSeek Harness (DSH). Visualization · PPT · Coding · Agents ·...
-- **[GitHub (1357 ⭐)]** [agentconnect-md/agentconnect](https://github.com/agentconnect-md/agentconnect)
-  > The open-source, multi-agent alternative to Claude Tag. @ any agent, wherever work happens, they work alongside your team, learning as they go.
-
-### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
-- **[HuggingFace (Model)]** [nex-agi/Nex-N2.5-mini](https://huggingface.co/nex-agi/Nex-N2.5-mini)
-  > Trending model on Hugging Face hub.
-
-</untrusted_external_content>
-
----
 ## 📅 Phiên Học Tập: `2026-09-12 08:19:25`
 
 <untrusted_external_content>
@@ -598,6 +580,22 @@
   > My AI Stand. Realtime by day, rewriting itself by night. Summon my AI superpower.
 - **[GitHub (170 ⭐)]** [Digital-Process-Tools/claude-remember](https://github.com/Digital-Process-Tools/claude-remember)
   > Persistent memory for Claude Code — identity, context, and continuity across sessions
+
+</untrusted_external_content>
+
+---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-16 02:42:02`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google DeepMind]** [Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking](https://deepmind.google/blog/introducing-gemini-3-8-live-and-3-8-live-extended-thinking/)
+  > 
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (366 ⭐)]** [jzjzzzzzzz/agent-me](https://github.com/jzjzzzzzzz/agent-me)
+  > Distill your knowledge, memories, and decisions into an open-source, inspectable AI Agent Twin.
+- **[GitHub (16237 ⭐)]** [tradecatlabs/vibe-coding-cn](https://github.com/tradecatlabs/vibe-coding-cn)
+  > Vibe Coding 从入门到精通教程｜AI 结对编程工作流｜Prompt、Skill、Workflow、上下文管理、codex实战指南
 
 </untrusted_external_content>
 
