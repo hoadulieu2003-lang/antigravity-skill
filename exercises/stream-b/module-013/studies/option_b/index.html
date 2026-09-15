@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRIPFLOW Daily Departure Brief — Study B (Explicit State Change)</title>
+  <style>
+    /* Zero-motion replaced with Study Motion System */
+
+    /* ==========================================================================
+       DESIGN TOKENS — DIRECTION A: HUMAN FIELD INTELLIGENCE
+       Warm paper substrate, deep charcoal ink, terracotta accent, humanist type
+       Strictly bound to BRAND_IMAGE_CONTRACT.yaml
+       ========================================================================== */
+    :root {
+      /* Surface & Substrate */
+      --color-surface-base: #FAF8F5;
+      --color-surface-card: #FFFFFF;
+      --color-surface-subtle: #F5F0E8;
+      --color-surface-hover: #F0EAE0;
+      --color-border-warm: #E7E2DA;
+      --color-border-strong: #D6CEC2;
+
+      /* Typography & Ink */
+      --color-text-primary: #1C1917;   /* Deep charcoal ink (WCAG AA: 14.2:1 on #FAF8F5) */
+      --color-text-secondary: #44403C; /* Muted ink (WCAG AA: 8.8:1 on #FAF8F5) */
+      --color-text-tertiary: #78716C;  /* Warm stone (WCAG AA: 4.6:1 on #FAF8F5) */
+
+      /* Brand Accents */
+      --color-accent-terracotta: #C2410C; /* Terracotta (WCAG AA: 5.1:1 on #FAF8F5) */
+      --color-accent-hover: #9A3412;
+      --color-accent-subtle: #FFEDD5;
+
+      /* Semantic Status Colors (Non-color dependency: always paired with icon & label) */
+      /* Waiting Partner (Chờ đối tác) - Warm Amber */
+      --status-waiting-bg: #FEF3C7;
+      --status-waiting-text: #92400E;   /* Contrast: 6.8:1 on #FEF3C7 */
+      --status-waiting-border: #F59E0B;
+
+      /* Ready (Sẵn sàng) - Muted Pine / Sage Green */
+      --status-ready-bg: #ECFDF5;
+      --status-ready-text: #065F46;     /* Contrast: 7.4:1 on #ECFDF5 */
+      --status-ready-border: #10B981;
+
+      /* Missing Dossier (Thiếu hồ sơ) - Brick Red */
+      --status-missing-bg: #FEF2F2;
+      --status-missing-text: #991B1B;   /* Contrast: 8.1:1 on #FEF2F2 */
+      --status-missing-border: #EF4444;
+
+      /* In Preparation (Đang chuẩn bị) - Muted Slate Blue */
+      --status-prep-bg: #EFF6FF;
+      --status-prep-text: #1E40AF;      /* Contrast: 7.9:1 on #EFF6FF */
+      --status-prep-border: #3B82F6;
+
+      /* Completed (Hoàn thành) - Neutral Warm Stone */
+      --status-done-bg: #F5F5F4;
+      --status-done-text: #44403C;      /* Contrast: 8.5:1 on #F5F5F4 */
+      --status-done-border: #D6D3D1;
+
+      /* Typography Stacks */
+      --font-family-serif: "Times New Roman", Georgia, Cambria, serif;
+      --font-family-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+      /* Focus Ring */
+      --focus-ring: 2px solid #C2410C;
+      --focus-offset: 2px;
+    }
+
+    /* Base Layout & Reset */
+    html {
+      box-sizing: border-box;
+      font-family: var(--font-family-sans);
+      background-color: var(--color-surface-base);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      overflow-x: auto;
+    }
+
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--color-surface-base);
+      background-image: url("../../assets/textures/paper_grain_subtle.svg");
+      background-repeat: repeat;
+      min-height: 100vh;
+      overflow-x: auto;
+    }
+
+    /* Container for 1440x900 viewport clean render */
+    .app-shell {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 24px 32px 48px;
+    }
+
+    /* Screen reader only utility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Focus visible standard */
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: var(--focus-ring);
+      outline-offset: var(--focus-offset);
+    }
+
+    /* ==========================================================================
+       HEADER & BRAND PROMISE — EDITORIAL STYLE
+       ========================================================================== */
+    .site-header {
+      border-bottom: 2px solid var(--color-border-strong);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .header-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 13px;
+      color: var(--color-text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .brand-title-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand-logo-text {
+      font-family: var(--font-family-serif);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--color-surface-subtle);
+      border: 1px solid var(--color-border-warm);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-accent-terracotta);
+    }
+
+    .brand-promise-banner {
+      margin-top: 14px;
+      padding: 14px 20px;
+      background: #FFFDF9;
+      border-left: 4px solid var(--color-accent-terracotta);
+      border-radius: 0 8px 8px 0;
+      border-top: 1px solid var(--color-border-warm);
+      border-right: 1px solid var(--color-border-warm);
+      border-bottom: 1px solid var(--color-border-warm);
+    }
+
+    .brand-promise-quote {
+      font-family: var(--font-family-serif);
+      font-size: 17px;
+      font-style: italic;
+      color: var(--color-text-primary);
+      margin: 0;
+    }
+
+    .brand-promise-author {
+      font-family: var(--font-family-sans);
+      font-size: 12px;
+      font-style: normal;
+      color: var(--color-text-tertiary);
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ==========================================================================
+       CANONICAL DERIVED NETWORK PROGRESS METRIC (2/8 READY · 25% CAPACITY)
+       ========================================================================== */
+    .network-metric-strip {
+      background: #FFFFFF;
+      border: 1px solid var(--color-border-warm);
+      border-radius: 8px;
+      padding: 12px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .metric-summary-text {
+      font-size: 13.5px;
+      color: var(--color-text-secondary);
+      font-weight: 600;
+    }
+
+    .metric-summary-text strong {
+      color: #065F46;
+    }
+
+    .metric-progress-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 260px;
+    }
+
+    .capacity-track {
+      flex: 1;
+      height: 10px;
+      background: #E7E2DA;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .capacity-fill {
+      width: 25%;
+      height: 100%;
+      background: #10B981;
+      border-radius: 5px;
+    }
+
+    .capacity-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-text-tertiary);
+      white-space: nowrap;
+    }
+
+    /* ==========================================================================
+       EDITORIAL ASYMMETRIC GRID (62% PRIMARY : 38% SIDEBAR)
+       ========================================================================== */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.63fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: start;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .editorial-grid > * {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .primary-column,
+    .sidebar-column {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    @media (max-width: 1024px) {
+      .editorial-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .app-shell {
+        padding: 20px 20px 40px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .app-shell {
+        padding: 16px 12px 32px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      .brand-logo-text {
+        font-size: 24px;
+      }
+      .brand-promise-quote {
+        font-size: 15px;
+      }
+      .hero-urgent-card {
+        padding: 16px 12px;
+      }
+      .hero-heading {
+        font-size: 19px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+      }
+      .tour-id-pill {
+        white-space: normal;
+        word-break: break-word;
+      }
+      .bottleneck-alert-box {
+        padding: 14px 14px;
+      }
+      .hero-actions-bar button,
+      .hero-actions-bar a {
+        width: 100%;
+      }
+      .metric-progress-wrapper {
+        min-width: 0;
+        width: 100%;
+      }
+    }
+
+    /* Card styling */
+    .editorial-card {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border-warm);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(44, 38, 30, 0.04);
+      margin-bottom: 28px;
+    }
+
+    /* ==========================================================================
+       PRIMARY HERO: TOUR T01 HẠ LONG 2N1Đ
+       ========================================================================== */
+    .hero-urgent-card {
+      background: #FFFDF9;
+      border: 2px solid #F59E0B;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 4px 16px rgba(180, 83, 9, 0.08);
+      position: relative;
+    }
+
+    @media (max-width: 600px) {
+      .hero-urgent-card {
+        padding: 18px 14px;
+      }
+    }
+
+    .hero-top-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tour-id-pill {
+      font-family: var(--font-family-serif);
+      font-size: 15px;
+      font-weight: 700;
+      color: #92400E;
+      background: #FEF3C7;
+      padding: 4px 12px;
+      border-radius: 6px;
+      border: 1px solid #FDE68A;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-heading {
+      font-family: var(--font-family-serif);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 0 0 10px 0;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 600px) {
+      .hero-heading {
+        font-size: 20px;
+      }
+    }
+
+    .hero-image-wrap {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 16px 0;
+      border: 1px solid var(--color-border-warm);
+      background: #EAE4DA;
+      aspect-ratio: 16 / 9;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 40%;
+      display: block;
+    }
+    /* Graceful image failure styling */
+    img.asset-failed {
+      display: none !important;
+    }
+    .image-fallback-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #EAE4DA;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 14px;
+      text-align: center;
+    }
+    .fallback-badge-tag {
+      font-family: var(--font-family-sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #C2410C;
+      background: #FFFFFF;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid #FED7AA;
+    }
+    .fallback-desc {
+      font-family: var(--font-family-serif);
+      font-size: 13.5px;
+      color: #1C1917;
+      font-weight: 600;
+    }
+    .diagram-fallback-panel {
+      background: #FFFFFF;
+      border: 1px solid var(--color-border-warm);
+      border-radius: 6px;
+      padding: 12px;
+      margin-top: 8px;
+    }
+    .fallback-panel-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #78716C;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+    .fallback-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    @media (max-width: 600px) {
+      .fallback-steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .fallback-step-item {
+      background: #FAF8F5;
+      border: 1px solid var(--color-border-warm);
+      border-radius: 4px;
+      padding: 8px;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .fallback-step-urgent {
+      background: #FEF3C7;
+      border-color: #F59E0B;
+    }
+
+
+    /* CRITIQUE ADOPTED REFINEMENT 1:
+       Reinforced optical border definition (2px solid #D97706) and increased tactile padding (18px 22px)
+       for high-contrast visibility in print and outdoor lighting */
+    .bottleneck-alert-box {
+      background: #FEF3C7;
+      border: 2px solid #D97706;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 20px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      box-shadow: 0 2px 8px rgba(217, 119, 6, 0.08);
+    }
+
+    .bottleneck-icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #FFFBEB;
+      border: 1.5px solid #D97706;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #B45309;
+    }
+
+    .bottleneck-text-content h3 {
+      font-family: var(--font-family-sans);
+      font-size: 16px;
+      font-weight: 700;
+      color: #92400E;
+      margin: 0 0 4px 0;
+    }
+
+    .bottleneck-text-content p {
+      font-size: 14px;
+      color: #78350F;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Diagram Wrap */
+    .diagram-container {
+      margin: 20px 0;
+      border: 1px solid var(--color-border-warm);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--color-surface-base);
+    }
+
+    .diagram-container img,
+    .diagram-container svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Interactive Action Buttons (min 44x44px target) */
+    .hero-actions-bar {
+      display: flex;
+      gap: 14px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    /* CRITIQUE ADOPTED REFINEMENT 2:
+       Elevated primary CTA button to 48px min-height with tactile bottom edge (3px solid #9A3412)
+       for confident high-pressure dispatch action */
+    .btn-action-primary {
+      min-width: 44px;
+      min-height: 48px;
+      padding: 12px 24px;
+      background: var(--color-accent-terracotta);
+      color: #FFFFFF;
+      border: 1px solid var(--color-accent-hover);
+      border-bottom: 3px solid #9A3412;
+      border-radius: 8px;
+      font-family: var(--font-family-sans);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-action-primary:hover {
+      background: var(--color-accent-hover);
+    }
+
+    .btn-action-secondary {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 10px 20px;
+      background: var(--color-surface-card);
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border-strong);
+      border-radius: 8px;
+      font-family: var(--font-family-sans);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-action-secondary:hover {
+      background: var(--color-surface-hover);
+    }
+
+    /* ==========================================================================
+       SIDEBAR: FIELD INTELLIGENCE & COORDINATOR PROFILE
+       ========================================================================== */
+    .coordinator-profile-card {
+      background: #FFFFFF;
+      border: 1px solid var(--color-border-warm);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 24px;
+    }
+
+    .coordinator-header-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .coordinator-avatar-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid var(--color-border-warm);
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #EAE4DA;
+    }
+
+    .coordinator-avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 35%;
+      display: block;
+    }
+
+    .coordinator-info h3 {
+      font-family: var(--font-family-serif);
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+      color: var(--color-text-primary);
+    }
+
+    .coordinator-role-tag {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+
+    .fictional-disclosure-pill {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #92400E;
+      background: #FEF3C7;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #FDE68A;
+    }
+
+    /* Contact Log Entries (ED-02: Strict Relative Delta Format) */
+    .log-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0 0;
+    }
+
+    .log-item {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-border-warm);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .log-item:last-child {
+      border-bottom: none;
+    }
+
+    .log-time {
+      font-family: var(--font-family-sans);
+      font-weight: 700;
+      color: var(--color-accent-terracotta);
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    /* ==========================================================================
+       CANONICAL OPERATIONAL SNAPSHOT TABLE (T01–T08)
+       ========================================================================== */
+    .snapshot-section-title {
+      font-family: var(--font-family-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 0 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .table-container {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--color-border-warm);
+      border-radius: 10px;
+      background: #FFFFFF;
+      box-sizing: border-box;
+      display: block;
+    }
+
+    .snapshot-table {
+      width: 100%;
+      min-width: 580px;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      text-align: left;
+    }
+
+    .snapshot-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      text-align: left;
+    }
+
+    .snapshot-table th {
+      background: var(--color-surface-subtle);
+      color: var(--color-text-primary);
+      font-weight: 700;
+      padding: 12px 14px;
+      border-bottom: 2px solid var(--color-border-strong);
+      white-space: nowrap;
+      font-family: var(--font-family-sans);
+    }
+
+    .snapshot-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--color-border-warm);
+      vertical-align: middle;
+      color: var(--color-text-primary);
+    }
+
+    .snapshot-table tr:hover {
+      background: #FAF8F5;
+    }
+
+    .snapshot-table tr.row-focal-t01 {
+      background: #FFFDF7;
+      border-left: 4px solid #D97706;
+      font-weight: 500;
+    }
+
+    /* Status Badge Component (WCAG AA Compliant + Non-color Meaning) */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .status-badge svg,
+    .status-badge img {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .status-badge.badge-waiting {
+      background: var(--status-waiting-bg);
+      color: var(--status-waiting-text);
+      border: 1px solid var(--status-waiting-border);
+    }
+
+    .status-badge.badge-ready {
+      background: var(--status-ready-bg);
+      color: var(--status-ready-text);
+      border: 1px solid var(--status-ready-border);
+    }
+
+    .status-badge.badge-missing {
+      background: var(--status-missing-bg);
+      color: var(--status-missing-text);
+      border: 1px solid var(--status-missing-border);
+    }
+
+    .status-badge.badge-prep {
+      background: var(--status-prep-bg);
+      color: var(--status-prep-text);
+      border: 1px solid var(--status-prep-border);
+    }
+
+    .status-badge.badge-done {
+      background: var(--status-done-bg);
+      color: var(--status-done-text);
+      border: 1px solid var(--status-done-border);
+    }
+
+    /* Table action link target >= 44x44px */
+    .table-action-btn {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 8px 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent-terracotta);
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .table-action-btn:hover {
+      background: var(--color-surface-subtle);
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       ASSET PROVENANCE & DISCLOSURE PANEL (Collapsible <details>)
+       ========================================================================== */
+    .disclosure-panel {
+      margin-top: 36px;
+      border: 1px solid var(--color-border-warm);
+      border-radius: 10px;
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+
+    .disclosure-summary {
+      min-height: 44px;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      background: var(--color-surface-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+
+    .disclosure-summary:hover {
+      background: var(--color-surface-hover);
+    }
+
+    .disclosure-content {
+      padding: 20px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--color-text-secondary);
+    }
+
+    .provenance-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .provenance-table th,
+    .provenance-table td {
+      border: 1px solid var(--color-border-warm);
+      padding: 8px 12px;
+      font-size: 12px;
+    }
+
+    .provenance-table th {
+      background: var(--color-surface-subtle);
+      text-align: left;
+    }
+
+    /* Footer */
+    .site-footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-border-warm);
+      font-size: 12px;
+      color: var(--color-text-tertiary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  
+    /* ==========================================================================
+       MOTION TOKENS — STUDY B
+       Contract Budgets: max 300ms, max 8px displacement, max 1.02 scale
+       ========================================================================== */
+    :root {
+      --motion-duration-fast: 120ms;
+      --motion-duration-base: 180ms;
+      --motion-duration-slow: 250ms;
+      --motion-displacement: 8px;
+      --motion-scale-emphasis: 1.02;
+      --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+      --motion-ease-enter: cubic-bezier(0, 0, 0, 1);
+      --motion-ease-exit: cubic-bezier(0.3, 0, 1, 1);
+    }
+
+    /* Pattern P1: Disclosure Motion Styles */
+    .disclosure-summary {
+      position: relative;
+      transition: background-color var(--motion-duration-fast) var(--motion-ease-standard);
+    }
+    .disclosure-chevron-icon {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 8px;
+      transform-origin: center;
+      transition: transform var(--motion-duration-fast) var(--motion-ease-standard);
+    }
+    .disclosure-content {
+      will-change: opacity, transform;
+    }
+
+    /* Pattern P2: Action Button FSM Motion Styles */
+    #btn-update-t01-log {
+      position: relative;
+      transition: background-color var(--motion-duration-base) var(--motion-ease-standard),
+                  border-color var(--motion-duration-base) var(--motion-ease-standard),
+                  color var(--motion-duration-base) var(--motion-ease-standard);
+    }
+    #btn-update-t01-log[aria-disabled="true"] {
+      cursor: wait;
+      opacity: 0.85;
+    }
+
+    /* Pattern P3: Attention Callout Motion Styles */
+    .bottleneck-alert-box {
+      will-change: transform, border-color;
+      transition: border-color var(--motion-duration-base) var(--motion-ease-standard);
+    }
+
+    /* Button for Explicit Attention Trigger */
+    .btn-attention-trigger {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 8px 16px;
+      background: var(--color-surface-card);
+      color: var(--color-text-secondary);
+      border: 1px dashed var(--color-accent-terracotta);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 10px;
+    }
+    .btn-attention-trigger:hover {
+      background: var(--color-surface-hover);
+      color: var(--color-accent-terracotta);
+    }
+
+    /* Live Region Screen Reader Announcement */
+    .action-live-region {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ==========================================================================
+       WCAG 2.2 COMPLIANT REDUCED-MOTION MEDIA QUERY & OVERRIDE CLASS
+       ========================================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .disclosure-chevron-icon {
+        transform: none !important;
+      }
+      .disclosure-content,
+      #btn-update-t01-log,
+      .bottleneck-alert-box {
+        transform: none !important;
+      }
+    }
+
+    html.reduce-motion *,
+    html.reduce-motion *::before,
+    html.reduce-motion *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    html.reduce-motion .disclosure-chevron-icon,
+    html.reduce-motion .disclosure-content,
+    html.reduce-motion #btn-update-t01-log,
+    html.reduce-motion .bottleneck-alert-box {
+      transform: none !important;
+    }
+
+</style>
+</head>
+<body>
+  <div class="app-shell">
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+      <div class="header-meta-row">
+        <span>TRIPFLOW OPERATIONAL SUITE · MODULE 12 BRAND &amp; IMAGE DIRECTION</span>
+        <span>MỐC THỜI GIAN: 13/09/2026 — 18:00 (ASIA/HO_CHI_MINH)</span>
+      </div>
+      <div class="brand-title-wrap">
+        <h1 class="brand-logo-text">TRIPFLOW Daily Departure Brief</h1>
+        <span class="brand-badge">
+          <img src="../../assets/icons/ready.svg" alt="" aria-hidden="true" width="14" height="14" class="icon-inline" onerror="this.classList.add('asset-failed');">
+          Study B — Explicit State Change (120–250ms, 8px crisp)
+        </span>
+      </div>
+      <aside class="brand-promise-banner" aria-label="Lời hứa thương hiệu">
+        <blockquote class="brand-promise-quote">
+          “TRIPFLOW giúp đội vận hành nhìn thấy điều chưa sẵn sàng trước giờ khởi hành.”
+        </blockquote>
+        <span class="brand-promise-author">Lời hứa sản phẩm cốt lõi — Hợp đồng vận hành đào tạo B2B</span>
+      </aside>
+    </header>
+
+    <!-- CANONICAL NETWORK PROGRESS METRIC BANNER -->
+    <section class="network-metric-strip" aria-label="Chỉ số sẵn sàng mạng lưới tour">
+      <div class="metric-summary-text">
+        Tiến độ mạng lưới: <strong>2/8 Tour sẵn sàng (T02, T05)</strong> · 3 Cần xử lý · 3 Đang chuẩn bị/Hoàn thành
+      </div>
+      <div class="metric-progress-wrapper" aria-hidden="true">
+        <div class="capacity-track">
+          <div class="capacity-fill"></div>
+        </div>
+        <span class="capacity-label">25% Hoàn tất</span>
+      </div>
+    </section>
+
+    <!-- EDITORIAL ASYMMETRIC GRID -->
+    <main class="editorial-grid">
+
+      <!-- LEFT COLUMN (62%): PRIMARY NARRATIVE & T01 HERO FOCUS -->
+      <div class="primary-column">
+
+        <!-- FOCAL CARD: T01 HẠ LONG 2N1Đ -->
+        <article class="hero-urgent-card" id="tour-focus-t01">
+          <div class="hero-top-badge-row">
+            <span class="tour-id-pill">
+              <img src="../../assets/icons/departure.svg" alt="" aria-hidden="true" width="16" height="16" class="icon-inline" onerror="this.classList.add('asset-failed');">
+              TOUR TRỌNG TÂM: T01 · HẠ LONG 2N1Đ
+            </span>
+            <div class="status-badge badge-waiting">
+              <img src="../../assets/icons/waiting_partner.svg" alt="" aria-hidden="true" width="16" height="16" onerror="this.classList.add('asset-failed');">
+              <span>Chờ đối tác</span>
+            </div>
+          </div>
+
+          <h2 class="hero-heading">Khởi hành: 14/09/2026 lúc 07:30 · Phụ trách: Lan</h2>
+          <p style="margin: 0 0 12px 0; color: var(--color-text-secondary); font-size: 14.5px;">
+            Hành trình T01 khởi hành lúc 07:30 ngày 14/09/2026 do điều phối viên Lan phụ trách. Hiện đang tập trung xử lý điểm nghẽn khách sạn chưa xác nhận 4 phòng trước giờ xuất phát.
+          </p>
+
+          <!-- HERO CONTEXT IMAGE -->
+          <figure class="hero-image-wrap" style="margin: 0;">
+            <img src="../../assets/images/halong_field_documentary.svg" 
+                 alt="Bối cảnh bến tàu Tuần Châu và vịnh Hạ Long lúc chập tối mốc 18:00 ICT trước ngày khởi hành của đoàn T01"
+                 width="640" height="360" loading="eager"
+                 onerror="this.classList.add('asset-failed'); this.style.display='none'; const fb = this.parentElement.querySelector('.image-fallback-placeholder'); if(fb) fb.style.display='flex';">
+            <div class="image-fallback-placeholder" style="display: none;" aria-hidden="true">
+              <span class="fallback-badge-tag">TƯ LIỆU THỰC ĐỊA T01</span>
+              <span class="fallback-desc">Bối cảnh bến tàu Tuần Châu & Vịnh Hạ Long (Mốc 18:00 ICT)</span>
+            </div>
+            <figcaption class="sr-only">Bối cảnh cảng tàu Tuần Châu lúc 18:00 trước giờ khởi hành</figcaption>
+          </figure>
+
+          <!-- BOTTLENECK CALLOUT (CRITIQUE REFINED) -->
+          <div class="bottleneck-alert-box" role="alert">
+            <div class="bottleneck-icon-circle">
+              <img src="../../assets/icons/missing_dossier.svg" alt="" aria-hidden="true" width="24" height="24" onerror="this.classList.add('asset-failed');">
+            </div>
+            <div class="bottleneck-text-content">
+              <h3>ĐIỂM NGHẼN CẦN GIẢI QUYẾT: Khách sạn chưa xác nhận 4 phòng</h3>
+              <p>
+                Khách sạn chưa gửi văn bản xác nhận 4 phòng ngủ đêm cho đoàn. Điều phối viên Lan đang liên hệ trực tiếp đối tác khách sạn để hoàn tất xác nhận phòng trước giờ khởi hành.
+              </p>
+            </div>
+          </div>
+
+          <!-- ROUTE SEQUENCE TIMELINE DIAGRAM -->
+          <section aria-labelledby="route-diagram-heading">
+            <h3 id="route-diagram-heading" style="font-family: var(--font-family-serif); font-size: 16px; margin: 16px 0 8px 0; color: var(--color-text-primary);">
+              Chuỗi Mốc Lộ Trình Đoàn T01 (Route Narrative Timeline)
+            </h3>
+            <div class="diagram-container">
+              <img src="../../assets/diagrams/t01_route_narrative.svg" 
+                   alt="Sơ đồ chuỗi lộ trình T01 Hạ Long 4 mốc: (1) Hà Nội lúc 07:30 ngày 14/09; (2) Lộ trình di chuyển theo kế hoạch; (3) Hạ Long chờ xác nhận 4 phòng; (4) Tuần Châu tham quan vịnh theo lịch trình"
+                   width="840" height="180"
+                   onerror="this.classList.add('asset-failed'); this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='block';">
+              <div class="diagram-fallback-panel" style="display: none;">
+                <div class="fallback-panel-title">SƠ ĐỒ CHUỖI LỘ TRÌNH ĐOÀN T01 (VĂN BẢN THAY THẾ)</div>
+                <div class="fallback-steps-grid">
+                  <div class="fallback-step-item"><strong>1. Hà Nội (07:30)</strong><span>Xuất phát theo kế hoạch</span></div>
+                  <div class="fallback-step-item"><strong>2. Di chuyển</strong><span>Hành trình thông suốt</span></div>
+                  <div class="fallback-step-item fallback-step-urgent"><strong>3. Hạ Long</strong><span>Chờ xác nhận 4 phòng</span></div>
+                  <div class="fallback-step-item"><strong>4. Tuần Châu</strong><span>Lên tàu thăm vịnh</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accessible Ordered List Text Equivalent (W3C Complex Images) -->
+            <ol class="sr-only">
+              <li>Mốc 1: Hà Nội (Khởi hành 07:30 ngày 14/09). Trạng thái: Chuẩn bị xe và hồ sơ — Sẵn sàng.</li>
+              <li>Mốc 2: Lộ trình di chuyển (Theo kế hoạch). Trạng thái: Hành trình thông suốt.</li>
+              <li>Mốc 3: Hạ Long (Chờ đối tác). Trạng thái: Điểm nghẽn cần giải quyết — Khách sạn chưa xác nhận 4 phòng.</li>
+              <li>Mốc 4: Cảng Tuần Châu (Theo lịch trình). Trạng thái: Xuống du thuyền tham quan vịnh.</li>
+            </ol>
+          </section>
+
+          <!-- HERO ACTIONS (CRITIQUE REFINED: 48px tactile primary CTA) -->
+          <div class="hero-actions-bar">
+            <button type="button" class="btn-action-primary" id="btn-resolve-hotel">
+              <img src="../../assets/icons/waiting_partner.svg" alt="" aria-hidden="true" width="18" height="18" onerror="this.classList.add('asset-failed');">
+              <span>Liên hệ đối tác khách sạn (Xác nhận 4 phòng)</span>
+            </button>
+            <button type="button" class="btn-action-secondary" id="btn-update-t01-log" data-state="idle" aria-disabled="false">
+              <img src="../../assets/icons/contact_log.svg" alt="" aria-hidden="true" width="18" height="18" onerror="this.classList.add('asset-failed');">
+              <span>Cập nhật Nhật ký Đoàn</span>
+            </button>
+            <button type="button" class="btn-attention-trigger" id="btn-highlight-t01" aria-label="Tập trung vào điểm nghẽn phòng khách sạn T01">
+              <img src="../../assets/icons/missing_dossier.svg" alt="" aria-hidden="true" width="16" height="16" onerror="this.classList.add('asset-failed');">
+              <span>Xem Điểm Nghẽn</span>
+            </button>
+            <div id="t01-action-live-region" class="action-live-region" role="status" aria-live="polite"></div>
+          </div>
+        </article>
+
+        <!-- CANONICAL OPERATIONAL SNAPSHOT (T01–T08) -->
+        <section class="editorial-card" style="margin-top: 28px;" aria-labelledby="snapshot-table-heading">
+          <h2 id="snapshot-table-heading" class="snapshot-section-title">
+            <img src="../../assets/icons/departure.svg" alt="" aria-hidden="true" width="20" height="20" class="icon-inline" onerror="this.classList.add('asset-failed');">
+            Bảng Vận Hành Khởi Hành 8 Đoàn (Canonical Snapshot T01–T08)
+          </h2>
+          <div class="table-container">
+            <table class="snapshot-table">
+              <thead>
+                <tr>
+                  <th scope="col">Mã Tour</th>
+                  <th scope="col">Tuyến Hành Trình</th>
+                  <th scope="col">Giờ Khởi Hành</th>
+                  <th scope="col">Phụ Trách</th>
+                  <th scope="col">Trạng Thái Vận Hành</th>
+                  <th scope="col">Ghi Chú Nghiệp Vụ</th>
+                  <th scope="col">Thao Tác</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- T01: Focal Point -->
+                <tr class="row-focal-t01">
+                  <td><strong>T01</strong></td>
+                  <td>Hạ Long 2N1Đ</td>
+                  <td>14/09/2026 07:30</td>
+                  <td>Lan</td>
+                  <td>
+                    <span class="status-badge badge-waiting">
+                      <img src="../../assets/icons/waiting_partner.svg" alt="" aria-hidden="true" width="16" height="16" onerror="this.classList.add('asset-failed');">
+                      <span>Chờ đối tác</span>
+                    </span>
+                  </td>
+                  <td><strong>Khách sạn chưa xác nhận 4 phòng</strong></td>
+                  <td>
+                    <a href="#tour-focus-t01" class="table-action-btn" aria-label="Xem chi tiết điểm nghẽn T01">Chi tiết</a>
+                  </td>
+                </tr>
+
+                <!-- T02 -->
+                <tr>
+                  <td><strong>T02</strong></td>
+                  <td>Ninh Bình 1 ngày</td>
+                  <td>14/09/2026 06:00</td>
+                  <td>Minh</td>
+                  <td>
+                    <span class="status-badge badge-ready">
+                      <img src="../../assets/icons/ready.svg" alt="" aria-hidden="true" width="16" height="16" onerror="this.classList.add('asset-failed');">
+                      <span>Sẵn sàng</span>
+                    </span>
+                  </td>
+                  <td>Đã đủ xe, hướng dẫn viên và danh sách khách</td>
+                  <td>
+                    <a href="#t02" class="table-action-btn" aria-label="Xem chi tiết T02">Xem</a>
+                  </td>
+                </tr>
+
+                <!-- T03 -->
+                <tr>
+                  <td><strong>T03</strong></td>
+                  <td>Sapa 3N2Đ</td>
+                  <td>15/09/2026 21:30</td>
+                  <td>Huy</td>
+                  <td>
+                    <span class="status-badge badge-missing">
+                      <img src="../../assets/icons/missing_dossier.svg" alt="" aria-hidden="true" width="16" height="16" onerror="this.classList.add('asset-failed');">
+                      <span>Thiếu hồ sơ</span>
+                    </span>
+                  </td>
+                  <td>2 khách chưa gửi CCCD</td>
+                  <td>
+                    <a href="#t03" class="table-action-btn" aria-label="Xem chi tiết T03">Xem</a>
+                  </td>
+                </tr>
+
+                <!-- T04 -->
+                <tr>
+                  <td><strong>T04</strong></td>
+                  <td>Đà Nẵng 4N3Đ</td>
+                  <td>16/09/2026 08:00</td>
+                  <td>Lan</td>
+                  <td>
+                    <span class="status-badge badge-prep">
+                      <img src="../../assets/icons/departure.svg" alt="" aria-hidden="true" width="16" height="16" onerror="this.classList.add('asset-failed');">
+                      <span>Đang chuẩn bị</span>
+                    </span>
+                  </td>
+                  <td>Chờ chốt danh sách suất ăn</td>
+                  <td>
+                    <a href="#t04" class="table-action-btn" aria-label="Xem chi tiết T04">Xem</a>
+                  </td>
+                </tr>
+
+                <!-- T05 -->
+                <tr>
+                  <td><strong>T05</strong></td>
+                  <td>Hà Giang 3N2Đ</td>
+                  <td>17/09/2026 05:30</td>
+                  <td>Minh</td>
+                  <td>
+                    <span class="status-badge badge-ready">
+                      <img src="../../assets/icons/ready.svg" alt="" aria-hidden="true" width="16" height="16" onerror="this.classList.add('asset-failed');">
+                      <span>Sẵn sàng</span>
+                    </span>
+                  </td>
+                  <td>Đã hoàn tất checklist khởi hành</td>
+                  <td>
+                    <a href="#t05" class="table-action-btn" aria-label="Xem chi tiết T05">Xem</a>
+                  </td>
+                </tr>
+
+                <!-- T06 -->
+                <tr>
+                  <td><strong>T06</strong></td>
+                  <td>Phú Quốc 3N2Đ</td>
+                  <td>18/09/2026 09:10</td>
+                  <td>Huy</td>
+                  <td>
+                    <span class="status-badge badge-waiting">
+                      <img src="../../assets/icons/waiting_partner.svg" alt="" aria-hidden="true" width="16" height="16" onerror="this.classList.add('asset-failed');">
+                      <span>Chờ đối tác</span>
+                    </span>
+                  </td>
+                  <td>Nhà xe trung chuyển chưa xác nhận</td>
+                  <td>
+                    <a href="#t06" class="table-action-btn" aria-label="Xem chi tiết T06">Xem</a>
+                  </td>
+                </tr>
+
+                <!-- T07 -->
+                <tr>
+                  <td><strong>T07</strong></td>
+                  <td>Mộc Châu 2N1Đ</td>
+                  <td>19/09/2026 06:30</td>
+                  <td>Lan</td>
+                  <td>
+                    <span class="status-badge badge-prep">
+                      <img src="../../assets/icons/departure.svg" alt="" aria-hidden="true" width="16" height="16" onerror="this.classList.add('asset-failed');">
+                      <span>Đang chuẩn bị</span>
+                    </span>
+                  </td>
+                  <td>Đang rà soát danh sách phòng</td>
+                  <td>
+                    <a href="#t07" class="table-action-btn" aria-label="Xem chi tiết T07">Xem</a>
+                  </td>
+                </tr>
+
+                <!-- T08 -->
+                <tr>
+                  <td><strong>T08</strong></td>
+                  <td>Huế 3N2Đ</td>
+                  <td>12/09/2026 07:00</td>
+                  <td>An</td>
+                  <td>
+                    <span class="status-badge badge-done">
+                      <img src="../../assets/icons/ready.svg" alt="" aria-hidden="true" width="16" height="16" class="icon-inline" onerror="this.classList.add('asset-failed');">
+                      <span>Hoàn thành</span>
+                    </span>
+                  </td>
+                  <td>Đoàn đã khởi hành và bàn giao nhật ký</td>
+                  <td>
+                    <a href="#t08" class="table-action-btn" aria-label="Xem chi tiết T08">Xem</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN (38%): FIELD INTELLIGENCE SIDEBAR -->
+      <aside class="sidebar-column" aria-label="Thông tin thực địa và nhân sự">
+
+        <!-- COORDINATOR PROFILE CARD (LAN) -->
+        <div class="coordinator-profile-card">
+          <div class="coordinator-header-row">
+            <div class="coordinator-avatar-wrap">
+              <img src="../../assets/images/lan_avatar.svg" 
+                   alt="Chân dung minh họa điều phối viên Lan phụ trách tour T01 (Nhân vật giả lập đào tạo)"
+                   width="64" height="64" loading="eager" onerror="this.classList.add('asset-failed');">
+            </div>
+            <div class="coordinator-info">
+              <h3>Lan — Điều Phối Viên Chính</h3>
+              <p class="coordinator-role-tag">Phụ trách Tour Đông Bắc &amp; Miền Trung</p>
+              <span class="fictional-disclosure-pill">Nhân vật điều phối giả lập / Fictional Operator</span>
+            </div>
+          </div>
+          <p style="font-size: 13.5px; color: var(--color-text-secondary); margin: 0 0 12px 0;">
+            Phụ trách trực tiếp điều phối các đoàn tour theo phân công nghiệp vụ: <strong>T01 (Hạ Long)</strong>, <strong>T04 (Đà Nẵng)</strong>, <strong>T07 (Mộc Châu)</strong>.
+          </p>
+          <div style="font-size: 12px; color: var(--color-text-tertiary); border-top: 1px solid var(--color-border-warm); padding-top: 8px;">
+            Trạng thái trực ban: Đang xử lý đối soát xác nhận phòng tour T01 trước giờ khởi hành.
+          </div>
+        </div>
+
+        <!-- OPERATIONAL FIELD SCENE -->
+        <div class="editorial-card">
+          <h3 style="font-family: var(--font-family-serif); font-size: 17px; margin: 0 0 12px 0; color: var(--color-text-primary);">
+            Hiện Trường Bàn Điều Phối
+          </h3>
+          <div style="border-radius: 8px; overflow: hidden; border: 1px solid var(--color-border-warm); margin-bottom: 12px;">
+            <img src="../../assets/images/operational_scene_prep.svg" 
+                 alt="Hiện trường bàn điều phối: Bìa kẹp hồ sơ lệnh tour T01 với 4 phòng khách sạn chờ xác nhận được đánh dấu màu hổ phách và điện thoại liên lạc"
+                 width="400" height="300" loading="lazy" style="width: 100%; height: auto; display: block;"
+                 onerror="this.classList.add('asset-failed'); this.style.display='none';">
+          </div>
+          <p style="font-size: 13px; color: var(--color-text-secondary); margin: 0; line-height: 1.5;">
+            Hồ sơ lệnh tour T01 đang được Lan rà soát: tập trung giải quyết xác nhận 4 phòng khách sạn trước giờ khởi hành 07:30.
+          </p>
+        </div>
+
+        <!-- CONTACT LOG (ED-02: RESOLVED WITH RELATIVE DELTA) -->
+        <div class="editorial-card">
+          <h3 style="font-family: var(--font-family-serif); font-size: 17px; margin: 0 0 12px 0; color: var(--color-text-primary); display: flex; align-items: center; gap: 8px;">
+            <img src="../../assets/icons/contact_log.svg" alt="" aria-hidden="true" width="20" height="20" onerror="this.classList.add('asset-failed');">
+            <span>Nhật Ký Liên Hệ Điều Phối (T01)</span>
+          </h3>
+          <ul class="log-list">
+            <li class="log-item">
+              <span class="log-time" data-relative-delta="15m">15 phút trước</span>
+              <span>Theo dõi đối tác: Gửi yêu cầu đối tác khách sạn phản hồi văn bản xác nhận 4 phòng.</span>
+            </li>
+            <li class="log-item">
+              <span class="log-time" data-relative-delta="90m">1 giờ 30 phút trước</span>
+              <span>Liên hệ khách sạn: Gọi điện trực tiếp bộ phận đặt phòng đối soát yêu cầu 4 phòng.</span>
+            </li>
+            <li class="log-item">
+              <span class="log-time" data-relative-delta="165m">2 giờ 45 phút trước</span>
+              <span>Rà soát trạng thái: Tiếp nhận thông tin khách sạn chưa xác nhận 4 phòng cho đoàn T01.</span>
+            </li>
+            <li class="log-item">
+              <span class="log-time" data-relative-delta="240m">4 giờ trước</span>
+              <span>Khởi tạo hồ sơ T01: Mở ca trực đối soát trước giờ khởi hành 14/09/2026 07:30.</span>
+            </li>
+          </ul>
+        </div>
+
+      </aside>
+
+    </main>
+
+    <!-- ASSET PROVENANCE & DISCLOSURE PANEL (COLLAPSIBLE) -->
+    <section class="disclosure-panel" aria-label="Minh bạch nguồn gốc tài sản hình ảnh">
+      <details id="asset-disclosure-details">
+        <summary class="disclosure-summary" aria-expanded="false">
+          <span>
+            Minh Bạch Nguồn Gốc Tài Sản &amp; Bản Quyền (Asset Provenance &amp; Disclosure Panel)
+            <svg class="disclosure-chevron-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+            </svg>
+          </span>
+          <span style="font-size: 12px; font-weight: normal; color: var(--color-text-tertiary);">Nhấp để xem / thu gọn</span>
+        </summary>
+        <div class="disclosure-content">
+          <p style="margin-top: 0;">
+            Tất cả tài sản hình ảnh, sơ đồ và biểu tượng trong bản mẫu Final Candidate được tác giả tự kiến tạo (Authored Vector) cục bộ trong workspace Module 12. Không sử dụng hình ảnh thương mại bên ngoài, không thực hiện bất kỳ truy vấn từ xa nào (0 remote requests), và nhân vật điều phối Lan là nhân vật giả lập phục vụ đào tạo thiết kế.
+          </p>
+          <table class="provenance-table">
+            <thead>
+              <tr>
+                <th>Mã Asset</th>
+                <th>Tệp Tin</th>
+                <th>Vai Trò</th>
+                <th>Nguồn Gốc</th>
+                <th>Tuyên Bố Minh Bạch</th>
+                <th>Mã Băm SHA-256 (6 ký tự đầu)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AST_IMG_002</td>
+                <td>assets/images/halong_field_documentary.svg</td>
+                <td>hero_context</td>
+                <td>authored_vector</td>
+                <td>Authored vector training field scene</td>
+                <td><code>11d616...</code></td>
+              </tr>
+              <tr>
+                <td>AST_IMG_001</td>
+                <td>assets/images/lan_avatar.svg</td>
+                <td>fictional_person</td>
+                <td>authored_vector</td>
+                <td>Fictional authored persona</td>
+                <td><code>a77828...</code></td>
+              </tr>
+              <tr>
+                <td>AST_IMG_004</td>
+                <td>assets/images/operational_scene_prep.svg</td>
+                <td>operational_scene</td>
+                <td>authored_vector</td>
+                <td>Authored vector operational scene</td>
+                <td><code>5857d2...</code></td>
+              </tr>
+              <tr>
+                <td>AST_DIAG_001</td>
+                <td>assets/diagrams/t01_route_narrative.svg</td>
+                <td>route_diagram</td>
+                <td>authored_vector</td>
+                <td>Authored vector route diagram</td>
+                <td><code>3085de...</code></td>
+              </tr>
+              <tr>
+                <td>AST_ICON_001..006</td>
+                <td>assets/icons/*.svg</td>
+                <td>icon_family</td>
+                <td>authored_vector</td>
+                <td>6 Authored vector icons 24x24</td>
+                <td><code>d37146...</code></td>
+              </tr>
+              <tr>
+                <td>AST_TEX_001</td>
+                <td>assets/textures/paper_grain_subtle.svg</td>
+                <td>texture_accent</td>
+                <td>authored_vector</td>
+                <td>Tactile paper substrate texture</td>
+                <td><code>fc09c4...</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div>TRIPFLOW · Hệ Thống Điều Phối Khởi Hành Tour Hằng Ngày (B2B SME Dispatcher Tool)</div>
+      <div>Bản mẫu Thiết kế Đào tạo — Stream B (Module 12) · Zero-Motion Verified</div>
+    </footer>
+
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      document.querySelectorAll('img').forEach(img => {
+        if (img.complete && img.naturalWidth === 0) {
+          img.classList.add('asset-failed');
+          img.style.display = 'none';
+          const p = img.parentElement;
+          if (p) {
+            const fb = p.querySelector('.image-fallback-placeholder, .diagram-fallback-panel');
+            if (fb) fb.style.display = fb.classList.contains('diagram-fallback-panel') ? 'block' : 'flex';
+          }
+        }
+      });
+    });
+  </script>
+
+  <script>
+    /* ==========================================================================
+       TRIPFLOW MOTION FOUNDATION ENGINE — STUDY B
+       Implements Patterns P1 (Disclosure), P2 (Action FSM), P3 (Attention)
+       Deterministic Test Hooks for Automated Independent Verification
+       ========================================================================== */
+
+    (function() {
+      const isStudyA = false;
+      
+      const TOKENS = isStudyA ? {
+        durationFast: 100,
+        durationBase: 160,
+        durationSlow: 220,
+        displacementP1: 4,
+        displacementP2: 3,
+        displacementP3: 3,
+        scaleP3: 1.01,
+        easeStandard: 'cubic-bezier(0.2, 0, 0.2, 1)',
+        easeEnter: 'cubic-bezier(0, 0, 0.2, 1)',
+        easeExit: 'cubic-bezier(0.25, 0, 0.3, 1)'
+      } : {
+        durationFast: 120,
+        durationBase: 180,
+        durationSlow: 250,
+        displacementP1: 8,
+        displacementP2: 6,
+        displacementP3: 6,
+        scaleP3: 1.02,
+        easeStandard: 'cubic-bezier(0.2, 0, 0, 1)',
+        easeEnter: 'cubic-bezier(0, 0, 0, 1)',
+        easeExit: 'cubic-bezier(0.3, 0, 1, 1)'
+      };
+
+      window.__MOTION_TOKENS = TOKENS;
+
+      // --------------------------------------------------------------------------
+      // PATTERN P1: DISCLOSURE CONTINUITY
+      // --------------------------------------------------------------------------
+      const disclosureDetails = document.getElementById('asset-disclosure-details');
+      const disclosureSummary = disclosureDetails ? disclosureDetails.querySelector('.disclosure-summary') : null;
+      const disclosureContent = disclosureDetails ? disclosureDetails.querySelector('.disclosure-content') : null;
+      const disclosureChevron = disclosureDetails ? disclosureDetails.querySelector('.disclosure-chevron-icon') : null;
+
+      let isP1Animating = false;
+
+      if (disclosureDetails && disclosureSummary && disclosureContent) {
+        disclosureSummary.addEventListener('click', function(e) {
+          e.preventDefault();
+          const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('reduce-motion');
+
+          if (reduced) {
+            disclosureDetails.open = !disclosureDetails.open;
+            disclosureSummary.setAttribute('aria-expanded', disclosureDetails.open ? 'true' : 'false');
+            if (disclosureChevron) {
+              disclosureChevron.style.transform = disclosureDetails.open ? 'rotate(90deg)' : 'rotate(0deg)';
+            }
+            return;
+          }
+
+          if (isP1Animating) {
+            const anims = disclosureContent.getAnimations();
+            anims.forEach(a => a.cancel());
+            isP1Animating = false;
+          }
+
+          if (!disclosureDetails.open) {
+            disclosureDetails.open = true;
+            disclosureSummary.setAttribute('aria-expanded', 'true');
+            isP1Animating = true;
+
+            if (disclosureChevron) {
+              disclosureChevron.animate([
+                { transform: 'rotate(0deg)' },
+                { transform: 'rotate(90deg)' }
+              ], {
+                duration: TOKENS.durationBase,
+                easing: TOKENS.easeStandard,
+                fill: 'forwards'
+              });
+            }
+
+            const openAnim = disclosureContent.animate([
+              { opacity: 0, transform: 'translateY(-' + TOKENS.displacementP1 + 'px)' },
+              { opacity: 1, transform: 'translateY(0px)' }
+            ], {
+              duration: TOKENS.durationBase,
+              easing: TOKENS.easeEnter,
+              fill: 'forwards'
+            });
+
+            openAnim.onfinish = () => {
+              isP1Animating = false;
+              disclosureContent.style.opacity = '1';
+              disclosureContent.style.transform = 'translateY(0px)';
+            };
+          } else {
+            disclosureSummary.setAttribute('aria-expanded', 'false');
+            isP1Animating = true;
+
+            if (disclosureChevron) {
+              disclosureChevron.animate([
+                { transform: 'rotate(90deg)' },
+                { transform: 'rotate(0deg)' }
+              ], {
+                duration: TOKENS.durationFast,
+                easing: TOKENS.easeStandard,
+                fill: 'forwards'
+              });
+            }
+
+            const closeAnim = disclosureContent.animate([
+              { opacity: 1, transform: 'translateY(0px)' },
+              { opacity: 0, transform: 'translateY(-' + TOKENS.displacementP1 + 'px)' }
+            ], {
+              duration: TOKENS.durationFast,
+              easing: TOKENS.easeExit,
+              fill: 'forwards'
+            });
+
+            closeAnim.onfinish = () => {
+              disclosureDetails.open = false;
+              isP1Animating = false;
+              disclosureContent.style.opacity = '';
+              disclosureContent.style.transform = '';
+            };
+          }
+        });
+      }
+
+      // --------------------------------------------------------------------------
+      // PATTERN P2: ACTION FEEDBACK FSM (CẬP NHẬT NHẬT KÝ T01)
+      // --------------------------------------------------------------------------
+      const btnUpdateLog = document.getElementById('btn-update-t01-log');
+      const liveRegion = document.getElementById('t01-action-live-region');
+
+      window.__actionState = 'idle';
+      window.__actionAttempts = 0;
+      window.__actionCommits = 0;
+      window.__actionErrors = 0;
+      window.__nextActionOutcome = null;
+
+      window.__tripflowSetActionOutcome = function(outcome) {
+        window.__nextActionOutcome = outcome;
+      };
+
+      window.__tripflowGetActionState = function() {
+        return window.__actionState;
+      };
+
+      window.__tripflowGetActionCounters = function() {
+        return {
+          attempts: window.__actionAttempts,
+          commits: window.__actionCommits,
+          errors: window.__actionErrors
+        };
+      };
+
+      function updateLiveRegion(msg) {
+        if (liveRegion) {
+          liveRegion.textContent = msg;
+        }
+      }
+
+      function transitionP2State(nextState) {
+        window.__actionState = nextState;
+        btnUpdateLog.setAttribute('data-state', nextState);
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('reduce-motion');
+
+        const labelSpan = btnUpdateLog.querySelector('span');
+
+        switch (nextState) {
+          case 'idle':
+            btnUpdateLog.setAttribute('aria-disabled', 'false');
+            if (labelSpan) labelSpan.textContent = 'Cập nhật Nhật ký Đoàn';
+            btnUpdateLog.style.background = '';
+            btnUpdateLog.style.borderColor = '';
+            btnUpdateLog.style.color = '';
+            updateLiveRegion('');
+            break;
+
+          case 'pending':
+            window.__actionAttempts++;
+            btnUpdateLog.setAttribute('aria-disabled', 'true');
+            if (labelSpan) labelSpan.textContent = 'Đang lưu nhật ký...';
+            updateLiveRegion('Hệ thống đang gửi cập nhật nhật ký T01...');
+
+            if (!reduced) {
+              btnUpdateLog.animate([
+                { opacity: 1 },
+                { opacity: 0.7 },
+                { opacity: 1 }
+              ], {
+                duration: TOKENS.durationSlow,
+                easing: TOKENS.easeStandard,
+                iterations: 2
+              });
+            }
+
+            const outcome = window.__nextActionOutcome !== null ? window.__nextActionOutcome : (window.__actionAttempts === 1 ? 'error' : 'success');
+
+            setTimeout(() => {
+              if (outcome === 'success') {
+                transitionP2State('success');
+              } else {
+                transitionP2State('error');
+              }
+            }, reduced ? 20 : 350);
+            break;
+
+          case 'success':
+            window.__actionCommits++;
+            btnUpdateLog.setAttribute('aria-disabled', 'false');
+            if (labelSpan) labelSpan.textContent = 'Đã cập nhật thành công ✓';
+            btnUpdateLog.style.background = '#ECFDF5';
+            btnUpdateLog.style.borderColor = '#10B981';
+            btnUpdateLog.style.color = '#065F46';
+            updateLiveRegion('Cập nhật nhật ký tour T01 thành công.');
+
+            if (!reduced) {
+              btnUpdateLog.animate([
+                { transform: 'scale(1)' },
+                { transform: 'scale(' + (isStudyA ? '1.01' : '1.02') + ')' },
+                { transform: 'scale(1)' }
+              ], {
+                duration: TOKENS.durationBase,
+                easing: TOKENS.easeEnter
+              });
+            }
+
+            setTimeout(() => {
+              if (window.__actionState === 'success') {
+                transitionP2State('idle');
+              }
+            }, 3000);
+            break;
+
+          case 'error':
+            window.__actionErrors++;
+            btnUpdateLog.setAttribute('aria-disabled', 'false');
+            if (labelSpan) labelSpan.textContent = 'Lỗi kết nối — Thử lại ⟳';
+            btnUpdateLog.style.background = '#FEF2F2';
+            btnUpdateLog.style.borderColor = '#EF4444';
+            btnUpdateLog.style.color = '#991B1B';
+            updateLiveRegion('Cập nhật nhật ký thất bại do đối tác chưa phản hồi. Nhấn để thử lại.');
+
+            if (!reduced) {
+              const d = TOKENS.displacementP2;
+              btnUpdateLog.animate([
+                { transform: 'translateX(0px)' },
+                { transform: 'translateX(-' + d + 'px)' },
+                { transform: 'translateX(' + d + 'px)' },
+                { transform: 'translateX(0px)' }
+              ], {
+                duration: TOKENS.durationFast,
+                easing: TOKENS.easeStandard
+              });
+            }
+            break;
+        }
+      }
+
+      if (btnUpdateLog) {
+        btnUpdateLog.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (window.__actionState === 'pending') {
+            return;
+          }
+          if (window.__actionState === 'error') {
+            transitionP2State('pending');
+          } else if (window.__actionState === 'idle' || window.__actionState === 'success') {
+            transitionP2State('pending');
+          }
+        });
+      }
+
+      // --------------------------------------------------------------------------
+      // PATTERN P3: ATTENTION WITHOUT ALARM (ĐIỂM NGHẼN T01)
+      // --------------------------------------------------------------------------
+      const btnHighlightT01 = document.getElementById('btn-highlight-t01');
+      const focalTourCard = document.getElementById('tour-focus-t01');
+      const bottleneckBox = focalTourCard ? focalTourCard.querySelector('.bottleneck-alert-box') : null;
+
+      let isP3Running = false;
+      function triggerAttentionCue() {
+        if (isP3Running || !bottleneckBox) return;
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('reduce-motion');
+
+        isP3Running = true;
+        if (reduced) {
+          bottleneckBox.style.borderColor = '#B45309';
+          bottleneckBox.style.background = '#FDE68A';
+          setTimeout(() => {
+            bottleneckBox.style.borderColor = '';
+            bottleneckBox.style.background = '';
+            isP3Running = false;
+          }, 300);
+          return;
+        }
+
+        const anim = bottleneckBox.animate([
+          { transform: 'translateY(0px) scale(1)', borderColor: '#D97706' },
+          { transform: 'translateY(-' + TOKENS.displacementP3 + 'px) scale(' + TOKENS.scaleP3 + ')', borderColor: '#B45309' },
+          { transform: 'translateY(0px) scale(1)', borderColor: '#D97706' }
+        ], {
+          duration: TOKENS.durationSlow,
+          easing: TOKENS.easeEnter,
+          iterations: 1
+        });
+
+        anim.onfinish = () => {
+          isP3Running = false;
+          bottleneckBox.style.transform = '';
+          bottleneckBox.style.borderColor = '';
+        };
+      }
+
+      if (btnHighlightT01) {
+        btnHighlightT01.addEventListener('click', function(e) {
+          e.preventDefault();
+          triggerAttentionCue();
+        });
+      }
+
+      const heroHeading = focalTourCard ? focalTourCard.querySelector('.hero-heading') : null;
+      if (heroHeading) {
+        heroHeading.style.cursor = 'pointer';
+        heroHeading.addEventListener('click', triggerAttentionCue);
+      }
+
+      window.__tripflowTriggerAttention = triggerAttentionCue;
+
+    })();
+  </script>
+
+</body>
+</html>

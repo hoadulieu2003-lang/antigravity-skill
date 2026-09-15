@@ -1,0 +1,234 @@
+- asset_id: AST_ICON_001
+  file: assets/icons/departure.svg
+  role: icon_family
+  origin_type: authored_vector
+  source_url: null
+  creator: Antigravity Engineering Agent
+  license: Proprietary Exercise Asset
+  generated_with: null
+  generated_date: null
+  disclosure: Authored vector training icon
+  depicts_real_partner: false
+  focal_point_percent:
+    x: 50
+    y: 50
+  alt_strategy: functional
+  alt_text: 'Biểu tượng khởi hành: Mặt đồng hồ mốc và mũi tên xuất phát / Departure
+    clock'
+  sha256: d37146008d598e6af840ac45f93c8e62bb7accd824e002b3297962824a6d8f43
+- asset_id: AST_ICON_002
+  file: assets/icons/waiting_partner.svg
+  role: icon_family
+  origin_type: authored_vector
+  source_url: null
+  creator: Antigravity Engineering Agent
+  license: Proprietary Exercise Asset
+  generated_with: null
+  generated_date: null
+  disclosure: Authored vector training icon
+  depicts_real_partner: false
+  focal_point_percent:
+    x: 50
+    y: 50
+  alt_strategy: functional
+  alt_text: 'Biểu tượng chờ đối tác xác nhận: Vòng tròn ngắt đoạn và đồng hồ cát /
+    Waiting partner icon'
+  sha256: 9c2767c5378caadea8346aa2b4590420ad7d40274326c278c35cb1fade3ce936
+- asset_id: AST_ICON_003
+  file: assets/icons/missing_dossier.svg
+  role: icon_family
+  origin_type: authored_vector
+  source_url: null
+  creator: Antigravity Engineering Agent
+  license: Proprietary Exercise Asset
+  generated_with: null
+  generated_date: null
+  disclosure: Authored vector training icon
+  depicts_real_partner: false
+  focal_point_percent:
+    x: 50
+    y: 50
+  alt_strategy: functional
+  alt_text: 'Biểu tượng thiếu hồ sơ: Tập tài liệu góc gập kèm dấu chấm than cảnh báo
+    / Missing dossier alert'
+  sha256: 8e4cccd71cf0c99fad61e816797b98cae024eb4339061fff88ccc24b62309166
+- asset_id: AST_ICON_004
+  file: assets/icons/ready.svg
+  role: icon_family
+  origin_type: authored_vector
+  source_url: null
+  creator: Antigravity Engineering Agent
+  license: Proprietary Exercise Asset
+  generated_with: null
+  generated_date: null
+  disclosure: Authored vector training icon
+  depicts_real_partner: false
+  focal_point_percent:
+    x: 50
+    y: 50
+  alt_strategy: functional
+  alt_text: 'Biểu tượng sẵn sàng 100%: Vòng tròn bao bọc dấu kiểm hoàn tất / Ready
+    verified checkmark'
+  sha256: bba1bef79b1f20fc6cf61b792c01bd48104b8a37d4255b70c7510b90038d3249
+- asset_id: AST_ICON_005
+  file: assets/icons/person_lan.svg
+  role: icon_family
+  origin_type: authored_vector
+  source_url: null
+  creator: Antigravity Engineering Agent
+  license: Proprietary Exercise Asset
+  generated_with: null
+  generated_date: null
+  disclosure: Authored vector training icon
+  depicts_real_partner: false
+  focal_point_percent:
+    x: 50
+    y: 50
+  alt_strategy: functional
+  alt_text: 'Biểu tượng người phụ trách: Chân dung tối giản điều phối viên Lan / Coordinator
+    icon'
+  sha256: 9603c06951407f1979b3bb7d2d0ddb22656bf4cac8e250672e3fb2792571ac1e
+- asset_id: AST_ICON_006
+  file: assets/icons/contact_log.svg
+  role: icon_family
+  origin_type: authored_vector
+  source_url: null
+  creator: Antigravity Engineering Agent
+  license: Proprietary Exercise Asset
+  generated_with: null
+  generated_date: null
+  disclosure: Authored vector training icon
+  depicts_real_partner: false
+  focal_point_percent:
+    x: 50
+    y: 50
+  alt_strategy: functional
+  alt_text: 'Biểu tượng nhật ký liên hệ: Sổ tay ghi chép điều phối / Contact log icon'
+  sha256: 7e640a14277f5953314aafb26833a787e8edfc471ea472a85b4a5be668773aef
+- asset_id: AST_DIAG_001
+  file: assets/diagrams/t01_route_narrative.svg
+  role: route_diagram
+  origin_type: authored_vector
+  source_url: null
+  creator: Antigravity Engineering Agent
+  license: Proprietary Exercise Asset
+  generated_with: null
+  generated_date: null
+  disclosure: Authored vector training route diagram
+  depicts_real_partner: false
+  focal_point_percent:
+    x: 65
+    y: 58
+  alt_strategy: complex
+  alt_text: 'Sơ đồ chuỗi lộ trình T01 Hạ Long 4 mốc: Hà Nội (07:30 14/09 Sẵn sàng),
+    Lộ trình di chuyển (Theo kế hoạch), Khách sạn Hạ Long (Điểm nghẽn: Khách sạn
+    chưa xác nhận 4 phòng), Cảng Tuần Châu (Sẵn sàng đón đoàn)'
+  sha256: 7de95c5a66afbf2eda3ee710488be480b53f78730f2dbbcb95eebe9e8ff5e393
+- asset_id: AST_DIAG_002
+  file: assets/diagrams/t01_route_schematic.svg
+  role: route_diagram
+  origin_type: authored_vector
+  source_url: null
+  creator: Antigravity Engineering Agent
+  license: Proprietary Exercise Asset
+  generated_with: null
+  generated_date: null
+  disclosure: Authored vector training route diagram
+  depicts_real_partner: false
+  focal_point_percent:
+    x: 65
+    y: 50
+  alt_strategy: complex
+  alt_text: Sơ đồ tín hiệu kỹ thuật tuyến T01 Hạ Long với điểm ngắt tín hiệu cảnh
+    báo tại ga Hạ Long do chưa xác nhận 4 phòng
+  sha256: a7b5da4f21c19d6de90ac4d77fe29f0c47c86ccdfb5241ff22aff52f9052d045
+- asset_id: AST_IMG_001
+  file: assets/images/lan_avatar.svg
+  role: fictional_person
+  origin_type: authored_vector
+  source_url: null
+  creator: Antigravity Engineering Agent
+  license: Proprietary Exercise Asset
+  generated_with: null
+  generated_date: null
+  disclosure: Fictional authored persona
+  depicts_real_partner: false
+  focal_point_percent:
+    x: 50
+    y: 35
+  alt_strategy: informative
+  alt_text: Chân dung minh họa điều phối viên Lan phụ trách tour T01 (Nhân vật giả
+    lập đào tạo)
+  sha256: a77828268c11e9d85d3f79558059966fe90227e44c444bb752b77d13e0213ae5
+- asset_id: AST_IMG_002
+  file: assets/images/halong_field_documentary.svg
+  role: hero_context
+  origin_type: authored_vector
+  source_url: null
+  creator: Antigravity Engineering Agent
+  license: Proprietary Exercise Asset
+  generated_with: null
+  generated_date: null
+  disclosure: Authored vector training field scene
+  depicts_real_partner: false
+  focal_point_percent:
+    x: 50
+    y: 40
+  alt_strategy: informative
+  alt_text: Bối cảnh bến tàu Tuần Châu và vịnh Hạ Long lúc chập tối mốc 18:00 ICT
+    trước ngày khởi hành của đoàn T01
+  sha256: 7e919a8651a62cc6c1af044e3cf9a3ac216b68f8fac08db804a7fec4aa4dcea7
+- asset_id: AST_IMG_003
+  file: assets/images/route_signal_abstract.svg
+  role: hero_context
+  origin_type: authored_vector
+  source_url: null
+  creator: Antigravity Engineering Agent
+  license: Proprietary Exercise Asset
+  generated_with: null
+  generated_date: null
+  disclosure: Authored vector training cartographic signal matrix
+  depicts_real_partner: false
+  focal_point_percent:
+    x: 72
+    y: 30
+  alt_strategy: informative
+  alt_text: Bản đồ tín hiệu hành lang lộ trình trực giao Hà Nội - Hải Dương - Hạ Long
+    với điểm nghẽn cảnh báo tại Hạ Long
+  sha256: 03843752c4145d3c0040b5dd7dc225afcdbeb8771bce53471d57c0df43139d07
+- asset_id: AST_IMG_004
+  88fe6f88de14f74f1df164bd88deaa627054d118a7f1c7a1177d68bf2c150537
+- asset_id: AST_TEX_001
+  file: assets/textures/paper_grain_subtle.svg
+  role: texture_accent
+  origin_type: authored_vector
+  source_url: null
+  creator: Antigravity Engineering Agent
+  license: Proprietary Exercise Asset
+  generated_with: null
+  generated_date: null
+  disclosure: Authored tactile paper texture
+  depicts_real_partner: false
+  focal_point_percent:
+    x: 50
+    y: 50
+  alt_strategy: decorative
+  alt_text: ''
+  sha256: fc09c4ef5e6a16622c6b06dae47c74908831678d8abbee8551efb0ee0298a613
+- asset_id: AST_TEX_002
+  file: assets/textures/grid_matrix_pattern.svg
+  role: texture_accent
+  origin_type: authored_vector
+  source_url: null
+  creator: Antigravity Engineering Agent
+  license: Proprietary Exercise Asset
+  generated_with: null
+  generated_date: null
+  disclosure: Authored technical drafting grid pattern
+  depicts_real_partner: false
+  focal_point_percent:
+    x: 50
+    y: 50
+  alt_strategy: decorative
+  alt_text: ''
+  sha256: f63af9b0aa538bb2ef94f393dabc004160fc5d93d9a8e06586f74f42c30215a6

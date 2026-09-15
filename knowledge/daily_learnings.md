@@ -4,39 +4,6 @@
 
 > *[Ghi chú: Đã nén các phiên học tập cũ hơn để tối ưu bộ nhớ]*
 
-## 📅 Phiên Học Tập: `2026-09-11 18:26:45`
-
-### 🌐 Tin tức Nổi bật từ Google & Frontier Labs
-- **[Google AI Official]** [3 ways to prep for your next big race with Search](https://blog.google/products-and-platforms/products/search/running-race-training-tips/)
-  > 
-- **[Google AI Official]** [Get ready for the game with new football features in Search](https://blog.google/products-and-platforms/products/search/football-features-google-search/)
-  > 
-- **[Google AI Official]** [Recreating a 70-year love story frame by frame](https://blog.google/innovation-and-ai/technology/ai/love-rendered-film/)
-  > 
-
-### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
-- **[GitHub (2612 ⭐)]** [makecindy/cindy](https://github.com/makecindy/cindy)
-  > Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的 AI Agent。
-- **[GitHub (1663 ⭐)]** [rlaope/oh-my-hermes](https://github.com/rlaope/oh-my-hermes)
-  > All in one plugin for Hermes Agent ⚚ the coding intelligence, a long-term memory system and model optimized workflow packages
-- **[GitHub (24401 ⭐)]** [activepieces/activepieces](https://github.com/activepieces/activepieces)
-  > AI Agents & MCPs & AI Workflow Automation • (~400 MCP servers for AI agents) • AI Automation / AI Agent with MCPs • AI Workflows & AI Agents • MCPs for AI Ag...
-
-### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
-- **[HuggingFace (Model)]** [deepseek-ai/DeepSeek-V4.1-Flash](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)
-  > Trending model on Hugging Face hub.
-- **[HuggingFace (Model)]** [openbmb/MiniCPM5-2B](https://huggingface.co/openbmb/MiniCPM5-2B)
-  > Trending model on Hugging Face hub.
-- **[HuggingFace (Model)]** [XHToken/Spark-X2.5-4B](https://huggingface.co/XHToken/Spark-X2.5-4B)
-  > Trending model on Hugging Face hub.
-
-### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
-- **[ArXiv CS.AI]** [OpenDiscoveryTrace: Process Traces for Evaluating AI Scientist Workflows](https://arxiv.org/abs/2609.09203)
-  > Cutting-edge preprint in Artificial Intelligence.
-- **[ArXiv CS.AI]** [Adaptive Entangled Game Modules in Artificial General Intelligence](https://arxiv.org/abs/2609.09226)
-  > Cutting-edge preprint in Artificial Intelligence.
-
----
 ## 📅 Phiên Học Tập: `2026-09-11 19:17:49`
 
 <untrusted_external_content>
@@ -591,6 +558,18 @@
   > Neo.mjs is a self-evolving software organism: a professional end-to-end AI engineering team whose cross-model swarm inhabits live apps via Neural Link, Activ...
 - **[GitHub (31573 ⭐)]** [feder-cr/AIHawk](https://github.com/feder-cr/AIHawk)
   > Anti detect browser and web browsing agent: an open-source MCP server for undetected browsing, AI web scraping and computer use agents. No captchas.
+
+</untrusted_external_content>
+
+---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-15 08:42:04`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (153 ⭐)]** [haohaoxue-site/Lexora](https://github.com/haohaoxue-site/Lexora)
+  > Lexora — Personal AI workspace built around Desktop / 以 Desktop 为核心的个人 AI 工作台
+- **[GitHub (3101 ⭐)]** [SciSharp/BotSharp](https://github.com/SciSharp/BotSharp)
+  > AI Multi-Agent Framework in .NET
 
 </untrusted_external_content>
 

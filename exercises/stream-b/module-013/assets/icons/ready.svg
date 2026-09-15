@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Sẵn sàng / Ready">
+  <title>Sẵn sàng / Ready</title>
+  <desc>Biểu tượng sẵn sàng 100%: Vòng tròn bao bọc dấu kiểm hoàn tất / Verified readiness checkmark badge</desc>
+  <!-- Verified circle badge / Huy hiệu vòng tròn kiểm tra -->
+  <circle cx="12" cy="12" r="9" />
+  <!-- Confirmed checkmark / Dấu kiểm sẵn sàng -->
+  <polyline points="8 12 11 15 16 9" stroke-width="2" />
+</svg>

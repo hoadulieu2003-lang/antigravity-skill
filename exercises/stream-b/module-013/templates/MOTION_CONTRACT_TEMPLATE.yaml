@@ -1,0 +1,74 @@
+version: 1
+module: DESIGN_TRAINING_013_MOTION_FOUNDATION
+status: DRAFT
+
+principles:
+  - id: MP-01
+    statement: "TODO"
+
+tokens:
+  duration:
+    fast: "120ms"
+    base: "180ms"
+    slow: "240ms"
+  easing:
+    standard: "cubic-bezier(0.2, 0, 0, 1)"
+    enter: "cubic-bezier(0, 0, 0, 1)"
+    exit: "cubic-bezier(0.3, 0, 1, 1)"
+    linear: "linear"
+  distance:
+    subtle: "4px"
+    maximum: "8px"
+  scale:
+    emphasis: 1.02
+
+patterns:
+  disclosure:
+    purpose: "TODO"
+    trigger: "TODO"
+    states: []
+    selectors: []
+    properties: []
+    reduced_motion: "TODO"
+    interruption_rule: "TODO"
+  action_feedback:
+    purpose: "TODO"
+    trigger: "TODO"
+    states: [idle, pending, error, retry, success]
+    selectors: []
+    properties: []
+    reduced_motion: "TODO"
+    interruption_rule: "TODO"
+  attention:
+    purpose: "TODO"
+    trigger: "TODO"
+    states: []
+    selectors: []
+    properties: []
+    reduced_motion: "TODO"
+    interruption_rule: "TODO"
+
+budgets:
+  max_duration_ms: 300
+  max_delay_ms: 0
+  max_translation_px: 8
+  max_scale: 1.02
+  max_concurrent_animations: 2
+  layout_shift: 0
+
+allowed_animated_properties:
+  - transform
+  - opacity
+  - color
+  - background-color
+  - border-color
+
+forbidden_properties:
+  - width
+  - height
+  - top
+  - left
+  - grid-template-columns
+  - grid-template-rows
+  - perspective
+

@@ -1,7 +1,7 @@
 ---
 name: mateclaw
 description: >-
-  Kỹ năng chuyên gia vận hành cho mateaix/mateclaw (1101 ⭐).
+  Kỹ năng chuyên gia vận hành cho mateaix/mateclaw (1104 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở mateclaw vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến 🤖 MateClaw — Your second brain with Multi-Agent Orchestration, MCP Protocol, Skills & Memory, Dream, and Multi-Channel Support
@@ -12,9 +12,9 @@ description: >-
 # mateaix/mateclaw — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/mateaix/mateclaw`  
-> **Độ uy tín cộng đồng**: 1101 ⭐  
+> **Độ uy tín cộng đồng**: 1104 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-14 16:42:07Z
+> **Tự động đóng gói lúc**: 2026-09-15 01:42:11Z
 
 ---
 

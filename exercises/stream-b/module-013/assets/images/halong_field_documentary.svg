@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-labelledby="halong-hero-title halong-hero-desc">
+  <title id="halong-hero-title">Bối cảnh bến tàu Vịnh Hạ Long lúc chập tối (18:00 ICT)</title>
+  <desc id="halong-hero-desc">Ảnh tư liệu hiện trường: Bến tàu khách Tuần Châu và dãy núi đá vôi vịnh Hạ Long trong ánh hoàng hôn ấm áp, tàu gỗ du lịch neo đậu chuẩn bị đón đoàn T01 sáng mai.</desc>
+
+  <defs>
+    <!-- Sky twilight gradient / Hoàng hôn chập tối ấm áp -->
+    <linearGradient id="sky-dusk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#78716C" />
+      <stop offset="40%" stop-color="#A8A29E" />
+      <stop offset="70%" stop-color="#D6CEBE" />
+      <stop offset="100%" stop-color="#E7DEC8" />
+    </linearGradient>
+
+    <!-- Water reflection gradient / Mặt nước phản chiếu ánh chiều -->
+    <linearGradient id="water-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#94A3B8" />
+      <stop offset="30%" stop-color="#64748B" />
+      <stop offset="70%" stop-color="#475569" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+
+    <!-- Distant karst gradient / Dãy núi đá vôi xa -->
+    <linearGradient id="karst-far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#64748B" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#475569" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Mid-ground karst gradient / Núi đá vôi tầm trung -->
+    <linearGradient id="karst-mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky background / Bầu trời -->
+  <rect x="0" y="0" width="640" height="230" fill="url(#sky-dusk)" />
+
+  <!-- Soft sun orb near horizon / Vầng thái dương dịu khuất sau mây -->
+  <circle cx="380" cy="165" r="42" fill="#FEF3C7" opacity="0.45" />
+
+  <!-- Distant Karst Mountains / Núi đá vôi phía xa -->
+  <path d="M 40 210 Q 75 145 110 160 Q 145 175 180 140 Q 220 100 260 150 Q 300 170 340 135 Q 380 95 420 145 Q 460 180 500 130 Q 540 85 580 155 Q 610 190 640 205 L 640 230 L 40 230 Z" 
+        fill="url(#karst-far)" />
+
+  <!-- Midground Karst Formations / Các khối núi đá vôi vách đứng biểu trưng Hạ Long -->
+  <path d="M 0 225 L 0 160 Q 30 115 65 140 Q 95 160 120 185 L 120 225 Z" fill="url(#karst-mid)" />
+  <path d="M 210 225 Q 235 125 270 145 Q 300 165 330 130 Q 355 100 375 140 Q 395 180 420 225 Z" fill="url(#karst-mid)" />
+  <path d="M 470 225 Q 495 110 530 125 Q 565 140 595 175 Q 615 195 640 215 L 640 225 Z" fill="url(#karst-mid)" />
+
+  <!-- Water Surface / Mặt vịnh nước êm lúc hoàng hôn -->
+  <rect x="0" y="220" width="640" height="140" fill="url(#water-grad)" />
+
+  <!-- Water ripple highlights / Các gợn sóng phản quang -->
+  <line x1="320" y1="235" x2="440" y2="235" stroke="#FEF3C7" stroke-width="1" opacity="0.3" />
+  <line x1="280" y1="248" x2="460" y2="248" stroke="#FEF3C7" stroke-width="1.5" opacity="0.25" />
+  <line x1="240" y1="262" x2="490" y2="262" stroke="#FEF3C7" stroke-width="1.5" opacity="0.2" />
+  <line x1="180" y1="280" x2="520" y2="280" stroke="#FDE68A" stroke-width="2" opacity="0.15" />
+  <line x1="120" y1="305" x2="560" y2="305" stroke="#FDE68A" stroke-width="2" opacity="0.1" />
+
+  <!-- Moored Wooden Tour Boat (Hạ Long Traditional Cruise) / Du thuyền gỗ 2 tầng neo đậu tại bến -->
+  <g transform="translate(190, 175)">
+    <!-- Boat Hull / Thân tàu gỗ sơn trắng cổ điển -->
+    <path d="M 10 48 Q 60 52 140 52 Q 170 52 185 40 L 195 24 L 2 24 Z" fill="#F8FAFC" stroke="#334155" stroke-width="1.5" />
+    <path d="M 4 44 L 180 44" stroke="#C2410C" stroke-width="2.5" />
+    <!-- Lower Cabin / Tầng ca-bin 1 -->
+    <rect x="18" y="10" width="150" height="14" fill="#E2E8F0" stroke="#475569" stroke-width="1" />
+    <!-- Cabin Windows / Hàng cửa sổ ca-bin -->
+    <rect x="26" y="13" width="10" height="8" rx="1" fill="#1E293B" />
+    <rect x="42" y="13" width="10" height="8" rx="1" fill="#1E293B" />
+    <rect x="58" y="13" width="10" height="8" rx="1" fill="#1E293B" />
+    <rect x="74" y="13" width="10" height="8" rx="1" fill="#1E293B" />
+    <rect x="90" y="13" width="10" height="8" rx="1" fill="#1E293B" />
+    <rect x="106" y="13" width="10" height="8" rx="1" fill="#1E293B" />
+    <rect x="122" y="13" width="10" height="8" rx="1" fill="#1E293B" />
+    <rect x="138" y="13" width="10" height="8" rx="1" fill="#1E293B" />
+    <!-- Upper Deck / Tầng boong ngắm cảnh trên -->
+    <rect x="32" y="-2" width="115" height="12" fill="#F1F5F9" stroke="#475569" stroke-width="1" />
+    <!-- Sun canopy / Mái che tầng trên -->
+    <polygon points="26,-2 152,-2 148,-8 30,-8" fill="#B45309" />
+    <line x1="88" y1="-8" x2="88" y2="-22" stroke="#475569" stroke-width="1.5" />
+    <!-- Traditional cruise sail silhouette / Cánh buồm nâu truyền thống hạ gọn -->
+    <polygon points="88,-20 120,-6 88,-6" fill="#78350F" opacity="0.85" />
+    <!-- Water reflection of the boat / Vệt bóng nước của thuyền -->
+    <ellipse cx="98" cy="58" rx="85" ry="6" fill="#1E293B" opacity="0.4" />
+  </g>
+
+  <!-- Secondary Smaller Tender Boat / Xuồng máy trung chuyển nhỏ -->
+  <g transform="translate(420, 215)">
+    <path d="M 5 20 Q 30 22 75 22 Q 88 22 96 16 L 100 8 L 0 8 Z" fill="#E2E8F0" stroke="#334155" stroke-width="1" />
+    <rect x="15" y="0" width="55" height="8" fill="#F8FAFC" stroke="#475569" stroke-width="0.75" />
+    <ellipse cx="48" cy="24" rx="42" ry="3" fill="#1E293B" opacity="0.3" />
+  </g>
+
+  <!-- Foreground Concrete Dock Wharf / Bến cảng bê tông và cọc bích buộc tàu tiền cảnh -->
+  <path d="M 0 320 L 220 290 L 260 360 L 0 360 Z" fill="#292524" />
+  <path d="M 0 320 L 220 290 L 225 296 L 0 326 Z" fill="#44403C" />
+  <!-- Mooring Bollard / Cọc bích gang đúc cột dây tàu -->
+  <g transform="translate(140, 280)">
+    <rect x="0" y="8" width="16" height="22" rx="3" fill="#1C1917" stroke="#57534E" stroke-width="1" />
+    <ellipse cx="8" cy="8" rx="14" ry="5" fill="#292524" stroke="#57534E" stroke-width="1" />
+    <!-- Mooring rope coil / Dây thừng thắt neo -->
+    <path d="M -12 24 C 6 22, 14 30, 28 26 C 45 20, 90 28, 110 35" fill="none" stroke="#D6D3D1" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  <!-- Documentary timestamp / Nhãn tư liệu hiện trường -->
+  <g transform="translate(18, 22)">
+    <rect x="0" y="0" width="230" height="26" rx="4" fill="#1C1917" opacity="0.8" />
+    <text x="12" y="17" font-family="'Times New Roman', Georgia, serif" font-size="11" fill="#FAF8F5" font-weight="normal">
+      Bến Tuần Châu · 13/09/2026 18:00 ICT
+    </text>
+  </g>
+</svg>

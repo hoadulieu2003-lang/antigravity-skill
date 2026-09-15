@@ -1,0 +1,1 @@
+{"id":"file_00000000689481f5a53febbd46944b6e","file_id":"file_00000000689481f5a53febbd46944b6e","file_name":"DESIGN_TRAINING_012_OWNER_WAIVER_ACCEPTANCE_009.md","mime_type":"text/markdown","is_library_file":true,"library_file_id":"libfile_3f5c9e4ab4b48191aee0e1030f89b966","library_directory_id":"libdir_26bde3ab12dc8191a5e468f6457a85dc","gizmo_id":null,"is_project":null}

@@ -1,0 +1,152 @@
+{
+  "timestamp": "13/09/2026 — 18:00, Asia/Ho_Chi_Minh",
+  "focal_tour_id": "T01",
+  "canonical_metrics": {
+    "ready_tours_count": 2,
+    "total_tours_count": 8,
+    "ready_tours_ids": [
+      "T02",
+      "T05"
+    ],
+    "network_capacity_percent": 25
+  },
+  "canonical_tours": [
+    {
+      "id": "T01",
+      "tour": "Hạ Long 2N1Đ",
+      "departure": "14/09/2026 07:30",
+      "coordinator": "Lan",
+      "status": "Chờ đối tác",
+      "issue_notes": "Khách sạn chưa xác nhận 4 phòng"
+    },
+    {
+      "id": "T02",
+      "tour": "Ninh Bình 1 ngày",
+      "departure": "14/09/2026 06:00",
+      "coordinator": "Minh",
+      "status": "Sẵn sàng",
+      "issue_notes": "Đã đủ xe, hướng dẫn viên và danh sách khách"
+    },
+    {
+      "id": "T03",
+      "tour": "Sapa 3N2Đ",
+      "departure": "15/09/2026 21:30",
+      "coordinator": "Huy",
+      "status": "Thiếu hồ sơ",
+      "issue_notes": "2 khách chưa gửi CCCD"
+    },
+    {
+      "id": "T04",
+      "tour": "Đà Nẵng 4N3Đ",
+      "departure": "16/09/2026 08:00",
+      "coordinator": "Lan",
+      "status": "Đang chuẩn bị",
+      "issue_notes": "Chờ chốt danh sách suất ăn"
+    },
+    {
+      "id": "T05",
+      "tour": "Hà Giang 3N2Đ",
+      "departure": "17/09/2026 05:30",
+      "coordinator": "Minh",
+      "status": "Sẵn sàng",
+      "issue_notes": "Đã hoàn tất checklist khởi hành"
+    },
+    {
+      "id": "T06",
+      "tour": "Phú Quốc 3N2Đ",
+      "departure": "18/09/2026 09:10",
+      "coordinator": "Huy",
+      "status": "Chờ đối tác",
+      "issue_notes": "Nhà xe trung chuyển chưa xác nhận"
+    },
+    {
+      "id": "T07",
+      "tour": "Mộc Châu 2N1Đ",
+      "departure": "19/09/2026 06:30",
+      "coordinator": "Lan",
+      "status": "Đang chuẩn bị",
+      "issue_notes": "Đang rà soát danh sách phòng"
+    },
+    {
+      "id": "T08",
+      "tour": "Huế 3N2Đ",
+      "departure": "12/09/2026 07:00",
+      "coordinator": "An",
+      "status": "Hoàn thành",
+      "issue_notes": "Đoàn đã khởi hành và bàn giao nhật ký"
+    }
+  ],
+  "canonical_allowlist": {
+    "locations": [
+      "Hà Nội",
+      "Hạ Long",
+      "Ninh Bình",
+      "Sapa",
+      "Đà Nẵng",
+      "Hà Giang",
+      "Phú Quốc",
+      "Mộc Châu",
+      "Huế",
+      "Tuần Châu"
+    ],
+    "coordinators": [
+      "Lan",
+      "Minh",
+      "Huy",
+      "An"
+    ],
+    "statuses": [
+      "Chờ đối tác",
+      "Sẵn sàng",
+      "Thiếu hồ sơ",
+      "Đang chuẩn bị",
+      "Hoàn thành"
+    ]
+  },
+  "registered_fictional_items": {
+    "coordinator_profile": {
+      "name": "Lan",
+      "role": "Điều phối viên chính",
+      "disclaimer": "Nhân vật điều phối giả lập / Fictional Operator",
+      "assigned_tours": [
+        "T01",
+        "T04",
+        "T07"
+      ]
+    },
+    "t01_timeline_sequence": [
+      {
+        "milestone": 1,
+        "title": "Hà Nội",
+        "detail": "Điểm khởi hành 14/09/2026 lúc 07:30",
+        "status": "Sẵn sàng"
+      },
+      {
+        "milestone": 2,
+        "title": "Hành trình di chuyển",
+        "detail": "Tuyến đường di chuyển theo kế hoạch",
+        "status": "Kế hoạch"
+      },
+      {
+        "milestone": 3,
+        "title": "Hạ Long",
+        "detail": "Khách sạn chưa xác nhận 4 phòng",
+        "status": "Chờ đối tác"
+      },
+      {
+        "milestone": 4,
+        "title": "Tuần Châu",
+        "detail": "Điểm đến chương trình tham quan vịnh",
+        "status": "Lịch trình"
+      }
+    ]
+  },
+  "claim_taxonomy_prohibited_terms": [
+    "thấu hiểu sâu sắc",
+    "giảm tải nhận thức",
+    "phòng ngừa sai sót vận hành",
+    "mang tính sống còn",
+    "focal point hoàn hảo",
+    "render hoàn hảo 100%"
+  ]
+}

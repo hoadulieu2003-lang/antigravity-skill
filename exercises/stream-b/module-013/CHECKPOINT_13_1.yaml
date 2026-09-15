@@ -1,0 +1,58 @@
+submission_type: DESIGN_TRAINING_013_CHECKPOINT_13_1
+stream_id: B
+workspace: design-training/stream-b/module-013/
+starter_snapshot_sha256: "8b7beb3b726e7da8d0d5f8dc5b54dbfc280ab9c068fe39a5298f14d6a148b32b"
+immutable_source_check: PASS
+motion_principles:
+  - "MP-01: Motion as Causality (Trigger -> State change -> Motion cue -> Settled state)"
+  - "MP-02: Purpose-Driven Duration (Fast 100-120ms, Base 160-180ms, Slow 220-250ms, Cap 300ms, Delay 0ms)"
+  - "MP-03: Dynamics, Not Ornament (Decelerating cubic-bezier, strictly no bounce/overshoot)"
+  - "MP-04: Composite-First Containment (Transform and opacity only, CLS = 0 layout stability)"
+  - "MP-05: Interruption Resilience (Zero queue length, rapid inputs settle cleanly)"
+  - "MP-06: Reduced-Motion Equivalence (Displacement 0px, duration <= 1ms, 100% announcement parity)"
+motion_tokens:
+  duration:
+    fast: "100ms (Study A) / 120ms (Study B)"
+    base: "160ms (Study A) / 180ms (Study B)"
+    slow: "220ms (Study A) / 250ms (Study B)"
+    cap: "300ms"
+  easing:
+    standard: "cubic-bezier(0.2, 0, 0.2, 1) (A) / cubic-bezier(0.2, 0, 0, 1) (B)"
+    enter: "cubic-bezier(0, 0, 0.2, 1) (A) / cubic-bezier(0, 0, 0, 1) (B)"
+    exit: "cubic-bezier(0.25, 0, 0.3, 1) (A) / cubic-bezier(0.3, 0, 1, 1) (B)"
+  distance:
+    study_a: "4px subtle displacement"
+    study_b: "8px explicit displacement"
+  scale:
+    study_a: 1.01
+    study_b: 1.02
+pattern_p1:
+  purpose: "Asset provenance disclosure continuity"
+  normal: "Chevron rotates 0deg to 90deg, content fades in with gentle translation (4px in A, 8px in B)"
+  reduced: "Instant toggle, rotation 0deg, translation 0px, duration 0s"
+pattern_p2:
+  purpose: "Action feedback FSM for T01 log update"
+  states: [idle, pending, error, retry, success]
+  interruption_rule: "Pending blocks duplicate triggers; retry cleans error immediately; single stable DOM node"
+pattern_p3:
+  purpose: "Attention without alarm for T01 bottleneck"
+  trigger: "Explicit click on #btn-highlight-t01 or heading click"
+  safety_caps:
+    max_translation: "4px (A) / 6px (B) (Cap: 8px)"
+    max_scale: "1.01 (A) / 1.02 (B) (Cap: 1.02)"
+    max_duration: "220ms (A) / 250ms (B) (Cap: 300ms)"
+    iterations: 1
+    autoplay: false
+study_a:
+  name: "Study A — Quiet Continuity"
+  six_axis_summary: "Subtle 100-220ms duration, 4px displacement, gentle easing cubic-bezier(0.2,0,0.2,1), simultaneous fade, soft tint scale 1.01, smooth waapi reversal"
+study_b:
+  name: "Study B — Explicit State Change"
+  six_axis_summary: "Crisp 120-250ms duration, 8px displacement, sharp deceleration cubic-bezier(0.2,0,0,1), staggered opacity, amber border scale 1.02, step reversal"
+test_matrix_draft_path: TEST_MATRIX_DRAFT.md
+authoritative_screenshots:
+  - screenshots/01_study_a_desktop_normal.png
+  - screenshots/02_study_a_mobile_normal.png
+  - screenshots/03_study_b_desktop_normal.png
+  - screenshots/04_study_b_mobile_normal.png
+open_questions: []

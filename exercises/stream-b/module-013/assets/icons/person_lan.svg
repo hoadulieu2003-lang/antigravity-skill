@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Người phụ trách / Coordinator Lan">
+  <title>Người phụ trách / Coordinator Lan</title>
+  <desc>Biểu tượng người điều phối phụ trách tour: Chân dung tối giản và tai nghe điều phối / Coordinator bust silhouette with dispatch badge</desc>
+  <!-- Coordinator head / Đầu người điều phối -->
+  <circle cx="12" cy="7" r="4" />
+  <!-- Coordinator shoulders and torso / Thân và vai áo điều phối -->
+  <path d="M5.5 21a6.5 6.5 0 0 1 13 0" />
+  <!-- Dispatch headset arc / Vòng tai nghe điều phối viên -->
+  <path d="M8 7a4 4 0 0 1 8 0" stroke-dasharray="1 3" />
+  <circle cx="16" cy="9" r="1" fill="currentColor" />
+</svg>
