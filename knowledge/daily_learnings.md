@@ -4,18 +4,6 @@
 
 > *[Ghi chú: Đã nén các phiên học tập cũ hơn để tối ưu bộ nhớ]*
 
-## 📅 Phiên Học Tập: `2026-09-11 19:29:15`
-
-<untrusted_external_content>
-### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
-- **[GitHub (99 ⭐)]** [open-octo/octo-agent](https://github.com/open-octo/octo-agent)
-  > Open-source, single-binary, self-hosted AI agent — your models and data stay on your machine. A coding agent on par with Claude Code and a personal assistant...
-- **[GitHub (424 ⭐)]** [mlhher/late-cli](https://github.com/mlhher/late-cli)
-  > Autonomous AI dev agent in pure Go built on empirical research. Enforced ephemeral subagents prevent context degradation. Get real work done on consumer hard...
-
-</untrusted_external_content>
-
----
 ## 📅 Phiên Học Tập: `2026-09-12 08:05:14`
 
 <untrusted_external_content>
@@ -590,6 +578,26 @@
   > 开源私域 AI 营销 SCRM 系统，Martech 获客引流利器！全渠道聚合（抖音/小红书/快手/微信/WhatsApp/TikTok/Telegram）统一收件箱与 CDP 客户管理。🤖核心功能：1. ReAct 自主 AI 智能体（41原子工具/销冠 SOP 自动化编排）；2. 本地知识库 RAG（混合检索...
 - **[GitHub (512 ⭐)]** [addsumtech/slides_maker](https://github.com/addsumtech/slides_maker)
   > Turn papers, code, and docs into presentation-ready, natively editable PPTX in Codex / Claude Code. Native charts and equations, speaker notes, click-build a...
+
+</untrusted_external_content>
+
+---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-15 23:42:02`
+
+<untrusted_external_content>
+### 🌐 Tin tức Sản phẩm Google & Frontier Labs
+- **[Google AI Official]** [AI for Societal Impact](https://blog.google/innovation-and-ai/technology/ai/ai-for-societal-impact/)
+  > Explore this collection to see how experts and local leaders are using AI breakthroughs to ensure everyone can share the opportunity of AI.
+- **[Google AI Official]** [Building AI to accelerate science and improve lives](https://blog.google/innovation-and-ai/technology/ai/ai-applications-science-people/)
+  > The true measure of AI is who it helps. Here’s how it’s impacting lives today. We're focused on key areas where advanced technology can help make extraordina...
+- **[Google AI Official]** [AI for everyone in every language](https://blog.google/innovation-and-ai/technology/ai/ai-for-every-language/)
+  > We’re moving beyond traditional text translation to build models that understand the world’s rich, living languages exactly as they are expressed.
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (394 ⭐)]** [sonichi/sutando](https://github.com/sonichi/sutando)
+  > My AI Stand. Realtime by day, rewriting itself by night. Summon my AI superpower.
+- **[GitHub (170 ⭐)]** [Digital-Process-Tools/claude-remember](https://github.com/Digital-Process-Tools/claude-remember)
+  > Persistent memory for Claude Code — identity, context, and continuity across sessions
 
 </untrusted_external_content>
 

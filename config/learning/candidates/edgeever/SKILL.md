@@ -1,7 +1,7 @@
 ---
 name: edgeever
 description: >-
-  Kỹ năng chuyên gia vận hành cho tianma-if/edgeever (1415 ⭐).
+  Kỹ năng chuyên gia vận hành cho tianma-if/edgeever (1420 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở edgeever vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Open-source, AI-native knowledge base & Evernote alternative with native MCP
@@ -12,9 +12,9 @@ description: >-
 # tianma-if/edgeever — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/tianma-if/edgeever`  
-> **Độ uy tín cộng đồng**: 1415 ⭐  
+> **Độ uy tín cộng đồng**: 1420 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-14 15:43:03Z
+> **Tự động đóng gói lúc**: 2026-09-15 16:42:08Z
 
 ---
 
