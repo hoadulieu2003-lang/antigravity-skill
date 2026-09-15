@@ -1,9 +1,9 @@
 schema_version: '1.0'
 skill_name: activepieces
 source_repo: activepieces/activepieces
-stars: 24436
+stars: 24464
 status: CANDIDATE
-created_at: '2026-09-14T10:42:12.487036+00:00'
+created_at: '2026-09-15T13:42:10.438890+00:00'
 human_promotion_required: true
 evidence_files:
 - SKILL.md
@@ -11,7 +11,7 @@ evidence_files:
 benchmark:
   total_score: 9.7
   rating: RECOMMENDED
-  evaluated_at: '2026-09-14T11:25:16Z'
+  evaluated_at: '2026-09-15T13:42:10Z'
   breakdown:
     structure_metadata: 2.5
     command_safety: 2.5

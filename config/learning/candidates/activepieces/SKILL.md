@@ -1,7 +1,7 @@
 ---
 name: activepieces
 description: >-
-  Kỹ năng chuyên gia vận hành cho activepieces/activepieces (24436 ⭐).
+  Kỹ năng chuyên gia vận hành cho activepieces/activepieces (24464 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở activepieces vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến AI Agents & MCPs & AI Workflow Automation • (~400 MCP servers for AI agents) • AI Automation / AI Agent with MCPs • AI Workflows & AI Agents • MCPs for AI Ag
@@ -12,9 +12,9 @@ description: >-
 # activepieces/activepieces — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/activepieces/activepieces`  
-> **Độ uy tín cộng đồng**: 24436 ⭐  
+> **Độ uy tín cộng đồng**: 24464 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-14 10:42:12Z
+> **Tự động đóng gói lúc**: 2026-09-15 13:42:10Z
 
 ---
 

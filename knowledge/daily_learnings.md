@@ -4,36 +4,6 @@
 
 > *[Ghi chú: Đã nén các phiên học tập cũ hơn để tối ưu bộ nhớ]*
 
-## 📅 Phiên Học Tập: `2026-09-11 19:18:01`
-
-<untrusted_external_content>
-### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
-- **[GitHub (681 ⭐)]** [qf-studio/pilot](https://github.com/qf-studio/pilot)
-  > AI that ships your tickets.
-- **[GitHub (244420 ⭐)]** [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)
-  > The agent that grows with you
-
-### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
-- **[ArXiv CS.AI]** [An Autonomous GeoAI Agent for Arctic Eco-Navigation](https://arxiv.org/abs/2609.09374)
-  > arXiv:2609.09374v1 Announce Type: new Abstract: Arctic maritime navigation is becoming increasingly important as changing sea-ice conditions expand seasonal ...
-
-</untrusted_external_content>
-
----
-## 📅 Phiên Học Tập: `2026-09-11 19:29:05`
-
-<untrusted_external_content>
-### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
-- **[GitHub (17505 ⭐)]** [leon-ai/leon](https://github.com/leon-ai/leon)
-  > 🧠 Leon is your open-source personal assistant.
-- **[GitHub (538 ⭐)]** [RandallLiuXin/GodotMaker](https://github.com/RandallLiuXin/GodotMaker)
-  > Autonomous text-to-game pipeline for Godot, powered by Claude Code,Codex,Opencode
-- **[GitHub (334 ⭐)]** [ahpxex/read-aware](https://github.com/ahpxex/read-aware)
-  > An ebook reader with a self-evolving agent: it remembers your reading across books, and plugins extend the reader and the agent alike.
-
-</untrusted_external_content>
-
----
 ## 📅 Phiên Học Tập: `2026-09-11 19:29:15`
 
 <untrusted_external_content>
@@ -596,6 +566,30 @@
 ### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
 - **[ArXiv CS.AI]** [Toward Self-Adaptive Physical AI: Can LLM Agents Manage Long-Horizon Physical Tasks?](https://arxiv.org/abs/2609.13436)
   > arXiv:2609.13436v1 Announce Type: new Abstract: Large Language Model (LLM) agents offer a promising path toward autonomously managing long-term physical task...
+
+</untrusted_external_content>
+
+---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-15 20:42:02`
+
+<untrusted_external_content>
+### 🌐 Tin tức Sản phẩm Google & Frontier Labs
+- **[Google AI Official]** [New insights from Google’s AI & Economy ATLAS](https://blog.google/innovation-and-ai/technology/ai/ai-economy-atlas-september-2026/)
+  > We’ve translated ATLAS’s millions of global data points into an interactive, open-access experience.
+
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [Have it both ways: stay discoverable in search while disallowing AI training](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/)
+  > Cloudflare is giving site owners a way to stay discoverable while disallowing AI training. New controls and an Accountable designation establish a shared model with Apple, Google, and Microsoft.
+- **[Cloudflare Engineering]** [Give every teammate and agent the right level of access to your Workers](https://blog.cloudflare.com/workers-granular-authorization/)
+  > You can now scope access to individual Workers and assign narrower Developer Platform roles, so teammates, CI tokens, and agents get only the access they need to debug, deploy, or monitor safely.
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (183 ⭐)]** [Astro-Han/pawwork](https://github.com/Astro-Han/pawwork)
+  > PawWork — free, open-source desktop AI agent for macOS and Windows, built on DeepSeek Harness (DSH). Free models included, no API key or terminal. Office fil...
+- **[GitHub (55 ⭐)]** [xiaofang142/hivemtk](https://github.com/xiaofang142/hivemtk)
+  > 开源私域 AI 营销 SCRM 系统，Martech 获客引流利器！全渠道聚合（抖音/小红书/快手/微信/WhatsApp/TikTok/Telegram）统一收件箱与 CDP 客户管理。🤖核心功能：1. ReAct 自主 AI 智能体（41原子工具/销冠 SOP 自动化编排）；2. 本地知识库 RAG（混合检索...
+- **[GitHub (512 ⭐)]** [addsumtech/slides_maker](https://github.com/addsumtech/slides_maker)
+  > Turn papers, code, and docs into presentation-ready, natively editable PPTX in Codex / Claude Code. Native charts and equations, speaker notes, click-build a...
 
 </untrusted_external_content>
 

@@ -1,7 +1,7 @@
 ---
 name: aihawk
 description: >-
-  Kỹ năng chuyên gia vận hành cho feder-cr/AIHawk (31573 ⭐).
+  Kỹ năng chuyên gia vận hành cho feder-cr/AIHawk (31593 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở aihawk vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Anti detect browser and web browsing agent: an open-source MCP server for undetected browsing, AI web scraping and computer use agents
@@ -12,9 +12,9 @@ description: >-
 # feder-cr/AIHawk — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/feder-cr/AIHawk`  
-> **Độ uy tín cộng đồng**: 31573 ⭐  
+> **Độ uy tín cộng đồng**: 31593 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-14 22:42:10Z
+> **Tự động đóng gói lúc**: 2026-09-15 13:42:09Z
 
 ---
 
