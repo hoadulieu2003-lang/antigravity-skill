@@ -4,38 +4,6 @@
 
 > *[Ghi chú: Đã nén các phiên học tập cũ hơn để tối ưu bộ nhớ]*
 
-## 📅 Phiên Học Tập: `2026-09-11 19:17:49`
-
-<untrusted_external_content>
-### 🌐 Tin tức Nổi bật từ Google & Frontier Labs
-- **[Google AI Official]** [Proactive cyber defense for governments and enterprises](https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program/)
-  > The Fairwind Program is a limited access program for governments and trusted partners to use our cyber defense tools.
-- **[Google AI Official]** [The latest AI news we announced in August 2026](https://blog.google/innovation-and-ai/technology/google-ai-updates-august-2026/)
-  > Here are Google’s latest AI updates from August 2026
-
-### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
-- **[GitHub (81 ⭐)]** [netresearch/jira-skill](https://github.com/netresearch/jira-skill)
-  > AI agent plugin for Jira — CLI tools for issues, worklogs, sprints, and more | Server/DC & Cloud
-- **[GitHub (1083 ⭐)]** [tigicion/dao-code](https://github.com/tigicion/dao-code)
-  > Open-source TypeScript terminal coding agent for DeepSeek-V4 — builds on DeepSeek's strong price-performance and ultra-cheap cache pricing, engineering byte-...
-- **[GitHub (188 ⭐)]** [Lifecycle-Innovations-Limited/claude-ops](https://github.com/Lifecycle-Innovations-Limited/claude-ops)
-  > Business operating system for Claude Code — 57 skills, 21 agents, smart daemon. Unified inbox (WhatsApp/Email/Slack/Telegram), autonomous PR merge, full-AWS ...
-
-### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
-- **[HuggingFace (Model)]** [Qwen/Qwen3.8-27B](https://huggingface.co/Qwen/Qwen3.8-27B)
-  > Trending model on Hugging Face hub.
-- **[HuggingFace (Model)]** [ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF](https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF)
-  > Trending model on Hugging Face hub.
-
-### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
-- **[ArXiv CS.AI]** [Subagents vs Agent Skills: Executing Reusable Knowledge for Long-Horizon Agentic Tasks](https://arxiv.org/abs/2609.09233)
-  > arXiv:2609.09233v1 Announce Type: new Abstract: How can language model agents effectively leverage libraries of reusable knowledge to solve long-horizon task...
-- **[ArXiv CS.AI]** [Gradland: On Phenomenal Experience, Differentiated Across Many Dimensions](https://arxiv.org/abs/2609.09306)
-  > arXiv:2609.09306v1 Announce Type: new Abstract: This paper investigates the hypothesis that the first-order structure of physical interactions, i.e. gradient...
-
-</untrusted_external_content>
-
----
 ## 📅 Phiên Học Tập: `2026-09-11 19:18:01`
 
 <untrusted_external_content>
@@ -590,6 +558,26 @@
   > arXiv:2609.13356v1 Announce Type: new Abstract: In this work, we present ZGCM-1, a fully open 7B dense foundation model trained from scratch with extreme dat...
 - **[ArXiv CS.AI]** [Converge Then Diversify: Decoupling Convergence and Diversity in Multi-Objective Bayesian Optimisation](https://arxiv.org/abs/2609.13396)
   > arXiv:2609.13396v1 Announce Type: new Abstract: Multi-objective Bayesian optimisation (MOBO) is a sample-efficient approach for optimising expensive black-bo...
+
+</untrusted_external_content>
+
+---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-15 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (5692 ⭐)]** [dramaclaw/dramaclaw](https://github.com/dramaclaw/dramaclaw)
+  > A general-purpose AIGC video engine: script to finished film in one pipeline — dramas, ads, product videos, otome games, and more. | 通用 AIGC 视频引擎 —— 从剧本到成片一条...
+- **[GitHub (24749 ⭐)]** [titanwings/distilly](https://github.com/titanwings/distilly)
+  > Distilly — Distill how they think into reusable Skills for any Agent or Bot. Formerly Colleague Skill（原同事 Skill）.
+- **[GitHub (429 ⭐)]** [code-yeongyu/senpi](https://github.com/code-yeongyu/senpi)
+  > pi had nothing (nothing), so I made something (something) — sorry mariozechner-senpai, I went ahead and lovingly soiled your pure pi for you. opinionated for...
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Generalized Agent Iteration: One Formal Framework for Iterative Policy Improvement and Recursive Self-Improvement](https://arxiv.org/abs/2609.13406)
+  > arXiv:2609.13406v1 Announce Type: new Abstract: When we speak of recursive self-improvement (RSI), are we speaking of a phenomenon, a mechanism, or a prospec...
+- **[ArXiv CS.AI]** [Vibe Patenting: Evaluating LLM Judges for Professional Patent-Drafting Agents](https://arxiv.org/abs/2609.13422)
+  > arXiv:2609.13422v1 Announce Type: new Abstract: LLM judges are increasingly used to evaluate and improve AI-generated outputs, yet their reliability for comp...
 
 </untrusted_external_content>
 

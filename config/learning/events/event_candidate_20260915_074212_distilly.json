@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-15T07:42:12.823963+00:00",
+  "skill_name": "distilly",
+  "source_repo": "titanwings/distilly",
+  "stars": 24749,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\distilly\\SKILL.md",
+  "human_promotion_required": true
+}

@@ -1,17 +1,17 @@
 schema_version: '1.0'
-skill_name: cindy
-source_repo: makecindy/cindy
-stars: 2699
+skill_name: distilly
+source_repo: titanwings/distilly
+stars: 24749
 status: CANDIDATE
-created_at: '2026-09-15T07:42:11.471962+00:00'
+created_at: '2026-09-15T07:42:12.822716+00:00'
 human_promotion_required: true
 evidence_files:
 - SKILL.md
-- references/cindy/README.md
+- references/distilly/README.md
 benchmark:
   total_score: 10.0
   rating: RECOMMENDED
-  evaluated_at: '2026-09-15T07:42:12Z'
+  evaluated_at: '2026-09-15T07:42:15Z'
   breakdown:
     structure_metadata: 2.5
     command_safety: 2.5
@@ -19,14 +19,14 @@ benchmark:
     ecosystem_compatibility: 2.5
   notes:
   - Frontmatter YAML hợp lệ (+0.5)
-  - Tên kỹ năng 'cindy' khớp thư mục (+0.5)
+  - Tên kỹ năng 'distilly' khớp thư mục (+0.5)
   - Đặc tả Intent-First chuẩn mực (+1.0/1.0)
   - 'Cấu trúc tài liệu Markdown (4 mục chính: +0.50/0.5)'
   - Có 1 khối mã lệnh thực thi (+0.5)
-  - Nhận diện 5 lệnh CLI tiêu chuẩn (+0.5)
+  - Nhận diện 3 lệnh CLI tiêu chuẩn (+0.5)
   - 'An toàn tuyệt đối: Không chứa lệnh phá hoại hệ thống (+1.5)'
-  - Thư mục tham chiếu references/cindy tồn tại (+0.5)
-  - Tài liệu tham chiếu chi tiết (9270 ký tự) (+1.5)
+  - Thư mục tham chiếu references/distilly tồn tại (+0.5)
+  - Tài liệu tham chiếu chi tiết (11321 ký tự) (+1.5)
   - Tài liệu tham chiếu có kèm ví dụ mã nguồn (+0.3)
   - Tài liệu tham chiếu có cấu trúc rõ ràng (+0.2)
   - 'Tuân thủ AGENTS.md Rule 14 & INV-E07: Không có secret lộ lọt (+1.0)'

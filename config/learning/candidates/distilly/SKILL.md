@@ -1,34 +1,32 @@
 ---
-name: cindy
+name: distilly
 description: >-
-  Kỹ năng chuyên gia vận hành cho makecindy/cindy (2699 ⭐).
+  Kỹ năng chuyên gia vận hành cho titanwings/distilly (24749 ⭐).
   Tự động kích hoạt khi người dùng muốn:
-    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở cindy vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Consider it done
-    - Thiết lập cấu hình và vận hành lệnh CLI của makecindy/cindy
-  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'cindy'.
+    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở distilly vào hệ thống
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Distilly — Distill how they think into reusable Skills for any Agent or Bot
+    - Thiết lập cấu hình và vận hành lệnh CLI của titanwings/distilly
+  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'distilly'.
 ---
 
-# makecindy/cindy — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
+# titanwings/distilly — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
-> **Nguồn gốc**: GitHub Repository `https://github.com/makecindy/cindy`  
-> **Độ uy tín cộng đồng**: 2699 ⭐  
+> **Nguồn gốc**: GitHub Repository `https://github.com/titanwings/distilly`  
+> **Độ uy tín cộng đồng**: 24749 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-15 07:42:11Z
+> **Tự động đóng gói lúc**: 2026-09-15 07:42:12Z
 
 ---
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的 AI Agent。
+* **Mục tiêu cốt lõi**: Distilly — Distill how they think into reusable Skills for any Agent or Bot. Formerly Colleague Skill（原同事 Skill）.
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- **Memory** — correct her once and she does it right from then on, shared across harnesses.
-- **Skills** — teach a way of working once and reuse it everywhere; handing them to your team is in the making.
-- **Automation** — recurring work schedules itself, runs itself, reports back.
-- **MCP** — wire your internal tools and business systems into her reach.
-- **Plugins** — reshape features, UI and interactions, shared through an open marketplace *(in the making)*.
-- **Source** — audit, fork, extend, and contribute improvements back under Apache-2.0.
+- **Append files** → auto-analyze delta → merge into relevant sections, never overwrite existing conclusions
+- **Conversation correction** → say "he wouldn't do that, he should be xxx" → writes to Correction layer, takes effect immediately
+- **Version control** → auto-archive on every update, rollback to any previous version
+- **Source material quality = Skill quality**: chat logs + long docs > manual description only
 
 ---
 
@@ -37,16 +35,14 @@ description: >-
 Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
 
 ```bash
-git clone https://github.com/makecindy/cindy.git
-cd cindy
-git lfs pull
-pnpm install
+# Install to current project (run at git repo root)
+mkdir -p .claude/skills
+git clone https://github.com/titanwings/colleague-skill .claude/skills/create-colleague
 
-# Mainland China Cindy account
-pnpm restart:desktop:remote --region=cn
+# Or install globally (available in all projects)
+git clone https://github.com/titanwings/colleague-skill ~/.claude/skills/create-colleague
 
-# Global Cindy account
-pnpm restart:desktop:remote --region=global
+git clone https://github.com/titanwings/colleague-skill ~/.openclaw/workspace/skills/create-colleague
 ```
 
 ---
