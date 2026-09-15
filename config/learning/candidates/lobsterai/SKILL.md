@@ -1,34 +1,34 @@
 ---
-name: cindy
+name: lobsterai
 description: >-
-  Kỹ năng chuyên gia vận hành cho makecindy/cindy (2705 ⭐).
+  Kỹ năng chuyên gia vận hành cho netease-youdao/LobsterAI (6031 ⭐).
   Tự động kích hoạt khi người dùng muốn:
-    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở cindy vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Consider it done
-    - Thiết lập cấu hình và vận hành lệnh CLI của makecindy/cindy
-  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'cindy'.
+    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở lobsterai vào hệ thống
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Open-source, desktop-grade AI agent that gets real work done — data analysis, slides, docs, video & web research
+    - Thiết lập cấu hình và vận hành lệnh CLI của netease-youdao/LobsterAI
+  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'lobsterai'.
 ---
 
-# makecindy/cindy — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
+# netease-youdao/LobsterAI — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
-> **Nguồn gốc**: GitHub Repository `https://github.com/makecindy/cindy`  
-> **Độ uy tín cộng đồng**: 2705 ⭐  
+> **Nguồn gốc**: GitHub Repository `https://github.com/netease-youdao/LobsterAI`  
+> **Độ uy tín cộng đồng**: 6031 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-15 12:08:32Z
+> **Tự động đóng gói lúc**: 2026-09-15 12:08:33Z
 
 ---
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的 AI Agent。
+* **Mục tiêu cốt lõi**: Open-source, desktop-grade AI agent that gets real work done — data analysis, slides, docs, video & web research. Built on OpenClaw; runs tools on your real ...
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- **Memory** — correct her once and she does it right from then on, shared across harnesses.
-- **Skills** — teach a way of working once and reuse it everywhere; handing them to your team is in the making.
-- **Automation** — recurring work schedules itself, runs itself, reports back.
-- **MCP** — wire your internal tools and business systems into her reach.
-- **Plugins** — reshape features, UI and interactions, shared through an open marketplace *(in the making)*.
-- **Source** — audit, fork, extend, and contribute improvements back under Apache-2.0.
+- **Renderer**: React, Redux Toolkit, Tailwind, artifact renderers, settings, agent/session UI, skills, MCP, scheduled tasks, and IM configuration.
+- **Main process**: Electron lifecycle, IPC, SQLite persistence, auth, logging, OpenClaw startup, runtime repair, skill sync, IM gateways, and artifact services.
+- `openclaw:runtime:<target>`: build, patch, bundle, and prune the OpenClaw runtime, shipped under `Resources/cfmind`.
+- `LOBSTERAI_PORTABLE_PYTHON_ARCHIVE`
+- `LOBSTERAI_PORTABLE_PYTHON_URL`
+- `LOBSTERAI_WINDOWS_EMBED_PYTHON_VERSION`
 
 ---
 
@@ -37,16 +37,11 @@ description: >-
 Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
 
 ```bash
-git clone https://github.com/makecindy/cindy.git
-cd cindy
-git lfs pull
-pnpm install
+git clone https://github.com/netease-youdao/LobsterAI.git
+cd LobsterAI
+npm install
 
-# Mainland China Cindy account
-pnpm restart:desktop:remote --region=cn
-
-# Global Cindy account
-pnpm restart:desktop:remote --region=global
+npm run electron:dev:openclaw
 ```
 
 ---

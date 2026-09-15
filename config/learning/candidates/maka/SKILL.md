@@ -1,18 +1,18 @@
 ---
-name: cindy
+name: maka
 description: >-
-  Kỹ năng chuyên gia vận hành cho makecindy/cindy (2705 ⭐).
+  Kỹ năng chuyên gia vận hành cho apache/maka (5434 ⭐).
   Tự động kích hoạt khi người dùng muốn:
-    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở cindy vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Consider it done
-    - Thiết lập cấu hình và vận hành lệnh CLI của makecindy/cindy
-  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'cindy'.
+    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở maka vào hệ thống
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Apache Maka (Incubating) is a high-performance agent workspace that keeps a complete record of everything it did
+    - Thiết lập cấu hình và vận hành lệnh CLI của apache/maka
+  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'maka'.
 ---
 
-# makecindy/cindy — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
+# apache/maka — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
-> **Nguồn gốc**: GitHub Repository `https://github.com/makecindy/cindy`  
-> **Độ uy tín cộng đồng**: 2705 ⭐  
+> **Nguồn gốc**: GitHub Repository `https://github.com/apache/maka`  
+> **Độ uy tín cộng đồng**: 5434 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
 > **Tự động đóng gói lúc**: 2026-09-15 12:08:32Z
 
@@ -20,15 +20,12 @@ description: >-
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的 AI Agent。
+* **Mục tiêu cốt lõi**: Apache Maka (Incubating) is a high-performance agent workspace that keeps a complete record of everything it did.
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- **Memory** — correct her once and she does it right from then on, shared across harnesses.
-- **Skills** — teach a way of working once and reuse it everywhere; handing them to your team is in the making.
-- **Automation** — recurring work schedules itself, runs itself, reports back.
-- **MCP** — wire your internal tools and business systems into her reach.
-- **Plugins** — reshape features, UI and interactions, shared through an open marketplace *(in the making)*.
-- **Source** — audit, fork, extend, and contribute improvements back under Apache-2.0.
+- **Your machine, your model.** Sessions, settings and run records stay local. You bring the model: a cloud API, a local model or a compatible gateway.
+- **One Runtime Host.** Desktop, the TUI and CLI, and Eval are thin clients of one execution authority; Eval owns only the experiment and its scores.
+- `ripgrep`, used by Runtime's `Grep` tool.
 
 ---
 
@@ -37,16 +34,12 @@ description: >-
 Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
 
 ```bash
-git clone https://github.com/makecindy/cindy.git
-cd cindy
-git lfs pull
-pnpm install
+git clone https://github.com/apache/maka.git
+cd maka
+npm ci
+npm run dev
 
-# Mainland China Cindy account
-pnpm restart:desktop:remote --region=cn
-
-# Global Cindy account
-pnpm restart:desktop:remote --region=global
+npm run dev:full
 ```
 
 ---

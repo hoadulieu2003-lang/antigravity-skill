@@ -1,13 +1,13 @@
 schema_version: '1.0'
-skill_name: cindy
-source_repo: makecindy/cindy
-stars: 2705
+skill_name: lobsterai
+source_repo: netease-youdao/LobsterAI
+stars: 6031
 status: CANDIDATE
-created_at: '2026-09-15T12:08:32.794334+00:00'
+created_at: '2026-09-15T12:08:33.626276+00:00'
 human_promotion_required: true
 evidence_files:
 - SKILL.md
-- references/cindy/README.md
+- references/lobsterai/README.md
 benchmark:
   total_score: 10.0
   rating: RECOMMENDED
@@ -19,14 +19,14 @@ benchmark:
     ecosystem_compatibility: 2.5
   notes:
   - Frontmatter YAML hợp lệ (+0.5)
-  - Tên kỹ năng 'cindy' khớp thư mục (+0.5)
+  - Tên kỹ năng 'lobsterai' khớp thư mục (+0.5)
   - Đặc tả Intent-First chuẩn mực (+1.0/1.0)
   - 'Cấu trúc tài liệu Markdown (4 mục chính: +0.50/0.5)'
   - Có 1 khối mã lệnh thực thi (+0.5)
-  - Nhận diện 5 lệnh CLI tiêu chuẩn (+0.5)
+  - Nhận diện 3 lệnh CLI tiêu chuẩn (+0.5)
   - 'An toàn tuyệt đối: Không chứa lệnh phá hoại hệ thống (+1.5)'
-  - Thư mục tham chiếu references/cindy tồn tại (+0.5)
-  - Tài liệu tham chiếu chi tiết (9270 ký tự) (+1.5)
+  - Thư mục tham chiếu references/lobsterai tồn tại (+0.5)
+  - Tài liệu tham chiếu chi tiết (16995 ký tự) (+1.5)
   - Tài liệu tham chiếu có kèm ví dụ mã nguồn (+0.3)
   - Tài liệu tham chiếu có cấu trúc rõ ràng (+0.2)
   - 'Tuân thủ AGENTS.md Rule 14 & INV-E07: Không có secret lộ lọt (+1.0)'

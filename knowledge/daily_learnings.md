@@ -582,3 +582,21 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-15 19:08:22`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (5434 ⭐)]** [apache/maka](https://github.com/apache/maka)
+  > Apache Maka (Incubating) is a high-performance agent workspace that keeps a complete record of everything it did.
+- **[GitHub (172 ⭐)]** [he-yufeng/ContractGuard](https://github.com/he-yufeng/ContractGuard)
+  > AI agent that reads the fine print so you don't have to. Upload any contract → get red flags, unfair terms, and plain-English explanations in seconds.
+- **[GitHub (6031 ⭐)]** [netease-youdao/LobsterAI](https://github.com/netease-youdao/LobsterAI)
+  > Open-source, desktop-grade AI agent that gets real work done — data analysis, slides, docs, video & web research. Built on OpenClaw; runs tools on your real ...
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Toward Self-Adaptive Physical AI: Can LLM Agents Manage Long-Horizon Physical Tasks?](https://arxiv.org/abs/2609.13436)
+  > arXiv:2609.13436v1 Announce Type: new Abstract: Large Language Model (LLM) agents offer a promising path toward autonomously managing long-term physical task...
+
+</untrusted_external_content>
+
+---

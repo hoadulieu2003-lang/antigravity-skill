@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-15T12:08:33.627937+00:00",
+  "skill_name": "lobsterai",
+  "source_repo": "netease-youdao/LobsterAI",
+  "stars": 6031,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\lobsterai\\SKILL.md",
+  "human_promotion_required": true
+}

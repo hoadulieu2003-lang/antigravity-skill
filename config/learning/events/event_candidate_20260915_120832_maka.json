@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-15T12:08:32.086716+00:00",
+  "skill_name": "maka",
+  "source_repo": "apache/maka",
+  "stars": 5434,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\maka\\SKILL.md",
+  "human_promotion_required": true
+}
