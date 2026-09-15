@@ -1,55 +1,89 @@
-submission_type: DESIGN_TRAINING_013_CHECKPOINT_13_1
+submission_type: DESIGN_TRAINING_013_CHECKPOINT_13_1_R01
+revision: R01
 stream_id: B
 workspace: design-training/stream-b/module-013/
 starter_snapshot_sha256: "8b7beb3b726e7da8d0d5f8dc5b54dbfc280ab9c068fe39a5298f14d6a148b32b"
 immutable_source_check: PASS
+findings_closure:
+  F01_zip_hierarchy: CLOSED_PURE_UNIX_FORWARD_SLASH
+  F02_runner_portability: CLOSED_DIRNAME_AND_CHROME_DISCOVERY
+  F03_contract_source_of_truth: CLOSED_STUDY_PROFILES_AND_NO_BOX_SHADOW
+  F04_p2_duration_cap: CLOSED_SINGLE_PULSE_240MS_LEQ_300MS
+  F05_p1_reversal_cleanup: CLOSED_WAAPI_REVERSAL_AND_CLEANUP
+  F06_divergence_measured: CLOSED_6_OF_6_MEASURED_RUNTIME_AXES
+  F07_p3_heading_click: CLOSED_NATIVE_BUTTON_ONLY
+  F08_checkpoint_smoke_evidence: CLOSED_JSON_AND_CONSOLE_LOG_EMITTED
+  F09_header_and_asset_integrity: CLOSED_MODULE_13_HEADER_AND_CHEVRON_ATTR
 motion_principles:
   - "MP-01: Motion as Causality (Trigger -> State change -> Motion cue -> Settled state)"
-  - "MP-02: Purpose-Driven Duration (Fast 100-120ms, Base 160-180ms, Slow 220-250ms, Cap 300ms, Delay 0ms)"
+  - "MP-02: Purpose-Driven Duration (Fast 100-120ms, Base 160-180ms, Slow 220-240ms, Cap 300ms, Delay 0ms)"
   - "MP-03: Dynamics, Not Ornament (Decelerating cubic-bezier, strictly no bounce/overshoot)"
   - "MP-04: Composite-First Containment (Transform and opacity only, CLS = 0 layout stability)"
   - "MP-05: Interruption Resilience (Zero queue length, rapid inputs settle cleanly)"
   - "MP-06: Reduced-Motion Equivalence (Displacement 0px, duration <= 1ms, 100% announcement parity)"
 motion_tokens:
-  duration:
-    fast: "100ms (Study A) / 120ms (Study B)"
-    base: "160ms (Study A) / 180ms (Study B)"
-    slow: "220ms (Study A) / 250ms (Study B)"
-    cap: "300ms"
-  easing:
-    standard: "cubic-bezier(0.2, 0, 0.2, 1) (A) / cubic-bezier(0.2, 0, 0, 1) (B)"
-    enter: "cubic-bezier(0, 0, 0.2, 1) (A) / cubic-bezier(0, 0, 0, 1) (B)"
-    exit: "cubic-bezier(0.25, 0, 0.3, 1) (A) / cubic-bezier(0.3, 0, 1, 1) (B)"
-  distance:
-    study_a: "4px subtle displacement"
-    study_b: "8px explicit displacement"
-  scale:
-    study_a: 1.01
-    study_b: 1.02
+  study_a:
+    duration_fast: 100
+    duration_base: 160
+    duration_slow: 220
+    displacement_p1: 4
+    displacement_p2: 3
+    displacement_p3: 4
+    scale_p3: 1.01
+    easing_standard: "cubic-bezier(0.2, 0, 0.2, 1)"
+    easing_enter: "cubic-bezier(0, 0, 0.2, 1)"
+    easing_exit: "cubic-bezier(0.25, 0, 0.3, 1)"
+    opacity_sequencing: "simultaneous"
+    interruption_model: "waapi_reverse"
+  study_b:
+    duration_fast: 120
+    duration_base: 180
+    duration_slow: 240
+    displacement_p1: 8
+    displacement_p2: 6
+    displacement_p3: 6
+    scale_p3: 1.02
+    easing_standard: "cubic-bezier(0.2, 0, 0, 1)"
+    easing_enter: "cubic-bezier(0, 0, 0, 1)"
+    easing_exit: "cubic-bezier(0.3, 0, 1, 1)"
+    opacity_sequencing: "staggered_lead_60pct"
+    interruption_model: "step_reversal"
+  duration_cap: 300
+  displacement_cap: 8
+  scale_cap: 1.02
 pattern_p1:
   purpose: "Asset provenance disclosure continuity"
-  normal: "Chevron rotates 0deg to 90deg, content fades in with gentle translation (4px in A, 8px in B)"
+  normal: "Chevron rotates 0deg to 90deg, content expands with subtle translation (4px in A, 8px in B), inline styles cleared upon settle"
   reduced: "Instant toggle, rotation 0deg, translation 0px, duration 0s"
+  interruption: "Reverses smoothly from current progress, zero queue buildup, getAnimations({subtree:true}).length === 0"
 pattern_p2:
   purpose: "Action feedback FSM for T01 log update"
   states: [idle, pending, error, retry, success]
-  interruption_rule: "Pending blocks duplicate triggers; retry cleans error immediately; single stable DOM node"
+  timing: "Single pulse iterations: 1, activeDuration 220ms (A) / 240ms (B) <= 300ms cap"
+  interruption_rule: "Pending blocks duplicate triggers; retry cleans error immediately; focus retained on button without steal"
 pattern_p3:
   purpose: "Attention without alarm for T01 bottleneck"
-  trigger: "Explicit click on #btn-highlight-t01 or heading click"
+  trigger: "Native button #btn-highlight-t01 only (heading click purged for accessibility parity)"
   safety_caps:
     max_translation: "4px (A) / 6px (B) (Cap: 8px)"
     max_scale: "1.01 (A) / 1.02 (B) (Cap: 1.02)"
-    max_duration: "220ms (A) / 250ms (B) (Cap: 300ms)"
+    max_duration: "220ms (A) / 240ms (B) (Cap: 300ms)"
     iterations: 1
     autoplay: false
 study_a:
   name: "Study A — Quiet Continuity"
-  six_axis_summary: "Subtle 100-220ms duration, 4px displacement, gentle easing cubic-bezier(0.2,0,0.2,1), simultaneous fade, soft tint scale 1.01, smooth waapi reversal"
+  six_axis_summary: "Subtle 100/160/220ms duration, 4px displacement, gentle easing cubic-bezier(0.2,0,0.2,1), simultaneous opacity fade, soft tint scale 1.01, smooth waapi reversal"
 study_b:
   name: "Study B — Explicit State Change"
-  six_axis_summary: "Crisp 120-250ms duration, 8px displacement, sharp deceleration cubic-bezier(0.2,0,0,1), staggered opacity, amber border scale 1.02, step reversal"
+  six_axis_summary: "Crisp 120/180/240ms duration, 8px displacement, sharp deceleration cubic-bezier(0.2,0,0,1), 60% opacity lead, amber border scale 1.02, step reversal"
+divergence_audit:
+  divergent_axes_count: 6
+  total_axes: 6
+  measured_from_runtime: true
 test_matrix_draft_path: TEST_MATRIX_DRAFT.md
+verification_evidence:
+  report: CHECKPOINT_VERIFICATION.json
+  console_log: CHECKPOINT_VERIFICATION_CONSOLE.log
 authoritative_screenshots:
   - screenshots/01_study_a_desktop_normal.png
   - screenshots/02_study_a_mobile_normal.png

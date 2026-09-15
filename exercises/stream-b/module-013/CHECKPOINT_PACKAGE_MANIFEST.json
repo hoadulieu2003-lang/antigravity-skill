@@ -1,0 +1,225 @@
+{
+  "package_name": "design_training_013_checkpoint_13_1_r01.zip",
+  "system": "TRIPFLOW Daily Departure Brief \u2014 Stream B",
+  "module": 13,
+  "revision": "R01",
+  "description": "Checkpoint 13.1 R01 Package with clean hierarchy, portable runner, and closed F01-F09 findings",
+  "total_files": 44,
+  "files": [
+    {
+      "path": "DESIGN_TRAINING_MODULE_013_DIRECTIVE.md",
+      "size": 26865,
+      "sha256": "8ad08e08ca45d7d46515d822d0bdc7a09092a3678ea741f25dfdc78ca8469129"
+    },
+    {
+      "path": "DESIGN_TRAINING_013_STARTER_SNAPSHOT.zip",
+      "size": 61742,
+      "sha256": "8b7beb3b726e7da8d0d5f8dc5b54dbfc280ab9c068fe39a5298f14d6a148b32b"
+    },
+    {
+      "path": "DESIGN_TRAINING_013_STARTER_SNAPSHOT_MANIFEST.json",
+      "size": 4084,
+      "sha256": "76074d4717902841fec83ca847b8eb3f828d418fe2dd6845ee68c171b88f16ab"
+    },
+    {
+      "path": "PROJECT.md",
+      "size": 975,
+      "sha256": "e39a52e47bdeb80d3e8e9e75dfbc368e74e8a8a84d4747598ed0a89b7c7e2c4c"
+    },
+    {
+      "path": "SOURCE_PROVENANCE.md",
+      "size": 1637,
+      "sha256": "526fd3272443aae8e0796c13fe8bb2b4000409f4b8e1793a4bbb71e0b805b45b"
+    },
+    {
+      "path": "CHECKPOINT_13_1.yaml",
+      "size": 4332,
+      "sha256": "fc23ff00635d3bf08136696ed915fe8707309fe50afa10e0121d39934627dfa7"
+    },
+    {
+      "path": "CHANGE_LEDGER.md",
+      "size": 6032,
+      "sha256": "301784fe00171b300b6dd320f0002fee851ac7a9b01207f8ead1131a0169aef5"
+    },
+    {
+      "path": "MOTION_PRINCIPLES.md",
+      "size": 6777,
+      "sha256": "7a24d05ddf1d528380893328d03235b0984f81de932866cd9ae14ca6c53e5b52"
+    },
+    {
+      "path": "MOTION_CONTRACT.yaml",
+      "size": 5394,
+      "sha256": "d159d23f22a8a7b6a82573c76cdf090ed01c8b911839b5af16f1a80fa89e42c0"
+    },
+    {
+      "path": "MOTION_INVENTORY.md",
+      "size": 4461,
+      "sha256": "0b32b2b34d4ec4ced8dc916756a0e10e4d84c55cbfdd6396414fbefc407d4dd8"
+    },
+    {
+      "path": "STATE_MACHINE.md",
+      "size": 6108,
+      "sha256": "254a10a7c614a915a98bbb6f30a9338242a5c59544b50f96cb907ba65786ad47"
+    },
+    {
+      "path": "MOTION_SAFETY_MATRIX.md",
+      "size": 3779,
+      "sha256": "4393e4dbeba0f56a57194319700092f83c6c9897ce0b65fbafdbc953aa337b36"
+    },
+    {
+      "path": "TEST_MATRIX_DRAFT.md",
+      "size": 4927,
+      "sha256": "41cf4a582e69d953c8ee818495a9bdb656f2e5cc095d622907d7cd3084156919"
+    },
+    {
+      "path": "verify_checkpoint_13_1.js",
+      "size": 23650,
+      "sha256": "d581eba6c63c30df701c1ab8a4338ec52a6bf3ce9112d2c276cf15421c3d990c"
+    },
+    {
+      "path": "package.json",
+      "size": 370,
+      "sha256": "4863bedfcb39349882112f413caf5bc258826cec348900aee110fac838152f06"
+    },
+    {
+      "path": "package-lock.json",
+      "size": 504,
+      "sha256": "e35ae4a204271520d339e663869644833f055ce80259008bc0f3e36593e1564e"
+    },
+    {
+      "path": "CHECKPOINT_VERIFICATION.json",
+      "size": 18506,
+      "sha256": "506e5d40e7a5ddefc81935ea07f94af79aa2d75180e3f27e34708688d2325ede"
+    },
+    {
+      "path": "CHECKPOINT_VERIFICATION_CONSOLE.log",
+      "size": 10372,
+      "sha256": "3c7371a34b6f939ab1bf6a79d412f88b4055f9055736cd70a8ad8421dfa0c6be"
+    },
+    {
+      "path": "baseline/index.html",
+      "size": 48526,
+      "sha256": "de7661c03dfb152d5a0c95c88f7ecdf5cb8ea21698e711105f8a2bbb46f51814"
+    },
+    {
+      "path": "assets/ASSET_MANIFEST.yaml",
+      "size": 8320,
+      "sha256": "6b75b2c5519e137654b822689cdf16d9a8e8b2b4087aee113828da409ab25fd6"
+    },
+    {
+      "path": "assets/diagrams/t01_route_narrative.svg",
+      "size": 6373,
+      "sha256": "7de95c5a66afbf2eda3ee710488be480b53f78730f2dbbcb95eebe9e8ff5e393"
+    },
+    {
+      "path": "assets/diagrams/t01_route_schematic.svg",
+      "size": 6178,
+      "sha256": "a7b5da4f21c19d6de90ac4d77fe29f0c47c86ccdfb5241ff22aff52f9052d045"
+    },
+    {
+      "path": "assets/icons/contact_log.svg",
+      "size": 877,
+      "sha256": "7e640a14277f5953314aafb26833a787e8edfc471ea472a85b4a5be668773aef"
+    },
+    {
+      "path": "assets/icons/departure.svg",
+      "size": 720,
+      "sha256": "d37146008d598e6af840ac45f93c8e62bb7accd824e002b3297962824a6d8f43"
+    },
+    {
+      "path": "assets/icons/missing_dossier.svg",
+      "size": 892,
+      "sha256": "8e4cccd71cf0c99fad61e816797b98cae024eb4339061fff88ccc24b62309166"
+    },
+    {
+      "path": "assets/icons/person_lan.svg",
+      "size": 885,
+      "sha256": "9603c06951407f1979b3bb7d2d0ddb22656bf4cac8e250672e3fb2792571ac1e"
+    },
+    {
+      "path": "assets/icons/ready.svg",
+      "size": 625,
+      "sha256": "bba1bef79b1f20fc6cf61b792c01bd48104b8a37d4255b70c7510b90038d3249"
+    },
+    {
+      "path": "assets/icons/waiting_partner.svg",
+      "size": 927,
+      "sha256": "9c2767c5378caadea8346aa2b4590420ad7d40274326c278c35cb1fade3ce936"
+    },
+    {
+      "path": "assets/images/halong_field_documentary.svg",
+      "size": 6897,
+      "sha256": "7e919a8651a62cc6c1af044e3cf9a3ac216b68f8fac08db804a7fec4aa4dcea7"
+    },
+    {
+      "path": "assets/images/lan_avatar.svg",
+      "size": 4455,
+      "sha256": "a77828268c11e9d85d3f79558059966fe90227e44c444bb752b77d13e0213ae5"
+    },
+    {
+      "path": "assets/images/operational_scene_prep.svg",
+      "size": 6924,
+      "sha256": "88fe6f88de14f74f1df164bd88deaa627054d118a7f1c7a1177d68bf2c150537"
+    },
+    {
+      "path": "assets/images/route_signal_abstract.svg",
+      "size": 5971,
+      "sha256": "03843752c4145d3c0040b5dd7dc225afcdbeb8771bce53471d57c0df43139d07"
+    },
+    {
+      "path": "assets/textures/grid_matrix_pattern.svg",
+      "size": 1540,
+      "sha256": "f63af9b0aa538bb2ef94f393dabc004160fc5d93d9a8e06586f74f42c30215a6"
+    },
+    {
+      "path": "assets/textures/paper_grain_subtle.svg",
+      "size": 1445,
+      "sha256": "fc09c4ef5e6a16622c6b06dae47c74908831678d8abbee8551efb0ee0298a613"
+    },
+    {
+      "path": "governance/DESIGN_TRAINING_012_FINAL_REVIEW_008.md",
+      "size": 11747,
+      "sha256": "ac198df215fdb3a54bdf9db57bcd99f5a3c4e1ff30a84445d9b8162a95a177aa"
+    },
+    {
+      "path": "governance/DESIGN_TRAINING_012_OWNER_WAIVER_006.md",
+      "size": 7832,
+      "sha256": "cc050ae2c2dec2cec791c436ac6cdb8384edf28cdb71f5cd0d09865857ce0afc"
+    },
+    {
+      "path": "governance/DESIGN_TRAINING_012_OWNER_WAIVER_ACCEPTANCE_009.md",
+      "size": 2061,
+      "sha256": "717cdd66750c25de784ffcfdae62bb357a906d37f17c3ba63dde5096e0be00c6"
+    },
+    {
+      "path": "studies/option_a/index.html",
+      "size": 69128,
+      "sha256": "7542bf5df3eaa97a9fe249aea732b1e0ca74d9f4140b72acfed31d5d4c6eaf23"
+    },
+    {
+      "path": "studies/option_b/index.html",
+      "size": 69131,
+      "sha256": "223663417f1636ad85563c4b58c5352bae1984ed951908cf50001db1eb605a49"
+    },
+    {
+      "path": "screenshots/01_study_a_desktop_normal.png",
+      "size": 536890,
+      "sha256": "d9042782964ef7bb3b66a8622e868c629c579240db70aef91a0d4f70b473e8d9"
+    },
+    {
+      "path": "screenshots/02_study_a_mobile_normal.png",
+      "size": 169297,
+      "sha256": "75f012c4adf3c9a46f80ee62dc73979b49280e5a02874ab4b82bf1bed1e7ba11"
+    },
+    {
+      "path": "screenshots/03_study_b_desktop_normal.png",
+      "size": 538277,
+      "sha256": "1fde738a7cdf1f881c84e27b871d10345398bff31a77705f3e48425c1bc5e695"
+    },
+    {
+      "path": "screenshots/04_study_b_mobile_normal.png",
+      "size": 169297,
+      "sha256": "75f012c4adf3c9a46f80ee62dc73979b49280e5a02874ab4b82bf1bed1e7ba11"
+    }
+  ]
+}

@@ -574,3 +574,23 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-15 11:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (263 ⭐)]** [QVerisAI/qveris-agent-toolkit](https://github.com/QVerisAI/qveris-agent-toolkit)
+  > Bring professional data and tools to the AI you already use: open-source MCP, CLI, SDKs, skills, and docs to find services, call them, and audit usage.
+- **[GitHub (89 ⭐)]** [heyman333/agent-notion-template-docs](https://github.com/heyman333/agent-notion-template-docs)
+  > Make your AI agent write documents like Notion — Claude Code skill that locks document structure & Notion visual style
+- **[GitHub (122 ⭐)]** [heypandax/pairlet](https://github.com/heypandax/pairlet)
+  > Pairlet (formerly CC Pocket / cc-pocket) — Continue your local AI coding tasks from phone, tablet, or desktop.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [ZGCM-1: A Fully Open and Extremely Efficient Foundation Model for Math and Agentic Search](https://arxiv.org/abs/2609.13356)
+  > arXiv:2609.13356v1 Announce Type: new Abstract: In this work, we present ZGCM-1, a fully open 7B dense foundation model trained from scratch with extreme dat...
+- **[ArXiv CS.AI]** [Converge Then Diversify: Decoupling Convergence and Diversity in Multi-Objective Bayesian Optimisation](https://arxiv.org/abs/2609.13396)
+  > arXiv:2609.13396v1 Announce Type: new Abstract: Multi-objective Bayesian optimisation (MOBO) is a sample-efficient approach for optimising expensive black-bo...
+
+</untrusted_external_content>
+
+---

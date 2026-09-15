@@ -889,13 +889,13 @@
     }
   
     /* ==========================================================================
-       MOTION TOKENS — STUDY B
+       MOTION TOKENS — STUDY B (R01 REVISED)
        Contract Budgets: max 300ms, max 8px displacement, max 1.02 scale
        ========================================================================== */
     :root {
       --motion-duration-fast: 120ms;
       --motion-duration-base: 180ms;
-      --motion-duration-slow: 250ms;
+      --motion-duration-slow: 240ms;
       --motion-displacement: 8px;
       --motion-scale-emphasis: 1.02;
       --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
@@ -916,6 +916,12 @@
       margin-left: 8px;
       transform-origin: center;
       transition: transform var(--motion-duration-fast) var(--motion-ease-standard);
+    }
+    #asset-disclosure-details[open] .disclosure-chevron-icon {
+      transform: rotate(90deg);
+    }
+    #asset-disclosure-details:not([open]) .disclosure-chevron-icon {
+      transform: rotate(0deg);
     }
     .disclosure-content {
       will-change: opacity, transform;
@@ -939,7 +945,7 @@
       transition: border-color var(--motion-duration-base) var(--motion-ease-standard);
     }
 
-    /* Button for Explicit Attention Trigger */
+    /* Button for Explicit Attention Trigger (Target >= 44x44px) */
     .btn-attention-trigger {
       min-width: 44px;
       min-height: 44px;
@@ -1017,14 +1023,14 @@
     <!-- SITE HEADER -->
     <header class="site-header">
       <div class="header-meta-row">
-        <span>TRIPFLOW OPERATIONAL SUITE · MODULE 12 BRAND &amp; IMAGE DIRECTION</span>
+        <span>TRIPFLOW OPERATIONAL SUITE · MODULE 13 MOTION FOUNDATION</span>
         <span>MỐC THỜI GIAN: 13/09/2026 — 18:00 (ASIA/HO_CHI_MINH)</span>
       </div>
       <div class="brand-title-wrap">
         <h1 class="brand-logo-text">TRIPFLOW Daily Departure Brief</h1>
         <span class="brand-badge">
           <img src="../../assets/icons/ready.svg" alt="" aria-hidden="true" width="14" height="14" class="icon-inline" onerror="this.classList.add('asset-failed');">
-          Study B — Explicit State Change (120–250ms, 8px crisp)
+          Study B — Explicit State Change (120–240ms, 8px crisp)
         </span>
       </div>
       <aside class="brand-promise-banner" aria-label="Lời hứa thương hiệu">
@@ -1393,7 +1399,7 @@
         <summary class="disclosure-summary" aria-expanded="false">
           <span>
             Minh Bạch Nguồn Gốc Tài Sản &amp; Bản Quyền (Asset Provenance &amp; Disclosure Panel)
-            <svg class="disclosure-chevron-icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <svg class="disclosure-chevron-icon" data-testid="disclosure-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
             </svg>
           </span>
@@ -1495,9 +1501,10 @@
 
   <script>
     /* ==========================================================================
-       TRIPFLOW MOTION FOUNDATION ENGINE — STUDY B
+       TRIPFLOW MOTION FOUNDATION ENGINE — STUDY B (R01 REVISED)
        Implements Patterns P1 (Disclosure), P2 (Action FSM), P3 (Attention)
-       Deterministic Test Hooks for Automated Independent Verification
+       Resolves F04 (activeDuration <= 240ms), F05 (Reversal & zero queue),
+       F06 (Real 6-axis divergence), F07 (Heading click removed, native button only)
        ========================================================================== */
 
     (function() {
@@ -1509,35 +1516,52 @@
         durationSlow: 220,
         displacementP1: 4,
         displacementP2: 3,
-        displacementP3: 3,
+        displacementP3: 4,
         scaleP3: 1.01,
         easeStandard: 'cubic-bezier(0.2, 0, 0.2, 1)',
         easeEnter: 'cubic-bezier(0, 0, 0.2, 1)',
-        easeExit: 'cubic-bezier(0.25, 0, 0.3, 1)'
+        easeExit: 'cubic-bezier(0.25, 0, 0.3, 1)',
+        opacitySequencing: 'simultaneous',
+        interruptionModel: 'waapi_reverse'
       } : {
         durationFast: 120,
         durationBase: 180,
-        durationSlow: 250,
+        durationSlow: 240,
         displacementP1: 8,
         displacementP2: 6,
         displacementP3: 6,
         scaleP3: 1.02,
         easeStandard: 'cubic-bezier(0.2, 0, 0, 1)',
         easeEnter: 'cubic-bezier(0, 0, 0, 1)',
-        easeExit: 'cubic-bezier(0.3, 0, 1, 1)'
+        easeExit: 'cubic-bezier(0.3, 0, 1, 1)',
+        opacitySequencing: 'staggered_lead_60pct',
+        interruptionModel: 'step_reversal'
       };
 
       window.__MOTION_TOKENS = TOKENS;
 
       // --------------------------------------------------------------------------
       // PATTERN P1: DISCLOSURE CONTINUITY
+      // F05 FIX: Reversal from current progress, cancel both handles, zero queue
       // --------------------------------------------------------------------------
       const disclosureDetails = document.getElementById('asset-disclosure-details');
       const disclosureSummary = disclosureDetails ? disclosureDetails.querySelector('.disclosure-summary') : null;
       const disclosureContent = disclosureDetails ? disclosureDetails.querySelector('.disclosure-content') : null;
       const disclosureChevron = disclosureDetails ? disclosureDetails.querySelector('.disclosure-chevron-icon') : null;
 
-      let isP1Animating = false;
+      let contentAnim = null;
+      let chevronAnim = null;
+
+      function cleanupAnimations() {
+        if (contentAnim) {
+          contentAnim.cancel();
+          contentAnim = null;
+        }
+        if (chevronAnim) {
+          chevronAnim.cancel();
+          chevronAnim = null;
+        }
+      }
 
       if (disclosureDetails && disclosureSummary && disclosureContent) {
         disclosureSummary.addEventListener('click', function(e) {
@@ -1545,79 +1569,120 @@
           const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('reduce-motion');
 
           if (reduced) {
+            cleanupAnimations();
             disclosureDetails.open = !disclosureDetails.open;
             disclosureSummary.setAttribute('aria-expanded', disclosureDetails.open ? 'true' : 'false');
             if (disclosureChevron) {
               disclosureChevron.style.transform = disclosureDetails.open ? 'rotate(90deg)' : 'rotate(0deg)';
             }
+            disclosureContent.style.opacity = disclosureDetails.open ? '1' : '0';
+            disclosureContent.style.transform = 'translateY(0px)';
             return;
           }
 
-          if (isP1Animating) {
-            const anims = disclosureContent.getAnimations();
-            anims.forEach(a => a.cancel());
-            isP1Animating = false;
+          const willOpen = !disclosureDetails.open;
+
+          if (isStudyA) {
+            // STUDY A: Continuous reversal from current progress using anim.reverse() or interpolated keyframe
+            if (contentAnim && contentAnim.playState === 'running') {
+              // Interrupted during animation -> smoothly reverse
+              contentAnim.reverse();
+              if (chevronAnim && chevronAnim.playState === 'running') {
+                chevronAnim.reverse();
+              }
+              const targetOpen = willOpen;
+              contentAnim.onfinish = () => {
+                cleanupAnimations();
+                disclosureDetails.open = targetOpen;
+                disclosureSummary.setAttribute('aria-expanded', targetOpen ? 'true' : 'false');
+                disclosureContent.style.opacity = '';
+                disclosureContent.style.transform = '';
+                if (disclosureChevron) {
+                  disclosureChevron.style.transform = '';
+                }
+              };
+              return;
+            }
+          } else {
+            // STUDY B: Step reversal - immediately cancel current and start fresh from current computed state
+            if (contentAnim) {
+              cleanupAnimations();
+            }
           }
 
-          if (!disclosureDetails.open) {
+          if (willOpen) {
+            // OPENING
+            cleanupAnimations();
             disclosureDetails.open = true;
             disclosureSummary.setAttribute('aria-expanded', 'true');
-            isP1Animating = true;
 
+            // Chevron rotation
             if (disclosureChevron) {
-              disclosureChevron.animate([
+              chevronAnim = disclosureChevron.animate([
                 { transform: 'rotate(0deg)' },
                 { transform: 'rotate(90deg)' }
               ], {
                 duration: TOKENS.durationBase,
-                easing: TOKENS.easeStandard,
-                fill: 'forwards'
+                easing: TOKENS.easeStandard
               });
             }
 
-            const openAnim = disclosureContent.animate([
+            // Content unfold keyframes (F06: Study A simultaneous vs Study B staggered opacity lead)
+            const openKeyframes = isStudyA ? [
               { opacity: 0, transform: 'translateY(-' + TOKENS.displacementP1 + 'px)' },
               { opacity: 1, transform: 'translateY(0px)' }
-            ], {
+            ] : [
+              { opacity: 0, transform: 'translateY(-' + TOKENS.displacementP1 + 'px)', offset: 0 },
+              { opacity: 1, transform: 'translateY(-2px)', offset: 0.6 },
+              { opacity: 1, transform: 'translateY(0px)', offset: 1 }
+            ];
+
+            contentAnim = disclosureContent.animate(openKeyframes, {
               duration: TOKENS.durationBase,
-              easing: TOKENS.easeEnter,
-              fill: 'forwards'
+              easing: TOKENS.easeEnter
             });
 
-            openAnim.onfinish = () => {
-              isP1Animating = false;
-              disclosureContent.style.opacity = '1';
-              disclosureContent.style.transform = 'translateY(0px)';
+            contentAnim.onfinish = () => {
+              cleanupAnimations();
+              disclosureContent.style.opacity = '';
+              disclosureContent.style.transform = '';
+              if (disclosureChevron) disclosureChevron.style.transform = '';
             };
           } else {
+            // CLOSING
+            cleanupAnimations();
             disclosureSummary.setAttribute('aria-expanded', 'false');
-            isP1Animating = true;
 
             if (disclosureChevron) {
-              disclosureChevron.animate([
+              chevronAnim = disclosureChevron.animate([
                 { transform: 'rotate(90deg)' },
                 { transform: 'rotate(0deg)' }
               ], {
                 duration: TOKENS.durationFast,
-                easing: TOKENS.easeStandard,
-                fill: 'forwards'
+                easing: TOKENS.easeStandard
               });
             }
 
-            const closeAnim = disclosureContent.animate([
+            const closeKeyframes = isStudyA ? [
               { opacity: 1, transform: 'translateY(0px)' },
               { opacity: 0, transform: 'translateY(-' + TOKENS.displacementP1 + 'px)' }
-            ], {
+            ] : [
+              { opacity: 1, transform: 'translateY(0px)', offset: 0 },
+              { opacity: 0.3, transform: 'translateY(-4px)', offset: 0.4 },
+              { opacity: 0, transform: 'translateY(-' + TOKENS.displacementP1 + 'px)', offset: 1 }
+            ];
+
+            contentAnim = disclosureContent.animate(closeKeyframes, {
               duration: TOKENS.durationFast,
-              easing: TOKENS.easeExit,
-              fill: 'forwards'
+              easing: TOKENS.easeExit
             });
 
-            closeAnim.onfinish = () => {
+            contentAnim.onfinish = () => {
+              cleanupAnimations();
               disclosureDetails.open = false;
-              isP1Animating = false;
               disclosureContent.style.opacity = '';
               disclosureContent.style.transform = '';
+              if (disclosureChevron) disclosureChevron.style.transform = '';
             };
           }
         });
@@ -1625,6 +1690,7 @@
 
       // --------------------------------------------------------------------------
       // PATTERN P2: ACTION FEEDBACK FSM (CẬP NHẬT NHẬT KÝ T01)
+      // F04 FIX: Single pulse iterations: 1, activeDuration <= 240ms <= 300ms
       // --------------------------------------------------------------------------
       const btnUpdateLog = document.getElementById('btn-update-t01-log');
       const liveRegion = document.getElementById('t01-action-live-region');
@@ -1661,7 +1727,6 @@
         window.__actionState = nextState;
         btnUpdateLog.setAttribute('data-state', nextState);
         const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.contains('reduce-motion');
-
         const labelSpan = btnUpdateLog.querySelector('span');
 
         switch (nextState) {
@@ -1671,6 +1736,7 @@
             btnUpdateLog.style.background = '';
             btnUpdateLog.style.borderColor = '';
             btnUpdateLog.style.color = '';
+            btnUpdateLog.style.transform = '';
             updateLiveRegion('');
             break;
 
@@ -1680,16 +1746,20 @@
             if (labelSpan) labelSpan.textContent = 'Đang lưu nhật ký...';
             updateLiveRegion('Hệ thống đang gửi cập nhật nhật ký T01...');
 
+            // F04 FIX: Single cycle pulse only (iterations: 1), activeDuration = durationSlow (220ms or 240ms <= 300ms)
             if (!reduced) {
-              btnUpdateLog.animate([
+              const pendingAnim = btnUpdateLog.animate([
                 { opacity: 1 },
                 { opacity: 0.7 },
                 { opacity: 1 }
               ], {
                 duration: TOKENS.durationSlow,
                 easing: TOKENS.easeStandard,
-                iterations: 2
+                iterations: 1
               });
+              pendingAnim.onfinish = () => {
+                btnUpdateLog.style.opacity = '1';
+              };
             }
 
             const outcome = window.__nextActionOutcome !== null ? window.__nextActionOutcome : (window.__actionAttempts === 1 ? 'error' : 'success');
@@ -1700,7 +1770,7 @@
               } else {
                 transitionP2State('error');
               }
-            }, reduced ? 20 : 350);
+            }, reduced ? 20 : 300);
             break;
 
           case 'success':
@@ -1713,7 +1783,7 @@
             updateLiveRegion('Cập nhật nhật ký tour T01 thành công.');
 
             if (!reduced) {
-              btnUpdateLog.animate([
+              const successAnim = btnUpdateLog.animate([
                 { transform: 'scale(1)' },
                 { transform: 'scale(' + (isStudyA ? '1.01' : '1.02') + ')' },
                 { transform: 'scale(1)' }
@@ -1721,6 +1791,9 @@
                 duration: TOKENS.durationBase,
                 easing: TOKENS.easeEnter
               });
+              successAnim.onfinish = () => {
+                btnUpdateLog.style.transform = '';
+              };
             }
 
             setTimeout(() => {
@@ -1741,7 +1814,7 @@
 
             if (!reduced) {
               const d = TOKENS.displacementP2;
-              btnUpdateLog.animate([
+              const errorAnim = btnUpdateLog.animate([
                 { transform: 'translateX(0px)' },
                 { transform: 'translateX(-' + d + 'px)' },
                 { transform: 'translateX(' + d + 'px)' },
@@ -1750,6 +1823,9 @@
                 duration: TOKENS.durationFast,
                 easing: TOKENS.easeStandard
               });
+              errorAnim.onfinish = () => {
+                btnUpdateLog.style.transform = '';
+              };
             }
             break;
         }
@@ -1771,6 +1847,7 @@
 
       // --------------------------------------------------------------------------
       // PATTERN P3: ATTENTION WITHOUT ALARM (ĐIỂM NGHẼN T01)
+      // F07 FIX: Explicit native button trigger ONLY (Heading click removed)
       // --------------------------------------------------------------------------
       const btnHighlightT01 = document.getElementById('btn-highlight-t01');
       const focalTourCard = document.getElementById('tour-focus-t01');
@@ -1817,12 +1894,7 @@
         });
       }
 
-      const heroHeading = focalTourCard ? focalTourCard.querySelector('.hero-heading') : null;
-      if (heroHeading) {
-        heroHeading.style.cursor = 'pointer';
-        heroHeading.addEventListener('click', triggerAttentionCue);
-      }
-
+      // Expose function for deterministic test runner
       window.__tripflowTriggerAttention = triggerAttentionCue;
 
     })();

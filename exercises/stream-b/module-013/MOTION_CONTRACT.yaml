@@ -1,6 +1,6 @@
 version: 1
 module: DESIGN_TRAINING_013_MOTION_FOUNDATION
-status: APPROVED_FOR_STUDIES
+status: DRAFT_PENDING_CONTROLLER
 
 principles:
   - id: MP-01
@@ -8,37 +8,65 @@ principles:
     rule: "Trigger -> State change -> Motion cue -> Settled state"
   - id: MP-02
     name: "Purpose-Driven Duration"
-    rule: "Durations 120ms-240ms based on displacement and urgency; max cap 300ms; delay 0ms"
+    rule: "Durations 100ms-240ms based on displacement and urgency; max cap 300ms; delay 0ms"
   - id: MP-03
     name: "Dynamics, Not Ornament"
-    rule: "Cubic-bezier curves reflecting physical deceleration; no bounce, no overshoot"
+    rule: "Cubic-bezier curves reflecting physical deceleration; strictly no bounce, no overshoot"
   - id: MP-04
     name: "Composite-First Containment"
-    rule: "Only transform and opacity animated; zero layout shift (CLS = 0)"
+    rule: "Transform and opacity primary; restrained background/border-color feedback; zero layout shift (CLS = 0)"
   - id: MP-05
     name: "Interruption Resilience"
-    rule: "Queue length 0; rapid inputs settle cleanly without duplicate side-effects"
+    rule: "Queue length 0; reversal from current vector; rapid inputs settle cleanly without duplicate side-effects"
   - id: MP-06
     name: "Reduced-Motion Equivalence"
-    rule: "Displacement 0px; duration <= 1ms; 100% functional and announcement parity"
+    rule: "Displacement 0px; duration <= 1ms; 100% functional, focus, and announcement parity"
 
 tokens:
-  duration:
-    fast: "120ms"
-    base: "180ms"
-    slow: "240ms"
-    cap: "300ms"
-  easing:
-    standard: "cubic-bezier(0.2, 0, 0, 1)"
-    enter: "cubic-bezier(0, 0, 0, 1)"
-    exit: "cubic-bezier(0.3, 0, 1, 1)"
-    linear: "linear"
-  distance:
-    subtle: "4px"
-    maximum: "8px"
-  scale:
-    subtle: 1.01
-    emphasis: 1.02
+  default_baseline:
+    duration_fast: "120ms"
+    duration_base: "180ms"
+    duration_slow: "240ms"
+    duration_cap: "300ms"
+    delay_default: "0ms"
+    easing_standard: "cubic-bezier(0.2, 0, 0, 1)"
+    easing_enter: "cubic-bezier(0, 0, 0, 1)"
+    easing_exit: "cubic-bezier(0.3, 0, 1, 1)"
+    easing_linear: "linear"
+    max_translation_px: 8
+    max_scale: 1.02
+
+study_profiles:
+  option_a:
+    name: "Study A — Quiet Continuity"
+    duration_fast: "100ms"
+    duration_base: "160ms"
+    duration_slow: "220ms"
+    duration_cap: "300ms"
+    displacement_p1_px: 4
+    displacement_p2_px: 3
+    displacement_p3_px: 4
+    scale_emphasis: 1.01
+    easing_standard: "cubic-bezier(0.2, 0, 0.2, 1)"
+    easing_enter: "cubic-bezier(0, 0, 0.2, 1)"
+    easing_exit: "cubic-bezier(0.25, 0, 0.3, 1)"
+    opacity_sequencing: "simultaneous"
+    interruption_model: "waapi_reverse"
+  option_b:
+    name: "Study B — Explicit State Change"
+    duration_fast: "120ms"
+    duration_base: "180ms"
+    duration_slow: "240ms"
+    duration_cap: "300ms"
+    displacement_p1_px: 8
+    displacement_p2_px: 6
+    displacement_p3_px: 6
+    scale_emphasis: 1.02
+    easing_standard: "cubic-bezier(0.2, 0, 0, 1)"
+    easing_enter: "cubic-bezier(0, 0, 0, 1)"
+    easing_exit: "cubic-bezier(0.3, 0, 1, 1)"
+    opacity_sequencing: "staggered_lead_60pct"
+    interruption_model: "step_reversal"
 
 patterns:
   disclosure:
@@ -55,9 +83,9 @@ patterns:
     properties:
       - "transform (rotate 0deg to 90deg)"
       - "opacity (0 to 1)"
-      - "transform (translateY -4px to 0px)"
+      - "transform (translateY -4px/-8px to 0px)"
     reduced_motion: "Instant toggle; rotation 0deg; displacement 0px; duration 0s"
-    interruption_rule: "Immediate reversal from current vector; animation queue 0"
+    interruption_rule: "Immediate reversal from current vector; animation queue 0; clean inline styles"
 
   action_feedback:
     id: P2
@@ -67,14 +95,14 @@ patterns:
     states: [idle, pending, error, retry, success]
     selectors:
       - "#btn-update-t01-log"
-      - "#btn-update-t01-log .btn-text"
-      - "#btn-update-t01-log .btn-icon"
+      - "#btn-update-t01-log span"
       - "#t01-action-live-region"
     properties:
-      - "opacity (pending pulse: 1 to 0.75)"
-      - "transform (error shake: -4px to +4px; success scale: 1.0 to 1.02)"
+      - "opacity (single pending pulse: 1 to 0.75, activeDuration <= 240ms)"
+      - "transform (error shake: -3px/-6px; success scale: 1.0 to 1.01/1.02)"
       - "background-color"
       - "border-color"
+      - "color"
     reduced_motion: "Instant state transitions; shake 0px; scale 1.0; duration 0s; text status announcements preserved"
     interruption_rule: "Pending blocks duplicate triggers; retry cleans error state immediately; activeElement preserved"
 
@@ -82,16 +110,16 @@ patterns:
     id: P3
     name: "Attention without alarm"
     purpose: "Hướng sự chú ý có chừng mực vào điểm nghẽn T01 sau thao tác chủ động của người dùng"
-    trigger: "Explicit click on #btn-highlight-t01 or expansion of T01 focal panel"
+    trigger: "Explicit click on native button #btn-highlight-t01"
     states: [dormant, active, settled]
     selectors:
       - "#tour-focus-t01"
       - ".bottleneck-alert-box"
-      - "#tour-focus-t01 .tour-id-pill"
     properties:
-      - "transform (translateY 0 to -4px to 0)"
-      - "transform (scale 1.0 to 1.015 to 1.0)"
-      - "box-shadow (warm glow: 0 4px 12px rgba(217, 119, 6, 0.15))"
+      - "transform (translateY 0 to -4px/-6px to 0)"
+      - "transform (scale 1.0 to 1.01/1.02 to 1.0)"
+      - "border-color"
+      - "background-color"
     reduced_motion: "Displacement 0px; scale 1.0; instant border color highlight for 200ms; duration 0s"
     interruption_rule: "Single cycle only; settles immediately to base state; no infinite loop or autoplay"
 

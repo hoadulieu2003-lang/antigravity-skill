@@ -1,0 +1,671 @@
+{
+  "test_run_type": "CHECKPOINT_SMOKE_R01",
+  "system": "TRIPFLOW Daily Departure Brief — Stream B",
+  "module": 13,
+  "revision": "R01",
+  "timestamp": "2026-09-15T01:50:42.402Z",
+  "status": "CHECKPOINT_SMOKE_PASS",
+  "assertions": {
+    "total": 96,
+    "passed": 96,
+    "failed": 0,
+    "pass_rate": "100%"
+  },
+  "measured_metrics": {
+    "study_a": {
+      "durationFast": 100,
+      "durationBase": 160,
+      "durationSlow": 220,
+      "displacementP1": 4,
+      "displacementP2": 3,
+      "displacementP3": 4,
+      "scaleP3": 1.01,
+      "easeStandard": "cubic-bezier(0.2, 0, 0.2, 1)",
+      "easeEnter": "cubic-bezier(0, 0, 0.2, 1)",
+      "easeExit": "cubic-bezier(0.25, 0, 0.3, 1)",
+      "opacitySequencing": "simultaneous",
+      "interruptionModel": "waapi_reverse"
+    },
+    "study_b": {
+      "durationFast": 120,
+      "durationBase": 180,
+      "durationSlow": 240,
+      "displacementP1": 8,
+      "displacementP2": 6,
+      "displacementP3": 6,
+      "scaleP3": 1.02,
+      "easeStandard": "cubic-bezier(0.2, 0, 0, 1)",
+      "easeEnter": "cubic-bezier(0, 0, 0, 1)",
+      "easeExit": "cubic-bezier(0.3, 0, 1, 1)",
+      "opacitySequencing": "staggered_lead_60pct",
+      "interruptionModel": "step_reversal"
+    },
+    "divergence": [
+      {
+        "axis": "1. Duration Hierarchy",
+        "keyA": "100/160/220ms",
+        "keyB": "120/180/240ms",
+        "diff": true
+      },
+      {
+        "axis": "2. Easing Model",
+        "keyA": "cubic-bezier(0.2, 0, 0.2, 1)",
+        "keyB": "cubic-bezier(0.2, 0, 0, 1)",
+        "diff": true
+      },
+      {
+        "axis": "3. Spatial Displacement",
+        "keyA": "4px",
+        "keyB": "8px",
+        "diff": true
+      },
+      {
+        "axis": "4. Opacity Sequencing",
+        "keyA": "simultaneous",
+        "keyB": "staggered_lead_60pct",
+        "diff": true
+      },
+      {
+        "axis": "5. Emphasis Treatment",
+        "keyA": "Soft tint + scale 1.01",
+        "keyB": "Amber border + scale 1.02",
+        "diff": true
+      },
+      {
+        "axis": "6. Interruption Model",
+        "keyA": "waapi_reverse",
+        "keyB": "step_reversal",
+        "diff": true
+      }
+    ]
+  },
+  "findings_closure": {
+    "F01_zip_hierarchy": "CLOSED — Pure forward-slash relative hierarchy via python zip script",
+    "F02_runner_portability": "CLOSED — __dirname resolution, multi-path Chrome discovery",
+    "F03_contract_source_of_truth": "CLOSED — study_profiles defined, box-shadow purged, DRAFT_PENDING_CONTROLLER",
+    "F04_p2_duration_cap": "CLOSED — activeDuration measured strictly <= 300ms (220ms / 240ms)",
+    "F05_p1_reversal_cleanup": "CLOSED — getAnimations({subtree:true}).length === 0, inline style cleared, rapid toggle parity verified",
+    "F06_divergence_measured": "CLOSED — 6/6 axes divergence implemented and verified from runtime tokens",
+    "F07_p3_heading_click": "CLOSED — .hero-heading click handler purged, only #btn-highlight-t01 native control",
+    "F08_checkpoint_smoke_evidence": "CLOSED — CHECKPOINT_VERIFICATION.json and CHECKPOINT_VERIFICATION_CONSOLE.log generated",
+    "F09_header_and_asset_integrity": "CLOSED — Header updated to MODULE 13 MOTION FOUNDATION, standardized data-testid"
+  },
+  "assertion_details": [
+    {
+      "id": "A01",
+      "message": "Starter snapshot ZIP exists",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A02",
+      "message": "Snapshot ZIP SHA-256 matches Sol announcement exactly",
+      "passed": true,
+      "details": "8b7beb3b726e7da8d0d5f8dc5b54dbfc280ab9c068fe39a5298f14d6a148b32b"
+    },
+    {
+      "id": "A03",
+      "message": "Starter manifest JSON exists",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A04",
+      "message": "Manifest specifies Module 13 Stream B",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A05",
+      "message": "Baseline index.html unmodified and matches manifest",
+      "passed": true,
+      "details": "de7661c03dfb152d5a0c95c88f7ecdf5cb8ea21698e711105f8a2bbb46f51814"
+    },
+    {
+      "id": "A06",
+      "message": "Deliverable CHANGE_LEDGER.md exists and is non-trivial (2733 bytes)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A07",
+      "message": "Deliverable MOTION_PRINCIPLES.md exists and is non-trivial (6777 bytes)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A08",
+      "message": "Deliverable MOTION_CONTRACT.yaml exists and is non-trivial (5394 bytes)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A09",
+      "message": "Deliverable MOTION_INVENTORY.md exists and is non-trivial (4461 bytes)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A10",
+      "message": "Deliverable STATE_MACHINE.md exists and is non-trivial (6108 bytes)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A11",
+      "message": "Deliverable MOTION_SAFETY_MATRIX.md exists and is non-trivial (3779 bytes)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A12",
+      "message": "Deliverable TEST_MATRIX_DRAFT.md exists and is non-trivial (4927 bytes)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A13",
+      "message": "Contract provides explicit study_profiles for option_a and option_b (F03)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A14",
+      "message": "Contract status is DRAFT_PENDING_CONTROLLER (F03)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A15",
+      "message": "Contract enforces 300ms duration cap and 8px translation cap",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A16",
+      "message": "Contract eliminates box-shadow from allowed properties and P3 (F03)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A17",
+      "message": "Study A loads with 0 console errors at 1440x900 DPR=2",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A18",
+      "message": "Desktop screenshot saved: 01_study_a_desktop_normal.png (536890 bytes)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A19",
+      "message": "Study A header states MODULE 13 MOTION FOUNDATION (F09)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A20",
+      "message": "Study A disclosure chevron has standardized data-testid (F09)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A21",
+      "message": "Study A P1 disclosure initially closed",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A22",
+      "message": "Study A P1 opens cleanly with aria-expanded=\"true\"",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A23",
+      "message": "Study A P1 settles with 0 lingering animations (getAnimations().length === 0) (F05)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A24",
+      "message": "Study A P1 cleans up inline transform/opacity after settle (F05)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A25",
+      "message": "Study A P1 closes cleanly with aria-expanded=\"false\"",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A26",
+      "message": "Study A P1 closed settle has 0 lingering animations (F05)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A27",
+      "message": "Study A P1 reaches correct closed parity after 10 rapid toggles (F05)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A28",
+      "message": "Study A P1 queue length = 0 after rapid toggles (getAnimations({subtree:true}).length === 0) (F05)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A29",
+      "message": "Study A P1 inline styles cleanly cleared after rapid interruption (F05)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A30",
+      "message": "Study A P1 under reduced-motion opens instantly with 0 motion animations (F08)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A31",
+      "message": "Study A P2 initially in idle state",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A32",
+      "message": "Study A P2 enters pending state immediately on trigger",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A33",
+      "message": "Study A P2 activeDuration (220ms) is strictly <= 300ms cap (F04)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A34",
+      "message": "Study A P2 transitions to error on 1st attempt",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A35",
+      "message": "Study A P2 live region announces error: \"Cập nhật nhật ký thất bại do đối tác chưa phản hồi. Nhấn để thử lại.\"",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A36",
+      "message": "Study A P2 retains keyboard focus on button without stealing/loss (F08)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A37",
+      "message": "Study A P2 transitions to success on retry",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A38",
+      "message": "Study A P2 live region announces success: \"Cập nhật nhật ký tour T01 thành công.\"",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A39",
+      "message": "Study A clicking .hero-heading (h2) does NOT trigger motion (F07 closed)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A40",
+      "message": "Study A P3 triggers via native button #btn-highlight-t01",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A41",
+      "message": "Study A P3 activeDuration (220ms) is strictly <= 300ms cap",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A42",
+      "message": "Study A P3 settles cleanly with inline transform removed",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A43",
+      "message": "Study A Tab key advances focus smoothly",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A44",
+      "message": "Mobile screenshot saved: 02_study_a_mobile_normal.png (169297 bytes)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A45",
+      "message": "Study B loads with 0 console errors at 1440x900 DPR=2",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A46",
+      "message": "Desktop screenshot saved: 03_study_b_desktop_normal.png (538277 bytes)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A47",
+      "message": "Study B header states MODULE 13 MOTION FOUNDATION (F09)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A48",
+      "message": "Study B disclosure chevron has standardized data-testid (F09)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A49",
+      "message": "Study B P1 disclosure initially closed",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A50",
+      "message": "Study B P1 opens cleanly with aria-expanded=\"true\"",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A51",
+      "message": "Study B P1 settles with 0 lingering animations (getAnimations().length === 0) (F05)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A52",
+      "message": "Study B P1 cleans up inline transform/opacity after settle (F05)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A53",
+      "message": "Study B P1 closes cleanly with aria-expanded=\"false\"",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A54",
+      "message": "Study B P1 closed settle has 0 lingering animations (F05)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A55",
+      "message": "Study B P1 reaches correct closed parity after 10 rapid toggles (F05)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A56",
+      "message": "Study B P1 queue length = 0 after rapid toggles (getAnimations({subtree:true}).length === 0) (F05)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A57",
+      "message": "Study B P1 inline styles cleanly cleared after rapid interruption (F05)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A58",
+      "message": "Study B P1 under reduced-motion opens instantly with 0 motion animations (F08)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A59",
+      "message": "Study B P2 initially in idle state",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A60",
+      "message": "Study B P2 enters pending state immediately on trigger",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A61",
+      "message": "Study B P2 activeDuration (240ms) is strictly <= 300ms cap (F04)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A62",
+      "message": "Study B P2 transitions to error on 1st attempt",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A63",
+      "message": "Study B P2 live region announces error: \"Cập nhật nhật ký thất bại do đối tác chưa phản hồi. Nhấn để thử lại.\"",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A64",
+      "message": "Study B P2 retains keyboard focus on button without stealing/loss (F08)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A65",
+      "message": "Study B P2 transitions to success on retry",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A66",
+      "message": "Study B P2 live region announces success: \"Cập nhật nhật ký tour T01 thành công.\"",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A67",
+      "message": "Study B clicking .hero-heading (h2) does NOT trigger motion (F07 closed)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A68",
+      "message": "Study B P3 triggers via native button #btn-highlight-t01",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A69",
+      "message": "Study B P3 activeDuration (240ms) is strictly <= 300ms cap",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A70",
+      "message": "Study B P3 settles cleanly with inline transform removed",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A71",
+      "message": "Study B Tab key advances focus smoothly",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A72",
+      "message": "Mobile screenshot saved: 04_study_b_mobile_normal.png (169297 bytes)",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A73",
+      "message": "All 6/6 strategic axes diverge with measured runtime implementations (Actual: 6/6) (F06)",
+      "passed": true,
+      "details": "divergent count: 6"
+    },
+    {
+      "id": "A74",
+      "message": "Required inventory item present: DESIGN_TRAINING_MODULE_013_DIRECTIVE.md",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A75",
+      "message": "Required inventory item present: DESIGN_TRAINING_013_STARTER_SNAPSHOT.zip",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A76",
+      "message": "Required inventory item present: DESIGN_TRAINING_013_STARTER_SNAPSHOT_MANIFEST.json",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A77",
+      "message": "Required inventory item present: PROJECT.md",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A78",
+      "message": "Required inventory item present: SOURCE_PROVENANCE.md",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A79",
+      "message": "Required inventory item present: CHECKPOINT_13_1.yaml",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A80",
+      "message": "Required inventory item present: CHANGE_LEDGER.md",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A81",
+      "message": "Required inventory item present: MOTION_PRINCIPLES.md",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A82",
+      "message": "Required inventory item present: MOTION_CONTRACT.yaml",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A83",
+      "message": "Required inventory item present: MOTION_INVENTORY.md",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A84",
+      "message": "Required inventory item present: STATE_MACHINE.md",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A85",
+      "message": "Required inventory item present: MOTION_SAFETY_MATRIX.md",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A86",
+      "message": "Required inventory item present: TEST_MATRIX_DRAFT.md",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A87",
+      "message": "Required inventory item present: baseline/index.html",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A88",
+      "message": "Required inventory item present: studies/option_a/index.html",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A89",
+      "message": "Required inventory item present: studies/option_b/index.html",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A90",
+      "message": "Required inventory item present: verify_checkpoint_13_1.js",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A91",
+      "message": "Required inventory item present: package.json",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A92",
+      "message": "Required inventory item present: package-lock.json",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A93",
+      "message": "Required inventory item present: screenshots/01_study_a_desktop_normal.png",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A94",
+      "message": "Required inventory item present: screenshots/02_study_a_mobile_normal.png",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A95",
+      "message": "Required inventory item present: screenshots/03_study_b_desktop_normal.png",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "id": "A96",
+      "message": "Required inventory item present: screenshots/04_study_b_mobile_normal.png",
+      "passed": true,
+      "details": ""
+    }
+  ]
+}

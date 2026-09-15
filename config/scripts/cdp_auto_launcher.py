@@ -38,7 +38,9 @@ if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 BASE_DIR = r"C:\Users\game\.gemini"
-CHROME_PROFILE_DIR = os.path.join(BASE_DIR, "chrome-profile")
+LOCALAPPDATA = os.environ.get("LOCALAPPDATA", r"C:\Users\game\AppData\Local")
+CHROME_PROFILE_DIR = os.path.join(LOCALAPPDATA, "Google", "Chrome", "User Data Debug")
+CHROME_PROFILE_2_DIR = os.path.join(LOCALAPPDATA, "Google", "Chrome", "User Data Debug 2")
 PS_BRIDGE_SCRIPT = os.path.join(BASE_DIR, "config", "skills", "photoshop-studio", "scripts", "ps_bridge.py")
 TELEGRAM_HUB_DIR = os.path.join(BASE_DIR, "config", "sidecars", "antigravity_master_hub")
 PHOTOSHOP_DAEMON_PORT = 28765
@@ -121,7 +123,12 @@ def launch_chrome_debug(port: int = 9222, profile_dir: str = None, wait_timeout:
     Tự động kích hoạt Google Chrome với cờ Remote Debugging và Profile cách ly an toàn.
     """
     if profile_dir is None:
-        profile_dir = CHROME_PROFILE_DIR if port == 9222 else os.path.join(BASE_DIR, f"chrome-profile-{port}")
+        if port == 9222:
+            profile_dir = CHROME_PROFILE_DIR
+        elif port == 9223:
+            profile_dir = CHROME_PROFILE_2_DIR
+        else:
+            profile_dir = os.path.join(LOCALAPPDATA, "Google", "Chrome", f"User Data Debug {port}")
 
     # 1. Kiểm tra nếu cổng đã sẵn sàng
     current_status = check_cdp_port(port=port)
@@ -423,12 +430,13 @@ def main():
     import argparse
     parser = argparse.ArgumentParser(description="Peripheral CDP & Ecosystem Auto-Launcher")
     parser.add_argument("--check", action="store_true", help="Chỉ kiểm tra sức khoẻ hệ sinh thái (không tự kích hoạt)")
-    parser.add_argument("--launch", action="store_true", help="Kích hoạt Chrome Remote Debugging port 9222")
+    parser.add_argument("--launch", action="store_true", help="Kích hoạt Chrome Remote Debugging port")
+    parser.add_argument("--ensure", action="store_true", help="Đảm bảo Chrome Remote Debugging đang chạy (nếu tắt thì bật)")
     parser.add_argument("--port", type=int, default=9222, help="Cổng CDP cụ thể để thao tác (mặc định: 9222)")
     parser.add_argument("--json", action="store_true", help="Xuất kết quả dưới định dạng JSON")
     args = parser.parse_args()
 
-    if args.launch:
+    if args.launch or args.ensure:
         res = launch_chrome_debug(port=args.port)
         if args.json:
             print(json.dumps(res, indent=2, ensure_ascii=False))

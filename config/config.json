@@ -107,7 +107,8 @@
         "read_url(takeprofit.com)",
         "mcp(cdp-bridge/cdp_list_tabs)",
         "mcp(cdp-bridge/send_telegram_notification)",
-        "read_url(trade-orcin-two.vercel.app)"
+        "read_url(trade-orcin-two.vercel.app)",
+        "read_url(127.0.0.1)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

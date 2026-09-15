@@ -1,0 +1,13 @@
+{
+  "name": "design-training-013-checkpoint-13-1-r01",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TRIPFLOW Daily Departure Brief — Module 13 Motion Foundation Checkpoint 13.1 R01",
+  "scripts": {
+    "test": "node verify_checkpoint_13_1.js",
+    "verify": "node verify_checkpoint_13_1.js"
+  },
+  "dependencies": {
+    "puppeteer-core": "^22.0.0"
+  }
+}

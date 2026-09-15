@@ -16,3 +16,36 @@
 | C-012 | 2 | `CHECKPOINT_13_1.yaml` | Biên soạn payload bàn giao Checkpoint 13.1 cho Controller Sol | Milestone handoff | None | Controller review |
 
 Không sửa các file trong `baseline/`, `assets/` hoặc `governance/`. Mọi thay đổi candidate phải được ghi trước khi submission.
+
+## [REVISION R01] — 15/09/2026 08:50 (Asia/Ho_Chi_Minh)
+### Checkpoint Review 001 Findings Remediation (F01–F09)
+
+1. **F01 (ZIP Archive Hierarchy)**:
+   - Thay thế PowerShell `Compress-Archive` bằng Python script `pack_checkpoint_r01.py`.
+   - Giữ nguyên cấu trúc phân cấp tương đối chuẩn Unix forward-slash (`studies/option_a/index.html`, `screenshots/...`), loại bỏ hoàn toàn hiện tượng làm phẳng trùng tên `index.html`.
+2. **F02 (Verification Runner Portability)**:
+   - Tái cấu trúc `verify_checkpoint_13_1.js` sử dụng `path.resolve(__dirname)`, loại bỏ toàn bộ đường dẫn tuyệt đối tác giả.
+   - Bổ sung thuật toán tự động nhận diện Chromium đa nền tảng (`--chrome-path`, biến môi trường `CHROME_PATH`, danh sách ứng viên tiêu chuẩn).
+3. **F03 (Contract Source of Truth & Clean Tokens)**:
+   - Cập nhật `MOTION_CONTRACT.yaml` bổ sung tường minh `study_profiles.option_a` (100/160/220ms, 4px) và `study_profiles.option_b` (120/180/240ms, 8px).
+   - Thanh lọc triệt để `box-shadow` khỏi danh sách thuộc tính cho phép và pattern P3.
+   - Chuyển trạng thái sang `status: DRAFT_PENDING_CONTROLLER`.
+4. **F04 (Pattern P2 Duration Hard Cap)**:
+   - Điều chỉnh pulse pending về `iterations: 1`, `duration: durationSlow` (220ms ở Study A, 240ms ở Study B).
+   - Đo đạc thực tế `effect.getComputedTiming().activeDuration` cam kết nghiêm ngặt ≤ 240ms ≤ 300ms hard cap.
+5. **F05 (Pattern P1 Reversal & Zero Queue)**:
+   - Thiết kế lại cơ chế đảo chiều WAAPI: hủy đồng thời cả content và chevron, đảo chiều mượt từ progress hiện tại.
+   - S settle dọn dẹp sạch sẽ inline styles (`transform: ''`, `opacity: ''`), cam kết `getAnimations({subtree: true}).length === 0`.
+   - Stress test 10 lần toggle dồn dập đạt độ chẵn lẻ chính xác và queue = 0.
+6. **F06 (Six-Axis Strategic Divergence)**:
+   - Triển khai đầy đủ logic khác biệt runtime cho 6/6 trục: Duration (100/160/220ms vs 120/180/240ms), Easing, Spatial Displacement (4px vs 8px), Opacity Sequencing (đồng thời vs 60% opacity lead), Emphasis Treatment (scale 1.01 vs 1.02), Interruption Model (waapi_reverse vs step_reversal).
+   - Đo đạc trực tiếp từ `window.__MOTION_TOKENS` tại browser runtime, không hard-code boolean.
+7. **F07 (Pattern P3 Heading Click Isolation)**:
+   - Xóa bỏ hoàn toàn sự kiện click trên `.hero-heading` (h2), bảo đảm tính tương đương của người dùng bàn phím.
+   - Duy trì duy nhất nút điều khiển native `#btn-highlight-t01` đạt chuẩn diện tích bấm ≥ 44x44px và semantics.
+8. **F08 (Checkpoint Smoke Evidence)**:
+   - Xuất bản đầy đủ `CHECKPOINT_VERIFICATION.json` và `CHECKPOINT_VERIFICATION_CONSOLE.log` với 96 assertions targeted probes.
+   - Khảo sát chuyên sâu `prefers-reduced-motion: reduce`, Tab/Enter keyboard navigation, focus retention và CLS = 0.
+9. **F09 (Header & Asset Integrity)**:
+   - Cập nhật tiêu đề ngữ nghĩa sang `TRIPFLOW OPERATIONAL SUITE · MODULE 13 MOTION FOUNDATION`.
+   - Chuẩn hóa thuộc tính định danh SVG chevron `data-testid="disclosure-chevron"`.

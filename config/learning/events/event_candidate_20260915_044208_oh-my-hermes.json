@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-15T04:42:08.787251+00:00",
+  "skill_name": "oh-my-hermes",
+  "source_repo": "rlaope/oh-my-hermes",
+  "stars": 2167,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\oh-my-hermes\\SKILL.md",
+  "human_promotion_required": true
+}
