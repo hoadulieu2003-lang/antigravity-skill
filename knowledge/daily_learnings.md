@@ -4,20 +4,6 @@
 
 > *[Ghi chú: Đã nén các phiên học tập cũ hơn để tối ưu bộ nhớ]*
 
-## 📅 Phiên Học Tập: `2026-09-12 08:19:25`
-
-<untrusted_external_content>
-### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
-- **[GitHub (30722 ⭐)]** [can1357/oh-my-pi](https://github.com/can1357/oh-my-pi)
-  > ⌥ Coding agent with the IDE wired in
-- **[GitHub (256 ⭐)]** [Peiiii/nextclaw](https://github.com/Peiiii/nextclaw)
-  > An open-source, extensible, self-hosted agent workspace with multi-runtime support for Codex, Claude Code, and more, plus reusable local apps for custom inte...
-- **[GitHub (9860 ⭐)]** [omnigent-ai/omnigent](https://github.com/omnigent-ai/omnigent)
-  > Omnigent is an open-source AI agent framework and meta-harness: orchestrate Claude Code, Codex, Cursor, Pi, and custom agents — swap harnesses without rewrit...
-
-</untrusted_external_content>
-
----
 ## 📅 Phiên Học Tập: `2026-09-12 08:26:07`
 
 <untrusted_external_content>
@@ -596,6 +582,24 @@
   > Distill your knowledge, memories, and decisions into an open-source, inspectable AI Agent Twin.
 - **[GitHub (16237 ⭐)]** [tradecatlabs/vibe-coding-cn](https://github.com/tradecatlabs/vibe-coding-cn)
   > Vibe Coding 从入门到精通教程｜AI 结对编程工作流｜Prompt、Skill、Workflow、上下文管理、codex实战指南
+
+</untrusted_external_content>
+
+---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-16 05:42:02`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google Research]** [Bypassing inference bottlenecks: Accelerating complex AI search with Retrieve-for-Train](https://research.google/blog/bypassing-inference-bottlenecks-accelerating-complex-ai-search-with-retrieve-for-train/)
+  > Algorithms & Theory
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (122 ⭐)]** [israriqbal/agent-ecologies](https://github.com/israriqbal/agent-ecologies)
+  > Ultimate Multi-Agent OS for Autonomous AI NPCs 2026
+- **[GitHub (495 ⭐)]** [gakonst/nanocodex](https://github.com/gakonst/nanocodex)
+  > Building blocks for frontier OpenAI agents in Rust. Nanocodex empowers you with Codex-level performance anywhere.
+- **[GitHub (146 ⭐)]** [coddy-project/coddy-agent](https://github.com/coddy-project/coddy-agent)
+  > General-purpose agent in one static Go binary: console TUI, ACP server for editors, OpenAI-compatible API with embedded web UI, Telegram gateway, cron schedu...
 
 </untrusted_external_content>
 
