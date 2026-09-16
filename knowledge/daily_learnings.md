@@ -4,18 +4,6 @@
 
 > *[Ghi chú: Đã nén các phiên học tập cũ hơn để tối ưu bộ nhớ]*
 
-## 📅 Phiên Học Tập: `2026-09-12 08:26:07`
-
-<untrusted_external_content>
-### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
-- **[GitHub (96 ⭐)]** [WingedGuardian/GENesis-AGI](https://github.com/WingedGuardian/GENesis-AGI)
-  > 'Personal AGI' that thinks on its own. Autonomous cognitive cycle, earned autonomy, 60+ tools. It decides what to do without being told.
-- **[GitHub (139 ⭐)]** [prime-radiant-inc/evener](https://github.com/prime-radiant-inc/evener)
-  > A coding agent: give it a prompt and it reads, writes, runs commands, and searches code in a loop until the work is done, using native tool-calling across Op...
-
-</untrusted_external_content>
-
----
 ## 📅 Phiên Học Tập: `2026-09-12 09:28:21`
 
 <untrusted_external_content>
@@ -600,6 +588,18 @@
   > Building blocks for frontier OpenAI agents in Rust. Nanocodex empowers you with Codex-level performance anywhere.
 - **[GitHub (146 ⭐)]** [coddy-project/coddy-agent](https://github.com/coddy-project/coddy-agent)
   > General-purpose agent in one static Go binary: console TUI, ACP server for editors, OpenAI-compatible API with embedded web UI, Telegram gateway, cron schedu...
+
+</untrusted_external_content>
+
+---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-16 08:05:11`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (492 ⭐)]** [ys-ll/uniterm](https://github.com/ys-ll/uniterm)
+  > A lightweight all-in-one terminal with 30+ protocols — SSH, RDP, SFTP, databases, Kubernetes and more. With a built-in autonomous AI Agent that plans and run...
+- **[GitHub (238 ⭐)]** [acryldev/acryl](https://github.com/acryldev/acryl)
+  > ACRYL - Agent Context Relay Yielding Lifecycles. One persistent workspace, one canonical context, any coding agent.
 
 </untrusted_external_content>
 
