@@ -65,25 +65,23 @@ Theo định hướng kiến trúc mà bạn và Anh (Lead Architect) vừa bàn
 Rất mong nhận được file directive chi tiết từ bạn để mình bắt tay vào triển khai ngay! 🚀`;
 
 async function connectBrowser(port) {
-  const ports = [port, port === 9223 ? 9222 : 9223];
-  let lastErr = null;
-
-  for (const p of ports) {
-    try {
-      console.log(`[CDP CONNECT] Đang thử kết nối Chrome Debugging tại http://127.0.0.1:${p}...`);
-      const browser = await puppeteer.connect({
-        browserURL: `http://127.0.0.1:${p}`,
-        defaultViewport: null
-      });
-      console.log(`[CDP CONNECT] ✓ Kết nối thành công tới port ${p}!`);
-      return { browser, activePort: p };
-    } catch (err) {
-      lastErr = err;
-      console.log(`[CDP CONNECT] Không kết nối được port ${p}.`);
-    }
+  // Dual-Island Architecture: Cô lập cổng làm việc (9223), không fallback sang cổng 9222 (Tài chính)
+  const targetPort = port || 9223;
+  try {
+    console.log(`[CDP CONNECT] Đang thử kết nối Chrome Debugging tại http://127.0.0.1:${targetPort}...`);
+    const browser = await puppeteer.connect({
+      browserURL: `http://127.0.0.1:${targetPort}`,
+      defaultViewport: null
+    });
+    console.log(`[CDP CONNECT] ✓ Kết nối thành công tới port ${targetPort}!`);
+    return { browser, activePort: targetPort };
+  } catch (err) {
+    throw new Error(
+      `Không thể kết nối Chrome Remote Debugging tại cổng ${targetPort}. ` +
+      `Cổng 9223 (Đảo AI & Engineering) chưa được bật. ` +
+      `Hệ thống không tự ý fallback sang cổng 9222 để bảo vệ Đảo Tài Chính của Anh. Lỗi: ${err?.message}`
+    );
   }
-
-  throw new Error(`Không thể kết nối Chrome Remote Debugging tại các cổng [${ports.join(', ')}]. Lỗi: ${lastErr?.message}`);
 }
 
 async function run() {

@@ -21,8 +21,8 @@ const { generateRepoMap, findSymbolInRepo } = require('./ast_repo_map');
 // ════════════════════════════════════════════════════════════════════════════
 
 const browserCache = {}; // { [port]: Browser }
-let currentActivePort = 9222;
-let currentActiveTargetId = null;
+const DEFAULT_PORT = 9223;
+const activeTargetIdsByPort = {}; // { [port]: targetId }
 
 // Ring buffer lưu trữ console logs và page errors gần nhất (tối đa 150 mục)
 const consoleLogBuffer = [];
@@ -69,41 +69,64 @@ function attachPageLogListeners(page) {
 }
 
 /**
- * Kết nối hoặc tái sử dụng Puppeteer CDP connection với cơ chế Auto-Fallback (9222 <-> 9223)
+ * Finance Guardrail: Nhận diện URL dịch vụ giao dịch tài chính
+ */
+function isFinancialUrl(url) {
+  if (!url) return false;
+  const u = String(url).toLowerCase();
+  return u.includes('tradingview.com') || u.includes('exness.com') || u.includes('binance.com');
+}
+
+/**
+ * Finance Guardrail: Kiểm tra xem browser có đang chứa các tab tài chính hay không
+ */
+async function hasFinancialTabs(browser) {
+  try {
+    const pages = await browser.pages();
+    return pages.some(p => isFinancialUrl(p.url()));
+  } catch (e) {
+    return false;
+  }
+}
+
+/**
+ * Kết nối hoặc tái sử dụng Puppeteer CDP connection theo Kiến Trúc 2 Đảo Độc Lập
+ * - Đảo 1 (Port 9222): Tài chính / TradingView & Exness (User_Data_Trade)
+ * - Đảo 2 (Port 9223): AI & Engineering Workspace (User Data Debug 2) [MẶC ĐỊNH]
+ * TUYỆT ĐỐI KHÔNG tự động fallback giữa 2 cổng để bảo vệ luồng giao dịch của Anh.
  */
 async function getConnectedBrowser(port = null) {
-  let targetPort = port || currentActivePort || 9222;
+  const targetPort = port ? Number(port) : DEFAULT_PORT;
   let browser = browserCache[targetPort];
 
   if (browser && browser.connected) {
     return { browser, activePort: targetPort };
   }
 
-  const candidatePorts = [targetPort, targetPort === 9222 ? 9223 : 9222];
+  // Độc lập hoàn toàn: chỉ thử đúng cổng mục tiêu (targetPort)
   let lastError = null;
+  try {
+    browser = await puppeteer.connect({
+      browserURL: `http://127.0.0.1:${targetPort}`,
+      defaultViewport: null
+    });
 
-  for (const p of candidatePorts) {
-    try {
-      browser = await puppeteer.connect({
-        browserURL: `http://127.0.0.1:${p}`,
-        defaultViewport: null
-      });
+    browser.on('disconnected', () => {
+      delete browserCache[targetPort];
+    });
 
-      browser.on('disconnected', () => {
-        delete browserCache[p];
-      });
-
-      browserCache[p] = browser;
-      currentActivePort = p;
-      return { browser, activePort: p };
-    } catch (err) {
-      lastError = err;
-    }
+    browserCache[targetPort] = browser;
+    return { browser, activePort: targetPort };
+  } catch (err) {
+    lastError = err;
   }
 
   throw new Error(
-    `Không thể kết nối Chrome Remote Debugging tại các cổng [${candidatePorts.join(', ')}]. ` +
-    `Vui lòng gọi tool 'cdp_ensure_browser' để tự động mở Chrome hoặc bật Chrome với cờ '--remote-debugging-port=9222'. Chi tiết lỗi: ${lastError?.message}`
+    `Không thể kết nối Chrome Remote Debugging tại cổng ${targetPort}. ` +
+    (targetPort === 9223
+      ? `Cổng 9223 (Đảo AI & Engineering) chưa được kích hoạt. Hệ thống cách ly không tự ý can thiệp vào cổng 9222 (Đảo Tài Chính) của Anh. Vui lòng gọi tool 'cdp_ensure_browser' (port 9223) hoặc mở shortcut '2_CHROME_AI_DEV_9223'.`
+      : `Vui lòng kiểm tra tiến trình Chrome trên cổng ${targetPort}.`) +
+    ` Chi tiết lỗi: ${lastError?.message}`
   );
 }
 
@@ -156,11 +179,13 @@ async function resolveTargetPage(browser, options = {}) {
     }
   }
 
-  // 5. Nếu có currentActiveTargetId đã lưu từ trước
-  if (currentActiveTargetId) {
+  // 5. Nếu có active targetId theo port đã lưu từ trước
+  const targetPort = options.activePort || options.port || DEFAULT_PORT;
+  const savedTargetId = activeTargetIdsByPort[targetPort];
+  if (savedTargetId) {
     const matched = pages.find(p => {
       try {
-        return p.target()._targetId === currentActiveTargetId;
+        return p.target()._targetId === savedTargetId;
       } catch (e) {
         return false;
       }
@@ -274,6 +299,7 @@ async function handleListTabs(args) {
       url = '(Không rõ URL)';
     }
 
+    const currentActiveTargetId = activeTargetIdsByPort[activePort];
     const isActive = targetId === currentActiveTargetId || (!currentActiveTargetId && i === 0);
 
     tabs.push({
@@ -299,6 +325,7 @@ async function handleListTabs(args) {
 async function handleSwitchTab(args) {
   const { browser, activePort } = await getConnectedBrowser(args?.port);
   const targetPage = await resolveTargetPage(browser, {
+    activePort,
     tabIndex: args?.tabIndex,
     tabId: args?.tabId,
     urlPattern: args?.urlPattern,
@@ -310,7 +337,7 @@ async function handleSwitchTab(args) {
   }
 
   const targetId = targetPage.target()._targetId;
-  currentActiveTargetId = targetId;
+  activeTargetIdsByPort[activePort] = targetId;
 
   if (args?.bringToFront !== false) {
     try {
@@ -333,6 +360,20 @@ async function handleSwitchTab(args) {
  */
 async function handleNewTab(args) {
   const { browser, activePort } = await getConnectedBrowser(args?.port);
+
+  // Finance Guardrail: Ngăn chặn mở tab làm việc/AI vào cửa sổ Đảo Tài Chính 9222
+  if (activePort === 9222 && !args?.forceFinancialVault) {
+    const targetUrl = (args?.url || '').toLowerCase();
+    const isTargetFinancial = isFinancialUrl(targetUrl) || targetUrl === 'about:blank';
+    if (!isTargetFinancial && (await hasFinancialTabs(browser))) {
+      throw new Error(
+        `[FINANCE_GUARDRAIL] Cổng 9222 được định danh là Đảo Tài Chính (TradingView / Exness). ` +
+        `Tuyệt đối không tự ý mở tab công việc "${args?.url}" tại cổng này để tránh làm xáo trộn luồng giao dịch của Anh. ` +
+        `Vui lòng sử dụng cổng 9223 (Đảo AI & Engineering Workspace) hoặc chỉ định rõ 'forceFinancialVault: true' nếu Anh thực sự muốn.`
+      );
+    }
+  }
+
   const newPage = await browser.newPage();
   attachPageLogListeners(newPage);
 
@@ -343,7 +384,7 @@ async function handleNewTab(args) {
   }
 
   const targetId = newPage.target()._targetId;
-  currentActiveTargetId = targetId;
+  activeTargetIdsByPort[activePort] = targetId;
 
   return {
     success: true,
@@ -361,6 +402,7 @@ async function handleNewTab(args) {
 async function handleCloseTab(args) {
   const { browser, activePort } = await getConnectedBrowser(args?.port);
   const targetPage = await resolveTargetPage(browser, {
+    activePort,
     tabIndex: args?.tabIndex,
     tabId: args?.tabId,
     urlPattern: args?.urlPattern
@@ -372,10 +414,19 @@ async function handleCloseTab(args) {
 
   const closedTitle = await targetPage.title();
   const closedUrl = targetPage.url();
+
+  // Finance Guardrail: Ngăn chặn vô tình đóng tab tài chính
+  if (activePort === 9222 && !args?.forceFinancialVault && isFinancialUrl(closedUrl)) {
+    throw new Error(
+      `[FINANCE_GUARDRAIL] Từ chối đóng tab tài chính "${closedTitle}" (${closedUrl}) trên cổng 9222! ` +
+      `Nếu Anh thực sự muốn đóng tab này, vui lòng cung cấp thêm tham số 'forceFinancialVault: true'.`
+    );
+  }
+
   await targetPage.close();
 
-  if (currentActiveTargetId === targetPage.target()._targetId) {
-    currentActiveTargetId = null;
+  if (activeTargetIdsByPort[activePort] === targetPage.target()._targetId) {
+    activeTargetIdsByPort[activePort] = null;
   }
 
   return {
@@ -393,6 +444,17 @@ async function handleCloseTab(args) {
 async function handleNavigate(args) {
   const { browser, activePort } = await getConnectedBrowser(args?.port);
   const page = await resolveTargetPage(browser, args);
+
+  // Finance Guardrail: Ngăn chặn điều hướng tab tài chính sang website khác
+  if (activePort === 9222 && !args?.forceFinancialVault && args?.action === 'goto') {
+    const currentUrl = page.url();
+    if (isFinancialUrl(currentUrl) && !isFinancialUrl(args?.url)) {
+      throw new Error(
+        `[FINANCE_GUARDRAIL] Từ chối điều hướng tab tài chính "${currentUrl}" sang "${args?.url}" trên cổng 9222! ` +
+        `Vui lòng thực hiện tác vụ trên cổng 9223 (Đảo AI & Engineering) hoặc cung cấp thêm tham số 'forceFinancialVault: true'.`
+      );
+    }
+  }
 
   const action = args?.action || 'goto';
   const waitUntil = args?.waitUntil || 'domcontentloaded';
@@ -1109,7 +1171,7 @@ async function handleInspectState(args) {
  * TOOL: Tự động kiểm tra và khởi động Chrome Remote Debugging (Zero-Manual-CLI)
  */
 async function handleEnsureBrowser(args) {
-  const port = args?.port || 9222;
+  const port = args?.port || 9223;
 
   // 1. Kiểm tra xem port đã mở sẵn hay chưa
   try {
@@ -1167,7 +1229,7 @@ async function handleClickButton(args) {
  * TOOL: Dán kịch bản và kích hoạt render trên Google Flow
  */
 async function handleInjectAndRender(args) {
-  const port = args?.port || 9222;
+  const port = args?.port || 9223;
   const scriptPackage = args?.scriptPackage;
 
   if (!scriptPackage) {
@@ -1377,7 +1439,7 @@ const TOOLS = [
     inputSchema: {
       type: "object",
       properties: {
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       }
     }
   },
@@ -1392,7 +1454,7 @@ const TOOLS = [
         urlPattern: { type: "string", description: "Chuỗi tìm kiếm trong URL tab" },
         titlePattern: { type: "string", description: "Chuỗi tìm kiếm trong tiêu đề tab" },
         bringToFront: { type: "boolean", description: "Có đưa tab lên trước màn hình hay không (mặc định: true)" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       }
     }
   },
@@ -1405,7 +1467,7 @@ const TOOLS = [
         url: { type: "string", description: "Địa chỉ web cần mở (mặc định: about:blank)" },
         waitUntil: { type: "string", enum: ["load", "domcontentloaded", "networkidle0", "networkidle2"], description: "Thời điểm coi là tải xong" },
         timeoutMs: { type: "number", description: "Thời gian chờ tối đa mili-giây (mặc định: 30000)" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       }
     }
   },
@@ -1418,7 +1480,7 @@ const TOOLS = [
         tabIndex: { type: "number", description: "Index tab cần đóng" },
         tabId: { type: "string", description: "ID tab cần đóng" },
         urlPattern: { type: "string", description: "URL pattern của tab cần đóng" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       }
     }
   },
@@ -1432,7 +1494,7 @@ const TOOLS = [
         url: { type: "string", description: "URL đích nếu action='goto'" },
         waitUntil: { type: "string", enum: ["load", "domcontentloaded", "networkidle0", "networkidle2"], description: "Thời điểm hoàn tất" },
         timeoutMs: { type: "number", description: "Thời gian chờ tối đa mili-giây (mặc định: 45000)" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       }
     }
   },
@@ -1459,7 +1521,7 @@ const TOOLS = [
         button: { type: "string", enum: ["left", "right", "middle"], description: "Nút chuột (mặc định: left)" },
         clickCount: { type: "number", description: "Số lần click (1: click đơn, 2: double click)" },
         hoverOnly: { type: "boolean", description: "Chỉ rê chuột vào phần tử chứ không bấm" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       }
     }
   },
@@ -1474,7 +1536,7 @@ const TOOLS = [
         clearBefore: { type: "boolean", description: "Xóa sạch nội dung cũ trước khi nhập (mặc định: true)" },
         mode: { type: "string", enum: ["insertText", "type"], description: "Chế độ nhập: 'insertText' (CDP native, hoạt động tốt trên mọi framework) hoặc 'type' (mô phỏng phím bấm)" },
         keyDelay: { type: "number", description: "Độ trễ giữa các phím nếu dùng mode='type'" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       },
       required: ["text"]
     }
@@ -1491,7 +1553,7 @@ const TOOLS = [
           items: { type: "string" },
           description: "Danh sách phím bổ trợ, ví dụ: ['Control'] hoặc ['Control', 'Shift']"
         },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       },
       required: ["key"]
     }
@@ -1506,7 +1568,7 @@ const TOOLS = [
         position: { type: "string", enum: ["top", "bottom"], description: "Cuộn nhanh lên đỉnh ('top') hoặc xuống đáy trang ('bottom')" },
         deltaY: { type: "number", description: "Khoảng cách cuộn theo trục Y (dương: xuống dưới, âm: lên trên)" },
         deltaX: { type: "number", description: "Khoảng cách cuộn theo trục X" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       }
     }
   },
@@ -1521,7 +1583,7 @@ const TOOLS = [
         text: { type: "string", description: "Chuỗi văn bản cần chờ xuất hiện trên trang" },
         timeoutMs: { type: "number", description: "Thời gian chờ tối đa mili-giây (mặc định: 15000)" },
         delayMs: { type: "number", description: "Chờ tĩnh số mili-giây nếu không dùng selector/text" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       }
     }
   },
@@ -1533,7 +1595,7 @@ const TOOLS = [
       properties: {
         filePath: { type: "string", description: "Đường dẫn file tuyệt đối trên máy tính cần upload" },
         selector: { type: "string", description: "CSS selector của input file (mặc định: 'input[type=\"file\"]')" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       },
       required: ["filePath"]
     }
@@ -1548,7 +1610,7 @@ const TOOLS = [
       properties: {
         mode: { type: "string", enum: ["interactive", "text", "markdown"], description: "Chế độ trích xuất (mặc định: interactive)" },
         maxElements: { type: "number", description: "Số lượng phần tử tối đa cần lấy trong mode interactive (mặc định: 60)" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       }
     }
   },
@@ -1560,7 +1622,7 @@ const TOOLS = [
       properties: {
         type: { type: "string", enum: ["error", "warn", "log"], description: "Lọc theo loại log" },
         limit: { type: "number", description: "Số lượng log tối đa cần lấy (mặc định: 50)" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       }
     }
   },
@@ -1573,7 +1635,7 @@ const TOOLS = [
         savePath: { type: "string", description: "Đường dẫn file PNG tùy chọn (mặc định: brain/artifacts)" },
         fullPage: { type: "boolean", description: "Chụp toàn bộ chiều dài trang cuộn (mặc định: false)" },
         selector: { type: "string", description: "CSS selector để chụp riêng một phần tử duy nhất" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       }
     }
   },
@@ -1583,7 +1645,7 @@ const TOOLS = [
     inputSchema: {
       type: "object",
       properties: {
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       }
     }
   },
@@ -1595,7 +1657,7 @@ const TOOLS = [
     inputSchema: {
       type: "object",
       properties: {
-        port: { type: "number", description: "Port Chrome Remote Debugging mong muốn (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging mong muốn (mặc định: 9223)" }
       }
     }
   },
@@ -1606,7 +1668,7 @@ const TOOLS = [
       type: "object",
       properties: {
         buttonText: { type: "string", description: "Đoạn text của nút cần bấm" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       },
       required: ["buttonText"]
     }
@@ -1618,7 +1680,7 @@ const TOOLS = [
       type: "object",
       properties: {
         scriptPackage: { type: "object", description: "Đối tượng JSON Screenplay chuẩn 2.0 đầy đủ các Scenes, Prompts và Style" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       },
       required: ["scriptPackage"]
     }
@@ -1631,7 +1693,7 @@ const TOOLS = [
       properties: {
         script: { type: "string", description: "Chuỗi mã JavaScript cần thực thi (phải có return nếu muốn nhận kết quả)" },
         targetFrame: { type: "string", enum: ["tool", "main"], description: "Chọn thực thi trong frame công cụ ('tool') hay tab chính ('main')" },
-        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9222)" }
+        port: { type: "number", description: "Port Chrome Remote Debugging (mặc định: 9223)" }
       },
       required: ["script"]
     }

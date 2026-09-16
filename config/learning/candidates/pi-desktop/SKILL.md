@@ -1,7 +1,7 @@
 ---
 name: pi-desktop
 description: >-
-  Kỹ năng chuyên gia vận hành cho vastsa/PI-Desktop (3460 ⭐).
+  Kỹ năng chuyên gia vận hành cho vastsa/PI-Desktop (3965 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở pi-desktop vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Local-first AI coding agent desktop: Electron + Rust host core + pi Agent Harness + user-installable plugins
@@ -12,9 +12,9 @@ description: >-
 # vastsa/PI-Desktop — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/vastsa/PI-Desktop`  
-> **Độ uy tín cộng đồng**: 3460 ⭐  
+> **Độ uy tín cộng đồng**: 3965 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-14 07:42:11Z
+> **Tự động đóng gói lúc**: 2026-09-16 10:24:18Z
 
 ---
 

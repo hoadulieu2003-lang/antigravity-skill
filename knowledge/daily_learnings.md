@@ -654,3 +654,36 @@
 </untrusted_external_content>
 
 ---
+
+## 🏛️ Quyết Định Kiến Trúc & Bài Học Doanh Nghiệp: `2026-09-16 16:37:00`
+
+### 🔒 Quy Chuẩn Khóa Cứng 100% Model 0-Credit Ultra Cho Video (`0-Credit Video Invariant`)
+* **Chỉ thị của Anh (Product Owner)**: "Đặt mặc định cứng 100% là Veo 3.1 - Lite [Lower Priority]."
+* **Bản chất Kỹ thuật (`Technical Forensic`)**:
+  - Tài khoản Google Flow là gói Ultra. Hạn mức tín dụng trả phí (`Paid Credits`) có định mức hàng tháng. Khi cạn kiệt, các model trả phí (`Veo 3.1 - Lite`, `Veo 3.1 - Fast`, `Veo 3.1 - Quality`) sẽ khiến máy chủ Google Flow âm thầm từ chối render và treo request vĩnh viễn (`Silent Hanging Promise`), khiến người dùng ngỡ rằng hệ thống lỗi.
+  - Ngược lại, model: **`Veo 3.1 - Lite [Lower Priority]`** (định danh host: `veo_3_1_lite_low_priority`) là mô hình 0-credit không giới hạn dành riêng cho gói Ultra. Khi sử dụng đúng model này, toàn bộ pipeline render video vận hành trơn tru 100%, không bao giờ bị nghẽn.
+* **Kỷ luật Thực thi Khóa Cứng Toàn Hệ Thống**:
+  - `AGENTS.md` cập nhật Điều 1.10.
+  - `config/skills/script-factory-pro/SKILL.md` cập nhật Quy tắc Thép 10.
+  - Hàm `mapModelToCanonical` trong toàn bộ Applet và công cụ sản xuất kịch bản luôn trả về `'Veo 3.1 - Lite [Lower Priority]'`.
+  - Toàn bộ 6/6 Scene video lãng mạn Paris (Full Dialogue Lip-sync) đã render và tự động tải về máy thành công 100% qua quy chuẩn này.
+
+---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-16 17:24:09`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (15341 ⭐)]** [opensandbox-group/OpenSandbox](https://github.com/opensandbox-group/OpenSandbox)
+  > Secure, Fast, and Extensible Sandbox runtime for AI agents.
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [m-a-p/YuE2-3B](https://huggingface.co/m-a-p/YuE2-3B)
+  > Trending model on Hugging Face hub.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Calibrate, Then Route: A Measured Study of Learned Request Routing for Disaggregated LLM Serving](https://arxiv.org/abs/2609.16206)
+  > arXiv:2609.16206v1 Announce Type: new Abstract: Disaggregated LLM serving places compute heavy prefill and memory heavy decode on separate GPU pools. Systems...
+
+</untrusted_external_content>
+
+---

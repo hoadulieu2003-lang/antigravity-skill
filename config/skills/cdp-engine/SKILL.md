@@ -6,9 +6,11 @@ description: Cẩm nang chuyên gia & Hướng dẫn vận hành toàn diện C�
 # 🌐 CDP ENTERPRISE SUPER-ENGINE v2.0 — CẨM NANG VẬN HÀNH
 
 ## 📌 1. TỔNG QUAN HỆ THỐNG (SYSTEM OVERVIEW)
-Cỗ máy **CDP Enterprise Super-Engine (v2.0)** là hệ thống cầu nối chuẩn **MCP (Model Context Protocol)** kết nối trực tiếp Antigravity với trình duyệt Google Chrome thông qua giao thức **CDP (Chrome DevTools Protocol)** tại cổng **9222** (với cơ chế tự động fallback sang **9223**).
+Cỗ máy **CDP Enterprise Super-Engine (v2.0)** là hệ thống cầu nối chuẩn **MCP (Model Context Protocol)** kết nối trực tiếp Antigravity với trình duyệt Google Chrome thông qua giao thức **CDP (Chrome DevTools Protocol)** theo **Kiến Trúc 2 Đảo Độc Lập (Dual-Island Architecture)**:
+* **Đảo 1 - Cổng 9222 (Financial Vault / Đảo Tài Chính)**: Dành riêng cho Anh giao dịch (TradingView, Exness), profile `User_Data_Trade`. Có cơ chế **Finance Guardrail** bảo vệ tuyệt đối, từ chối mở tab lạ hoặc đóng nhầm tab tài chính.
+* **Đảo 2 - Cổng 9223 (AI & Engineering Workspace / Đảo Kỹ Thuật)** [MẶC ĐỊNH]: Dành riêng cho Antigravity làm việc (Google Flow, ChatGPT, Web automation, UI preview), profile `User Data Debug 2`. Mặc định 100% các tool CDP kết nối vào cổng này.
 
-Hệ thống giải quyết triệt để các hạn chế của phiên bản cũ, cung cấp 18 công cụ mạnh mẽ phân bổ theo 4 trụ cột:
+Hệ thống cung cấp 18 công cụ mạnh mẽ phân bổ theo 4 trụ cột:
 
 ```mermaid
 flowchart LR
@@ -48,9 +50,9 @@ flowchart LR
 ## 🛠️ 2. DANH MỤC CÔNG CỤ & HƯỚNG DẪN SỬ DỤNG
 
 ### 🎯 Trụ Cột 1: Quản Lý Tab & Điều Hướng
-* **`cdp_list_tabs`**: Xem danh sách toàn bộ tab đang mở trên Chrome kèm index, ID, tiêu đề và URL.
+* **`cdp_list_tabs`**: Xem danh sách toàn bộ tab đang mở trên Chrome kèm index, ID, tiêu đề và URL (mặc định trỏ port 9223).
   ```json
-  { "port": 9222 }
+  { "port": 9223 }
   ```
 * **`cdp_switch_tab`**: Đổi target làm việc sang tab mong muốn bằng `urlPattern` (vd: `"localhost:3000"`, `"chatgpt.com"`), `tabIndex` hoặc `tabId`.
   ```json

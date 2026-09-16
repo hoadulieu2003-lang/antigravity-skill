@@ -1,18 +1,18 @@
 ---
-name: okou
+name: opensandbox
 description: >-
-  Kỹ năng chuyên gia vận hành cho vm0-ai/okou (1153 ⭐).
+  Kỹ năng chuyên gia vận hành cho opensandbox-group/OpenSandbox (15341 ⭐).
   Tự động kích hoạt khi người dùng muốn:
-    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở okou vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control
-    - Thiết lập cấu hình và vận hành lệnh CLI của vm0-ai/okou
-  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'okou'.
+    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở opensandbox vào hệ thống
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Secure, Fast, and Extensible Sandbox runtime for AI agents
+    - Thiết lập cấu hình và vận hành lệnh CLI của opensandbox-group/OpenSandbox
+  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'opensandbox'.
 ---
 
-# vm0-ai/okou — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
+# opensandbox-group/OpenSandbox — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
-> **Nguồn gốc**: GitHub Repository `https://github.com/vm0-ai/okou`  
-> **Độ uy tín cộng đồng**: 1153 ⭐  
+> **Nguồn gốc**: GitHub Repository `https://github.com/opensandbox-group/OpenSandbox`  
+> **Độ uy tín cộng đồng**: 15341 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
 > **Tự động đóng gói lúc**: 2026-09-16 10:24:19Z
 
@@ -20,14 +20,15 @@ description: >-
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control.
+* **Mục tiêu cốt lõi**: Secure, Fast, and Extensible Sandbox runtime for AI agents.
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- **Drafts, not sends** — email lands in Gmail unsent; an ad budget shift waits in Meta for approval.
-- **Granular permissions** — read/write per tool, per agent. Okou only touches what you explicitly allow.
-- **Isolated execution** — every task runs in its own Firecracker microVM. Credentials never leave the sandbox.
-- **Fully auditable** — logs, metrics, and network visibility for every run.
-- **Open source** — this repository. Inspect, fork, or self-host.
+- **[code-interpreter](docs/examples/code-interpreter.md)** - End-to-end Code Interpreter SDK workflow in a sandbox.
+- **[aio-sandbox](docs/examples/aio-sandbox.md)** - All-in-One sandbox setup using the OpenSandbox SDK.
+- **[langgraph](docs/examples/langgraph.md)** - LangGraph state-machine workflow that creates/runs a sandbox job with fallback retry.
+- **[google-adk](docs/examples/google-adk.md)** - Google ADK agent using OpenSandbox tools to write/read files and run commands.
+- **[openclaw](docs/examples/openclaw.md)** - Launch an OpenClaw Gateway inside a sandbox.
+- **[chrome](docs/examples/chrome.md)** - Chromium sandbox with VNC and DevTools access for automation and debugging.
 
 ---
 
@@ -36,8 +37,9 @@ description: >-
 Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
 
 ```bash
-# Tham khảo tài liệu gốc tại GitHub: vm0-ai/okou
-git clone https://github.com/vm0-ai/okou.git
+pip install opensandbox
+
+npm install @alibaba-group/opensandbox
 ```
 
 ---

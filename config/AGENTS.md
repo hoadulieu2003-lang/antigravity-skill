@@ -85,6 +85,15 @@
 * **Phổ Màu Cho Phép**: Tự do khai thác tất cả các dải màu sắc phong phú, tươi sáng, sang trọng và thẩm mỹ cao (trắng, kem, be, pastel, xanh ngọc, xanh cobalt, cam ấm, tím nhạt, gradients màu sáng, v.v.), **TUYỆT ĐỐI KHÔNG TỰ Ý DÙNG NỀN ĐEN / DARK THEME**.
 * **Điều kiện Ngoại lệ Duy Nhất**: **CHỈ ĐƯỢC PHÉP THIẾT KẾ HOẶC SỬ DỤNG GIAO DIỆN MÀU ĐEN / DARK THEME KHI ANH YÊU CẦU TƯỜNG MINH (Explicit Request Only)**.
 
+### 1.10. Quy Chuẩn Khóa Cứng Model 0-Credit Ultra Cho Video (Mandatory 0-Credit Video Invariant)
+
+* **Nguyên tắc Bất biến Khóa Cứng 100% (`0-Credit Model Strict Invariant`)**: Toàn bộ các công cụ, ứng dụng, applet Tool Builder, kịch bản JSON và cỗ máy sinh video trong hệ sinh thái Script Factory Pro **BẮT BUỘC ĐẶT MẶC ĐỊNH CỨNG 100% LÀ `Veo 3.1 - Lite [Lower Priority]` (định danh host: `veo_3_1_lite_low_priority`)**.
+* **Bản chất Kỹ thuật & Lý do Bắt buộc**: Tài khoản Google Flow của Anh là gói Ultra. Hạn mức tín dụng trả phí (`Paid Credits`) có giới hạn hàng tháng; khi cạn kiệt, các model tính phí (`Veo 3.1 - Lite`, `Veo 3.1 - Fast`, `Veo 3.1 - Quality`) sẽ khiến máy chủ Google Flow âm thầm treo request vĩnh viễn (`Silent Hanging Promise`) mà không báo lỗi. Mô hình `Veo 3.1 - Lite [Lower Priority]` là mô hình 0-credit miễn phí không giới hạn của gói Ultra, đảm bảo pipeline render liên tục, mượt mà và không bao giờ bị nghẽn.
+* **Kỷ luật Thực thi Mã nguồn & Thiết lập**:
+  * Hàm `mapModelToCanonical` trong mọi mã nguồn bắt buộc luôn trả về: `'Veo 3.1 - Lite [Lower Priority]'`.
+  * `DEFAULT_SETTINGS.modelName` và danh sách model lựa chọn (`MODELS[0]`) bắt buộc đặt `'Veo 3.1 - Lite [Lower Priority]'` làm lựa chọn mặc định hàng đầu.
+  * Kịch bản JSON đầu ra của 6 AI Showrunner khi biên dịch video (`compiled_flow_video.model`) luôn được quy đổi chuẩn xác về định danh này.
+
 ## 2. Thứ tự ưu tiên
 
 Khi có xung đột, áp dụng thứ tự sau:

@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-16T10:24:18.692444+00:00",
+  "skill_name": "pi-desktop",
+  "source_repo": "vastsa/PI-Desktop",
+  "stars": 3965,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\pi-desktop\\SKILL.md",
+  "human_promotion_required": true
+}

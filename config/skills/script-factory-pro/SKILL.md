@@ -99,6 +99,10 @@ Module `04_GOOGLE_FLOW_APPLET_SOURCE/batch_video_final/` đã đạt trạng th�
      - **Bước 1**: Tự động gửi Prompt chuẩn vào Prompt Builder ("Trình tạo công cụ") qua kết nối CDP cổng 9222/9223.
      - **Bước 2**: Giám sát và đợi AI của Tool Builder hoàn tất chỉnh sửa mã nguồn trên Cloud.
      - **Bước 3**: Tự động chuyển sang tab "Mã", trích xuất code live và review đối soát nghiêm ngặt đúng phạm vi yêu cầu (In-Scope Code Review), bảo đảm không phát sinh lỗi hồi quy trước khi báo cáo kết quả.
+10. **Khóa Cứng Model 0-Credit Ultra Cho Video (`Veo 3.1 - Lite [Lower Priority]`)**:
+   - Toàn bộ hệ thống Script Factory Pro, Applet Tool Builder và JSON kịch bản bắt buộc đặt mặc định cứng 100% model: **`Veo 3.1 - Lite [Lower Priority]`** (định danh host: `veo_3_1_lite_low_priority`).
+   - Đảm bảo tài khoản Ultra render video không giới hạn credit, tuyệt đối tránh hiện tượng hết hạn ngạch trả phí dẫn đến máy chủ Google Flow âm thầm treo request vĩnh viễn (`Silent Hanging Promise`).
+   - Hàm `mapModelToCanonical` bắt buộc luôn trả về `'Veo 3.1 - Lite [Lower Priority]'`.
 
 ---
 

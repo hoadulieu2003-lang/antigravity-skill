@@ -39,7 +39,7 @@ if hasattr(sys.stderr, "reconfigure"):
 
 BASE_DIR = r"C:\Users\game\.gemini"
 LOCALAPPDATA = os.environ.get("LOCALAPPDATA", r"C:\Users\game\AppData\Local")
-CHROME_PROFILE_DIR = os.path.join(LOCALAPPDATA, "Google", "Chrome", "User Data Debug")
+CHROME_PROFILE_DIR = os.path.join(LOCALAPPDATA, "Google", "Chrome", "User_Data_Trade")
 CHROME_PROFILE_2_DIR = os.path.join(LOCALAPPDATA, "Google", "Chrome", "User Data Debug 2")
 PS_BRIDGE_SCRIPT = os.path.join(BASE_DIR, "config", "skills", "photoshop-studio", "scripts", "ps_bridge.py")
 TELEGRAM_HUB_DIR = os.path.join(BASE_DIR, "config", "sidecars", "antigravity_master_hub")
@@ -349,14 +349,15 @@ def check_telegram_hub_health() -> dict:
 def check_ecosystem_health(auto_launch_cdp: bool = True) -> dict:
     """
     Thực hiện kiểm toán sức khoẻ toàn diện các cầu nối ngoại vi trong hệ sinh thái.
-    Tự động khởi chạy Chrome trên cổng 9222 nếu đang tắt.
+    Tự động khởi chạy Chrome trên cổng 9223 (AI & Engineering Workspace) nếu đang tắt.
+    Cổng 9222 (Financial Vault) được giữ độc lập, không tự ý can thiệp.
     """
-    cdp_9222 = check_cdp_port(9222)
-    if auto_launch_cdp and cdp_9222.get("status") != "ONLINE":
-        launch_res = launch_chrome_debug(port=9222)
-        cdp_9222 = check_cdp_port(9222)
-
     cdp_9223 = check_cdp_port(9223)
+    if auto_launch_cdp and cdp_9223.get("status") != "ONLINE":
+        launch_res = launch_chrome_debug(port=9223)
+        cdp_9223 = check_cdp_port(9223)
+
+    cdp_9222 = check_cdp_port(9222)
     git_status = check_git_health()
     ps_status = check_photoshop_health()
     tg_status = check_telegram_hub_health()
@@ -379,31 +380,31 @@ def print_health_dashboard(report: dict):
     print(f"   Thời gian kiểm toán: {report.get('timestamp')}")
     print("═" * 70)
 
-    # 1. CDP 9222
+    # 1. CDP 9222 - Financial Vault
     c9222 = report.get("cdp_9222", {})
     st9222 = c9222.get("status", "OFFLINE")
-    badge9222 = "🟢 ONLINE" if st9222 == "ONLINE" else "🔴 OFFLINE"
-    print(f"• [CDP 9222 - ChatGPT/Web]  : {badge9222}")
+    badge9222 = "🟢 ONLINE" if st9222 == "ONLINE" else "🟡 STANDBY"
+    print(f"• [CDP 9222 - Financial Vault (Trade)] : {badge9222}")
     if st9222 == "ONLINE":
         print(f"  └─ Browser: {c9222.get('browser')} | WS: {c9222.get('ws_url')[:45]}...")
     else:
-        print(f"  └─ Ghi chú: {c9222.get('message')}")
+        print(f"  └─ Ghi chú: Dành riêng cho Anh giao dịch (TradingView / Exness)")
 
-    # 2. CDP 9223
+    # 2. CDP 9223 - AI Workspace
     c9223 = report.get("cdp_9223", {})
     st9223 = c9223.get("status", "OFFLINE")
-    badge9223 = "🟢 ONLINE" if st9223 == "ONLINE" else "🟡 STANDBY"
-    print(f"• [CDP 9223 - Google Flow]  : {badge9223}")
+    badge9223 = "🟢 ONLINE" if st9223 == "ONLINE" else "🔴 OFFLINE"
+    print(f"• [CDP 9223 - AI & Dev Workspace]       : {badge9223}")
     if st9223 == "ONLINE":
         print(f"  └─ Browser: {c9223.get('browser')} | WS: {c9223.get('ws_url')[:45]}...")
     else:
-        print(f"  └─ Ghi chú: Cổng dự phòng sẵn sàng cho Flow Worker khi cần render")
+        print(f"  └─ Ghi chú: Cổng làm việc chính cho AI (Flow, ChatGPT, UI Preview)")
 
     # 3. Git Remote
     git = report.get("git", {})
     st_git = git.get("status", "UNKNOWN")
     badge_git = "🟢 HEALTHY" if st_git == "HEALTHY" else ("🟡 DIRTY" if st_git == "DIRTY" else "🔴 " + st_git)
-    print(f"• [Git Remote Storage]      : {badge_git}")
+    print(f"• [Git Remote Storage]                  : {badge_git}")
     print(f"  ├─ Remote : {git.get('origin_url')}")
     print(f"  ├─ Branch : {git.get('branch')} (Chưa commit: {git.get('uncommitted_files')} tệp)")
     print(f"  └─ Commit : {git.get('last_commit')}")
@@ -412,7 +413,7 @@ def print_health_dashboard(report: dict):
     ps = report.get("photoshop", {})
     st_ps = ps.get("status", "OFFLINE")
     badge_ps = "🟢 ONLINE" if st_ps == "ONLINE" else ("🟡 STANDBY" if st_ps == "STANDBY" else "🔴 OFFLINE")
-    print(f"• [Photoshop COM Bridge]    : {badge_ps} (Mode: {ps.get('mode')})")
+    print(f"• [Photoshop COM Bridge]                : {badge_ps} (Mode: {ps.get('mode')})")
     if st_ps in ["ONLINE", "STANDBY"]:
         print(f"  └─ Script : {os.path.basename(ps.get('bridge_script', ''))}")
     else:
@@ -422,7 +423,7 @@ def print_health_dashboard(report: dict):
     tg = report.get("telegram", {})
     st_tg = tg.get("status", "UNKNOWN")
     badge_tg = "🟢 CONFIGURED" if st_tg == "CONFIGURED" else "🟡 " + st_tg
-    print(f"• [Telegram Master Hub]     : {badge_tg}")
+    print(f"• [Telegram Master Hub]                 : {badge_tg}")
     print(f"  └─ Bot Token: {'Đã cấu hình' if tg.get('bot_configured') else 'Chưa cấu hình'} | Node.js: {'Có' if tg.get('node_runtime') else 'Thiếu'}")
     print("═" * 70 + "\n")
 
@@ -432,7 +433,7 @@ def main():
     parser.add_argument("--check", action="store_true", help="Chỉ kiểm tra sức khoẻ hệ sinh thái (không tự kích hoạt)")
     parser.add_argument("--launch", action="store_true", help="Kích hoạt Chrome Remote Debugging port")
     parser.add_argument("--ensure", action="store_true", help="Đảm bảo Chrome Remote Debugging đang chạy (nếu tắt thì bật)")
-    parser.add_argument("--port", type=int, default=9222, help="Cổng CDP cụ thể để thao tác (mặc định: 9222)")
+    parser.add_argument("--port", type=int, default=9223, help="Cổng CDP cụ thể để thao tác (mặc định: 9223)")
     parser.add_argument("--json", action="store_true", help="Xuất kết quả dưới định dạng JSON")
     args = parser.parse_args()
 
