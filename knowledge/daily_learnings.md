@@ -604,3 +604,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-16 09:20:12`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1153 ⭐)]** [vm0-ai/okou](https://github.com/vm0-ai/okou)
+  > Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control.
+- **[GitHub (254 ⭐)]** [XHToken/Spark-X2.5](https://github.com/XHToken/Spark-X2.5)
+  > Spark-x2.5 open model series. Pushing the Limits of Agentic Capabilities in On-Device Models
+- **[GitHub (148 ⭐)]** [askie/grix](https://github.com/askie/grix)
+  > Grix : Work with agents like talking to people.
+
+</untrusted_external_content>
+
+---

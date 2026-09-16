@@ -1,32 +1,33 @@
 ---
-name: cherry-studio
+name: okou
 description: >-
-  Kỹ năng chuyên gia vận hành cho CherryHQ/cherry-studio (51840 ⭐).
+  Kỹ năng chuyên gia vận hành cho vm0-ai/okou (1153 ⭐).
   Tự động kích hoạt khi người dùng muốn:
-    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở cherry-studio vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến AI productivity studio with smart chat, autonomous agents, and 300+ assistants
-    - Thiết lập cấu hình và vận hành lệnh CLI của CherryHQ/cherry-studio
-  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'cherry-studio'.
+    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở okou vào hệ thống
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control
+    - Thiết lập cấu hình và vận hành lệnh CLI của vm0-ai/okou
+  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'okou'.
 ---
 
-# CherryHQ/cherry-studio — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
+# vm0-ai/okou — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
-> **Nguồn gốc**: GitHub Repository `https://github.com/CherryHQ/cherry-studio`  
-> **Độ uy tín cộng đồng**: 51840 ⭐  
+> **Nguồn gốc**: GitHub Repository `https://github.com/vm0-ai/okou`  
+> **Độ uy tín cộng đồng**: 1153 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-16 02:20:19Z
+> **Tự động đóng gói lúc**: 2026-09-16 02:20:20Z
 
 ---
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs
+* **Mục tiêu cốt lõi**: Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control.
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- **Unlimited Model Access**: Get **unlimited** API calls for the **DeepSeek** and **Qwen** models.
-- **Cutting-Edge Tech Access**: Enjoy occasional perks, including API access to models like **Claude**, **Gemini**, and **OpenAI**, keeping you at the forefront of technology.
-- **Reliable Backend Services**: Provides stable API services and enterprise-grade data backup and recovery mechanisms to ensure business continuity.
-- **For Business Inquiries & Purchasing**:
+- **Drafts, not sends** — email lands in Gmail unsent; an ad budget shift waits in Meta for approval.
+- **Granular permissions** — read/write per tool, per agent. Okou only touches what you explicitly allow.
+- **Isolated execution** — every task runs in its own Firecracker microVM. Credentials never leave the sandbox.
+- **Fully auditable** — logs, metrics, and network visibility for every run.
+- **Open source** — this repository. Inspect, fork, or self-host.
 
 ---
 
@@ -35,8 +36,8 @@ description: >-
 Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
 
 ```bash
-# Tham khảo tài liệu gốc tại GitHub: CherryHQ/cherry-studio
-git clone https://github.com/CherryHQ/cherry-studio.git
+# Tham khảo tài liệu gốc tại GitHub: vm0-ai/okou
+git clone https://github.com/vm0-ai/okou.git
 ```
 
 ---

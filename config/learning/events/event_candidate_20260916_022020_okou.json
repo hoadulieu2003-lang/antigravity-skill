@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-16T02:20:20.254229+00:00",
+  "skill_name": "okou",
+  "source_repo": "vm0-ai/okou",
+  "stars": 1153,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\okou\\SKILL.md",
+  "human_promotion_required": true
+}
