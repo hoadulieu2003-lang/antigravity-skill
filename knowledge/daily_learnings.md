@@ -725,3 +725,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-17 02:42:01`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (163 ⭐)]** [dimetron/pi-go](https://github.com/dimetron/pi-go)
+  > Go implementation of AI coding agent
+- **[GitHub (186 ⭐)]** [nirholas/three.ws](https://github.com/nirholas/three.ws)
+  > Open-source 3D AI agent framework — GLB/glTF avatars with LLM brains, memory, emotions, and autonomous payments. MCP server · x402 · Solana/EVM · Three.js. E...
+- **[GitHub (40986 ⭐)]** [Hmbown/Codewhale](https://github.com/Hmbown/Codewhale)
+  > Open-source coding agent for your terminal, built in Rust and on a journey of continuous community improvement. Issues and PRs welcome.
+
+</untrusted_external_content>
+
+---
