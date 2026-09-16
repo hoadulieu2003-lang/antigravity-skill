@@ -109,7 +109,12 @@
         "mcp(cdp-bridge/send_telegram_notification)",
         "read_url(trade-orcin-two.vercel.app)",
         "read_url(127.0.0.1)",
-        "mcp(cdp-bridge/cdp_new_tab)"
+        "mcp(cdp-bridge/cdp_new_tab)",
+        "mcp(cdp-bridge/cdp_upload_file)",
+        "mcp(cdp-bridge/cdp_wait_for)",
+        "mcp(cdp-bridge/cdp_click)",
+        "mcp(cdp-bridge/cdp_switch_tab)",
+        "mcp(cdp-bridge/cdp_navigate)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
