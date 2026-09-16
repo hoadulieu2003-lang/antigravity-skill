@@ -1,7 +1,7 @@
 ---
 name: oh-my-hermes
 description: >-
-  Kỹ năng chuyên gia vận hành cho rlaope/oh-my-hermes (2167 ⭐).
+  Kỹ năng chuyên gia vận hành cho rlaope/oh-my-hermes (2466 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở oh-my-hermes vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến All in one plugin for Hermes Agent ⚚ the coding intelligence, a long-term memory system and model optimized workflow packages
@@ -12,9 +12,9 @@ description: >-
 # rlaope/oh-my-hermes — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/rlaope/oh-my-hermes`  
-> **Độ uy tín cộng đồng**: 2167 ⭐  
+> **Độ uy tín cộng đồng**: 2466 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-15 04:42:08Z
+> **Tự động đóng gói lúc**: 2026-09-16 16:42:12Z
 
 ---
 

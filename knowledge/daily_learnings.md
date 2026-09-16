@@ -711,3 +711,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-16 23:42:01`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (71 ⭐)]** [majiayu000/harness](https://github.com/majiayu000/harness)
+  > Run fleets of parallel coding agents with governance — Rust control plane for Claude Code & Codex: orchestration, policy, cross-agent review, observability.
+- **[GitHub (166 ⭐)]** [runify-dev/runify](https://github.com/runify-dev/runify)
+  > 轻量白盒多智能体平台 —— 可视化编排工作流，多 Agent 协作，高精度知识召回，企业级权限管理，统一对话管理。支持低成本嵌入第三方系统，200MB 低资源即可运行。
+- **[GitHub (3313 ⭐)]** [whiteguo233/OpenBiliClaw](https://github.com/whiteguo233/OpenBiliClaw)
+  > 本地私有、开源的自进化跨平台 AI 内容发现 Agent：先理解你，再主动从 B站、小红书、抖音、YouTube、X、知乎、Reddit、微博等平台与开放 Web 寻找内容。（支持 deepseek harness 插件） | Local-first open-source cross-platform AI c...
+
+</untrusted_external_content>
+
+---
