@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-16T12:11:51.475635+00:00",
+  "skill_name": "ppt-master",
+  "source_repo": "hugohe3/ppt-master",
+  "stars": 54741,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\ppt-master\\SKILL.md",
+  "human_promotion_required": true
+}

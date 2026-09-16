@@ -1,32 +1,33 @@
 schema_version: '1.0'
-skill_name: okou
-source_repo: vm0-ai/okou
-stars: 1153
+skill_name: ppt-master
+source_repo: hugohe3/ppt-master
+stars: 54741
 status: CANDIDATE
-created_at: '2026-09-16T12:11:50.805298+00:00'
+created_at: '2026-09-16T12:11:51.474886+00:00'
 human_promotion_required: true
 evidence_files:
 - SKILL.md
-- references/okou/README.md
+- references/ppt-master/README.md
 benchmark:
-  total_score: 9.7
+  total_score: 9.8
   rating: RECOMMENDED
   evaluated_at: '2026-09-16T12:11:52Z'
   breakdown:
     structure_metadata: 2.5
-    command_safety: 2.5
-    reference_coverage: 2.2
+    command_safety: 2.3
+    reference_coverage: 2.5
     ecosystem_compatibility: 2.5
   notes:
   - Frontmatter YAML hợp lệ (+0.5)
-  - Tên kỹ năng 'okou' khớp thư mục (+0.5)
+  - Tên kỹ năng 'ppt-master' khớp thư mục (+0.5)
   - Đặc tả Intent-First chuẩn mực (+1.0/1.0)
   - 'Cấu trúc tài liệu Markdown (4 mục chính: +0.50/0.5)'
   - Có 1 khối mã lệnh thực thi (+0.5)
-  - Nhận diện 1 lệnh CLI tiêu chuẩn (+0.5)
+  - Chứa mã lệnh hoặc cấu hình hợp lệ (+0.3)
   - 'An toàn tuyệt đối: Không chứa lệnh phá hoại hệ thống (+1.5)'
-  - Thư mục tham chiếu references/okou tồn tại (+0.5)
-  - Tài liệu tham chiếu chi tiết (6048 ký tự) (+1.5)
+  - Thư mục tham chiếu references/ppt-master tồn tại (+0.5)
+  - Tài liệu tham chiếu chi tiết (31575 ký tự) (+1.5)
+  - Tài liệu tham chiếu có kèm ví dụ mã nguồn (+0.3)
   - Tài liệu tham chiếu có cấu trúc rõ ràng (+0.2)
   - 'Tuân thủ AGENTS.md Rule 14 & INV-E07: Không có secret lộ lọt (+1.0)'
   - Khớp các nguyên tắc vận hành an toàn (Sandbox, FAST Mode, Runbook) (+0.75)

@@ -687,3 +687,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-16 19:11:42`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (66 ⭐)]** [ianalloway/solvent-agent](https://github.com/ianalloway/solvent-agent)
+  > Offline-first demo of a self-funding analyst agent: earns via Stripe, fulfils with NVIDIA Nemotron, pays vendor bills within guardrails, never works at a loss.
+- **[GitHub (54741 ⭐)]** [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master)
+  > AI turns documents or topics into real, native PowerPoint decks—with native shapes, transitions and animations, data-backed charts and tables on demand, audi...
+
+</untrusted_external_content>
+
+---

@@ -1,33 +1,31 @@
 ---
-name: okou
+name: ppt-master
 description: >-
-  Kỹ năng chuyên gia vận hành cho vm0-ai/okou (1153 ⭐).
+  Kỹ năng chuyên gia vận hành cho hugohe3/ppt-master (54741 ⭐).
   Tự động kích hoạt khi người dùng muốn:
-    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở okou vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control
-    - Thiết lập cấu hình và vận hành lệnh CLI của vm0-ai/okou
-  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'okou'.
+    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở ppt-master vào hệ thống
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến AI turns documents or topics into real, native PowerPoint decks—with native shapes, transitions and animations, data-backed charts and tables on demand, audi
+    - Thiết lập cấu hình và vận hành lệnh CLI của hugohe3/ppt-master
+  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'ppt-master'.
 ---
 
-# vm0-ai/okou — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
+# hugohe3/ppt-master — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
-> **Nguồn gốc**: GitHub Repository `https://github.com/vm0-ai/okou`  
-> **Độ uy tín cộng đồng**: 1153 ⭐  
+> **Nguồn gốc**: GitHub Repository `https://github.com/hugohe3/ppt-master`  
+> **Độ uy tín cộng đồng**: 54741 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-16 12:11:50Z
+> **Tự động đóng gói lúc**: 2026-09-16 12:11:51Z
 
 ---
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control.
+* **Mục tiêu cốt lõi**: AI turns documents or topics into real, native PowerPoint decks—with native shapes, transitions and animations, data-backed charts and tables on demand, audi...
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- **Drafts, not sends** — email lands in Gmail unsent; an ad budget shift waits in Meta for approval.
-- **Granular permissions** — read/write per tool, per agent. Okou only touches what you explicitly allow.
-- **Isolated execution** — every task runs in its own Firecracker microVM. Credentials never leave the sandbox.
-- **Fully auditable** — logs, metrics, and network visibility for every run.
-- **Open source** — this repository. Inspect, fork, or self-host.
+- **Transparent, predictable cost** — free and open source; the only cost is your AI model usage, with no PPT subscription on top
+- **Data stays local** — apart from AI model communication, the entire pipeline runs on your machine
+- **No platform lock-in** — any agent-capable AI IDE can drive it; Claude, GPT, Gemini, Kimi, and other models all work
 
 ---
 
@@ -36,8 +34,17 @@ description: >-
 Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
 
 ```bash
-# Tham khảo tài liệu gốc tại GitHub: vm0-ai/okou
-git clone https://github.com/vm0-ai/okou.git
+# macOS
+brew install python
+
+# Ubuntu / Debian
+sudo apt install python3 python3-pip
+
+# macOS
+brew install pandoc
+
+# Ubuntu / Debian
+sudo apt install pandoc
 ```
 
 ---
