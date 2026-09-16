@@ -739,3 +739,19 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-17 05:42:01`
+
+<untrusted_external_content>
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [When scanners miss the attack: how Cloudflare Client-Side Security protects storefronts](https://blog.cloudflare.com/client-side-security-finds-4-malicious-campaigns/)
+  > A modern storefront can look healthy while malicious JavaScript quietly siphons revenue, hijacks clicks, or rewrites analytics. See how Cloudflare's machine learning models surface evasive client-s...
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (296 ⭐)]** [CalebYcj/codex-rehome](https://github.com/CalebYcj/codex-rehome)
+  > Offline Codex Desktop migration for Windows and macOS.
+- **[GitHub (72 ⭐)]** [SenolIsci/mykg](https://github.com/SenolIsci/mykg)
+  > Knowledge graph extractor: Markdown (or any format) to knowledge graph with RDFS/OWL ontology
+
+</untrusted_external_content>
+
+---
