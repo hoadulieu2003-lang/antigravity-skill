@@ -11,12 +11,12 @@ Features Safe Rollback (Git revert/stash) in compliance with AGENTS.md Rule 6.
 import os
 import subprocess
 import sys
-from mcp.server.fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 
-mcp = FastMCP("aider-bridge")
+mcp = MCPServer("aider-bridge")
 
 @mcp.tool()
-def aider_run_task(prompt: str, cwd: str, model: str = "gemini/gemini-3.6-flash", test_cmd: str = "", files: list[str] = None) -> str:
+def aider_run_task(prompt: str, cwd: str, model: str = "gemini/gemini-3.6-flash", test_cmd: str = "", files: list[str] | None = None) -> str:
     """
     Run an Aider coding task non-interactively in a specified directory using Gemini 3.6 / 3.5 Flash models.
     - prompt: The task description/instructions for Aider.
@@ -61,7 +61,16 @@ def aider_safe_undo(cwd: str) -> str:
         if result.returncode == 0:
             return f"Safe Rollback (Revert) Successful:\n{result.stdout}"
         else:
-            return f"Revert encountered issues:\n{result.stderr}\nFalling back to git stash save."
+            stash_res = subprocess.run(
+                ["git", "stash", "push", "-m", "antigravity-safe-rollback"],
+                cwd=cwd,
+                capture_output=True,
+                text=True
+            )
+            return (
+                f"Revert encountered issues:\n{result.stderr}\n"
+                f"Executed fallback git stash save:\n{stash_res.stdout or stash_res.stderr}"
+            )
     except Exception as e:
         return f"Error executing safe rollback: {str(e)}"
 
@@ -81,7 +90,7 @@ def aider_get_repomap(cwd: str) -> str:
     """
     try:
         result = subprocess.run(
-            ["python", "-m", "aider", "--just-check-update"],
+            ["python", "-m", "aider", "--show-repo-map"],
             cwd=cwd,
             capture_output=True,
             text=True
@@ -104,4 +113,4 @@ def aider_get_status(cwd: str) -> str:
         return f"Error getting status: {str(e)}"
 
 if __name__ == "__main__":
-    mcp.run()
+    mcp.run("stdio")

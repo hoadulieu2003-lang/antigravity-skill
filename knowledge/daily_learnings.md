@@ -634,3 +634,23 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-16 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (75 ⭐)]** [TingdeLiu/tingdeliu.github.io](https://github.com/TingdeLiu/tingdeliu.github.io)
+  > My Personal Blog (Robotics)
+- **[GitHub (111 ⭐)]** [lennney/agent-search-mcp](https://github.com/lennney/agent-search-mcp)
+  > Free-first Chinese and English web search MCP using zero-key sources and inspectable evidence.
+- **[GitHub (4952 ⭐)]** [TabularisDB/tabularis](https://github.com/TabularisDB/tabularis)
+  > Open-source desktop SQL workspace with 3 built-in database drivers and 16 shipped plugins, including SQL Server, DuckDB, ClickHouse and Redis. Built-in MCP s...
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [GPEvac: GNN-Based PPO for Adaptive Evacuation Routing During Shooting Events](https://arxiv.org/abs/2609.16163)
+  > arXiv:2609.16163v1 Announce Type: new Abstract: The sharp increase in mass shootings underscores an urgent need for systems that guide victims to safety in r...
+- **[ArXiv CS.AI]** [Position: AI Is Not Ready for Strategic Conflicts](https://arxiv.org/abs/2609.16189)
+  > arXiv:2609.16189v1 Announce Type: new Abstract: Open-ended strategic wargames are high-stakes LM-based social simulations: they model adversaries, institutio...
+
+</untrusted_external_content>
+
+---

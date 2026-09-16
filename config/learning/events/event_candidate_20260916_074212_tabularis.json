@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-16T07:42:12.505396+00:00",
+  "skill_name": "tabularis",
+  "source_repo": "TabularisDB/tabularis",
+  "stars": 4952,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\tabularis\\SKILL.md",
+  "human_promotion_required": true
+}

@@ -323,7 +323,8 @@ async function executeTool(name, args) {
 function sendJsonRpcResponse(id, result, error = null) {
   const resp = { jsonrpc: '2.0', id };
   if (error) {
-    resp.error = { code: -32603, message: error.message || String(error) };
+    const code = typeof error.code === 'number' ? error.code : -32603;
+    resp.error = { code, message: error.message || String(error) };
   } else {
     resp.result = result;
   }
@@ -332,7 +333,6 @@ function sendJsonRpcResponse(id, result, error = null) {
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout,
   terminal: false
 });
 
@@ -380,9 +380,10 @@ rl.on('line', async (line) => {
     }
 
     if (id !== undefined) {
-      sendJsonRpcResponse(id, null, { message: `Method '${method}' không được hỗ trợ` });
+      sendJsonRpcResponse(id, null, { code: -32601, message: `Method '${method}' không được hỗ trợ` });
     }
   } catch (err) {
     console.error('[AI Engineering MCP Parse Error]:', err.message);
+    sendJsonRpcResponse(null, null, { code: -32700, message: 'Parse error' });
   }
 });

@@ -105,9 +105,30 @@ class McpRouter {
     cp.on('exit', (code, signal) => {
       console.warn(`[McpRouter] ⚠️ Server [${key}] đã thoát với code: ${code}, signal: ${signal}`);
       this.serverProcesses.delete(key);
+      if (serverEntry.pendingRequests.size > 0) {
+        for (const [id, req] of serverEntry.pendingRequests.entries()) {
+          clearTimeout(req.timer);
+          req.reject(new Error(`Server [${key}] đã dừng đột ngột (code: ${code}, signal: ${signal})`));
+        }
+        serverEntry.pendingRequests.clear();
+      }
     });
 
-    // Gửi yêu cầu tools/list
+    // 1. Gửi bắt tay chuẩn MCP: initialize
+    try {
+      await this._sendJsonRpc(serverEntry, 'initialize', {
+        protocolVersion: '2024-11-05',
+        capabilities: {},
+        clientInfo: { name: 'AntigravityMasterHub', version: '2.0.0' }
+      }, 10000);
+
+      // 2. Gửi thông báo initialized notification
+      this._sendJsonRpcNotification(serverEntry, 'notifications/initialized', {});
+    } catch (initErr) {
+      console.warn(`[McpRouter] ⚠️ Bắt tay initialize với server [${key}] có cảnh báo: ${initErr.message}`);
+    }
+
+    // 3. Gửi yêu cầu tools/list
     const listResult = await this._sendJsonRpc(serverEntry, 'tools/list', {});
     if (listResult && Array.isArray(listResult.tools)) {
       for (const t of listResult.tools) {
@@ -117,6 +138,22 @@ class McpRouter {
         });
         console.log(`   + [Tool Loaded]: ${t.name} (từ ${key})`);
       }
+    }
+  }
+
+  /**
+   * Gửi thông báo JSON-RPC 2.0 (không cần chờ id phản hồi)
+   */
+  _sendJsonRpcNotification(serverEntry, method, params = {}) {
+    const notification = {
+      jsonrpc: '2.0',
+      method,
+      params
+    };
+    try {
+      serverEntry.process.stdin.write(JSON.stringify(notification) + '\n');
+    } catch (err) {
+      console.warn(`[McpRouter] ⚠️ Lỗi gửi notification ${method} tới server ${serverEntry.key}:`, err.message);
     }
   }
 
@@ -215,7 +252,7 @@ module.exports = { McpRouter };
 if (require.main === module) {
   const router = new McpRouter({
     mcpConfigPath: 'C:\\Users\\game\\.gemini\\config\\mcp_config.json',
-    enabledServers: ['cdp-bridge', 'ai-engineering-team']
+    enabledServers: ['cdp-bridge', 'ai-engineering-team', 'aider-bridge']
   });
 
   router.initialize().then(() => {

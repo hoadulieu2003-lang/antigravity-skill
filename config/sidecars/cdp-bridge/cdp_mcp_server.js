@@ -170,7 +170,7 @@ async function resolveTargetPage(browser, options = {}) {
 
   // 6. Nếu yêu cầu Flow chuyên biệt
   if (options.preferFlow) {
-    const flowPage = pages.find(p => p.url().includes('labs.google/fx'));
+    const flowPage = pages.find(p => p.url().includes('labs.google/fx') || p.url().includes('flow.google.com'));
     if (flowPage) return flowPage;
   }
 
@@ -183,7 +183,9 @@ async function resolveTargetPage(browser, options = {}) {
  */
 async function findToolFrame(flowPage) {
   const frames = flowPage.frames();
+  const main = flowPage.mainFrame();
   for (const f of frames) {
+    if (f === main) continue; // Bỏ qua main frame vì main frame có thanh prompt "What do you want to create?"
     try {
       const hasApplet = await f.evaluate(() => {
         return !!document.querySelector('textarea') || !!window.__FLOW04_READY__ || !!window.__FLOW_APPLET_READY__;
@@ -192,6 +194,7 @@ async function findToolFrame(flowPage) {
     } catch (e) {}
   }
   return frames.find(f => {
+    if (f === main) return false;
     const u = f.url();
     return u === 'about:srcdoc' || u.includes('flow-applet') || u.includes('scf.usercontent.goog') || u.startsWith('blob:');
   }) || null;
@@ -1842,4 +1845,4 @@ rl.on('line', async (line) => {
   }
 });
 
-process.stderr.write("[CDP MCP Server v2.0] Started and listening on stdio JSON-RPC 2.0 (18 Enterprise Tools Ready)\n");
+process.stderr.write("[CDP MCP Server v2.0] Started and listening on stdio JSON-RPC 2.0 (22 Enterprise Tools Ready)\n");

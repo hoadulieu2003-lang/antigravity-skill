@@ -114,7 +114,13 @@
         "mcp(cdp-bridge/cdp_wait_for)",
         "mcp(cdp-bridge/cdp_click)",
         "mcp(cdp-bridge/cdp_switch_tab)",
-        "mcp(cdp-bridge/cdp_navigate)"
+        "mcp(cdp-bridge/cdp_navigate)",
+        "read_url(melies.co)",
+        "mcp(cdp-bridge/cdp_close_tab)",
+        "mcp(cdp-bridge/cdp_click_button)",
+        "mcp(cdp-bridge/cdp_press_key)",
+        "mcp(cdp-bridge/cdp_scroll)",
+        "mcp(cdp-bridge/cdp_inject_and_render)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

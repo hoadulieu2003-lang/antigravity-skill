@@ -17,6 +17,12 @@
       "args": [
         "C:\\Users\\game\\.gemini\\config\\sidecars\\aider-bridge\\aider_mcp_server.py"
       ]
+    },
+    "google-workspace": {
+      "command": "node",
+      "args": [
+        "C:\\Users\\game\\.antigravity-ide\\extensions\\mercurial.google-workspace-mcp-0.1.1-universal\\dist\\mcp\\server.js"
+      ]
     }
   }
 }
