@@ -1,30 +1,34 @@
 ---
-name: pi-desktop
+name: ai-fundamentals
 description: >-
-  Kỹ năng chuyên gia vận hành cho vastsa/PI-Desktop (3995 ⭐).
+  Kỹ năng chuyên gia vận hành cho ForceInjection/AI-fundamentals (2687 ⭐).
   Tự động kích hoạt khi người dùng muốn:
-    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở pi-desktop vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Local-first AI coding agent desktop: Electron + Rust host core + pi Agent Harness + user-installable plugins
-    - Thiết lập cấu hình và vận hành lệnh CLI của vastsa/PI-Desktop
-  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'pi-desktop'.
+    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở ai-fundamentals vào hệ thống
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến AI 基础知识 - GPU 架构、CUDA 编程、大模型基础及AI Agent 相关知识。
+    - Thiết lập cấu hình và vận hành lệnh CLI của ForceInjection/AI-fundamentals
+  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'ai-fundamentals'.
 ---
 
-# vastsa/PI-Desktop — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
+# ForceInjection/AI-fundamentals — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
-> **Nguồn gốc**: GitHub Repository `https://github.com/vastsa/PI-Desktop`  
-> **Độ uy tín cộng đồng**: 3995 ⭐  
+> **Nguồn gốc**: GitHub Repository `https://github.com/ForceInjection/AI-fundamentals`  
+> **Độ uy tín cộng đồng**: 2687 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-16 13:42:09Z
+> **Tự động đóng gói lúc**: 2026-09-16 13:42:11Z
 
 ---
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: Local-first AI coding agent desktop: Electron + Rust host core + pi Agent Harness + user-installable plugins
+* **Mục tiêu cốt lõi**: AI 基础知识 - GPU 架构、CUDA 编程、大模型基础及AI Agent 相关知识。
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- Khả năng tự động hóa và tích hợp đa nền tảng.
-- Tối ưu hóa hiệu năng và độ ổn định.
+- **基础计算芯片架构**
+- **高速互连与数据传输技术**
+- **异构融合架构与系统性能评估**
+- **GPU 基础运维**
+- **InfiniBand 高性能网络**
+- **NCCL 分布式通信测试**
 
 ---
 
@@ -33,19 +37,8 @@ description: >-
 Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
 
 ```bash
-git clone https://github.com/vastsa/PI-Desktop.git
-cd PI-Desktop
-
-pnpm install
-
-cargo build -p host-core
-pnpm build:js
-
-pnpm dev
-
-pnpm typecheck
-pnpm lint
-pnpm test
+# Tham khảo tài liệu gốc tại GitHub: ForceInjection/AI-fundamentals
+git clone https://github.com/ForceInjection/AI-fundamentals.git
 ```
 
 ---

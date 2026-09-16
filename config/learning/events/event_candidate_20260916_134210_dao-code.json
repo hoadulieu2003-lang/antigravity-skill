@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-16T13:42:10.519277+00:00",
+  "skill_name": "dao-code",
+  "source_repo": "tigicion/dao-code",
+  "stars": 1084,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\dao-code\\SKILL.md",
+  "human_promotion_required": true
+}

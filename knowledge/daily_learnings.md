@@ -699,3 +699,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-16 20:42:01`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (2687 ⭐)]** [ForceInjection/AI-fundamentals](https://github.com/ForceInjection/AI-fundamentals)
+  > AI 基础知识 - GPU 架构、CUDA 编程、大模型基础及AI Agent 相关知识。
+- **[GitHub (899 ⭐)]** [rush86999/atom](https://github.com/rush86999/atom)
+  > Atom Agent, Open-Source Governed AI Agent Platform for Self-Hosted Automation
+
+</untrusted_external_content>
+
+---
