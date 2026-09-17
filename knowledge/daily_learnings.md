@@ -842,3 +842,13 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-17 19:09:29`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (224 ⭐)]** [Code-Amadeus/Amadeus](https://github.com/Code-Amadeus/Amadeus)
+  > Real-time multimodal desktop agent evolving toward a persistent AI OS interface (0.15 α).
+
+</untrusted_external_content>
+
+---
