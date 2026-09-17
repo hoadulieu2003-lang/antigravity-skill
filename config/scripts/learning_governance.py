@@ -405,9 +405,23 @@ def main():
         return
 
     if args.promote:
-        print(f"🚀 Bắt đầu quy trình Thăng hạng Human Gate cho Kỹ năng: '{args.promote}'...")
-        success = runtime.promote_candidate(args.promote)
-        sys.exit(0 if success else 1)
+        if args.promote.strip().upper() == "ALL":
+            print("🚀 Bắt đầu quy trình Thăng hạng Human Gate cho TOÀN BỘ Kỹ năng Ứng viên theo lệnh của Anh (Product Owner)...")
+            candidates = runtime.list_candidates()
+            success_count = 0
+            for c in candidates:
+                if c.get("has_skill_file"):
+                    ok = runtime.promote_candidate(c["name"], approved_by="Anh (Product Owner)")
+                    if ok:
+                        success_count += 1
+            print(f"🎉 HOÀN TẤT! Đã thăng hạng thành công {success_count}/{len(candidates)} kỹ năng thành Official Skills!")
+            runtime.sync()
+            sys.exit(0)
+        else:
+            print(f"🚀 Bắt đầu quy trình Thăng hạng Human Gate cho Kỹ năng: '{args.promote}'...")
+            success = runtime.promote_candidate(args.promote, approved_by="Anh (Product Owner)")
+            runtime.sync()
+            sys.exit(0 if success else 1)
 
     if args.audit:
         print("🔍 Đang kiểm toán các tính bất biến Quản trị Học tập Phase E...")

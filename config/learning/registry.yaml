@@ -1,6 +1,6 @@
 schema_version: '1.0'
 registry_id: FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY
-last_updated: '2026-09-12T01:26:54Z'
+last_updated: '2026-09-17T01:17:02Z'
 governance_mode: STRICT_HUMAN_PROMOTION_GATE
 tri_state_lifecycle:
   record: Stored as CANDIDATE; no execution authority
@@ -52,6 +52,118 @@ promoted_skills:
   promoted_at: '2026-09-12T01:31:15Z'
   approved_by: Anh (Product Owner)
   manifest: config/skills/omnigent/SKILL.md
+- skill: activepieces
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/activepieces/SKILL.md
+- skill: ai-fundamentals
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/ai-fundamentals/SKILL.md
+- skill: aihawk
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/aihawk/SKILL.md
+- skill: botsharp
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/botsharp/SKILL.md
+- skill: cherry-studio
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/cherry-studio/SKILL.md
+- skill: cindy
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/cindy/SKILL.md
+- skill: codewhale
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/codewhale/SKILL.md
+- skill: copilotkit
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/copilotkit/SKILL.md
+- skill: dao-code
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/dao-code/SKILL.md
+- skill: distilly
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/distilly/SKILL.md
+- skill: dramaclaw
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/dramaclaw/SKILL.md
+- skill: edgeever
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/edgeever/SKILL.md
+- skill: genoffice
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/genoffice/SKILL.md
+- skill: lobsterai
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/lobsterai/SKILL.md
+- skill: maka
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/maka/SKILL.md
+- skill: mateclaw
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/mateclaw/SKILL.md
+- skill: nanobot
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/nanobot/SKILL.md
+- skill: neo
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/neo/SKILL.md
+- skill: oh-my-hermes
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/oh-my-hermes/SKILL.md
+- skill: okou
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/okou/SKILL.md
+- skill: openbiliclaw
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/openbiliclaw/SKILL.md
+- skill: opensandbox
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/opensandbox/SKILL.md
+- skill: pi-desktop
+  promoted_at: '2026-09-17T01:16:59Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/pi-desktop/SKILL.md
+- skill: pinvou-agent
+  promoted_at: '2026-09-17T01:17:00Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/pinvou-agent/SKILL.md
+- skill: ppt-master
+  promoted_at: '2026-09-17T01:17:00Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/ppt-master/SKILL.md
+- skill: tabularis
+  promoted_at: '2026-09-17T01:17:00Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/tabularis/SKILL.md
+- skill: vibe-coding-cn
+  promoted_at: '2026-09-17T01:17:00Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/vibe-coding-cn/SKILL.md
+- skill: vm0
+  promoted_at: '2026-09-17T01:17:00Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/vm0/SKILL.md
 capability_routing_history:
 - capability: gsap
   domain: visual_choreography
@@ -67,9 +179,9 @@ active_domain_packs:
   activated_at: '2026-09-06T09:16:00Z'
   approved_by: Anh (Product Owner)
 runtime_sync:
-  last_sync: '2026-09-12T01:26:54Z'
-  total_events_processed: 14
-  autonomous_captures: 9
+  last_sync: '2026-09-17T01:17:02Z'
+  total_events_processed: 177
+  autonomous_captures: 10
   knowledge_ingestions: 1
   failure_events: 0
   sync_status: HEALTHY
