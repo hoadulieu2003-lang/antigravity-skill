@@ -1,7 +1,7 @@
 ---
 name: cindy
 description: >-
-  Kỹ năng chuyên gia vận hành cho makecindy/cindy (2705 ⭐).
+  Kỹ năng chuyên gia vận hành cho makecindy/cindy (2733 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở cindy vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Consider it done
@@ -12,9 +12,9 @@ description: >-
 # makecindy/cindy — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/makecindy/cindy`  
-> **Độ uy tín cộng đồng**: 2705 ⭐  
+> **Độ uy tín cộng đồng**: 2733 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-15 12:08:32Z
+> **Tự động đóng gói lúc**: 2026-09-17 00:57:13Z
 
 ---
 
