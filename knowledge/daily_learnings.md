@@ -892,3 +892,25 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-18 05:42:01`
+
+<untrusted_external_content>
+### 🌐 Tin tức Sản phẩm Google & Frontier Labs
+- **[Google AI Official]** [Making global data easier to explore](https://blog.google/innovation-and-ai/technology/ai/google-un-data-commons-platform/)
+  > Google and the UN system have launched the UN System Data Commons, a new open platform making global statistics accessible and easy to search.
+
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google Research]** [The future of practice: Enabling teachers to create learning interactives with generative UI](https://research.google/blog/the-future-of-practice-enabling-teachers-to-create-learning-interactives-with-generative-ui/)
+  > Education Innovation
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (55 ⭐)]** [Demonbane18/relmio](https://github.com/Demonbane18/relmio)
+  > A safe local browser wizard for installing an OpenAI OAuth sidecar beside self-hosted n8n.
+- **[GitHub (111 ⭐)]** [Tcotl/AgentCapture](https://github.com/Tcotl/AgentCapture)
+  > 针对 AI 自动化渗透 Agent 的新一代反制蜜罐，通过反向代理将API密饵载入真实业务、反向提示词注入等方式反制自动化渗透 Agent，实现多款主流通用Agent的反制上线控制。
+- **[GitHub (58 ⭐)]** [timothy-agent/timothy](https://github.com/timothy-agent/timothy)
+  > The open-source control plane for your personal AI workforce. Run your own AI agents. Your infrastructure. Your models. Your rules.
+
+</untrusted_external_content>
+
+---
