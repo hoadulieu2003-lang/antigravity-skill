@@ -779,3 +779,19 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-17 11:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (11109 ⭐)]** [EKKOLearnAI/hermes-studio](https://github.com/EKKOLearnAI/hermes-studio)
+  > Ekko Studio is a local-first AI workspace for multi-agent chat, coding, and visual workflows, available on desktop and the web.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Making AI-Assisted Claims Independently Challengeable: Publication Authority and a Protocol for Falsifiable Publication Records](https://arxiv.org/abs/2609.17631)
+  > arXiv:2609.17631v1 Announce Type: new Abstract: AI-assisted claims can appear authoritative when evidence, analysis, human authorization, presentation, and c...
+- **[ArXiv CS.AI]** [EvolveTrade: Experience-Driven Policy Refinement for Self-Evolving LLM Trading Agents](https://arxiv.org/abs/2609.17632)
+  > arXiv:2609.17632v1 Announce Type: new Abstract: Large language model (LLM) trading agents can combine market data, news, and executable analysis, but their b...
+
+</untrusted_external_content>
+
+---
