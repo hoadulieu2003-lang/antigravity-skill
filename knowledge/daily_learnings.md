@@ -852,3 +852,13 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-17 20:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (125 ⭐)]** [ZSeven-W/rish-app](https://github.com/ZSeven-W/rish-app)
+  > Your pocket agent. Local-first AI agents on iOS and Android — real workspaces, tool execution with approvals, and your choice of model (DSH · Claude Code · C...
+
+</untrusted_external_content>
+
+---
