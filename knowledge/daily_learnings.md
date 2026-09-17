@@ -876,3 +876,19 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-18 02:42:01`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (672 ⭐)]** [ronak-create/FableCut](https://github.com/ronak-create/FableCut)
+  > Zero-dependency browser video editor that AI agents can drive — JSON timeline, MCP + REST, live-reloading UI
+- **[GitHub (1013 ⭐)]** [Anil-matcha/awesome-dsh-plugin](https://github.com/Anil-matcha/awesome-dsh-plugin)
+  > A curated list of plugins for DeepSeek Harness (dsh) - DeepSeek Harness plugin ecosystem
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [TokenRhythm/NeoHorse-1-4B](https://huggingface.co/TokenRhythm/NeoHorse-1-4B)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
