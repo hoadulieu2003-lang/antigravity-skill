@@ -767,3 +767,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-17 09:04:54`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (543 ⭐)]** [AI-Shell-Team/aish](https://github.com/AI-Shell-Team/aish)
+  > Empower the Shell to think. Evolve Operations.
+- **[GitHub (303 ⭐)]** [jin-bo/agentao](https://github.com/jin-bo/agentao)
+  > Local-first, governed AI agent runtime for Python — embed it in your app, or run it as a CLI or ACP server. Permissions, MCP, memory and audit replay built in.
+
+</untrusted_external_content>
+
+---

@@ -120,7 +120,8 @@
         "mcp(cdp-bridge/cdp_click_button)",
         "mcp(cdp-bridge/cdp_press_key)",
         "mcp(cdp-bridge/cdp_scroll)",
-        "mcp(cdp-bridge/cdp_inject_and_render)"
+        "mcp(cdp-bridge/cdp_inject_and_render)",
+        "mcp(cdp-bridge/cdp_get_console_logs)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
