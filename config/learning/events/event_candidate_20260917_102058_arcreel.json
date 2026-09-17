@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-17T10:20:58.190411+00:00",
+  "skill_name": "arcreel",
+  "source_repo": "ArcReel/ArcReel",
+  "stars": 4733,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\arcreel\\SKILL.md",
+  "human_promotion_required": true
+}

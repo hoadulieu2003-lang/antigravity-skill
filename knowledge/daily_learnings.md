@@ -811,3 +811,34 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Nghiên Cứu Định Lượng: `2026-09-17 16:50:00`
+
+### 📈 Phát Hiện Cấu Trúc Giao Dịch Định Lượng M15 (Quantitative Trading Insights)
+- **Cấu Trúc Stop Loss vs Nhiễu Nến M15 (`Intrabar Noise Invariance`)**:
+  - Không thể ép Stop Loss quá nhỏ (`0.5 ATR`) trên M15: Vì biên độ dao động ngẫu nhiên trung bình của nến M15 đã là `0.4 – 0.6 ATR`, SL 0.5 ATR khiến 100% chiến lược sụp đổ và lỗ nặng (-25R đến -43R) do bị quét oan và ma sát phí/spread/slippage chiếm tới 20% SL.
+  - Công thức Scalp tối ưu: Giữ đệm SL an toàn `1.2 – 1.5 ATR` để hấp thụ râu nến, nhưng kéo mục tiêu chốt lời TP về gần (`0.6R – 0.7R`). Điều này nâng Win Rate lên mốc vàng **`63% – 70%`** và tạo Net R dương ổn định.
+- **Vi Cấu Trúc Khác Biệt Giữa BTC và ETH (`Market Microstructure Discrepancy`)**:
+  - **ETHUSD**: Sóng hồi Bollinger Re-entry (`S25`) diễn ra mượt mà, đưa `S25` thành cỗ máy sinh lời lớn nhất hệ thống với **`+9.70R`** tại 1.5R và **`+5.32R`** tại 0.7R (Win Rate 66.3%).
+  - **BTCUSD**: Đặc trưng bởi các pha quét thanh khoản râu nến (`Liquidity Sweeps / Wick Hunts`). Do đó, `S09 (SMC Liquidity Sweep)` xưng vương tuyệt đối trên BTC với **`+7.08R`** (Holdout +7.63R, PF 2.02).
+- **Kiến Trúc Song Mã Twin-Order Giải Quyết Bẫy Hòa Vốn (52.8% Breakeven Flaw)**:
+  - 52.8% lệnh thực tế trước đó dời Breakeven bị quét về 0R do mục tiêu ban đầu quá xa. Giải pháp: Vé 1 Scalp chốt tại `0.7R` khóa tiền bỏ túi, vé 2 Runner gồng `1.5R – 3.0R` bảo đảm vừa có dòng tiền nhanh vừa có Big Winner.
+
+---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-17 17:20:46`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (176 ⭐)]** [orbi-build/orbi](https://github.com/orbi-build/orbi)
+  > Orbi — the factory that builds and operates AI software factories. GitHub Issues in, releases and runnable system out
+- **[GitHub (4733 ⭐)]** [ArcReel/ArcReel](https://github.com/ArcReel/ArcReel)
+  > AI Agent 驱动的开源可自部署视频工作台：将小说与剧本转为角色、场景、道具资产、分镜、视频和剪映草稿，支持跨镜头一致性、多供应商与费用追踪 | Self-hosted AI video workspace for stories, storyboards and short-form video produ...
+- **[GitHub (10318 ⭐)]** [presenton/presenton](https://github.com/presenton/presenton)
+  > Open-Source AI Presentation Generator and API (Gamma, Canva, Beautiful AI, Decktopus, Presentations AI Alternative)
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [What You Can't See Is Still What You Learn: A Preregistered Sixty-Society Confirmation That Evidence Masking Drives Compositional Generalization](https://arxiv.org/abs/2609.17637)
+  > arXiv:2609.17637v1 Announce Type: new Abstract: Restricting what a module can read may improve what a system learns to compute. We test this in a preregister...
+
+</untrusted_external_content>
+
+---
