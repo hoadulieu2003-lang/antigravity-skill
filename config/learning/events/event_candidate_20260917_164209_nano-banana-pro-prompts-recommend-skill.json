@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-17T16:42:09.055839+00:00",
+  "skill_name": "nano-banana-pro-prompts-recommend-skill",
+  "source_repo": "YouMind-OpenLab/nano-banana-pro-prompts-recommend-skill",
+  "stars": 1854,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\nano-banana-pro-prompts-recommend-skill\\SKILL.md",
+  "human_promotion_required": true
+}

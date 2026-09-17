@@ -1,32 +1,33 @@
 schema_version: '1.0'
-skill_name: arcreel
-source_repo: ArcReel/ArcReel
-stars: 4859
+skill_name: nano-banana-pro-prompts-recommend-skill
+source_repo: YouMind-OpenLab/nano-banana-pro-prompts-recommend-skill
+stars: 1854
 status: CANDIDATE
-created_at: '2026-09-17T16:42:08.460960+00:00'
+created_at: '2026-09-17T16:42:09.054791+00:00'
 human_promotion_required: true
 evidence_files:
 - SKILL.md
-- references/arcreel/README.md
+- references/nano-banana-pro-prompts-recommend-skill/README.md
 benchmark:
-  total_score: 10.0
+  total_score: 9.8
   rating: RECOMMENDED
   evaluated_at: '2026-09-17T16:42:09Z'
   breakdown:
     structure_metadata: 2.5
-    command_safety: 2.5
+    command_safety: 2.3
     reference_coverage: 2.5
     ecosystem_compatibility: 2.5
   notes:
   - Frontmatter YAML hợp lệ (+0.5)
-  - Tên kỹ năng 'arcreel' khớp thư mục (+0.5)
+  - Tên kỹ năng 'nano-banana-pro-prompts-recommend-skill' khớp thư mục (+0.5)
   - Đặc tả Intent-First chuẩn mực (+1.0/1.0)
   - 'Cấu trúc tài liệu Markdown (4 mục chính: +0.50/0.5)'
   - Có 1 khối mã lệnh thực thi (+0.5)
-  - Nhận diện 3 lệnh CLI tiêu chuẩn (+0.5)
+  - Chứa mã lệnh hoặc cấu hình hợp lệ (+0.3)
   - 'An toàn tuyệt đối: Không chứa lệnh phá hoại hệ thống (+1.5)'
-  - Thư mục tham chiếu references/arcreel tồn tại (+0.5)
-  - Tài liệu tham chiếu chi tiết (6191 ký tự) (+1.5)
+  - Thư mục tham chiếu references/nano-banana-pro-prompts-recommend-skill tồn tại
+    (+0.5)
+  - Tài liệu tham chiếu chi tiết (9351 ký tự) (+1.5)
   - Tài liệu tham chiếu có kèm ví dụ mã nguồn (+0.3)
   - Tài liệu tham chiếu có cấu trúc rõ ràng (+0.2)
   - 'Tuân thủ AGENTS.md Rule 14 & INV-E07: Không có secret lộ lọt (+1.0)'

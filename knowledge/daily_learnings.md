@@ -862,3 +862,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-17 23:42:01`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (60 ⭐)]** [getaero-io/gtm-eng-skills](https://github.com/getaero-io/gtm-eng-skills)
+  > 10 AI agent skills for Claude Code — waterfall email enrichment, TAM building, signal discovery, job change detection, and outbound automation. Powered by De...
+- **[GitHub (100 ⭐)]** [kawayiYokami/P-ai](https://github.com/kawayiYokami/P-ai)
+  > A ready-to-use self-growing desktop AI assistant for long-running tasks, memory, agents, tool reviews, MCP, and high-concurrency workspace automation. / 开箱即用...
+- **[GitHub (1854 ⭐)]** [YouMind-OpenLab/nano-banana-pro-prompts-recommend-skill](https://github.com/YouMind-OpenLab/nano-banana-pro-prompts-recommend-skill)
+  > AI skill for OpenClaw & Claude Code — recommend from 10000+ Nano Banana Pro (Gemini) image prompts. Smart search by use case, content remix, sample images.
+
+</untrusted_external_content>
+
+---

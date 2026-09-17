@@ -122,7 +122,8 @@
         "mcp(cdp-bridge/cdp_scroll)",
         "mcp(cdp-bridge/cdp_inject_and_render)",
         "mcp(cdp-bridge/cdp_get_console_logs)",
-        "mcp(cdp-bridge/cdp_extract_page_content)"
+        "mcp(cdp-bridge/cdp_extract_page_content)",
+        "mcp(cdp-bridge/cdp_type_text)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
