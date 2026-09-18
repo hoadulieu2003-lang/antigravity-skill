@@ -1,7 +1,7 @@
 ---
 name: arcreel
 description: >-
-  Kỹ năng chuyên gia vận hành cho ArcReel/ArcReel (4859 ⭐).
+  Kỹ năng chuyên gia vận hành cho ArcReel/ArcReel (4940 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở arcreel vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến AI Agent 驱动的开源可自部署视频工作台：将小说与剧本转为角色、场景、道具资产、分镜、视频和剪映草稿，支持跨镜头一致性、多供应商与费用追踪 | Self-hosted AI video workspace for stories, storyboards and short-form video produ
@@ -12,9 +12,9 @@ description: >-
 # ArcReel/ArcReel — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/ArcReel/ArcReel`  
-> **Độ uy tín cộng đồng**: 4859 ⭐  
+> **Độ uy tín cộng đồng**: 4940 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-17 16:42:08Z
+> **Tự động đóng gói lúc**: 2026-09-18 01:42:09Z
 
 ---
 

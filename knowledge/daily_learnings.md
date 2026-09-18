@@ -926,3 +926,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-18 08:42:01`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1680 ⭐)]** [qufei1993/skills-hub](https://github.com/qufei1993/skills-hub)
+  > A cross-platform desktop app to manage Agent Skills in one place and sync them to multiple AI coding tools’ global skills directories — “Install once, sync e...
+- **[GitHub (77 ⭐)]** [LazyAGI/LazyMind](https://github.com/LazyAGI/LazyMind)
+  > An AI Skill Runtime for knowledge-intensive work which makes everything under your control.
+
+</untrusted_external_content>
+
+---
