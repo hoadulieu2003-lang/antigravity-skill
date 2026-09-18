@@ -1006,3 +1006,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-18 23:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (54 ⭐)]** [rexleimo/aios](https://github.com/rexleimo/aios)
+  > Local-first AI agent bootstrap: Playwright Browser MCP + ContextDB for Codex CLI, Claude Code, Gemini CLI, and OpenCode.
+- **[GitHub (161 ⭐)]** [useLexora/Lexora](https://github.com/useLexora/Lexora)
+  > Lexora — Personal AI workspace built around Desktop / 以 Desktop 为核心的个人 AI 工作台
+
+</untrusted_external_content>
+
+---
