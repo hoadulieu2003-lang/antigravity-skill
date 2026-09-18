@@ -938,3 +938,21 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-18 11:42:01`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (63 ⭐)]** [BrokkAi/mjolnir](https://github.com/BrokkAi/mjolnir)
+  > Manage Codex, Claude Code, Muse Code, Kimi Code, Grok Build, and DeepSeek Harness with durable sessions, isolated environments, quotas, and remote control. A...
+- **[GitHub (58 ⭐)]** [WestFox-AwA/dsh-prompt-optimizer](https://github.com/WestFox-AwA/dsh-prompt-optimizer)
+  > DSH Web 插件 · 提示词优化器：把用户的一句话补全成完整具体的要求说明（面向 PTC 模式）。0.4 = 需求补全器——只补内容，不写流程/步骤/验收清单/验证纪律/禁令。
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Regularized Emphatic Temporal-Difference Learning: Stability under Constant Stepsizes](https://arxiv.org/abs/2609.19170)
+  > arXiv:2609.19170v1 Announce Type: new Abstract: Emphatic temporal-difference learning (ETD) stabilizes the expected off-policy TD update and changes its proj...
+- **[ArXiv CS.AI]** [BioPhys-Bridge: A Benchmark for Interdisciplinary Scientific Reasoning in Physics-Grounded Biological Research](https://arxiv.org/abs/2609.19180)
+  > arXiv:2609.19180v1 Announce Type: new Abstract: Language models face unique challenges in analyzing interdisciplinary scientific research literature. In biop...
+
+</untrusted_external_content>
+
+---
