@@ -914,3 +914,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-18 07:55:32`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (60 ⭐)]** [yylo-dev/yylo](https://github.com/yylo-dev/yylo)
+  > YYLO (why-lo): AI coding-agent orchestration CLI with equivalent yylo and yy launchers.
+- **[GitHub (35591 ⭐)]** [esengine/DeepSeek-Reasonix](https://github.com/esengine/DeepSeek-Reasonix)
+  > DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.
+
+</untrusted_external_content>
+
+---
