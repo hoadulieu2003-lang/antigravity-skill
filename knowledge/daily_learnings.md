@@ -988,3 +988,21 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-18 21:05:54`
+
+<untrusted_external_content>
+### 🌐 Tin tức Sản phẩm Google & Frontier Labs
+- **[Google AI Official]** [New experts join Google’s AI & Economy team](https://blog.google/innovation-and-ai/technology/ai/expanding-ai-economy-research-bench/)
+  > We are expanding our AI & Economy team with world-class academic advisors, fellows, and core internal researchers.
+- **[Google AI Official]** [Co-creating the future of fashion with Google](https://blog.google/innovation-and-ai/technology/ai/google-flow-fashion-week/)
+  > Google worked side-by-side with designers Jane Wade and Sergio Hudson to custom-design Google Flow tools to prep for NYFW.
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (72 ⭐)]** [ZeroDayEvil/ai-security-tool](https://github.com/ZeroDayEvil/ai-security-tool)
+  > 🛡️ Free open-source AI-powered security terminal & vulnerability scanner (CVE, SBOM). Supports SSH, SFTP, RDP, VNC, Serial, and 12+ autonomous AI agents (Dee...
+- **[GitHub (52 ⭐)]** [sky-valley/pi](https://github.com/sky-valley/pi)
+  > A pure-Go port of pi (earendil-works/pi) — the pi-ai unified multi-provider LLM API, pi-agent-core agent loop, and pi-coding-agent, native in Go with no Node...
+
+</untrusted_external_content>
+
+---
