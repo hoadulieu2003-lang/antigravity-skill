@@ -1,5 +1,5 @@
 {
-  "bundleChecksum": "601a447449c6a10948dad2fd6be6db785c3b3e6d9a707ea609cb65dd9cb7db18",
+  "bundleChecksum": "c13b95c3f059c90a82ae459696806e06d975ed342da645791b05fadd30bb2c3a",
   "skills": {
     "accidental-data-loss-prevention": {
       "status": "uninstalled",
@@ -41,7 +41,22 @@
       "checksum": "",
       "disabled": true
     },
+    "dataform-bigquery": {
+      "status": "uninstalled",
+      "checksum": "",
+      "disabled": true
+    },
+    "dbt-bigquery": {
+      "status": "uninstalled",
+      "checksum": "",
+      "disabled": true
+    },
     "discovering-gcp-data-assets": {
+      "status": "uninstalled",
+      "checksum": "",
+      "disabled": true
+    },
+    "enforcing-resource-attribution": {
       "status": "uninstalled",
       "checksum": "",
       "disabled": true
@@ -81,47 +96,12 @@
       "checksum": "",
       "disabled": true
     },
-    "gcp-pipeline-resource-provisioning": {
-      "status": "uninstalled",
-      "checksum": "",
-      "disabled": true
-    },
-    "managing-python-dependencies": {
-      "status": "uninstalled",
-      "checksum": "",
-      "disabled": true
-    },
-    "ml-best-practices": {
-      "status": "uninstalled",
-      "checksum": "",
-      "disabled": true
-    },
-    "notebook-guidance": {
-      "status": "uninstalled",
-      "checksum": "",
-      "disabled": true
-    },
-    "skill-repair": {
-      "status": "uninstalled",
-      "checksum": "",
-      "disabled": true
-    },
-    "dataform-bigquery": {
-      "status": "uninstalled",
-      "checksum": "",
-      "disabled": true
-    },
-    "dbt-bigquery": {
-      "status": "uninstalled",
-      "checksum": "",
-      "disabled": true
-    },
-    "enforcing-resource-attribution": {
-      "status": "uninstalled",
-      "checksum": "",
-      "disabled": true
-    },
     "gcp-pipeline-orchestration": {
+      "status": "uninstalled",
+      "checksum": "",
+      "disabled": true
+    },
+    "gcp-pipeline-resource-provisioning": {
       "status": "uninstalled",
       "checksum": "",
       "disabled": true
@@ -146,10 +126,42 @@
       "checksum": "",
       "disabled": true
     },
+    "managing-python-dependencies": {
+      "status": "uninstalled",
+      "checksum": "",
+      "disabled": true
+    },
+    "ml-best-practices": {
+      "status": "uninstalled",
+      "checksum": "",
+      "disabled": true
+    },
+    "notebook-guidance": {
+      "status": "uninstalled",
+      "checksum": "",
+      "disabled": true
+    },
     "schema-mapping": {
       "status": "uninstalled",
       "checksum": "",
       "disabled": true
+    },
+    "skill-repair": {
+      "status": "uninstalled",
+      "checksum": "",
+      "disabled": true
+    },
+    "bigtable-basics": {
+      "status": "installed",
+      "checksum": "8e35ec8f6c9e8b42a3bab22787c4b5a4c1af43a331759e6375c7c58dbd6d8eff"
+    },
+    "google-cloud-storage-bucket-architect": {
+      "status": "installed",
+      "checksum": "1f0ea14b33114236fa533fa795e6578d40f9d89ce8caf78cea859496f73fb438"
+    },
+    "google-cloud-storage-fuse": {
+      "status": "installed",
+      "checksum": "fa7bc3179129a1f48bab1fa9493328b609cd6a0aa8421aac59bbd04bbd19bd89"
     }
   }
 }

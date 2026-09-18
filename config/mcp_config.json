@@ -23,6 +23,27 @@
       "args": [
         "C:\\Users\\game\\.antigravity-ide\\extensions\\mercurial.google-workspace-mcp-0.1.1-universal\\dist\\mcp\\server.js"
       ]
+    },
+    "notebooks": {
+      "command": "node",
+      "args": [
+        "c:\\Users\\game\\.antigravity-ide\\extensions\\googlecloudtools.datacloud-0.11.0-universal\\mcp_servers\\cli\\mcp_proxy_bundle.js",
+        "notebooks-antigravityide"
+      ]
+    },
+    "visualization": {
+      "command": "node",
+      "args": [
+        "c:\\Users\\game\\.antigravity-ide\\extensions\\googlecloudtools.datacloud-0.11.0-universal\\mcp_servers\\cli\\mcp_proxy_bundle.js",
+        "visualization-antigravityide"
+      ]
+    },
+    "data-agent-kit": {
+      "command": "node",
+      "args": [
+        "c:\\Users\\game\\.antigravity-ide\\extensions\\googlecloudtools.datacloud-0.11.0-universal\\mcp_servers\\cli\\mcp_proxy_bundle.js",
+        "dataAgentKit-antigravityide"
+      ]
     }
   }
 }
