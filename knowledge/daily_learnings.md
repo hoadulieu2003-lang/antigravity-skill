@@ -1100,3 +1100,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-19 23:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (85 ⭐)]** [yuga-hashimoto/and-code](https://github.com/yuga-hashimoto/and-code)
+  > Native Android GUI for running AI coding agents locally on-device. No terminal or PC required.
+- **[GitHub (588 ⭐)]** [vibeinging/dsh-desktop](https://github.com/vibeinging/dsh-desktop)
+  > DeepSeek Harness Desktop App: a local AI desktop workspace for DSH Sessions, projects, files, web research, plugins, and Office artifacts.
+
+</untrusted_external_content>
+
+---
