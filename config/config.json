@@ -124,7 +124,9 @@
         "mcp(cdp-bridge/cdp_get_console_logs)",
         "mcp(cdp-bridge/cdp_extract_page_content)",
         "mcp(cdp-bridge/cdp_type_text)",
-        "read_url(get.exness.help)"
+        "read_url(get.exness.help)",
+        "mcp(cdp-bridge/cdp_ensure_browser)",
+        "read_url(dukascopy-node.app)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

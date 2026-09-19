@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-19T01:42:11.682875+00:00",
+  "skill_name": "cua",
+  "source_repo": "trycua/cua",
+  "stars": 23472,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\cua\\SKILL.md",
+  "human_promotion_required": true
+}
