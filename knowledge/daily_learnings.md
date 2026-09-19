@@ -1060,3 +1060,13 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-19 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (111 ⭐)]** [Bronya0/ally-agent](https://github.com/Bronya0/ally-agent)
+  > A desktop AI coding assistant that works with your local projects. Ally helps you understand code, edit files, search a workspace, manage tasks, and complete...
+
+</untrusted_external_content>
+
+---

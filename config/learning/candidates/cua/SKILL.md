@@ -1,7 +1,7 @@
 ---
 name: cua
 description: >-
-  Kỹ năng chuyên gia vận hành cho trycua/cua (23472 ⭐).
+  Kỹ năng chuyên gia vận hành cho trycua/cua (23737 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở cua vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Scale computer-use 2
@@ -12,9 +12,9 @@ description: >-
 # trycua/cua — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/trycua/cua`  
-> **Độ uy tín cộng đồng**: 23472 ⭐  
+> **Độ uy tín cộng đồng**: 23737 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-19 01:42:11Z
+> **Tự động đóng gói lúc**: 2026-09-19 07:42:09Z
 
 ---
 
