@@ -3,7 +3,7 @@
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Hệ thống áp dụng**: Anti AI Pair-Programmer  
 > **Hệ sinh thái công nghệ**: `Next.js App Router, React 19 Server Components, Cloudflare Workers, Tailwind CSS`  
-> **Cập nhật lần cuối**: 2026-09-19 07:42:09 UTC
+> **Cập nhật lần cuối**: 2026-09-19 10:52:46 UTC
 
 ---
 

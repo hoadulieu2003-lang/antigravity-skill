@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-19T10:52:44.737198+00:00",
+  "skill_name": "webbrain",
+  "source_repo": "webbrain-one/webbrain",
+  "stars": 1088,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\webbrain\\SKILL.md",
+  "human_promotion_required": true
+}

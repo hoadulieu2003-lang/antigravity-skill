@@ -1070,3 +1070,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-19 17:52:34`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1088 ⭐)]** [webbrain-one/webbrain](https://github.com/webbrain-one/webbrain)
+  > Open-source AI browser agent for Chrome and Firefox (monorepo) 🧠
+- **[GitHub (389 ⭐)]** [openwong2kim/wmux](https://github.com/openwong2kim/wmux)
+  > Run Claude Code, Codex & Gemini in parallel on Windows & macOS — git worktree fan-out with atomic hunk adoption, approval gates, reboot-surviving sessions
+- **[GitHub (271 ⭐)]** [410979729/scope-recall-hermes](https://github.com/410979729/scope-recall-hermes)
+  > Hermes Agent memory plugin/provider for scope-aware recall, SQLite truth, LanceDB semantic search, and hybrid retrieval.
+
+</untrusted_external_content>
+
+---
