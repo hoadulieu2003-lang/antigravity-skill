@@ -1084,3 +1084,19 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-19 20:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (127 ⭐)]** [riffpad/riffpad](https://github.com/riffpad/riffpad)
+  > Watch, approve and steer your coding agents from your phone.
+- **[GitHub (159 ⭐)]** [zj-unicom-ai/UniEmployee](https://github.com/zj-unicom-ai/UniEmployee)
+  > 面向企业的数字员工构建与运行平台：把专业员工的经验、流程与判断标准，固化为可随时上岗、可配置、可审批、可观测的 AI 数字员工。
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [XingChen-AGI/Xing4.0-29B-A4B](https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
