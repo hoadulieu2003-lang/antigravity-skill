@@ -1046,3 +1046,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-19 11:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (94 ⭐)]** [ShipWithAI/claude-code-mastery](https://github.com/ShipWithAI/claude-code-mastery)
+  > The most comprehensive free Claude Code course — 16 phases, 55 modules, EN + VI 🚀
+- **[GitHub (71 ⭐)]** [yiheng8023/antigravity-chinese](https://github.com/yiheng8023/antigravity-chinese)
+  > High-performance, non-invasive, self-healing Chinese localization toolkit for Google Antigravity 2.0 desktop clients (Windows/macOS/Linux).
+- **[GitHub (92 ⭐)]** [tensorcircuit/tensorcircuit-ng](https://github.com/tensorcircuit/tensorcircuit-ng)
+  > Next-gen AI-native tensor-network-based quantum software framework
+
+</untrusted_external_content>
+
+---
