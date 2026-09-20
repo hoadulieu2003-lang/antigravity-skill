@@ -1,6 +1,6 @@
 schema_version: '1.0'
 registry_id: FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY
-last_updated: '2026-09-17T01:17:02Z'
+last_updated: '2026-09-20T07:37:32Z'
 governance_mode: STRICT_HUMAN_PROMOTION_GATE
 tri_state_lifecycle:
   record: Stored as CANDIDATE; no execution authority
@@ -164,6 +164,30 @@ promoted_skills:
   promoted_at: '2026-09-17T01:17:00Z'
   approved_by: Anh (Product Owner)
   manifest: config/skills/vm0/SKILL.md
+- skill: agentconnect
+  promoted_at: '2026-09-20T07:37:27Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/agentconnect/SKILL.md
+- skill: arcreel
+  promoted_at: '2026-09-20T07:37:27Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/arcreel/SKILL.md
+- skill: cua
+  promoted_at: '2026-09-20T07:37:28Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/cua/SKILL.md
+- skill: nano-banana-pro-prompts-recommend-skill
+  promoted_at: '2026-09-20T07:37:28Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/nano-banana-pro-prompts-recommend-skill/SKILL.md
+- skill: webbrain
+  promoted_at: '2026-09-20T07:37:29Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/webbrain/SKILL.md
+- skill: zeroshot
+  promoted_at: '2026-09-20T07:37:29Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/zeroshot/SKILL.md
 capability_routing_history:
 - capability: gsap
   domain: visual_choreography
@@ -179,8 +203,8 @@ active_domain_packs:
   activated_at: '2026-09-06T09:16:00Z'
   approved_by: Anh (Product Owner)
 runtime_sync:
-  last_sync: '2026-09-17T01:17:02Z'
-  total_events_processed: 177
+  last_sync: '2026-09-20T07:37:32Z'
+  total_events_processed: 265
   autonomous_captures: 10
   knowledge_ingestions: 1
   failure_events: 0
