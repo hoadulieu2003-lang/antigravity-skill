@@ -1,7 +1,7 @@
 ---
 name: agentconnect
 description: >-
-  Kỹ năng chuyên gia vận hành cho agentconnect-md/agentconnect (1394 ⭐).
+  Kỹ năng chuyên gia vận hành cho agentconnect-md/agentconnect (1400 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở agentconnect vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến The open-source, multi-agent alternative to Claude Tag
@@ -12,9 +12,9 @@ description: >-
 # agentconnect-md/agentconnect — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/agentconnect-md/agentconnect`  
-> **Độ uy tín cộng đồng**: 1394 ⭐  
+> **Độ uy tín cộng đồng**: 1400 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-18 22:42:07Z
+> **Tự động đóng gói lúc**: 2026-09-20 01:42:10Z
 
 ---
 

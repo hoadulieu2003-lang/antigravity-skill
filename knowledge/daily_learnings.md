@@ -1122,3 +1122,13 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-20 08:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (91 ⭐)]** [JiangNanGenius/floe-agent](https://github.com/JiangNanGenius/floe-agent)
+  > Floe — a native iOS/iPadOS AI agent workspace for iPhone and iPad, built for private bring-your-own-key workflows.
+
+</untrusted_external_content>
+
+---
