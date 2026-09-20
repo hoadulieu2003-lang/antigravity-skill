@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-20T22:42:07.650482+00:00",
+  "skill_name": "jobsync",
+  "source_repo": "Gsync/jobsync",
+  "stars": 1284,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\jobsync\\SKILL.md",
+  "human_promotion_required": true
+}

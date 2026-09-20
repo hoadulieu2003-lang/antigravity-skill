@@ -1206,3 +1206,19 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-21 05:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (171 ⭐)]** [gebruder/wirken](https://github.com/gebruder/wirken)
+  > The enterprise gateway for autonomous agents. Identity management, per-channel isolation, credential vault, per-session tamper-evident audit log.
+- **[GitHub (1284 ⭐)]** [Gsync/jobsync](https://github.com/Gsync/jobsync)
+  > Job application tracker and AI-powered job search assistant. Helps job seekers manage their search journey with AI resume review, job matching, task logging,...
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [Qwen/Qwen-Image-2.1](https://huggingface.co/Qwen/Qwen-Image-2.1)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
