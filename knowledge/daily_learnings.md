@@ -1144,3 +1144,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-20 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (82 ⭐)]** [WSL043/dsh-codex-subscription](https://github.com/WSL043/dsh-codex-subscription)
+  > Use your ChatGPT / Codex subscription with DeepSeek Harness via OAuth, with model access, usage quotas, search, and image generation — no API key or Codex CL...
+- **[GitHub (179 ⭐)]** [openvetta/open-vetta](https://github.com/openvetta/open-vetta)
+  > Open-source, local-first AI agent for coding and real work. BYOK models, MCP, skills, plugins, workflows, and private knowledge bases.
+- **[GitHub (4735 ⭐)]** [chaitin/MonkeyCode](https://github.com/chaitin/MonkeyCode)
+  > AI coding platform for teams
+
+</untrusted_external_content>
+
+---
