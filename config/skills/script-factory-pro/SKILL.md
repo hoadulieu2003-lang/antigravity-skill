@@ -61,6 +61,16 @@ flowchart TD
 | **🤫 Silent (AmbientOnly)** | **Cố định đúng 4.0s** (CẤM 6s/8s) | **Khóa cứng 0 slots** (`resolved_reference_ids = []`) | 100% scene không lời thoại, Text-to-Video thuần túy, cảnh quan ASMR/xúc giác. |
 | **💬 Dialogue** | **6.0s hoặc 8.0s** | **Tối đa 3 slots** + Speaker Binding | Nhân vật đối thoại trực tiếp, khóa chuyển động môi nhân vật đang nói. |
 
+### 4.1. Động Cơ Lồng Tiếng Tự Động (Gemini Native Voiceover Engine)
+- **Module thực thi**: [`gemini_voiceover_engine.py`](file:///C:/Users/game/.gemini/config/skills/script-factory-pro/scripts/gemini_voiceover_engine.py).
+- **Nguồn cấp**: Google Gemini API (`models/gemini-2.5-flash-preview-tts`), sử dụng khóa `GEMINI_API_KEY` trong `.env.local`.
+- **Speaker Binding Matrix**:
+  * `narrator`: Giọng `Puck` (Nam ấm áp) hoặc `Aoede` (Nữ truyền cảm).
+  * `female`: Giọng `Kore` (Dịu dàng, thanh lịch).
+  * `authoritative`: Giọng `Charon` (Trầm ấm, đĩnh đạc).
+  * `energetic`: Giọng `Fenrir` (Mạnh mẽ, năng động).
+- **Đầu ra**: Tự động xuất từng file WAV 24kHz cho mỗi phân cảnh + file `scene_durations.json` ghi nhận thời lượng chính xác để điều phối thời lượng render Veo 3.1 và đưa vào dòng thời gian CapCut qua `arcreel`.
+
 ---
 
 ## 🧬 5. CƠ CHẾ ĐỒNG NHẤT SERIES (SERIES ASSET CONTINUITY & DIRECT INJECTION)

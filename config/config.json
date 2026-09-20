@@ -128,7 +128,8 @@
         "mcp(cdp-bridge/cdp_ensure_browser)",
         "read_url(dukascopy-node.app)",
         "mcp(google-workspace/ping)",
-        "mcp(google-workspace/calendar_admin)"
+        "mcp(google-workspace/calendar_admin)",
+        "mcp(google-workspace/drive_list)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

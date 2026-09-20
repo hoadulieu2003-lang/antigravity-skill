@@ -1,0 +1,36 @@
+{
+  "engine": "Gemini Native Voiceover Engine v1.0",
+  "total_duration_seconds": 20.23,
+  "scenes": [
+    {
+      "scene_id": 1,
+      "file": "scene_01_voice.wav",
+      "path": "C:\\Users\\game\\.gemini\\config\\skills\\script-factory-pro\\scripts\\test_output\\scene_01_voice.wav",
+      "duration_seconds": 6.17,
+      "speaker": "narrator",
+      "voice_used": "Puck",
+      "recommended_veo_duration": 8,
+      "text": "Bình minh trên vịnh Hạ Long, làn sương mỏng tang nhẹ buông trên mặt nước tĩnh lặng như gương."
+    },
+    {
+      "scene_id": 2,
+      "file": "scene_02_voice.wav",
+      "path": "C:\\Users\\game\\.gemini\\config\\skills\\script-factory-pro\\scripts\\test_output\\scene_02_voice.wav",
+      "duration_seconds": 7.17,
+      "speaker": "female",
+      "voice_used": "Kore",
+      "recommended_veo_duration": 8,
+      "text": "Từng thớ lụa tơ tằm dệt nắng ôm trọn lấy làn da, nhẹ tênh như một cơn gió sớm mai."
+    },
+    {
+      "scene_id": 3,
+      "file": "scene_03_voice.wav",
+      "path": "C:\\Users\\game\\.gemini\\config\\skills\\script-factory-pro\\scripts\\test_output\\scene_03_voice.wav",
+      "duration_seconds": 6.89,
+      "speaker": "authoritative",
+      "voice_used": "Charon",
+      "recommended_veo_duration": 8,
+      "text": "ANH ATELIER. Nơi hội tụ tinh hoa thời trang thượng lưu và nghệ thuật thủ công tinh tế."
+    }
+  ]
+}
