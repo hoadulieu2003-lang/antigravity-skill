@@ -1182,3 +1182,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-20 23:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (417 ⭐)]** [dmoshehun-prog/learn-from-materials](https://github.com/dmoshehun-prog/learn-from-materials)
+  > Turn PDFs, books and papers into interactive learning webpages｜将复杂材料转化为可追溯、可测验、可做笔记的学习网页
+- **[GitHub (466 ⭐)]** [pulseaiclub/phi](https://github.com/pulseaiclub/phi)
+  > a coding agent, rpc plugin, sub-agents, hashline edits, and mcp
+- **[GitHub (96 ⭐)]** [clabby/tact](https://github.com/clabby/tact)
+  > A terminal interface for Nanocodex
+
+</untrusted_external_content>
+
+---

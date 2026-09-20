@@ -1,0 +1,14 @@
+{
+  "name": "anti-live-voice",
+  "version": "1.0.0",
+  "description": "Antigravity Full-Duplex Real-Time Voice Gateway powered by Gemini Multimodal Live API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node server.js --test"
+  },
+  "dependencies": {
+    "ws": "^8.18.0",
+    "dotenv": "^16.4.5"
+  }
+}

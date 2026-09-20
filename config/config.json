@@ -126,7 +126,9 @@
         "mcp(cdp-bridge/cdp_type_text)",
         "read_url(get.exness.help)",
         "mcp(cdp-bridge/cdp_ensure_browser)",
-        "read_url(dukascopy-node.app)"
+        "read_url(dukascopy-node.app)",
+        "mcp(google-workspace/ping)",
+        "mcp(google-workspace/calendar_admin)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

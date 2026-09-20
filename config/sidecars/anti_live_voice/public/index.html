@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Anti Live Voice — Đàm Thoại Trực Tiếp Hai Chiều</title>
+  
+  <!-- PWA & Mobile Web App Meta -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2563EB">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Anti Voice">
+  
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="brand-wrapper">
+      <div class="brand-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+          <line x1="12" y1="19" x2="12" y2="22"/>
+        </svg>
+      </div>
+      <div>
+        <h1 class="brand-title">Anti Live Voice</h1>
+        <p class="brand-subtitle">Gemini Multimodal Live API • Full-Duplex</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button id="btnSettings" class="btn-icon" title="Cài đặt & API Key">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Status Indicator -->
+  <div class="status-container">
+    <div id="statusBadge" class="status-badge idle">
+      <span class="status-dot"></span>
+      <span id="statusText">Đang kiểm tra kết nối...</span>
+    </div>
+  </div>
+
+  <!-- Central Live Visualizer Stage -->
+  <main class="main-stage">
+    <div class="orb-wrapper">
+      <canvas id="orbCanvas"></canvas>
+    </div>
+
+    <!-- Live Subtitle Transcript -->
+    <div id="transcriptBox" class="transcript-bubble">
+      <p id="transcriptText">Bấm biểu tượng Micro bên dưới để bắt đầu đàm thoại trực tiếp cùng Em</p>
+    </div>
+
+    <!-- Audio Player Demo -->
+    <div style="margin-top: 1.25rem; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;">
+      <small style="color: #64748B; font-weight: 600; font-size: 0.8rem;">🎧 Đoạn Voice Test sinh trực tiếp từ Gemini API của Anh:</small>
+      <audio controls src="/gemini_voice_official.wav" style="height: 38px; border-radius: 9999px; outline: none;"></audio>
+    </div>
+  </main>
+
+  <!-- Bottom Action Bar -->
+  <footer class="controls-bar">
+    <div class="action-buttons">
+      <!-- Mute Button -->
+      <button id="btnMute" class="btn-control-secondary" title="Tắt / Bật tiếng Micro">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+      </button>
+
+      <!-- Main Interactive Voice Button -->
+      <button id="btnVoice" class="btn-primary-voice" title="Bắt đầu / Kết thúc cuộc gọi">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+          <line x1="12" y1="19" x2="12" y2="22"/>
+        </svg>
+      </button>
+
+      <!-- Mobile QR Guide Button -->
+      <button id="btnMobileGuide" class="btn-control-secondary" title="Kết nối từ Điện thoại / iPad" onclick="document.getElementById('settingsModal').classList.add('open')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+          <line x1="12" y1="18" x2="12.01" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Settings & Mobile Connect Modal -->
+  <div id="settingsModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 class="modal-title">Cài Đặt Anti Live Voice</h2>
+        <button id="btnCloseModal" class="btn-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <form id="formSettings">
+        <div class="form-group">
+          <label class="form-label" for="inputApiKey">Google AI Studio API Key</label>
+          <input type="password" id="inputApiKey" class="form-input" placeholder="Dán khóa API (AIzaSy...) tại đây">
+          <small style="display: block; margin-top: 0.35rem; color: #64748B; font-size: 0.8rem;">
+            Chưa có key? Lấy miễn phí tại: <a href="https://aistudio.google.com/apikey" target="_blank" style="color: #2563EB; font-weight: 600; text-decoration: none;">aistudio.google.com</a>
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="selectVoice">Giọng Nói Của Anti</label>
+          <select id="selectVoice" class="form-select">
+            <option value="Puck">Puck (Nam ấm áp, tự nhiên - Khuyên dùng)</option>
+            <option value="Charon">Charon (Nam trầm ấm, tự tin)</option>
+            <option value="Kore">Kore (Nữ dịu dàng, nhẹ nhàng)</option>
+            <option value="Fenrir">Fenrir (Nam năng động, mạnh mẽ)</option>
+            <option value="Aoede">Aoede (Nữ truyền cảm, rõ ràng)</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="background: #F1F5F9; padding: 0.85rem; border-radius: 0.75rem; border: 1px dashed #CBD5E1;">
+          <label class="form-label" style="margin-bottom: 0.2rem;">📱 Địa Chỉ Kết Nối Từ Điện Thoại / iPad:</label>
+          <p id="localIpText" style="font-family: monospace; font-size: 0.95rem; font-weight: 700; color: #2563EB; margin: 0.25rem 0;">Đang lấy địa chỉ...</p>
+          <small style="color: #64748B; font-size: 0.78rem;">Mở Safari hoặc Chrome trên điện thoại, gõ địa chỉ trên (cùng mạng Wi-Fi) để đàm thoại từ điện thoại.</small>
+        </div>
+
+        <button type="submit" class="btn-submit">Lưu Cấu Hình & Bắt Đầu</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/audio_processor.js"></script>
+  <script src="/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
