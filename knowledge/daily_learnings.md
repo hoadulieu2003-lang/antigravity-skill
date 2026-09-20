@@ -1158,3 +1158,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-20 18:17:01`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1154 ⭐)]** [okou-ai/okou](https://github.com/okou-ai/okou)
+  > Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control.
+- **[GitHub (74 ⭐)]** [mrpulor-gh/nuphus](https://github.com/mrpulor-gh/nuphus)
+  > Nuphus — 本地优先的 AI Agent：真实桌面执行力 + 手机第二块屏幕。Local-first AI agent with real desktop execution and dual-device real-time sync.
+- **[GitHub (4784 ⭐)]** [aipoch/open-science](https://github.com/aipoch/open-science)
+  > AIPOCH Open-Science: an open-source AI research workbench for scientific agent workflows and reproducible science. Local-first, model-agnostic desktop app wi...
+
+</untrusted_external_content>
+
+---
