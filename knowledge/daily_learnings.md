@@ -1294,3 +1294,21 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-21 20:42:03`
+
+<untrusted_external_content>
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [Python Workers are now generally available](https://blog.cloudflare.com/python-workers-ga/)
+  > Python Workers allow developers to run Python web frameworks and AI orchestration libraries natively in the Cloudflare Workers runtime. You can seamlessly integrate with Cloudflare's ecosystem incl...
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (496 ⭐)]** [zhoushoujianwork/easyeda-agent](https://github.com/zhoushoujianwork/easyeda-agent)
+  > 嘉立创EDA专业版(EasyEDA Pro)自动化：给 AI harness 装上画板的「手」—— 一套 typed 原理图/PCB 动作，CLI / Agent Skill / stdio MCP 三形态融合接入。承接嘉立创「不以卖板赚钱，以培养中国工程师为己任」 | EasyEDA Pro automatio...
+- **[GitHub (390 ⭐)]** [devforth/adminforth](https://github.com/devforth/adminforth)
+  > Create Agentic admin panels faster on TypeScript and Vue.js with AdminForth Framework. Setup main CRUD pages within minutes, extend as you need
+- **[GitHub (52 ⭐)]** [Wayn-Git/Amethyst](https://github.com/Wayn-Git/Amethyst)
+  > AMETHYST: a local-first personal operating system: one AI agent over your files, shell, tasks, calendar, notes and MCP connectors. Python + FastAPI + SQLite,...
+
+</untrusted_external_content>
+
+---
