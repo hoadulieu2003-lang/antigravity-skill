@@ -13,9 +13,9 @@ VIDEO_PATH = BASE_DIR / "config" / "sidecars" / "anti_live_voice" / "public" / "
 BRAIN_DIR = BASE_DIR / "antigravity" / "brain" / "6f46af53-7f44-46a4-83e9-d518ccfc6f9f"
 
 VERIFY_TIMESTAMPS = [
-    {"sec": 2.0, "name": "snap_story_01_hook_card.jpg", "label": "HOOK (02s): THẺ THREADS MOCKUP TRUNG TÂM"},
-    {"sec": 34.0, "name": "snap_story_02_rule01_trap.jpg", "label": "QUY LUẬT 01 (34s): CÁI BẪY VỊ TRÍ CÀY VIỆC"},
-    {"sec": 42.0, "name": "snap_story_03_rule02_visibility.jpg", "label": "QUY LUẬT 02 (42s): SỰ HIỆN DIỆN (VISIBILITY)"},
+    {"sec": 2.0, "name": "snap_story_01_hook_card.jpg", "label": "HOOK (02s): THẺ THREADS TRUNG TÂM"},
+    {"sec": 4.2, "name": "snap_story_02_spring_glide.jpg", "label": "SPRING GLIDE (4.2s): NỘI SUY TRƯỢT LÊN ĐỈNH"},
+    {"sec": 34.0, "name": "snap_story_03_rule01_trap.jpg", "label": "QUY LUẬT 01 (34s): KÍNH MỜ APPLE GLASS"},
     {"sec": 50.0, "name": "snap_story_04_rule03_shield.jpg", "label": "QUY LUẬT 03 (50s): LÀM CÁI KHIÊN CỦA SẾP"}
 ]
 

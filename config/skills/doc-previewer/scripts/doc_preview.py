@@ -405,6 +405,335 @@ tr:nth-child(even) {{ background: #f8fafc; }}
         f.write(styled_html)
     return {"output_file": output_file.replace("\\", "/")}
 
+def preview_video(file_path: str, output_file: str) -> dict:
+    p = Path(file_path).resolve()
+    filename = p.name
+    size_mb = f"{p.stat().st_size / (1024*1024):.2f} MB" if p.exists() else "Unknown"
+    file_uri = p.as_uri()
+    out_dir = Path(output_file).resolve().parent
+    try:
+        rel_src = os.path.relpath(p, out_dir).replace("\\", "/")
+    except ValueError:
+        rel_src = file_uri
+    
+    http_src = f"http://localhost:3050/{p.name}" if "public" in str(p).replace("\\", "/") else ""
+
+    import base64
+    b64_uri = ""
+    compact_candidate = p.parent / f"{p.stem}_compact.mp4"
+    target_p = compact_candidate if compact_candidate.exists() else p
+    if target_p.exists() and target_p.stat().st_size < 15 * 1024 * 1024:
+        try:
+            b64_str = base64.b64encode(target_p.read_bytes()).decode('ascii')
+            b64_uri = f"data:video/mp4;base64,{b64_str}"
+        except Exception:
+            b64_uri = ""
+
+    styled_html = f"""<!DOCTYPE html>
+<html lang="vi" class="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Studio: {filename}</title>
+<script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {{
+    --bg-card: #ffffff;
+    --border-color: #e2e8f0;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --primary: #0284c7;
+  }}
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  body {{
+    font-family: 'Be Vietnam Pro', -apple-system, sans-serif;
+    background: transparent;
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+  }}
+  .glass-card {{
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(16px);
+    border: 1.5px solid #e2e8f0;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 520px;
+    overflow: hidden;
+  }}
+  .video-stage {{
+    position: relative;
+    background: #000000;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    max-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }}
+  video {{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    outline: none;
+  }}
+  .big-play-btn {{
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(2, 132, 199, 0.92);
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 30px rgba(2, 132, 199, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }}
+  .big-play-btn:hover {{
+    transform: scale(1.08);
+    background: #0284c7;
+  }}
+  .mono-badge {{
+    font-family: 'JetBrains Mono', monospace;
+  }}
+</style>
+</head>
+<body>
+  <div class="glass-card">
+    <!-- Header Banner -->
+    <div style="padding: 14px 18px; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="width: 10px; height: 10px; background: #0284c7; border-radius: 50%; display: inline-block;"></span>
+        <div>
+          <h1 style="font-size: 14px; font-weight: 800; color: #0369a1; line-height: 1.2;">ANTIGRAVITY 2.0 VIDEO STUDIO</h1>
+          <p class="mono-badge" style="font-size: 11px; color: #64748b; font-weight: 600;">{filename} • {size_mb}</p>
+        </div>
+      </div>
+      <span style="font-size: 11px; font-weight: 800; background: #e0f2fe; color: #0284c7; padding: 3px 8px; border-radius: 9999px;">STUDIO PRO</span>
+    </div>
+
+    <!-- Video Stage -->
+    <div class="video-stage" onclick="togglePlay()">
+      <video id="vidPlayer" playsinline preload="auto">
+        {f'<source src="{b64_uri}" type="video/mp4">' if b64_uri else ''}
+        <source src="{rel_src}" type="video/mp4">
+        {f'<source src="{http_src}" type="video/mp4">' if http_src else ''}
+        <source src="{file_uri}" type="video/mp4">
+        Trình duyệt không hỗ trợ xem video trực tiếp.
+      </video>
+      <div id="bigPlayBtn" class="big-play-btn">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" style="margin-left: 4px;">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Interactive Progress Scrub Bar -->
+    <div style="padding: 8px 18px 0; background: #ffffff;">
+      <input type="range" id="scrubber" min="0" max="100" value="0" step="0.1" style="width: 100%; accent-color: #0284c7; cursor: pointer; height: 6px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px; font-size: 12px; color: #64748b;" class="mono-badge">
+        <span id="timeCurrent" style="font-weight: 700; color: #0f172a;">00:00</span>
+        <span id="frameBadge" style="font-size: 10px; background: #f1f5f9; padding: 2px 6px; border-radius: 4px;">F: 0 / 25 FPS</span>
+        <span id="timeDuration">00:00</span>
+      </div>
+    </div>
+
+    <!-- Primary Control Bar -->
+    <div style="padding: 12px 18px; display: flex; flex-direction: column; gap: 10px;">
+      <!-- Action Buttons Row 1: Play, Skip, Frame-Step -->
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+        <button id="btnPlay" onclick="togglePlay()" style="flex: 1; padding: 9px 14px; background: #0284c7; color: white; font-weight: 800; font-size: 13px; border: none; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);">
+          <span id="playIcon">▶</span>
+          <span id="playText">PHÁT VIDEO</span>
+        </button>
+
+        <!-- Precision Frame Step Buttons -->
+        <div style="display: flex; gap: 4px;">
+          <button onclick="stepFrame(-1)" title="Lùi 1 Frame (0.04s) [Phím [ ]" style="padding: 8px 10px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 11px; font-weight: 700; color: #334155; cursor: pointer;">
+            ◀ 1F
+          </button>
+          <button onclick="stepFrame(1)" title="Tiến 1 Frame (0.04s) [Phím ] ]" style="padding: 8px 10px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 11px; font-weight: 700; color: #334155; cursor: pointer;">
+            1F ▶
+          </button>
+        </div>
+
+        <!-- Speed Selector -->
+        <select id="speedSelect" onchange="setSpeed(this.value)" style="padding: 8px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 11px; font-weight: 700; color: #334155; cursor: pointer; outline: none;">
+          <option value="0.5">0.5x</option>
+          <option value="1.0" selected>1.0x</option>
+          <option value="1.25">1.25x</option>
+          <option value="1.5">1.5x</option>
+          <option value="2.0">2.0x</option>
+        </select>
+      </div>
+
+      <!-- Action Buttons Row 2: Snapshot, Mute, PiP, Fullscreen -->
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 11px;">
+        <button onclick="captureSnapshot()" title="Chụp ảnh khung hình hiện tại" style="padding: 7px 10px; background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; border-radius: 6px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+          📸 Chụp ảnh frame
+        </button>
+
+        <button onclick="toggleMute()" id="btnMute" style="padding: 7px 10px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; color: #475569; cursor: pointer;">
+          🔊 Tiếng
+        </button>
+
+        <button onclick="togglePiP()" title="Chế độ Cửa sổ Nổi (PiP)" style="padding: 7px 10px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; color: #475569; cursor: pointer;">
+          📺 PiP
+        </button>
+
+        <button onclick="toggleFullScreen()" title="Toàn màn hình [Phím F]" style="padding: 7px 10px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; color: #475569; cursor: pointer;">
+          ⛶ Toàn màn hình
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer Specs Legend -->
+    <div style="background: #f8fafc; border-top: 1px solid #f1f5f9; padding: 10px 18px; font-size: 11px; color: #64748b; line-height: 1.4;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span>🎯 <b>Phím tắt:</b> Space (Play/Pause) • ◄/► (Tua 3s) • [/] (1 Frame)</span>
+        <a href="{rel_src}" download style="color: #0284c7; font-weight: 800; text-decoration: none;">Tải file MP4 ⬇️</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const vid = document.getElementById('vidPlayer');
+    const scrubber = document.getElementById('scrubber');
+    const timeCurrent = document.getElementById('timeCurrent');
+    const timeDuration = document.getElementById('timeDuration');
+    const frameBadge = document.getElementById('frameBadge');
+    const bigPlayBtn = document.getElementById('bigPlayBtn');
+    const playText = document.getElementById('playText');
+    const playIcon = document.getElementById('playIcon');
+    const btnMute = document.getElementById('btnMute');
+    const FPS = 25.0;
+
+    function formatTime(sec) {{
+      if (isNaN(sec)) return "00:00";
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return String(m).padStart(2, '0') + ":" + String(s).padStart(2, '0');
+    }}
+
+    function togglePlay() {{
+      if (vid.paused) {{
+        vid.play().then(() => {{
+          bigPlayBtn.style.display = 'none';
+          playText.textContent = 'TẠM DỪNG';
+          playIcon.textContent = '❚❚';
+        }}).catch(() => {{
+          vid.muted = true;
+          vid.play().then(() => {{
+            bigPlayBtn.style.display = 'none';
+            playText.textContent = 'TẠM DỪNG (MUTE)';
+            playIcon.textContent = '❚❚';
+          }});
+        }});
+      }} else {{
+        vid.pause();
+        bigPlayBtn.style.display = 'flex';
+        playText.textContent = 'PHÁT VIDEO';
+        playIcon.textContent = '▶';
+      }}
+    }}
+
+    vid.addEventListener('timeupdate', () => {{
+      if (vid.duration) {{
+        scrubber.value = (vid.currentTime / vid.duration) * 100;
+        timeCurrent.textContent = formatTime(vid.currentTime);
+        const f = Math.round(vid.currentTime * FPS);
+        const totalF = Math.round(vid.duration * FPS);
+        frameBadge.textContent = `F: ${{f}}/${{totalF}} @ ${{FPS}}FPS`;
+      }}
+    }});
+
+    vid.addEventListener('loadedmetadata', () => {{
+      timeDuration.textContent = formatTime(vid.duration);
+      const totalF = Math.round(vid.duration * FPS);
+      frameBadge.textContent = `F: 0/${{totalF}} @ ${{FPS}}FPS`;
+    }});
+
+    vid.addEventListener('ended', () => {{
+      bigPlayBtn.style.display = 'flex';
+      playText.textContent = 'PHÁT LẠI';
+      playIcon.textContent = '↻';
+    }});
+
+    scrubber.addEventListener('input', () => {{
+      if (vid.duration) {{
+        vid.currentTime = (scrubber.value / 100) * vid.duration;
+      }}
+    }});
+
+    function stepFrame(delta) {{
+      vid.pause();
+      vid.currentTime = Math.max(0, Math.min(vid.duration, vid.currentTime + delta * (1.0 / FPS)));
+      bigPlayBtn.style.display = 'flex';
+      playText.textContent = 'PHÁT VIDEO';
+      playIcon.textContent = '▶';
+    }}
+
+    function setSpeed(s) {{
+      vid.playbackRate = parseFloat(s);
+    }}
+
+    function toggleMute() {{
+      vid.muted = !vid.muted;
+      btnMute.textContent = vid.muted ? '🔇 Tắt tiếng' : '🔊 Tiếng';
+    }}
+
+    function togglePiP() {{
+      if (document.pictureInPictureElement) {{
+        document.exitPictureInPicture().catch(() => {{}});
+      }} else if (vid.requestPictureInPicture) {{
+        vid.requestPictureInPicture().catch(() => {{}});
+      }}
+    }}
+
+    function toggleFullScreen() {{
+      if (vid.requestFullscreen) {{
+        vid.requestFullscreen();
+      }}
+    }}
+
+    function captureSnapshot() {{
+      const canvas = document.createElement('canvas');
+      canvas.width = vid.videoWidth || 1080;
+      canvas.height = vid.videoHeight || 1920;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(vid, 0, 0, canvas.width, canvas.height);
+      const link = document.createElement('a');
+      link.download = `snapshot_frame_${{Math.round(vid.currentTime * FPS)}}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }}
+
+    window.addEventListener('keydown', (e) => {{
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+      if (e.code === 'Space') {{ e.preventDefault(); togglePlay(); }}
+      else if (e.code === 'ArrowLeft') {{ e.preventDefault(); vid.currentTime = Math.max(0, vid.currentTime - 3); }}
+      else if (e.code === 'ArrowRight') {{ e.preventDefault(); vid.currentTime = Math.min(vid.duration, vid.currentTime + 3); }}
+      else if (e.key === '[' || e.key === ',') {{ e.preventDefault(); stepFrame(-1); }}
+      else if (e.key === ']' || e.key === '.') {{ e.preventDefault(); stepFrame(1); }}
+      else if (e.key === 'f' || e.key === 'F') {{ e.preventDefault(); toggleFullScreen(); }}
+      else if (e.key === 'm' || e.key === 'M') {{ e.preventDefault(); toggleMute(); }}
+    }});
+  </script>
+</body>
+</html>"""
+
+    os.makedirs(os.path.dirname(os.path.abspath(output_file)), exist_ok=True)
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write(styled_html)
+    return {"output_file": output_file.replace("\\", "/")}
+
 def open_native(file_path: str):
     p = os.path.abspath(file_path)
     if os.name == 'nt':
@@ -415,8 +744,8 @@ def open_native(file_path: str):
         subprocess.Popen(['xdg-open', p])
 
 def main():
-    parser = argparse.ArgumentParser(description="Universal Document Previewer for Antigravity 2.0 & Windows")
-    parser.add_argument("input_file", help="Path to PDF, DOCX, PPTX, or XLSX file")
+    parser = argparse.ArgumentParser(description="Universal Document & Video Previewer for Antigravity 2.0 & Windows")
+    parser.add_argument("input_file", help="Path to PDF, DOCX, PPTX, XLSX, or Video (MP4/MOV/WEBM/MKV) file")
     parser.add_argument("-o", "--output", required=False, help="Output path (dir for PDF, file for HTML)")
     parser.add_argument("--dpi", type=int, default=150, help="DPI for PDF rendering")
     parser.add_argument("--open", action="store_true", help="Launch file directly with native OS application")
@@ -452,6 +781,10 @@ def main():
         out_file = out if out.endswith('.html') else os.path.join(out, f"{p.stem}.html")
         r = preview_xlsx(str(p), out_file)
         print(f"SUCCESS: XLSX -> {r['output_file']}")
+    elif suf in [".mp4", ".mov", ".webm", ".mkv", ".m4v"]:
+        out_file = out if out.endswith('.html') else os.path.join(out, f"{p.stem}.html")
+        r = preview_video(str(p), out_file)
+        print(f"SUCCESS: VIDEO -> {r['output_file']}")
     else:
         print(f"Unsupported format: {suf}", file=sys.stderr)
         sys.exit(1)

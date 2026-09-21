@@ -53,41 +53,53 @@
   <!-- Central Live Visualizer Stage -->
   <main class="main-stage">
 
-    <!-- Master Video Storytelling Player: DẠNG 1 — THREADS CONFESSION & DRAMA STORYTELLING (CHUẨN BẬT KIẾM TIỀN) -->
-    <div style="margin-top: 0.5rem; margin-bottom: 1.25rem; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 440px; background: #FFFFFF; padding: 1rem; border-radius: 1.25rem; border: 2px solid #F59E0B; box-shadow: 0 16px 35px -5px rgba(245, 158, 11, 0.25);">
-      <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 0.6rem;">
+    <!-- Master Video Storytelling Player: DẠNG 1 — APPLE FROSTED GLASS EDITION -->
+    <div style="margin-top: 0.5rem; margin-bottom: 1.25rem; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 440px; background: #FFFFFF; padding: 1rem; border-radius: 1.25rem; border: 2px solid #0284C7; box-shadow: 0 16px 35px -5px rgba(2, 132, 199, 0.25);">
+      <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 0.5rem;">
         <div style="display: flex; align-items: center; gap: 0.4rem;">
-          <span style="width: 10px; height: 10px; background: #F59E0B; border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite;"></span>
-          <span style="font-weight: 800; font-size: 0.9rem; color: #B45309;">🔥 DẠNG 1: THREADS STORYTELLING</span>
+          <span style="width: 10px; height: 10px; background: #0284C7; border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite;"></span>
+          <span style="font-weight: 800; font-size: 0.9rem; color: #0369A1;">🍎 DẠNG 1: APPLE FROSTED GLASS</span>
         </div>
-        <span style="font-size: 0.72rem; background: #FEF3C7; color: #B45309; padding: 0.2rem 0.5rem; border-radius: 9999px; font-weight: 800;">TÂM SỰ & BÀI HỌC CÔNG SỞ</span>
+        <span style="font-size: 0.72rem; background: #E0F2FE; color: #0284C7; padding: 0.2rem 0.5rem; border-radius: 9999px; font-weight: 800;">KÍNH MỜ ĐƯƠNG ĐẠI</span>
+      </div>
+
+      <!-- Mobile Quick Connect Callout Banner -->
+      <div style="width: 100%; background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%); border: 1.5px solid #BAE6FD; border-radius: 0.75rem; padding: 0.6rem 0.8rem; margin-bottom: 0.7rem; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span style="font-size: 1.3rem;">📱</span>
+          <div>
+            <div style="font-size: 0.75rem; font-weight: 800; color: #0369A1;">XEM TRÊN ĐIỆN THOẠI NGAY BÂY GIỜ:</div>
+            <a href="http://192.168.1.10:3050" target="_blank" style="font-family: monospace; font-size: 0.9rem; font-weight: 800; color: #0284C7; text-decoration: none;">http://192.168.1.10:3050</a>
+          </div>
+        </div>
+        <span style="font-size: 0.68rem; background: #0284C7; color: #FFFFFF; padding: 0.2rem 0.45rem; border-radius: 6px; font-weight: 700;">CÙNG WI-FI</span>
       </div>
 
       <!-- Interactive Video Container with Big Center Play Button Overlay -->
       <div style="position: relative; width: 100%; border-radius: 0.75rem; overflow: hidden; background: #000000; cursor: pointer;" onclick="toggleStoryVideo()">
         <video id="storyVideo" controls preload="auto" playsinline style="width: 100%; max-height: 480px; display: block; outline: none; object-fit: contain;">
-          <source src="/threads_story_charon_pro.mp4?v=20260921_story_v1" type="video/mp4">
+          <source src="/threads_story_charon_pro.mp4?v=20260921_apple_glass_v2" type="video/mp4">
           Trình duyệt không hỗ trợ xem video.
         </video>
         
         <!-- Big Play Button Overlay -->
         <div id="playStoryOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.4); transition: all 0.25s ease;">
-          <div style="width: 76px; height: 76px; border-radius: 50%; background: #F59E0B; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(245, 158, 11, 0.7); border: 3px solid #FFFFFF; transform: scale(1); transition: transform 0.2s;">
+          <div style="width: 76px; height: 76px; border-radius: 50%; background: #0284C7; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(2, 132, 199, 0.7); border: 3px solid #FFFFFF; transform: scale(1); transition: transform 0.2s;">
             <svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF" style="margin-left: 5px;">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
             </svg>
           </div>
           <span style="color: #FFFFFF; font-weight: 800; font-size: 0.92rem; margin-top: 0.85rem; text-shadow: 0 2px 8px rgba(0,0,0,0.8); background: rgba(15, 23, 42, 0.85); padding: 0.35rem 0.9rem; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.2);">
-            ▶ BẤM ĐỂ XEM VIDEO DẠNG 1
+            ▶ BẤM XEM BẢN APPLE FROSTED GLASS
           </span>
         </div>
       </div>
 
       <!-- Quick Control Action Bar -->
       <div style="display: flex; gap: 0.5rem; width: 100%; margin-top: 0.7rem;">
-        <button id="btnPlayStory" onclick="event.stopPropagation(); toggleStoryVideo();" style="flex: 1; padding: 0.65rem 1rem; background: #F59E0B; color: #FFFFFF; font-weight: 800; font-size: 0.85rem; border: none; border-radius: 0.6rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.4rem; box-shadow: 0 4px 12px rgba(245,158,11,0.3); transition: background 0.2s;">
+        <button id="btnPlayStory" onclick="event.stopPropagation(); toggleStoryVideo();" style="flex: 1; padding: 0.65rem 1rem; background: #0284C7; color: #FFFFFF; font-weight: 800; font-size: 0.85rem; border: none; border-radius: 0.6rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.4rem; box-shadow: 0 4px 12px rgba(2,132,199,0.3); transition: background 0.2s;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          <span id="btnPlayStoryText">PHÁT VIDEO DẠNG 1 NGAY</span>
+          <span id="btnPlayStoryText">PHÁT VIDEO APPLE GLASS</span>
         </button>
         <button onclick="event.stopPropagation(); restartStoryVideo();" style="padding: 0.65rem 0.85rem; background: #F1F5F9; color: #475569; font-weight: 700; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 0.6rem; cursor: pointer; display: flex; align-items: center; gap: 0.3rem;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
@@ -96,16 +108,16 @@
       </div>
 
       <!-- Detailed Feature Legend -->
-      <div style="margin-top: 0.65rem; font-size: 0.75rem; color: #1E293B; width: 100%; line-height: 1.45; background: #FFFBEB; padding: 0.65rem 0.8rem; border-radius: 0.6rem; border: 1px solid #FDE68A;">
-        <div style="color: #B45309; font-weight: 800; margin-bottom: 0.3rem;">✨ 4 Yếu Tố Khẳng Định Bản Quyền Storytelling Độc Bản:</div>
-        <div>• <b>Visual Hook (0 - 4.5s):</b> Thẻ bài viết Threads Mockup phóng to giữa màn hình giữ chân 3s đầu.</div>
-        <div>• <b>Anchor & Rule Cards:</b> Thẻ bảo chứng nguồn @hn9976598 ở góc trên + 3 Thẻ Quy Luật Ngầm công sở.</div>
-        <div>• <b>Voiceover Charon:</b> Giọng đọc Nam trầm Gemini TTS chuẩn phòng thu 24kHz sâu lắng, thấu cảm.</div>
-        <div>• <b>Kinetic Subtitles:</b> Phụ đề động cỡ lớn (44px) nhảy màu vàng chanh sáng (#FACC15).</div>
+      <div style="margin-top: 0.65rem; font-size: 0.75rem; color: #1E293B; width: 100%; line-height: 1.45; background: #F8FAFC; padding: 0.65rem 0.8rem; border-radius: 0.6rem; border: 1px solid #E2E8F0;">
+        <div style="color: #0369A1; font-weight: 800; margin-bottom: 0.3rem;">✨ 4 Đột Phá Thiết Kế Kính Mờ Chuẩn Apple iOS 18:</div>
+        <div>• <b>Optical Frosted Glass:</b> Thẻ kính mờ tán xạ ánh sáng thực tế (Backdrop Gaussian Blur + Viền phản quang Specular Rim).</div>
+        <div>• <b>Spring Kinetic Glide:</b> Thẻ trượt và thu nhỏ từ tâm lên đỉnh bằng gia tốc Ease-out mượt mà (3.8s - 4.6s).</div>
+        <div>• <b>Light Atmospheric Canvas:</b> Nền đường phố mờ ảo lung linh (Bokeh), tuân thủ 100% chuẩn Light Theme sang trọng.</div>
+        <div>• <b>Segoe UI Typography:</b> Kiểu chữ Sans-serif hiện đại, sắc nét, tương phản tối đa trên di động.</div>
       </div>
       <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 0.5rem; font-size: 0.75rem; color: #64748B;">
-        <span>🎙️ Nam Trầm Charon • 60.7s Chuẩn Shorts/TikTok</span>
-        <a href="/threads_story_charon_pro.mp4?v=20260921_story_v1" download style="color: #D97706; font-weight: 800; text-decoration: none;">Tải video Dạng 1 MP4 ⬇️</a>
+        <span>🎙️ Nam Trầm Charon • 60.7s Apple Edition</span>
+        <a href="/threads_story_charon_pro.mp4?v=20260921_apple_glass_v2" download style="color: #0284C7; font-weight: 800; text-decoration: none;">Tải video MP4 Apple Glass ⬇️</a>
       </div>
     </div>
 

@@ -24,8 +24,13 @@ Khi người dùng yêu cầu xem tệp bên trong Antigravity 2.0 hoặc khi Ag
 - **Excel (.xlsx, .csv)**: Sử dụng `doc_preview.py` để chuyển đổi thành bảng dữ liệu HTML có tab chuyển Sheet.
 - **PDF**: Sử dụng `doc_preview.py` để trích xuất các trang thành ảnh PNG độ nét cao hoặc nhúng HTML viewer.
 
+- **Video (.mp4, .mov, .webm, .mkv)**: Sử dụng `doc_preview.py` để tạo trình phát Video Studio HTML5 tương tác cao cấp (Play/Pause, Frame-by-frame tua từng frame, Speed 0.5x-2x, Snapshot chụp ảnh frame, phím tắt Space/Mũi tên, PiP, Toàn màn hình) hiển thị trực tiếp trong Antigravity 2.0 hoặc nhúng inline qua `<agent-embed>`.
+
 ### Cú pháp chạy script:
 ```bash
+# Preview Video (.mp4, .mov, .webm):
+python "C:/Users/game/.gemini/config/skills/doc-previewer/scripts/doc_preview.py" "path/to/video.mp4" -o "C:/Users/game/.gemini/antigravity/brain/<conversation-id>/video_preview.html"
+
 # Preview PowerPoint (.pptx):
 python "C:/Users/game/.gemini/config/skills/doc-previewer/scripts/doc_preview.py" "path/to/file.pptx" -o "C:/Users/game/.gemini/antigravity/brain/<conversation-id>/slide_preview.html"
 
@@ -35,6 +40,6 @@ python "C:/Users/game/.gemini/config/skills/doc-previewer/scripts/doc_preview.py
 # Preview Excel (.xlsx):
 python "C:/Users/game/.gemini/config/skills/doc-previewer/scripts/doc_preview.py" "path/to/file.xlsx" -o "C:/Users/game/.gemini/antigravity/brain/<conversation-id>/sheet_preview.html"
 
-# Mở trực tiếp bằng Microsoft Office chính thức trên Windows:
-python "C:/Users/game/.gemini/config/skills/doc-previewer/scripts/doc_preview.py" "path/to/file.pptx" --open
+# Mở trực tiếp bằng trình phát mặc định của Windows (Movies & TV, Media Player, Office):
+python "C:/Users/game/.gemini/config/skills/doc-previewer/scripts/doc_preview.py" "path/to/file.mp4" --open
 ```
