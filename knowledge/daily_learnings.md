@@ -1222,3 +1222,13 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-21 08:03:55`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (89 ⭐)]** [blockmatic/basilic](https://github.com/blockmatic/basilic)
+  > Full-Stack API-First Agentic TypeScript Starter
+
+</untrusted_external_content>
+
+---
