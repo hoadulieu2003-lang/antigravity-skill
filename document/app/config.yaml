@@ -1,0 +1,47 @@
+# ==============================================================================
+# UGC News Studio Pro - Default System Configuration
+# ==============================================================================
+
+system:
+  app_name: "UGC News Studio Pro"
+  version: "1.0.0"
+  workspace_dir: "C:/Users/game/.gemini/threads_harvest"
+  output_dir: "C:/Users/game/.gemini/output_news_videos"
+
+cdp_crawler:
+  cdp_port: 9223             # Chrome DevTools Protocol port (9222 or 9223)
+  platform: "threads"        # threads | tiktok | facebook
+  max_scrolls: 6             # Number of auto-scroll steps
+  scroll_delay_sec: 1.2      # Wait seconds per scroll
+  min_video_resolution: 480  # Filter out low-res media
+
+ai_newsroom:
+  model: "gemini-2.5-flash"  # Gemini Model for fast news structuring
+  target_duration_sec: 58    # Target length in seconds
+  words_per_minute: 140      # Professional speech rate
+  style: "breaking_news"     # breaking_news | human_interest
+
+voice_engine:
+  provider: "gemini_live"    # gemini_live | edge_tts
+  gemini_voice: "Aoede"      # Aoede (Female VTV) | Charon (Male News)
+  edge_voice: "vi-VN-HoaiMyNeural"
+  sample_rate_hz: 48000
+  strip_sfx: true            # Clean audio (zero artificial SFX)
+  target_lufs: -14.0
+
+video_compositor:
+  width: 1080
+  height: 1920
+  fps: 25.0
+  video_codec: "libx264"
+  audio_codec: "aac"
+  audio_bitrate: "192k"
+  crf: 20
+  preset: "veryfast"
+  enable_faststart: true
+  graphics:
+    top_bar_text: "TIN NÓNG 24H"
+    sub_top_bar_text: "HIỆN TRƯỜNG THỰC TẾ"
+    enable_live_rec_dot: true
+    enable_lower_third: true
+    enable_author_credit: true

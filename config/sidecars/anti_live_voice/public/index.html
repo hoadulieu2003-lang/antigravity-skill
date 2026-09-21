@@ -52,7 +52,68 @@
 
   <!-- Central Live Visualizer Stage -->
   <main class="main-stage">
-    <div class="orb-wrapper">
+
+    <!-- Master Video UGC Pro Player: BẢN TIN THỜI SỰ METRO 24H (CHUẨN BẬT KIẾM TIỀN 100%) -->
+    <div style="margin-top: 0.5rem; margin-bottom: 1.25rem; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 440px; background: #FFFFFF; padding: 1rem; border-radius: 1.25rem; border: 2px solid #2563EB; box-shadow: 0 16px 35px -5px rgba(37, 99, 235, 0.25);">
+      <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 0.6rem;">
+        <div style="display: flex; align-items: center; gap: 0.4rem;">
+          <span style="width: 10px; height: 10px; background: #2563EB; border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite;"></span>
+          <span style="font-weight: 800; font-size: 0.9rem; color: #1E3A8A;">🚀 BẢN TIN PRO (METRO 24H • CHUẨN KIẾM TIỀN)</span>
+        </div>
+        <span style="font-size: 0.72rem; background: #EFF6FF; color: #1D4ED8; padding: 0.2rem 0.5rem; border-radius: 9999px; font-weight: 800;">7 TẦNG ĐỒ HỌA</span>
+      </div>
+
+      <!-- Interactive Video Container with Big Center Play Button Overlay -->
+      <div style="position: relative; width: 100%; border-radius: 0.75rem; overflow: hidden; background: #000000; cursor: pointer;" onclick="toggleProVideo()">
+        <video id="proVideo" controls preload="auto" playsinline style="width: 100%; max-height: 480px; display: block; outline: none; object-fit: contain;">
+          <source src="/hanoi_flood_ugc_pro_monetized.mp4?v=20260921_pure_flood_v2" type="video/mp4">
+          Trình duyệt không hỗ trợ xem video.
+        </video>
+        
+        <!-- Big Play Button Overlay -->
+        <div id="playOverlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.4); transition: all 0.25s ease;">
+          <div style="width: 76px; height: 76px; border-radius: 50%; background: #2563EB; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(37, 99, 235, 0.7); border: 3px solid #FFFFFF; transform: scale(1); transition: transform 0.2s;">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="#FFFFFF" style="margin-left: 5px;">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <span style="color: #FFFFFF; font-weight: 800; font-size: 0.92rem; margin-top: 0.85rem; text-shadow: 0 2px 8px rgba(0,0,0,0.8); background: rgba(15, 23, 42, 0.85); padding: 0.35rem 0.9rem; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.2);">
+            ▶ BẤM VÀO ĐÂY ĐỂ PHÁT BẢN TIN
+          </span>
+        </div>
+      </div>
+
+      <!-- Quick Control Action Bar -->
+      <div style="display: flex; gap: 0.5rem; width: 100%; margin-top: 0.7rem;">
+        <button id="btnPlayPro" onclick="event.stopPropagation(); toggleProVideo();" style="flex: 1; padding: 0.65rem 1rem; background: #2563EB; color: #FFFFFF; font-weight: 800; font-size: 0.85rem; border: none; border-radius: 0.6rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.4rem; box-shadow: 0 4px 12px rgba(37,99,235,0.3); transition: background 0.2s;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          <span id="btnPlayProText">PHÁT BẢN TIN NGAY</span>
+        </button>
+        <button onclick="event.stopPropagation(); restartProVideo();" style="padding: 0.65rem 0.85rem; background: #F1F5F9; color: #475569; font-weight: 700; font-size: 0.8rem; border: 1px solid #CBD5E1; border-radius: 0.6rem; cursor: pointer; display: flex; align-items: center; gap: 0.3rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+          <span>Phát lại</span>
+        </button>
+      </div>
+
+      <!-- Detailed Feature Legend -->
+      <div style="margin-top: 0.65rem; font-size: 0.75rem; color: #1E293B; width: 100%; line-height: 1.45; background: #F8FAFC; padding: 0.65rem 0.8rem; border-radius: 0.6rem; border: 1px solid #E2E8F0;">
+        <div style="color: #1D4ED8; font-weight: 800; margin-bottom: 0.3rem;">✨ 7 Đột phá nâng cấp chống gậy bản quyền & Reused Content (100% Tư liệu ngập lụt):</div>
+        <div>• <b>Top Brand Anchor:</b> Logo METRO 24H, Live 24/7 dot, widget thời tiết Hà Nội 26°C.</div>
+        <div>• <b>Báo chí dữ liệu:</b> Radar vệ tinh đo mưa quét các quận Ba Đình, Cầu Giấy, Đống Đa.</div>
+        <div>• <b>Micro-Cut Pacing:</b> Nhịp cắt 3.5 - 4.5s/cảnh với 14 phân cảnh UGC Threads luân phiên.</div>
+        <div>• <b>Kinetic Subtitles:</b> Phụ đề động viền đen dày, từ khóa nhảy sáng vàng nổi bật.</div>
+        <div>• <b>Lower-Third kính mờ:</b> Bảng dữ liệu thống kê số liệu ngập úng & khuyến cáo cứu hộ.</div>
+        <div>• <b>Breaking News Ticker:</b> Dải đỏ chạy chữ liên tục cập nhật tuyến đường ngập sâu.</div>
+        <div>• <b>Âm thanh sạch 100%:</b> Giọng đọc BTV Nữ VTV Aoede thuần túy, loại bỏ hoàn toàn SFX.</div>
+      </div>
+      <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 0.5rem; font-size: 0.75rem; color: #64748B;">
+        <span>🎙️ BTV Aoede • 14 Phân Cảnh Micro-Cut</span>
+        <a href="/hanoi_flood_ugc_pro_monetized.mp4?v=20260921_pure_flood_v2" download style="color: #2563EB; font-weight: 800; text-decoration: none;">Tải video MP4 Pro ⬇️</a>
+      </div>
+    </div>
+
+    <!-- Orb visualizer (Minimized for clean presentation) -->
+    <div class="orb-wrapper" style="margin-top: 1rem;">
       <canvas id="orbCanvas"></canvas>
     </div>
 
@@ -61,23 +122,58 @@
       <p id="transcriptText">Bấm biểu tượng Micro bên dưới để bắt đầu đàm thoại trực tiếp cùng Em</p>
     </div>
 
-    <!-- Video Player Demo: Bản Tin Thời Sự 1080x1920 -->
-    <div style="margin-top: 1.25rem; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 420px; background: #FFFFFF; padding: 0.85rem; border-radius: 1.25rem; border: 1px solid #E2E8F0; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);">
-      <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 0.5rem; padding: 0 0.25rem;">
+    <!-- Master Video UGC Player: Bản Tin Thực Tế Cào Từ Threads (ĐÃ BỎ SOUND EFFECT) -->
+    <div style="margin-top: 1.25rem; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 440px; background: #FFFFFF; padding: 1rem; border-radius: 1.25rem; border: 2px solid #10B981; box-shadow: 0 12px 30px -5px rgba(16, 185, 129, 0.18);">
+      <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 0.5rem;">
         <div style="display: flex; align-items: center; gap: 0.4rem;">
-          <span style="width: 10px; height: 10px; background: #EF4444; border-radius: 50%; display: inline-block;"></span>
-          <span style="font-weight: 800; font-size: 0.85rem; color: #0F172A;">CLIP MẪU THỜI SỰ 1080x1920 (58s)</span>
+          <span style="width: 10px; height: 10px; background: #10B981; border-radius: 50%; display: inline-block;"></span>
+          <span style="font-weight: 800; font-size: 0.88rem; color: #065F46;">✨ BẢN TIN THỰC TẾ (ĐÃ BỎ SOUND EFFECT)</span>
         </div>
-        <span style="font-size: 0.75rem; background: #FEF2F2; color: #DC2626; padding: 0.15rem 0.5rem; border-radius: 9999px; font-weight: 700;">Full HD 9:16</span>
+        <span style="font-size: 0.72rem; background: #ECFDF5; color: #059669; padding: 0.2rem 0.5rem; border-radius: 9999px; font-weight: 800;">CLEAN VOCAL • NO SFX</span>
       </div>
-      <video controls preload="metadata" playsinline style="width: 100%; max-height: 480px; border-radius: 0.75rem; background: #000000; outline: none; object-fit: contain;">
-        <source src="/hanoi_flood_sample.mp4" type="video/mp4">
+      <video controls preload="auto" playsinline style="width: 100%; max-height: 520px; border-radius: 0.75rem; background: #000000; outline: none; object-fit: contain;">
+        <source src="/hanoi_flood_ugc_clean.mp4?v=20260921_perfect" type="video/mp4">
         Trình duyệt không hỗ trợ xem video.
       </video>
-      <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 0.5rem; font-size: 0.75rem; color: #64748B;">
-        <span>🎙️ BTV Aoede + SFX Mưa Bão</span>
-        <a href="/hanoi_flood_sample.mp4" download style="color: #2563EB; font-weight: 700; text-decoration: none;">Tải file MP4 (7.5 MB) ⬇️</a>
+      <div style="margin-top: 0.6rem; font-size: 0.75rem; color: #374151; width: 100%; line-height: 1.4; background: #F0FDF4; padding: 0.5rem 0.65rem; border-radius: 0.5rem; border: 1px solid #BBF7D0;">
+        <div style="color: #047857; font-weight: 700; margin-bottom: 0.2rem;">🎙️ Âm thanh thuần khiết 100% không Sound Effect:</div>
+        <div>• Đã loại bỏ hoàn toàn: Nhạc hiệu mở đầu, tiếng mưa bão nền, tiếng sấm sét.</div>
+        <div>• Giữ trọn vẹn: Giọng đọc BTV Nữ VTV (Aoede) trong trẻo, rõ chữ, chuẩn âm sắc truyền hình.</div>
+        <div style="margin-top: 0.3rem; border-top: 1px dashed #86EFAC; padding-top: 0.3rem; color: #4B5563;">
+          <b>📍 Video thực tế Threads (Đã fix mượt 100%):</b> Bác Grab lội nước (@tbh_1408), Phố Lẩu Ốc ngập sâu, Người nhái lặn cống (@hoangthatdiep23), Tân Tây Đô xe điện rẽ sóng (@nd.binh_4).
+        </div>
       </div>
+      <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 0.5rem; font-size: 0.75rem; color: #64748B;">
+        <span>🎙️ Giọng Thuần BTV Aoede</span>
+        <a href="/hanoi_flood_ugc_clean.mp4?v=20260921_perfect" download style="color: #059669; font-weight: 800; text-decoration: none;">Tải video MP4 (Clean 56.6 MB) ⬇️</a>
+      </div>
+    </div>
+
+    <!-- Collapsible: Bản Có Ghép SFX Trước Đó (Để So Sánh) -->
+    <details style="width: 100%; max-width: 440px; margin-top: 0.75rem; background: #F8FAFC; border-radius: 0.75rem; border: 1px solid #E2E8F0; padding: 0.5rem 0.75rem;">
+      <summary style="font-size: 0.78rem; font-weight: 700; color: #64748B; cursor: pointer; outline: none;">
+        🔊 Xem lại bản có ghép Sound Effect (Mưa + Sấm + Nhạc hiệu)
+      </summary>
+      <div style="margin-top: 0.5rem; display: flex; flex-direction: column; align-items: center;">
+        <video controls preload="none" playsinline style="width: 100%; max-height: 280px; border-radius: 0.5rem; background: #000000;">
+          <source src="/hanoi_flood_ugc_master.mp4" type="video/mp4">
+        </video>
+        <small style="margin-top: 0.3rem; font-size: 0.7rem; color: #94A3B8;">Bản gốc có tiếng mưa bão nền và sấm sét</small>
+      </div>
+    </details>
+
+    <!-- Video Player Demo: Bản Tin Thời Sự 1080x1920 (Bản Demo Trước) -->
+    <div style="margin-top: 1rem; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 440px; background: #F8FAFC; padding: 0.85rem; border-radius: 1rem; border: 1px solid #E2E8F0;">
+      <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 0.5rem; padding: 0 0.25rem;">
+        <div style="display: flex; align-items: center; gap: 0.4rem;">
+          <span style="width: 8px; height: 8px; background: #64748B; border-radius: 50%; display: inline-block;"></span>
+          <span style="font-weight: 700; font-size: 0.8rem; color: #475569;">Bản Mẫu Trước (Ảnh Tư Liệu Báo Chí)</span>
+        </div>
+        <span style="font-size: 0.7rem; background: #F1F5F9; color: #64748B; padding: 0.15rem 0.4rem; border-radius: 9999px;">58s Demo</span>
+      </div>
+      <video controls preload="metadata" playsinline style="width: 100%; max-height: 280px; border-radius: 0.5rem; background: #000000; outline: none; object-fit: contain;">
+        <source src="/hanoi_flood_sample.mp4" type="video/mp4">
+      </video>
     </div>
 
     <!-- Audio Player Demo -->
@@ -185,6 +281,58 @@
   <script src="/audio_processor.js"></script>
   <script src="/app.js"></script>
   <script>
+    function toggleProVideo() {
+      const v = document.getElementById('proVideo');
+      const overlay = document.getElementById('playOverlay');
+      const btnText = document.getElementById('btnPlayProText');
+      if (!v) return;
+      if (v.paused) {
+        v.play().then(() => {
+          if (overlay) overlay.style.display = 'none';
+          if (btnText) btnText.textContent = 'TẠM DỪNG BẢN TIN';
+        }).catch(err => {
+          console.log('Play attempt failed, trying muted:', err);
+          v.muted = true;
+          v.play().then(() => {
+            if (overlay) overlay.style.display = 'none';
+            if (btnText) btnText.textContent = 'TẠM DỪNG BẢN TIN (ĐANG TẮT TIẾNG)';
+          });
+        });
+      } else {
+        v.pause();
+        if (overlay) overlay.style.display = 'flex';
+        if (btnText) btnText.textContent = 'PHÁT BẢN TIN NGAY';
+      }
+    }
+
+    function restartProVideo() {
+      const v = document.getElementById('proVideo');
+      if (!v) return;
+      v.currentTime = 0;
+      v.play().then(() => {
+        const overlay = document.getElementById('playOverlay');
+        const btnText = document.getElementById('btnPlayProText');
+        if (overlay) overlay.style.display = 'none';
+        if (btnText) btnText.textContent = 'TẠM DỪNG BẢN TIN';
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const v = document.getElementById('proVideo');
+      const overlay = document.getElementById('playOverlay');
+      const btnText = document.getElementById('btnPlayProText');
+      if (v) {
+        v.addEventListener('play', () => {
+          if (overlay) overlay.style.display = 'none';
+          if (btnText) btnText.textContent = 'TẠM DỪNG BẢN TIN';
+        });
+        v.addEventListener('pause', () => {
+          if (overlay) overlay.style.display = 'flex';
+          if (btnText) btnText.textContent = 'PHÁT BẢN TIN NGAY';
+        });
+      }
+    });
+
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js').catch(() => {});
