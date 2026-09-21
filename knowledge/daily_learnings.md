@@ -1232,3 +1232,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-21 09:04:30`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (267 ⭐)]** [channprj/kmsg](https://github.com/channprj/kmsg)
+  > Unofficial KakaoTalk CLI and native MCP server for macOS — read, watch, and send messages via Accessibility automation.
+- **[GitHub (258 ⭐)]** [Continuum-AI-Corp/OrcaReplay](https://github.com/Continuum-AI-Corp/OrcaReplay)
+  > OrcaReplay — Time travel for AI agents. Record, replay, fork, and debug any agent run with any model. Built by the OrcaRouter.ai team.
+- **[GitHub (333 ⭐)]** [modelstudioai/cli](https://github.com/modelstudioai/cli)
+  > Official Model Studio CLI（阿里云百炼 CLI）built for AI Agent frameworks, exposing models, search, multimodal, and workflow capabilities as structured tool calls.
+
+</untrusted_external_content>
+
+---

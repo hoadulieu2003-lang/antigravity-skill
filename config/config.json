@@ -129,7 +129,8 @@
         "read_url(dukascopy-node.app)",
         "mcp(google-workspace/ping)",
         "mcp(google-workspace/calendar_admin)",
-        "mcp(google-workspace/drive_list)"
+        "mcp(google-workspace/drive_list)",
+        "read_url(portchecker.co)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
