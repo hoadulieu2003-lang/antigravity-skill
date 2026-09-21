@@ -796,3 +796,15 @@
 * **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
 
 ---
+### 🚨 [2026-09-22 05:42] Bypassing inference bottlenecks: Accelerating complex AI search with Retrieve-for-Train
+* **Nguồn cảnh báo**: Google Research | [Chi tiết bài viết](https://research.google/blog/bypassing-inference-bottlenecks-accelerating-complex-ai-search-with-retrieve-for-train/)
+* **Bài học nhận thức**: Algorithms & Theory
+* **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
+
+---
+### 🚨 [2026-09-22 05:42] When scanners miss the attack: how Cloudflare Client-Side Security protects storefronts
+* **Nguồn cảnh báo**: Cloudflare Engineering | [Chi tiết bài viết](https://blog.cloudflare.com/client-side-security-finds-4-malicious-campaigns/)
+* **Bài học nhận thức**: A modern storefront can look healthy while malicious JavaScript quietly siphons revenue, hijacks clicks, or rewrites analytics. See how Cloudflare's machine learning models surface evasive client-s...
+* **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
+
+---
