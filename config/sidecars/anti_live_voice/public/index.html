@@ -61,15 +61,49 @@
       <p id="transcriptText">Bấm biểu tượng Micro bên dưới để bắt đầu đàm thoại trực tiếp cùng Em</p>
     </div>
 
-    <!-- Audio Player Demo -->
-    <div style="margin-top: 1.25rem; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; width: 100%; max-width: 460px;">
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.25rem; width: 100%;">
-        <small style="color: #64748B; font-weight: 600; font-size: 0.8rem;">🇻🇳 Voice Tiếng Việt (Giọng Puck - Nam ấm áp):</small>
-        <audio controls src="/gemini_voice_official.wav" style="height: 36px; width: 90%; border-radius: 9999px; outline: none;"></audio>
+    <!-- Video Player Demo: Bản Tin Thời Sự 1080x1920 -->
+    <div style="margin-top: 1.25rem; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 420px; background: #FFFFFF; padding: 0.85rem; border-radius: 1.25rem; border: 1px solid #E2E8F0; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);">
+      <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 0.5rem; padding: 0 0.25rem;">
+        <div style="display: flex; align-items: center; gap: 0.4rem;">
+          <span style="width: 10px; height: 10px; background: #EF4444; border-radius: 50%; display: inline-block;"></span>
+          <span style="font-weight: 800; font-size: 0.85rem; color: #0F172A;">CLIP MẪU THỜI SỰ 1080x1920 (58s)</span>
+        </div>
+        <span style="font-size: 0.75rem; background: #FEF2F2; color: #DC2626; padding: 0.15rem 0.5rem; border-radius: 9999px; font-weight: 700;">Full HD 9:16</span>
       </div>
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.25rem; width: 100%;">
-        <small style="color: #64748B; font-weight: 600; font-size: 0.8rem;">🇰🇷 Voice Tiếng Hàn (Giọng Kore - Nữ dịu dàng):</small>
-        <audio controls src="/korean_voice_sample.wav" style="height: 36px; width: 90%; border-radius: 9999px; outline: none;"></audio>
+      <video controls preload="metadata" playsinline style="width: 100%; max-height: 480px; border-radius: 0.75rem; background: #000000; outline: none; object-fit: contain;">
+        <source src="/hanoi_flood_sample.mp4" type="video/mp4">
+        Trình duyệt không hỗ trợ xem video.
+      </video>
+      <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 0.5rem; font-size: 0.75rem; color: #64748B;">
+        <span>🎙️ BTV Aoede + SFX Mưa Bão</span>
+        <a href="/hanoi_flood_sample.mp4" download style="color: #2563EB; font-weight: 700; text-decoration: none;">Tải file MP4 (7.5 MB) ⬇️</a>
+      </div>
+    </div>
+
+    <!-- Audio Player Demo -->
+    <div style="margin-top: 1.25rem; display: flex; flex-direction: column; align-items: center; gap: 0.55rem; width: 100%; max-width: 490px; background: #F8FAFC; padding: 0.85rem 1rem; border-radius: 1rem; border: 1px solid #E2E8F0;">
+      <!-- Master Track with SFX -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.2rem; width: 100%; background: #EFF6FF; padding: 0.5rem 0.65rem; border-radius: 0.75rem; border: 1px solid #BFDBFE;">
+        <small style="color: #1D4ED8; font-weight: 800; font-size: 0.85rem;">🎬 BẢN TIN MASTER HOÀN CHỈNH (Lời BTV + Mưa Bão + Sấm Sét):</small>
+        <audio controls src="/thoi_su_master_vtv_sfx.wav" style="height: 38px; width: 100%; border-radius: 9999px; outline: none;"></audio>
+      </div>
+      
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.15rem; width: 100%; margin-top: 0.1rem;">
+        <small style="color: #DC2626; font-weight: 700; font-size: 0.82rem;">🇯🇵 BTV NỮ THỜI SỰ NHK (Kore - Chuẩn Nhật Bản Tokyo):</small>
+        <audio controls src="/thoi_su_nhat_kore.wav" style="height: 36px; width: 100%; border-radius: 9999px; outline: none;"></audio>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.15rem; width: 100%; margin-top: 0.2rem;">
+        <small style="color: #BE185D; font-weight: 700; font-size: 0.82rem;">🇻🇳 BTV NỮ THỜI SỰ VTV (Aoede - Rõ nét, truyền cảm):</small>
+        <audio controls src="/thoi_su_nu_aoede.wav" style="height: 36px; width: 100%; border-radius: 9999px; outline: none;"></audio>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.15rem; width: 100%; margin-top: 0.2rem;">
+        <small style="color: #1E293B; font-weight: 700; font-size: 0.82rem;">🇻🇳 BTV NAM THỜI SỰ (Charon - Trầm ấm, trang nghiêm):</small>
+        <audio controls src="/thoi_su_charon.wav" style="height: 36px; width: 100%; border-radius: 9999px; outline: none;"></audio>
+      </div>
+      <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 0.35rem; font-size: 0.75rem; color: #64748B;">
+        <span>🇯🇵 <a href="/thoi_su_nhat_puck.wav" target="_blank" style="color: #2563EB; text-decoration: none;">Bản Nam Nhật</a></span>
+        <span>🎙️ <a href="/thoi_su_nu_kore.wav" target="_blank" style="color: #2563EB; text-decoration: none;">Nữ Kore Việt</a></span>
+        <span>🇰🇷 <a href="/korean_voice_sample.wav" target="_blank" style="color: #2563EB; text-decoration: none;">Tiếng Hàn</a></span>
       </div>
     </div>
   </main>
