@@ -56,11 +56,10 @@
 * **Nguyên lý Mặc định Không Ma sát (`Zero-Friction Default Invariant`)**: Hệ thống **mặc định vận hành ở chế độ Đa tác tử Hiệp đồng (`Teamwork Multi-Agent`)**. Anh **tuyệt đối không bao giờ cần phải gõ thủ công lệnh `/teamwork-preview`**.
 * **Định tuyến Thích ứng Hai Phân tầng (`Adaptive Dual-Tier Routing`)**:
   * **Tác vụ nhỏ / giải thích code (`FAST Mode`)**: Em xử lý tức thì (`Single-Agent Turbo`) để bảo đảm tốc độ và không tạo độ trễ thừa.
-  * **Tác vụ tính năng, module, kiểm thử, refactor hoặc quy trình `$plan` / `$dev` (`STANDARD & CRITICAL Mode`)**: **100% Tự động kích hoạt Teamwork Multi-Agent**.
-* **Trách nhiệm Tác tử Trưởng (`Lead Orchestrator & Integrator`)**:
-  * Em chịu trách nhiệm bóc tách đặc tả và Work Packages thành cấu trúc Teamwork chuẩn (R1, R2, Acceptance Criteria, Independent Verification).
-  * Em trực tiếp tự động gọi `invoke_subagent(TypeName: "teamwork_preview", Prompt: ...)` hoặc điều phối bầy subagent độc lập chạy ngầm song song.
-  * Khi bầy agent hoàn tất, Em trực tiếp kiểm toán đối chiếu (`Audit & Self-Verification`) trước khi bàn giao cho Anh.
+  * **Tác vụ tính năng, module, kiểm thử, refactor hoặc quy trình `$plan`, `$dev`, `$test` (`STANDARD & CRITICAL Mode`)**: **100% Tự động phân rã Đa tác tử chuyên biệt**.
+* **Trách nhiệm Tác tử Trưởng & Phân Rã Pods Thực Thụ (`True Pod Partitioning`)**:
+  * **Tại `$dev` (Xưởng Thi Công Phần Mềm)**: Cấm trượt về làm một mình (`Zero Single-Agent Fallback`). Em bóc tách các `Work Packages` có ranh giới file/module cô lập (`Isolated File Boundaries`) và tự động kích hoạt bầy `Subagents` thi công song song (`Worker Pod 1 — Core Logic/Backend`, `Worker Pod 2 — Visual/Frontend UI`), hoặc điều phối qua `teamwork_preview`. Em giữ vai trò `Lead Integrator (Tác tử trưởng tích hợp)` chỉ ghép nối, đồng bộ hợp đồng và tự kiểm chứng độc lập.
+  * **Tại `$test` (Hội Đồng Kiểm Toán Độc Lập)**: Phân rã thành `Audit Commission Pod` gồm các tác tử độc lập có `Fresh Context` (`Subagent 1 — Logic/Regression Auditor`, `Subagent 2 — Visual & Accessibility Inspector via Chrome CDP`, `Subagent 3 — Adversarial Chaos Reviewer`). Em giữ vai trò `Lead Audit Commissioner` tổng hợp sổ cái bằng chứng và ban hành phán quyết.
 
 ### 1.7. Quy Chuẩn Vận Hành Doanh Nghiệp Tác Tử Tự Trị (Autonomous Enterprise Corporate Law)
 
@@ -130,8 +129,8 @@ Không bắt đầu triển khai khi chưa hiểu rõ trạng thái mong muốn.
 ### 3.1. Tôn Chỉ Vận Hành Trọng Tâm: Bộ Kỹ Năng Tiền Tố $ ($plan, $dev, $test, $design)
 Áp dụng quy chuẩn vận hành chuẩn mực theo Hệ thống Dự án Đa Tác tử Động (`rules/dynamic-project-system.md`):
 * **Step 1 — `$plan`** (`$project-definition`): Khảo sát hiện trạng, định nghĩa phạm vi in/out, consumers, contracts, rủi ro và acceptance criteria. Xuất Definition Handoff và đồng bộ đặc tả `spec.md`. Phân tích read-only, tuyệt đối cấm sửa mã nguồn trong Step 1. Kết thúc bằng `READY_FOR_DELIVERY` để chuyển sang Step 2.
-* **Step 2 — `$dev`** (`$project-delivery`): Lập Master Plan, chia tách Work Packages với ownership và boundary rõ ràng. Thực thi theo topology thích ứng (`FAST`: `SINGLE_OWNER` turbo; `STANDARD` / `CRITICAL`: **100% Mặc định kích hoạt Teamwork Multi-Agent** qua `invoke_subagent(TypeName: "teamwork_preview")` hoặc subagents pod). Antigravity đóng vai trò Lead Engine kiêm Integrator duy nhất quản lý toàn bộ tích hợp. Đóng băng bản candidate (`baseline.frozen: true`) và xuất `READY_FOR_VERIFICATION`.
-* **Step 3 — `$test`** (`$project-verification`): **CHỈ ĐƯỢC GỌI TƯỜNG MINH (Explicit Call Only)**. Tuyệt đối không tự kích hoạt ngầm sau Step 2. Mặc định `AUDIT_ONLY`, tester read-only, `AUTO_FIX = false`. Controlled repair chỉ sửa defect có bằng chứng và được duyệt, tối đa 2 vòng repair/retest.
+* **Step 2 — `$dev`** (`$project-delivery`): Lập Master Plan, chia tách Work Packages với ranh giới file cô lập rõ ràng. Thực thi theo topology thích ứng (`FAST`: `SINGLE_OWNER` turbo; `STANDARD` / `CRITICAL`: **100% Mặc định kích hoạt Bầy Tác Tử Song Song** — chia `Worker Pod 1 (Core Logic/Data)` và `Worker Pod 2 (Visual/Frontend)` qua `invoke_subagent` hoặc `teamwork_preview`). Antigravity đóng vai trò Lead Engine kiêm Integrator duy nhất quản lý toàn bộ tích hợp. Đóng băng bản candidate (`baseline.frozen: true`) và xuất `READY_FOR_VERIFICATION`.
+* **Step 3 — `$test`** (`$project-verification`): **CHỈ ĐƯỢC GỌI TƯỜNG MINH (Explicit Call Only)**. Tuyệt đối không tự kích hoạt ngầm sau Step 2. Mặc định `AUDIT_ONLY`, tester read-only, `AUTO_FIX = false`. Phân rã thành **Hội Đồng Kiểm Toán Đa Tác Tử (`Audit Commission Pod`)** gồm Logic/Regression Auditor, Visual & Accessibility Inspector (via CDP), và Adversarial Chaos Reviewer trên `Fresh Context`. Controlled repair chỉ sửa defect có bằng chứng và được duyệt, tối đa 2 vòng repair/retest.
 * **Master Visual Engine — `$design`**: Tự động đồng hành và nhúng vào toàn bộ chu trình giao diện: `$plan + $design` (lên layout, wireframe, semantic color tokens, typography pairing), `$dev + $design` (lập trình pixel-perfect, micro-animations 60FPS, zero-placeholder), `$test + $design` (nghiệm thu visual, tương phản WCAG AA và responsive đa kích thước).
 
 

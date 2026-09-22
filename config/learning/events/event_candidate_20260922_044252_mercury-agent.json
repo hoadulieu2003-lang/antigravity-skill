@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-22T04:42:52.619887+00:00",
+  "skill_name": "mercury-agent",
+  "source_repo": "cosmicstack-labs/mercury-agent",
+  "stars": 3167,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\mercury-agent\\SKILL.md",
+  "human_promotion_required": true
+}

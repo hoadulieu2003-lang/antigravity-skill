@@ -54,10 +54,20 @@ Mọi bậc thang không chạy bắt buộc phải ghi rõ lý do trong `omitte
 
 ---
 
-## 4. Fresh-Context Reviewer Protocol
+## 4. Audit Commission Pod & Fresh-Context Protocol (Hội Đồng Thẩm Định Đa Tác Tử)
 
-* Nhằm loại bỏ hoàn toàn thiên kiến xác nhận (confirmation bias), kiểm thử viên độc lập phải thực thi với ngữ cảnh sạch (`Fresh Context`).
-* Khi rủi ro ở mức cao (`CRITICAL`), có thể kích hoạt subagent độc lập (`invoke_subagent` Role `Independent Auditor`) chỉ truyền diff và AC.
+Nhằm loại bỏ hoàn toàn thiên kiến xác nhận (`Confirmation Bias`) và phân rã khối lượng kiểm thử chuyên biệt, `$test` vận hành theo cấu trúc **Hội Đồng Kiểm Toán Đa Tác Tử (`Audit Commission Pod`)**:
+* **Cơ chế Phân Rã Chuyên Môn Hóa (`Specialized Auditor Subagents`)**:
+  - 🛡️ **`Subagent 1 — Logic & Regression Auditor`**: Khởi chạy với `Fresh Context` (chỉ nạp diff, AC và test suite). Chuyên trách L1, L2, L3: kiểm tra unit test, contract API, rà soát điều kiện biên (`Edge Cases`) và nguy cơ tranh đua dữ liệu (`Race Conditions`).
+  - 👁️ **`Subagent 2 — Visual & Accessibility Inspector`**: Chuyên trách L6: tự động tương tác qua Chrome CDP, chụp ảnh màn hình, đối chiếu kiểm tra tương phản `WCAG AA`, kiểm tra layout vỡ trên đa thiết bị (`Responsive Breakpoints`) và kiểm chứng độ mượt 60 FPS.
+  - 💥 **`Subagent 3 — Adversarial Chaos Reviewer`**: Chuyên trách L7: đóng vai hacker và người dùng khắc nghiệt, bơm dữ liệu rác, giả lập rớt mạng, kiểm tra khả năng bắt lỗi và tự phục hồi (`Self-Healing / Circuit Breaker`).
+* **Trách nhiệm Tác tử Trưởng Kiểm Toán (`Lead Audit Commissioner — Antigravity`)**:
+  - Điều phối bầy subagents kiểm thử qua `invoke_subagent`.
+  - Tổng hợp toàn bộ `test_evidence` và các `findings` từ các kiểm thử viên chuyên biệt vào Sổ Cái Bằng Chứng (`Evidence Ledger`).
+  - Ban hành Phán Quyết Độc Lập Cuối Cùng (`Independent Verdict`) trình lên Anh (Product Owner).
+* **Mặc định Thực Thi (`Execution Default`)**:
+  - Task `STANDARD` trở lên: Bắt buộc kích hoạt tối thiểu 2 subagents kiểm toán độc lập có `Fresh Context`.
+  - Task `FAST`: Lead Auditor thực hiện kiểm thử hẹp trực tiếp theo cấu hình `TARGETED`.
 
 ---
 

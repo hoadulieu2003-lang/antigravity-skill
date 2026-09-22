@@ -18,16 +18,22 @@ Turn an approved Definition Handoff into an integrated, verifiable release candi
 ## 1. Execution Mode & Topology Routing
 
 Delivery topology adapts strictly to the `execution_mode` established in $plan:
-- **`FAST` Delivery**: `SINGLE_OWNER`. Targeted implementation and targeted self-verification (Single-Agent Turbo for rapid execution on small tasks, quick Q&A, and micro-fixes).
-- **`STANDARD` Delivery**: `TEAMWORK_MULTI_AGENT` (`OWNER + REVIEWER` pod or native `teamwork_preview`). Work package partition with autonomous delegation via `invoke_subagent`. Antigravity acts as Lead Integrator.
-- **`CRITICAL` Delivery**: `TEAMWORK_FULL_POD` (`ARCHITECT/OWNER + ADVERSARIAL REVIEWER + HUMAN GATE`). Autonomous multi-agent delegation preconditioned on explicit Human Approval from Product Owner (Anh).
+- **`FAST` Delivery**: `SINGLE_OWNER`. Targeted implementation and targeted self-verification (Single-Agent Turbo for rapid execution on micro-fixes, tiny scripts, and single-file modifications).
+- **`STANDARD` Delivery**: `TEAMWORK_MULTI_AGENT` (Parallel Worker Pods or native `teamwork_preview`). Bắt buộc phân rã Work Packages có ranh giới file cô lập (`Isolated File Boundaries`) và điều phối subagents song song qua `invoke_subagent`. Antigravity giữ vai trò Lead Integrator.
+- **`CRITICAL` Delivery**: `TEAMWORK_FULL_POD` (Lead Architect + Parallel Delivery Pods + Adversarial Reviewer + Human Gate). Toàn bộ module trọng yếu phải được thi công song song bởi các tác tử chuyên biệt, thẩm định chéo trước khi Lead Integrator tổng hợp.
 
-### 1.1 Autonomous Teamwork Multi-Agent Protocol (Mặc định Đa tác tử)
+### 1.1 Autonomous Teamwork Multi-Agent Protocol (Quy chuẩn Đa tác tử Thực thụ)
 When executing in `STANDARD` or `CRITICAL` mode:
-1. **Zero-Friction Invariant**: The Product Owner (Anh) is **NEVER required to type `/teamwork-preview` manually**. The system defaults to teamwork execution automatically.
-2. **Autonomous Dispatch**: Antigravity (acting as Lead Integrator / Orchestrator) converts the approved Definition Handoff into a structured Teamwork payload (R1, R2, Acceptance Criteria, Independent Verification).
-3. **Subagent Delegation**: Automatically call `invoke_subagent(TypeName: "teamwork_preview", Prompt: payload)` or orchestrate dedicated specialist subagents (`research`, `self`, or custom workers).
-4. **Integrator Gate & Synthesis**: When subagents complete execution, Antigravity audits diffs against AC, enforces the Developer Self-Verification contract, and presents verified results to Anh.
+1. **Zero-Friction Invariant**: Product Owner (Anh) **tuyệt đối KHÔNG BAO GIỜ cần gõ thủ công lệnh `/teamwork-preview`**. Hệ thống tự động kích hoạt bầy đa tác tử.
+2. **Cấm Trượt Về Đơn Tác Tử (Zero Single-Agent Fallback)**:
+   - Nghiêm cấm Lead Integrator tự gõ toàn bộ code trên một luồng chính duy nhất khi task có từ 2 file hoặc 2 tầng kiến trúc trở lên.
+   - Bắt buộc phân chia `Work Packages (Gói công việc)` thành các ranh giới file/thư mục độc lập (`Isolated Ownership`), triệt tiêu rủi ro tranh chấp ghi mã nguồn (`Race Condition`).
+3. **Mô hình Phân Rã Worker Pods Song Song (`Parallel SWE Pods`)**:
+   - 🔹 **`Worker Pod 1 (Logic & Backend / Core Engine)`**: Được phân công riêng cho tầng dữ liệu, thuật toán, models, controllers, business rules.
+   - 🔹 **`Worker Pod 2 (Visual & Frontend / Interface)`**: Được phân công riêng cho tầng UI, layout components, CSS tokens, responsiveness, animations.
+   - Hoặc điều phối trực tiếp tới cỗ máy gốc: `invoke_subagent(TypeName: "teamwork_preview", Prompt: payload)`.
+4. **Trách nhiệm Tác tử Trưởng (`Lead Integrator & Synthesis Gate`)**:
+   - Antigravity đứng ở vai trò Tác tử Trưởng: không tranh viết code chi tiết với Worker Pods, mà chịu trách nhiệm ghép nối (`Merge`), đồng bộ giao diện API, kiểm toán diff đối chiếu với Acceptance Criteria, thực thi Self-Verification và nộp kết quả minh bạch lên Anh.
 
 ---
 
