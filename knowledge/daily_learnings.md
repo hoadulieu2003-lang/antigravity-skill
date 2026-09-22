@@ -1332,3 +1332,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-22 09:05:46`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (2179 ⭐)]** [iFurySt/open-codex-computer-use](https://github.com/iFurySt/open-codex-computer-use)
+  > 👾 Open Computer Use – Open-Source Alternative to Codex Computer Use
+- **[GitHub (839 ⭐)]** [huiliyi37/Tianshu-harness](https://github.com/huiliyi37/Tianshu-harness)
+  > 天枢 (Tianshu harness) 是一个基于harness框架的终端编程智能体，针对DeepSeek V4 做了前缀缓存工程优化（长会话实测稳态命中率 97–99%），并且全模型都可复用。它跳出了传统 AI 编程助手把大模型仅当成“工具”的局限，基于认知虚拟机 (CVM)、自感知层和信息素（Stigmer...
+- **[GitHub (52 ⭐)]** [hertz-ai/HARTOS](https://github.com/hertz-ai/HARTOS)
+  > An AI-native OS. Models run on your own hardware, nodes federate peer-to-peer with no broker, and the API is OpenAI-compatible. Boots, has its own Wayland co...
+
+</untrusted_external_content>
+
+---
