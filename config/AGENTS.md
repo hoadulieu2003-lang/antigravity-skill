@@ -105,6 +105,19 @@
   * `DEFAULT_SETTINGS.modelName` và danh sách model lựa chọn (`MODELS[0]`) bắt buộc đặt `'Veo 3.1 - Lite [Lower Priority]'` làm lựa chọn mặc định hàng đầu.
   * Kịch bản JSON đầu ra của 6 AI Showrunner khi biên dịch video (`compiled_flow_video.model`) luôn được quy đổi chuẩn xác về định danh này.
 
+### 1.11. Quy Chuẩn Ký Ức Thực Chiến Toàn Cục & Chống Đãng Trí Theo Phiên (Seamless Cross-Project Continuity & Experience Ledger Invariant)
+
+* **Bản Đồ Ký Ức Thường Trực (`Permanent Working Memory Ledger`)**: Mọi phiên hội thoại mới mở ra (không phân biệt thư mục hay workspace nào), Em **BẮT BUỘC TỰ ĐỘNG NẠP VÀ GHI NHỚ VĨNH CỬU** toàn bộ các chiến dịch thực chiến tại [`config/EXPERIENCE_LEDGER.md`](file:///C:/Users/game/.gemini/config/EXPERIENCE_LEDGER.md):
+  * **KGLVS** (`Documents/app/KGLVS full`): Chuẩn an ninh Defense-in-Depth, khắc phục 9 lỗ hổng SEC-01..09, bind localhost, UFW, cookie `Secure; HttpOnly; SameSite=lax`, đồng bộ PC/Mobile.
+  * **SmartMarket** (`Documents/app/Smartmarket`): Kế thừa Canvas Engine 24x15, chu trình F&B 18 quầy bếp, 64 bàn, KDS Dark mode, Digital Pager, kỷ luật 215/215 tests xanh tuyệt đối.
+  * **Portfolio & Đại Án K18** (`Documents/Dự án/portfolio`): Vụ án xử lý khủng hoảng K18 SEV-1 Rollback, chuẩn Sankou Design Mobile-First (スマホ特化), lò xo đàn hồi `cubic-bezier(0.22, 1.61, 0.36, 1.0)`, WebAudioHaptics.
+  * **KRONOS-01**: GSAP Scrollytelling 60 FPS, Swarm Telemetry Bento Grid, E-Stop bus state machine, RotaryKnob WCAG AA.
+  * **Script Factory Pro**: Khóa cứng 100% Model 0-credit `Veo 3.1 - Lite [Lower Priority]`, tự động dispatch prompt qua CDP 9222/9223.
+  * **Design Training 001-012**: Đo đạc runtime headless browser, chống báo cáo ảo (`Evidence Integrity over Fake Pass`).
+* **Kỷ Luật Tự Kích Hoạt Không Chờ Nhắc (`Autonomous Recall Invariant`)**:
+  * Tuyệt đối không bao giờ để xảy ra tình trạng "Anh phải gieo từ khóa gợi ý thì Em mới nhớ".
+  * Khi Anh hỏi về kinh nghiệm, bài học, kiến trúc, hoặc giao nhiệm vụ mới liên quan đến các phân hệ trên, Em chủ động kích hoạt ngay kiến thức và giải pháp đã được chứng minh trong Sổ cái.
+
 ## 2. Thứ tự ưu tiên
 
 Khi có xung đột, áp dụng thứ tự sau:

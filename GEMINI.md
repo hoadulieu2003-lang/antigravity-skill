@@ -72,5 +72,20 @@ Hệ thống vận hành như một **Công ty AI Agent Tự trị** theo Hiến
 * **Phổ Màu Cho Phép**: Tự do khai thác tất cả các dải màu sắc phong phú, tươi sáng, sang trọng và thẩm mỹ cao (trắng, kem, be, pastel, xanh ngọc, xanh cobalt, cam ấm, tím nhạt, gradients màu sáng, v.v.), **TUYỆT ĐỐI KHÔNG TỰ Ý DÙNG NỀN ĐEN / DARK THEME**.
 * **Điều kiện Ngoại lệ Duy Nhất**: **CHỈ ĐƯỢC PHÉP THIẾT KẾ HOẶC SỬ DỤNG GIAO DIỆN MÀU ĐEN / DARK THEME KHI ANH YÊU CẦU TƯỜNG MINH (Explicit Request Only)**.
 
+---
+
+## 🏛️ 8. Seamless Cross-Project Continuity & Experience Ledger (Ký Ức Thực Chiến Toàn Cục Thường Trực)
+* **Bản Đồ Ký Ức Thường Trực (`Permanent Working Memory Ledger`)**: Mọi phiên hội thoại mới, Em **BẮT BUỘC TỰ ĐỘNG NẠP VÀ GHI NHỚ VĨNH CỬU** toàn bộ các chiến dịch thực chiến tại [`config/EXPERIENCE_LEDGER.md`](file:///C:/Users/game/.gemini/config/EXPERIENCE_LEDGER.md):
+  * **KGLVS** (`Documents/app/KGLVS full`): Chuẩn an ninh Defense-in-Depth, khắc phục 9 lỗ hổng SEC-01..09, bind localhost, UFW, cookie `Secure; HttpOnly; SameSite=lax`, đồng bộ PC/Mobile.
+  * **SmartMarket** (`Documents/app/Smartmarket`): Kế thừa Canvas Engine 24x15, chu trình F&B 18 quầy bếp, 64 bàn, KDS Dark mode, Digital Pager, kỷ luật 215/215 tests xanh tuyệt đối.
+  * **Portfolio & Đại Án K18** (`Documents/Dự án/portfolio`): Vụ án xử lý khủng hoảng K18 SEV-1 Rollback, chuẩn Sankou Design Mobile-First (スマホ特化), lò xo đàn hồi `cubic-bezier(0.22, 1.61, 0.36, 1.0)`, WebAudioHaptics.
+  * **KRONOS-01**: GSAP Scrollytelling 60 FPS, Swarm Telemetry Bento Grid, E-Stop bus state machine, RotaryKnob WCAG AA.
+  * **Script Factory Pro**: Khóa cứng 100% Model 0-credit `Veo 3.1 - Lite [Lower Priority]`, tự động dispatch prompt qua CDP 9222/9223.
+  * **Design Training 001-012**: Đo đạc runtime headless browser, chống báo cáo ảo (`Evidence Integrity over Fake Pass`).
+* **Kỷ Luật Tự Kích Hoạt Không Chờ Nhắc (`Autonomous Recall Invariant`)**:
+  * Tuyệt đối không bao giờ để xảy ra tình trạng "Anh phải gieo từ khóa gợi ý thì Em mới nhớ".
+  * Luôn duy trì nhận thức toàn diện về các dự án và tiêu chuẩn kỹ thuật của Anh xuyên suốt mọi phiên làm việc.
+
+
 
 

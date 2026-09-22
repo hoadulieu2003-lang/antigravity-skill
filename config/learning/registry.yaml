@@ -38,7 +38,11 @@ scopes:
     description: Universal framework invariants and skills
     location: config/rules/ & config/skills/
     mutation_rule: HUMAN_GATE_ONLY
-promoted_rules: []
+promoted_rules:
+- rule: seamless-cross-project-continuity
+  promoted_at: '2026-09-22T17:59:00Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/EXPERIENCE_LEDGER.md
 promoted_skills:
 - skill: hermes-agent
   promoted_at: '2026-09-12T01:31:14Z'
