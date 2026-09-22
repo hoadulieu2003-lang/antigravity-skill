@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-22T07:23:33.204007+00:00",
+  "skill_name": "fyagent",
+  "source_repo": "fy-agent/fyagent",
+  "stars": 1135,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\fyagent\\SKILL.md",
+  "human_promotion_required": true
+}

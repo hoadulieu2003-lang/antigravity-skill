@@ -1356,3 +1356,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-22 14:23:22`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (397 ⭐)]** [redf0x1/camofox-browser](https://github.com/redf0x1/camofox-browser)
+  > Anti-detection browser server for AI agents — REST API wrapping Camoufox engine with OpenClaw plugin support
+- **[GitHub (1135 ⭐)]** [fy-agent/fyagent](https://github.com/fy-agent/fyagent)
+  > For You Agent——AI 时代的个人随身数字人格。把你的模型、AI 账号、技能、提示词和工作方式，带到每一个 AI 工具里。
+
+</untrusted_external_content>
+
+---
