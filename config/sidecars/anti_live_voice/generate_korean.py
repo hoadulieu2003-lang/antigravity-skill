@@ -4,7 +4,7 @@ import urllib.request
 import wave
 import shutil
 
-api_key = 'AQ.Ab8RN6L8s3Th-Cnl6b3FbMkZFLn6-wugYw71PzOCKJdXOAKX4Q'
+api_key = os.environ.get('GEMINI_API_KEY', '')
 url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key={api_key}'
 
 payload = {

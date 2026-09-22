@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const apiKey = 'AQ.Ab8RN6L8s3Th-Cnl6b3FbMkZFLn6-wugYw71PzOCKJdXOAKX4Q';
+const apiKey = process.env.GEMINI_API_KEY || '';
 const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=' + apiKey;
 
 const payload = {
