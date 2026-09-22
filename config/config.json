@@ -2,7 +2,9 @@
   "aiEngineSettings": {
     "activeModel": "gemini-3.8-flash",
     "autonomousSelfHealing": true,
+    "concurrencyProfile": "TURBO_HYPER_PARALLEL_MAX_THROUGHPUT",
     "deepThinkingBudget": "unlimited_maximum",
+    "maxConcurrentSubagents": 12,
     "maxOutputTokensHeadroom": 131072,
     "outputTokenMultiplier": 8,
     "reasoningProfile": "ultra_high_reasoning",
@@ -131,7 +133,9 @@
         "mcp(google-workspace/calendar_admin)",
         "mcp(google-workspace/drive_list)",
         "read_url(portchecker.co)",
-        "read_url(food-court-os-xi.vercel.app)"
+        "read_url(food-court-os-xi.vercel.app)",
+        "mcp(google-workspace/docs_read)",
+        "read_url(docs.google.com)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

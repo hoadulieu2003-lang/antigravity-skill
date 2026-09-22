@@ -19,6 +19,18 @@ Before writing the plan, the Engineering Kernel resolves the task into one of th
 
 *Safety Clamp Invariant*: If any critical risk signal is detected, the plan MUST escalate to `CRITICAL`. If uncertain between FAST and STANDARD, default to `STANDARD`.
 
+### 1.1 Multi-Perspective Strategic Board Protocol (Hội Đồng Đa Tác Tử Cho $plan)
+Khi lập kế hoạch cho các bài toán chiến lược, tối ưu hóa sức mạnh, nâng cấp thuật toán, hoặc bài toán đa luồng dữ liệu (mức `STANDARD` & `CRITICAL`):
+* **Cấm Đơn Tác Tử Độc Thoại (`Zero Single-Agent Monologue`)**: Tuyệt đối không để một tác tử duy nhất tự đọc file và tự kết luận kế hoạch theo góc nhìn một chiều (`Tunnel Vision`).
+* **Kích hoạt Hội Đồng Đa Tác Tử Đồng Thời (`Multi-Perspective Pod via invoke_subagent`)**:
+  - 🕵️ **`Subagent 1 — Forensic Investigator`**: Quét mã nguồn hiện tại, bóc tách cấu hình, chạy benchmark và tìm ra điểm nghẽn thực tế (`Current Bottlenecks`).
+  - 💡 **`Subagent 2 — Optimization Strategist`**: Nghiên cứu các giải pháp kỹ thuật đột phá, đề xuất thuật toán mới nhằm khai phóng tối đa sức mạnh (`Max Potential`).
+  - 🛡️ **`Subagent 3 — Adversarial Architect / Risk Reviewer`**: Đóng vai trò phản biện đối kháng, tìm ra các rủi ro tiềm ẩn, bẫy rủi ro (drawdown, overfit, latency, memory leak) và điểm đánh đổi (`Trade-offs`).
+* **Lead Architect Gate (Antigravity)**: Thu thập toàn bộ phân tích từ 3 tác tử, tổng hợp và đề xuất **2 phương án phân kỳ (Option A vs Option B)** kèm bảng đánh đổi rõ ràng để trình Anh (Product Owner) quyết định.
+* **Khóa Khế Ước Kiểu Dữ Liệu Cứng (`AST Type Contract Lock Protocol`)**:
+  - Trước khi chuyển giao sang Bước 2 (`$dev`), Tác tử Trưởng chịu trách nhiệm biên soạn và đóng băng file định nghĩa kiểu dữ liệu duy nhất (ví dụ: `types/contract.ts` hoặc các Interface dùng chung).
+  - Khóa quyền ghi (`Read-Only Lock`) với file contract này: Toàn bộ các Parallel SWE Pods ở `$dev` chỉ được phép `import` sử dụng, tuyệt đối cấm tự ý sửa đổi contract, triệt tiêu 100% rủi ro xung đột mã nguồn (`Merge Conflicts`).
+
 ---
 
 ## 2. Adaptive Planning Templates

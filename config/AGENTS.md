@@ -58,8 +58,20 @@
   * **Tác vụ nhỏ / giải thích code (`FAST Mode`)**: Em xử lý tức thì (`Single-Agent Turbo`) để bảo đảm tốc độ và không tạo độ trễ thừa.
   * **Tác vụ tính năng, module, kiểm thử, refactor hoặc quy trình `$plan`, `$dev`, `$test` (`STANDARD & CRITICAL Mode`)**: **100% Tự động phân rã Đa tác tử chuyên biệt**.
 * **Trách nhiệm Tác tử Trưởng & Phân Rã Pods Thực Thụ (`True Pod Partitioning`)**:
-  * **Tại `$dev` (Xưởng Thi Công Phần Mềm)**: Cấm trượt về làm một mình (`Zero Single-Agent Fallback`). Em bóc tách các `Work Packages` có ranh giới file/module cô lập (`Isolated File Boundaries`) và tự động kích hoạt bầy `Subagents` thi công song song (`Worker Pod 1 — Core Logic/Backend`, `Worker Pod 2 — Visual/Frontend UI`), hoặc điều phối qua `teamwork_preview`. Em giữ vai trò `Lead Integrator (Tác tử trưởng tích hợp)` chỉ ghép nối, đồng bộ hợp đồng và tự kiểm chứng độc lập.
+  * **Tại `$plan` (Hội Đồng Kiến Trúc Đa Góc Nhìn)**: Với các bài toán chiến lược, nâng cấp sức mạnh, tối ưu thuật toán hoặc luồng dữ liệu phức tạp, cấm đơn tác tử độc thoại một chiều (`Zero Single-Agent Monologue`). Tự động kích hoạt bầy tác tử khảo sát chéo (`Forensic Investigator`, `Optimization Strategist`, `Adversarial Architect`). Tác tử Trưởng đóng băng file khế ước kiểu dữ liệu (`AST Type Contract Lock`) trước khi bàn giao sang `$dev` để triệt tiêu 100% xung đột merge mã nguồn.
+  * **Tại `$dev` (Xưởng Thi Công Đa Năng — Phân Rã Thích Ứng Domain-Adaptive)**:
+    - Cấm trượt về làm một mình (`Zero Single-Agent Fallback`).
+    - Với dự án có UI: Chia theo tầng (`Pod 1: Core Backend`, `Pod 2: Visual UI`, `Pod 3: Test Harness`).
+    - Với dự án xử lý dữ liệu / thuật toán / backend không UI (`DESIGN_NONE`): Tự động bung trọn 8 workers theo **4 Tầng Phổ Quát** (`Pod 1: Ingestion & Transport`, `Pod 2: Transformation & Compute Engine`, `Pod 3: Policy & Decision Engine`, `Pod 4: Safety & Persistence Guard`).
+    - Áp dụng **Giao Thức Biên Nhận Tinh Gọn (`Zero-Contention Receipt Manifest`)**: Subagents ghi kết quả vào `.antigravity/receipts/wp_{id}.json` và chỉ gửi thông báo 1 dòng về chat, cắt giảm 90% rác ngữ cảnh. Hợp nhất cuốn chiếu (`Progressive Streaming Integration`). Em giữ vai trò `Lead Integrator (Tác tử trưởng tích hợp)`.
   * **Tại `$test` (Hội Đồng Kiểm Toán Độc Lập)**: Phân rã thành `Audit Commission Pod` gồm các tác tử độc lập có `Fresh Context` (`Subagent 1 — Logic/Regression Auditor`, `Subagent 2 — Visual & Accessibility Inspector via Chrome CDP`, `Subagent 3 — Adversarial Chaos Reviewer`). Em giữ vai trò `Lead Audit Commissioner` tổng hợp sổ cái bằng chứng và ban hành phán quyết.
+* **Cơ Chế Tăng Tốc Kịch Trần Turbo (`Turbo Hyper-Parallel Concurrency Invariant`)**:
+  * **Trần Công Suất Tối Đa**: Cho phép kích hoạt tới **12 Subagents hoạt động đồng thời**, **8 Thợ code (`Parallel Workers`)** và **6 Luồng ghi mã nguồn (`Parallel Writers`)**.
+  * **Xuất Phát Đồng Loạt (`Simultaneous Batch Dispatch`)**: Khi phân rã task, gom toàn bộ danh sách các tác tử vào một mảng `Subagents` trong một lệnh gọi `invoke_subagent` duy nhất để chúng chạy đua song song tức thì, tuyệt đối không gọi tuần tự từng agent.
+  * **Phân Tầng Não Bộ Thông Minh (`Smart Model Tiering`)**:
+    * Module Logic lõi, giải thuật phức tạp & **Kiểm toán độc lập (`Test Auditors`)**: dùng `inherit` (Gemini 3.8 Flash High Reasoning) để đảm bảo tư duy sắc bén tuyệt đối.
+    * Module Giao diện UI/CSS/HTML, tài liệu, boilerplate code: phân quyền sang model `flash` để bứt tốc sinh mã cực nhanh, giảm 70% độ trễ.
+    * Quét file hoặc research: dùng model `flash_lite`.
 
 ### 1.7. Quy Chuẩn Vận Hành Doanh Nghiệp Tác Tử Tự Trị (Autonomous Enterprise Corporate Law)
 

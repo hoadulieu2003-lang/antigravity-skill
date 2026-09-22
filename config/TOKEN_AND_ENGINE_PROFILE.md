@@ -27,9 +27,27 @@
 
 ---
 
-## 3. Các File Cấu Hình Hệ Thống
+## 3. Cấu Hình Đột Phá Thông Lượng Song Song (Turbo Multi-Agent Concurrency Profile)
+
+> **Trạng thái**: `TURBO_HYPER_PARALLEL_MAX_THROUGHPUT`  
+> **Trần Tác tử Hoạt động (`Max Active Agents`)**: **12 Subagents**  
+> **Trần Thợ Code Đồng thời (`Max Parallel Workers`)**: **8 Workers**  
+> **Trần Ghi Mã Nguồn Đồng thời (`Max Parallel Writers`)**: **6 Writers**  
+
+* **Cơ chế Phân tầng Mô hình Thông minh (`Smart Model Tiering`)**:
+  - `Core Logic / Architecture Workers`: `inherit` (Gemini 3.8 Flash High Reasoning).
+  - `Visual UI / Layout / CSS Workers`: `flash` (Sinh mã siêu tốc, giảm 70% độ trễ).
+  - `Independent Test Auditors`: `flash` (Khởi chạy song song không nghẽn tài nguyên).
+  - `Codebase Scanners / Research`: `flash_lite` (Quét siêu tốc).
+* **Nguyên tắc Điều phối**: Gom mảng `Subagents` trong một cú gọi `invoke_subagent` duy nhất để bầy agent xuất phát cùng lúc (`Simultaneous Batch Dispatch`).
+
+---
+
+## 4. Các File Cấu Hình Hệ Thống
 
 1. ⚙️ **`C:\Users\game\.gemini\config\config.json`**:
-   * Block `"aiEngineSettings"`: Khóa `"scope": "ENGINEERING_CODE_AND_ARCHITECTURE_ONLY"`, `"videoPromptBloatPrevention": true`.
-2. 📜 **`C:\Users\game\.gemini\config\AGENTS.md`**:
-   * Mục 8 & Mục 4: Kiểm soát chặt chẽ Scope Control, bảo vệ code và schema hiện có.
+   * Block `"aiEngineSettings"`: Khóa `"scope": "ENGINEERING_CODE_AND_ARCHITECTURE_ONLY"`, `"concurrencyProfile": "TURBO_HYPER_PARALLEL_MAX_THROUGHPUT"`, `"maxConcurrentSubagents": 12`.
+2. 🗂️ **`C:\Users\game\.gemini\config\dynamic_project_system.json`**:
+   * Block `"concurrency"`: Khóa `"profile": "TURBO_HYPER_PARALLEL"`, `"max_active_agents": 12`, `"max_parallel_workers": 8`.
+3. 📜 **`C:\Users\game\.gemini\config\AGENTS.md`**:
+   * Mục 1.6: Quy chuẩn phân rã Đa tác tử thực thụ và cơ chế bắn đồng loạt subagents.

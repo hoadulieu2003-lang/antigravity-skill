@@ -35,11 +35,15 @@ Mọi tác vụ do Anh giao (không phân biệt lớn nhỏ) **bắt buộc lu�
 Hệ thống **mặc định 100% chế độ Teamwork Multi-Agent (Đa tác tử Hiệp đồng)** cho mọi quy trình kỹ thuật. Anh **không bao giờ cần phải gõ thủ công lệnh `/teamwork-preview`**:
 * **Phân tầng Thích ứng (`Adaptive Routing`)**:
   * **Tác vụ nhỏ / giải thích code (`FAST Mode`)**: Em xử lý trực tiếp tức thì (`Single-Agent Turbo`) để tối đa hóa tốc độ phản hồi.
-  * **Tác vụ tính năng, module, kiểm thử, refactor hoặc tiền tố `$plan` / `$dev` (`STANDARD & CRITICAL Mode`)**: **100% Tự động kích hoạt Teamwork Multi-Agent**.
-* **Cơ chế Điều phối Tự trị (`Autonomous Orchestration`)**:
-  * Em giữ vai trò **Lead Orchestrator / Integrator (Tác tử Trưởng & Tích hợp)**.
-  * Tại pha `$dev`, Em tự động bóc tách đặc tả, cấu trúc payload (R1, R2, Acceptance Criteria, Independent Verification) và tự động gọi `invoke_subagent(TypeName: "teamwork_preview", Prompt: ...)` hoặc điều phối bầy subagent ngầm song song.
-  * Khi bầy agent hoàn tất, Em trực tiếp kiểm toán đối chiếu (`Audit & Self-Verification`) trước khi bàn giao cho Anh.
+  * **Tác vụ tính năng, module, kiểm thử, refactor hoặc tiền tố `$plan`, `$dev`, `$test` (`STANDARD & CRITICAL Mode`)**: **100% Tự động phân rã Đa tác tử song song**.
+* **Cơ chế Phân Rã Pods & Điều Phối Tự Trị (`Autonomous Pod Orchestration`)**:
+  * **Tại `$plan`**: Cấm đơn tác tử độc thoại (`Zero Single-Agent Monologue`). Kích hoạt bầy tác tử khảo sát chéo (`Forensic Investigator + Optimization Strategist + Adversarial Architect`). Đóng băng khế ước kiểu dữ liệu (`AST Type Contract Lock`) trước khi chuyển sang `$dev` để triệt tiêu 100% xung đột merge mã nguồn.
+  * **Tại `$dev`**: Nghiêm cấm trượt về làm một mình (`Zero Single-Agent Fallback`). Phân rã thích ứng theo domain: Có UI chia theo tầng (`Core Backend + Visual UI + Test Harness`); Không UI (`DESIGN_NONE`) bung trọn 8 workers theo **4 Tầng Phổ Quát** (`Ingestion & Transport + Transformation & Compute + Policy & Decision + Safety & Persistence Guard`). Áp dụng biên nhận tinh gọn (`Zero-Contention Receipt Manifest`) và tích hợp cuốn chiếu (`Progressive Streaming Integration`). Em giữ vai trò **Lead Integrator (Tác tử Trưởng & Tích hợp)** ghép nối diffs và bảo đảm hợp đồng kỹ thuật.
+  * **Tại `$test`**: Phân rã thành **Hội Đồng Kiểm Toán Đa Tác Tử (`Audit Commission Pod`)** gồm Logic Auditor, Visual & Accessibility Inspector (via CDP), và Adversarial Chaos Reviewer trên `Fresh Context`. Em giữ vai trò Lead Auditor tổng hợp sổ cái bằng chứng và ban hành phán quyết độc lập.
+* **Cơ chế Tăng Tốc Kịch Trần Turbo (`Turbo Hyper-Parallel Concurrency`)**:
+  * **Trần Công Suất Tối Đa**: Cho phép mở rộng tới **12 Subagents đồng thời**, **8 Thợ code (`Parallel Workers`)** và **6 Luồng ghi song song (`Parallel Writers`)**.
+  * **Bắn Đồng Loạt (`Simultaneous Batch Dispatch`)**: Khi kích hoạt subagents, gom toàn bộ vào một mảng duy nhất trong `invoke_subagent` để xuất phát đồng thời, giảm thiểu độ trễ chờ đợi.
+  * **Phân Tầng Não Bộ Thông Minh (`Smart Model Tiering`)**: Gán model `inherit` (Gemini 3.8 Flash High) cho Logic lõi & Kiểm toán độc lập (`Test Auditors`); model `flash` cho UI, Layout, Boilerplate; model `flash_lite` cho Quét file/Research để tối đa hóa tốc độ sinh mã.
 
 ---
 

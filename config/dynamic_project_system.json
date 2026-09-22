@@ -25,6 +25,7 @@
       },
       "independent_audit_commission": {
         "engine": "test",
+        "subagents": ["logic_regression_auditor", "visual_accessibility_inspector", "adversarial_chaos_reviewer"],
         "scope": "fresh_context_verification, evidence_ledger, adversarial_chaos"
       },
       "corporate_knowledge_vault": {
@@ -66,16 +67,24 @@
     }
   },
   "concurrency": {
-    "max_active_agents": 5,
-    "max_parallel_workers": 3,
-    "max_parallel_writers": 3,
+    "profile": "TURBO_HYPER_PARALLEL",
+    "max_active_agents": 12,
+    "max_parallel_workers": 8,
+    "max_parallel_writers": 6,
     "parallel_writers_invariants": {
       "independent_ownership": true,
       "defined_inputs_outputs": true,
       "no_shared_mutable_surface": true,
       "designated_integrator": true,
       "fallback_on_violation": "SINGLE_OWNER"
-    }
+    },
+    "smart_model_tiering": {
+      "core_logic_workers": "inherit",
+      "visual_ui_workers": "flash",
+      "test_auditors": "inherit",
+      "research_scanners": "flash_lite"
+    },
+    "batch_invocation_dispatch": true
   },
   "execution_topology": {
     "allowed": [
@@ -84,9 +93,10 @@
       "PARALLEL",
       "HYBRID",
       "TEAMWORK_POD",
-      "TEAMWORK_FULL_POD"
+      "TEAMWORK_FULL_POD",
+      "TURBO_HYPER_PARALLEL"
     ],
-    "default": "PARALLEL"
+    "default": "TURBO_HYPER_PARALLEL"
   },
   "loop_limits": {
     "max_planning_review_rounds": 2,

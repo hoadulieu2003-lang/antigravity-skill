@@ -28,11 +28,24 @@ When executing in `STANDARD` or `CRITICAL` mode:
 2. **Cấm Trượt Về Đơn Tác Tử (Zero Single-Agent Fallback)**:
    - Nghiêm cấm Lead Integrator tự gõ toàn bộ code trên một luồng chính duy nhất khi task có từ 2 file hoặc 2 tầng kiến trúc trở lên.
    - Bắt buộc phân chia `Work Packages (Gói công việc)` thành các ranh giới file/thư mục độc lập (`Isolated Ownership`), triệt tiêu rủi ro tranh chấp ghi mã nguồn (`Race Condition`).
-3. **Mô hình Phân Rã Worker Pods Song Song (`Parallel SWE Pods`)**:
-   - 🔹 **`Worker Pod 1 (Logic & Backend / Core Engine)`**: Được phân công riêng cho tầng dữ liệu, thuật toán, models, controllers, business rules.
-   - 🔹 **`Worker Pod 2 (Visual & Frontend / Interface)`**: Được phân công riêng cho tầng UI, layout components, CSS tokens, responsiveness, animations.
+3. **Mô hình Phân Rã Worker Pods Thích Ứng (`Domain-Adaptive Parallel SWE Pods`)**:
+   - 🌐 **Khung 1 — Dự Án Giao Diện / Fullstack (Có UI)**:
+     - 🔹 `Worker Pod 1 (Core Logic & Backend)`: Tầng dữ liệu, APIs, models, controllers, business rules.
+     - 🔹 `Worker Pod 2 (Visual & Frontend UI)`: Tầng UI, layout components, CSS tokens, responsiveness, animations.
+     - 🔹 `Worker Pod 3 (Developer Test Harness)`: Bộ test tích hợp, fixtures, component mocks.
+   - ⚡ **Khung 2 — Dự Án Dữ Liệu / Tính Toán / Không UI (`DESIGN_NONE` — Bung 8 Workers)**:
+     - 🔹 `Worker Pod 1 (Ingestion & Transport Layer)`: Thu nạp dữ liệu, streaming I/O, cache, chuẩn hóa đầu vào.
+     - 🔹 `Worker Pod 2 (Transformation & Compute Engine)`: Giải thuật lõi, tính toán toán học, trích xuất đặc trưng, xử lý mảng bộ nhớ tĩnh.
+     - 🔹 `Worker Pod 3 (Policy & Decision Engine)`: Đánh giá sự kiện, máy trạng thái (`State Machine`), logic ra quyết định nghiệp vụ.
+     - 🔹 `Worker Pod 4 (Safety, Persistence & Guard)`: Lưu trữ CSDL (atomic write), cơ chế ngắt mạch (`Circuit Breaker`), phòng chống thất thoát dữ liệu.
    - Hoặc điều phối trực tiếp tới cỗ máy gốc: `invoke_subagent(TypeName: "teamwork_preview", Prompt: payload)`.
-4. **Trách nhiệm Tác tử Trưởng (`Lead Integrator & Synthesis Gate`)**:
+4. **Giao Thức Biên Nhận Tinh Gọn (`Zero-Contention Receipt Manifest Protocol`)**:
+   - Cấm subagents dán toàn bộ code diffs và terminal logs dài dòng vào tin nhắn chat gửi về Lead Integrator.
+   - Mỗi subagent hoàn thành tự ghi một file biên nhận riêng: `.antigravity/receipts/wp_{id}.json` (gồm danh sách file tạo/sửa, exit code test, tóm tắt 2 dòng).
+   - Subagent chỉ gửi thông báo siêu nhẹ: `{"wp": "wp-id", "receipt": ".antigravity/receipts/wp_id.json"}`, cắt giảm **90% token rác** đổ về chat.
+5. **Tích Hợp Cuốn Chiếu Dòng Sự Kiện (`Progressive Streaming Integration`)**:
+   - Lead Integrator không đợi rào cản tập trung. Ngay khi nhận biên nhận từ Pod nào xong trước, tiến hành thẩm định diff và merge cuốn chiếu ngay module đó vào nhánh chính qua cơ chế Reactive Wakeup.
+6. **Trách nhiệm Tác tử Trưởng (`Lead Integrator & Synthesis Gate`)**:
    - Antigravity đứng ở vai trò Tác tử Trưởng: không tranh viết code chi tiết với Worker Pods, mà chịu trách nhiệm ghép nối (`Merge`), đồng bộ giao diện API, kiểm toán diff đối chiếu với Acceptance Criteria, thực thi Self-Verification và nộp kết quả minh bạch lên Anh.
 
 ---
