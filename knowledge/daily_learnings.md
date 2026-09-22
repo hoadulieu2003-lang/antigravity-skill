@@ -1368,3 +1368,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-22 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (65 ⭐)]** [Paseru/sinew](https://github.com/Paseru/sinew)
+  > Agentic IDE with custom harness
+- **[GitHub (79 ⭐)]** [jangtrinh/design-os-3d-blender](https://github.com/jangtrinh/design-os-3d-blender)
+  > AI agent operating system for Blender 5.2: bpy knowledge base, AGENT_OK execution contract, 3D-print production gate, worked keyboard and desktop-robot builds.
+
+</untrusted_external_content>
+
+---
