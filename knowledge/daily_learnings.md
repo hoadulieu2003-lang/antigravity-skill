@@ -1476,3 +1476,13 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-23 18:10:45`
+
+<untrusted_external_content>
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Learning 3D biophysical cell properties from 2D images and cell-population statistics](https://arxiv.org/abs/2609.22410)
+  > arXiv:2609.22410v1 Announce Type: new Abstract: Inferring 3D cellular properties from 2D microscopy is difficult when a reference instrument reports only pop...
+
+</untrusted_external_content>
+
+---
