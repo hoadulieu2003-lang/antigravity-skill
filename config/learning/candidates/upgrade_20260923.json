@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-09-23T07:42:42.189096+00:00",
+    "scan_date": "2026-09-23T10:42:13.966351+00:00",
     "cycle_id": "EVO-20260923",
-    "sessions_evaluated": 87,
-    "total_items_processed": 247,
+    "sessions_evaluated": 88,
+    "total_items_processed": 250,
     "active_skills_count": 61,
-    "candidates_count": 131,
-    "enhancements_count": 84,
+    "candidates_count": 133,
+    "enhancements_count": 85,
     "optimizations_count": 30
   },
   "new_skill_candidates": [
@@ -45,6 +45,18 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "首家工业级全流程 AI 影视生产平台。Industry-first professional AI Agent platform for controllable film & video production. From shorts to live-action with Hollywood-standard...",
       "suggested_skill_structure": "---\nname: waoowaoo\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng waooAI/waoowaoo cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# WAOOAI/WAOOWAOO SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `waooAI/waoowaoo` (https://github.com/waooAI/waoowaoo)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "ai-agent-book",
+      "title": "bojieli/ai-agent-book",
+      "source": "GitHub (50275 ⭐)",
+      "url": "https://github.com/bojieli/ai-agent-book",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 105,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "《深入理解 AI Agent：设计原理与工程实践》（李博杰 著）开源主仓库：全书正文、编译版 PDF 与按章配套代码",
+      "suggested_skill_structure": "---\nname: ai-agent-book\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng bojieli/ai-agent-book cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# BOJIELI/AI-AGENT-BOOK SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `bojieli/ai-agent-book` (https://github.com/bojieli/ai-agent-book)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
       "skill_slug": "presenton",
@@ -141,18 +153,6 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "Free4Chat provides the temporary boundary. Participants bring the capabilities.",
       "suggested_skill_structure": "---\nname: free4chat\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng i365dev/free4chat cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# I365DEV/FREE4CHAT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `i365dev/free4chat` (https://github.com/i365dev/free4chat)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
-      "skill_slug": "monkeycode",
-      "title": "chaitin/MonkeyCode",
-      "source": "GitHub (4735 ⭐)",
-      "url": "https://github.com/chaitin/MonkeyCode",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 90,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "AI coding platform for teams",
-      "suggested_skill_structure": "---\nname: monkeycode\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng chaitin/MonkeyCode cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# CHAITIN/MONKEYCODE SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `chaitin/MonkeyCode` (https://github.com/chaitin/MonkeyCode)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [

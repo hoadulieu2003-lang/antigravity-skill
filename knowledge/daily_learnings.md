@@ -1460,3 +1460,19 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-23 17:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (50275 ⭐)]** [bojieli/ai-agent-book](https://github.com/bojieli/ai-agent-book)
+  > 《深入理解 AI Agent：设计原理与工程实践》（李博杰 著）开源主仓库：全书正文、编译版 PDF 与按章配套代码
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [PAANI : On Device Visual Evidence Fusion and Explainable Guidance for River Robot Simulation](https://arxiv.org/abs/2609.22353)
+  > arXiv:2609.22353v1 Announce Type: new Abstract: Mobile river monitoring robots must interpret obstacles and water boundaries that geographic waypoints alone ...
+- **[ArXiv CS.AI]** [Social Influence and the Allocation of Scientific Attention in AI Populations](https://arxiv.org/abs/2609.22408)
+  > arXiv:2609.22408v1 Announce Type: new Abstract: AI systems are becoming participants in the evaluation and use of scientific research. They encounter citatio...
+
+</untrusted_external_content>
+
+---
