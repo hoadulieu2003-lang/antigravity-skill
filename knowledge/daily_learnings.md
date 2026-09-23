@@ -1430,3 +1430,13 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-23 08:43:04`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (3357 ⭐)]** [fuxicodex/Fuxi](https://github.com/fuxicodex/Fuxi)
+  > FuXi is a fast, self-contained AI coding agent that lives in your terminal — edit code, run commands, and drive tools, with cost-aware routing across LLM pro...
+
+</untrusted_external_content>
+
+---
