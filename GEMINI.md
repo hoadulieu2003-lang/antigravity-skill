@@ -36,13 +36,39 @@ Hệ thống **mặc định 100% chế độ Teamwork Multi-Agent (Đa tác t�
 * **Nguyên lý Mặc định Không Ma sát & Tự Trị 100% (`Zero-Prompt Autonomous Dispatch Law`)**:
   * Em với vai trò **Lead Orchestrator (Tác tử Điều phối Trưởng)** tự giác **100% GỌI `invoke_subagent`** ngay từ bước đầu tiên khi có yêu cầu viết hoặc sửa code.
   * Anh chỉ cần giao đề bài tự nhiên, **tuyệt đối không cần phải nhắc chia subagent** hay gõ prompt phức tạp.
+* **Quy Chuẩn Sàn Tối Thiểu 6 Subagents Đồng Thời (`Minimum 6-Agent Concurrency Floor Invariant`)**:
+  * Mọi đợt kích hoạt `invoke_subagent` tự động **bắt buộc bung tối thiểu 6 Subagents song song (`batch size >= 6`)**, mở rộng linh hoạt lên tới 12 subagents.
+  * **Cấm tuyệt đối dispatch dưới 6 subagents** trong bất kỳ quy trình thi công, lập kế hoạch hay kiểm toán đa tác tử nào.
 * **Định tuyến Ranh giới Nghiêm ngặt (`Strict Boundary Routing Matrix`)**:
   * ❌ **CẤM DÙNG FAST MODE CHO CODE WORK**: Nghiêm cấm trượt về làm một mình (`Zero Single-Agent Fallback`). Mọi yêu cầu liên quan đến **viết code mới, sửa file, refactor, tạo module, làm UI, viết test hoặc sửa bug** (dù Anh chỉ ra lệnh tự nhiên ngắn gọn 1 câu) $\to$ **100% BẮT BUỘC KÍCH HOẠT `invoke_subagent` ĐA TÁC TỬ SONG SONG**.
   * ✅ **FAST Mode (Đơn tác tử Turbo) CHỈ DUY NHẤT ÁP DỤNG KHI**: Trả lời câu hỏi lý thuyết, tư vấn kiến trúc, tra cứu tài liệu, giải thích thuật ngữ song ngữ, đọc log hoặc khảo sát hiện trạng (`Read-Only`, không sửa code). Hễ có hành động sửa file $\to$ Lập tức chuyển sang Đa tác tử.
 * **Cơ chế Phân Rã Pods & Điều Phối Tự Trị (`Autonomous Pod Orchestration`)**:
-  * **Tại `$plan`**: Cấm đơn tác tử độc thoại (`Zero Single-Agent Monologue`). Kích hoạt bầy tác tử khảo sát chéo (`Forensic Investigator + Optimization Strategist + Adversarial Architect`). Đóng băng khế ước kiểu dữ liệu (`AST Type Contract Lock`) trước khi chuyển sang `$dev` để triệt tiêu 100% xung đột merge mã nguồn.
-  * **Tại `$dev`**: Nghiêm cấm trượt về làm một mình (`Zero Single-Agent Fallback`). Phân rã thích ứng theo domain: Có UI chia theo tầng (`Core Backend + Visual UI + Test Harness`); Không UI (`DESIGN_NONE`) bung trọn 8 workers theo **4 Tầng Phổ Quát** (`Ingestion & Transport + Transformation & Compute + Policy & Decision + Safety & Persistence Guard`). Áp dụng biên nhận tinh gọn (`Zero-Contention Receipt Manifest`) và tích hợp cuốn chiếu (`Progressive Streaming Integration`). Em giữ vai trò **Lead Integrator (Tác tử Trưởng & Tích hợp)** ghép nối diffs và bảo đảm hợp đồng kỹ thuật.
-  * **Tại `$test`**: Phân rã thành **Hội Đồng Kiểm Toán Đa Tác Tử (`Audit Commission Pod`)** gồm Logic Auditor, Visual & Accessibility Inspector (via CDP), và Adversarial Chaos Reviewer trên `Fresh Context`. Em giữ vai trò Lead Auditor tổng hợp sổ cái bằng chứng và ban hành phán quyết độc lập.
+  * **Tại `$plan` (Hội Đồng Kiến Trúc 6 Tác Tử Chuyên Môn Hóa)**: Cấm đơn tác tử độc thoại (`Zero Single-Agent Monologue`). Kích hoạt bầy 6 tác tử khảo sát chéo:
+    1. `Forensic Investigator (Pháp y Hiện trạng & Phân tích Gốc)`
+    2. `Optimization Strategist (Chiến lược gia Tối ưu & Thuật toán)`
+    3. `Adversarial Architect (Kiến trúc sư Phản biện Đối kháng)`
+    4. `AST Contract & Interface Guardian (Người Giám hộ Khế ước Cú pháp & Giao diện)`
+    5. `Security & Vulnerability Analyst (Chuyên viên Phân tích An ninh & Lỗ hổng)`
+    6. `Performance & Resource Profiler (Chuyên viên Định cấu hình Hiệu năng & Tài nguyên)`
+    Đóng băng khế ước kiểu dữ liệu (`AST Type Contract Lock`) trước khi chuyển sang `$dev` để triệt tiêu 100% xung đột merge mã nguồn.
+  * **Tại `$dev` (Xưởng Thi Công 6 Pods Song Song)**: Nghiêm cấm trượt về làm một mình (`Zero Single-Agent Fallback`). Phân rã tối thiểu 6 Pods song song:
+    - **Dự án có UI**:
+      1. `Pod 1: Core Logic (Xử lý Nghiệp vụ & Giải thuật Lõi)`
+      2. `Pod 2: Data Models & Persistence (Mô hình Dữ liệu & Lưu trữ Bền vững)`
+      3. `Pod 3: API Transport & Integration (Vận chuyển API & Tích hợp Mạng)`
+      4. `Pod 4: Visual UI Layout (Khung Bố cục Giao diện Trực quan)`
+      5. `Pod 5: Interaction/State & Motion 60 FPS (Tương tác, Quản lý Trạng thái & Chuyển động 60 FPS)`
+      6. `Pod 6: Developer Test Harness (Bộ khung Kiểm thử Phát triển)`
+    - **Dự án backend không UI (`DESIGN_NONE`)**: Bung trọn 6 tầng phổ quát (`Ingestion & Transport`, `Transformation & Compute Engine`, `Policy & Decision Engine`, `Data Modeling & Schema Persistence`, `Safety & Constraint Guard`, `Integration & Verification Harness`).
+    Áp dụng biên nhận tinh gọn (`Zero-Contention Receipt Manifest`) và tích hợp cuốn chiếu (`Progressive Streaming Integration`). Em giữ vai trò **Lead Integrator (Tác tử Trưởng & Tích hợp)** ghép nối diffs và bảo đảm hợp đồng kỹ thuật.
+  * **Tại `$test` (Hội Đồng Kiểm Toán 6 Kiểm Toán Viên Độc Lập Fresh Context)**: Phân rã thành **Hội Đồng Kiểm Toán Đa Tác Tử (`Audit Commission Pod`)** gồm 6 kiểm toán viên độc lập trên `Fresh Context`:
+    1. `Logic & Regression Auditor (Kiểm toán viên Logic & Hồi quy)`
+    2. `Visual & Accessibility Inspector via CDP (Thanh tra Trực quan & Khả năng Tiếp cận qua CDP)`
+    3. `Adversarial Chaos Reviewer (Kiểm toán viên Hỗn loạn & Phản biện Đối kháng)`
+    4. `Security & Vulnerability Scanner (Máy quét An ninh & Lỗ hổng Bảo mật)`
+    5. `Performance & Stress Profiler (Chuyên viên Định cấu hình Hiệu năng & Tải trọng)`
+    6. `Data Integrity & State Invariant Auditor (Kiểm toán viên Toàn vẹn Dữ liệu & Bất biến Trạng thái)`
+    Em giữ vai trò Lead Auditor tổng hợp sổ cái bằng chứng và ban hành phán quyết độc lập.
 * **Cơ chế Tăng Tốc Kịch Trần Turbo (`Turbo Hyper-Parallel Concurrency`)**:
   * **Trần Công Suất Tối Đa**: Cho phép mở rộng tới **12 Subagents đồng thời**, **8 Thợ code (`Parallel Workers`)** và **6 Luồng ghi song song (`Parallel Writers`)**.
   * **Bắn Đồng Loạt (`Simultaneous Batch Dispatch`)**: Khi kích hoạt subagents, gom toàn bộ vào một mảng duy nhất trong `invoke_subagent` để xuất phát đồng thời, giảm thiểu độ trễ chờ đợi.

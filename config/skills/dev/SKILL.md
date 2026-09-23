@@ -29,15 +29,23 @@ When executing:
    - Nghiêm cấm Lead Integrator tự mình viết toàn bộ code từ đầu đến cuối mà không dispatch subagents song song.
    - Bắt buộc phân chia `Work Packages (Gói công việc)` thành các ranh giới file/thư mục độc lập (`Isolated Ownership`), triệt tiêu rủi ro tranh chấp ghi mã nguồn (`Race Condition`).
 3. **Mô hình Phân Rã Worker Pods Thích Ứng (`Domain-Adaptive Parallel SWE Pods`)**:
-   - 🌐 **Khung 1 — Dự Án Giao Diện / Fullstack (Có UI)**:
-     - 🔹 `Worker Pod 1 (Core Logic & Backend)`: Tầng dữ liệu, APIs, models, controllers, business rules.
-     - 🔹 `Worker Pod 2 (Visual & Frontend UI)`: Tầng UI, layout components, CSS tokens, responsiveness, animations.
-     - 🔹 `Worker Pod 3 (Developer Test Harness)`: Bộ test tích hợp, fixtures, component mocks.
-   - ⚡ **Khung 2 — Dự Án Dữ Liệu / Tính Toán / Không UI (`DESIGN_NONE` — Bung 8 Workers)**:
-     - 🔹 `Worker Pod 1 (Ingestion & Transport Layer)`: Thu nạp dữ liệu, streaming I/O, cache, chuẩn hóa đầu vào.
-     - 🔹 `Worker Pod 2 (Transformation & Compute Engine)`: Giải thuật lõi, tính toán toán học, trích xuất đặc trưng, xử lý mảng bộ nhớ tĩnh.
-     - 🔹 `Worker Pod 3 (Policy & Decision Engine)`: Đánh giá sự kiện, máy trạng thái (`State Machine`), logic ra quyết định nghiệp vụ.
-     - 🔹 `Worker Pod 4 (Safety, Persistence & Guard)`: Lưu trữ CSDL (atomic write), cơ chế ngắt mạch (`Circuit Breaker`), phòng chống thất thoát dữ liệu.
+   - 🚨 **Quy Tắc Sàn Tối Thiểu 6 Subagents Song Song (`Floor Minimum Batch Size >= 6 Invariant`)**:
+     - Khi kích hoạt phân rã thi công mã nguồn, Lead Integrator **bắt buộc khởi tạo sàn tối thiểu 6 subagents đồng thời (`batch size >= 6`)** trong một lệnh gọi `invoke_subagent` duy nhất (`Simultaneous Batch Dispatch`).
+     - Tuyệt đối cấm dispatch tuần tự hoặc cắt giảm dưới 6 workers; đảm bảo tải trọng thi công song song kịch trần (`Hyper-Parallel Concurrency`).
+   - 🌐 **Khung 1 — Dự Án Giao Diện / Fullstack Có UI (Tối thiểu 6 Workers song song)**:
+     - 🔹 `Worker Pod 1 (Core Logic & Domain Engine)`: Thực thể nghiệp vụ (`Domain Entities`), business rules lõi, thuật toán ứng dụng, controller & logic xử lý trung tâm.
+     - 🔹 `Worker Pod 2 (Data Models & Persistence Layer)`: Schemas, ORM/DB queries, migrations, repository layer, cache và quản lý lưu trữ dữ liệu bền vững.
+     - 🔹 `Worker Pod 3 (API Transport & Integration Gateway)`: REST/GraphQL/WebSocket endpoints, client SDKs, serialization/deserialization, auth middlewares và tích hợp dịch vụ ngoài.
+     - 🔹 `Worker Pod 4 (Visual UI & Layout Structure - Light Theme)`: Cấu trúc component, semantic HTML, layout lưới/flex, token màu sáng mặc định (`Light Theme Invariant`), responsiveness đa kích thước màn hình.
+     - 🔹 `Worker Pod 5 (Interaction, State & Motion 60 FPS)`: Quản lý trạng thái client (`State Management`), form validation, micro-interactions, chuyển động GSAP/CSS mượt mà 60 FPS, âm thanh/haptics.
+     - 🔹 `Worker Pod 6 (Developer Test & Verification Harness)`: Unit tests, integration tests, mock data/fixtures, browser test automation và kịch bản tự kiểm chứng (`Self-Verification`).
+   - ⚡ **Khung 2 — Dự Án Dữ Liệu / Tính Toán / Không UI (`DESIGN_NONE` — 6 Tầng Phổ Quát Tương Ứng)**:
+     - 🔹 `Worker Pod 1 (Ingestion & Transport Layer)`: Thu nạp dữ liệu đa nguồn, streaming I/O, connection pools, network protocols, bộ đệm buffer & cache sơ cấp.
+     - 🔹 `Worker Pod 2 (Parsing, Validation & Schema Contract)`: Giải mã giao thức, thẩm định cấu trúc schema (`Contract Enforcement`), dữ liệu khử trùng/sanitization và kiểm soát kiểu dữ liệu đầu vào.
+     - 🔹 `Worker Pod 3 (Transformation & Compute Engine)`: Giải thuật lõi, xử lý số học/vector, trích xuất đặc trưng, tối ưu hóa bộ nhớ tĩnh và hiệu năng tính toán toán học.
+     - 🔹 `Worker Pod 4 (Policy & Decision Engine)`: Máy trạng thái (`State Machine`), engine quy tắc nghiệp vụ, đánh giá luồng sự kiện (`Event Dispatcher`) và logic phân nhánh quyết định.
+     - 🔹 `Worker Pod 5 (Safety, Persistence & Guard)`: Lưu trữ CSDL (atomic write, write-ahead log), cơ chế ngắt mạch (`Circuit Breaker`), phòng chống thất thoát dữ liệu và tự phục hồi khi có sự cố.
+     - 🔹 `Worker Pod 6 (Telemetry, Harness & Verification Suite)`: Đo lường hiệu năng (`Throughput/Latency Metrics`), profiling, audit logging, test harness và kiểm thử hồi quy kịch bản tải/biên.
    - Hoặc điều phối trực tiếp tới cỗ máy gốc: `invoke_subagent(TypeName: "teamwork_preview", Prompt: payload)`.
 4. **Giao Thức Biên Nhận Tinh Gọn (`Zero-Contention Receipt Manifest Protocol`)**:
    - Cấm subagents dán toàn bộ code diffs và terminal logs dài dòng vào tin nhắn chat gửi về Lead Integrator.

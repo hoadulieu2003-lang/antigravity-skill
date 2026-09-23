@@ -68,7 +68,9 @@
   },
   "concurrency": {
     "profile": "TURBO_HYPER_PARALLEL",
+    "min_active_agents": 6,
     "max_active_agents": 12,
+    "default_batch_size": 6,
     "max_parallel_workers": 8,
     "max_parallel_writers": 6,
     "parallel_writers_invariants": {

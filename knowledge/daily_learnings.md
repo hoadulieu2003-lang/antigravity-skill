@@ -1486,3 +1486,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-23 20:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1164 ⭐)]** [xuzhougeng/wisp-science](https://github.com/xuzhougeng/wisp-science)
+  > Open-source, local-first desktop AI research workbench for scientific computing with Python/R, MCP bioinformatics tools, SSH/WSL/GPU runtimes, and OpenAI/Ant...
+- **[GitHub (279 ⭐)]** [zenolab124/monet](https://github.com/zenolab124/monet)
+  > Monet — Multi-engine mission control for coding agents (Claude Code and Codex today). Browse, search, and drive your agent sessions from a native desktop app.
+
+</untrusted_external_content>
+
+---

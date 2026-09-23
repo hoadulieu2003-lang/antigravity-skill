@@ -58,16 +58,20 @@ Mọi bậc thang không chạy bắt buộc phải ghi rõ lý do trong `omitte
 
 Nhằm loại bỏ hoàn toàn thiên kiến xác nhận (`Confirmation Bias`) và phân rã khối lượng kiểm thử chuyên biệt, `$test` vận hành theo cấu trúc **Hội Đồng Kiểm Toán Đa Tác Tử (`Audit Commission Pod`)**:
 * **Cơ chế Phân Rã Chuyên Môn Hóa (`Specialized Auditor Subagents`)**:
-  - 🛡️ **`Subagent 1 — Logic & Regression Auditor`**: Khởi chạy với `Fresh Context` (chỉ nạp diff, AC và test suite). Chuyên trách L1, L2, L3: kiểm tra unit test, contract API, rà soát điều kiện biên (`Edge Cases`) và nguy cơ tranh đua dữ liệu (`Race Conditions`).
-  - 👁️ **`Subagent 2 — Visual & Accessibility Inspector`**: Chuyên trách L6: tự động tương tác qua Chrome CDP, chụp ảnh màn hình, đối chiếu kiểm tra tương phản `WCAG AA`, kiểm tra layout vỡ trên đa thiết bị (`Responsive Breakpoints`) và kiểm chứng độ mượt 60 FPS.
-  - 💥 **`Subagent 3 — Adversarial Chaos Reviewer`**: Chuyên trách L7: đóng vai hacker và người dùng khắc nghiệt, bơm dữ liệu rác, giả lập rớt mạng, kiểm tra khả năng bắt lỗi và tự phục hồi (`Self-Healing / Circuit Breaker`).
+  - 🛡️ **`Subagent 1 — Logic & Regression Auditor`**: Khởi chạy với `Fresh Context` (chỉ nạp diff, AC và test suite). Chuyên trách L1, L2, L3 (Kiểm toán Logic & Hồi quy): kiểm tra unit test, contract API, rà soát điều kiện biên (`Edge Cases`) và nguy cơ tranh đua dữ liệu (`Race Conditions`).
+  - 👁️ **`Subagent 2 — Visual & Accessibility Inspector`**: Chuyên trách L6 (Thanh tra Giao diện, Trợ năng WCAG AA & 60 FPS via Chrome CDP): tự động tương tác qua Chrome CDP, chụp ảnh màn hình, đối chiếu kiểm tra tương phản `WCAG AA`, kiểm tra layout vỡ trên đa thiết bị (`Responsive Breakpoints`) và kiểm chứng độ mượt 60 FPS.
+  - 💥 **`Subagent 3 — Adversarial Chaos Reviewer`**: Chuyên trách L7 (Thẩm định Viên Đối kháng & Bơm lỗi Hỗn loạn): đóng vai hacker và người dùng khắc nghiệt, bơm dữ liệu rác, giả lập rớt mạng, kiểm tra khả năng bắt lỗi và tự phục hồi (`Self-Healing / Circuit Breaker`).
+  - 🔒 **`Subagent 4 — Security & Vulnerability Scanner`**: Chuyên trách L5 (Rà soát Lỗ hổng & Kiểm toán Quyền truy cập): quét mã độc hại, lỗ hổng injection, kiểm tra quyền truy cập (RBAC/ABAC), rò rỉ bí mật/token credentials và tuân thủ nguyên tắc đặc quyền tối thiểu (`Least Privilege`).
+  - ⚡ **`Subagent 5 — Performance & Stress Profiler`**: Chuyên trách L6 (Đo kiểm Độ trễ, Tải trọng & Áp lực Bộ nhớ): đo kiểm độ trễ p95/p99, thông lượng (`Throughput`), rò rỉ bộ nhớ (`Memory Leak`), profiling CPU và hành vi hệ thống dưới áp lực tải cao.
+  - 🏛️ **`Subagent 6 — Data Integrity & State Invariant Auditor`**: Chuyên trách L5 (Kiểm chứng Toàn vẹn Dữ liệu & Bất biến Nghiệp vụ): kiểm toán tính nhất quán dữ liệu, chuyển dịch trạng thái (`State Transitions`), ranh giới giao dịch (`Transaction Boundaries`), cơ chế rollback dữ liệu và bất biến nghiệp vụ.
+* **Quy Tắc Sàn Tối Thiểu 6 Subagents Per Batch (`Minimum 6 Subagents Floor Invariant`)**:
+  - **Khóa Cứng Sàn Tối Thiểu**: Mọi phiên kiểm thử `$test` bắt buộc kích hoạt sàn tối thiểu **6 Subagents độc lập có `Fresh Context`** được bắn đồng loạt trong một lệnh `invoke_subagent` duy nhất (`Simultaneous Batch Dispatch`), đảm bảo không bỏ sót bất kỳ bề mặt rủi ro nào.
 * **Trách nhiệm Tác tử Trưởng Kiểm Toán (`Lead Audit Commissioner — Antigravity`)**:
   - Điều phối bầy subagents kiểm thử qua `invoke_subagent`.
   - Tổng hợp toàn bộ `test_evidence` và các `findings` từ các kiểm thử viên chuyên biệt vào Sổ Cái Bằng Chứng (`Evidence Ledger`).
   - Ban hành Phán Quyết Độc Lập Cuối Cùng (`Independent Verdict`) trình lên Anh (Product Owner).
 * **Mặc định Thực Thi (`Execution Default`)**:
-  - Task `STANDARD` trở lên: Bắt buộc kích hoạt tối thiểu 2 subagents kiểm toán độc lập có `Fresh Context`.
-  - Task `FAST`: Lead Auditor thực hiện kiểm thử hẹp trực tiếp theo cấu hình `TARGETED`.
+  - Bắt buộc kích hoạt toàn bộ Hội Đồng Kiểm Toán (tối thiểu 6 subagents độc lập với `Fresh Context`) theo batch xuất phát đồng loạt.
 
 ---
 

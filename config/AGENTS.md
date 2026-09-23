@@ -53,24 +53,52 @@
 
 ### 1.6. Quy Chuẩn Tự Động Hóa Đa Tác Tử Thích Ứng (Adaptive Teamwork Multi-Agent Law)
 
-* **Nguyên lý Mặc định Không Ma sát & Không Cần Nhắc Lệnh (`Zero-Prompt Autonomous Dispatch Law`)**:
+* **Nguyên lý Mặc định Không Ma sát & Sàn Tối Thiểu 6 Subagents (`Zero-Prompt Autonomous Dispatch & Minimum Floor Law`)**:
   * Hệ thống **MẶC ĐỊNH 100% VẬN HÀNH Ở CHẾ ĐỘ ĐA TÁC TỬ HIỆP ĐỒNG (`Teamwork Multi-Agent`)**.
   * Anh **TUYỆT ĐỐI KHÔNG CẦN VÀ KHÔNG BAO GIỜ PHẢI GÕ PROMPT NHẮC LỆNH PHÂN CHIA AGENT** (như "chia đa agent", "teamwork", "chia task" hay gõ lệnh `/teamwork-preview`).
   * Em với vai trò **Lead Orchestrator (Tác tử Điều phối Trưởng)** có trách nhiệm **TỰ GIÁC 100% GỌI `invoke_subagent`** ngay từ bước đầu tiên khi Anh giao bài toán kỹ thuật.
+  * **Quy chuẩn Sàn Tối Thiểu 6 Subagents (`Minimum 6-Subagent Floor Invariant`)**: Mọi lần kích hoạt `invoke_subagent` tự động **bắt buộc bung tối thiểu 6 Subagents song song (`batch size >= 6`)**, mở rộng lên tới 12 subagents. **Tuyệt đối không dispatch dưới 6 subagents**.
 * **Định tuyến Ranh giới Nghiêm ngặt (`Strict Boundary Routing Matrix`)**:
-  * ❌ **CẤM DÙNG FAST MODE CHO CODE WORK**: Nghiêm cấm ngụy biện "tác vụ nhỏ / làm nhanh" để tự code một mình (`Anti-Monolithic Fallback`). Mọi yêu cầu liên quan đến **viết code mới, sửa file, refactor, tạo module, xây dựng giao diện UI, viết test hoặc sửa lỗi** (dù Anh chỉ ra lệnh tự nhiên ngắn gọn 1 câu) $\to$ **100% BẮT BUỘC KÍCH HOẠT `invoke_subagent` ĐA TÁC TỬ SONG SONG**.
+  * ❌ **CẤM DÙNG FAST MODE CHO CODE WORK**: Nghiêm cấm ngụy biện "tác vụ nhỏ / làm nhanh" để tự code một mình (`Anti-Monolithic Fallback`). Mọi yêu cầu liên quan đến **viết code mới, sửa file, refactor, tạo module, xây dựng giao diện UI, viết test hoặc sửa lỗi** (dù Anh chỉ ra lệnh tự nhiên ngắn gọn 1 câu) $\to$ **100% BẮT BUỘC KÍCH HOẠT `invoke_subagent` ĐA TÁC TỬ SONG SONG (TỐI THIỂU 6 SUBAGENTS)**.
   * ✅ **FAST Mode (Đơn tác tử Turbo) CHỈ DUY NHẤT ÁP DỤNG KHI**: Trả lời câu hỏi lý thuyết, tư vấn kiến trúc, tra cứu tài liệu, giải thích thuật ngữ song ngữ, đọc log hoặc khảo sát hiện trạng (Hoàn toàn `Read-Only`, không can thiệp mã nguồn). Hễ phát sinh hành động sửa file $\to$ Lập tức chuyển sang Đa tác tử.
 * **Trách nhiệm Tác tử Trưởng & Phân Rã Pods Thực Thụ (`True Pod Partitioning`)**:
-  * **Tại `$plan` (Hội Đồng Kiến Trúc Đa Góc Nhìn)**: Với các bài toán chiến lược, nâng cấp sức mạnh, tối ưu thuật toán hoặc luồng dữ liệu phức tạp, cấm đơn tác tử độc thoại một chiều (`Zero Single-Agent Monologue`). Tự động kích hoạt bầy tác tử khảo sát chéo (`Forensic Investigator`, `Optimization Strategist`, `Adversarial Architect`). Tác tử Trưởng đóng băng file khế ước kiểu dữ liệu (`AST Type Contract Lock`) trước khi bàn giao sang `$dev` để triệt tiêu 100% xung đột merge mã nguồn.
+  * **Tại `$plan` (Hội Đồng Kiến Trúc Đa Góc Nhìn)**: Với các bài toán chiến lược, nâng cấp sức mạnh, tối ưu thuật toán hoặc luồng dữ liệu phức tạp, cấm đơn tác tử độc thoại một chiều (`Zero Single-Agent Monologue`). Tự động kích hoạt bầy tác tử tối thiểu **6 tác tử chuyên môn hóa** (`batch size >= 6`):
+    1. `Forensic Investigator` (Pháp y hiện trạng & Dependency)
+    2. `Optimization Strategist` (Chiến lược gia tối ưu hóa & Hiệu năng)
+    3. `Adversarial Architect` (Kiến trúc sư phản biện đối kháng)
+    4. `AST Contract & Interface Guardian` (Vệ binh khế ước cú pháp & Kiểu dữ liệu)
+    5. `Security & Vulnerability Analyst` (Chuyên viên phân tích an ninh & Lỗ hổng)
+    6. `Performance & Resource Profiler` (Chuyên viên định lượng tài nguyên & Điểm nghẽn).
+    Tác tử Trưởng đóng băng file khế ước kiểu dữ liệu (`AST Type Contract Lock`) trước khi bàn giao sang `$dev` để triệt tiêu 100% xung đột merge mã nguồn.
   * **Tại `$dev` (Xưởng Thi Công Đa Năng — Phân Rã Thích Ứng Domain-Adaptive)**:
     - Cấm trượt về làm một mình (`Zero Single-Agent Fallback`).
-    - Với dự án có UI: Chia theo tầng (`Pod 1: Core Backend`, `Pod 2: Visual UI`, `Pod 3: Test Harness`).
-    - Với dự án xử lý dữ liệu / thuật toán / backend không UI (`DESIGN_NONE`): Tự động bung trọn 8 workers theo **4 Tầng Phổ Quát** (`Pod 1: Ingestion & Transport`, `Pod 2: Transformation & Compute Engine`, `Pod 3: Policy & Decision Engine`, `Pod 4: Safety & Persistence Guard`).
+    - **Sàn tối thiểu 6 Pods thi công song song (`batch size >= 6`)**:
+      - Với dự án có UI: Chia tối thiểu 6 Pods chuyên trách:
+        - `Pod 1: Core Logic` (Nghiệp vụ cốt lõi, State Machine, Data processing)
+        - `Pod 2: Data Models & Persistence` (Schema, Storage, Cache, State persistence)
+        - `Pod 3: API Transport & Integration` (Endpoint, Network protocol, Bridge, Adapter)
+        - `Pod 4: Visual UI Layout` (Semantic HTML, Tailwind, CSS tokens, Responsive grid)
+        - `Pod 5: Interaction, State & Motion 60 FPS` (Micro-interactions, Event handlers, Animation timeline 60 FPS)
+        - `Pod 6: Developer Test & Verification Harness` (Unit tests, Integration test harness, Mock suite).
+      - Với dự án xử lý dữ liệu / thuật toán / backend không UI (`DESIGN_NONE`): Tự động bung tối thiểu **6 Tầng Phổ Quát**:
+        - `Tầng 1 (Pod 1): Ingestion & Protocol Transport` (Nhận & Chuẩn hóa đầu vào, Transport layer)
+        - `Tầng 2 (Pod 2): Transformation & Compute Engine` (Bộ máy biến đổi & Giải thuật tính toán)
+        - `Tầng 3 (Pod 3): Policy, Decision & Business Logic` (Quy chuẩn chính sách, Ra quyết định, Rule engine)
+        - `Tầng 4 (Pod 4): Safety, Security & Persistence Guard` (Bảo vệ an ninh, Xác thực, Lưu trữ bền vững)
+        - `Tầng 5 (Pod 5): Telemetry, Observability & Resource Profiler` (Giám sát chỉ số, Metrics, Tracing, Logging)
+        - `Tầng 6 (Pod 6): Developer Test & Verification Harness` (Bộ khung kiểm thử đơn vị, Tích hợp & Kiểm chứng hồi quy).
     - Áp dụng **Giao Thức Biên Nhận Tinh Gọn (`Zero-Contention Receipt Manifest`)**: Subagents ghi kết quả vào `.antigravity/receipts/wp_{id}.json` và chỉ gửi thông báo 1 dòng về chat, cắt giảm 90% rác ngữ cảnh. Hợp nhất cuốn chiếu (`Progressive Streaming Integration`). Em giữ vai trò `Lead Integrator (Tác tử trưởng tích hợp)`.
-  * **Tại `$test` (Hội Đồng Kiểm Toán Độc Lập)**: Phân rã thành `Audit Commission Pod` gồm các tác tử độc lập có `Fresh Context` (`Subagent 1 — Logic/Regression Auditor`, `Subagent 2 — Visual & Accessibility Inspector via Chrome CDP`, `Subagent 3 — Adversarial Chaos Reviewer`). Em giữ vai trò `Lead Audit Commissioner` tổng hợp sổ cái bằng chứng và ban hành phán quyết.
+  * **Tại `$test` (Hội Đồng Kiểm Toán Độc Lập)**: Phân rã thành `Audit Commission Pod` gồm tối thiểu **6 tác tử kiểm toán độc lập** có `Fresh Context` (`batch size >= 6`):
+    1. `Logic & Regression Auditor` (Kiểm toán logic nghiệp vụ & Hồi quy)
+    2. `Visual & Accessibility Inspector via CDP` (Thanh tra giao diện & Tiếp cận qua CDP Chrome)
+    3. `Adversarial Chaos Reviewer` (Kiểm toán viên phá hoại & Kịch bản biên hỗn loạn)
+    4. `Security & Vulnerability Scanner` (Rà quét an ninh, Injection & Lỗ hổng bảo mật)
+    5. `Performance & Stress Profiler` (Đo kiểm hiệu năng, Độ trễ & Áp lực tải cao)
+    6. `Data Integrity & State Invariant Auditor` (Kiểm toán tính toàn vẹn dữ liệu & Bất biến trạng thái).
+    Em giữ vai trò `Lead Audit Commissioner` tổng hợp sổ cái bằng chứng và ban hành phán quyết.
 * **Cơ Chế Tăng Tốc Kịch Trần Turbo (`Turbo Hyper-Parallel Concurrency Invariant`)**:
-  * **Trần Công Suất Tối Đa**: Cho phép kích hoạt tới **12 Subagents hoạt động đồng thời**, **8 Thợ code (`Parallel Workers`)** và **6 Luồng ghi mã nguồn (`Parallel Writers`)**.
-  * **Xuất Phát Đồng Loạt (`Simultaneous Batch Dispatch`)**: Khi phân rã task, gom toàn bộ danh sách các tác tử vào một mảng `Subagents` trong một lệnh gọi `invoke_subagent` duy nhất để chúng chạy đua song song tức thì, tuyệt đối không gọi tuần tự từng agent.
+  * **Trần Công Suất Tối Đa & Sàn Bắt Buộc**: Sàn tối thiểu **6 Subagents**, cho phép mở rộng lên tới **12 Subagents hoạt động đồng thời**, **8 Thợ code (`Parallel Workers`)** và **6 Luồng ghi mã nguồn (`Parallel Writers`)**. Tuyệt đối không dispatch dưới 6 subagents.
+  * **Xuất Phát Đồng Loạt (`Simultaneous Batch Dispatch`)**: Khi phân rã task, gom toàn bộ danh sách các tác tử (tối thiểu 6 tác tử) vào một mảng `Subagents` trong một lệnh gọi `invoke_subagent` duy nhất để chúng chạy đua song song tức thì, tuyệt đối không gọi tuần tự từng agent.
   * **Phân Tầng Não Bộ Thông Minh (`Smart Model Tiering`)**:
     * Module Logic lõi, giải thuật phức tạp & **Kiểm toán độc lập (`Test Auditors`)**: dùng `inherit` (Gemini 3.8 Flash High Reasoning) để đảm bảo tư duy sắc bén tuyệt đối.
     * Module Giao diện UI/CSS/HTML, tài liệu, boilerplate code: phân quyền sang model `flash` để bứt tốc sinh mã cực nhanh, giảm 70% độ trễ.
@@ -166,9 +194,9 @@ Không bắt đầu triển khai khi chưa hiểu rõ trạng thái mong muốn.
 
 ### 3.1. Tôn Chỉ Vận Hành Trọng Tâm: Bộ Kỹ Năng Tiền Tố $ ($plan, $dev, $test, $design)
 Áp dụng quy chuẩn vận hành chuẩn mực theo Hệ thống Dự án Đa Tác tử Động (`rules/dynamic-project-system.md`):
-* **Step 1 — `$plan`** (`$project-definition`): Khảo sát hiện trạng, định nghĩa phạm vi in/out, consumers, contracts, rủi ro và acceptance criteria. Xuất Definition Handoff và đồng bộ đặc tả `spec.md`. Phân tích read-only, tuyệt đối cấm sửa mã nguồn trong Step 1. Kết thúc bằng `READY_FOR_DELIVERY` để chuyển sang Step 2.
-* **Step 2 — `$dev`** (`$project-delivery`): Lập Master Plan, chia tách Work Packages với ranh giới file cô lập rõ ràng. Thực thi theo topology thích ứng (`FAST`: `SINGLE_OWNER` turbo; `STANDARD` / `CRITICAL`: **100% Mặc định kích hoạt Bầy Tác Tử Song Song** — chia `Worker Pod 1 (Core Logic/Data)` và `Worker Pod 2 (Visual/Frontend)` qua `invoke_subagent` hoặc `teamwork_preview`). Antigravity đóng vai trò Lead Engine kiêm Integrator duy nhất quản lý toàn bộ tích hợp. Đóng băng bản candidate (`baseline.frozen: true`) và xuất `READY_FOR_VERIFICATION`.
-* **Step 3 — `$test`** (`$project-verification`): **CHỈ ĐƯỢC GỌI TƯỜNG MINH (Explicit Call Only)**. Tuyệt đối không tự kích hoạt ngầm sau Step 2. Mặc định `AUDIT_ONLY`, tester read-only, `AUTO_FIX = false`. Phân rã thành **Hội Đồng Kiểm Toán Đa Tác Tử (`Audit Commission Pod`)** gồm Logic/Regression Auditor, Visual & Accessibility Inspector (via CDP), và Adversarial Chaos Reviewer trên `Fresh Context`. Controlled repair chỉ sửa defect có bằng chứng và được duyệt, tối đa 2 vòng repair/retest.
+* **Step 1 — `$plan`** (`$project-definition`): Khảo sát hiện trạng, định nghĩa phạm vi in/out, consumers, contracts, rủi ro và acceptance criteria. **Kích hoạt bầy tác tử tối thiểu 6 tác tử chuyên môn hóa** (`Forensic Investigator`, `Optimization Strategist`, `Adversarial Architect`, `AST Contract & Interface Guardian`, `Security & Vulnerability Analyst`, `Performance & Resource Profiler`). Xuất Definition Handoff và đồng bộ đặc tả `spec.md`. Phân tích read-only, tuyệt đối cấm sửa mã nguồn trong Step 1. Kết thúc bằng `READY_FOR_DELIVERY` để chuyển sang Step 2.
+* **Step 2 — `$dev`** (`$project-delivery`): Lập Master Plan, chia tách Work Packages với ranh giới file cô lập rõ ràng. **100% Mặc định kích hoạt Bầy Tác Tử Song Song với sàn tối thiểu 6 Pods thi công (`batch size >= 6`)** qua `invoke_subagent` (Dự án có UI: chia 6 Pods gồm Core Logic, Data Models & Persistence, API Transport & Integration, Visual UI Layout, Interaction & Motion 60 FPS, Developer Test Harness; Dự án không UI: phân rã 6 Tầng Phổ Quát từ Ingestion đến Test Harness). Antigravity đóng vai trò Lead Engine kiêm Integrator duy nhất quản lý toàn bộ tích hợp. Đóng băng bản candidate (`baseline.frozen: true`) và xuất `READY_FOR_VERIFICATION`.
+* **Step 3 — `$test`** (`$project-verification`): **CHỈ ĐƯỢC GỌI TƯỜNG MINH (Explicit Call Only)**. Tuyệt đối không tự kích hoạt ngầm sau Step 2. Mặc định `AUDIT_ONLY`, tester read-only, `AUTO_FIX = false`. Phân rã thành **Hội Đồng Kiểm Toán Đa Tác Tử (`Audit Commission Pod`) gồm tối thiểu 6 tác tử kiểm toán độc lập** (`Logic & Regression Auditor`, `Visual & Accessibility Inspector via CDP`, `Adversarial Chaos Reviewer`, `Security & Vulnerability Scanner`, `Performance & Stress Profiler`, `Data Integrity & State Invariant Auditor`) trên `Fresh Context`. Controlled repair chỉ sửa defect có bằng chứng và được duyệt, tối đa 2 vòng repair/retest.
 * **Master Visual Engine — `$design`**: Tự động đồng hành và nhúng vào toàn bộ chu trình giao diện: `$plan + $design` (lên layout, wireframe, semantic color tokens, typography pairing), `$dev + $design` (lập trình pixel-perfect, micro-animations 60FPS, zero-placeholder), `$test + $design` (nghiệm thu visual, tương phản WCAG AA và responsive đa kích thước).
 
 
