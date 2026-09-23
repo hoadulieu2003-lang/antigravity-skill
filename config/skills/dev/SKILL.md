@@ -17,16 +17,16 @@ Turn an approved Definition Handoff into an integrated, verifiable release candi
 
 ## 1. Execution Mode & Topology Routing
 
-Delivery topology adapts strictly to the `execution_mode` established in $plan:
-- **`FAST` Delivery**: `SINGLE_OWNER`. Targeted implementation and targeted self-verification (Single-Agent Turbo for rapid execution on micro-fixes, tiny scripts, and single-file modifications).
-- **`STANDARD` Delivery**: `TEAMWORK_MULTI_AGENT` (Parallel Worker Pods or native `teamwork_preview`). Bắt buộc phân rã Work Packages có ranh giới file cô lập (`Isolated File Boundaries`) và điều phối subagents song song qua `invoke_subagent`. Antigravity giữ vai trò Lead Integrator.
+Delivery topology adapts strictly to the `execution_mode`:
+- **`FAST` Delivery**: `READ_ONLY / ADVISORY ONLY`. Chỉ áp dụng cho hỏi đáp lý thuyết, review tài liệu, giải thích kiến trúc hoặc sửa chính tả 1 từ trong comment (`Single-Agent Turbo`). Cấm dùng `FAST` để triển khai logic hoặc sửa code ứng dụng một mình.
+- **`STANDARD` Delivery (MẶC ĐỊNH CHO MỌI TÁC VỤ CODE)**: `TEAMWORK_MULTI_AGENT` (Parallel Worker Pods). Bất kể Anh ra lệnh tự nhiên thế nào (không cần gõ nhắc chia agent), hệ thống **100% tự động kích hoạt bầy đa tác tử** qua `invoke_subagent`. Antigravity giữ vai trò Lead Integrator.
 - **`CRITICAL` Delivery**: `TEAMWORK_FULL_POD` (Lead Architect + Parallel Delivery Pods + Adversarial Reviewer + Human Gate). Toàn bộ module trọng yếu phải được thi công song song bởi các tác tử chuyên biệt, thẩm định chéo trước khi Lead Integrator tổng hợp.
 
-### 1.1 Autonomous Teamwork Multi-Agent Protocol (Quy chuẩn Đa tác tử Thực thụ)
-When executing in `STANDARD` or `CRITICAL` mode:
-1. **Zero-Friction Invariant**: Product Owner (Anh) **tuyệt đối KHÔNG BAO GIỜ cần gõ thủ công lệnh `/teamwork-preview`**. Hệ thống tự động kích hoạt bầy đa tác tử.
-2. **Cấm Trượt Về Đơn Tác Tử (Zero Single-Agent Fallback)**:
-   - Nghiêm cấm Lead Integrator tự gõ toàn bộ code trên một luồng chính duy nhất khi task có từ 2 file hoặc 2 tầng kiến trúc trở lên.
+### 1.1 Autonomous Teamwork Multi-Agent Protocol (Quy chuẩn Đa tác tử Tự Trị Thực thụ)
+When executing:
+1. **Zero-Prompt Autonomous Dispatch**: Product Owner (Anh) **tuyệt đối KHÔNG BAO GIỜ cần gõ thủ công lệnh `/teamwork-preview` hay prompt nhắc chia đa agent**. Khi nhận yêu cầu viết hoặc sửa code, Lead Integrator tự động phân rã và gọi `invoke_subagent` ngay lập tức.
+2. **Cấm Tuyệt Đối Trượt Về Đơn Tác Tử (Zero Single-Agent Fallback Invariant)**:
+   - Nghiêm cấm Lead Integrator tự mình viết toàn bộ code từ đầu đến cuối mà không dispatch subagents song song.
    - Bắt buộc phân chia `Work Packages (Gói công việc)` thành các ranh giới file/thư mục độc lập (`Isolated Ownership`), triệt tiêu rủi ro tranh chấp ghi mã nguồn (`Race Condition`).
 3. **Mô hình Phân Rã Worker Pods Thích Ứng (`Domain-Adaptive Parallel SWE Pods`)**:
    - 🌐 **Khung 1 — Dự Án Giao Diện / Fullstack (Có UI)**:

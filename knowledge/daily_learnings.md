@@ -1440,3 +1440,23 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-23 14:42:05`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (4690 ⭐)]** [TencentCloud/Octop](https://github.com/TencentCloud/Octop)
+  > A smarter, self-hosted AI assistant — multi-user, multi-agent.
+- **[GitHub (58 ⭐)]** [PersonalJarvis/PersonalJarvis](https://github.com/PersonalJarvis/PersonalJarvis)
+  > Self-hosted voice assistant. Speak to your computer: it answers aloud, types your dictation, and operates your apps.
+- **[GitHub (31634 ⭐)]** [feder-cr/invisible_playwright_mcp](https://github.com/feder-cr/invisible_playwright_mcp)
+  > An AI agent that drives a real anti-detect browser: say what you want in plain English and it navigates, clicks, types and extracts. MCP server for coding ag...
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Didactic knowledge or Clinical Cases? How Data Types Shape Medical Large Language Models](https://arxiv.org/abs/2609.22161)
+  > arXiv:2609.22161v1 Announce Type: new Abstract: Medical large language models are commonly trained on mixtures of didactic data (e.g., textbooks) and clinica...
+- **[ArXiv CS.AI]** [An Affordable AI-Integrated Smart Cane for Multimodal Mobility Assistance of Visually Impaired Users](https://arxiv.org/abs/2609.22277)
+  > arXiv:2609.22277v1 Announce Type: new Abstract: Visual impairment affects over 2.2 billion people worldwide, yet conventional white canes cannot detect eleva...
+
+</untrusted_external_content>
+
+---

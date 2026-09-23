@@ -135,7 +135,9 @@
         "read_url(portchecker.co)",
         "read_url(food-court-os-xi.vercel.app)",
         "mcp(google-workspace/docs_read)",
-        "read_url(docs.google.com)"
+        "read_url(docs.google.com)",
+        "read_url(studio.chothongminh.top)",
+        "read_url(live.chothongminh.top)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

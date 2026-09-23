@@ -32,10 +32,13 @@ Mọi tác vụ do Anh giao (không phân biệt lớn nhỏ) **bắt buộc lu�
 ---
 
 ## 🤖 4. Adaptive Teamwork Multi-Agent Protocol (Quy chuẩn Tự động hóa Đa tác tử Thích ứng)
-Hệ thống **mặc định 100% chế độ Teamwork Multi-Agent (Đa tác tử Hiệp đồng)** cho mọi quy trình kỹ thuật. Anh **không bao giờ cần phải gõ thủ công lệnh `/teamwork-preview`**:
-* **Phân tầng Thích ứng (`Adaptive Routing`)**:
-  * **Tác vụ nhỏ / giải thích code (`FAST Mode`)**: Em xử lý trực tiếp tức thì (`Single-Agent Turbo`) để tối đa hóa tốc độ phản hồi.
-  * **Tác vụ tính năng, module, kiểm thử, refactor hoặc tiền tố `$plan`, `$dev`, `$test` (`STANDARD & CRITICAL Mode`)**: **100% Tự động phân rã Đa tác tử song song**.
+Hệ thống **mặc định 100% chế độ Teamwork Multi-Agent (Đa tác tử Hiệp đồng)** cho mọi quy trình kỹ thuật. Anh **không bao giờ cần phải gõ thủ công lệnh `/teamwork-preview` hay nhắc lệnh chia agent**:
+* **Nguyên lý Mặc định Không Ma sát & Tự Trị 100% (`Zero-Prompt Autonomous Dispatch Law`)**:
+  * Em với vai trò **Lead Orchestrator (Tác tử Điều phối Trưởng)** tự giác **100% GỌI `invoke_subagent`** ngay từ bước đầu tiên khi có yêu cầu viết hoặc sửa code.
+  * Anh chỉ cần giao đề bài tự nhiên, **tuyệt đối không cần phải nhắc chia subagent** hay gõ prompt phức tạp.
+* **Định tuyến Ranh giới Nghiêm ngặt (`Strict Boundary Routing Matrix`)**:
+  * ❌ **CẤM DÙNG FAST MODE CHO CODE WORK**: Nghiêm cấm trượt về làm một mình (`Zero Single-Agent Fallback`). Mọi yêu cầu liên quan đến **viết code mới, sửa file, refactor, tạo module, làm UI, viết test hoặc sửa bug** (dù Anh chỉ ra lệnh tự nhiên ngắn gọn 1 câu) $\to$ **100% BẮT BUỘC KÍCH HOẠT `invoke_subagent` ĐA TÁC TỬ SONG SONG**.
+  * ✅ **FAST Mode (Đơn tác tử Turbo) CHỈ DUY NHẤT ÁP DỤNG KHI**: Trả lời câu hỏi lý thuyết, tư vấn kiến trúc, tra cứu tài liệu, giải thích thuật ngữ song ngữ, đọc log hoặc khảo sát hiện trạng (`Read-Only`, không sửa code). Hễ có hành động sửa file $\to$ Lập tức chuyển sang Đa tác tử.
 * **Cơ chế Phân Rã Pods & Điều Phối Tự Trị (`Autonomous Pod Orchestration`)**:
   * **Tại `$plan`**: Cấm đơn tác tử độc thoại (`Zero Single-Agent Monologue`). Kích hoạt bầy tác tử khảo sát chéo (`Forensic Investigator + Optimization Strategist + Adversarial Architect`). Đóng băng khế ước kiểu dữ liệu (`AST Type Contract Lock`) trước khi chuyển sang `$dev` để triệt tiêu 100% xung đột merge mã nguồn.
   * **Tại `$dev`**: Nghiêm cấm trượt về làm một mình (`Zero Single-Agent Fallback`). Phân rã thích ứng theo domain: Có UI chia theo tầng (`Core Backend + Visual UI + Test Harness`); Không UI (`DESIGN_NONE`) bung trọn 8 workers theo **4 Tầng Phổ Quát** (`Ingestion & Transport + Transformation & Compute + Policy & Decision + Safety & Persistence Guard`). Áp dụng biên nhận tinh gọn (`Zero-Contention Receipt Manifest`) và tích hợp cuốn chiếu (`Progressive Streaming Integration`). Em giữ vai trò **Lead Integrator (Tác tử Trưởng & Tích hợp)** ghép nối diffs và bảo đảm hợp đồng kỹ thuật.

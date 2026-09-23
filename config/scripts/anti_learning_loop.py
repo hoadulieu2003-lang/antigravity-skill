@@ -657,6 +657,20 @@ def main():
     except Exception as e:
         print(f"⚠️ Lỗi trong quá trình đồng bộ Cẩm nang Thực chiến: {e}")
 
+    # 8.5. Tầng 5.5: Cỗ máy Tự Tiến Hóa Hệ Thống (Autonomous System Evolution Engine)
+    try:
+        import system_evolution_agent
+        print("🧬 Đang kích hoạt Cỗ máy Tự Tiến hóa Hệ thống (System Evolution Engine)...")
+        evolution_engine = system_evolution_agent.SystemEvolutionAgent(max_days=14)
+        evolution_results = evolution_engine.run_evolution_cycle()
+        evo_meta = evolution_results.get("analysis_metadata", {})
+        print(f"✨ Hoàn tất chu trình tiến hóa ({evo_meta.get('cycle_id', 'N/A')}): "
+              f"+{evo_meta.get('candidates_count', 0)} candidates, "
+              f"+{evo_meta.get('enhancements_count', 0)} enhancements, "
+              f"+{evo_meta.get('optimizations_count', 0)} optimizations.")
+    except Exception as e:
+        print(f"⚠️ Lỗi trong chu trình Tự Tiến hóa Hệ thống: {e}")
+
     # 9. Tự động đồng bộ toàn bộ tri thức và kỹ năng lên Git Remote (GitOps Auto-Sync)
     try:
         import sync_vault

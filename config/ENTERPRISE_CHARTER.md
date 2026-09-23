@@ -23,7 +23,7 @@ flowchart TD
         D2["🚀 KHỐI 2: TRUNG TÂM PHÁT TRIỂN PHẦN MỀM\n(Powered by Teamwork: Parallel SWE Squads)"]
         D3["🎨 KHỐI 3: VIỆN THIẾT KẾ & NGHỆ THUẬT SỐ\n(Powered by $design: Master Visual Studio)"]
         D4["🛡️ KHỐI 4: ỦY BAN KIỂM TOÁN & THẨM ĐỊNH ĐỘC LẬP\n(Powered by $test: Independent QA & Security)"]
-        D5["📚 KHỐI 5: TRUNG TÂM TRI THỨC & TỰ HỌC TỰ TRỊ\n(Powered by Continuous Learning Engine)"]
+        D5["📚 KHỐI 5: TRUNG TÂM TRI THỨC & TỰ TIẾN HÓA DOANH NGHIỆP\n(Powered by Daily System Evolution Engine)"]
     end
     
     CTO --> D1
@@ -66,13 +66,15 @@ flowchart TD
   * Bơm lỗi biên (`Adversarial Chaos Testing`), kiểm tra kịch bản phục hồi thảm họa (`Disaster Recovery`).
   * Bảo đảm chỉ bàn giao sản phẩm đạt chuẩn, không bao giờ tự ý làm đẹp số liệu (`No Fake Pass`).
 
-### 📚 Khối 5: Trung tâm Quản trị Tri thức & Tự học Doanh nghiệp (`Corporate Knowledge & Learning Vault`)
-* **Động cơ cốt lõi**: Phân hệ Tự học Có kiểm soát (`Governed Continuous Learning Engine`).
+### 📚 Khối 5: Trung tâm Quản trị Tri thức & Tự Tiến Hóa Doanh nghiệp (`Corporate Knowledge & Evolution Vault`)
+* **Động cơ cốt lõi**: Cỗ máy Tự Tiến Hóa & Học tập Có kiểm soát (`Governed Daily Evolution & Learning Engine`).
 * **Nhiệm vụ**:
   * **Nhịp Đập Tự Học Định Kỳ (`Continuous Pulse Scheduler`)**: Tự động thức dậy mỗi 3 tiếng qua Windows Scheduled Task chạy tàng hình, tự chạy bù khi máy tính thức dậy từ Sleep.
+  * **Động Cơ Tự Tiến Hóa Hằng Ngày (`Daily Evolution Engine`)**: Tự động quét và phân tích tri thức công nghệ toàn cầu (Google DeepMind, ArXiv, Cloudflare, GitHub Trending), vận hành chu trình khép kín 5 giai đoạn: Scan $\to$ Analyze $\to$ Prototype Candidate $\to$ Human Gate Briefing $\to$ One-Click Merge.
+  * **Chấm Điểm Benchmark Định Lượng (`Quantitative Benchmark Rating`)**: Đánh giá Candidate Skills theo thang điểm 10 trên 4 trụ cột (Cấu trúc & Metadata, An toàn lệnh, Mức độ bao phủ tài liệu, Tương thích hệ sinh thái), phân loại mức `RECOMMENDED` ($\ge 8.5/10$).
   * **Kênh Báo Động Nóng Telegram (`Telegram Hot Alert`)**: Tự động thông báo trực tiếp sang điện thoại của Anh khi radar săn được dự án GitHub $\ge 2.000$ Stars, mô hình đột phá hoặc Candidate Skill đạt mức `RECOMMENDED`.
-  * **Quản trị Sổ cái Tri thức**: Nạp và lưu trữ tri thức công nghệ mới vào kho `knowledge/daily_learnings.md`.
-  * **Chuyển hóa Kinh nghiệm Thực chiến**: Tự động chuyển hóa các bài học thất bại (`Defects`) và thành công thành các quy tắc vận hành (`Operating Playbooks`) và bài kiểm tra hồi quy chuẩn hóa.
+  * **Bản Tin Nâng Cấp Điểm Tâm Sáng (`Morning Upgrade Briefing`)**: Chủ động đệ trình bản tóm tắt các ứng viên kỹ năng mới kèm đề xuất merge một chạm ngay khi Anh mở máy làm việc.
+  * **Quản trị Sổ cái Tri thức & Bài Học Thực Chiến**: Nạp và lưu trữ tri thức vào `knowledge/daily_learnings.md`, chuyển hóa các bài học thất bại (`Defects`) thành quy tắc vận hành bất biến và bộ test hồi quy chuẩn hóa.
 
 ---
 

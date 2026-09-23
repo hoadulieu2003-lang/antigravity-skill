@@ -19,8 +19,9 @@ Before writing the plan, the Engineering Kernel resolves the task into one of th
 
 *Safety Clamp Invariant*: If any critical risk signal is detected, the plan MUST escalate to `CRITICAL`. If uncertain between FAST and STANDARD, default to `STANDARD`.
 
-### 1.1 Multi-Perspective Strategic Board Protocol (Hội Đồng Đa Tác Tử Cho $plan)
-Khi lập kế hoạch cho các bài toán chiến lược, tối ưu hóa sức mạnh, nâng cấp thuật toán, hoặc bài toán đa luồng dữ liệu (mức `STANDARD` & `CRITICAL`):
+### 1.1 Multi-Perspective Strategic Board Protocol (Hội Đồng Đa Tác Tử Tự Trị Cho $plan)
+Khi lập kế hoạch cho các bài toán chiến lược, module mới, tối ưu hóa sức mạnh, nâng cấp thuật toán, hoặc luồng dữ liệu (mức `STANDARD` & `CRITICAL`):
+* **Zero-Prompt Autonomous Dispatch**: Anh **tuyệt đối không cần nhắc chia subagent** trong prompt. Tác tử Trưởng tự động 100% kích hoạt bầy tác tử qua `invoke_subagent`.
 * **Cấm Đơn Tác Tử Độc Thoại (`Zero Single-Agent Monologue`)**: Tuyệt đối không để một tác tử duy nhất tự đọc file và tự kết luận kế hoạch theo góc nhìn một chiều (`Tunnel Vision`).
 * **Kích hoạt Hội Đồng Đa Tác Tử Đồng Thời (`Multi-Perspective Pod via invoke_subagent`)**:
   - 🕵️ **`Subagent 1 — Forensic Investigator`**: Quét mã nguồn hiện tại, bóc tách cấu hình, chạy benchmark và tìm ra điểm nghẽn thực tế (`Current Bottlenecks`).
