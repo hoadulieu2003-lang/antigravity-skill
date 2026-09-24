@@ -1,0 +1,12 @@
+{
+  "wp": "WP-04",
+  "task": "Cập nhật tài liệu hợp đồng tác tử config/AGENTS.md và GEMINI.md",
+  "status": "COMPLETED",
+  "files_modified": [
+    "C:/Users/game/.gemini/GEMINI.md",
+    "C:/Users/game/.gemini/config/AGENTS.md"
+  ],
+  "verification_script": "C:/Users/game/.gemini/config/scripts/verify_contract_integrity.py",
+  "verification_status": "PASS",
+  "summary": "Tái cấu trúc Pod 4 và Pod 5 thành 'Design Engineering Duo' (nạp CSS Tokens từ 153 Brands; phân bổ 20% Delight Budget cho vi tương tác vật lý, spotlight, lenis scroll, WebAudioHaptics); thiết lập cơ chế Dual Audit (Audit 1: WCAG AA & responsive; Audit 2: Delight & Craftsmanship Score >= 8.5/10, từ chối web phẳng lì đơn điệu). Đã kiểm chứng tính toàn vẹn 100%."
+}

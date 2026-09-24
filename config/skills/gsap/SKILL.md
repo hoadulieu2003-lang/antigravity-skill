@@ -1,6 +1,6 @@
 ---
 name: gsap
-description: "Official GreenSock (GSAP) Animation Engine — 60 FPS performant UI motion, timelines, ScrollTrigger, React useGSAP, and Club plugins (SplitText, MorphSVG, ScrollSmoother, Flip). Activate ONLY for dedicated JavaScript animations, complex timelines, scroll-driven choreographies, or SVG morphing. DO NOT use for standard CSS transitions, routine styling, static UI components, or admin CRUD screens (use native CSS or ui-ux-pro-max instead)."
+description: "Official GreenSock (GSAP) Animation Engine — 60 FPS performant UI motion, timelines, ScrollTrigger, React useGSAP, and Club plugins (SplitText, MorphSVG, ScrollSmoother, Flip). Automatically activate and reference for smooth interactions, 60 FPS motion choreography, scroll-driven animations, micro-interactions, and premium UI dynamics in web UI, landing pages, and dashboards. DO NOT use for non-visual backend tasks (DESIGN_NONE)."
 ---
 
 # Master GSAP Animation Engine (`$gsap`)

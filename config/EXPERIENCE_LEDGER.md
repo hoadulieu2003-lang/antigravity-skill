@@ -106,4 +106,4 @@ flowchart TD
    - Khi làm hệ thống lớn, quản lý F&B, sàn thương mại $\to$ áp dụng tiêu chuẩn SmartMarket.
    - Khi xử lý sự cố hoặc làm giao diện cảm xúc / Mobile-First $\to$ áp dụng tiêu chuẩn Portfolio & Sankou Design.
    - Khi làm chuyển động $\to$ áp dụng công thức Lò xo Overshoot & GSAP 60 FPS.
-3. **Phục Vụ Anh Chu Đáo**: Giữ vững nguyên tắc **Zero-Manual-CLI** (tự chạy server, tự mở Chrome), **Mandatory Light Theme Default**, và **Bilingual Terminology `English (Tiếng Việt)`**.
+3. **Phục Vụ Anh Chu Đáo**: Giữ vững nguyên tắc **Zero-Manual-CLI** (tự chạy server, tự mở Chrome), **Luminous Light Theme Invariant** (nền sáng đa tầng, bóng đổ đa chiều), và **Bilingual Terminology `English (Tiếng Việt)`**.

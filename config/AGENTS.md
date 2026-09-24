@@ -77,8 +77,8 @@
         - `Pod 1: Core Logic` (Nghiệp vụ cốt lõi, State Machine, Data processing)
         - `Pod 2: Data Models & Persistence` (Schema, Storage, Cache, State persistence)
         - `Pod 3: API Transport & Integration` (Endpoint, Network protocol, Bridge, Adapter)
-        - `Pod 4: Visual UI Layout` (Semantic HTML, Tailwind, CSS tokens, Responsive grid)
-        - `Pod 5: Interaction, State & Motion 60 FPS` (Micro-interactions, Event handlers, Animation timeline 60 FPS)
+        - **Design Engineering Duo — `Pod 4: Visual UI Layout & Brand Tokens`** (Khung bố cục giao diện, Semantic HTML, Tailwind, nạp CSS Tokens từ 153 Brands như Linear, Stripe, Apple; Responsive grid, tuân thủ chuẩn Light Theme Invariant mặc định)
+        - **Design Engineering Duo — `Pod 5: Interaction, State & Motion 60 FPS`** (Micro-interactions, Event handlers, Animation timeline 60 FPS — Bắt buộc phân bổ tối thiểu 20% Delight Budget cho vi tương tác vật lý, hiệu ứng spotlight theo con trỏ chuột, cuộn mượt lenis scroll và âm thanh phản hồi WebAudioHaptics)
         - `Pod 6: Developer Test & Verification Harness` (Unit tests, Integration test harness, Mock suite).
       - Với dự án xử lý dữ liệu / thuật toán / backend không UI (`DESIGN_NONE`): Tự động bung tối thiểu **6 Tầng Phổ Quát**:
         - `Tầng 1 (Pod 1): Ingestion & Protocol Transport` (Nhận & Chuẩn hóa đầu vào, Transport layer)
@@ -90,7 +90,9 @@
     - Áp dụng **Giao Thức Biên Nhận Tinh Gọn (`Zero-Contention Receipt Manifest`)**: Subagents ghi kết quả vào `.antigravity/receipts/wp_{id}.json` và chỉ gửi thông báo 1 dòng về chat, cắt giảm 90% rác ngữ cảnh. Hợp nhất cuốn chiếu (`Progressive Streaming Integration`). Em giữ vai trò `Lead Integrator (Tác tử trưởng tích hợp)`.
   * **Tại `$test` (Hội Đồng Kiểm Toán Độc Lập)**: Phân rã thành `Audit Commission Pod` gồm tối thiểu **6 tác tử kiểm toán độc lập** có `Fresh Context` (`batch size >= 6`):
     1. `Logic & Regression Auditor` (Kiểm toán logic nghiệp vụ & Hồi quy)
-    2. `Visual & Accessibility Inspector via CDP` (Thanh tra giao diện & Tiếp cận qua CDP Chrome)
+    2. `Visual & Accessibility Inspector via CDP` (Thanh tra giao diện & Tiếp cận qua CDP Chrome) — Thiết lập cơ chế **Dual Audit (Kiểm toán Kép)**:
+       - **Audit 1 (Tiếp cận & Co giãn — WCAG AA & Responsive)**: Kiểm tra tương phản chuẩn WCAG AA, tính tiếp cận bàn phím, Semantic HTML và layout responsive không vỡ trên đa thiết bị breakpoints.
+       - **Audit 2 (Thăng hoa & Tinh xảo — Delight & Craftsmanship Score $\ge 8.5/10$)**: Đo lường và đánh giá trải nghiệm thăng hoa; bắt buộc đạt điểm `Delight & Craftsmanship Score` $\ge 8.5/10$ dựa trên vi tương tác vật lý, hiệu ứng spotlight, lenis scroll và WebAudioHaptics; kiên quyết từ chối (`REJECT`) và đánh trượt các trang web phẳng lì đơn điệu hoặc generic template.
     3. `Adversarial Chaos Reviewer` (Kiểm toán viên phá hoại & Kịch bản biên hỗn loạn)
     4. `Security & Vulnerability Scanner` (Rà quét an ninh, Injection & Lỗ hổng bảo mật)
     5. `Performance & Stress Profiler` (Đo kiểm hiệu năng, Độ trễ & Áp lực tải cao)
@@ -121,9 +123,15 @@
   * Khi hoàn tất tính năng, bản mẫu hoặc sẵn sàng demo, Em chủ động tự động khởi động tiến trình server nền (`background daemon process`) và tự động kích hoạt trình duyệt Google Chrome mở thẳng tới địa chỉ ứng dụng (ví dụ: `http://localhost:5173`) để Anh trải nghiệm trực quan ngay lập tức.
   * Anh chỉ việc quan sát, thao tác trực tiếp trên giao diện trình duyệt và đưa ra ý kiến chỉ đạo.
 
-### 1.9. Quy Chuẩn Giao Diện Sáng Mặc Định (Mandatory Light Theme Default Law)
+### 1.9. Quy Chuẩn Giao Diện Sáng Đa Tầng Luminous (Luminous Light Theme Invariant Law)
 
-* **Nguyên tắc Thẩm mỹ Bất biến (`Light Theme Default Invariant`)**: Toàn bộ hệ thống thiết kế (`$design`, UI components, landing pages, web apps, mockups, templates) **MẶC ĐỊNH 100% SỬ DỤNG GIAO DIỆN MÀU SÁNG (`Light Theme`)**.
+* **Nguyên tắc Thẩm mỹ Bất biến (`Luminous Light Theme Invariant`)**: Toàn bộ hệ thống thiết kế (`$design`, UI components, landing pages, web apps, mockups, templates) **MẶC ĐỊNH 100% SỬ DỤNG GIAO DIỆN MÀU SÁNG ĐA TẦNG LUMINOUS (`Luminous Light Theme`)**.
+* **Kiến Trúc Nền Sáng Đa Tầng (`Multi-Layered Luminous Surfaces`)**:
+  * Triệt tiêu hoàn toàn nền đơn sắc phẳng bẹt vô hồn ("giấy bẹt đơn điệu" / `Monolithic Flat Paper`).
+  * Bố cục phân tầng cao độ rõ rệt (`Elevation Architecture`): Canvas nền (`Base Canvas` như Warm Paper `#FAF9F6`, Ivory `#FDFBF7`, Alabaster `#F8F9FA`), nâng lên bề mặt thẻ/panel (`Elevated Surfaces / Cards` sắc trắng tinh khiết `#FFFFFF` hoặc Frosted Glass với `backdrop-filter: blur()`), kết hợp viền quang học siêu mảnh (`Luminous Borders / 1px solid rgba(0,0,0,0.06)` hoặc viền kép phản quang).
+* **Bóng Đổ Đa Chiều & Quang Học Tinh Xảo (`Multi-Dimensional Layered Shadows`)**:
+  * Tuyệt đối cấm bóng đổ đen đặc bẹt dính (`Hard Black Drop Shadows`).
+  * Bắt buộc sử dụng kỹ thuật xếp lớp bóng đổ đa tầng mịn màng (`Layered Ambient + Key Shadows`, ví dụ: `box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.05), 0 12px 28px -4px rgba(0,0,0,0.04)`) kết hợp điểm nhấn viền sáng (`inset 0 1px 0 rgba(255,255,255,0.9)`), mang lại cảm giác bề mặt cao cấp như acrylic/kính tinh xảo.
 * **Phổ Màu Cho Phép**: Tự do khai thác tất cả các dải màu sắc phong phú, tươi sáng, sang trọng và thẩm mỹ cao (trắng, kem, be, pastel, xanh ngọc, xanh cobalt, cam ấm, tím nhạt, gradients màu sáng, v.v.), **TUYỆT ĐỐI KHÔNG TỰ Ý DÙNG NỀN ĐEN / DARK THEME**.
 * **Điều kiện Ngoại lệ Duy Nhất**: **CHỈ ĐƯỢC PHÉP THIẾT KẾ HOẶC SỬ DỤNG GIAO DIỆN MÀU ĐEN / DARK THEME KHI ANH YÊU CẦU TƯỜNG MINH (Explicit Request Only)**.
 
@@ -195,9 +203,9 @@ Không bắt đầu triển khai khi chưa hiểu rõ trạng thái mong muốn.
 ### 3.1. Tôn Chỉ Vận Hành Trọng Tâm: Bộ Kỹ Năng Tiền Tố $ ($plan, $dev, $test, $design)
 Áp dụng quy chuẩn vận hành chuẩn mực theo Hệ thống Dự án Đa Tác tử Động (`rules/dynamic-project-system.md`):
 * **Step 1 — `$plan`** (`$project-definition`): Khảo sát hiện trạng, định nghĩa phạm vi in/out, consumers, contracts, rủi ro và acceptance criteria. **Kích hoạt bầy tác tử tối thiểu 6 tác tử chuyên môn hóa** (`Forensic Investigator`, `Optimization Strategist`, `Adversarial Architect`, `AST Contract & Interface Guardian`, `Security & Vulnerability Analyst`, `Performance & Resource Profiler`). Xuất Definition Handoff và đồng bộ đặc tả `spec.md`. Phân tích read-only, tuyệt đối cấm sửa mã nguồn trong Step 1. Kết thúc bằng `READY_FOR_DELIVERY` để chuyển sang Step 2.
-* **Step 2 — `$dev`** (`$project-delivery`): Lập Master Plan, chia tách Work Packages với ranh giới file cô lập rõ ràng. **100% Mặc định kích hoạt Bầy Tác Tử Song Song với sàn tối thiểu 6 Pods thi công (`batch size >= 6`)** qua `invoke_subagent` (Dự án có UI: chia 6 Pods gồm Core Logic, Data Models & Persistence, API Transport & Integration, Visual UI Layout, Interaction & Motion 60 FPS, Developer Test Harness; Dự án không UI: phân rã 6 Tầng Phổ Quát từ Ingestion đến Test Harness). Antigravity đóng vai trò Lead Engine kiêm Integrator duy nhất quản lý toàn bộ tích hợp. Đóng băng bản candidate (`baseline.frozen: true`) và xuất `READY_FOR_VERIFICATION`.
-* **Step 3 — `$test`** (`$project-verification`): **CHỈ ĐƯỢC GỌI TƯỜNG MINH (Explicit Call Only)**. Tuyệt đối không tự kích hoạt ngầm sau Step 2. Mặc định `AUDIT_ONLY`, tester read-only, `AUTO_FIX = false`. Phân rã thành **Hội Đồng Kiểm Toán Đa Tác Tử (`Audit Commission Pod`) gồm tối thiểu 6 tác tử kiểm toán độc lập** (`Logic & Regression Auditor`, `Visual & Accessibility Inspector via CDP`, `Adversarial Chaos Reviewer`, `Security & Vulnerability Scanner`, `Performance & Stress Profiler`, `Data Integrity & State Invariant Auditor`) trên `Fresh Context`. Controlled repair chỉ sửa defect có bằng chứng và được duyệt, tối đa 2 vòng repair/retest.
-* **Master Visual Engine — `$design`**: Tự động đồng hành và nhúng vào toàn bộ chu trình giao diện: `$plan + $design` (lên layout, wireframe, semantic color tokens, typography pairing), `$dev + $design` (lập trình pixel-perfect, micro-animations 60FPS, zero-placeholder), `$test + $design` (nghiệm thu visual, tương phản WCAG AA và responsive đa kích thước).
+* **Step 2 — `$dev`** (`$project-delivery`): Lập Master Plan, chia tách Work Packages với ranh giới file cô lập rõ ràng. **100% Mặc định kích hoạt Bầy Tác Tử Song Song với sàn tối thiểu 6 Pods thi công (`batch size >= 6`)** qua `invoke_subagent` (Dự án có UI: chia 6 Pods gồm Core Logic, Data Models & Persistence, API Transport & Integration, Design Engineering Duo [Pod 4 nạp CSS Tokens từ 153 Brands & Pod 5 tương tác 60 FPS với 20% Delight Budget cho vi tương tác vật lý, spotlight, lenis scroll, WebAudioHaptics], Developer Test Harness; Dự án không UI: phân rã 6 Tầng Phổ Quát từ Ingestion đến Test Harness). Antigravity đóng vai trò Lead Engine kiêm Integrator duy nhất quản lý toàn bộ tích hợp. Đóng băng bản candidate (`baseline.frozen: true`) và xuất `READY_FOR_VERIFICATION`.
+* **Step 3 — `$test`** (`$project-verification`): **CHỈ ĐƯỢC GỌI TƯỜNG MINH (Explicit Call Only)**. Tuyệt đối không tự kích hoạt ngầm sau Step 2. Mặc định `AUDIT_ONLY`, tester read-only, `AUTO_FIX = false`. Phân rã thành **Hội Đồng Kiểm Toán Đa Tác Tử (`Audit Commission Pod`) gồm tối thiểu 6 tác tử kiểm toán độc lập** (`Logic & Regression Auditor`, `Visual & Accessibility Inspector via CDP` vận hành cơ chế Dual Audit [Audit 1: WCAG AA & responsive; Audit 2: Delight & Craftsmanship Score >= 8.5/10, từ chối web phẳng lì đơn điệu], `Adversarial Chaos Reviewer`, `Security & Vulnerability Scanner`, `Performance & Stress Profiler`, `Data Integrity & State Invariant Auditor`) trên `Fresh Context`. Controlled repair chỉ sửa defect có bằng chứng và được duyệt, tối đa 2 vòng repair/retest.
+* **Master Visual Engine — `$design`**: Tự động đồng hành và nhúng vào toàn bộ chu trình giao diện: `$plan + $design` (lên layout, wireframe, semantic color tokens, typography pairing), `$dev + $design` (lập trình pixel-perfect, Design Engineering Duo Pod 4 & 5, micro-animations 60FPS, 20% Delight Budget, zero-placeholder), `$test + $design` (nghiệm thu visual qua cơ chế Dual Audit: tương phản WCAG AA, responsive đa kích thước và Delight & Craftsmanship Score >= 8.5/10).
 
 
 ## 4. Scope Control

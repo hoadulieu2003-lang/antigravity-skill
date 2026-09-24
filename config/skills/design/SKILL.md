@@ -1,6 +1,6 @@
 ---
 name: design
-description: Master Visual Engine & Design Director ($design) — High-level creative direction, visual governance, and aesthetic thesis formulation. Activates ONLY when explicitly invoking $design, defining art direction for new products/landing pages (DESIGN_DIRECTION), or executing major visual overhauls. DO NOT use for routine CSS styling, component tweaks, or minor UI bug fixes (use ui-ux-pro-max or local styling instead).
+description: "Master Visual Engine & Design Director ($design) — High-level creative direction, visual governance, aesthetic thesis formulation, and Luminous Light Theme standards. Automatically activate and reference for all web UI design tasks, landing pages, dashboards, major visual overhauls, and creative art direction. DO NOT use for non-visual backend tasks (DESIGN_NONE)."
 ---
 
 # Master Visual Engine & Design Director ($design)
@@ -13,7 +13,7 @@ Transforming design from a capability catalog into a controlled, taste-driven cr
 > Design Engineer implements; Design Director directs.  
 > Rendered screenshot evidence before visual approval.  
 > 3D and motion are optional capabilities, never default aesthetics.  
-> Light Theme is the mandatory default — all color spectrums welcome except black/dark theme; dark theme ONLY when explicitly requested by Anh.
+> Luminous Light Theme is the mandatory default — multi-layered luminous surfaces, multi-dimensional soft shadows, zero flat paper monotony; all color spectrums welcome except black/dark theme (dark theme ONLY when explicitly requested by Anh).
 
 ---
 
@@ -112,7 +112,7 @@ GIAI ĐOẠN 4: THI CÔNG & KIỂM CHỨNG ĐỘC LẬP (Implement & Verify)
 
 ## 5. Bộ Quy Tắc Chống Mẫu AI Đại Trà (Anti-AI-Template Invariants & Defenses)
 
-1. **ANTI-AI-001 (Light Theme Default Invariant)**: Mặc định 100% sử dụng giao diện màu sáng sang trọng (nền trắng ấm `#FAF9F6`, be kem, pastel, xám nhạt cao cấp). Tuyệt đối cấm tự ý tạo dark theme / nền đen trừ khi Anh yêu cầu tường minh.
+1. **ANTI-AI-001 (Luminous Light Theme Invariant)**: Mặc định 100% sử dụng chuẩn giao diện sáng đa tầng Luminous (`Luminous Light Theme`). Bắt buộc áp dụng cấu trúc nền sáng đa tầng (`Multi-Layered Surfaces`), bóng đổ đa chiều siêu mịn (`Multi-Dimensional Layered Shadows`), và viền quang học tinh tế (`Luminous Borders`). Nghiêm cấm giao diện phẳng lì, giấy bẹt đơn điệu (`Anti-Flat Paper`). Tuyệt đối cấm tự ý tạo dark theme / nền đen trừ khi Anh yêu cầu tường minh.
 2. **ANTI-AI-002 (Cấm Gradient Tím Neon Đại Trà)**: Nghiêm cấm gradient tím/hồng/cyan mặc định (`#6366f1 -> #ec4899`). Bảng màu phải xuất phát từ bản sắc thương hiệu độc bản.
 3. **ANTI-AI-003 (Cấm Bento Grid Vô Căn Cứ)**: Không biến mọi section thành ô hộp Bento phân mảnh. Chỉ dùng Bento khi mật độ và hình thái dữ liệu thực sự cần phân hóa kích thước.
 4. **ANTI-AI-004 (Phá Vỡ Đối Xứng Đều Đặn 50/50)**: Tạo nhịp điệu biên tập bất đối xứng có chủ đích (tỉ lệ vàng 62/38, typography phóng đại, lùi dòng có ý đồ).
@@ -150,5 +150,5 @@ Khi xây dựng các website trình diễn năng lực nhằm chinh phục khác
 2. **Khóa Hợp đồng**: Khi trạng thái là `ART_DIRECTION_LOCKED`, cấm Design Engineer tự ý đổi font, layout, bảng màu, hoặc triết lý chuyển động. Thay đổi cốt lõi bắt buộc qua `DESIGN_CONTRACT_CHANGE_REQUEST`.
 3. **Không Lạm dụng 3D/Motion**: Three.js/WebGL là giải pháp có chọn lọc khi phục vụ câu chuyện sản phẩm, tuyệt đối không dùng 3D làm vỏ bọc cho bố cục yếu.
 4. **Bằng chứng Thực nghiệm**: Bắt buộc có ảnh chụp màn hình (`Screenshot`) cho mọi nghiệm thu visual chính.
-5. **Giao Diện Màu Sáng Mặc Định (`Light Theme Default Invariant`)**: Mặc định 100% sử dụng giao diện màu sáng (khai thác toàn bộ các dải màu phong phú khác: trắng, kem, be, pastel, xanh, cam, xám nhạt, v.v., tuyệt đối loại trừ màu đen/dark theme). Chỉ được phép sử dụng giao diện màu đen khi Anh có yêu cầu tường minh.
+5. **Giao Diện Màu Sáng Đa Tầng Luminous (`Luminous Light Theme Invariant`)**: Mặc định 100% sử dụng chuẩn giao diện sáng đa tầng Luminous (nền sáng đa tầng, bóng đổ đa chiều, viền quang học, triệt tiêu hoàn toàn giấy bẹt đơn điệu; khai thác toàn bộ các dải màu phong phú khác: trắng, kem, be, pastel, xanh, cam, xám nhạt, v.v., tuyệt đối loại trừ màu đen/dark theme). Chỉ được phép sử dụng giao diện màu đen khi Anh có yêu cầu tường minh.
 

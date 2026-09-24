@@ -1,6 +1,6 @@
 ---
 name: open-design
-description: "Curated Brand Design Systems & Interactive Templates library (153 brand styles like Linear, Stripe, Apple, Vercel, Supabase; 114 templates including Magazine Decks / guizang-ppt, live dashboards, SaaS landing prototypes). Activate ONLY when specifically requested to adopt a named brand aesthetic, build magazine slide presentations, or scaffold full SaaS landing prototypes. DO NOT use for standard CSS adjustments or general UI components."
+description: "Curated Brand Design Systems & Interactive Templates library (153 brand styles like Linear, Stripe, Apple, Vercel, Supabase; 114 templates including Magazine Decks / guizang-ppt, live dashboards, SaaS landing prototypes). Automatically activate and reference for all web UI design, landing page, dashboard, and interactive prototyping tasks to apply world-class visual aesthetics and tokens. DO NOT use for non-visual backend tasks (DESIGN_NONE)."
 ---
 
 # OpenDesign — Vibe Design & Brand Studio Engine
@@ -21,7 +21,7 @@ Hệ thống thiết kế và mẫu giao diện chuẩn Brand đẳng cấp th�
 
 ## Khi Nào Sử Dụng Skill Này
 
-Kích hoạt bất cứ khi nào Anh yêu cầu:
+Tự động kích hoạt & tham khảo cho mọi tác vụ thiết kế web UI, landing page, dashboard, presentation deck, hoặc khi cần áp dụng ngôn ngữ thiết kế thương hiệu đẳng cấp thế giới:
 1. **Thiết kế giao diện theo phong cách một thương hiệu lớn** (vd: "làm theo phong cách Linear / Stripe / Apple / Vercel").
 2. **Làm bộ slide thuyết trình dạng tạp chí (Magazine Deck / Pitch Deck)** (vd: `guizang-ppt` hoặc `html-ppt`).
 3. **Xây dựng Dashboard trực quan hoặc Web Prototype chất lượng cao**.

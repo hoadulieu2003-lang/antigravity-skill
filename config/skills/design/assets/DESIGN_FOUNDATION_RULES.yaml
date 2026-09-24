@@ -129,14 +129,14 @@ rules:
   # NHÓM 4: ANTI-AI-TEMPLATE DEFENSE & LIGHT THEME DEFAULT
   # ----------------------------------------------------------------------------
   - id: "ANTI-AI-001"
-    name: "mandatory_light_theme_default"
+    name: "luminous_light_theme_invariant"
     category: "color"
     source: "antigravity-operating-anchor"
     severity: "CRITICAL"
     condition: "all_themes_and_templates"
-    requirement: "Default 100% to light theme aesthetics (pure white, cream, ivory, beige, light pastel, warm stone). Black / dark theme is strictly prohibited unless explicitly requested by Anh."
-    bad_pattern: "background-color: #0d0d0d; color: #f3f3f3; /* unrequested dark mode */"
-    good_pattern: "background-color: #faf9f6; color: #1a1a1a; /* warm paper light theme */"
+    requirement: "Default 100% to Luminous Light Theme: multi-layered luminous surfaces, multi-dimensional soft shadows, and subtle optical borders. Monolithic flat paper and dark theme are strictly prohibited unless dark theme is explicitly requested by Anh."
+    bad_pattern: "background-color: #ffffff; /* monolithic flat paper without elevation or depth */ or dark theme #0d0d0d"
+    good_pattern: "background-color: #faf9f6; color: #1a1a1a; box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.05); /* luminous multi-layer */"
 
   - id: "ANTI-AI-002"
     name: "prohibit_generic_ai_purple_gradients"

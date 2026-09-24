@@ -26,7 +26,7 @@ Mọi tác vụ do Anh giao (không phân biệt lớn nhỏ) **bắt buộc lu�
 ## 🏛️ 3. Quy Trình Vận Hành Tiền Tố $ ($plan, $dev, $test, $design)
 * **Step 1 — `$plan`**: Khảo sát hiện trạng, định nghĩa phạm vi in/out, rủi ro và acceptance criteria (Read-only, không sửa code).
 * **Step 2 — `$dev`**: Lập Master Plan, chia tách Work Packages, triển khai code và tự kiểm chứng chặt chẽ.
-* **Step 3 — `$test`**: Kiểm chứng độc lập kịch bản biên, phát hiện sai số trước khi xuất xưởng.
+* **Step 3 — `$test`**: Kiểm chứng độc lập kịch bản biên, vận hành cơ chế Dual Audit (Audit 1: WCAG AA & responsive; Audit 2: Delight & Craftsmanship Score >= 8.5/10, từ chối web phẳng lì đơn điệu), phát hiện sai số trước khi xuất xưởng.
 * **Master Visual Engine — `$design`**: Giám đốc nghệ thuật, định hình Art Direction, Semantic Color Tokens, chuyển động mượt 60 FPS và tương phản WCAG AA.
 
 ---
@@ -56,14 +56,16 @@ Hệ thống **mặc định 100% chế độ Teamwork Multi-Agent (Đa tác t�
       1. `Pod 1: Core Logic (Xử lý Nghiệp vụ & Giải thuật Lõi)`
       2. `Pod 2: Data Models & Persistence (Mô hình Dữ liệu & Lưu trữ Bền vững)`
       3. `Pod 3: API Transport & Integration (Vận chuyển API & Tích hợp Mạng)`
-      4. `Pod 4: Visual UI Layout (Khung Bố cục Giao diện Trực quan)`
-      5. `Pod 5: Interaction/State & Motion 60 FPS (Tương tác, Quản lý Trạng thái & Chuyển động 60 FPS)`
+      4. **Design Engineering Duo — `Pod 4: Visual UI Layout & Brand Tokens (Khung Bố cục Giao diện & Nạp CSS Tokens)`**: Thiết lập Semantic HTML, responsive grid, nạp CSS Tokens từ 153 Brands (Linear, Stripe, Apple, v.v.), tuân thủ chuẩn Light Theme Invariant mặc định.
+      5. **Design Engineering Duo — `Pod 5: Interaction/State & Motion 60 FPS (Tương tác, Trạng thái & Chuyển động 60 FPS)`**: Quản lý trạng thái client, event handlers, animation timeline 60 FPS — Bắt buộc phân bổ tối thiểu 20% Delight Budget (Ngân sách thăng hoa) cho vi tương tác vật lý, hiệu ứng spotlight theo con trỏ chuột, cuộn mượt lenis scroll và âm thanh phản hồi WebAudioHaptics.
       6. `Pod 6: Developer Test Harness (Bộ khung Kiểm thử Phát triển)`
     - **Dự án backend không UI (`DESIGN_NONE`)**: Bung trọn 6 tầng phổ quát (`Ingestion & Transport`, `Transformation & Compute Engine`, `Policy & Decision Engine`, `Data Modeling & Schema Persistence`, `Safety & Constraint Guard`, `Integration & Verification Harness`).
     Áp dụng biên nhận tinh gọn (`Zero-Contention Receipt Manifest`) và tích hợp cuốn chiếu (`Progressive Streaming Integration`). Em giữ vai trò **Lead Integrator (Tác tử Trưởng & Tích hợp)** ghép nối diffs và bảo đảm hợp đồng kỹ thuật.
   * **Tại `$test` (Hội Đồng Kiểm Toán 6 Kiểm Toán Viên Độc Lập Fresh Context)**: Phân rã thành **Hội Đồng Kiểm Toán Đa Tác Tử (`Audit Commission Pod`)** gồm 6 kiểm toán viên độc lập trên `Fresh Context`:
     1. `Logic & Regression Auditor (Kiểm toán viên Logic & Hồi quy)`
-    2. `Visual & Accessibility Inspector via CDP (Thanh tra Trực quan & Khả năng Tiếp cận qua CDP)`
+    2. `Visual & Accessibility Inspector via CDP (Thanh tra Trực quan & Khả năng Tiếp cận qua CDP)` — Thiết lập cơ chế **Dual Audit (Kiểm toán Kép)**:
+       - **Audit 1 (Tiếp cận & Co giãn — WCAG AA & Responsive)**: Kiểm tra nghiêm ngặt độ tương phản WCAG AA, tính tiếp cận bàn phím và layout responsive không vỡ trên đa thiết bị qua Chrome CDP.
+       - **Audit 2 (Thăng hoa & Tinh xảo — Delight & Craftsmanship Score >= 8.5/10)**: Đo đạc và chấm điểm định lượng `Delight & Craftsmanship Score` bắt buộc $\ge 8.5/10$ (vi tương tác vật lý, spotlight theo con trỏ, cuộn mượt lenis scroll, WebAudioHaptics); kiên quyết từ chối (`REJECT`) và đánh trượt mọi trang web phẳng lì đơn điệu hoặc generic template.
     3. `Adversarial Chaos Reviewer (Kiểm toán viên Hỗn loạn & Phản biện Đối kháng)`
     4. `Security & Vulnerability Scanner (Máy quét An ninh & Lỗ hổng Bảo mật)`
     5. `Performance & Stress Profiler (Chuyên viên Định cấu hình Hiệu năng & Tải trọng)`
@@ -96,8 +98,10 @@ Hệ thống vận hành như một **Công ty AI Agent Tự trị** theo Hiến
 
 ---
 
-## ☀️ 7. Mandatory Light Theme Default Invariant (Quy Chuẩn Giao Diện Sáng Mặc Định Tối Cao)
-* **Nguyên tắc Thẩm mỹ Bất biến (`Light Theme Default Invariant`)**: Toàn bộ hệ thống thiết kế (`$design`, UI components, landing pages, web apps, mockups, templates) **MẶC ĐỊNH 100% SỬ DỤNG GIAO DIỆN MÀU SÁNG (`Light Theme`)**.
+## ☀️ 7. Luminous Light Theme Invariant (Quy Chuẩn Giao Diện Sáng Đa Tầng Tối Cao)
+* **Nguyên tắc Thẩm mỹ Bất biến (`Luminous Light Theme Invariant`)**: Toàn bộ hệ thống thiết kế (`$design`, UI components, landing pages, web apps, mockups, templates) **MẶC ĐỊNH 100% SỬ DỤNG GIAO DIỆN MÀU SÁNG ĐA TẦNG LUMINOUS (`Luminous Light Theme`)**.
+* **Kiến Trúc Nền Sáng Đa Tầng (`Multi-Layered Luminous Surfaces`)**: Triệt tiêu hoàn toàn nền đơn sắc phẳng bẹt vô hồn ("giấy bẹt đơn điệu" / `Monolithic Flat Paper`). Phân tầng chiều sâu cao độ từ Canvas nền (`Warm Paper #FAF9F6`, `Ivory #FDFBF7`, `Alabaster #F8F9FA`) lên bề mặt thẻ (`Elevated Pure White #FFFFFF` hoặc `Frosted Glass`), kết hợp viền quang học siêu mảnh (`Luminous Borders`).
+* **Bóng Đổ Đa Chiều Siêu Mịn (`Multi-Dimensional Layered Shadows`)**: Tuyệt đối cấm bóng đổ đen đặc bẹt dính. Bắt buộc xếp lớp bóng đổ đa tầng mịn màng (`Layered Ambient + Key Shadows`) kết hợp viền sáng phản quang (`inset highlight`), kiến tạo chiều sâu quang học tinh xảo.
 * **Phổ Màu Cho Phép**: Tự do khai thác tất cả các dải màu sắc phong phú, tươi sáng, sang trọng và thẩm mỹ cao (trắng, kem, be, pastel, xanh ngọc, xanh cobalt, cam ấm, tím nhạt, gradients màu sáng, v.v.), **TUYỆT ĐỐI KHÔNG TỰ Ý DÙNG NỀN ĐEN / DARK THEME**.
 * **Điều kiện Ngoại lệ Duy Nhất**: **CHỈ ĐƯỢC PHÉP THIẾT KẾ HOẶC SỬ DỤNG GIAO DIỆN MÀU ĐEN / DARK THEME KHI ANH YÊU CẦU TƯỜNG MINH (Explicit Request Only)**.
 
