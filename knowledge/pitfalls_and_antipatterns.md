@@ -1030,3 +1030,21 @@
 * **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
 
 ---
+### 🚨 [2026-09-25 05:42] Bypassing inference bottlenecks: Accelerating complex AI search with Retrieve-for-Train
+* **Nguồn cảnh báo**: Google Research | [Chi tiết bài viết](https://research.google/blog/bypassing-inference-bottlenecks-accelerating-complex-ai-search-with-retrieve-for-train/)
+* **Bài học nhận thức**: Algorithms & Theory
+* **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
+
+---
+### 🚨 [2026-09-25 05:42] How Cloudflare addressed a cross-tenant data exposure vulnerability in Containers
+* **Nguồn cảnh báo**: Cloudflare Engineering | [Chi tiết bài viết](https://blog.cloudflare.com/containers-cross-tenant-vulnerability/)
+* **Bài học nhận thức**: External security researchers at Accomplish identified a vulnerability in Cloudflare Containers that could expose residual disk data from previous workloads. We explain how the issue worked, how we...
+* **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
+
+---
+### 🚨 [2026-09-25 05:42] Silent Failures in Agent-Tool Interaction: An Audit of ToolUniverse
+* **Nguồn cảnh báo**: ArXiv CS.AI | [Chi tiết bài viết](https://arxiv.org/abs/2609.26836)
+* **Bài học nhận thức**: arXiv:2609.26836v1 Announce Type: new Abstract: Agentic AI systems are increasingly adopting automated pipelines that integrate multiple tools. While prior r...
+* **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
+
+---
