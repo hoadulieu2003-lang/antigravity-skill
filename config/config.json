@@ -140,7 +140,8 @@
         "read_url(docs.google.com)",
         "read_url(studio.chothongminh.top)",
         "read_url(live.chothongminh.top)",
-        "mcp(cdp-bridge/search_code_symbols)"
+        "mcp(cdp-bridge/search_code_symbols)",
+        "read_url(share.gemini.google)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

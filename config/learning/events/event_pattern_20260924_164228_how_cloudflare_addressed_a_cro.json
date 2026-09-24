@@ -1,0 +1,7 @@
+{
+  "event_type": "ARCHITECTURAL_PATTERN_DISTILLED",
+  "title": "How Cloudflare addressed a cross-tenant data exposure vulnerability in Containers",
+  "source": "Cloudflare Engineering",
+  "pattern_file": "C:\\Users\\game\\.gemini\\knowledge\\architecture_patterns\\how_cloudflare_addressed_a_cross_tenant_data_exposure_vulner.md",
+  "timestamp": "2026-09-24 16:42:28 UTC"
+}

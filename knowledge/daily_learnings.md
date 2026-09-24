@@ -1591,3 +1591,21 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-24 23:42:02`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google DeepMind]** [Introducing Gemini 3.8 Live with Live Avatar](https://deepmind.google/blog/introducing-gemini-38-live-with-live-avatar/)
+  > 
+
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [How Cloudflare addressed a cross-tenant data exposure vulnerability in Containers](https://blog.cloudflare.com/containers-cross-tenant-vulnerability/)
+  > External security researchers at Accomplish identified a vulnerability in Cloudflare Containers that could expose residual disk data from previous workloads. We explain how the issue worked, how we...
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (122 ⭐)]** [sesori-ai/sesori_apps_monorepo](https://github.com/sesori-ai/sesori_apps_monorepo)
+  > Sesori iOS/Android app and the Sesori Bridge CLI — drive Claude, Codex, OpenCode, Cursor, Pi, OMP, Hermes coding sessions from your phone
+
+</untrusted_external_content>
+
+---
