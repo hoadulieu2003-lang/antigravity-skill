@@ -2009,9 +2009,30 @@ function buildStandaloneScript(schema) {
               }
             }
           }
-          requestAnimationFrame(renderFrame);
+          frameRafId = requestAnimationFrame(renderFrame);
         }
-        renderFrame();
+        var frameRafId = null;
+        function safeStartFrame() {
+          if (typeof document !== 'undefined' && document.hidden) {
+            frameRafId = null;
+            return;
+          }
+          if (!frameRafId) {
+            frameRafId = requestAnimationFrame(renderFrame);
+          }
+        }
+        safeStartFrame();
+
+        if (typeof document !== 'undefined') {
+          document.addEventListener('visibilitychange', function() {
+            if (!document.hidden && !frameRafId) {
+              frameRafId = requestAnimationFrame(renderFrame);
+            } else if (document.hidden && frameRafId) {
+              cancelAnimationFrame(frameRafId);
+              frameRafId = null;
+            }
+          });
+        }
       }
 
       // 4. Scrollytelling Scene Observer

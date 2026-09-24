@@ -918,7 +918,7 @@ input:focus-visible {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .hud-nav-links {
     display: none;
   }

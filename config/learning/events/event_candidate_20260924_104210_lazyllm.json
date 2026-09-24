@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-24T10:42:10.486150+00:00",
+  "skill_name": "lazyllm",
+  "source_repo": "LazyAGI/LazyLLM",
+  "stars": 3885,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\lazyllm\\SKILL.md",
+  "human_promotion_required": true
+}

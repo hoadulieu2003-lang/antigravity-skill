@@ -877,7 +877,7 @@ input:focus-visible {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .hud-nav-links {
     display: none;
   }
@@ -2161,6 +2161,16 @@ input:focus-visible {
         <span class="delight-metric-val hud-taptic-indicator" id="hudTapticVal"><span class="hud-taptic-dot" id="hudTapticDot"></span>Sẵn Sàng</span>
       </div>
 
+      <div class="delight-metric-row">
+        <span class="delight-metric-name">Battery Level:</span>
+        <span class="delight-metric-val emerald" id="hudBatteryVal">100% ⚡</span>
+      </div>
+
+      <div class="delight-metric-row">
+        <span class="delight-metric-name">Energy Tier:</span>
+        <span class="delight-metric-val cyan" id="hudPowerStateVal">TIER_HIGH (Bình thường)</span>
+      </div>
+
       <div class="delight-metric-row" style="margin-top: 6px;">
         <span class="delight-metric-name">Breakpoint Preview:</span>
       </div>
@@ -2168,6 +2178,162 @@ input:focus-visible {
         <button type="button" class="hud-bp-btn active" data-preview-bp="desktop">Desktop</button>
         <button type="button" class="hud-bp-btn" data-preview-bp="tablet">Tablet</button>
         <button type="button" class="hud-bp-btn" data-preview-bp="mobile">Mobile</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       FLOATING STUDIO INSPECTOR PANEL V4 (Bảng Điều Khiển Nổi Kính Mờ Luminous)
+       ======================================================================== -->
+  <aside class="floating-studio-inspector" id="floatingStudioInspector" aria-label="Generative Visual Studio Inspector V4">
+    <!-- Header / Drag Handle (PointerCapture Safe) -->
+    <div class="studio-drag-handle" id="studioDragHandle" title="Kéo thả vị trí bảng điều khiển (PointerCapture Safe)">
+      <div class="studio-handle-left">
+        <span class="studio-drag-icon">⋮⋮</span>
+        <span class="studio-title-badge">STUDIO INSPECTOR V4</span>
+      </div>
+      <div class="studio-handle-actions">
+        <button type="button" class="studio-icon-btn" id="studioCollapseBtn" aria-label="Thu gọn/Mở rộng bảng" title="Thu gọn / Mở rộng">−</button>
+      </div>
+    </div>
+
+    <!-- Inspector Content (Collapsible) -->
+    <div class="studio-panel-content" id="studioPanelContent">
+      <!-- Tabs Bar -->
+      <nav class="studio-tabs-bar" role="tablist" aria-label="Studio Tabs">
+        <button type="button" class="studio-tab-btn active" role="tab" aria-selected="true" data-studio-tab="surfaces">Surfaces</button>
+        <button type="button" class="studio-tab-btn" role="tab" aria-selected="false" data-studio-tab="physics">Physics</button>
+        <button type="button" class="studio-tab-btn" role="tab" aria-selected="false" data-studio-tab="blocks">Blocks</button>
+        <button type="button" class="studio-tab-btn" role="tab" aria-selected="false" data-studio-tab="export">Export</button>
+      </nav>
+
+      <!-- Tab 1: Surfaces -->
+      <div class="studio-tab-pane active" id="studioTabSurfaces" role="tabpanel">
+        <div class="studio-control-group">
+          <div class="studio-label-row">
+            <span class="studio-control-label">Độ Sáng Canvas (L)</span>
+            <span class="studio-control-val" id="valCanvasL">0.975</span>
+          </div>
+          <input type="range" class="studio-slider" id="sliderCanvasL" min="0.950" max="0.990" step="0.001" value="0.975" aria-label="Canvas Lightness">
+          <div class="studio-slider-ticks">
+            <span>0.950 (Mát)</span>
+            <span>0.975</span>
+            <span>0.990 (Rực)</span>
+          </div>
+        </div>
+
+        <div class="studio-control-group">
+          <div class="studio-label-row">
+            <span class="studio-control-label">Độ Mờ Kính (Blur)</span>
+            <span class="studio-control-val" id="valGlassBlur">20px</span>
+          </div>
+          <input type="range" class="studio-slider" id="sliderGlassBlur" min="8" max="32" step="1" value="20" aria-label="Glass Blur">
+          <div class="studio-slider-ticks">
+            <span>8px</span>
+            <span>20px</span>
+            <span>32px</span>
+          </div>
+        </div>
+
+        <div class="studio-control-group">
+          <div class="studio-label-row">
+            <span class="studio-control-label">Độ Đậm Viền (Border)</span>
+            <span class="studio-control-val" id="valBorderContrast">0.15</span>
+          </div>
+          <input type="range" class="studio-slider" id="sliderBorderContrast" min="0.05" max="0.30" step="0.01" value="0.15" aria-label="Border Contrast">
+          <div class="studio-slider-ticks">
+            <span>0.05 (Mảnh)</span>
+            <span>0.15</span>
+            <span>0.30 (Đậm)</span>
+          </div>
+        </div>
+
+        <div class="studio-presets-row">
+          <span class="studio-presets-label">Bảng Màu Luminous:</span>
+          <div class="studio-presets-btns">
+            <button type="button" class="studio-preset-pill" data-theme-quick="titanium">Titanium</button>
+            <button type="button" class="studio-preset-pill" data-theme-quick="paper">Paper</button>
+            <button type="button" class="studio-preset-pill" data-theme-quick="ivory">Ivory</button>
+            <button type="button" class="studio-preset-pill" data-theme-quick="alabaster">Alabaster</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Physics -->
+      <div class="studio-tab-pane" id="studioTabPhysics" role="tabpanel" style="display: none;">
+        <div class="studio-control-group">
+          <div class="studio-label-row">
+            <span class="studio-control-label">Spring Tension (Lực Căng)</span>
+            <span class="studio-control-val" id="valSpringTension">180</span>
+          </div>
+          <input type="range" class="studio-slider" id="sliderSpringTension" min="100" max="320" step="5" value="180" aria-label="Spring Tension">
+        </div>
+
+        <div class="studio-control-group">
+          <div class="studio-label-row">
+            <span class="studio-control-label">Spring Damping (Giảm Chấn)</span>
+            <span class="studio-control-val" id="valSpringDamping">12</span>
+          </div>
+          <input type="range" class="studio-slider" id="sliderSpringDamping" min="6" max="28" step="1" value="12" aria-label="Spring Damping">
+        </div>
+
+        <div class="studio-control-group">
+          <div class="studio-label-row">
+            <span class="studio-control-label">Góc Nghiêng 3D Tilt</span>
+            <span class="studio-control-val" id="valTiltDeg">8°</span>
+          </div>
+          <input type="range" class="studio-slider" id="sliderTiltDeg" min="2" max="22" step="1" value="8" aria-label="3D Tilt Angle">
+        </div>
+
+        <div class="studio-control-group">
+          <div class="studio-label-row">
+            <span class="studio-control-label">Bán Kính Spotlight</span>
+            <span class="studio-control-val" id="valSpotlightRadius">500px</span>
+          </div>
+          <input type="range" class="studio-slider" id="sliderSpotlightRadius" min="250" max="850" step="25" value="500" aria-label="Spotlight Radius">
+        </div>
+      </div>
+
+      <!-- Tab 3: Blocks -->
+      <div class="studio-tab-pane" id="studioTabBlocks" role="tabpanel" style="display: none;">
+        <p class="studio-desc-text">Cắm nóng (Hot Insert) các mẫu thẻ Bento hoặc biểu đồ Telemetry mới trực tiếp qua SafeDOMAssembler mà không reload trang.</p>
+        
+        <div class="studio-block-picker">
+          <label for="selectBlockTemplate" class="studio-control-label">Chọn Mẫu Khối:</label>
+          <select id="selectBlockTemplate" class="studio-select" aria-label="Chọn mẫu khối">
+            <option value="neural">Neural Network Telemetry Pod (Pod 7)</option>
+            <option value="fan">Dynamic Cooling & GPU Frequency</option>
+            <option value="quantum">Quantum Haptic Detent Oscillator</option>
+          </select>
+        </div>
+
+        <button type="button" class="studio-action-btn primary" id="btnHotInsertBlock">
+          <span>⚡ Cắm Nóng Khối (Hot Insert)</span>
+        </button>
+
+        <div class="studio-insert-meta">
+          <span id="hotInsertStatus">Đã cắm nóng: 0 khối</span>
+          <button type="button" class="studio-link-btn" id="btnResetInsertedBlocks">Đặt lại</button>
+        </div>
+      </div>
+
+      <!-- Tab 4: Export -->
+      <div class="studio-tab-pane" id="studioTabExport" role="tabpanel" style="display: none;">
+        <div class="studio-export-formats" role="group" aria-label="Định dạng xuất bản">
+          <button type="button" class="studio-format-pill active" data-export-format="css" aria-pressed="true">CSS Vars</button>
+          <button type="button" class="studio-format-pill" data-export-format="tailwind-v3" aria-pressed="false">Tailwind v3</button>
+          <button type="button" class="studio-format-pill" data-export-format="tailwind-v4" aria-pressed="false">Tailwind v4</button>
+          <button type="button" class="studio-format-pill" data-export-format="dtcg" aria-pressed="false">DTCG JSON</button>
+          <button type="button" class="studio-format-pill" data-export-format="typescript" aria-pressed="false">.d.ts</button>
+        </div>
+
+        <div class="studio-code-container">
+          <pre><code id="exportCodePreview" class="studio-code-box"></code></pre>
+        </div>
+
+        <button type="button" class="studio-action-btn copy-btn" id="btnCopyExportCode">
+          <span id="btnCopyExportLabel">📋 Sao Chép Mã Nguồn (Copy Code)</span>
+        </button>
       </div>
     </div>
   </aside>
@@ -2180,20 +2346,23 @@ input:focus-visible {
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "metadata": {
-    "title": "Antigravity 2.0 // Autonomous Design Studio Hub V3",
-    "description": "Siêu Trung Tâm Trình Diễn Lắp Ghép Giao Diện Tự Trị V3: Schema-Driven Page Assembly, Luminous Palette Engine, 3D WebGL Micro-Engine, Scrollytelling Pinned Stage, Rigid Bento Grid, Dual Audio-Haptics.",
+    "title": "Antigravity 2.0 // Generative Visual Studio Hub V4",
+    "description": "Siêu Trung Tâm Studio Tạo Sinh & Tinh Chỉnh Trực Quan V4: Floating Studio Inspector Panel, ConstructableMutationEngine 60/120 FPS, CrossFrameworkTokenExporter, AdaptiveBatteryWatchdog, SafeDOMAssembler Hot Insert, 3D WebGL Shader, Scrollytelling & Dual Audio-Haptics.",
     "lang": "vi",
     "charset": "UTF-8",
     "author": "Antigravity 2.0 Open-Design System",
     "keywords": [
+      "Generative Visual Studio Hub V4",
+      "Floating Studio Inspector",
+      "ConstructableMutationEngine",
+      "CrossFrameworkTokenExporter",
+      "AdaptiveBatteryWatchdog",
+      "SafeDOMAssembler Hot Insert",
       "Luminous Light Theme",
-      "Schema-Driven Assembly",
       "WebGL 3D",
       "Scrollytelling",
       "WebAudioHaptics",
-      "Bento Grid",
-      "Dual Audio-Haptic",
-      "Zero-XSS"
+      "Rigid Bento"
     ]
   },
   "theme": {
@@ -2437,8 +2606,11 @@ input:focus-visible {
   </script>
 
   <!-- ========================================================================
-       7. WOW ENGINE LOGIC & SHOWCASE V3 SCRIPTS
+       7. WOW ENGINE LOGIC & SHOWCASE V4 SCRIPTS
        ======================================================================== -->
+  <script src="constructable_mutation.js"></script>
+  <script src="battery_watchdog.js"></script>
+  <script src="cross_framework_token_exporter.js"></script>
   <script src="luminous_palette_engine.js"></script>
   <script src="page_assembler.js"></script>
   <script src="scrolly_stage_engine.js"></script>
@@ -2589,7 +2761,12 @@ input:focus-visible {
         }
 
         let phase = 0;
+        let oscRafId = null;
         function renderOscilloscope() {
+          if (typeof document !== 'undefined' && document.hidden) {
+            oscRafId = null;
+            return;
+          }
           ctx.fillStyle = '#0F172A';
           ctx.fillRect(0, 0, oscCanvas.width, oscCanvas.height);
 
@@ -2611,7 +2788,7 @@ input:focus-visible {
           waveEnergy *= 0.94;
           phase += 0.15;
 
-          requestAnimationFrame(renderOscilloscope);
+          oscRafId = requestAnimationFrame(renderOscilloscope);
         }
         renderOscilloscope();
       }
@@ -2640,7 +2817,12 @@ input:focus-visible {
           { from: 4, to: 5, progress: 0.8, speed: 0.018 }
         ];
 
+        let topoRafId = null;
         function renderTopology() {
+          if (typeof document !== 'undefined' && document.hidden) {
+            topoRafId = null;
+            return;
+          }
           const w = topoCanvas.width;
           const h = topoCanvas.height;
           tctx.clearRect(0, 0, w, h);
@@ -2705,9 +2887,18 @@ input:focus-visible {
             tctx.fillText(n.name, n.x, n.y + 20);
           });
 
-          requestAnimationFrame(renderTopology);
+          topoRafId = requestAnimationFrame(renderTopology);
         }
         renderTopology();
+
+        if (typeof document !== 'undefined') {
+          document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+              if (oscCanvas && !oscRafId) renderOscilloscope();
+              if (topoCanvas && !topoRafId) renderTopology();
+            }
+          });
+        }
       }
     })();
   </script>

@@ -1,0 +1,39 @@
+{
+  "wp": "WP-R4-02",
+  "task": "StrictSanitizationPipeline & Safe DOM Assembler",
+  "status": "COMPLETED",
+  "files_created": [
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/strict_sanitizer.js",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/strict_sanitizer.umd.js",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/strict_sanitizer.d.ts",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/test_strict_sanitizer.mjs",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/verify_strict_sanitizer_types.ts"
+  ],
+  "verification_script": "node config/skills/open-design/scripts/test_strict_sanitizer.mjs",
+  "verification_status": "PASS (168/168 tests passing across 10 security test suites)",
+  "features_implemented": [
+    "SafeStyleSanitizer: Danh sách trắng (Whitelist) nghiêm ngặt các thuộc tính CSS an toàn (Box model, Flex, Grid, Typography, Luminous surfaces, Transforms, Transitions, Custom variables --*, Object-fit, Clip-path, Inset). Bảo toàn độ nhạy chữ hoa/thường cho CSS variables.",
+    "Phòng tuyến Chống Bypass Whitespace: Bắt trúng mọi biến thể lẩn tránh khoảng trắng bằng regex word boundary /\\burl\\s*\\(/i, /\\bexpression\\s*\\(/i, /\\bimage\\s*\\(/i cùng các ký tự phân tách nguy hại /[@;{}<>\\\\]/.",
+    "Z-Index Clamping An Toàn: Kẹp chặn giá trị z-index bắt buộc trong khoảng [0, 100], xử lý an toàn từ khóa auto không phân biệt chữ hoa/thường, triệt tiêu hoàn toàn nguy cơ Clickjacking và UI Redressing.",
+    "Cấm triệt để position: fixed: Từ chối tuyệt đối mọi giá trị position fixed trên các thành phần tùy biến của người dùng và AI.",
+    "applySafeStyles() An Toàn Cấp Thấp: Sử dụng element.style.setProperty(name, val), cấm tuyệt đối nối chuỗi template string vào style hay ghi đè cssText.",
+    "SafeDOMAssembler & Chống DOM Clobbering: Bắt buộc Namespace Scoping 100% thuộc tính id và name với tiền tố gvs_cmp_[id], hook tự động setAttribute trên cả Node ảo lẫn Browser Native Elements, vô hiệu hóa hoàn toàn nguy cơ ghi đè window[id] hoặc document[name].",
+    "Bảo Vệ Khỏi XSS Biến Thể: Khử sạch các thẻ đóng có khoảng trắng /\\s*script\\s*>/, thẻ đóng unclosed, comment HTML chứa mã độc, và giải mã entity trước khi kiểm duyệt URL protocol.",
+    "Bộ Phân Tích Cú Pháp Chống Treo Stack: parseHtmlToElements tích hợp thuật toán cuộn stack (stack unwinding) linh hoạt khi gặp thẻ lồng không chuẩn.",
+    "Cô lập Không gian Shadow DOM: Hỗ trợ mountInShadowRoot(host, content, options) ở chế độ open mode kèm bộ lọc kiểu dáng cách ly, ngăn ngừa rò rỉ CSS ra tài liệu chính và chặn breakout </style>.",
+    "SafeSchemaMerger Bất biến: Tạo đối tượng sạch không nguyên mẫu Object.create(null), khử 100% Prototype Pollution (__proto__, constructor, prototype), phân biệt chính xác DAG shared objects và cắt đứt tham chiếu vòng (Circular Reference) bằng Set active call stack chống Call Stack Overflow DoS.",
+    "ContractFreezer Gating An Toàn: Khóa đệ quy deepFreeze chỉ áp dụng trên Plain Objects và Arrays, duyệt qua cả Symbol keys bằng Reflect.ownKeys, an toàn bỏ qua DOM Nodes, Window và Host Objects để ngăn chặn crash runtime.",
+    "Phát hành Độc lập & Đa chuẩn: Cung cấp đầy đủ ESM module, UMD standalone bundle và định nghĩa TypeScript strict_sanitizer.d.ts."
+  ],
+  "security_audit_records": [
+    "CSS Evasion Fuzzing: Các payload chứa url  (), url \\t (), url\\n(), expression  (), image  (), dấu chấm phẩy, đóng ngoặc nhọn, @import đều bị bác bỏ 100%.",
+    "Z-Index Boundary Clamping: 999999 kẹp về 100, -50 kẹp về 0, giá trị hợp lệ 50 và từ khóa AUTO được giữ nguyên.",
+    "Position: fixed Fuzzing: Payload fixed, FIXED, fixed !important bị chặn đứng hoàn toàn.",
+    "DOM Clobbering Defense: id='window', name='document', id='cookie', name='defaultView' được tự động chuyển thành gvs_cmp_window, gvs_cmp_document, gvs_cmp_cookie, gvs_cmp_defaultView trên cả SSR và DOM thật.",
+    "XSS Fuzzing: Các thẻ <script>, <iframe>, <object>, <embed>, các sự kiện onclick/onerror/onmouseover, biến thể đóng thẻ khoảng trắng </script >, comment HTML và giao thức javascript:/entity bị vô hiệu hóa 100%.",
+    "Prototype Pollution Fuzzing: 4 vector tấn công qua __proto__, constructor.prototype, prototype trực tiếp và lồng sâu đều thất bại, Object.prototype giữ nguyên tính toàn vẹn 100%.",
+    "DAG Shared Object & Circular Reference DoS Fuzzing: Cấu trúc DAG tái sử dụng đối tượng được bảo tồn đầy đủ dữ liệu; đối tượng tự tham chiếu tuần hoàn được ngắt vòng mượt mà, không xảy ra lỗi tràn ngăn xếp Call Stack Overflow.",
+    "ContractFreezer Symbol Fuzzing: Thuộc tính Symbol lồng sâu được đóng băng an toàn song song với việc bypass Window/DOM node."
+  ],
+  "summary": "Nhiệm vụ WP-R4-02: StrictSanitizationPipeline & Safe DOM Assembler đã được rà soát, vá toàn bộ các lỗ hổng biên hiểm hóc (DAG truncation, whitespace closing tags, entity URL bypass, browser DOM clobbering bypass, parser stack freeze, Symbol freezing), hoàn thiện toàn diện phòng tuyến an ninh dữ liệu 4 tầng và vượt qua 168/168 tests kiểm thử tự động."
+}

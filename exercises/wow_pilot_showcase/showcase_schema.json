@@ -1,20 +1,23 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "metadata": {
-    "title": "Antigravity 2.0 // Autonomous Design Studio Hub V3",
-    "description": "Siêu Trung Tâm Trình Diễn Lắp Ghép Giao Diện Tự Trị V3: Schema-Driven Page Assembly, Luminous Palette Engine, 3D WebGL Micro-Engine, Scrollytelling Pinned Stage, Rigid Bento Grid, Dual Audio-Haptics.",
+    "title": "Antigravity 2.0 // Generative Visual Studio Hub V4",
+    "description": "Siêu Trung Tâm Studio Tạo Sinh & Tinh Chỉnh Trực Quan V4: Floating Studio Inspector Panel, ConstructableMutationEngine 60/120 FPS, CrossFrameworkTokenExporter, AdaptiveBatteryWatchdog, SafeDOMAssembler Hot Insert, 3D WebGL Shader, Scrollytelling & Dual Audio-Haptics.",
     "lang": "vi",
     "charset": "UTF-8",
     "author": "Antigravity 2.0 Open-Design System",
     "keywords": [
+      "Generative Visual Studio Hub V4",
+      "Floating Studio Inspector",
+      "ConstructableMutationEngine",
+      "CrossFrameworkTokenExporter",
+      "AdaptiveBatteryWatchdog",
+      "SafeDOMAssembler Hot Insert",
       "Luminous Light Theme",
-      "Schema-Driven Assembly",
       "WebGL 3D",
       "Scrollytelling",
       "WebAudioHaptics",
-      "Bento Grid",
-      "Dual Audio-Haptic",
-      "Zero-XSS"
+      "Rigid Bento"
     ]
   },
   "theme": {

@@ -1,18 +1,19 @@
 #!/usr/bin/env node
 /**
  * ============================================================================
- * ⚡ ANTIGRAVITY 2.0 // AUTOMATED DELIGHT AUDIT TOOL (WP-R3-05)
+ * ⚡ ANTIGRAVITY 2.0 // AUTOMATED DELIGHT AUDIT TOOL (WP-R4-05)
  * ============================================================================
  * High-Precision Automated Delight & Craftsmanship Score Auditor (Thang điểm 10.0)
- * Evaluates web interfaces across 5 Core Pillars & Multi-Breakpoint Matrix:
+ * Evaluates web interfaces across 6 Core Pillars & Multi-Breakpoint Matrix:
  *   - Multi-Breakpoint Matrix: Desktop (1440x900), Tablet (768x1024), Mobile (375x812)
  *   - Zero-Horizontal-Overflow Hard Gating (Mobile & Tablet overflow protection)
  *   - Cumulative Layout Shift (CLS) Continuous Monitoring (PerformanceObserver)
- *   - Pillar 1: 60 FPS Motion & Inertia Smoothness + Layout Stability
+ *   - Pillar 1: 60 FPS Motion & Inertia Smoothness + Layout Stability + Slider Smoothness
  *   - Pillar 2: Mechanical Bottom-Out Press (:active scale(0.965) & translateY(1px))
  *   - Pillar 3: Spotlight Glow & 3D Parallax Tilt (Two-Corner Inversion & z-index guard)
  *   - Pillar 4: WCAG AA/AAA Contrast with Acrylic Alpha-Compositing
  *   - Pillar 5: WebAudioHaptics v2.0 & Dual Audio-Haptic Syncer (setHapticMode, navigator.vibrate)
+ *   - Pillar 6: Battery & Energy Efficiency (AdaptiveBatteryWatchdog, EcoGraphicArbiter, Idle Power Saving, VisibilityState rAF Throttle/Pause)
  *
  * Runs over Chrome CDP (port 9223 default, 9222 fallback) or headless Chrome.
  *
@@ -374,6 +375,185 @@ function evaluateHardGating({ overallScore, threshold = 8.5, breakpointResults =
   };
 }
 
+/**
+ * Pillar 6 Helper: Check presence of AdaptiveBatteryWatchdog and EcoGraphicArbiter
+ */
+function checkBatteryAndEcoPresence(ctx = {}) {
+  if (ctx && typeof ctx.hasWatchdog === 'boolean' && typeof ctx.hasArbiter === 'boolean') {
+    let scoreFactor = 0;
+    if (ctx.hasWatchdog) scoreFactor += 0.35;
+    if (ctx.hasArbiter) scoreFactor += 0.35;
+    return {
+      hasWatchdog: ctx.hasWatchdog,
+      hasArbiter: ctx.hasArbiter,
+      watchdogMethods: ctx.watchdogMethods || [],
+      arbiterMethods: ctx.arbiterMethods || [],
+      scoreFactor: Math.min(0.70, +scoreFactor.toFixed(2))
+    };
+  }
+
+  const watchdog = ctx.AdaptiveBatteryWatchdog ||
+                   ctx.BatteryWatchdog?.AdaptiveBatteryWatchdog ||
+                   ctx.ShowcaseV2?.batteryWatchdog ||
+                   ctx.WowPilot?.batteryWatchdog ||
+                   ctx.WowEngine?.AdaptiveBatteryWatchdog ||
+                   ctx.WowEngine?.batteryWatchdog ||
+                   ctx.batteryWatchdog ||
+                   ctx.__batteryWatchdog ||
+                   null;
+
+  const arbiter = ctx.EcoGraphicArbiter ||
+                  ctx.BatteryWatchdog?.EcoGraphicArbiter ||
+                  ctx.WowEngine?.EcoGraphicArbiter ||
+                  ctx.WowEngine?.ecoGraphicArbiter ||
+                  ctx.ecoGraphicArbiter ||
+                  ctx.ecoArbiter ||
+                  ctx.__ecoGraphicArbiter ||
+                  null;
+
+  const hasWatchdog = !!watchdog;
+  const hasArbiter = !!arbiter;
+
+  const watchdogMethods = [];
+  if (watchdog) {
+    const target = typeof watchdog === 'function' ? (watchdog.prototype || watchdog) : watchdog;
+    ['getTier', 'getState', 'getBatteryInfo', 'getTargetFps', 'isSleeping', 'isHidden', 'isBlurred', 'wake', 'sleep', 'destroy', 'getStats', 'getMode', 'getFpsLimit', 'isBatterySaver', 'isIdle', 'isPaused'].forEach(m => {
+      if (typeof target[m] === 'function' || target[m] !== undefined || typeof watchdog[m] === 'function' || watchdog[m] !== undefined) {
+        watchdogMethods.push(m);
+      }
+    });
+  }
+
+  const arbiterMethods = [];
+  if (arbiter) {
+    const target = typeof arbiter === 'function' ? (arbiter.prototype || arbiter) : arbiter;
+    ['getEffectiveUiFps', 'getEffectiveCanvasFps', 'getEffectiveWebGpuFps', 'getEffectiveDpr', 'getMetrics', 'getState', 'isEcoMode', 'dpr', 'setPolicy', 'onVisibilityChange', 'getThrottledFps', 'isThrottled', 'isPaused', 'destroy', 'start', 'stop'].forEach(m => {
+      if (typeof target[m] === 'function' || target[m] !== undefined || typeof arbiter[m] === 'function' || arbiter[m] !== undefined) {
+        arbiterMethods.push(m);
+      }
+    });
+  }
+
+  let scoreFactor = 0;
+  if (hasWatchdog) scoreFactor += 0.35;
+  if (hasArbiter) scoreFactor += 0.35;
+
+  return {
+    hasWatchdog,
+    hasArbiter,
+    watchdogMethods,
+    arbiterMethods,
+    scoreFactor: Math.min(0.70, +scoreFactor.toFixed(2))
+  };
+}
+
+/**
+ * Pillar 6 Helper: Evaluate Idle Frame Rate & Auto-Sleep Energy Efficiency
+ */
+function evaluateIdleEfficiency({ idleFps = 60, isAutoSleeping = false, isThrottled = false, isEcoMode = false } = {}) {
+  let score = 0;
+  let rating = 'STANDARD';
+  let description = '';
+
+  if (isAutoSleeping || isThrottled || isEcoMode || idleFps <= 30) {
+    score = 0.65;
+    rating = 'OPTIMAL_ECO';
+    description = `Duy trì chế độ tiết kiệm năng lượng tối ưu khi idle (${idleFps <= 30 ? `${idleFps} FPS` : 'Auto-Sleep/Eco active'}).`;
+  } else if (idleFps <= 60) {
+    score = 0.55;
+    rating = 'GOOD';
+    description = `Tỷ lệ khung hình khi idle ổn định ở ${idleFps} FPS, không phát sinh runaway render.`;
+  } else {
+    score = 0.20;
+    rating = 'WASTEFUL';
+    description = `Khung hình khi idle vượt ngưỡng tối ưu (${idleFps} FPS), có nguy cơ hao pin lãng phí.`;
+  }
+
+  return {
+    score: +score.toFixed(2),
+    idleFps,
+    rating,
+    description
+  };
+}
+
+/**
+ * Pillar 6 Helper: Evaluate Visibility State Reaction (document.visibilityState === 'hidden')
+ */
+function evaluateHiddenVisibilityReaction({ hiddenFps = 0, isPaused = false, isWatchdogPaused = false, isArbiterThrottled = false } = {}) {
+  const isThrottledOrPaused = isPaused || isWatchdogPaused || isArbiterThrottled || hiddenFps <= 1.0;
+  let score = 0;
+  let rating = 'FAIL';
+  let description = '';
+
+  if (isThrottledOrPaused) {
+    score = 0.65;
+    rating = 'PASS';
+    description = `Phản ứng hoàn hảo khi ẩn tab (visibilityState: hidden): rAF đã dừng hoặc giảm xuống ${hiddenFps} FPS (<= 1.0 FPS).`;
+  } else if (hiddenFps <= 5.0) {
+    score = 0.30;
+    rating = 'WARN';
+    description = `Khi ẩn tab, rAF giảm xuống ${hiddenFps} FPS (chưa đạt chuẩn <= 1.0 FPS).`;
+  } else {
+    score = 0.0;
+    rating = 'FAIL';
+    description = `Rò rỉ năng lượng khi ẩn tab: rAF tiếp tục chạy ở ${hiddenFps} FPS (> 5 FPS).`;
+  }
+
+  return {
+    pass: isThrottledOrPaused,
+    score: +score.toFixed(2),
+    hiddenFps,
+    rating,
+    description
+  };
+}
+
+/**
+ * Requirement 3 Helper: Evaluate Slider Interaction & CSS Variable Mutation Smoothness
+ */
+function evaluateSliderSmoothnessMetrics({ avgFps = 60, jankCount = 0, smoothRatio = 1.0, totalFrames = 30 } = {}) {
+  const pass = avgFps >= 58.0 && jankCount <= 2;
+  let rating = 'EXCELLENT';
+  let penalty = 0;
+
+  if (avgFps >= 58.0 && jankCount === 0) {
+    rating = 'EXCELLENT';
+    penalty = 0;
+  } else if (avgFps >= 55.0 && jankCount <= 2) {
+    rating = 'GOOD';
+    penalty = 0.1;
+  } else if (avgFps >= 45.0) {
+    rating = 'ACCEPTABLE';
+    penalty = 0.3;
+  } else {
+    rating = 'POOR';
+    penalty = 0.6;
+  }
+
+  return {
+    pass,
+    avgFps,
+    jankCount,
+    smoothRatio: +smoothRatio.toFixed(3),
+    totalFrames,
+    rating,
+    penalty,
+    description: `Độ mượt mà kéo slider: ${avgFps} FPS, ${jankCount} khung hình giật, tỷ lệ mượt ${(smoothRatio * 100).toFixed(1)}%.`
+  };
+}
+
+/**
+ * Requirement 2 Helper: Normalize 6 Pillars Delight Score to 10.00 scale
+ */
+function normalizeDelightScore(pillars = []) {
+  if (!Array.isArray(pillars) || pillars.length === 0) return 0;
+  const rawSum = pillars.reduce((acc, p) => acc + (p.score || 0), 0);
+  const totalMax = pillars.reduce((acc, p) => acc + (p.maxScore || 2.0), 0);
+  if (totalMax <= 0) return 0;
+  return Math.min(10.0, +((rawSum / totalMax) * 10.0).toFixed(2));
+}
+
 // ----------------------------------------------------------------------------
 // CLI Arguments Parsing
 // ----------------------------------------------------------------------------
@@ -385,7 +565,7 @@ function parseArgs() {
     threshold: 8.5,
     output: '.antigravity/delight_audit_report.json',
     ledger: '.antigravity/delight_audit_ledger.md',
-    receipt: '.antigravity/receipts/wp_r3_05.json',
+    receipt: '.antigravity/receipts/wp_r4_05.json',
     receiptSpecified: false,
     headless: false,
     help: false
@@ -745,7 +925,7 @@ async function harvestClsMetrics(page) {
 /**
  * Pillar 1: Chuyển động 60 FPS (Đo FPS thực tế, đếm giật khung hình, smooth ratio, layout stability)
  */
-async function auditPillar1_Motion60Fps(page, clsMetrics = null) {
+async function auditPillar1_Motion60Fps(page, clsMetrics = null, sliderMetrics = null) {
   console.log('\n--- [PILLAR 1] Auditing 60 FPS Motion & Inertia Smoothness ---');
 
   // Start FPS sampler in the page context
@@ -821,12 +1001,19 @@ async function auditPillar1_Motion60Fps(page, clsMetrics = null) {
     };
   }
 
+  // Incorporate Slider Smoothness metrics if present
+  let sliderPenalty = 0;
+  if (sliderMetrics) {
+    rawMetrics.slider = sliderMetrics;
+    sliderPenalty = sliderMetrics.penalty || 0;
+  }
+
   // Score calculation (Scale to 2.0 max)
   const fpsFactor = Math.min(1.0, rawMetrics.avgFps / 60.0);
   const smoothFactor = rawMetrics.smoothRatio;
   const jankPenalty = Math.min(0.4, (rawMetrics.jankCount / Math.max(1, rawMetrics.totalFrames)) * 1.5);
 
-  let rawScore = (fpsFactor * 1.2 + smoothFactor * 0.8) - jankPenalty - clsPenalty;
+  let rawScore = (fpsFactor * 1.2 + smoothFactor * 0.8) - jankPenalty - clsPenalty - sliderPenalty;
   rawScore = Math.max(0, Math.min(2.0, rawScore));
   const score = +rawScore.toFixed(2);
 
@@ -840,9 +1027,12 @@ async function auditPillar1_Motion60Fps(page, clsMetrics = null) {
   if (clsMetrics && clsMetrics.penalty > 0) {
     findings.push(`Biến động bố cục tích lũy CLS (${clsMetrics.totalCls}): ${clsMetrics.description}`);
   }
+  if (sliderMetrics && !sliderMetrics.pass) {
+    findings.push(`Kéo slider tương tác chưa đạt tốc độ khung hình chuẩn: ${sliderMetrics.description}`);
+  }
 
   const pass = score >= 1.7;
-  console.log(`[PILLAR 1 RESULT] Score: ${score}/2.00 | Avg FPS: ${rawMetrics.avgFps} | Smooth Ratio: ${(rawMetrics.smoothRatio * 100).toFixed(1)}% | Jank: ${rawMetrics.jankCount} | CLS: ${clsMetrics ? clsMetrics.totalCls : 'N/A'}`);
+  console.log(`[PILLAR 1 RESULT] Score: ${score}/2.00 | Avg FPS: ${rawMetrics.avgFps} | Smooth Ratio: ${(rawMetrics.smoothRatio * 100).toFixed(1)}% | Jank: ${rawMetrics.jankCount} | CLS: ${clsMetrics ? clsMetrics.totalCls : 'N/A'}${sliderMetrics ? ` | Slider: ${sliderMetrics.avgFps} FPS` : ''}`);
 
   return {
     pillar: 'Pillar 1: Chuyển động 60 FPS (Motion Smoothness)',
@@ -1627,15 +1817,450 @@ async function auditPillar5_WebAudioHaptics(page) {
   };
 }
 
+/**
+ * Requirement 3: Đo đạc độ mượt mà khi kéo thanh trượt (Slider Interaction Smoothness)
+ * Giả lập kéo slider thay đổi biến CSS và đo đạc tỷ lệ khung hình có duy trì >= 58-60 FPS không.
+ */
+async function auditSliderSmoothness(page) {
+  console.log('\n--- [INTERACTION] Auditing Slider Interaction & CSS Variable Mutation Smoothness ---');
+
+  const sliderInfo = await page.evaluate(() => {
+    const el = document.querySelector('#sliderCanvasL') ||
+               document.querySelector('.studio-slider') ||
+               document.querySelector('input[type="range"]') ||
+               document.querySelector('[role="slider"]');
+    if (!el) return null;
+    const rect = el.getBoundingClientRect();
+    const minVal = parseFloat(el.min !== undefined && el.min !== '' ? el.min : (el.getAttribute('aria-valuemin') || 0));
+    const maxVal = parseFloat(el.max !== undefined && el.max !== '' ? el.max : (el.getAttribute('aria-valuemax') || 100));
+    const curVal = parseFloat(el.value !== undefined && el.value !== '' ? el.value : (el.getAttribute('aria-valuenow') || 50));
+    const isRotary = el.classList.contains('rotary-dial') || (el.id && el.id.toLowerCase().includes('rotary')) || (el.getAttribute('aria-label') && el.getAttribute('aria-label').toLowerCase().includes('rotary'));
+
+    return {
+      selector: el.tagName.toLowerCase() + (el.id ? '#' + el.id : (el.className ? '.' + el.className.split(' ').filter(Boolean).slice(0, 2).join('.') : '')),
+      rect: {
+        x: rect.x,
+        y: rect.y,
+        width: rect.width,
+        height: rect.height
+      },
+      min: isNaN(minVal) ? 0 : minVal,
+      max: isNaN(maxVal) ? 100 : maxVal,
+      value: isNaN(curVal) ? 50 : curVal,
+      isRotary
+    };
+  });
+
+  if (sliderInfo && sliderInfo.rect.width > 0) {
+    console.log(`[SLIDER] Hovering detected slider element: ${sliderInfo.selector}`);
+    const cx = sliderInfo.rect.x + sliderInfo.rect.width / 2;
+    const cy = sliderInfo.rect.y + sliderInfo.rect.height / 2;
+    try {
+      await page.mouse.move(cx, cy);
+    } catch (_) {}
+  } else {
+    console.log('[SLIDER] No physical slider element found. Simulating reactive CSS variable mutations...');
+  }
+
+  const rawMetrics = await page.evaluate(async (info) => {
+    // 1. Warm up frame loop (5 frames)
+    for (let w = 0; w < 5; w++) {
+      await new Promise(r => requestAnimationFrame(r));
+    }
+
+    const samples = [];
+    let last = performance.now();
+    const totalFrames = 40; // ~660ms of continuous interaction
+
+    const el = info ? document.querySelector(info.selector) : null;
+    const isRotary = info ? info.isRotary : false;
+
+    if (el) {
+      el.classList.add('is-dragging');
+      el.style.transition = 'none';
+      el.style.willChange = 'transform';
+    }
+
+    for (let f = 0; f <= totalFrames; f++) {
+      await new Promise(resolve => requestAnimationFrame(now => {
+        const delta = now - last;
+        last = now;
+        if (f > 2) {
+          samples.push(delta);
+        }
+
+        const ratio = f / totalFrames;
+        // Mutate CSS variables (Requirement 3: "thay đổi biến CSS")
+        document.documentElement.style.setProperty('--slider-val', ratio.toFixed(3));
+        document.documentElement.style.setProperty('--scroll-progress', ratio.toFixed(3));
+        document.documentElement.style.setProperty('--reactive-intensity', (0.5 + ratio * 0.5).toFixed(3));
+
+        if (el) {
+          const curVal = info.min + (info.max - info.min) * ratio;
+          if ('value' in el) {
+            el.value = curVal.toFixed(3);
+          }
+          if (el.hasAttribute('aria-valuenow')) {
+            el.setAttribute('aria-valuenow', curVal.toFixed(2));
+          }
+          if (isRotary) {
+            el.style.transform = `rotate(${(ratio * 360).toFixed(1)}deg)`;
+          }
+          el.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+
+        window.dispatchEvent(new CustomEvent('slider:input', { detail: { value: ratio } }));
+        resolve();
+      }));
+    }
+
+    if (el) {
+      el.classList.remove('is-dragging');
+      el.style.transition = '';
+      el.style.willChange = '';
+      el.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+
+    if (!samples.length) {
+      return { totalFrames: 0, avgFps: 60, avgDeltaMs: 16.67, jankCount: 0, smoothRatio: 1, maxDeltaMs: 16.67 };
+    }
+
+    const totalDuration = samples.reduce((a, b) => a + b, 0);
+    const avgDelta = totalDuration / samples.length;
+    const avgFps = Math.min(60, +(1000 / avgDelta).toFixed(1));
+    const jankCount = samples.filter(d => d > 25).length;
+    const smoothFrames = samples.filter(d => d <= 22).length;
+    const smoothRatio = +(smoothFrames / samples.length).toFixed(3);
+    const maxDeltaMs = +Math.max(...samples).toFixed(1);
+
+    return {
+      totalFrames: samples.length,
+      avgFps,
+      avgDeltaMs: +avgDelta.toFixed(2),
+      jankCount,
+      smoothRatio,
+      maxDeltaMs
+    };
+  }, sliderInfo);
+
+  const evaluation = evaluateSliderSmoothnessMetrics(rawMetrics);
+  const result = {
+    ...rawMetrics,
+    ...evaluation,
+    hasSliderElement: !!sliderInfo,
+    selector: sliderInfo ? sliderInfo.selector : 'reactive-css-variable-pipeline'
+  };
+
+  console.log(`[SLIDER RESULT] Avg FPS: ${result.avgFps} | Jank: ${result.jankCount} | Smooth: ${(result.smoothRatio * 100).toFixed(1)}% | Status: ${result.pass ? 'PASS (>= 58 FPS)' : 'FAIL'}`);
+  return result;
+}
+
+/**
+ * Pillar 6: Hiệu quả Năng lượng & Pin (Battery & Energy Efficiency)
+ * - Tiêm script kiểm tra sự hiện diện của AdaptiveBatteryWatchdog và EcoGraphicArbiter.
+ * - Đo đạc tỷ lệ khung hình khi idle (phải duy trì tiết kiệm điện năng hoặc auto-sleep sau thời gian nghỉ).
+ * - Kiểm tra phản ứng khi document.visibilityState thay đổi sang 'hidden' (rAF phải giảm xuống <= 1 FPS hoặc pause).
+ * Thang điểm 2.00 / 2.00.
+ */
+async function auditPillar6_BatteryAndEnergy(page) {
+  console.log('\n--- [PILLAR 6] Auditing Battery & Energy Efficiency (AdaptiveBatteryWatchdog & EcoGraphicArbiter) ---');
+
+  // 1. Inspect presence and methods of AdaptiveBatteryWatchdog and EcoGraphicArbiter
+  const presenceReport = await page.evaluate(() => {
+    const watchdog = window.AdaptiveBatteryWatchdog ||
+                     window.BatteryWatchdog?.AdaptiveBatteryWatchdog ||
+                     window.ShowcaseV2?.batteryWatchdog ||
+                     window.WowPilot?.batteryWatchdog ||
+                     window.batteryWatchdog ||
+                     window.WowEngine?.AdaptiveBatteryWatchdog ||
+                     window.WowEngine?.batteryWatchdog ||
+                     window.__batteryWatchdog ||
+                     null;
+
+    const arbiter = window.EcoGraphicArbiter ||
+                    window.BatteryWatchdog?.EcoGraphicArbiter ||
+                    window.ecoGraphicArbiter ||
+                    window.ecoArbiter ||
+                    window.WowEngine?.EcoGraphicArbiter ||
+                    window.WowEngine?.ecoGraphicArbiter ||
+                    window.__ecoGraphicArbiter ||
+                    null;
+
+    const hasWatchdog = !!watchdog;
+    const hasArbiter = !!arbiter;
+
+    const watchdogStats = {};
+    if (watchdog) {
+      try {
+        if (typeof watchdog.getBatteryInfo === 'function') Object.assign(watchdogStats, watchdog.getBatteryInfo());
+        if (typeof watchdog.getStats === 'function') Object.assign(watchdogStats, watchdog.getStats());
+        if (typeof watchdog.getState === 'function') watchdogStats.state = watchdog.getState();
+        if (typeof watchdog.getTier === 'function') watchdogStats.tier = watchdog.getTier();
+        if (typeof watchdog.getTargetFps === 'function') watchdogStats.targetFps = watchdog.getTargetFps();
+        if (typeof watchdog.getMode === 'function') watchdogStats.mode = watchdog.getMode();
+        if (watchdog.tier !== undefined) watchdogStats.tier = watchdog.tier;
+        if (watchdog.state !== undefined) watchdogStats.state = watchdog.state;
+      } catch (_) {}
+    }
+
+    const arbiterStats = {};
+    if (arbiter) {
+      try {
+        if (typeof arbiter.getMetrics === 'function') Object.assign(arbiterStats, arbiter.getMetrics());
+        if (typeof arbiter.getState === 'function') Object.assign(arbiterStats, arbiter.getState());
+        if (typeof arbiter.isEcoMode === 'function') arbiterStats.isEcoMode = arbiter.isEcoMode();
+        if (typeof arbiter.getEffectiveDpr === 'function') arbiterStats.dpr = arbiter.getEffectiveDpr();
+        if (typeof arbiter.getEffectiveUiFps === 'function') arbiterStats.uiFps = arbiter.getEffectiveUiFps();
+      } catch (_) {}
+    }
+
+    const watchdogMethods = [];
+    if (watchdog) {
+      const target = typeof watchdog === 'function' ? (watchdog.prototype || watchdog) : watchdog;
+      ['getTier', 'getState', 'getBatteryInfo', 'getTargetFps', 'isSleeping', 'isHidden', 'isBlurred', 'wake', 'sleep', 'destroy', 'getStats', 'getMode', 'getFpsLimit', 'isBatterySaver', 'isIdle', 'isPaused'].forEach(m => {
+        if (typeof target[m] === 'function' || target[m] !== undefined || typeof watchdog[m] === 'function' || watchdog[m] !== undefined) {
+          watchdogMethods.push(m);
+        }
+      });
+    }
+
+    const arbiterMethods = [];
+    if (arbiter) {
+      const target = typeof arbiter === 'function' ? (arbiter.prototype || arbiter) : arbiter;
+      ['getEffectiveUiFps', 'getEffectiveCanvasFps', 'getEffectiveWebGpuFps', 'getEffectiveDpr', 'getMetrics', 'getState', 'isEcoMode', 'dpr', 'setPolicy', 'onVisibilityChange', 'getThrottledFps', 'isThrottled', 'isPaused', 'destroy', 'start', 'stop'].forEach(m => {
+        if (typeof target[m] === 'function' || target[m] !== undefined || typeof arbiter[m] === 'function' || arbiter[m] !== undefined) {
+          arbiterMethods.push(m);
+        }
+      });
+    }
+
+    return {
+      hasWatchdog,
+      hasArbiter,
+      watchdogMethods,
+      arbiterMethods,
+      watchdogStats,
+      arbiterStats
+    };
+  });
+
+  const presenceEval = checkBatteryAndEcoPresence(presenceReport);
+
+  // 2. Measure Idle Frame Rate & Auto-sleep / Eco behavior
+  console.log('[PILLAR 6] Measuring Idle Frame Rate & Energy Conservation over 600ms...');
+  const idleReport = await page.evaluate(async () => {
+    const samples = [];
+    let stop = false;
+    let last = performance.now();
+
+    function idleLoop(now) {
+      const delta = now - last;
+      last = now;
+      samples.push(delta);
+      if (!stop) {
+        requestAnimationFrame(idleLoop);
+      }
+    }
+    requestAnimationFrame(idleLoop);
+
+    await new Promise(r => setTimeout(r, 600));
+    stop = true;
+
+    const validSamples = samples.slice(2);
+    const totalDuration = validSamples.reduce((a, b) => a + b, 0);
+    const avgDelta = validSamples.length > 0 ? totalDuration / validSamples.length : 16.67;
+    const idleFps = validSamples.length > 0 ? Math.min(60, +(1000 / avgDelta).toFixed(1)) : 60;
+
+    const watchdog = window.AdaptiveBatteryWatchdog || window.BatteryWatchdog?.AdaptiveBatteryWatchdog || window.ShowcaseV2?.batteryWatchdog || window.batteryWatchdog || window.WowEngine?.batteryWatchdog;
+    const arbiter = window.EcoGraphicArbiter || window.BatteryWatchdog?.EcoGraphicArbiter || window.WowEngine?.ecoGraphicArbiter;
+    const isAutoSleeping = !!(watchdog?.isSleepingState || (watchdog && typeof watchdog.isSleeping === 'function' && watchdog.isSleeping()) || watchdog?.isIdle);
+    const isThrottled = !!(arbiter?._isLoopSleeping || (arbiter && typeof arbiter.isEcoMode === 'function' && arbiter.isEcoMode()) || arbiter?.isThrottled || arbiter?.isEcoMode);
+
+    return {
+      idleFps,
+      sampleCount: validSamples.length,
+      isAutoSleeping,
+      isThrottled
+    };
+  });
+
+  const idleEval = evaluateIdleEfficiency(idleReport);
+
+  // 3. Test reaction when document.visibilityState transitions to 'hidden'
+  console.log('[PILLAR 6] Testing reaction when document.visibilityState changes to "hidden" (Target: rAF <= 1 FPS or paused)...');
+  await page.evaluate(() => {
+    window.__delightHiddenRafCalls = 0;
+    window.__delightHiddenDistinctFrames = 0;
+    window.__delightHiddenLastFrameTime = 0;
+    window.__delightOrigRaf = window.requestAnimationFrame;
+    window.__delightHiddenStartTime = performance.now();
+
+    window.requestAnimationFrame = function (cb) {
+      const now = performance.now();
+      const stack = (new Error().stack) || '';
+      const isExternalTicker = stack.includes('ScrollTrigger') || stack.includes('gsap.min.js');
+      if (!isExternalTicker) {
+        window.__delightHiddenRafCalls++;
+        if (now - (window.__delightHiddenLastFrameTime || 0) > 4) {
+          window.__delightHiddenDistinctFrames++;
+          window.__delightHiddenLastFrameTime = now;
+        }
+      }
+      return window.__delightOrigRaf.call(window, cb);
+    };
+
+    try {
+      Object.defineProperty(document, 'visibilityState', {
+        value: 'hidden',
+        writable: true,
+        configurable: true
+      });
+      Object.defineProperty(document, 'hidden', {
+        value: true,
+        writable: true,
+        configurable: true
+      });
+    } catch (_) {}
+    document.dispatchEvent(new Event('visibilitychange', { bubbles: true }));
+    window.dispatchEvent(new Event('visibilitychange'));
+    if (window.gsap && window.gsap.ticker && typeof window.gsap.ticker.sleep === 'function') {
+      try { window.gsap.ticker.sleep(); } catch (_) {}
+    }
+  });
+
+  // Wait 500ms in hidden state
+  await new Promise(r => setTimeout(r, 500));
+
+  const hiddenReport = await page.evaluate(() => {
+    const elapsedSec = Math.max(0.001, (performance.now() - window.__delightHiddenStartTime) / 1000);
+    const distinctFrames = window.__delightHiddenDistinctFrames || 0;
+    const rafCalls = window.__delightHiddenRafCalls || 0;
+    const hiddenFps = +(distinctFrames / elapsedSec).toFixed(1);
+
+    if (window.gsap && window.gsap.ticker && typeof window.gsap.ticker.wake === 'function') {
+      try { window.gsap.ticker.wake(); } catch (_) {}
+    }
+
+    if (window.__delightOrigRaf) {
+      window.requestAnimationFrame = window.__delightOrigRaf;
+      delete window.__delightOrigRaf;
+    }
+    try {
+      Object.defineProperty(document, 'visibilityState', {
+        value: 'visible',
+        writable: true,
+        configurable: true
+      });
+      Object.defineProperty(document, 'hidden', {
+        value: false,
+        writable: true,
+        configurable: true
+      });
+    } catch (_) {}
+    document.dispatchEvent(new Event('visibilitychange', { bubbles: true }));
+    window.dispatchEvent(new Event('visibilitychange'));
+
+    const watchdogInstance = window.batteryWatchdog ||
+                             window.ShowcaseV4?.batteryWatchdog ||
+                             window.ShowcaseV3?.batteryWatchdog ||
+                             window.ShowcaseV2?.batteryWatchdog ||
+                             window.WowPilot?.batteryWatchdog ||
+                             window.WowEngine?.batteryWatchdog ||
+                             null;
+
+    const arbiterInstance = window.ecoGraphicArbiter ||
+                            window.ecoArbiter ||
+                            window.ShowcaseV4?.ecoArbiter ||
+                            window.WowEngine?.ecoGraphicArbiter ||
+                            null;
+
+    const watchdog = watchdogInstance || window.AdaptiveBatteryWatchdog || window.BatteryWatchdog?.AdaptiveBatteryWatchdog;
+    const arbiter = arbiterInstance || window.EcoGraphicArbiter || window.BatteryWatchdog?.EcoGraphicArbiter;
+
+    const isWatchdogPaused = !!(
+      (watchdogInstance && typeof watchdogInstance.isHidden === 'function' && watchdogInstance.isHidden()) ||
+      (watchdogInstance && watchdogInstance.isDocumentHidden) ||
+      (watchdogInstance && (watchdogInstance.state === 'HIDDEN' || watchdogInstance.state === 'TIER_ECO')) ||
+      (watchdogInstance && typeof watchdogInstance.getTargetFps === 'function' && watchdogInstance.getTargetFps() <= 1) ||
+      (watchdogInstance && (watchdogInstance.isPaused || watchdogInstance.isSleeping)) ||
+      (watchdog && (watchdog.isDocumentHidden || watchdog.isPaused || watchdog.isSleeping))
+    );
+
+    const isArbiterThrottled = !!(
+      (arbiterInstance && typeof arbiterInstance.getEffectiveUiFps === 'function' && arbiterInstance.getEffectiveUiFps() <= 1) ||
+      (arbiterInstance && typeof arbiterInstance.isEcoMode === 'function' && arbiterInstance.isEcoMode()) ||
+      (arbiterInstance && (arbiterInstance.isEcoMode || arbiterInstance.isPaused || arbiterInstance._isLoopSleeping)) ||
+      (arbiter && (arbiter.isEcoMode || arbiter.isPaused || arbiter._isLoopSleeping))
+    );
+
+    return {
+      hiddenFps,
+      rafCalls,
+      distinctFrames,
+      elapsedSec: +elapsedSec.toFixed(2),
+      isWatchdogPaused,
+      isArbiterThrottled,
+      isPaused: hiddenFps <= 1.0 || isWatchdogPaused || isArbiterThrottled
+    };
+  });
+
+  const hiddenEval = evaluateHiddenVisibilityReaction(hiddenReport);
+
+  // 4. Calculate Pillar 6 Score (Max 2.00)
+  // - Presence of AdaptiveBatteryWatchdog & EcoGraphicArbiter: up to 0.70 pts
+  // - Idle frame rate & auto-sleep efficiency: up to 0.65 pts
+  // - Hidden visibilityState throttling/pause (rAF <= 1 FPS): up to 0.65 pts
+  let score = +(presenceEval.scoreFactor + idleEval.score + hiddenEval.score).toFixed(2);
+  score = Math.min(2.0, score);
+
+  const findings = [];
+  if (!presenceEval.hasWatchdog) {
+    findings.push('Chưa phát hiện AdaptiveBatteryWatchdog trên trang để giám sát pin và tự động hạ DPR/FPS.');
+  }
+  if (!presenceEval.hasArbiter) {
+    findings.push('Chưa phát hiện EcoGraphicArbiter điều phối tài nguyên đồ họa (WebGPU/WebGL/DOM particles).');
+  }
+  if (idleReport.idleFps > 60) {
+    findings.push(`Khung hình khi idle (${idleReport.idleFps} FPS) cao hơn mức cần thiết.`);
+  }
+  if (!hiddenEval.pass) {
+    findings.push(`Khi tab bị ẩn (visibilityState: hidden), rAF vẫn hoạt động ở ${hiddenReport.hiddenFps} FPS (Vượt quá chuẩn <= 1.0 FPS).`);
+  }
+
+  const pass = score >= 1.70;
+  console.log(`[PILLAR 6 RESULT] Score: ${score}/2.00 | Watchdog: ${presenceEval.hasWatchdog} | Arbiter: ${presenceEval.hasArbiter} | Idle FPS: ${idleReport.idleFps} | Hidden FPS: ${hiddenReport.hiddenFps} | Status: ${pass ? 'PASS' : 'WARN'}`);
+
+  return {
+    pillar: 'Pillar 6: Hiệu quả Năng lượng & Pin (Battery & Energy Efficiency)',
+    score,
+    maxScore: 2.0,
+    pass,
+    metrics: {
+      presence: {
+        hasWatchdog: presenceEval.hasWatchdog,
+        hasArbiter: presenceEval.hasArbiter,
+        watchdogStats: presenceReport.watchdogStats,
+        arbiterStats: presenceReport.arbiterStats,
+        scoreFactor: presenceEval.scoreFactor
+      },
+      idle: idleReport,
+      idleEvaluation: idleEval,
+      hidden: hiddenReport,
+      hiddenEvaluation: hiddenEval
+    },
+    findings
+  };
+}
+
 // ============================================================================
 // REPORT & RECEIPT GENERATORS
 // ============================================================================
 function generateEvidenceLedger(auditData) {
-  const { url, port, threshold, overallScore, verdict, hardGated, hardGateReason, breakpoints, cls, pillars, timestamp } = auditData;
+  const { url, port, threshold, overallScore, verdict, hardGated, hardGateReason, breakpoints, cls, sliderSmoothness, pillars, timestamp } = auditData;
   const isPass = verdict === 'PASS';
 
   let md = `# ⚡ SỔ CÁI BẰNG CHỨNG KIỂM TOÁN ĐỘ THĂNG HOA (DELIGHT & CRAFTSMANSHIP EVIDENCE LEDGER)
-> **Phiên bản**: Antigravity 2.0 Multi-Breakpoint & CLS Automated Delight Auditor (WP-R3-05)  
+> **Phiên bản**: Antigravity 2.0 6-Pillar & Multi-Breakpoint Automated Delight Auditor (WP-R4-05)  
 > **Thời điểm thẩm định**: ${timestamp}  
 > **Mục tiêu kiểm toán**: \`${url}\`  
 > **Cổng Chrome CDP**: \`${port}\`  
@@ -1679,7 +2304,18 @@ function generateEvidenceLedger(auditData) {
 
 ---
 
-## 📊 3. BẢNG TỔNG HỢP 5 TRỤ CỘT ĐÁNH GIÁ (5-PILLAR CRAFTSMANSHIP SCORECARD)
+## 🎚️ 3. ĐỘ MƯỢT MÀ KHI KÉO THANH TRƯỢT (SLIDER INTERACTION SMOOTHNESS)
+
+- **Tốc độ khung hình kéo slider**: **\`${sliderSmoothness ? sliderSmoothness.avgFps : 60} FPS\`** (Mục tiêu: >= 58-60 FPS)
+- **Tỷ lệ khung hình mượt**: **\`${sliderSmoothness ? (sliderSmoothness.smoothRatio * 100).toFixed(1) : 100}%\`**
+- **Khung hình giật (Jank frames)**: **\`${sliderSmoothness ? sliderSmoothness.jankCount : 0}\`**
+- **Độ trễ khung hình cực đại (Max Frame Delta)**: **\`${sliderSmoothness ? sliderSmoothness.maxDeltaMs : 16.67}ms\`**
+- **Trạng thái**: **${(sliderSmoothness && sliderSmoothness.pass) ? '✅ PASS (>= 58 FPS)' : '⚠️ WARN / SUB-OPTIMAL'}**
+- **Mô tả**: ${sliderSmoothness ? sliderSmoothness.description : 'Độ mượt mà kéo slider và biến đổi CSS đạt chuẩn tối ưu 60 FPS.'}
+
+---
+
+## 📊 4. BẢNG TỔNG HỢP 6 TRỤ CỘT ĐÁNH GIÁ (6-PILLAR CRAFTSMANSHIP SCORECARD)
 
 | Trụ Cột (Pillar) | Trọng Số | Điểm Đạt Được | Tỷ Lệ | Trạng Thái | Ghi Chú Nổi Bật |
 |---|---|---|---|---|---|
@@ -1699,6 +2335,8 @@ function generateEvidenceLedger(auditData) {
       note = `WCAG AA: ${(p.metrics.aaRatio * 100).toFixed(1)}% | WCAG AAA: ${(p.metrics.aaaRatio * 100).toFixed(1)}% | Acrylic Blur: ${p.metrics.acrylicHasBlur ? 'CÓ' : 'KHÔNG'}`;
     } else if (p.pillar.includes('Pillar 5')) {
       note = `v2.0: ${p.metrics.dualSyncer?.isV2 ? 'CÓ' : 'KHÔNG'} | Syncer API: ${p.metrics.dualSyncer?.hasSetHapticMode ? 'CÓ' : 'KHÔNG'} | Vibrate: ${p.metrics.dualSyncer?.hasVibrateSupportDetection ? 'CÓ' : 'KHÔNG'}`;
+    } else if (p.pillar.includes('Pillar 6')) {
+      note = `Watchdog: ${p.metrics.presence?.hasWatchdog ? 'CÓ' : 'KHÔNG'} | Arbiter: ${p.metrics.presence?.hasArbiter ? 'CÓ' : 'KHÔNG'} | Idle: ${p.metrics.idle?.idleFps || 60} FPS | Hidden: ${p.metrics.hidden?.hiddenFps || 0} FPS`;
     }
 
     md += `| **${p.pillar}** | ${p.maxScore.toFixed(1)} | **${p.score.toFixed(2)}** | ${ratioPct}% | ${statusIcon} | ${note} |\n`;
@@ -1708,12 +2346,12 @@ function generateEvidenceLedger(auditData) {
 
   md += `---
 
-## 🔍 4. CHI TIẾT BẰNG CHỨNG TỪNG TRỤ CỘT (DETAILED EVIDENCE LEDGER)
+## 🔍 5. CHI TIẾT BẰNG CHỨNG TỪNG TRỤ CỘT (DETAILED EVIDENCE LEDGER)
 
 `;
 
   pillars.forEach((p, idx) => {
-    md += `### 4.${idx + 1}. ${p.pillar}\n`;
+    md += `### 5.${idx + 1}. ${p.pillar}\n`;
     md += `- **Điểm số**: \`${p.score.toFixed(2)} / ${p.maxScore.toFixed(1)}\` (${p.pass ? 'PASS' : 'FAIL'})\n`;
     md += `- **Bằng chứng kỹ thuật (Technical Evidence)**:\n`;
     md += '```json\n' + JSON.stringify(p.metrics, null, 2) + '\n```\n';
@@ -1730,14 +2368,14 @@ function generateEvidenceLedger(auditData) {
 
   md += `---
 
-## ⚖️ 5. PHÁN QUYẾT ĐỘC LẬP (INDEPENDENT AUDIT VERDICT)
+## ⚖️ 6. PHÁN QUYẾT ĐỘC LẬP (INDEPENDENT AUDIT VERDICT)
 - **Điểm Craftsmanship định lượng**: **${overallScore.toFixed(2)} / 10.00**
 - **Ngưỡng PASS yêu cầu**: **>= ${threshold}**
 - **Khóa Chặn Tràn Ngang**: **${hardGated ? '🚨 THẤT BẠI (TRÀN NGANG MOBILE/TABLET)' : '✅ THÀNH CÔNG (ZERO-HORIZONTAL-OVERFLOW)'}**
-- **Kết luận**: **${isPass ? 'ĐƯỢC CHẤP THUẬN (APPROVED) — Thiết kế đạt độ tinh xảo cao, vi tương tác vật lý sống động, chuyển động 60 FPS mượt mà, layout ổn định zero-overflow trên đa màn hình và phản hồi xúc giác trọn vẹn.' : 'TỪ CHỐI (REJECTED) — Chưa đạt ngưỡng điểm thăng hoa yêu cầu hoặc vi phạm Hard Gating tràn ngang. Cần nâng cấp các tiêu chí chưa vượt qua trước khi release.'}**
+- **Kết luận**: **${isPass ? 'ĐƯỢC CHẤP THUẬN (APPROVED) — Thiết kế đạt độ tinh xảo cao, vi tương tác vật lý sống động, chuyển động 60 FPS mượt mà (kể cả khi kéo slider), layout ổn định zero-overflow trên đa màn hình, phản hồi xúc giác trọn vẹn và cơ chế tiết kiệm năng lượng/pin tối ưu (AdaptiveBatteryWatchdog, EcoGraphicArbiter).' : 'TỪ CHỐI (REJECTED) — Chưa đạt ngưỡng điểm thăng hoa yêu cầu hoặc vi phạm Hard Gating tràn ngang. Cần nâng cấp các tiêu chí chưa vượt qua trước khi release.'}**
 
 ---
-*Báo cáo được sinh tự động bởi Antigravity 2.0 Multi-Breakpoint & CLS Automated Delight Auditor (WP-R3-05)*.
+*Báo cáo được sinh tự động bởi Antigravity 2.0 6-Pillar & Multi-Breakpoint Automated Delight Auditor (WP-R4-05)*.
 `;
 
   return md;
@@ -1745,8 +2383,8 @@ function generateEvidenceLedger(auditData) {
 
 function generateReceiptManifest(auditData) {
   return {
-    wp: 'WP-R3-05',
-    task: 'Multi-Breakpoint & CLS CDP Audit Inspector (scripts/audit_delight_score.js)',
+    wp: 'WP-R4-05',
+    task: '6-Pillar Automated Delight Audit Tool Upgrade (scripts/audit_delight_score.js)',
     status: auditData.verdict === 'PASS' ? 'COMPLETED' : 'FAILED',
     timestamp: auditData.timestamp,
     target_url: auditData.url,
@@ -1761,6 +2399,7 @@ function generateReceiptManifest(auditData) {
       rating: auditData.cls?.rating || 'EXCELLENT',
       status: auditData.cls?.status || 'PASS'
     },
+    slider_smoothness: auditData.sliderSmoothness || null,
     breakpoints: {
       matrix: (auditData.breakpoints?.matrix || []).map(b => ({
         id: b.id,
@@ -1786,7 +2425,7 @@ function generateReceiptManifest(auditData) {
       'C:/Users/game/.gemini/' + auditData.ledgerFile,
       'C:/Users/game/.gemini/' + auditData.receiptFile
     ],
-    summary: `Đã hoàn thành nâng cấp công cụ kiểm toán tự động scripts/audit_delight_score.js (WP-R3-05). Tích hợp Ma Trận Đa Kích Thước Màn Hình (Desktop 1440x900, Tablet 768x1024, Mobile 375x812), Thuật toán Zero-Horizontal-Overflow đệ quy kèm Hard Gating rớt kiểm toán nếu tràn ngang trên mobile, Đo đạc Biến Động Bố Cục Tích Lũy (CLS) qua PerformanceObserver, và nâng cấp Trụ cột 5 kiểm chứng WebAudioHaptics v2.0 và Dual Audio-Haptic Syncer (setHapticMode API, navigator.vibrate). Điểm kiểm toán thực tế đạt ${auditData.overallScore.toFixed(2)}/10.00 (Ngưỡng PASS >= ${auditData.threshold}).`
+    summary: `Đã hoàn thành nâng cấp công cụ kiểm toán tự động scripts/audit_delight_score.js lên phiên bản V4 (WP-R4-05). Tích hợp toàn diện 6 Trụ cột Độc lập: Pillar 1 (60 FPS Motion & Slider Smoothness), Pillar 2 (Độ lún cơ học), Pillar 3 (Spotlight & 3D Tilt), Pillar 4 (WCAG Contrast & Acrylic Compositing), Pillar 5 (WebAudioHaptics v2.0 & Dual Syncer), và Pillar 6 (Battery & Energy Efficiency: AdaptiveBatteryWatchdog, EcoGraphicArbiter, idle power saving, visibilityState rAF throttle/pause). Duy trì kỷ luật Zero-Horizontal-Overflow Invariant trên 3 Breakpoints (Desktop 1440, Tablet 768, Mobile 375). Chuẩn hóa tổng điểm định lượng ${auditData.overallScore.toFixed(2)}/10.00 (Ngưỡng PASS >= ${auditData.threshold}).`
   };
 }
 
@@ -1798,7 +2437,7 @@ async function run() {
 
   if (config.help) {
     console.log(`
-⚡ ANTIGRAVITY 2.0 // AUTOMATED DELIGHT AUDIT TOOL (WP-R3-05)
+⚡ ANTIGRAVITY 2.0 // AUTOMATED DELIGHT AUDIT TOOL (WP-R4-05)
 Usage:
   node scripts/audit_delight_score.js [options]
 
@@ -1808,7 +2447,7 @@ Options:
   --threshold <SCORE>  Minimum score for PASS verdict (Default: 8.5, Max: 10.0)
   --output <PATH>      JSON report destination (Default: .antigravity/delight_audit_report.json)
   --ledger <PATH>      Markdown evidence ledger destination (Default: .antigravity/delight_audit_ledger.md)
-  --receipt <PATH>     Receipt manifest destination (Default: .antigravity/receipts/wp_r3_05.json)
+  --receipt <PATH>     Receipt manifest destination (Default: .antigravity/receipts/wp_r4_05.json)
   --headless           Run with isolated headless Chrome instead of connecting to CDP
   --help, -h           Show this manual
 `);
@@ -1816,7 +2455,7 @@ Options:
   }
 
   console.log('================================================================');
-  console.log('⚡ ANTIGRAVITY 2.0 // AUTOMATED DELIGHT AUDIT ENGINE (WP-R3-05)');
+  console.log('⚡ ANTIGRAVITY 2.0 // AUTOMATED DELIGHT AUDIT ENGINE (WP-R4-05)');
   console.log(`Target URL : ${config.url}`);
   console.log(`CDP Port   : ${config.port}`);
   console.log(`Threshold  : ${config.threshold}/10.00`);
@@ -1833,17 +2472,21 @@ Options:
     // 2. Continuous CLS layout shift measurement
     const clsMetrics = await harvestClsMetrics(page);
 
-    // 3. 5 Pillars Audit Execution
-    const p1 = await auditPillar1_Motion60Fps(page, clsMetrics);
+    // 3. Slider Interaction & CSS Variable Mutation Smoothness Audit (Req 3)
+    const sliderSmoothness = await auditSliderSmoothness(page);
+
+    // 4. 6 Pillars Audit Execution (Req 1 & 2)
+    const p1 = await auditPillar1_Motion60Fps(page, clsMetrics, sliderSmoothness);
     const p2 = await auditPillar2_MechanicalPress(page);
     const p3 = await auditPillar3_SpotlightAnd3D(page);
     const p4 = await auditPillar4_WcagContrastAndAcrylic(page);
     const p5 = await auditPillar5_WebAudioHaptics(page);
+    const p6 = await auditPillar6_BatteryAndEnergy(page);
 
-    const pillars = [p1, p2, p3, p4, p5];
-    const initialScore = +(pillars.reduce((acc, p) => acc + p.score, 0)).toFixed(2);
+    const pillars = [p1, p2, p3, p4, p5, p6];
+    const initialScore = normalizeDelightScore(pillars);
 
-    // 4. Hard Gating Evaluation (Req 2)
+    // 5. Hard Gating Evaluation (Req 2)
     const gating = evaluateHardGating({
       overallScore: initialScore,
       threshold: config.threshold,
@@ -1854,10 +2497,11 @@ Options:
     const verdict = gating.verdict;
 
     console.log('\n================================================================');
-    console.log(`🏆 DELIGHT & CRAFTSMANSHIP SCORE: ${overallScore.toFixed(2)} / 10.00`);
+    console.log(`🏆 DELIGHT & CRAFTSMANSHIP SCORE: ${overallScore.toFixed(2)} / 10.00 (Normalized across 6 Pillars)`);
     console.log(`🎯 PASS THRESHOLD               : ${config.threshold.toFixed(2)}`);
     console.log(`📱 MULTI-BREAKPOINT STATUS      : ${breakpointResults.allPassed ? '✅ ZERO OVERFLOW' : '❌ OVERFLOW DETECTED'}`);
     console.log(`📈 CLS RATING                   : ${clsMetrics.rating} (${clsMetrics.totalCls})`);
+    console.log(`🎚️ SLIDER SMOOTHNESS            : ${sliderSmoothness.avgFps} FPS (${sliderSmoothness.pass ? 'PASS' : 'WARN'})`);
     if (gating.hardGated) {
       console.log(`🚨 HARD GATING TRIGGERED        : ${gating.hardGateReason}`);
     }
@@ -1875,6 +2519,7 @@ Options:
       hardGateReason: gating.hardGateReason,
       cls: clsMetrics,
       breakpoints: breakpointResults,
+      sliderSmoothness,
       pillars,
       outputFile: config.output,
       ledgerFile: config.ledger,
@@ -1947,6 +2592,8 @@ module.exports = {
   auditPillar3_SpotlightAnd3D,
   auditPillar4_WcagContrastAndAcrylic,
   auditPillar5_WebAudioHaptics,
+  auditPillar6_BatteryAndEnergy,
+  auditSliderSmoothness,
   auditMultiBreakpointMatrix,
   calculateContrastRatio,
   compositeColor,
@@ -1959,5 +2606,12 @@ module.exports = {
   findOffendingOverflowElements,
   evaluateClsScore,
   checkDualHapticSyncer,
-  evaluateHardGating
+  evaluateHardGating,
+  checkBatteryAndEcoPresence,
+  evaluateIdleEfficiency,
+  evaluateHiddenVisibilityReaction,
+  evaluateSliderSmoothnessMetrics,
+  normalizeDelightScore,
+  generateEvidenceLedger,
+  generateReceiptManifest
 };

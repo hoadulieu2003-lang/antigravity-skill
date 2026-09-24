@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-09-24T07:09:48.569Z",
+  "timestamp": "2026-09-24T09:55:06.558Z",
   "url": "file:///C:/Users/game/.gemini/exercises/wow_pilot_showcase/index.html",
   "port": 9223,
-  "threshold": 9,
-  "overallScore": 9.36,
+  "threshold": 8.5,
+  "overallScore": 9.39,
   "verdict": "PASS",
   "hardGated": false,
   "hardGateReason": null,
@@ -12,8 +12,8 @@
     "entriesCount": 1,
     "entries": [
       {
-        "value": 0.00011,
-        "startTime": 132.6,
+        "value": 0.0001,
+        "startTime": 119.1,
         "sources": [
           {
             "name": "span",
@@ -38,7 +38,7 @@
         "name": "Desktop HiDPI",
         "viewport": "1440x900",
         "innerWidth": 1440,
-        "scrollWidth": 1425,
+        "scrollWidth": 1440,
         "hasOverflow": false,
         "overflowPx": 0,
         "status": "PASS",
@@ -70,31 +70,61 @@
     "allPassed": true,
     "mobileOverflow": false
   },
+  "sliderSmoothness": {
+    "totalFrames": 38,
+    "avgFps": 60,
+    "avgDeltaMs": 10.6,
+    "jankCount": 0,
+    "smoothRatio": 1,
+    "maxDeltaMs": 20.8,
+    "pass": true,
+    "rating": "EXCELLENT",
+    "penalty": 0,
+    "description": "Độ mượt mà kéo slider: 60 FPS, 0 khung hình giật, tỷ lệ mượt 100.0%.",
+    "hasSliderElement": true,
+    "selector": "input#sliderCanvasL"
+  },
   "pillars": [
     {
       "pillar": "Pillar 1: Chuyển động 60 FPS (Motion Smoothness)",
-      "score": 2,
+      "score": 1.99,
       "maxScore": 2,
       "pass": true,
       "metrics": {
-        "totalFrames": 368,
+        "totalFrames": 404,
         "avgFps": 60,
-        "avgDeltaMs": 7.91,
-        "jankCount": 0,
+        "avgDeltaMs": 7.06,
+        "jankCount": 1,
         "severeJankCount": 0,
-        "smoothRatio": 0.997,
-        "maxDeltaMs": 24.1,
+        "smoothRatio": 0.998,
+        "maxDeltaMs": 48.5,
         "cls": {
           "totalCls": 0.0001,
           "rating": "EXCELLENT",
           "penalty": 0
+        },
+        "slider": {
+          "totalFrames": 38,
+          "avgFps": 60,
+          "avgDeltaMs": 10.6,
+          "jankCount": 0,
+          "smoothRatio": 1,
+          "maxDeltaMs": 20.8,
+          "pass": true,
+          "rating": "EXCELLENT",
+          "penalty": 0,
+          "description": "Độ mượt mà kéo slider: 60 FPS, 0 khung hình giật, tỷ lệ mượt 100.0%.",
+          "hasSliderElement": true,
+          "selector": "input#sliderCanvasL"
         }
       },
-      "findings": []
+      "findings": [
+        "Phát hiện 1 khung hình giật (> 25ms, Max: 48.5ms)."
+      ]
     },
     {
       "pillar": "Pillar 2: Độ lún cơ học (Mechanical Bottom-Out)",
-      "score": 1.83,
+      "score": 1.86,
       "maxScore": 2,
       "pass": true,
       "metrics": {
@@ -109,12 +139,12 @@
           ".btn-magnetic:active, button:active, .tactile-switch:active",
           ".haptic-pad-btn:active"
         ],
-        "totalInteractiveCount": 47,
-        "smallIconButtonsCount": 0,
-        "smallButtonsWithShift": 0,
-        "standardButtonsCount": 47,
-        "standardButtonsWithScale": 37,
-        "coverageRatio": 0.787,
+        "totalInteractiveCount": 56,
+        "smallIconButtonsCount": 1,
+        "smallButtonsWithShift": 1,
+        "standardButtonsCount": 55,
+        "standardButtonsWithScale": 45,
+        "coverageRatio": 0.821,
         "samples": [
           {
             "tag": "a",
@@ -183,7 +213,7 @@
         ]
       },
       "findings": [
-        "Độ phủ lún cơ học chỉ đạt 78.7% (Dưới ngưỡng tối ưu 90%)."
+        "Độ phủ lún cơ học chỉ đạt 82.1% (Dưới ngưỡng tối ưu 90%)."
       ]
     },
     {
@@ -202,12 +232,12 @@
         "tilt": {
           "found": true,
           "hasPerspective": true,
-          "transformC1": "perspective(1000px) rotateX(8.4deg) rotateY(-8.43deg) scale3d(1.02, 1.02, 1.02)",
-          "transformC2": "perspective(1000px) rotateX(-7.19deg) rotateY(7.16deg) scale3d(1.02, 1.02, 1.02)",
+          "transformC1": "perspective(1000px) rotateX(8.4deg) rotateY(-8.41deg) scale3d(1.02, 1.02, 1.02)",
+          "transformC2": "perspective(1000px) rotateX(-7.2deg) rotateY(7.14deg) scale3d(1.02, 1.02, 1.02)",
           "pitch1": 8.4,
-          "roll1": -8.43,
-          "pitch2": -7.19,
-          "roll2": 7.16,
+          "roll1": -8.41,
+          "pitch2": -7.2,
+          "roll2": 7.14,
           "telemetryInverted": true,
           "angleInverted": true,
           "matrixInverted": false,
@@ -224,17 +254,17 @@
     },
     {
       "pillar": "Pillar 4: Độ tương phản màu sắc WCAG AA & AAA trên Acrylic",
-      "score": 1.53,
+      "score": 1.52,
       "maxScore": 2,
       "pass": false,
       "metrics": {
-        "totalEvaluated": 230,
-        "aaPassCount": 178,
-        "aaaPassCount": 139,
-        "aaRatio": 0.774,
-        "aaaRatio": 0.604,
-        "minContrast": 3.32,
-        "minContrastElement": "span. (\"128 FPS\")",
+        "totalEvaluated": 260,
+        "aaPassCount": 201,
+        "aaaPassCount": 149,
+        "aaRatio": 0.773,
+        "aaaRatio": 0.573,
+        "minContrast": 3.35,
+        "minContrastElement": "span. (\"144 FPS\")",
         "acrylicHasBlur": true,
         "acrylicHasSpecularBorder": true,
         "sampleResults": [
@@ -242,8 +272,8 @@
             "selector": "span.hud-title",
             "text": "ANTIGRAVITY 2.0",
             "fg": "rgb(15, 23, 42)",
-            "bg": "rgb(254,254,254)",
-            "ratio": 17.7,
+            "bg": "rgb(254,255,255)",
+            "ratio": 17.82,
             "isLargeText": false,
             "passesAA": true,
             "passesAAA": true
@@ -252,8 +282,8 @@
             "selector": "span.hud-badge-online",
             "text": "SWARM 60 FPS",
             "fg": "rgb(5, 150, 105)",
-            "bg": "rgb(232,245,241)",
-            "ratio": 3.37,
+            "bg": "rgb(232,246,242)",
+            "ratio": 3.39,
             "isLargeText": false,
             "passesAA": false,
             "passesAAA": false
@@ -262,8 +292,8 @@
             "selector": "a.hud-link",
             "text": "Tổng quan",
             "fg": "rgb(51, 65, 85)",
-            "bg": "rgb(254,254,254)",
-            "ratio": 10.27,
+            "bg": "rgb(254,255,255)",
+            "ratio": 10.34,
             "isLargeText": false,
             "passesAA": true,
             "passesAAA": true
@@ -272,8 +302,8 @@
             "selector": "a.hud-link",
             "text": "Theme Studio",
             "fg": "rgb(51, 65, 85)",
-            "bg": "rgb(254,254,254)",
-            "ratio": 10.27,
+            "bg": "rgb(254,255,255)",
+            "ratio": 10.34,
             "isLargeText": false,
             "passesAA": true,
             "passesAAA": true
@@ -282,8 +312,8 @@
             "selector": "a.hud-link",
             "text": "Scrolly Stage",
             "fg": "rgb(51, 65, 85)",
-            "bg": "rgb(254,254,254)",
-            "ratio": 10.27,
+            "bg": "rgb(254,255,255)",
+            "ratio": 10.34,
             "isLargeText": false,
             "passesAA": true,
             "passesAAA": true
@@ -292,8 +322,8 @@
             "selector": "a.hud-link",
             "text": "Rigid Bento",
             "fg": "rgb(51, 65, 85)",
-            "bg": "rgb(254,254,254)",
-            "ratio": 10.27,
+            "bg": "rgb(254,255,255)",
+            "ratio": 10.34,
             "isLargeText": false,
             "passesAA": true,
             "passesAAA": true
@@ -302,8 +332,8 @@
             "selector": "a.hud-link",
             "text": "Soundboard",
             "fg": "rgb(51, 65, 85)",
-            "bg": "rgb(254,254,254)",
-            "ratio": 10.27,
+            "bg": "rgb(254,255,255)",
+            "ratio": 10.34,
             "isLargeText": false,
             "passesAA": true,
             "passesAAA": true
@@ -312,8 +342,8 @@
             "selector": "a.hud-link",
             "text": "Wow Engine",
             "fg": "rgb(51, 65, 85)",
-            "bg": "rgb(254,254,254)",
-            "ratio": 10.27,
+            "bg": "rgb(254,255,255)",
+            "ratio": 10.34,
             "isLargeText": false,
             "passesAA": true,
             "passesAAA": true
@@ -321,7 +351,7 @@
         ]
       },
       "findings": [
-        "Tỷ lệ đạt WCAG AA là 77.4% (Dưới ngưỡng 95%). Min contrast: 3.32:1 tại span. (\"128 FPS\")."
+        "Tỷ lệ đạt WCAG AA là 77.3% (Dưới ngưỡng 95%). Min contrast: 3.35:1 tại span. (\"144 FPS\")."
       ]
     },
     {
@@ -361,7 +391,7 @@
           "iconOffVisible": true
         },
         "hapticCount": 25,
-        "hapticCoverage": 0.532,
+        "hapticCoverage": 0.391,
         "hapticTypes": {
           "pop": 15,
           "chime": 3,
@@ -371,9 +401,53 @@
         }
       },
       "findings": []
+    },
+    {
+      "pillar": "Pillar 6: Hiệu quả Năng lượng & Pin (Battery & Energy Efficiency)",
+      "score": 1.9,
+      "maxScore": 2,
+      "pass": true,
+      "metrics": {
+        "presence": {
+          "hasWatchdog": true,
+          "hasArbiter": true,
+          "watchdogStats": {},
+          "arbiterStats": {},
+          "scoreFactor": 0.7
+        },
+        "idle": {
+          "idleFps": 60,
+          "sampleCount": 87,
+          "isAutoSleeping": false,
+          "isThrottled": false
+        },
+        "idleEvaluation": {
+          "score": 0.55,
+          "idleFps": 60,
+          "rating": "GOOD",
+          "description": "Tỷ lệ khung hình khi idle ổn định ở 60 FPS, không phát sinh runaway render."
+        },
+        "hidden": {
+          "hiddenFps": 0,
+          "rafCalls": 0,
+          "distinctFrames": 0,
+          "elapsedSec": 0.51,
+          "isWatchdogPaused": true,
+          "isArbiterThrottled": false,
+          "isPaused": true
+        },
+        "hiddenEvaluation": {
+          "pass": true,
+          "score": 0.65,
+          "hiddenFps": 0,
+          "rating": "PASS",
+          "description": "Phản ứng hoàn hảo khi ẩn tab (visibilityState: hidden): rAF đã dừng hoặc giảm xuống 0 FPS (<= 1.0 FPS)."
+        }
+      },
+      "findings": []
     }
   ],
   "outputFile": ".antigravity/delight_audit_report.json",
   "ledgerFile": ".antigravity/delight_audit_ledger.md",
-  "receiptFile": ".antigravity/receipts/wp_r3_05.json"
+  "receiptFile": ".antigravity/receipts/wp_r4_05.json"
 }

@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * UNIT TEST SUITE FOR AUTOMATED DELIGHT AUDIT TOOL (WP-R3-05)
+ * UNIT TEST SUITE FOR AUTOMATED DELIGHT AUDIT TOOL (WP-R4-05)
  * ============================================================================
  * Verifies:
  *   1. Color parsing & Alpha-Compositing
@@ -12,6 +12,10 @@
  *   7. Cumulative Layout Shift (CLS) Continuous Evaluation & Penalties
  *   8. WebAudioHaptics v2.0 & Dual Audio-Haptic Syncer API Detection
  *   9. Hard Gating Enforcement on Mobile Horizontal Overflow
+ *   10. Pillar 6: Battery & Energy Efficiency (AdaptiveBatteryWatchdog & EcoGraphicArbiter)
+ *   11. Slider Interaction & CSS Variable Mutation Smoothness (>= 58-60 FPS)
+ *   12. 6-Pillar Normalized Scoring (Normalized to 10.00 scale)
+ *   13. Evidence Ledger & Receipt Manifest Generation (WP-R4-05)
  * ============================================================================
  */
 
@@ -28,7 +32,14 @@ const {
   findOffendingOverflowElements,
   evaluateClsScore,
   checkDualHapticSyncer,
-  evaluateHardGating
+  evaluateHardGating,
+  checkBatteryAndEcoPresence,
+  evaluateIdleEfficiency,
+  evaluateHiddenVisibilityReaction,
+  evaluateSliderSmoothnessMetrics,
+  normalizeDelightScore,
+  generateEvidenceLedger,
+  generateReceiptManifest
 } = require('./audit_delight_score.js');
 
 let passedTests = 0;
@@ -47,7 +58,7 @@ function it(desc, fn) {
 }
 
 console.log('================================================================');
-console.log('⚡ RUNNING COMPREHENSIVE UNIT TESTS FOR scripts/audit_delight_score.js (WP-R3-05)');
+console.log('⚡ RUNNING COMPREHENSIVE UNIT TESTS FOR scripts/audit_delight_score.js (WP-R4-05)');
 console.log('================================================================');
 
 // 1. Color Parser Tests
@@ -414,6 +425,223 @@ it('allows PASS verdict when all breakpoints have zero horizontal overflow and s
   assert.strictEqual(gating.hardGated, false);
   assert.strictEqual(gating.verdict, 'PASS');
   assert.strictEqual(gating.penalizedScore, 9.35);
+});
+
+// 11. Pillar 6: Battery & Energy Efficiency Helpers Tests
+console.log('\n--- 11. Pillar 6: Battery & Energy Efficiency Helpers ---');
+it('detects AdaptiveBatteryWatchdog and EcoGraphicArbiter presence and calculates scoreFactor', () => {
+  const resFull = checkBatteryAndEcoPresence({
+    AdaptiveBatteryWatchdog: { isBatterySaver: () => false, getFpsLimit: () => 60 },
+    EcoGraphicArbiter: { isEcoMode: () => false, getState: () => 'ACTIVE' }
+  });
+  assert.strictEqual(resFull.hasWatchdog, true);
+  assert.strictEqual(resFull.hasArbiter, true);
+  assert.strictEqual(resFull.scoreFactor, 0.70);
+
+  const resPartial = checkBatteryAndEcoPresence({
+    AdaptiveBatteryWatchdog: { isBatterySaver: () => false }
+  });
+  assert.strictEqual(resPartial.hasWatchdog, true);
+  assert.strictEqual(resPartial.hasArbiter, false);
+  assert.strictEqual(resPartial.scoreFactor, 0.35);
+
+  const resNone = checkBatteryAndEcoPresence({});
+  assert.strictEqual(resNone.hasWatchdog, false);
+  assert.strictEqual(resNone.hasArbiter, false);
+  assert.strictEqual(resNone.scoreFactor, 0.0);
+});
+
+it('evaluates idle frame rate and auto-sleep efficiency correctly', () => {
+  const resEco = evaluateIdleEfficiency({ idleFps: 25, isAutoSleeping: true });
+  assert.strictEqual(resEco.rating, 'OPTIMAL_ECO');
+  assert.strictEqual(resEco.score, 0.65);
+
+  const resGood = evaluateIdleEfficiency({ idleFps: 60, isAutoSleeping: false });
+  assert.strictEqual(resGood.rating, 'GOOD');
+  assert.strictEqual(resGood.score, 0.55);
+
+  const resWasteful = evaluateIdleEfficiency({ idleFps: 120, isAutoSleeping: false });
+  assert.strictEqual(resWasteful.rating, 'WASTEFUL');
+  assert.strictEqual(resWasteful.score, 0.20);
+});
+
+it('evaluates visibility state reaction when document is hidden', () => {
+  const resHiddenPaused = evaluateHiddenVisibilityReaction({ hiddenFps: 0.5, isPaused: true });
+  assert.strictEqual(resHiddenPaused.score, 0.65);
+  assert.strictEqual(resHiddenPaused.pass, true);
+  assert(resHiddenPaused.description.includes('Phản ứng hoàn hảo khi ẩn tab'));
+
+  const resHiddenThrottled = evaluateHiddenVisibilityReaction({ hiddenFps: 0.8, isPaused: false });
+  assert.strictEqual(resHiddenThrottled.score, 0.65);
+  assert.strictEqual(resHiddenThrottled.pass, true);
+
+  const resHiddenWarn = evaluateHiddenVisibilityReaction({ hiddenFps: 3.5, isPaused: false });
+  assert.strictEqual(resHiddenWarn.score, 0.30);
+  assert.strictEqual(resHiddenWarn.rating, 'WARN');
+  assert.strictEqual(resHiddenWarn.pass, false);
+
+  const resHiddenUnthrottled = evaluateHiddenVisibilityReaction({ hiddenFps: 60, isPaused: false });
+  assert.strictEqual(resHiddenUnthrottled.score, 0.0);
+  assert.strictEqual(resHiddenUnthrottled.rating, 'FAIL');
+  assert.strictEqual(resHiddenUnthrottled.pass, false);
+});
+
+// 12. Slider Interaction & CSS Variable Mutation Smoothness Tests (Requirement 3)
+console.log('\n--- 12. Slider Interaction & CSS Variable Mutation Smoothness ---');
+it('evaluates 60 FPS slider drag with zero jank as EXCELLENT and PASS', () => {
+  const res = evaluateSliderSmoothnessMetrics({ avgFps: 60.0, jankCount: 0, smoothRatio: 1.0, totalFrames: 45 });
+  assert.strictEqual(res.pass, true);
+  assert.strictEqual(res.rating, 'EXCELLENT');
+  assert.strictEqual(res.penalty, 0);
+  assert.strictEqual(res.jankCount, 0);
+});
+
+it('passes slider test when frame rate meets or exceeds 58 FPS floor (58.5 FPS)', () => {
+  const res = evaluateSliderSmoothnessMetrics({ avgFps: 58.5, jankCount: 1, smoothRatio: 0.98, totalFrames: 45 });
+  assert.strictEqual(res.pass, true);
+  assert.strictEqual(res.rating, 'GOOD');
+});
+
+it('rates slider 55-57 FPS as GOOD but fails hard 58 FPS gating', () => {
+  const res = evaluateSliderSmoothnessMetrics({ avgFps: 56.0, jankCount: 2, smoothRatio: 0.95, totalFrames: 45 });
+  assert.strictEqual(res.pass, false, 'Slider below 58 FPS must not pass strict gating');
+  assert.strictEqual(res.rating, 'GOOD');
+  assert.strictEqual(res.penalty, 0.1);
+});
+
+it('penalizes poor slider drag (< 45 FPS or high jank) with higher penalty', () => {
+  const res = evaluateSliderSmoothnessMetrics({ avgFps: 38.0, jankCount: 8, smoothRatio: 0.65, totalFrames: 45 });
+  assert.strictEqual(res.pass, false);
+  assert.strictEqual(res.rating, 'POOR');
+  assert.strictEqual(res.penalty, 0.6);
+});
+
+// 13. 6-Pillar Normalized Scoring Tests (Requirement 2)
+console.log('\n--- 13. 6-Pillar Normalized Scoring (normalizeDelightScore) ---');
+it('normalizes 6 perfect pillars (all 2.0 / 2.0) to exactly 10.00', () => {
+  const pillars = [
+    { score: 2.0, maxScore: 2.0 },
+    { score: 2.0, maxScore: 2.0 },
+    { score: 2.0, maxScore: 2.0 },
+    { score: 2.0, maxScore: 2.0 },
+    { score: 2.0, maxScore: 2.0 },
+    { score: 2.0, maxScore: 2.0 }
+  ];
+  const score = normalizeDelightScore(pillars);
+  assert.strictEqual(score, 10.00);
+});
+
+it('normalizes 6 realistic pillars summing to 10.80 / 12.00 to 9.00', () => {
+  const pillars = [
+    { score: 2.0, maxScore: 2.0 },
+    { score: 1.8, maxScore: 2.0 },
+    { score: 1.9, maxScore: 2.0 },
+    { score: 1.7, maxScore: 2.0 },
+    { score: 1.8, maxScore: 2.0 },
+    { score: 1.6, maxScore: 2.0 }
+  ];
+  const score = normalizeDelightScore(pillars);
+  assert.strictEqual(score, 9.00);
+});
+
+it('gracefully handles legacy 5-pillar array (sum 10.0, max 10.0) returning 10.00', () => {
+  const pillars = [
+    { score: 2.0, maxScore: 2.0 },
+    { score: 2.0, maxScore: 2.0 },
+    { score: 2.0, maxScore: 2.0 },
+    { score: 2.0, maxScore: 2.0 },
+    { score: 2.0, maxScore: 2.0 }
+  ];
+  const score = normalizeDelightScore(pillars);
+  assert.strictEqual(score, 10.00);
+});
+
+it('handles empty or invalid pillars safely without throwing or NaN', () => {
+  assert.strictEqual(normalizeDelightScore([]), 0);
+  assert.strictEqual(normalizeDelightScore(null), 0);
+});
+
+// 14. Evidence Ledger & Receipt Manifest Generation Tests (Requirement 4 & 6)
+console.log('\n--- 14. Evidence Ledger & Receipt Manifest (WP-R4-05) ---');
+it('generates Markdown Evidence Ledger with 6-Pillar Scorecard and Slider Smoothness', () => {
+  const mockAuditData = {
+    timestamp: '2026-09-24T15:30:00.000Z',
+    url: 'file:///test/index.html',
+    port: 9223,
+    threshold: 8.5,
+    overallScore: 9.35,
+    verdict: 'PASS',
+    hardGated: false,
+    hardGateReason: null,
+    cls: { totalCls: 0.001, rating: 'EXCELLENT', description: 'Bố cục ổn định' },
+    sliderSmoothness: { avgFps: 60.0, smoothRatio: 1.0, jankCount: 0, maxDeltaMs: 16.6, pass: true, description: 'Mượt mà' },
+    breakpoints: {
+      matrix: [
+        { id: 'desktop', name: 'Desktop', viewport: '1440x900', innerWidth: 1440, scrollWidth: 1440, overflowPx: 0, status: 'PASS' },
+        { id: 'tablet', name: 'Tablet', viewport: '768x1024', innerWidth: 768, scrollWidth: 768, overflowPx: 0, status: 'PASS' },
+        { id: 'mobile', name: 'Mobile', viewport: '375x812', innerWidth: 375, scrollWidth: 375, overflowPx: 0, status: 'PASS' }
+      ]
+    },
+    pillars: [
+      { pillar: 'Pillar 1: Chuyển động 60 FPS (Motion Smoothness)', score: 2.0, maxScore: 2.0, pass: true, metrics: { avgFps: 60, smoothRatio: 1, jankCount: 0 }, findings: [] },
+      { pillar: 'Pillar 2: Độ lún cơ học (Mechanical Bottom-Out)', score: 1.85, maxScore: 2.0, pass: true, metrics: { hasActiveScale0965Rule: true, coverageRatio: 0.95 }, findings: [] },
+      { pillar: 'Pillar 3: Đèn rọi Spotlight & Parallax Tilt 3D', score: 1.9, maxScore: 2.0, pass: true, metrics: { spotlight: { hasVariables: true }, tilt: { inversionPassed: true }, zIndexProtection: { passed: true } }, findings: [] },
+      { pillar: 'Pillar 4: Độ tương phản màu sắc WCAG AA & AAA trên Acrylic', score: 1.8, maxScore: 2.0, pass: true, metrics: { aaRatio: 0.98, aaaRatio: 0.85, acrylicHasBlur: true }, findings: [] },
+      { pillar: 'Pillar 5: Phản hồi âm thanh WebAudioHaptics v2.0 & Dual Audio-Haptic Syncer', score: 2.0, maxScore: 2.0, pass: true, metrics: { dualSyncer: { isV2: true, hasSetHapticMode: true, hasVibrateSupportDetection: true } }, findings: [] },
+      { pillar: 'Pillar 6: Hiệu quả Năng lượng & Pin (Battery & Energy Efficiency)', score: 1.95, maxScore: 2.0, pass: true, metrics: { presence: { hasWatchdog: true, hasArbiter: true }, idle: { idleFps: 60 }, hidden: { hiddenFps: 0 } }, findings: [] }
+    ],
+    outputFile: '.antigravity/delight_audit_report.json',
+    ledgerFile: '.antigravity/delight_audit_ledger.md',
+    receiptFile: '.antigravity/receipts/wp_r4_05.json'
+  };
+
+  const md = generateEvidenceLedger(mockAuditData);
+  assert(md.includes('WP-R4-05'), 'Ledger must state WP-R4-05');
+  assert(md.includes('6-PILLAR CRAFTSMANSHIP SCORECARD'), 'Ledger must contain 6-Pillar Scorecard');
+  assert(md.includes('SLIDER INTERACTION SMOOTHNESS'), 'Ledger must contain Slider Smoothness section');
+  assert(md.includes('Pillar 6: Hiệu quả Năng lượng & Pin'), 'Ledger must list Pillar 6');
+  assert(md.includes('9.35 / 10.00'), 'Ledger must show normalized overall score');
+});
+
+it('generates Receipt Manifest with WP-R4-05 format and 6 pillars', () => {
+  const mockAuditData = {
+    timestamp: '2026-09-24T15:30:00.000Z',
+    url: 'file:///test/index.html',
+    port: 9223,
+    threshold: 8.5,
+    overallScore: 9.35,
+    verdict: 'PASS',
+    hardGated: false,
+    hardGateReason: null,
+    cls: { totalCls: 0.001, rating: 'EXCELLENT', status: 'PASS' },
+    sliderSmoothness: { avgFps: 60.0, pass: true },
+    breakpoints: {
+      matrix: [
+        { id: 'mobile', name: 'Mobile', viewport: '375x812', hasOverflow: false, overflowPx: 0, status: 'PASS' }
+      ],
+      allPassed: true,
+      mobileOverflow: false
+    },
+    pillars: [
+      { pillar: 'P1', score: 2.0, maxScore: 2.0, pass: true },
+      { pillar: 'P2', score: 1.8, maxScore: 2.0, pass: true },
+      { pillar: 'P3', score: 1.9, maxScore: 2.0, pass: true },
+      { pillar: 'P4', score: 1.8, maxScore: 2.0, pass: true },
+      { pillar: 'P5', score: 2.0, maxScore: 2.0, pass: true },
+      { pillar: 'P6', score: 1.95, maxScore: 2.0, pass: true }
+    ],
+    outputFile: '.antigravity/delight_audit_report.json',
+    ledgerFile: '.antigravity/delight_audit_ledger.md',
+    receiptFile: '.antigravity/receipts/wp_r4_05.json'
+  };
+
+  const receipt = generateReceiptManifest(mockAuditData);
+  assert.strictEqual(receipt.wp, 'WP-R4-05');
+  assert.strictEqual(receipt.status, 'COMPLETED');
+  assert.strictEqual(receipt.pillars.length, 6);
+  assert.strictEqual(receipt.overall_delight_score, 9.35);
+  assert(receipt.summary.includes('WP-R4-05'));
+  assert(receipt.summary.includes('6 Trụ cột Độc lập'));
 });
 
 console.log('\n================================================================');

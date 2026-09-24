@@ -1332,13 +1332,29 @@
             touchMultiplier: 1.5,
           });
 
+          let lenisRafId = null;
           const raf = (time) => {
             if (this.lenis && !isTestMode) {
+              if (typeof document !== 'undefined' && document.hidden) {
+                lenisRafId = null;
+                return;
+              }
               this.lenis.raf(time);
-              requestAnimationFrame(raf);
+              lenisRafId = requestAnimationFrame(raf);
             }
           };
-          requestAnimationFrame(raf);
+          lenisRafId = requestAnimationFrame(raf);
+
+          if (typeof document !== 'undefined') {
+            document.addEventListener('visibilitychange', () => {
+              if (!document.hidden && this.lenis && !isTestMode && !lenisRafId) {
+                lenisRafId = requestAnimationFrame(raf);
+              } else if (document.hidden && lenisRafId) {
+                cancelAnimationFrame(lenisRafId);
+                lenisRafId = null;
+              }
+            });
+          }
 
           // Connect with GSAP ScrollTrigger if present
           if (typeof window.ScrollTrigger !== 'undefined' && typeof window.gsap !== 'undefined') {

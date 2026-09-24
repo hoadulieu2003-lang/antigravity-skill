@@ -651,10 +651,26 @@ void main() {
 
     start() {
       const render = (time) => {
+        if (typeof document !== 'undefined' && document.hidden) {
+          this.animId = null;
+          return;
+        }
         this.animId = requestAnimationFrame(render);
         this.draw(time);
       };
-      this.animId = requestAnimationFrame(render);
+      if (!this.animId) {
+        this.animId = requestAnimationFrame(render);
+      }
+      if (!this._visibilityBound && typeof document !== 'undefined') {
+        this._visibilityBound = true;
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            this.stop();
+          } else if (!this.animId) {
+            this.animId = requestAnimationFrame(render);
+          }
+        });
+      }
     }
 
     stop() {
@@ -1135,7 +1151,12 @@ void main() {
 
     init() {
       // 1. Live FPS calculation
+      let fpsRafId = null;
       const measureFps = (now) => {
+        if (typeof document !== 'undefined' && document.hidden) {
+          fpsRafId = null;
+          return;
+        }
         this.frameCount++;
         if (now - this.lastTime >= 500) {
           this.fps = Math.round((this.frameCount * 1000) / (now - this.lastTime));
@@ -1149,9 +1170,24 @@ void main() {
             }
           }
         }
-        requestAnimationFrame(measureFps);
+        fpsRafId = requestAnimationFrame(measureFps);
       };
-      requestAnimationFrame(measureFps);
+      fpsRafId = requestAnimationFrame(measureFps);
+
+      if (typeof document !== 'undefined') {
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            if (fpsRafId) {
+              cancelAnimationFrame(fpsRafId);
+              fpsRafId = null;
+            }
+          } else if (!fpsRafId) {
+            this.lastTime = performance.now();
+            this.frameCount = 0;
+            fpsRafId = requestAnimationFrame(measureFps);
+          }
+        });
+      }
 
       // 2. Real-time Tactile Depth Visualizer
       window.addEventListener('pointerdown', (e) => {
@@ -1185,9 +1221,10 @@ void main() {
       const checkZeroOverflow = () => {
         const overflowEl = document.getElementById('hudOverflowVal');
         if (overflowEl) {
-          const docW = document.documentElement.clientWidth || window.innerWidth;
+          const docW = document.documentElement.clientWidth;
           const bodyW = document.body.scrollWidth;
-          const isClean = bodyW <= docW + 2;
+          const scrollbarW = Math.max(0, window.innerWidth - docW);
+          const isClean = bodyW <= docW + Math.max(2, scrollbarW + 2);
           overflowEl.textContent = isClean ? 'Zero Overflow: Verified' : 'Overflow Detected';
           overflowEl.className = isClean ? 'delight-metric-val cyan' : 'delight-metric-val warning';
         }
@@ -1221,6 +1258,43 @@ void main() {
           this.audioStatusEl.textContent = isMuted ? 'Muted (Tắt)' : '48kHz Native Synth';
         }
       }, 1000);
+
+      // 6. AdaptiveBatteryWatchdog HUD Sync
+      this.batteryValEl = document.getElementById('hudBatteryVal');
+      this.powerStateValEl = document.getElementById('hudPowerStateVal');
+      this.syncBattery();
+      setInterval(() => this.syncBattery(), 3000);
+    }
+
+    syncBattery(tier) {
+      if (batteryWatchdog) {
+        const info = batteryWatchdog.batteryInfo || {};
+        const pct = Math.round((info.level != null ? info.level : 1.0) * 100);
+        const isCharging = info.charging;
+        if (this.batteryValEl) {
+          this.batteryValEl.textContent = `${pct}% ${isCharging ? '⚡' : ''}`;
+        }
+        if (this.powerStateValEl) {
+          const currentTier = tier || batteryWatchdog.tier || 'TIER_HIGH';
+          this.powerStateValEl.textContent = currentTier === 'TIER_ECO'
+            ? 'TIER_ECO (Tiết Kiệm)'
+            : currentTier === 'TIER_CRITICAL'
+            ? 'TIER_CRITICAL (Khẩn Cấp)'
+            : 'TIER_HIGH (Bình thường)';
+        }
+      } else if (typeof navigator !== 'undefined' && typeof navigator.getBattery === 'function') {
+        navigator.getBattery().then((battery) => {
+          const pct = Math.round(battery.level * 100);
+          if (this.batteryValEl) this.batteryValEl.textContent = `${pct}% ${battery.charging ? '⚡' : ''}`;
+          if (this.powerStateValEl) this.powerStateValEl.textContent = battery.level < 0.2 ? 'TIER_ECO (Tiết Kiệm)' : 'TIER_HIGH (Bình thường)';
+        }).catch(() => {
+          if (this.batteryValEl) this.batteryValEl.textContent = '100% ⚡';
+          if (this.powerStateValEl) this.powerStateValEl.textContent = 'TIER_HIGH (Bình thường)';
+        });
+      } else {
+        if (this.batteryValEl) this.batteryValEl.textContent = '100% ⚡';
+        if (this.powerStateValEl) this.powerStateValEl.textContent = 'TIER_HIGH (Bình thường)';
+      }
     }
   }
 
@@ -1426,7 +1500,575 @@ void main() {
   }
 
   // ==========================================================================
-  // 11. BOOTSTRAP SHOWCASE V2 & V3
+  // 11. FLOATING STUDIO INSPECTOR CONTROLLER V4 (PointerCapture, Hot Insert, Live Mutate)
+  // ==========================================================================
+  class FloatingStudioInspector {
+    constructor() {
+      this.inspectorEl = document.getElementById('floatingStudioInspector');
+      this.dragHandle = document.getElementById('studioDragHandle');
+      this.collapseBtn = document.getElementById('studioCollapseBtn');
+      this.tabBtns = document.querySelectorAll('[data-studio-tab]');
+      this.tabPanes = {
+        surfaces: document.getElementById('studioTabSurfaces'),
+        physics: document.getElementById('studioTabPhysics'),
+        blocks: document.getElementById('studioTabBlocks'),
+        export: document.getElementById('studioTabExport')
+      };
+
+      // Surfaces Sliders
+      this.sliderCanvasL = document.getElementById('sliderCanvasL');
+      this.valCanvasL = document.getElementById('valCanvasL');
+      this.sliderGlassBlur = document.getElementById('sliderGlassBlur');
+      this.valGlassBlur = document.getElementById('valGlassBlur');
+      this.sliderBorderContrast = document.getElementById('sliderBorderContrast');
+      this.valBorderContrast = document.getElementById('valBorderContrast');
+
+      // Physics Sliders
+      this.sliderSpringTension = document.getElementById('sliderSpringTension');
+      this.valSpringTension = document.getElementById('valSpringTension');
+      this.sliderSpringDamping = document.getElementById('sliderSpringDamping');
+      this.valSpringDamping = document.getElementById('valSpringDamping');
+      this.sliderTiltDeg = document.getElementById('sliderTiltDeg');
+      this.valTiltDeg = document.getElementById('valTiltDeg');
+      this.sliderSpotlightRadius = document.getElementById('sliderSpotlightRadius');
+      this.valSpotlightRadius = document.getElementById('valSpotlightRadius');
+
+      // Blocks
+      this.selectBlockTemplate = document.getElementById('selectBlockTemplate');
+      this.btnHotInsertBlock = document.getElementById('btnHotInsertBlock');
+      this.hotInsertStatus = document.getElementById('hotInsertStatus');
+      this.btnResetInsertedBlocks = document.getElementById('btnResetInsertedBlocks');
+      this.insertedBlocksCount = 0;
+
+      // Export
+      this.formatPills = document.querySelectorAll('[data-export-format]');
+      this.exportCodePreview = document.getElementById('exportCodePreview');
+      this.btnCopyExportCode = document.getElementById('btnCopyExportCode');
+      this.btnCopyExportLabel = document.getElementById('btnCopyExportLabel');
+      this.activeFormat = 'css';
+
+      // Engine references
+      this.mutationEngine = typeof ConstructableMutationEngine !== 'undefined'
+        ? new ConstructableMutationEngine({ defaultSelector: ':root' })
+        : null;
+
+      if (this.inspectorEl) {
+        this.init();
+      }
+    }
+
+    init() {
+      this.initDrag();
+      this.initCollapse();
+      this.initTabs();
+      this.initSurfaces();
+      this.initPhysics();
+      this.initBlocks();
+      this.initExport();
+      this.updateExportCode();
+    }
+
+    // Dragging with PointerCapture (GSAP immune)
+    initDrag() {
+      if (!this.dragHandle || !this.inspectorEl) return;
+
+      let isDragging = false;
+      let startX = 0, startY = 0;
+      let initialLeft = 0, initialTop = 0;
+
+      const onPointerDown = (e) => {
+        if (e.target.closest('button, input, select')) return;
+        isDragging = true;
+        try {
+          this.dragHandle.setPointerCapture(e.pointerId);
+        } catch (_) {}
+
+        startX = e.clientX;
+        startY = e.clientY;
+
+        const rect = this.inspectorEl.getBoundingClientRect();
+        initialLeft = rect.left;
+        initialTop = rect.top;
+
+        // On small viewports, pin current pixel width during drag
+        if (window.innerWidth <= 640) {
+          this.inspectorEl.style.width = `${rect.width}px`;
+        }
+
+        this.dragHandle.classList.add('grabbing');
+        e.preventDefault();
+      };
+
+      const onPointerMove = (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+
+        let nextLeft = initialLeft + dx;
+        let nextTop = initialTop + dy;
+
+        const maxLeft = Math.max(8, window.innerWidth - this.inspectorEl.offsetWidth - 8);
+        const maxTop = Math.max(8, window.innerHeight - this.inspectorEl.offsetHeight - 8);
+        nextLeft = Math.max(8, Math.min(maxLeft, nextLeft));
+        nextTop = Math.max(8, Math.min(maxTop, nextTop));
+
+        this.inspectorEl.style.left = `${nextLeft}px`;
+        this.inspectorEl.style.top = `${nextTop}px`;
+        this.inspectorEl.style.right = 'auto';
+        this.inspectorEl.style.bottom = 'auto';
+      };
+
+      const onPointerUp = (e) => {
+        if (isDragging) {
+          isDragging = false;
+          try {
+            this.dragHandle.releasePointerCapture(e.pointerId);
+          } catch (_) {}
+          this.dragHandle.classList.remove('grabbing');
+        }
+      };
+
+      this.dragHandle.addEventListener('pointerdown', onPointerDown);
+      this.dragHandle.addEventListener('pointermove', onPointerMove);
+      this.dragHandle.addEventListener('pointerup', onPointerUp);
+      this.dragHandle.addEventListener('pointercancel', onPointerUp);
+
+      // Window resize clamping to guarantee Zero-Horizontal-Overflow and prevent offscreen drift
+      window.addEventListener('resize', () => {
+        if (!this.inspectorEl) return;
+        const rect = this.inspectorEl.getBoundingClientRect();
+        const maxLeft = Math.max(8, window.innerWidth - this.inspectorEl.offsetWidth - 8);
+        const maxTop = Math.max(8, window.innerHeight - this.inspectorEl.offsetHeight - 8);
+        if (rect.left > maxLeft || rect.left < 8) {
+          const clampedLeft = Math.max(8, Math.min(maxLeft, rect.left));
+          this.inspectorEl.style.left = `${clampedLeft}px`;
+          this.inspectorEl.style.right = 'auto';
+        }
+        if (rect.top > maxTop || rect.top < 8) {
+          const clampedTop = Math.max(8, Math.min(maxTop, rect.top));
+          this.inspectorEl.style.top = `${clampedTop}px`;
+          this.inspectorEl.style.bottom = 'auto';
+        }
+      }, { passive: true });
+    }
+
+    initCollapse() {
+      if (this.collapseBtn && this.inspectorEl) {
+        this.collapseBtn.addEventListener('click', () => {
+          const isCollapsed = this.inspectorEl.classList.toggle('collapsed');
+          this.collapseBtn.textContent = isCollapsed ? '+' : '−';
+          this.collapseBtn.title = isCollapsed ? 'Mở rộng bảng' : 'Thu gọn bảng';
+          hapticsV2.playDetent();
+        });
+      }
+    }
+
+    initTabs() {
+      this.tabBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const targetTab = btn.getAttribute('data-studio-tab');
+          this.tabBtns.forEach((b) => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+
+          Object.keys(this.tabPanes).forEach((paneKey) => {
+            const pane = this.tabPanes[paneKey];
+            if (pane) {
+              pane.style.display = (paneKey === targetTab) ? 'flex' : 'none';
+              pane.classList.toggle('active', paneKey === targetTab);
+            }
+          });
+
+          if (targetTab === 'export') {
+            this.updateExportCode();
+          }
+
+          hapticsV2.playPop();
+        });
+      });
+    }
+
+    initSurfaces() {
+      // 1. Canvas Lightness (L)
+      if (this.sliderCanvasL) {
+        this.sliderCanvasL.addEventListener('input', (e) => {
+          const lVal = parseFloat(e.target.value);
+          if (this.valCanvasL) this.valCanvasL.textContent = lVal.toFixed(3);
+
+          const byteVal = Math.round(lVal * 255);
+          const r = byteVal;
+          const g = Math.min(255, byteVal + 1);
+          const b = Math.min(255, byteVal + 2);
+          const hex = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+
+          if (this.mutationEngine) {
+            this.mutationEngine.mutateImmediate(':root', '--bg-canvas', hex);
+          }
+          document.documentElement.style.setProperty('--bg-canvas', hex);
+
+          // Sync HUD theme status
+          const hudThemeStatus = document.getElementById('hudThemeStatusVal');
+          if (hudThemeStatus) hudThemeStatus.textContent = `Luminous L=${lVal.toFixed(3)}`;
+
+          this.updateExportCode();
+        });
+      }
+
+      // 2. Glass Blur
+      if (this.sliderGlassBlur) {
+        this.sliderGlassBlur.addEventListener('input', (e) => {
+          const blurVal = parseInt(e.target.value, 10);
+          if (this.valGlassBlur) this.valGlassBlur.textContent = `${blurVal}px`;
+
+          if (this.mutationEngine) {
+            this.mutationEngine.mutateImmediate(':root', '--blur-glass', `${blurVal}px`);
+          }
+          document.documentElement.style.setProperty('--blur-glass', `${blurVal}px`);
+
+          document.querySelectorAll('.rigid-bento-tile, .acrylic-tab, .floating-studio-inspector').forEach((el) => {
+            el.style.backdropFilter = `blur(${blurVal}px)`;
+            el.style.webkitBackdropFilter = `blur(${blurVal}px)`;
+          });
+
+          this.updateExportCode();
+        });
+      }
+
+      // 3. Border Contrast
+      if (this.sliderBorderContrast) {
+        this.sliderBorderContrast.addEventListener('input', (e) => {
+          const contrast = parseFloat(e.target.value);
+          if (this.valBorderContrast) this.valBorderContrast.textContent = contrast.toFixed(2);
+
+          const hairline = `rgba(148, 163, 184, ${contrast})`;
+          const strong = `rgba(100, 116, 139, ${Math.min(1, contrast * 1.8).toFixed(2)})`;
+
+          if (this.mutationEngine) {
+            this.mutationEngine.mutateImmediate(':root', '--border-hairline', hairline);
+            this.mutationEngine.mutateImmediate(':root', '--border-hairline-strong', strong);
+          }
+          document.documentElement.style.setProperty('--border-hairline', hairline);
+          document.documentElement.style.setProperty('--border-hairline-strong', strong);
+
+          this.updateExportCode();
+        });
+      }
+
+      // Quick Theme Presets
+      const presetLightnessMap = {
+        titanium: 0.975,
+        paper: 0.980,
+        ivory: 0.990,
+        alabaster: 0.970
+      };
+
+      const syncActivePresetPill = (themeKey) => {
+        document.querySelectorAll('[data-theme-quick]').forEach((pill) => {
+          pill.classList.toggle('active', pill.getAttribute('data-theme-quick') === themeKey);
+        });
+      };
+      syncActivePresetPill('titanium');
+
+      document.querySelectorAll('[data-theme-quick]').forEach((pill) => {
+        pill.addEventListener('click', () => {
+          const themeKey = pill.getAttribute('data-theme-quick');
+          if (themeStudio) {
+            themeStudio.setTheme(themeKey);
+          }
+          syncActivePresetPill(themeKey);
+
+          // Update Canvas L slider to reflect selected theme
+          if (presetLightnessMap[themeKey] !== undefined && this.sliderCanvasL) {
+            const newL = presetLightnessMap[themeKey];
+            this.sliderCanvasL.value = String(newL);
+            if (this.valCanvasL) this.valCanvasL.textContent = newL.toFixed(3);
+          }
+
+          hapticsV2.playPop();
+          this.updateExportCode();
+        });
+      });
+    }
+
+    initPhysics() {
+      if (this.sliderSpringTension) {
+        this.sliderSpringTension.addEventListener('input', (e) => {
+          const tension = parseInt(e.target.value, 10);
+          if (this.valSpringTension) this.valSpringTension.textContent = tension;
+          if (this.mutationEngine) {
+            this.mutationEngine.mutateImmediate(':root', '--spring-tension', tension);
+          }
+          document.documentElement.style.setProperty('--spring-tension', tension);
+          this.updateExportCode();
+        });
+      }
+
+      if (this.sliderSpringDamping) {
+        this.sliderSpringDamping.addEventListener('input', (e) => {
+          const damping = parseInt(e.target.value, 10);
+          if (this.valSpringDamping) this.valSpringDamping.textContent = damping;
+          if (this.mutationEngine) {
+            this.mutationEngine.mutateImmediate(':root', '--spring-damping', damping);
+          }
+          document.documentElement.style.setProperty('--spring-damping', damping);
+          this.updateExportCode();
+        });
+      }
+
+      if (this.sliderTiltDeg) {
+        this.sliderTiltDeg.addEventListener('input', (e) => {
+          const tilt = parseInt(e.target.value, 10);
+          if (this.valTiltDeg) this.valTiltDeg.textContent = `${tilt}°`;
+          if (this.mutationEngine) {
+            this.mutationEngine.mutateImmediate(':root', '--tilt-max-deg', `${tilt}deg`);
+          }
+          document.documentElement.style.setProperty('--tilt-max-deg', `${tilt}deg`);
+          this.updateExportCode();
+        });
+      }
+
+      if (this.sliderSpotlightRadius) {
+        this.sliderSpotlightRadius.addEventListener('input', (e) => {
+          const radius = parseInt(e.target.value, 10);
+          if (this.valSpotlightRadius) this.valSpotlightRadius.textContent = `${radius}px`;
+          if (this.mutationEngine) {
+            this.mutationEngine.mutateImmediate(':root', '--spotlight-radius', `${radius}px`);
+          }
+          document.documentElement.style.setProperty('--spotlight-radius', `${radius}px`);
+          const spotLayer = document.querySelector('.ambient-spotlight-layer');
+          if (spotLayer) {
+            spotLayer.style.setProperty('--spotlight-radius', `${radius}px`);
+          }
+          this.updateExportCode();
+        });
+      }
+    }
+
+    initBlocks() {
+      if (this.btnHotInsertBlock) {
+        this.btnHotInsertBlock.addEventListener('click', () => {
+          const templateKey = this.selectBlockTemplate ? this.selectBlockTemplate.value : 'neural';
+          this.hotInsert(templateKey);
+        });
+      }
+
+      if (this.btnResetInsertedBlocks) {
+        this.btnResetInsertedBlocks.addEventListener('click', () => {
+          this.resetInsertedBlocks();
+        });
+      }
+    }
+
+    hotInsert(templateKey = 'neural') {
+      const bentoGrid = document.getElementById('rigidBentoGrid');
+      if (!bentoGrid) return;
+
+      let title = '', val = '', label = '', colClass = 'rigid-col-6';
+
+      switch (templateKey) {
+        case 'fan':
+          title = 'Dynamic Cooling Engine';
+          val = '1850 RPM';
+          label = 'Áp Suất Quạt & Nhiệt Độ 42°C';
+          colClass = 'rigid-col-6';
+          break;
+        case 'quantum':
+          title = 'Quantum Haptic Oscillator';
+          val = '96.4 kHz';
+          label = 'Tần Số Rung Siêu Âm Taptic';
+          colClass = 'rigid-col-6';
+          break;
+        case 'neural':
+        default:
+          title = 'Neural Swarm Telemetry Pod 7';
+          val = '1.28 TFLOPS';
+          label = 'Hiệu Suất Tính Toán AI Lõi';
+          colClass = 'rigid-col-6';
+      }
+
+      const tileId = `hot_tile_${Date.now()}`;
+      const tileDiv = document.createElement('div');
+      tileDiv.className = `rigid-bento-tile ${colClass} hot-inserted-tile`;
+      tileDiv.id = tileId;
+      tileDiv.setAttribute('data-spotlight', 'true');
+
+      // Safe DOM Construction (Zero raw innerHTML - strict SafeDOMAssembler anti-XSS)
+      const headerDiv = document.createElement('div');
+      headerDiv.className = 'rigid-tile-header';
+
+      const statLabel = document.createElement('span');
+      statLabel.className = 'rigid-stat-label';
+      statLabel.textContent = `HOT-INSERTED POD // ${title}`;
+
+      const badgeChip = document.createElement('span');
+      badgeChip.className = 'badge-chip emerald';
+      badgeChip.textContent = 'LIVE HYDRATED';
+
+      headerDiv.appendChild(statLabel);
+      headerDiv.appendChild(badgeChip);
+
+      const statNum = document.createElement('div');
+      statNum.className = 'rigid-stat-num';
+      statNum.style.color = '#0284C7';
+      statNum.style.margin = '12px 0';
+      statNum.textContent = val;
+
+      const descDiv = document.createElement('div');
+      descDiv.style.fontSize = '12px';
+      descDiv.style.color = 'var(--text-secondary)';
+      descDiv.style.lineHeight = '1.4';
+      descDiv.textContent = `${label} — Cắm nóng động qua SafeDOMAssembler không reload trang.`;
+
+      tileDiv.appendChild(headerDiv);
+      tileDiv.appendChild(statNum);
+      tileDiv.appendChild(descDiv);
+
+      // Wire spotlight pointer movement to hot-inserted card
+      tileDiv.addEventListener('pointermove', (e) => {
+        const r = tileDiv.getBoundingClientRect();
+        tileDiv.style.setProperty('--card-x', `${e.clientX - r.left}px`);
+        tileDiv.style.setProperty('--card-y', `${e.clientY - r.top}px`);
+      });
+
+      bentoGrid.appendChild(tileDiv);
+      this.insertedBlocksCount++;
+
+      if (this.hotInsertStatus) {
+        this.hotInsertStatus.textContent = `Đã cắm nóng: ${this.insertedBlocksCount} khối`;
+      }
+
+      // Haptic & Sound Feedback
+      hapticsV2.playPop();
+      triggerTaptic('pop');
+
+      // Toast feedback
+      if (toastEngine) {
+        toastEngine.spawn('Cắm Nóng Khối Thành Công', `Đã cắm nóng [${title}] vào Bento Grid không reload trang!`, 'success');
+      }
+    }
+
+    resetInsertedBlocks() {
+      const inserted = document.querySelectorAll('.hot-inserted-tile');
+      inserted.forEach((el) => el.remove());
+      this.insertedBlocksCount = 0;
+      if (this.hotInsertStatus) {
+        this.hotInsertStatus.textContent = 'Đã cắm nóng: 0 khối';
+      }
+      hapticsV2.playDetent();
+      if (toastEngine) {
+        toastEngine.spawn('Đặt Lại Bento', 'Đã dọn dẹp các khối cắm nóng.', 'info');
+      }
+    }
+
+    initExport() {
+      this.formatPills.forEach((pill) => {
+        const isActive = pill.classList.contains('active');
+        pill.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        pill.addEventListener('click', () => {
+          this.formatPills.forEach((p) => {
+            p.classList.remove('active');
+            p.setAttribute('aria-pressed', 'false');
+          });
+          pill.classList.add('active');
+          pill.setAttribute('aria-pressed', 'true');
+          this.activeFormat = pill.getAttribute('data-export-format') || 'css';
+          this.updateExportCode();
+          hapticsV2.playPop();
+        });
+      });
+
+      if (this.btnCopyExportCode) {
+        this.btnCopyExportCode.addEventListener('click', () => {
+          this.copyExportCode();
+        });
+      }
+    }
+
+    getCurrentTokens() {
+      const computed = window.getComputedStyle(document.documentElement);
+      const bgCanvas = computed.getPropertyValue('--bg-canvas').trim() || '#FAF9F6';
+      const bgSurface = computed.getPropertyValue('--bg-surface').trim() || '#FFFFFF';
+      const accent = computed.getPropertyValue('--accent-primary').trim() || '#0284C7';
+
+      return {
+        canvas: bgCanvas,
+        surface: bgSurface,
+        acrylic: 'rgba(255, 255, 255, 0.82)',
+        borderSpecular: 'rgba(255, 255, 255, 0.95)',
+        borderHairline: computed.getPropertyValue('--border-hairline').trim() || 'rgba(226, 232, 240, 0.85)',
+        borderStrong: '#CBD5E1',
+        textPrimary: '#0F172A',
+        textSecondary: '#334155',
+        textMuted: '#64748B',
+        accentPrimary: accent,
+        blurGlass: this.valGlassBlur ? this.valGlassBlur.textContent : '20px',
+        springTension: this.sliderSpringTension ? parseInt(this.sliderSpringTension.value, 10) : 180,
+        springDamping: this.sliderSpringDamping ? parseInt(this.sliderSpringDamping.value, 10) : 12,
+        tiltMaxDeg: this.sliderTiltDeg ? parseInt(this.sliderTiltDeg.value, 10) : 8,
+        spotlightRadius: this.valSpotlightRadius ? this.valSpotlightRadius.textContent : '500px'
+      };
+    }
+
+    updateExportCode() {
+      if (!this.exportCodePreview) return;
+      const exporter = window.CrossFrameworkTokenExporter;
+      if (!exporter) return;
+      const tokens = this.getCurrentTokens();
+      const code = exporter.exportTokens(tokens, this.activeFormat);
+      this.exportCodePreview.textContent = code;
+    }
+
+    copyExportCode() {
+      if (!this.exportCodePreview) return;
+      const code = this.exportCodePreview.textContent;
+      if (!code) return;
+
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+        navigator.clipboard.writeText(code).then(() => {
+          this.onCopySuccess();
+        }).catch(() => {
+          this.fallbackCopy(code);
+        });
+      } else {
+        this.fallbackCopy(code);
+      }
+    }
+
+    fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        this.onCopySuccess();
+      } catch (_) {}
+      ta.remove();
+    }
+
+    onCopySuccess() {
+      if (this.btnCopyExportLabel) {
+        const orig = this.btnCopyExportLabel.textContent;
+        this.btnCopyExportLabel.textContent = '✅ Đã Sao Chép! (Copied)';
+        setTimeout(() => {
+          this.btnCopyExportLabel.textContent = orig;
+        }, 2200);
+      }
+      hapticsV2.playChime();
+      triggerTaptic('chime');
+      if (toastEngine) {
+        toastEngine.spawn('Sao Chép Thành Công', `Mã nguồn [${this.activeFormat}] đã được sao chép vào Clipboard!`, 'success');
+      }
+    }
+  }
+
+  // ==========================================================================
+  // 12. BOOTSTRAP SHOWCASE V2, V3 & V4
   // ==========================================================================
   let webglEngine = null;
   let rotaryController = null;
@@ -1436,6 +2078,8 @@ void main() {
   let themeStudio = null;
   let scrollyStage = null;
   let rigidBento = null;
+  let floatingInspector = null;
+  let batteryWatchdog = null;
   let pageSchema = null;
 
   function initShowcaseV2() {
@@ -1452,6 +2096,30 @@ void main() {
     themeStudio = new ThemeStudioController();
     scrollyStage = new ScrollyStageController();
     rigidBento = new RigidBentoController();
+
+    // V4 Subsystems
+    if (typeof AdaptiveBatteryWatchdog !== 'undefined') {
+      try {
+        batteryWatchdog = new AdaptiveBatteryWatchdog({
+          onTierChange: (tier) => {
+            if (delightHud) delightHud.syncBattery(tier);
+          },
+          onStateChange: () => {
+            if (delightHud) delightHud.syncBattery();
+          }
+        });
+        window.batteryWatchdog = batteryWatchdog;
+        if (typeof EcoGraphicArbiter !== 'undefined') {
+          window.ecoGraphicArbiter = new EcoGraphicArbiter({ watchdog: batteryWatchdog });
+        }
+        // Immediate sync to eliminate startup latency and race conditions
+        if (delightHud) delightHud.syncBattery();
+      } catch (e) {
+        console.warn('[ShowcaseV4] BatteryWatchdog init error:', e);
+      }
+    }
+
+    floatingInspector = new FloatingStudioInspector();
 
     // WebGL Mode Switcher Buttons
     const modeButtons = document.querySelectorAll('[data-webgl-mode]');
@@ -1612,4 +2280,26 @@ void main() {
     set schema(s) { pageSchema = s; }
   };
 
+  // Global export V4 for Round 4
+  window.ShowcaseV4 = {
+    version: '4.0.0',
+    get inspector() { return floatingInspector; },
+    get mutationEngine() { return floatingInspector ? floatingInspector.mutationEngine : null; },
+    get batteryWatchdog() { return batteryWatchdog; },
+    get exporter() { return window.CrossFrameworkTokenExporter; },
+    hapticsV2,
+    triggerTaptic,
+    get themeStudio() { return themeStudio; },
+    get scrolly() { return scrollyStage; },
+    get bento() { return rigidBento; },
+    get webgl() { return webglEngine; },
+    get rotary() { return rotaryController; },
+    get odometer() { return odometerEngine; },
+    get toast() { return toastEngine; },
+    get hud() { return delightHud; },
+    get schema() { return pageSchema; },
+    set schema(s) { pageSchema = s; }
+  };
+
 })(window, document);
+
