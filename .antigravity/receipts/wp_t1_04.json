@@ -1,0 +1,29 @@
+{
+  "wp": "WP-T1-04",
+  "task": "Multi-Transport Fastify v5 & tRPC v11 Builder with RFC 7807 Error Handling",
+  "status": "COMPLETED",
+  "files_created": [
+    "projects/backend_engine/src/presentation/http/server.ts",
+    "projects/backend_engine/src/presentation/http/error-handler.ts",
+    "projects/backend_engine/src/presentation/rest/auth.controller.ts",
+    "projects/backend_engine/src/presentation/rest/users.controller.ts",
+    "projects/backend_engine/src/presentation/trpc/context.ts",
+    "projects/backend_engine/src/presentation/trpc/router.ts",
+    "projects/backend_engine/src/application/use-cases/auth.use-cases.ts",
+    "projects/backend_engine/src/application/use-cases/users.use-cases.ts",
+    "projects/backend_engine/src/infrastructure/repositories/in-memory-repositories.ts",
+    "projects/backend_engine/src/infrastructure/container.ts",
+    "projects/backend_engine/src/index.ts",
+    "projects/backend_engine/tests/unit/transport.test.js"
+  ],
+  "verification_command": "npm run build; node --test tests/unit/transport.test.js",
+  "verification_status": "PASS",
+  "test_metrics": {
+    "total_tests": 45,
+    "suites": 8,
+    "passed": 45,
+    "failed": 0,
+    "duration_ms": 1881
+  },
+  "summary": "Đã kiểm toán và khắc phục triệt để các lỗ hổng tầng Transport: xuất container từ index.ts, chuẩn hóa xử lý signed cookie HMAC trong Fastify và tRPC, vá lỗi rò rỉ mã lỗi 404 cho token của người dùng đã bị xóa/không tồn tại thành chuẩn 401 Unauthorized, phòng thủ Algorithm None Attack, hỗ trợ full_name snake_case trên tRPC mutation, xác thực quyền manager role trên GET /api/v1/users, phòng thủ Body Limit DoS (>1MB -> RFC 7807 413) và bổ sung 10 kịch bản kiểm thử đối kháng nâng tổng số test lên 45/45 assertions xanh tuyệt đối."
+}

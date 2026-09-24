@@ -1,0 +1,46 @@
+{
+  "workPackageId": "WP-T3-01",
+  "pod": "Pod 1: Ingestion & Document Chunking (EP 09)",
+  "title": "Document Parsing & Semantic Chunking Engine",
+  "status": "COMPLETED",
+  "artifacts": [
+    "src/ingestion/DocumentParser.ts",
+    "src/ingestion/SemanticChunker.ts",
+    "tests/unit/ingestion.test.js"
+  ],
+  "features": {
+    "multiFormatParsing": [
+      "Markdown (.md) with YAML frontmatter title extraction",
+      "TypeScript (.ts) with decorators & safe brace tracking",
+      "JavaScript (.js)",
+      "Python (.py) with decorator attachment & leading # comments disambiguation",
+      "JSON (.json) with realistic line number mapping",
+      "CSV (.csv) with repeated column headers",
+      "Plain Text (.txt)"
+    ],
+    "normalization": [
+      "UTF-8 BOM removal",
+      "CRLF and CR to LF unification",
+      "10MB size limit enforcement",
+      "SHA-256 ContentHash generation",
+      "MIME parameter stripping (e.g. charset=utf-8)"
+    ],
+    "semanticChunking": [
+      "AST-Aware Markdown chunking with CommonMark code fence balance guarantee (>= 4 backticks & nested fences never split)",
+      "Hierarchical breadcrumb headingPath tracking",
+      "Code chunking by functions, classes, interfaces, methods for TS/JS & Python",
+      "Python and TypeScript decorator retention attached to decorated targets",
+      "CSV chunking with repeated column headers on line 1 of every chunk",
+      "JSON chunking guaranteeing valid JSON fragments with source line bounds",
+      "Differential re-indexing (diffChunks) with ID+hash matching preventing chunk loss upon prepend/shift and saving >80% compute"
+    ]
+  },
+  "metrics": {
+    "unitTestFile": "tests/unit/ingestion.test.js",
+    "totalTests": 27,
+    "passedTests": 27,
+    "failedTests": 0,
+    "successRate": "100%"
+  },
+  "timestamp": "2026-09-25T01:52:00+07:00"
+}

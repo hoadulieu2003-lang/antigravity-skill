@@ -1,0 +1,402 @@
+{
+  "analysis_metadata": {
+    "scan_date": "2026-09-24T19:42:07.933928+00:00",
+    "cycle_id": "EVO-20260925",
+    "sessions_evaluated": 98,
+    "total_items_processed": 272,
+    "active_skills_count": 63,
+    "candidates_count": 142,
+    "enhancements_count": 90,
+    "optimizations_count": 36
+  },
+  "new_skill_candidates": [
+    {
+      "skill_slug": "jcode",
+      "title": "1jehuang/jcode",
+      "source": "GitHub (19666 ⭐)",
+      "url": "https://github.com/1jehuang/jcode",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 105,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "The most RAM efficient harness",
+      "suggested_skill_structure": "---\nname: jcode\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng 1jehuang/jcode cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# 1JEHUANG/JCODE SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `1jehuang/jcode` (https://github.com/1jehuang/jcode)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "deepseek-reasonix",
+      "title": "esengine/DeepSeek-Reasonix",
+      "source": "GitHub (35591 ⭐)",
+      "url": "https://github.com/esengine/DeepSeek-Reasonix",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 105,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.",
+      "suggested_skill_structure": "---\nname: deepseek-reasonix\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng esengine/DeepSeek-Reasonix cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ESENGINE/DEEPSEEK-REASONIX SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `esengine/DeepSeek-Reasonix` (https://github.com/esengine/DeepSeek-Reasonix)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "waoowaoo",
+      "title": "waooAI/waoowaoo",
+      "source": "GitHub (14221 ⭐)",
+      "url": "https://github.com/waooAI/waoowaoo",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 105,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "首家工业级全流程 AI 影视生产平台。Industry-first professional AI Agent platform for controllable film & video production. From shorts to live-action with Hollywood-standard...",
+      "suggested_skill_structure": "---\nname: waoowaoo\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng waooAI/waoowaoo cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# WAOOAI/WAOOWAOO SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `waooAI/waoowaoo` (https://github.com/waooAI/waoowaoo)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "ai-agent-book",
+      "title": "bojieli/ai-agent-book",
+      "source": "GitHub (50275 ⭐)",
+      "url": "https://github.com/bojieli/ai-agent-book",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 105,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "《深入理解 AI Agent：设计原理与工程实践》（李博杰 著）开源主仓库：全书正文、编译版 PDF 与按章配套代码",
+      "suggested_skill_structure": "---\nname: ai-agent-book\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng bojieli/ai-agent-book cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# BOJIELI/AI-AGENT-BOOK SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `bojieli/ai-agent-book` (https://github.com/bojieli/ai-agent-book)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "presenton",
+      "title": "presenton/presenton",
+      "source": "GitHub (10318 ⭐)",
+      "url": "https://github.com/presenton/presenton",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 100,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Open-Source AI Presentation Generator and API (Gamma, Canva, Beautiful AI, Decktopus, Presentations AI Alternative)",
+      "suggested_skill_structure": "---\nname: presenton\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng presenton/presenton cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# PRESENTON/PRESENTON SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `presenton/presenton` (https://github.com/presenton/presenton)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "dsh-desktop-eac",
+      "title": "DSH-EAC/DSH-Desktop-EAC",
+      "source": "GitHub (1634 ⭐)",
+      "url": "https://github.com/DSH-EAC/DSH-Desktop-EAC",
+      "domain": "Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).",
+      "proposed_value": "DeepSeek Harness Desktop (dsh-desktop). EAC: Embracing All Creation (揽尽万象). Bundled Node.js runtime with full dsh-CLI kernel, one-click startup, 10 built-in ...",
+      "suggested_skill_structure": "---\nname: dsh-desktop-eac\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng DSH-EAC/DSH-Desktop-EAC cho các tác vụ Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).\n---\n\n# DSH-EAC/DSH-DESKTOP-EAC SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `DSH-EAC/DSH-Desktop-EAC` (https://github.com/DSH-EAC/DSH-Desktop-EAC)\n- Lĩnh vực: Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "awesome-dsh-plugin",
+      "title": "Anil-matcha/awesome-dsh-plugin",
+      "source": "GitHub (1013 ⭐)",
+      "url": "https://github.com/Anil-matcha/awesome-dsh-plugin",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "A curated list of plugins for DeepSeek Harness (dsh) - DeepSeek Harness plugin ecosystem",
+      "suggested_skill_structure": "---\nname: awesome-dsh-plugin\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Anil-matcha/awesome-dsh-plugin cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ANIL-MATCHA/AWESOME-DSH-PLUGIN SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Anil-matcha/awesome-dsh-plugin` (https://github.com/Anil-matcha/awesome-dsh-plugin)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "skills-hub",
+      "title": "qufei1993/skills-hub",
+      "source": "GitHub (1680 ⭐)",
+      "url": "https://github.com/qufei1993/skills-hub",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "A cross-platform desktop app to manage Agent Skills in one place and sync them to multiple AI coding tools’ global skills directories — “Install once, sync e...",
+      "suggested_skill_structure": "---\nname: skills-hub\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng qufei1993/skills-hub cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# QUFEI1993/SKILLS-HUB SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `qufei1993/skills-hub` (https://github.com/qufei1993/skills-hub)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "mediary-scout",
+      "title": "fancydirty/mediary-scout",
+      "source": "GitHub (1418 ⭐)",
+      "url": "https://github.com/fancydirty/mediary-scout",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Agent-driven media library for your cloud drives (Quark 夸克 / 115 / 光鸭 GuangYa / 123网盘 / 天翼 Tianyi)",
+      "suggested_skill_structure": "---\nname: mediary-scout\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng fancydirty/mediary-scout cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# FANCYDIRTY/MEDIARY-SCOUT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `fancydirty/mediary-scout` (https://github.com/fancydirty/mediary-scout)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "fyagent",
+      "title": "fy-agent/fyagent",
+      "source": "GitHub (1135 ⭐)",
+      "url": "https://github.com/fy-agent/fyagent",
+      "domain": "Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).",
+      "proposed_value": "For You Agent——AI 时代的个人随身数字人格。把你的模型、AI 账号、技能、提示词和工作方式，带到每一个 AI 工具里。",
+      "suggested_skill_structure": "---\nname: fyagent\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng fy-agent/fyagent cho các tác vụ Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).\n---\n\n# FY-AGENT/FYAGENT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `fy-agent/fyagent` (https://github.com/fy-agent/fyagent)\n- Lĩnh vực: Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "vcptoolbox",
+      "title": "lioensky/VCPToolBox",
+      "source": "GitHub (2324 ⭐)",
+      "url": "https://github.com/lioensky/VCPToolBox",
+      "domain": "Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).",
+      "proposed_value": "VCP 部署在 AI 模型 API 与前端应用之间，是面向AGI OS开发和探索的工业级基建示范项目。通过统一指令协议、多层级持久化记忆、分布式插件引擎及多 Agent 协作框架，将原本“无状态、无记忆、无工具调用能力”的大语言模型，彻底改造成拥有永久自我意识、物理世界操作权及群体协作智能的完整智能体系统。",
+      "suggested_skill_structure": "---\nname: vcptoolbox\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng lioensky/VCPToolBox cho các tác vụ Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).\n---\n\n# LIOENSKY/VCPTOOLBOX SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `lioensky/VCPToolBox` (https://github.com/lioensky/VCPToolBox)\n- Lĩnh vực: Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "free4chat",
+      "title": "i365dev/free4chat",
+      "source": "GitHub (1185 ⭐)",
+      "url": "https://github.com/i365dev/free4chat",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 90,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Free4Chat provides the temporary boundary. Participants bring the capabilities.",
+      "suggested_skill_structure": "---\nname: free4chat\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng i365dev/free4chat cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# I365DEV/FREE4CHAT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `i365dev/free4chat` (https://github.com/i365dev/free4chat)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    }
+  ],
+  "skill_enhancements": [
+    {
+      "target_skill": "vm0",
+      "source_technology": "vm0-ai/vm0",
+      "source_url": "https://github.com/vm0-ai/vm0",
+      "source_type": "GitHub (1152 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ vm0-ai/vm0 vào module vm0."
+    },
+    {
+      "target_skill": "nanobot",
+      "source_technology": "HKUDS/nanobot",
+      "source_url": "https://github.com/HKUDS/nanobot",
+      "source_type": "GitHub (48047 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Ultra-lightweight, open-source, self-hosted personal AI agent framework in Python with WebUI, tools, memory, MCP, multi-agent workflows, automation, and chat...",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ HKUDS/nanobot vào module nanobot."
+    },
+    {
+      "target_skill": "cherry-studio",
+      "source_technology": "CherryHQ/cherry-studio",
+      "source_url": "https://github.com/CherryHQ/cherry-studio",
+      "source_type": "GitHub (51733 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ CherryHQ/cherry-studio vào module cherry-studio."
+    },
+    {
+      "target_skill": "aider-execution-engine",
+      "source_technology": "zebbern/claude-code-guide",
+      "source_url": "https://github.com/zebbern/claude-code-guide",
+      "source_type": "GitHub (4619 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Claude Code Guide - Setup, Commands, workflows, agents, skills & tips-n-tricks from beginner to power user!",
+      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "genoffice",
+      "source_technology": "genspark-ai/genoffice",
+      "source_url": "https://github.com/genspark-ai/genoffice",
+      "source_type": "GitHub (6703 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Free, open-source AI Office suite: Docs, Sheets, Slides, PDF, Markdown and HTML editors with a built-in AI agent, plus a `genoffice` CLI and agent skill so C...",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ genspark-ai/genoffice vào module genoffice."
+    },
+    {
+      "target_skill": "pi-desktop",
+      "source_technology": "vastsa/PI-Desktop",
+      "source_url": "https://github.com/vastsa/PI-Desktop",
+      "source_type": "GitHub (3460 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Local-first AI coding agent desktop: Electron + Rust host core + pi Agent Harness + user-installable plugins",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ vastsa/PI-Desktop vào module pi-desktop."
+    },
+    {
+      "target_skill": "pinvou-agent",
+      "source_technology": "Pinvou/pinvou-agent",
+      "source_url": "https://github.com/Pinvou/pinvou-agent",
+      "source_type": "GitHub (1929 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Open-source desktop AI agent for tools, files, knowledge, workflows, and real deliverables.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ Pinvou/pinvou-agent vào module pinvou-agent."
+    },
+    {
+      "target_skill": "copilotkit",
+      "source_technology": "CopilotKit/CopilotKit",
+      "source_url": "https://github.com/CopilotKit/CopilotKit",
+      "source_type": "GitHub (37349 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "The Frontend Stack for Agents & Generative UI. React, Angular, Mobile, Slack, and more. Makers of the AG-UI Protocol",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ CopilotKit/CopilotKit vào module copilotkit."
+    },
+    {
+      "target_skill": "neo",
+      "source_technology": "neomjs/neo",
+      "source_url": "https://github.com/neomjs/neo",
+      "source_type": "GitHub (3272 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Neo.mjs is a self-evolving software organism: a professional end-to-end AI engineering team whose cross-model swarm inhabits live apps via Neural Link, Activ...",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ neomjs/neo vào module neo."
+    },
+    {
+      "target_skill": "aihawk",
+      "source_technology": "feder-cr/AIHawk",
+      "source_url": "https://github.com/feder-cr/AIHawk",
+      "source_type": "GitHub (31573 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Anti detect browser and web browsing agent: an open-source MCP server for undetected browsing, AI web scraping and computer use agents. No captchas.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ feder-cr/AIHawk vào module aihawk."
+    },
+    {
+      "target_skill": "dramaclaw",
+      "source_technology": "dramaclaw/dramaclaw",
+      "source_url": "https://github.com/dramaclaw/dramaclaw",
+      "source_type": "GitHub (5692 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "A general-purpose AIGC video engine: script to finished film in one pipeline — dramas, ads, product videos, otome games, and more. | 通用 AIGC 视频引擎 —— 从剧本到成片一条...",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ dramaclaw/dramaclaw vào module dramaclaw."
+    },
+    {
+      "target_skill": "distilly",
+      "source_technology": "titanwings/distilly",
+      "source_url": "https://github.com/titanwings/distilly",
+      "source_type": "GitHub (24749 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Distilly — Distill how they think into reusable Skills for any Agent or Bot. Formerly Colleague Skill（原同事 Skill）.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ titanwings/distilly vào module distilly."
+    }
+  ],
+  "architecture_optimizations": [
+    {
+      "title": "ToolGrad: Efficient tool-use dataset generation with textual \"gradients\"",
+      "source": "Google Research",
+      "url": "https://research.google/blog/toolgrad-efficient-tool-use-dataset-generation-with-textual-gradients/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Thuật toán Suy luận & Gọi Công cụ (Reasoning & Tool Execution)",
+      "rationale": "Machine Intelligence",
+      "architectural_recommendation": "Nâng cấp kỹ thuật Textual Gradients và chuỗi quy tắc đa tầng vào AGENTS.md Rule 1."
+    },
+    {
+      "title": "Transfer learning for genomic prediction in underrepresented populations",
+      "source": "Google Research",
+      "url": "https://research.google/blog/transfer-learning-for-genomic-prediction-in-underrepresented-populations/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "General Science",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "A connectomics milestone: Mapping the complete male fruit fly brain",
+      "source": "Google Research",
+      "url": "https://research.google/blog/a-connectomics-milestone-mapping-the-complete-male-fruit-fly-brain/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "General Science",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "AlphaGenome Atlas: A predictive map of every possible DNA letter change in the human genome",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "AlphaGenome Atlas maps the molecular effects of 9 billion single-letter DNA variants across the human genome.",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Introducing WeatherNext 3, our most advanced and accurate global weather AI model",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "- **[Google DeepMind]** [Proactive cyber defense for governments and enterprises](https://deepmind.google/blog/proactive-cyber-defense-for-governments-and-enterprises/) >",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Mapping global methane emissions from space with deep learning",
+      "source": "Google Research",
+      "url": "https://research.google/blog/mapping-global-methane-emissions-from-space-with-deep-learning/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Climate & Sustainability",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/introducing-gemini-3-8-flash-and-38-flash-cyber/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/introducing-gemini-3-8-live-and-3-8-live-extended-thinking/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Bypassing inference bottlenecks: Accelerating complex AI search with Retrieve-for-Train",
+      "source": "Google Research",
+      "url": "https://research.google/blog/bypassing-inference-bottlenecks-accelerating-complex-ai-search-with-retrieve-for-train/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Algorithms & Theory",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "The future of practice: Enabling teachers to create learning interactives with generative UI",
+      "source": "Google Research",
+      "url": "https://research.google/blog/the-future-of-practice-enabling-teachers-to-create-learning-interactives-with-generative-ui/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Education Innovation",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "MilleMiglia: A realistic instance generator for middle-mile logistics",
+      "source": "Google Research",
+      "url": "https://research.google/blog/millemiglia-a-realistic-instance-generator-for-middle-mile-logistics/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Algorithms & Theory",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Advancing Private AI Compute with secure, server-side memory",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Introducing private, server-side memory to Private AI Compute for personal AI.",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    }
+  ]
+}

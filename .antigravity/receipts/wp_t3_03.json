@@ -1,0 +1,38 @@
+{
+  "workPackageId": "wp_t3_03",
+  "taskName": "WP-T3-03: Pure TypeScript HNSW Vector Index & SQLite Persistence Vault (EP 11)",
+  "status": "COMPLETED",
+  "timestamp": "2026-09-25T01:56:00.000Z",
+  "filesAuditedAndHardened": [
+    "projects/knowledge_vault/src/types/index.ts",
+    "projects/knowledge_vault/src/storage/HNSWVectorIndex.ts",
+    "projects/knowledge_vault/src/storage/SQLiteVault.ts",
+    "projects/knowledge_vault/src/storage/index.ts",
+    "projects/knowledge_vault/src/ingestion/SemanticChunker.ts",
+    "projects/knowledge_vault/tests/unit/storage.test.js"
+  ],
+  "verification": {
+    "testSuite": "tests/unit/storage.test.js",
+    "totalStorageTests": 24,
+    "passedStorageTests": 24,
+    "failedStorageTests": 0,
+    "fullSuitePassedTests": 142,
+    "fullSuiteFailedTests": 0,
+    "masterHarnessPassed": 40,
+    "masterHarnessTotal": 40,
+    "independentVerificationScorecard": "24/24 PASSED (100.0%) storage tests, 40/40 PASSED (100.0%) master verification harness, 142/142 PASSED (100.0%) total repo suite",
+    "featuresDeliveredAndFixed": [
+      "Fixed silent recall drop on HNSW predicate search for datasets > 2000 nodes by removing arbitrary nodes.size cutoff",
+      "Fixed DOT_PRODUCT score flattening where all positive dot products were collapsed to score 1.0; calibrated using monotonic sigmoid mapping",
+      "Fixed loss of chunk.contentHash in SQLiteVault by fixing property lookup and reconstructing it in rowToChunk",
+      "Implemented getJournalMode() on SQLiteVault and locked to ISQLiteVault contract",
+      "Linked DocumentChunk.embedding to embeddings table in saveChunks and auto-restored Float32Array in getChunkById/getChunksByDocument/getChunksByIds",
+      "Implemented nested transaction support via SQLite SAVEPOINTS preventing cannot start a transaction within a transaction error",
+      "Added strict dimension validation to HNSW search queryVector to reject mismatched dimensions",
+      "Implemented true graph topology healing on HNSW node deletion to cross-connect orphaned neighbors and prevent network partition",
+      "Added corrupted snapshot error handling and defensive payload validation to deserialize and importSnapshot",
+      "Fixed SemanticChunker chunkPlainText sliding-window chunking for oversized paragraphs exceeding chunkSize",
+      "All 142 unit tests across 22 suites and all 40 master harness verification assertions passing 100% on Windows x64"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "wp": "WP-T1-01",
+  "task": "Transformation & Domain Core Builder",
+  "status": "COMPLETED",
+  "files_created_or_modified": [
+    "C:/Users/game/.gemini/projects/backend_engine/src/domain/errors/AppError.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/domain/errors.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/domain/entities/User.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/domain/entities/Session.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/domain/entities/AuditLog.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/domain/entities/TaskJob.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/domain/security/PasswordHasher.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/domain/security/TokenProvider.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/domain/index.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/application/use-cases/RegisterUserUseCase.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/application/use-cases/LoginUseCase.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/application/use-cases/RefreshTokenUseCase.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/application/use-cases/ListUsersUseCase.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/application/index.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/src/index.ts",
+    "C:/Users/game/.gemini/projects/backend_engine/tests/unit/domain.test.js"
+  ],
+  "verification_script": "npm run build && node --test tests/unit/domain.test.js && npm test",
+  "verification_status": "PASS (100% clean TypeScript build, 40/40 domain unit tests passed, 148/148 total repo tests passed across 31 suites with 0 failures)",
+  "features_implemented_and_fixed": [
+    "AppError (RFC 7807 Problem Details): Base class AppError with status, statusCode getter, title, type, detail, code, instance, invalidParams, timestamp, and toProblemDetails() method. Subclasses: ValidationError (400), UnauthorizedError (401), ForbiddenError (403), NotFoundError (404), ConflictError (409), TooManyRequestsError (429), InternalServerError (500). Polymorphic constructors accept (detail, codeOrOptions, options).",
+    "User Entity: Strict invariants (email RFC 5322 regex, fullName 2-100, role, status), defensive parsing for string/Date timestamps, verifyPasswordHash port delegation, updateProfile with timestamp tracking, toPublicDto safe projection.",
+    "Session Entity: Encapsulated session state with isExpired, isRevoked, revoke(), and isValidWithGracePeriod(graceSeconds, now) supporting 30s concurrent refresh token race condition window with sub-second backward clock drift cushion.",
+    "AuditLog Entity & Factory: Immutable security and audit trail logs with Object.freeze enforcement, validation on action, resource, status ('SUCCESS' | 'FAILURE' | 'DENIED'), and UUID/timestamp stamping.",
+    "TaskJob Entity: Asynchronous task job state machine with correct retry semantics (RETRYING while retryCount <= maxRetries, transitioning to FAILED only when retries are exhausted, and immediate FAILED when maxRetries = 0).",
+    "RegisterUserUseCase: Validates email/password/name, adds upper-bound check (<= 128 chars) against CPU DoS, enforces email uniqueness with ConflictError, hashes password, creates user entity, logs audit trail, and returns public DTO.",
+    "LoginUseCase: Validates credentials, executes timing-attack constant-time verification against dummy hash for non-existent users (CWE-208), enforces suspended AND pending account rejection with ForbiddenError, issues JWT access token and refresh token, creates session, and records audit trail.",
+    "RefreshTokenUseCase: Hashes incoming refresh token, finds session, validates expiration, checks 30s grace period for revoked sessions (detects token reuse and triggers user-wide session revocation kill-switch on theft), enforces suspended AND pending account rejection, rotates tokens, and records audit trail.",
+    "ListUsersUseCase: Fully corrected pagination logic for filtered queries - scans candidates, filters by role and status, calculates true filtered total and totalPages, and correctly returns paged users even when matching records are located at later offsets in the repository.",
+    "Cryptographic Providers: ScryptPasswordHasher (timing-safe scrypt verification + dummy hash) and JwtTokenProvider (jose signed JWTs + SHA-256 token hashing)."
+  ],
+  "summary": "Đã hoàn thành kiểm toán độc lập, sửa triệt để các lỗi logic (TaskJob off-by-one retry, ListUsersUseCase filter pagination, kiểm soát tài khoản pending, giới hạn độ dài mật khẩu DoS, immutability và defensive Date parsing), vượt qua toàn diện 40/40 domain tests và 148/148 tests toàn repo."
+}

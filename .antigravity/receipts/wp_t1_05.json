@@ -1,0 +1,65 @@
+{
+  "wp": "WP-T1-05",
+  "task": "Queue, Cache & Luminous Telemetry HUD Builder",
+  "status": "COMPLETED",
+  "timestamp": "2026-09-25T00:41:40.000Z",
+  "verdict": "PASS",
+  "components": {
+    "cache": {
+      "file": "projects/backend_engine/src/infrastructure/cache/LruCacheService.ts",
+      "features": [
+        "ICacheService contract compliance",
+        "O(1) Map-based LRU eviction with maxSize enforcement",
+        "TTL expiration with immediate non-cache on TTL <= 0 and proactive pruneExpired() method",
+        "Eager expiration pruning prior to evicting valid LRU entries upon capacity saturation",
+        "SingleFlightGroup stampede / thundering herd coalescing with pre-await in-flight checking"
+      ]
+    },
+    "queue": {
+      "file": "projects/backend_engine/src/infrastructure/queue/InMemoryQueueService.ts",
+      "features": [
+        "IQueueService contract compliance",
+        "Priority scheduling (High=10, Normal=5, Low=1) with case-insensitive string level normalization",
+        "Per-queue indexed pending job buckets eliminating linear O(N) scan performance degradation",
+        "Bounded completed history buffer (capped at 2000 jobs) preventing memory leaks",
+        "Exponential backoff retry policy (initial * 2^(retry-1)) with status RETRYING and future scheduling",
+        "Dead Letter Queue (DLQ) with isolation & retry capability",
+        "Controlled concurrency Worker Pool with clean idle polling loop preventing thread thrashing"
+      ]
+    },
+    "telemetry": {
+      "collector_file": "projects/backend_engine/src/presentation/telemetry/TelemetryCollector.ts",
+      "controller_file": "projects/backend_engine/src/presentation/telemetry/telemetry.controller.ts",
+      "hud_file": "projects/backend_engine/src/presentation/telemetry/hud.html",
+      "features": [
+        "High-resolution CPU percentage measurement via process.cpuUsage + hrtime delta",
+        "V8 Memory RSS, Heap Used, Heap Total and OS memory tracking",
+        "Rolling latency histogram computing p50, p95, p99 and average",
+        "Sliding 1-second request velocity throughput tracking with binary search and bounded timestamps",
+        "fastify-plugin wrapping ensuring global onRequest/onResponse hooks monitor all application routes",
+        "Server-Sent Events (SSE) 1Hz live telemetry stream at /api/v1/telemetry/stream with robust socket lifecycle & error recovery",
+        "Interactive Test Traffic generator at /api/v1/telemetry/simulate",
+        "Luminous Light Theme Invariant HUD Dashboard at /telemetry/hud (Warm Paper #FAF9F6, elevated Pure White cards with luminous borders, Bento Grid, 60 FPS sparkline with separated stroke/fill paths)"
+      ]
+    }
+  },
+  "tests": {
+    "file": "projects/backend_engine/tests/unit/queue_cache.test.js",
+    "total": 26,
+    "passed": 26,
+    "failed": 0
+  },
+  "artifacts_modified": [
+    "c:/Users/game/.gemini/projects/backend_engine/src/infrastructure/cache/LruCacheService.ts",
+    "c:/Users/game/.gemini/projects/backend_engine/src/infrastructure/queue/InMemoryQueueService.ts",
+    "c:/Users/game/.gemini/projects/backend_engine/src/presentation/telemetry/TelemetryCollector.ts",
+    "c:/Users/game/.gemini/projects/backend_engine/src/presentation/telemetry/telemetry.controller.ts",
+    "c:/Users/game/.gemini/projects/backend_engine/src/presentation/telemetry/hud.html",
+    "c:/Users/game/.gemini/projects/backend_engine/src/presentation/http/server.ts",
+    "c:/Users/game/.gemini/projects/backend_engine/src/infrastructure/container.ts",
+    "c:/Users/game/.gemini/projects/backend_engine/src/index.ts",
+    "c:/Users/game/.gemini/projects/backend_engine/tests/unit/queue_cache.test.js",
+    "c:/Users/game/.gemini/.antigravity/receipts/wp_t1_05.json"
+  ],
+  "summary": "Đã kiểm toán và khắc phục triệt để WP-T1-05: Sửa lỗi thiếu đăng ký telemetryRoutes vào server.ts, tích hợp cacheService/queueService/telemetryCollector vào AppContainer và index.ts, bọc telemetryRoutes bằng fastify-plugin để thu thập metrics toàn cục, tối ưu InMemoryQueueService triệt tiêu O(N) linear scan và rò rỉ bộ nhớ, chuẩn hóa priority string levels, tối ưu TelemetryCollector binary search throughput, hoàn thiện vẽ Sparkline Canvas không bị viền vi phạm và xử lý socket lifecycle SSE an toàn tuyệt đối. Đạt 26/26 unit tests và 32/32 verify assertions."
+}

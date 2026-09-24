@@ -1,0 +1,61 @@
+{
+  "wp": "WP-T3-05",
+  "task": "Grounding Citation Guard, Context Budgeter & Security Filter (EP 11 & EP 12)",
+  "status": "COMPLETED",
+  "timestamp": "2026-09-25T01:54:00.000Z",
+  "verdict": "PASS",
+  "components": {
+    "security_filter": {
+      "file": "projects/knowledge_vault/src/security/SecurityFilter.ts",
+      "features": [
+        "Full ISecurityFilter interface implementation adhering to frozen AST Type Contract Lock",
+        "Indirect Prompt Injection (IPI) Sanitizer: multi-pattern detection for HTML comments (<!-- Ignore... --> and prefixed <!-- NOTE: ignore... -->), system role spoofing (system: override, <<SYS>>, [SYSTEM]), instruction hijacking, executable script tags (<script>, <iframe>, event handlers), Markdown and HTML img exfiltration (including protocol-relative // URLs), and comprehensive zero-width unicode normalization (soft hyphens \\u00AD, \\u034F, \\u200B-\\u200F, \\u3164)",
+        "Pre-Retrieval ACL & Tenant Hard Filtering: database query predicate generation and in-memory hard boundary enforcement dropping cross-tenant and unauthorized role chunks, while honoring PUBLIC and wildcard '*' roles for authenticated users"
+      ]
+    },
+    "context_budgeter": {
+      "file": "projects/knowledge_vault/src/grounding/ContextBudgeter.ts",
+      "features": [
+        "Full IContextBudgeter interface implementation adhering to frozen AST Type Contract Lock",
+        "5-Compartment Context Budgeting: System Prompt (12%), User Query (with Vietnamese inflation factor kappa_VN = 2.5), History (10%), Chunks window (45-55%), Reasoning Margin (18%) with strict overflow protection preventing context window exceedance under constrained budgets",
+        "Atomic Knapsack Admission: exact 0-1 Knapsack Dynamic Programming, strictly zero chunk slicing or truncation, packing maximal intact chunks within token limit",
+        "Bimodal Sandwich Placement: Sibling grouping preserving contiguous document order, placing Rank 1 at Tail and Rank 2 at Head across all chunk counts (including 2-chunk boundary) to eliminate Lost in the Middle"
+      ]
+    },
+    "grounding_guard": {
+      "file": "projects/knowledge_vault/src/grounding/GroundingGuard.ts",
+      "features": [
+        "Full IGroundingGuard and GroundingValidator implementation",
+        "Citation syntax validation supporting [doc-UUID#cINDEX] and [doc-UUID#chunk-INDEX] with post-punctuation attachment normalization",
+        "Anti-Citation Laundering: immediate 0 score assignment for factual claims lacking citations",
+        "Strict Hallucinated Citation Detection: instant refusal if any cited chunk ID is non-existent, eliminating multi-citation fake citation masking",
+        "Joint multi-citation entailment verification against reference context chunks with camelCase and kebab-case code entity preservation",
+        "Smart Refusal State Machine: triggers structured diagnostic refusal if any claim score < 0.65"
+      ]
+    }
+  },
+  "tests": {
+    "file": "projects/knowledge_vault/tests/unit/grounding.test.js",
+    "total": 34,
+    "passed": 34,
+    "failed": 0,
+    "suite_total": 133,
+    "suite_passed": 133,
+    "suite_failed": 0,
+    "verification_assertions": 40,
+    "verification_passed": 40
+  },
+  "artifacts_modified": [
+    "c:/Users/game/.gemini/projects/knowledge_vault/src/types/index.ts",
+    "c:/Users/game/.gemini/projects/knowledge_vault/src/security/SecurityFilter.ts",
+    "c:/Users/game/.gemini/projects/knowledge_vault/src/grounding/ContextBudgeter.ts",
+    "c:/Users/game/.gemini/projects/knowledge_vault/src/grounding/GroundingGuard.ts",
+    "c:/Users/game/.gemini/projects/knowledge_vault/src/storage/SQLiteVault.ts",
+    "c:/Users/game/.gemini/projects/knowledge_vault/src/retrieval/HybridRetriever.ts",
+    "c:/Users/game/.gemini/projects/knowledge_vault/src/index.ts",
+    "c:/Users/game/.gemini/projects/knowledge_vault/tests/unit/grounding.test.js",
+    "c:/Users/game/.gemini/projects/knowledge_vault/.antigravity/receipts/wp_t3_05.json",
+    "c:/Users/game/.gemini/.antigravity/receipts/wp_t3_05.json"
+  ],
+  "summary": "Đã hoàn thành toàn diện và khắc phục triệt để các lỗ hổng của WP-T3-05: Khắc phục lỗi mask fake citation trong multi-citation, sửa lỗi đứt trích dẫn sau dấu chấm (. [doc#c0]), mở rộng bộ lọc IPI chống payload ngụy trang comment/soft-hyphen/HTML img/protocol-relative URL, hoàn thiện ACL tenant với role PUBLIC/*, triệt tiêu lỗi tràn token budget khi ngữ cảnh hẹp, bổ sung giải thuật Knapsack DP chính xác và sửa lỗi đảo ngược thứ tự Rank 1/Rank 2 trong Bimodal Sandwich Placement. Toàn bộ 34/34 tests grounding, 133/133 tests toàn Knowledge Vault và 40/40 assertions trong verify.cjs pass 100%."
+}

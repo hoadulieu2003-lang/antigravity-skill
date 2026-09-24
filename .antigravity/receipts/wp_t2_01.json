@@ -1,0 +1,22 @@
+{
+  "wp": "WP-T2-01",
+  "task": "Swarm Supervisor & Agent Lifecycle Engine",
+  "status": "COMPLETED",
+  "files_created_or_modified": [
+    "C:/Users/game/.gemini/projects/swarm_devops/src/core/SwarmSupervisor.ts",
+    "C:/Users/game/.gemini/projects/swarm_devops/src/core/AgentProcessManager.ts",
+    "C:/Users/game/.gemini/projects/swarm_devops/src/index.ts",
+    "C:/Users/game/.gemini/projects/swarm_devops/tests/fixtures/dummy-worker.js",
+    "C:/Users/game/.gemini/projects/swarm_devops/tests/unit/supervisor.test.js"
+  ],
+  "verification_script": "npm run build; npm test",
+  "verification_status": "PASS (100% clean TypeScript build, 20/20 supervisor unit tests passed in 50ms with 0 failures)",
+  "features_implemented_and_fixed": [
+    "SwarmSupervisor (ISwarmSupervisor): Full implementation of AST Contract Lock in src/types/index.ts. registerAgent with UUID generation, default IDLE status, zeroed initial metrics, Ed25519 32-byte raw hex public key generation, and OS PID tracking.",
+    "Lifecycle State Machine: Strict FSM transitions ('IDLE' <-> 'BUSY' -> 'UNHEALTHY' -> 'TERMINATED') with self-healing recovery ('UNHEALTHY' -> 'IDLE') and terminal state lock (rejecting invalid transitions out of 'TERMINATED').",
+    "Heartbeat & Metrics Accumulator: recordHeartbeat calculates lastHeartbeatLatencyMs dynamically from previous timestamp, accumulates tasksCompleted, tasksFailed, uptimeSeconds, cpuUsagePercent, memoryRssMb, and auto-calculates errorRate.",
+    "Status Filtering & Queries: listAgents() supports optional status filtering ('IDLE', 'BUSY', 'UNHEALTHY', 'TERMINATED') and listActiveAgents() queries non-terminated agents.",
+    "AgentProcessManager: Independent OS PID tracking, cross-platform process liveness checking via process.kill(pid, 0) safe on both Windows and POSIX (handling ESRCH and EPERM correctly), child process forking (child_process.fork) with lifecycle event monitoring, and safe process termination."
+  ],
+  "summary": "Đã hoàn thành thi công WP-T2-01 Swarm Supervisor & Agent Lifecycle Engine, tuân thủ 100% AST Type Lock, tích hợp AgentProcessManager kiểm tra liveness đa nền tảng, hoàn thành 20/20 unit tests xanh tuyệt đối."
+}

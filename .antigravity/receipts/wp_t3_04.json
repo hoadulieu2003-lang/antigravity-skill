@@ -1,0 +1,47 @@
+{
+  "workPackageId": "WP-T3-04",
+  "name": "Hybrid Retrieval, RRF Fusion & MMR Reranker Engine",
+  "status": "COMPLETED",
+  "completedAt": "2026-09-25T01:53:30+07:00",
+  "deliverables": [
+    "src/types/index.ts",
+    "src/retrieval/HybridRetriever.ts",
+    "src/retrieval/Reranker.ts",
+    "src/retrieval/index.ts",
+    "tests/unit/retrieval.test.js"
+  ],
+  "verification": {
+    "testRunner": "node:test",
+    "testFile": "tests/unit/retrieval.test.js",
+    "totalTests": 28,
+    "passed": 28,
+    "failed": 0,
+    "buildStatus": "TSC_CLEAN_EXIT_0"
+  },
+  "specCompliance": {
+    "astContract": "src/types/index.ts",
+    "implementedInterfaces": [
+      "HybridRetriever (IHybridRetriever)",
+      "RankFusionEngine (IRankFusionEngine)",
+      "ReRanker (IReranker)"
+    ],
+    "rrfParameters": {
+      "standardK": 60,
+      "formula": "RRF(d) = sum_{m in M} (w_m / (k + r_m(d)))"
+    },
+    "dynamicAdaptiveWeighting": {
+      "codeIdentifierDensity": "rho_code in [0, 1] with Unicode punctuation stripping and all-caps query protection",
+      "wLexRange": [0.25, 0.85],
+      "wDenseFormula": "1 - w_lex"
+    },
+    "scoreFusion": "MinMax Convex Score Fusion with zero-anchor real amplitude preservation across HYBRID, SPARSE, and DENSE modes",
+    "mmrReranker": {
+      "defaultLambda": 0.70,
+      "formula": "MMR = argmax_{d_i in R \\ S} [ lambda * Sim_1(d_i, q) - (1 - lambda) * max_{d_j in S} Sim_2(d_i, d_j) ]",
+      "selectionMethod": "Sequential Greedy Selection with O(K * N) cached token sets and topN <= 0 boundary guard",
+      "thresholdGatingTau": 0.45,
+      "calibration": "Sigmoid Logit Calibration sigma(z / T) with NaN protection"
+    },
+    "deduplication": "Exact ID and normalized whitespace content-level deduplication without arbitrary length thresholds"
+  }
+}

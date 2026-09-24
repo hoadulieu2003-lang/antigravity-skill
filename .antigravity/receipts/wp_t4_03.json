@@ -1,0 +1,33 @@
+{
+  "workPackageId": "WP-T4-03",
+  "name": "Autonomous DOM & Accessibility Tree Grounding",
+  "episode": "EP 14",
+  "status": "COMPLETED",
+  "timestamp": "2026-09-25T02:09:30.000Z",
+  "project": "projects/browser_bot",
+  "artifacts": [
+    "projects/browser_bot/src/dom/AccessibilityDOMParser.ts",
+    "projects/browser_bot/src/dom/index.ts",
+    "projects/browser_bot/dist/dom/AccessibilityDOMParser.js",
+    "projects/browser_bot/dist/dom/AccessibilityDOMParser.d.ts",
+    "projects/browser_bot/tests/unit/dom.test.js"
+  ],
+  "verification": {
+    "testSuite": "node --test tests/unit/dom.test.js",
+    "testsPassed": 28,
+    "testsFailed": 0,
+    "buildStatus": "PASSED",
+    "fullSuiteTotal": 153,
+    "fullSuitePassed": 153
+  },
+  "implementationDetails": {
+    "htmlParsing": "Regex token-based parser supporting quotes containing '>' characters, standard HTML entity decoding, and non-rendered metadata tag stripping (<head>, <meta>, <link>, <template>)",
+    "cdpNormalization": "Full support for CDP DOM.Node array attributes ['id', 'val', ...], DOM NamedNodeMap, and AXNode objects",
+    "semanticPruning": "Prunes meaningless layout tags (div, span, font without role/handler/tabindex/aria/data-test/text), hoists semantic children while preserving textual leaf nodes and landmark elements (p, header, footer, section, article)",
+    "visibilityAndDisabledInheritance": "Hierarchical state propagation ensuring children of hidden ancestors (display: none, visibility: hidden, hidden, aria-hidden) or disabled fieldsets are correctly evaluated as invisible/disabled with 0 score",
+    "hiddenInputGuard": "Strictly marks input[type='hidden'] as invisible, 0x0 bounding box, non-interactable with 0 score",
+    "selectorEngine": "Generates valid CSS selectors prioritizing #id, data-testid/data-test/data-cy/data-qa/data-action, name, aria-label, type, role, href, class, and tag fallback without synthetic fake IDs",
+    "scoringEngine": "Calculates interactive score [0, 100] factoring area, semantic roles, ARIA labels, visibility, and heavy deduction for disabled elements",
+    "safeCenterGrounding": "Calculates safe click center point with 15% optical inset margin and supports boundary clamping for human-like trajectory targets"
+  }
+}

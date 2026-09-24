@@ -1,0 +1,69 @@
+{
+  "workPackageId": "WP-T4-04",
+  "name": "Resilient Action Pipeline & Smart Recovery",
+  "episode": "EP 15",
+  "status": "COMPLETED",
+  "timestamp": "2026-09-25T02:11:00+07:00",
+  "contractCompliant": true,
+  "interface": "IActionPipeline",
+  "filesCreated": [
+    "projects/browser_bot/src/pipeline/ActionPipeline.ts",
+    "projects/browser_bot/src/pipeline/index.ts",
+    "projects/browser_bot/tests/unit/pipeline.test.js"
+  ],
+  "verification": {
+    "build": "PASS",
+    "testCommand": "node --test tests/unit/pipeline.test.js",
+    "suitesTotal": 8,
+    "testsTotal": 34,
+    "testsPassed": 34,
+    "testsFailed": 0,
+    "durationMs": 1788.89
+  },
+  "capabilities": {
+    "supportedActions": [
+      "NAVIGATE",
+      "CLICK",
+      "TYPE",
+      "SCROLL",
+      "WAIT",
+      "KEY_PRESS",
+      "SCREENSHOT",
+      "HOVER"
+    ],
+    "dynamicPollingAutoWait": {
+      "tolerancePx": 1.0,
+      "consecutiveFrames": 2,
+      "driftDetection": true
+    },
+    "exponentialBackoffRetry": {
+      "baseBackoffMs": 50,
+      "formula": "50ms * 2^k",
+      "defaultMaxRetries": 3,
+      "staleElementRecovery": true,
+      "validationErrorBypass": true
+    },
+    "pipelineRecord": {
+      "timelineTracking": true,
+      "stepTimestamps": true,
+      "successRateCalculation": true,
+      "detectionTriggeredPropagation": true,
+      "defensiveNullInput": true
+    },
+    "checkpointRollback": {
+      "stateSnapshot": true,
+      "historyRestoration": true,
+      "variableRestoration": true,
+      "deepCloneIsolation": true,
+      "driverStateRestoration": true,
+      "asyncCaptureAwaited": true,
+      "strictAtomicityOnFailure": true,
+      "driverUrlSyncOnRollback": true
+    },
+    "actionDriverProtection": {
+      "timeoutWrapper": true,
+      "deadlockPrevention": true
+    }
+  },
+  "summary": "WP-T4-04 resilient action pipeline & smart recovery hardened: 8 action types, dynamic polling auto-wait (Δ ≤ 1px), exponential backoff retry (50ms * 2^k), step-level timeline telemetry, async driver state resolution, rollback atomicity, and deep cloned state snapshots verified with 34/34 unit tests passing across 8 suites."
+}

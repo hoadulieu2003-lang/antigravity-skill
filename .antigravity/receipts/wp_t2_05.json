@@ -1,0 +1,59 @@
+{
+  "wp": "WP-T2-05",
+  "task": "Self-Healing Remediator & Chaos Monkey Engine",
+  "status": "COMPLETED",
+  "timestamp": "2026-09-25T01:25:00.000Z",
+  "verdict": "PASS",
+  "components": {
+    "semantic_sanity_validator": {
+      "file": "projects/swarm_devops/src/security/SemanticSanityValidator.ts",
+      "features": [
+        "Detects Linux destructive patterns: rm -rf (including GNU flag reordering and Buffer inputs), dd, chmod 777, mkfs, fork bombs, raw block device redirects",
+        "Detects Windows PowerShell destructive patterns: Remove-Item.*-Recurse (including aliases rm, rni), Stop-Process.*-Force (including spps, kill), Stop-Service, Clear-Disk, iex / Invoke-Expression, format volume",
+        "Safe parameter tree traversal with WeakSet cyclic reference protection eliminating DoS/RangeError",
+        "Configurable hard depth limit (maxDepth = 5) halting unbounded recursion",
+        "Multi-stage de-obfuscation pipeline: resilient iterative URL-decode with token fallback (immune to malformed % escapes), robust padded & unpadded Base64 regex with CLI flag extraction (powershell -enc / -EncodedCommand), PowerShell backtick & quote normalization"
+      ]
+    },
+    "self_healing_remediator": {
+      "file": "projects/swarm_devops/src/remediation/SelfHealingRemediator.ts",
+      "features": [
+        "Full ISelfHealingRemediator interface implementation adhering to frozen AST Type Contract Lock",
+        "Real-time multi-dimensional anomaly detection: Heartbeat timeout (> 6s), memory leak gradient (> 25MB/s), memory RSS exhaustion (> 90%), error rate (> 50%)",
+        "Full 5-stage MAPE-K closed loop: Quarantine (UNHEALTHY) -> Forensic Crash Dump (Blackboard persistence) -> Process Reaper (signed IPC retreat directive + AgentProcessManager process termination) -> Worker Respawn (normalized Gen k+1 creation without exponential ID/name accumulation) -> Checkpoint Resume (reclaim dangling locks in blackboard & fallback, migrate TaskCheckpoint)",
+        "Re-entry concurrency guard preventing duplicate simultaneous remediations and returning IN_PROGRESS outcome",
+        "Structured RemediationEvent logging with generation tracking, released locks ledger, duration metrics, and outcome: SUCCESS",
+        "Remediation statistics tracking total, successRate, and active recoveries"
+      ]
+    },
+    "chaos_monkey": {
+      "file": "projects/swarm_devops/src/chaos/ChaosMonkey.ts",
+      "features": [
+        "Scenario 1 injectProcessKill: immediate OS SIGKILL via AgentProcessManager and TERMINATED status transition",
+        "Scenario 2 injectNetworkPartition: link severance, packet loss simulation, partition tracking with single-agent isolation check, unref timers, and auto/manual link restoration",
+        "Scenario 3 injectMemorySpike: rapid RSS memory inflation triggering gradient and exhaustion detection, with restoreMemorySpike baseline recovery",
+        "Scenario 4 injectEventLoopDeadlock: simulated CPU lockup and past-timestamp heartbeat stall (> 6s) with automatic/manual unfreezing",
+        "Historical chaos event ledger and restoreAll cleanup engine for partitions, deadlocks, and memory spikes"
+      ]
+    }
+  },
+  "tests": {
+    "file": "projects/swarm_devops/tests/unit/remediation_chaos.test.js",
+    "total": 45,
+    "passed": 45,
+    "failed": 0,
+    "suite_total": 198,
+    "suite_passed": 198,
+    "suite_failed": 0
+  },
+  "artifacts_modified": [
+    "c:/Users/game/.gemini/projects/swarm_devops/src/security/SemanticSanityValidator.ts",
+    "c:/Users/game/.gemini/projects/swarm_devops/src/remediation/SelfHealingRemediator.ts",
+    "c:/Users/game/.gemini/projects/swarm_devops/src/chaos/ChaosMonkey.ts",
+    "c:/Users/game/.gemini/projects/swarm_devops/src/index.ts",
+    "c:/Users/game/.gemini/projects/swarm_devops/tests/unit/remediation_chaos.test.js",
+    "c:/Users/game/.gemini/.antigravity/receipts/wp_t2_05.json",
+    "c:/Users/game/.gemini/projects/swarm_devops/.antigravity/receipts/wp_t2_05.json"
+  ],
+  "summary": "Đã hoàn thành kiểm toán độc lập và nâng cấp toàn diện WP-T2-05: Khắc phục các lỗ hổng bypass trong SemanticSanityValidator (Base64 regex bỏ sót chuỗi 8 ký tự có padding, URL-decode sập khi gặp % malformed, thiếu alias rm/spps trong PowerShell, thứ tự cờ GNU rm), hoàn thiện Process Reaper trong SelfHealingRemediator (gửi DIRECTIVE rút lui mềm có chữ ký HMAC, hạ sát tiến trình OS qua AgentProcessManager, chuẩn hóa ID thế hệ worker k+1 và chặn xung đột re-entry bằng IN_PROGRESS), nâng cấp ChaosMonkey (hồi phục memory spike, phát hiện cách ly agent đơn lẻ, giả lập heartbeat trôi về quá khứ). Toàn bộ 45/45 unit test chuyên sâu và 198/198 test toàn Swarm DevOps pass 100%."
+}

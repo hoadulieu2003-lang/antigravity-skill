@@ -1,0 +1,43 @@
+{
+  "workPackageId": "WP-T4-02",
+  "name": "Human-like Mouse Trajectory & Bezier Engine",
+  "episode": "EP 13",
+  "status": "COMPLETED",
+  "timestamp": "2026-09-25T02:07:30+07:00",
+  "project": "projects/browser_bot",
+  "artifacts": [
+    "projects/browser_bot/src/stealth/HumanMouseEngine.ts",
+    "projects/browser_bot/src/stealth/index.ts",
+    "projects/browser_bot/dist/stealth/HumanMouseEngine.js",
+    "projects/browser_bot/tests/unit/mouse.test.js"
+  ],
+  "verification": {
+    "testSuite": "node --test tests/unit/mouse.test.js",
+    "testsPassed": 24,
+    "testsFailed": 0,
+    "buildStatus": "PASSED"
+  },
+  "implementationDetails": {
+    "fittsLaw": {
+      "formula": "T = a + b * log2(D / W + 1)",
+      "constants": { "a": 120, "b": 180 },
+      "bounds": { "minMs": 250, "maxMs": 1500 },
+      "nanSafe": true
+    },
+    "cubicBezier": {
+      "formula": "B(t) = (1-t)^3*P0 + 3(1-t)^2*t*P1 + 3(1-t)*t^2*P2 + t^3*P3",
+      "controlPoints": "Natural proportional lateral normal vector deflection (no 10px artificial floor, capped at 80px)",
+      "nonCollinearityGuaranteed": true,
+      "subPixelPrecisionPreserved": true
+    },
+    "velocityProfile": {
+      "model": "Minimum Jerk Model (Flash & Hogan 1985 / Smootherstep)",
+      "sCurvePolynomial": "10*tau^3 - 15*tau^4 + 6*tau^5"
+    },
+    "microJitter": {
+      "method": "Box-Muller Transform Gaussian Generator",
+      "stdDev": 0.75,
+      "jitterVariancePositive": true
+    }
+  }
+}

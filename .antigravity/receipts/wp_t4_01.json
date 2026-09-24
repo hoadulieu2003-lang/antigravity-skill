@@ -1,0 +1,49 @@
+{
+  "workPackageId": "WP-T4-01",
+  "name": "Stealth Engine & Anti-Detection Fingerprint",
+  "episode": "EP 13",
+  "status": "COMPLETED",
+  "timestamp": "2026-09-25T02:09:40+07:00",
+  "project": "projects/browser_bot",
+  "artifacts": [
+    "projects/browser_bot/src/stealth/StealthEngine.ts",
+    "projects/browser_bot/src/stealth/index.ts",
+    "projects/browser_bot/dist/stealth/StealthEngine.js",
+    "projects/browser_bot/tests/unit/stealth.test.js"
+  ],
+  "verification": {
+    "testSuite": "node --test tests/unit/stealth.test.js",
+    "testsPassed": 22,
+    "testsFailed": 0,
+    "buildStatus": "PASSED",
+    "masterHarness": "node verify.cjs (EP 13: 10/10 PASS 100%, Overall: 42/42 PASS 100%)"
+  },
+  "implementationDetails": {
+    "fingerprint": {
+      "deterministicPRNG": "Mulberry32 32-bit generator with sanitized integer seed",
+      "userAgent": "Chrome 132/133 on Windows 10/11 x64",
+      "platform": "Win32",
+      "vendor": "Google Inc.",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "screen": { "width": 1920, "height": 1080, "availWidth": 1920, "availHeight": 1040, "colorDepth": 24, "pixelRatio": 1 },
+      "languages": ["en-US", "en", "vi"],
+      "timezone": "Asia/Ho_Chi_Minh",
+      "hardwareConcurrency": "8 or 16",
+      "deviceMemory": 8
+    },
+    "cdpInjection": {
+      "botFlagElimination": "Object.defineProperty(navigator, 'webdriver', { get: () => undefined })",
+      "chromeRuntimeMock": "window.chrome = { runtime: {}, app: {}, csi: () => {}, loadTimes: () => {} }",
+      "canvasNoise": "Seed-based differential noise (Delta in [-0.0001, +0.0001]) via non-mutating tempCanvas toDataURL, toBlob, and spatially invariant 2D (x, y) getImageData",
+      "webglSpoofing": "getParameter UNMASKED_VENDOR_WEBGL (37445), UNMASKED_RENDERER_WEBGL (37446), and getSupportedExtensions synchronization",
+      "audioContextNoise": "createOscillator micro-offset & WeakMap-cached getChannelData / copyFromChannel zero-drift micro-noise"
+    },
+    "stealthEvaluation": {
+      "webdriverAbsent": 25,
+      "chromeRuntimePresent": 25,
+      "webglVendorMatch": 25,
+      "canvasNoisePresent": 25,
+      "maxScore": 100
+    }
+  }
+}

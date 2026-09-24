@@ -1609,3 +1609,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-25 02:42:02`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google Research]** [Automating coherent long-form video generation](https://research.google/blog/coherent-long-form-video-generation/)
+  > Generative AI
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (53 ⭐)]** [WSL043/DSH-Portable](https://github.com/WSL043/DSH-Portable)
+  > DeepSeek Harness 便携桌面版：免配运行环境、内置插件市场、工作环境随行，Portable 与内核独立更新。支持 Windows、macOS、Linux。
+
+</untrusted_external_content>
+
+---
