@@ -25,9 +25,9 @@ Mọi tác vụ do Anh giao (không phân biệt lớn nhỏ) **bắt buộc lu�
 
 ## 🏛️ 3. Quy Trình Vận Hành Tiền Tố $ ($plan, $dev, $test, $design)
 * **Step 1 — `$plan`**: Khảo sát hiện trạng, định nghĩa phạm vi in/out, rủi ro và acceptance criteria (Read-only, không sửa code).
-* **Step 2 — `$dev`**: Lập Master Plan, chia tách Work Packages, triển khai code và tự kiểm chứng chặt chẽ.
+* **Step 2 — `$dev`**: Lập Master Plan, chia tách Work Packages, triển khai code với Design Engineering Duo (Pod 4 nạp CSS Tokens 153 Brands & Pod 5 tương tác 60 FPS với 20% Delight Budget cho vi tương tác vật lý, spotlight, lenis scroll, WebAudioHaptics) và tự kiểm chứng chặt chẽ.
 * **Step 3 — `$test`**: Kiểm chứng độc lập kịch bản biên, vận hành cơ chế Dual Audit (Audit 1: WCAG AA & responsive; Audit 2: Delight & Craftsmanship Score >= 8.5/10, từ chối web phẳng lì đơn điệu), phát hiện sai số trước khi xuất xưởng.
-* **Master Visual Engine — `$design`**: Giám đốc nghệ thuật, định hình Art Direction, Semantic Color Tokens, chuyển động mượt 60 FPS và tương phản WCAG AA.
+* **Master Visual Engine — `$design`**: Giám đốc nghệ thuật, định hình Art Direction, Semantic Color Tokens, chuyển động mượt 60 FPS, tương phản WCAG AA và nghiệm thu visual qua cơ chế Dual Audit (Delight & Craftsmanship Score >= 8.5/10).
 
 ---
 
@@ -56,7 +56,7 @@ Hệ thống **mặc định 100% chế độ Teamwork Multi-Agent (Đa tác t�
       1. `Pod 1: Core Logic (Xử lý Nghiệp vụ & Giải thuật Lõi)`
       2. `Pod 2: Data Models & Persistence (Mô hình Dữ liệu & Lưu trữ Bền vững)`
       3. `Pod 3: API Transport & Integration (Vận chuyển API & Tích hợp Mạng)`
-      4. **Design Engineering Duo — `Pod 4: Visual UI Layout & Brand Tokens (Khung Bố cục Giao diện & Nạp CSS Tokens)`**: Thiết lập Semantic HTML, responsive grid, nạp CSS Tokens từ 153 Brands (Linear, Stripe, Apple, v.v.), tuân thủ chuẩn Light Theme Invariant mặc định.
+      4. **Design Engineering Duo — `Pod 4: Visual UI Layout & Brand Tokens (Khung Bố cục Giao diện & Nạp CSS Tokens)`**: Thiết lập Semantic HTML, responsive grid, nạp CSS Tokens từ 153 Brands (Linear, Stripe, Apple, v.v.), tuân thủ chuẩn Luminous Light Theme Invariant mặc định.
       5. **Design Engineering Duo — `Pod 5: Interaction/State & Motion 60 FPS (Tương tác, Trạng thái & Chuyển động 60 FPS)`**: Quản lý trạng thái client, event handlers, animation timeline 60 FPS — Bắt buộc phân bổ tối thiểu 20% Delight Budget (Ngân sách thăng hoa) cho vi tương tác vật lý, hiệu ứng spotlight theo con trỏ chuột, cuộn mượt lenis scroll và âm thanh phản hồi WebAudioHaptics.
       6. `Pod 6: Developer Test Harness (Bộ khung Kiểm thử Phát triển)`
     - **Dự án backend không UI (`DESIGN_NONE`)**: Bung trọn 6 tầng phổ quát (`Ingestion & Transport`, `Transformation & Compute Engine`, `Policy & Decision Engine`, `Data Modeling & Schema Persistence`, `Safety & Constraint Guard`, `Integration & Verification Harness`).

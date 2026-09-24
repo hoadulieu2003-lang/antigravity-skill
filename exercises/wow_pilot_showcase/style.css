@@ -13,6 +13,8 @@
  * ============================================================================
  */
 
+@import url('showcase.css');
+
 :root {
   --bg-canvas: #F8FAFC;
   --bg-surface: #FFFFFF;
@@ -66,11 +68,14 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100vh;
   position: relative;
+  max-width: 100vw;
   overflow-x: hidden;
   background-color: var(--bg-canvas);
   background-image: radial-gradient(rgba(148, 163, 184, 0.28) 1.25px, transparent 1.25px);
@@ -123,6 +128,7 @@ body {
   overflow: hidden;
 }
 
+/* Spotlight sheen sits underneath the card-inner content (z-index 1) */
 .acrylic-card::before {
   content: '';
   position: absolute;
@@ -137,7 +143,7 @@ body {
   );
   opacity: 0;
   transition: opacity 0.3s ease;
-  z-index: 2;
+  z-index: 1;
 }
 
 .acrylic-card:hover::before {
@@ -159,7 +165,17 @@ body {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9) 20%, rgba(255, 255, 255, 0.9) 80%, transparent);
   pointer-events: none;
+  z-index: 4;
+}
+
+/* Card inner content has higher z-index to stay crystal clear over spotlight glow */
+.card-inner {
+  position: relative;
   z-index: 3;
+  padding: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ==========================================================================
@@ -182,14 +198,16 @@ body {
   user-select: none;
   outline: none;
   will-change: transform;
+  transform: translate(var(--mag-x, 0px), var(--mag-y, 0px));
   transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.16s ease, background 0.16s ease;
 }
 
 /* CRITICAL REQUIREMENT: Mechanical Bottom-Out Depression */
+/* Uses var(--mag-x) and var(--mag-y) to preserve magnetic pull position during click without snapping */
 .btn-magnetic:active,
 button:active,
 .tactile-switch:active {
-  transform: scale(0.965) translateY(1.5px) !important;
+  transform: translate(var(--mag-x, 0px), var(--mag-y, 0px)) scale(0.965) translateY(1.5px) !important;
   box-shadow: var(--shadow-pressed) !important;
 }
 
@@ -260,6 +278,7 @@ input:focus-visible {
   gap: 12px;
   text-decoration: none;
   color: var(--text-primary);
+  flex-shrink: 0;
 }
 
 .hud-logo-icon {
@@ -272,12 +291,14 @@ input:focus-visible {
   justify-content: center;
   color: #FFFFFF;
   box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
+  flex-shrink: 0;
 }
 
 .hud-title {
   font-size: 15px;
   font-weight: 700;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .hud-badge-online {
@@ -292,6 +313,7 @@ input:focus-visible {
   font-size: 11px;
   font-weight: 600;
   color: var(--accent-emerald);
+  white-space: nowrap;
 }
 
 .pulse-dot {
@@ -320,6 +342,7 @@ input:focus-visible {
   color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.15s ease;
+  white-space: nowrap;
 }
 
 .hud-link:hover {
@@ -329,7 +352,8 @@ input:focus-visible {
 .hud-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .hud-pill-btn {
@@ -345,6 +369,7 @@ input:focus-visible {
   color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.18s ease;
+  white-space: nowrap;
 }
 
 .hud-pill-btn:hover {
@@ -385,7 +410,7 @@ input:focus-visible {
 }
 
 .hero-title {
-  font-size: clamp(38px, 6vw, 68px);
+  font-size: clamp(34px, 5.5vw, 68px);
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.038em;
@@ -402,7 +427,7 @@ input:focus-visible {
 .hero-subhead {
   max-width: 780px;
   margin: 0 auto 36px;
-  font-size: clamp(17px, 2vw, 20px);
+  font-size: clamp(16px, 1.8vw, 20px);
   line-height: 1.6;
   font-weight: 400;
   color: var(--text-secondary);
@@ -420,7 +445,7 @@ input:focus-visible {
 .hero-telemetry-ribbon {
   display: inline-flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   padding: 10px 24px;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px);
@@ -436,6 +461,7 @@ input:focus-visible {
   display: flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
 }
 
 .ribbon-val {
@@ -470,7 +496,7 @@ input:focus-visible {
 }
 
 .section-title {
-  font-size: clamp(26px, 3.5vw, 38px);
+  font-size: clamp(24px, 3.2vw, 38px);
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text-primary);
@@ -487,19 +513,6 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
-}
-
-@media (max-width: 900px) {
-  .sandbox-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.card-inner {
-  padding: 30px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .card-header-bar {
@@ -525,6 +538,7 @@ input:focus-visible {
   align-items: center;
   justify-content: center;
   color: var(--text-primary);
+  flex-shrink: 0;
 }
 
 .card-title {
@@ -542,9 +556,10 @@ input:focus-visible {
   background: #F1F5F9;
   color: var(--text-muted);
   border: 1px solid var(--border-hairline);
+  display: inline-block;
 }
 
-/* Module A: 3D Parallax Tilt Showcase */
+/* Module A: 3D Parallax Tilt Showcase with True Layer Depth */
 .tilt-monolith-stage {
   height: 220px;
   background: linear-gradient(135deg, rgba(248, 250, 252, 0.9), rgba(241, 245, 249, 0.95));
@@ -557,6 +572,8 @@ input:focus-visible {
   margin-bottom: 18px;
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 800px;
 }
 
 .monolith-plate {
@@ -571,6 +588,9 @@ input:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  transform-style: preserve-3d;
+  transform: translateZ(28px);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .monolith-chip {
@@ -582,6 +602,8 @@ input:focus-visible {
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
+  transform: translateZ(20px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);
 }
 
 .monolith-text {
@@ -589,6 +611,7 @@ input:focus-visible {
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--text-secondary);
+  transform: translateZ(12px);
 }
 
 .tilt-telemetry-row {
@@ -771,14 +794,6 @@ input:focus-visible {
   grid-column: span 6;
 }
 
-@media (max-width: 900px) {
-  .bento-col-8,
-  .bento-col-4,
-  .bento-col-6 {
-    grid-column: span 12;
-  }
-}
-
 .topology-canvas-container {
   height: 280px;
   background: #FFFFFF;
@@ -791,6 +806,7 @@ input:focus-visible {
 .topology-canvas {
   width: 100%;
   height: 100%;
+  display: block;
 }
 
 .spec-list {
@@ -859,6 +875,7 @@ input:focus-visible {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .footer-badge {
@@ -868,4 +885,110 @@ input:focus-visible {
   border-radius: 6px;
   font-weight: 600;
   color: var(--text-primary);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS (WCAG AA & Mobile-First Integrity)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .sandbox-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-col-8,
+  .bento-col-4,
+  .bento-col-6 {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 768px) {
+  .hud-nav-links {
+    display: none;
+  }
+  .sticky-hud {
+    top: 8px;
+    padding: 0 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .hud-bar {
+    padding: 6px 12px;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .hud-badge-online {
+    display: none;
+  }
+  .hud-brand {
+    gap: 6px;
+  }
+  .hud-title {
+    font-size: 13px;
+  }
+  .hud-actions {
+    gap: 6px;
+  }
+  .hud-actions a.btn-magnetic {
+    display: none;
+  }
+  .hud-pill-btn {
+    padding: 5px 9px;
+    font-size: 11px;
+  }
+  #soundLabel {
+    display: none;
+  }
+  .hero-section {
+    padding: 40px 16px 30px;
+  }
+  .hero-title {
+    font-size: clamp(26px, 7vw, 36px);
+  }
+  .hero-subhead {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .hero-telemetry-ribbon {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 14px;
+    padding: 8px 12px;
+    max-width: 100%;
+    font-size: 11px;
+  }
+  .haptic-pad-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .haptic-pad-btn[style*="grid-column: span 2"] {
+    grid-column: span 2;
+  }
+  .magnetic-demo-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .magnetic-demo-row .btn-magnetic {
+    width: 100%;
+  }
+  .topology-labels {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-inner {
+    padding: 18px 14px;
+  }
+  .hero-cta-group .btn-magnetic {
+    width: 100%;
+  }
+  .hero-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
 }

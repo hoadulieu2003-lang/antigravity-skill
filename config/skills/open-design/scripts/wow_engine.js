@@ -99,20 +99,24 @@ export function initSpotlight(selector, options = {}) {
   }
 
   const cleanups = [];
+  const refreshFunctions = [];
 
   elements.forEach((el) => {
     let rafId = null;
     let rect = el.getBoundingClientRect();
     let isHovering = false;
     let pendingEvent = null;
+    let pendingOpacity = 0;
 
     // Refresh cached bounding rect on scroll or resize
     function refreshRect() {
       rect = el.getBoundingClientRect();
     }
+    refreshFunctions.push(refreshRect);
 
-    function scheduleUpdate(e) {
+    function scheduleUpdate(e, opacity = 1) {
       pendingEvent = e;
+      pendingOpacity = opacity;
       if (!rafId) {
         rafId = requestAnimationFrame(render);
       }
@@ -137,7 +141,8 @@ export function initSpotlight(selector, options = {}) {
       // Direct write to element style (Zero layout thrashing)
       el.style.setProperty('--mouse-x', `${Math.round(x)}px`);
       el.style.setProperty('--mouse-y', `${Math.round(y)}px`);
-      el.style.setProperty('--spotlight-opacity', '1');
+      const opacityStr = pendingOpacity === 1 ? '1' : pendingOpacity === 0 ? '0' : pendingOpacity.toFixed(4);
+      el.style.setProperty('--spotlight-opacity', opacityStr);
 
       if (relativeRatio) {
         el.style.setProperty('--mouse-rx', rx.toFixed(4));
@@ -160,7 +165,7 @@ export function initSpotlight(selector, options = {}) {
       isHovering = true;
       refreshRect();
       if (activeClass) el.classList.add(activeClass);
-      scheduleUpdate(e);
+      scheduleUpdate(e, 1);
     }
 
     function onPointerMove(e) {
@@ -169,11 +174,13 @@ export function initSpotlight(selector, options = {}) {
         refreshRect();
         if (activeClass) el.classList.add(activeClass);
       }
-      scheduleUpdate(e);
+      scheduleUpdate(e, 1);
     }
 
     function onPointerLeave() {
       isHovering = false;
+      pendingOpacity = 0;
+      pendingEvent = null;
       if (rafId) {
         cancelAnimationFrame(rafId);
         rafId = null;
@@ -182,10 +189,36 @@ export function initSpotlight(selector, options = {}) {
       if (activeClass) el.classList.remove(activeClass);
     }
 
+    // Optional Window-level proximity tracker when proximity > 0
+    function onWindowPointerMove(e) {
+      const clientX = e.clientX;
+      const clientY = e.clientY;
+
+      const dx = Math.max(rect.left - clientX, 0, clientX - rect.right);
+      const dy = Math.max(rect.top - clientY, 0, clientY - rect.bottom);
+      const dist = Math.hypot(dx, dy);
+
+      if (dist <= proximity) {
+        if (!isHovering) {
+          isHovering = true;
+          if (activeClass) el.classList.add(activeClass);
+        }
+        const proximityOpacity = proximity > 0 ? (1 - dist / proximity) : 1;
+        scheduleUpdate(e, proximityOpacity);
+      } else if (isHovering) {
+        onPointerLeave();
+      }
+    }
+
     // Attach listeners
-    el.addEventListener('pointerenter', onPointerEnter, { passive: true });
-    el.addEventListener('pointermove', onPointerMove, { passive: true });
-    el.addEventListener('pointerleave', onPointerLeave, { passive: true });
+    if (proximity > 0) {
+      window.addEventListener('pointermove', onWindowPointerMove, { passive: true });
+    } else {
+      el.addEventListener('pointerenter', onPointerEnter, { passive: true });
+      el.addEventListener('pointermove', onPointerMove, { passive: true });
+      el.addEventListener('pointerleave', onPointerLeave, { passive: true });
+    }
+
     window.addEventListener('resize', refreshRect, { passive: true });
     window.addEventListener('scroll', refreshRect, { passive: true });
 
@@ -194,9 +227,13 @@ export function initSpotlight(selector, options = {}) {
 
     cleanups.push(() => {
       if (rafId) cancelAnimationFrame(rafId);
-      el.removeEventListener('pointerenter', onPointerEnter);
-      el.removeEventListener('pointermove', onPointerMove);
-      el.removeEventListener('pointerleave', onPointerLeave);
+      if (proximity > 0) {
+        window.removeEventListener('pointermove', onWindowPointerMove);
+      } else {
+        el.removeEventListener('pointerenter', onPointerEnter);
+        el.removeEventListener('pointermove', onPointerMove);
+        el.removeEventListener('pointerleave', onPointerLeave);
+      }
       window.removeEventListener('resize', refreshRect);
       window.removeEventListener('scroll', refreshRect);
       el.style.removeProperty('--mouse-x');
@@ -212,7 +249,7 @@ export function initSpotlight(selector, options = {}) {
 
   return {
     destroy: () => cleanups.forEach((fn) => fn()),
-    update: () => elements.forEach((el) => el.getBoundingClientRect()),
+    update: () => refreshFunctions.forEach((fn) => fn()),
   };
 }
 
@@ -265,6 +302,7 @@ export function initParallaxTilt(selector, options = {}) {
   }
 
   const cleanups = [];
+  const cardControls = [];
 
   elements.forEach((card) => {
     // Current spring state
@@ -287,6 +325,7 @@ export function initParallaxTilt(selector, options = {}) {
     // Prepare 3D rendering context on card
     const originalTransform = card.style.transform;
     const originalTransformStyle = card.style.transformStyle;
+    const originalPosition = card.style.position;
     card.style.transformStyle = 'preserve-3d';
     card.style.willChange = 'transform';
 
@@ -419,29 +458,32 @@ export function initParallaxTilt(selector, options = {}) {
       }
 
       // Check if spring has reached rest equilibrium (Trạng thái cân bằng triệt tiêu dao động)
-      const isResting =
-        !isHovering &&
-        Math.abs(currentRotX) < 0.05 &&
-        Math.abs(currentRotY) < 0.05 &&
-        Math.abs(currentScale - 1.0) < 0.002 &&
+      const isSettled =
+        Math.abs(targetRotX - currentRotX) < 0.05 &&
+        Math.abs(targetRotY - currentRotY) < 0.05 &&
+        Math.abs(targetScale - currentScale) < 0.002 &&
         Math.abs(velX) < 0.02 &&
         Math.abs(velY) < 0.02 &&
         Math.abs(velScale) < 0.001;
 
-      if (isResting) {
-        // Snap cleanly to rest and cease animation loop to save CPU
-        currentRotX = 0;
-        currentRotY = 0;
-        currentScale = 1.0;
+      if (isSettled) {
+        // Snap cleanly to target rest and cease animation loop to save CPU
+        currentRotX = targetRotX;
+        currentRotY = targetRotY;
+        currentScale = targetScale;
         velX = 0;
         velY = 0;
         velScale = 0;
-        card.style.transform = `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
 
-        if (depthChildren.length) {
-          depthChildren.forEach(({ el }) => {
-            el.style.transform = 'translate3d(0px, 0px, 0px)';
-          });
+        if (!isHovering) {
+          card.style.transform = `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+          if (depthChildren.length) {
+            depthChildren.forEach(({ el }) => {
+              el.style.transform = 'translate3d(0px, 0px, 0px)';
+            });
+          }
+        } else {
+          card.style.transform = `perspective(${perspective}px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg) scale3d(${currentScale.toFixed(3)}, ${currentScale.toFixed(3)}, ${currentScale.toFixed(3)})`;
         }
 
         rafId = null;
@@ -449,6 +491,53 @@ export function initParallaxTilt(selector, options = {}) {
         rafId = requestAnimationFrame(stepSpring);
       }
     }
+
+    function resetCard() {
+      isHovering = false;
+      targetRotX = 0;
+      targetRotY = 0;
+      targetScale = 1.0;
+      currentRotX = 0;
+      currentRotY = 0;
+      currentScale = 1.0;
+      velX = 0;
+      velY = 0;
+      velScale = 0;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      card.style.transform = `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+      if (glareEl) glareEl.style.opacity = '0';
+      if (depthChildren.length) {
+        depthChildren.forEach(({ el }) => {
+          el.style.transform = 'translate3d(0px, 0px, 0px)';
+        });
+      }
+    }
+
+    function setCardValues(vals, yVal) {
+      let rx = 0;
+      let ry = 0;
+      let s = scale;
+      if (typeof vals === 'number') {
+        rx = vals;
+        ry = typeof yVal === 'number' ? yVal : 0;
+      } else if (vals && typeof vals === 'object') {
+        if (typeof vals.rotX === 'number') rx = vals.rotX;
+        if (typeof vals.rotY === 'number') ry = vals.rotY;
+        if (typeof vals.scale === 'number') s = vals.scale;
+      }
+      targetRotX = rx;
+      targetRotY = ry;
+      targetScale = s;
+      startAnimation();
+    }
+
+    cardControls.push({
+      reset: resetCard,
+      setValues: setCardValues,
+    });
 
     card.addEventListener('pointerenter', onPointerEnter, { passive: true });
     card.addEventListener('pointermove', onPointerMove, { passive: true });
@@ -465,6 +554,7 @@ export function initParallaxTilt(selector, options = {}) {
       window.removeEventListener('scroll', refreshRect);
       card.style.transform = originalTransform;
       card.style.transformStyle = originalTransformStyle;
+      card.style.position = originalPosition;
       card.style.willChange = '';
       if (glareEl && glareEl.parentNode) {
         glareEl.parentNode.removeChild(glareEl);
@@ -478,9 +568,10 @@ export function initParallaxTilt(selector, options = {}) {
   return {
     destroy: () => cleanups.forEach((fn) => fn()),
     reset: () => {
-      elements.forEach((card) => {
-        card.style.transform = `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-      });
+      cardControls.forEach((c) => c.reset());
+    },
+    setValues: (vals, yVal) => {
+      cardControls.forEach((c) => c.setValues(vals, yVal));
     },
   };
 }
@@ -501,6 +592,9 @@ export class WebAudioHaptics {
     this.masterVolume = typeof options.volume === 'number' ? clamp(options.volume, 0, 1) : 1.0;
     this.masterGainNode = null;
     this._unlocked = false;
+    this._unlockListeners = [];
+    this._lastRotaryTime = 0;
+    this._activeTimers = new Set();
 
     if (isBrowser()) {
       this._bindAutoUnlock();
@@ -532,20 +626,83 @@ export class WebAudioHaptics {
   }
 
   /**
-   * Unlock AudioContext on first user interaction gesture
+   * Unlock AudioContext on first user interaction gesture and flush silent buffer
+   * to immediately wake up hardware DAC on iOS Safari.
    */
   _bindAutoUnlock() {
     if (this._unlocked) return;
+    this._unlockListeners = [];
     const unlock = () => {
-      this.getContext();
+      const ctx = this.getContext();
+      if (ctx) {
+        this._flushSilentBuffer(ctx);
+      }
       this._unlocked = true;
-      ['pointerdown', 'keydown', 'touchstart'].forEach((evt) => {
-        window.removeEventListener(evt, unlock, true);
-      });
+      if (this._unlockListeners) {
+        this._unlockListeners.forEach(({ type, fn }) => {
+          window.removeEventListener(type, fn, true);
+        });
+        this._unlockListeners = [];
+      }
     };
-    ['pointerdown', 'keydown', 'touchstart'].forEach((evt) => {
+    ['pointerdown', 'keydown', 'touchstart', 'touchend', 'click'].forEach((evt) => {
+      this._unlockListeners.push({ type: evt, fn: unlock });
       window.addEventListener(evt, unlock, { once: true, passive: true, capture: true });
     });
+  }
+
+  /**
+   * Silent buffer flush to wake up hardware DAC immediately on iOS Safari
+   */
+  flushSilentBuffer() {
+    return this._flushSilentBuffer(this.getContext());
+  }
+
+  _flushSilentBuffer(ctx) {
+    if (!ctx || typeof ctx.createBuffer !== 'function' || typeof ctx.createBufferSource !== 'function') {
+      return;
+    }
+    try {
+      const buffer = ctx.createBuffer(1, 1, 22050);
+      const source = ctx.createBufferSource();
+      source.buffer = buffer;
+      source.connect(ctx.destination);
+      source.start(0);
+      const timer = setTimeout(() => {
+        try {
+          source.disconnect();
+        } catch {}
+        if (this._activeTimers) this._activeTimers.delete(timer);
+      }, 50);
+      if (typeof timer.unref === 'function') timer.unref();
+      if (this._activeTimers) this._activeTimers.add(timer);
+    } catch {}
+  }
+
+  /**
+   * Cleans up audio context and listeners
+   */
+  destroy() {
+    if (this._unlockListeners) {
+      if (typeof window !== 'undefined') {
+        this._unlockListeners.forEach(({ type, fn }) => {
+          try {
+            window.removeEventListener(type, fn, true);
+          } catch {}
+        });
+      }
+      this._unlockListeners = [];
+    }
+    if (this._activeTimers) {
+      this._activeTimers.forEach((t) => clearTimeout(t));
+      this._activeTimers.clear();
+    }
+    if (this.ctx && typeof this.ctx.close === 'function') {
+      this.ctx.close().catch(() => {});
+      this.ctx = null;
+    }
+    this.masterGainNode = null;
+    this._unlocked = false;
   }
 
   /**
@@ -584,9 +741,123 @@ export class WebAudioHaptics {
   }
 
   /**
-   * Subtle wood/glass mechanical tap for buttons & chips (K18 Signature)
+   * Resolves horizontal acoustic stereo pan position (-0.75 to +0.75)
+   * Applies physiological auditory compression (k = 0.75) to prevent extreme
+   * binaural isolation and listening fatigue in headphones.
+   *
+   * @param {number|Object|Element|MouseEvent} [options]
+   * @returns {number} Pan value clamped between -0.75 and +0.75
    */
-  playClick() {
+  _resolvePan(options) {
+    if (options === undefined || options === null) return 0;
+    let rawPan = 0;
+
+    if (typeof options === 'number') {
+      rawPan = (isFinite(options) && !isNaN(options)) ? options : 0;
+    } else if (typeof options === 'object') {
+      if (typeof options.pan === 'number') {
+        rawPan = (isFinite(options.pan) && !isNaN(options.pan)) ? options.pan : 0;
+      } else if (typeof options.clientX === 'number') {
+        const winW = (typeof window !== 'undefined' && window.innerWidth > 0) ? window.innerWidth : 1;
+        const w = (typeof options.innerWidth === 'number' && options.innerWidth > 0) ? options.innerWidth : winW;
+        rawPan = isFinite(options.clientX) ? ((options.clientX / w) - 0.5) * 2 : 0;
+      } else if (typeof options.x === 'number') {
+        const w = (typeof options.width === 'number' && options.width > 0) ? options.width : 1;
+        rawPan = isFinite(options.x) ? ((options.x / w) - 0.5) * 2 : 0;
+      } else {
+        const isEl = (typeof Element !== 'undefined' && options instanceof Element) || (options && typeof options.getBoundingClientRect === 'function');
+        if (options.target || options.element || isEl) {
+          const el = options.element || options.target || options;
+          if (el && typeof el.getBoundingClientRect === 'function') {
+            const rect = el.getBoundingClientRect();
+            if (rect && typeof rect.left === 'number' && typeof rect.width === 'number') {
+              const cx = rect.left + rect.width / 2;
+              const winW = (typeof window !== 'undefined' && window.innerWidth > 0) ? window.innerWidth : 1;
+              rawPan = isFinite(cx) ? ((cx / winW) - 0.5) * 2 : 0;
+            }
+          }
+        }
+      }
+    }
+
+    if (isNaN(rawPan) || !isFinite(rawPan)) rawPan = 0;
+
+    // Physiological compression (Nén sinh lý k = 0.75)
+    const k = 0.75;
+    return clamp(rawPan, -1, 1) * k;
+  }
+
+  /**
+   * Constructs an isolated spatial audio routing pipeline with StereoPannerNode.
+   * Includes ultimate safety timer to disconnect intermediate nodes and prevent Audio Graph memory leaks.
+   *
+   * @param {AudioContext} ctx
+   * @param {number} [panVal=0] - Target pan value (-1 to 1)
+   * @param {number} [durationMs=100] - Duration of sound in milliseconds
+   * @returns {Object} Route object with `input`, `panner`, and `disconnect()`
+   */
+  _createSpatialRoute(ctx, panVal = 0, durationMs = 100) {
+    const fallbackTarget = this.masterGainNode || (ctx ? ctx.destination : null);
+    if (!ctx || !fallbackTarget) {
+      return { input: null, panner: null, connect: () => {}, disconnect: () => {} };
+    }
+
+    const safePanVal = (isFinite(panVal) && !isNaN(panVal)) ? panVal : 0;
+    const pan = clamp(safePanVal, -1, 1);
+    let panner = null;
+    let input = fallbackTarget;
+
+    if (typeof ctx.createStereoPanner === 'function') {
+      try {
+        panner = ctx.createStereoPanner();
+        if (panner.pan && typeof panner.pan.setValueAtTime === 'function') {
+          panner.pan.setValueAtTime(pan, ctx.currentTime);
+        } else if (panner.pan) {
+          panner.pan.value = pan;
+        }
+        panner.connect(fallbackTarget);
+        input = panner;
+      } catch {
+        panner = null;
+        input = fallbackTarget;
+      }
+    }
+
+    // Ultimate safety timer (Bộ định thời an toàn tối hậu chống rò rỉ Audio Graph)
+    let safetyTimer = null;
+    if (panner) {
+      const safetyTimeout = Math.max(durationMs || 100, 10) + 100;
+      safetyTimer = setTimeout(() => {
+        try {
+          panner.disconnect();
+        } catch {}
+        if (this._activeTimers) this._activeTimers.delete(safetyTimer);
+      }, safetyTimeout);
+      if (typeof safetyTimer.unref === 'function') safetyTimer.unref();
+      if (this._activeTimers) this._activeTimers.add(safetyTimer);
+    }
+
+    return {
+      input,
+      panner,
+      connect: (...args) => input.connect(...args),
+      disconnect: () => {
+        if (safetyTimer) {
+          clearTimeout(safetyTimer);
+          if (this._activeTimers) this._activeTimers.delete(safetyTimer);
+        }
+        if (panner) {
+          try { panner.disconnect(); } catch {}
+        }
+      },
+    };
+  }
+
+  /**
+   * Subtle wood/glass mechanical tap for buttons & chips (K18 Signature)
+   * @param {number|Object} [spatialOptions=null]
+   */
+  playClick(spatialOptions = null) {
     if (this.isMuted) return;
     try {
       const ctx = this.getContext();
@@ -602,8 +873,15 @@ export class WebAudioHaptics {
       gain.gain.setValueAtTime(0.08, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
 
-      osc.connect(gain);
-      gain.connect(this.masterGainNode);
+      const pan = this._resolvePan(spatialOptions);
+      if (pan !== 0 && typeof ctx.createStereoPanner === 'function') {
+        const route = this._createSpatialRoute(ctx, pan, 50);
+        osc.connect(gain);
+        gain.connect(route.input);
+      } else {
+        osc.connect(gain);
+        gain.connect(this.masterGainNode);
+      }
 
       osc.start();
       osc.stop(ctx.currentTime + 0.04);
@@ -612,8 +890,9 @@ export class WebAudioHaptics {
 
   /**
    * Playful organic pop for drawer open, badges, modals (K18 Signature)
+   * @param {number|Object} [spatialOptions=null]
    */
-  playPop() {
+  playPop(spatialOptions = null) {
     if (this.isMuted) return;
     try {
       const ctx = this.getContext();
@@ -629,8 +908,15 @@ export class WebAudioHaptics {
       gain.gain.setValueAtTime(0.09, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.07);
 
-      osc.connect(gain);
-      gain.connect(this.masterGainNode);
+      const pan = this._resolvePan(spatialOptions);
+      if (pan !== 0 && typeof ctx.createStereoPanner === 'function') {
+        const route = this._createSpatialRoute(ctx, pan, 80);
+        osc.connect(gain);
+        gain.connect(route.input);
+      } else {
+        osc.connect(gain);
+        gain.connect(this.masterGainNode);
+      }
 
       osc.start();
       osc.stop(ctx.currentTime + 0.07);
@@ -639,8 +925,9 @@ export class WebAudioHaptics {
 
   /**
    * Harmonious three-tone triad chime (C6, E6, G6) for success/launches
+   * @param {number|Object} [spatialOptions=null]
    */
-  playChime() {
+  playChime(spatialOptions = null) {
     if (this.isMuted) return;
     try {
       const ctx = this.getContext();
@@ -648,6 +935,11 @@ export class WebAudioHaptics {
 
       const now = ctx.currentTime;
       const notes = [1046.5, 1318.5, 1567.98]; // C6, E6, G6
+
+      const pan = this._resolvePan(spatialOptions);
+      const route = (pan !== 0 && typeof ctx.createStereoPanner === 'function')
+        ? this._createSpatialRoute(ctx, pan, 350)
+        : null;
 
       notes.forEach((freq, index) => {
         const osc = ctx.createOscillator();
@@ -660,7 +952,7 @@ export class WebAudioHaptics {
         gain.gain.exponentialRampToValueAtTime(0.0001, now + index * 0.04 + 0.28);
 
         osc.connect(gain);
-        gain.connect(this.masterGainNode);
+        gain.connect(route ? route.input : this.masterGainNode);
 
         osc.start(now + index * 0.04);
         osc.stop(now + index * 0.04 + 0.28);
@@ -670,8 +962,9 @@ export class WebAudioHaptics {
 
   /**
    * Soft mechanical switch for tabs and segmented controls
+   * @param {number|Object} [spatialOptions=null]
    */
-  playTabSwitch() {
+  playTabSwitch(spatialOptions = null) {
     if (this.isMuted) return;
     try {
       const ctx = this.getContext();
@@ -687,8 +980,15 @@ export class WebAudioHaptics {
       gain.gain.setValueAtTime(0.06, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
 
-      osc.connect(gain);
-      gain.connect(this.masterGainNode);
+      const pan = this._resolvePan(spatialOptions);
+      if (pan !== 0 && typeof ctx.createStereoPanner === 'function') {
+        const route = this._createSpatialRoute(ctx, pan, 60);
+        osc.connect(gain);
+        gain.connect(route.input);
+      } else {
+        osc.connect(gain);
+        gain.connect(this.masterGainNode);
+      }
 
       osc.start();
       osc.stop(ctx.currentTime + 0.05);
@@ -697,9 +997,10 @@ export class WebAudioHaptics {
 
   /**
    * Tonal confirmation chime for toggles (on: ascending, off: descending)
-   * @param {boolean} state
+   * @param {boolean} [state=true]
+   * @param {number|Object} [spatialOptions=null]
    */
-  playToggle(state = true) {
+  playToggle(state = true, spatialOptions = null) {
     if (this.isMuted) return;
     try {
       const ctx = this.getContext();
@@ -718,8 +1019,15 @@ export class WebAudioHaptics {
       gain.gain.setValueAtTime(0.07, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
 
-      osc.connect(gain);
-      gain.connect(this.masterGainNode);
+      const pan = this._resolvePan(spatialOptions);
+      if (pan !== 0 && typeof ctx.createStereoPanner === 'function') {
+        const route = this._createSpatialRoute(ctx, pan, 70);
+        osc.connect(gain);
+        gain.connect(route.input);
+      } else {
+        osc.connect(gain);
+        gain.connect(this.masterGainNode);
+      }
 
       osc.start();
       osc.stop(ctx.currentTime + 0.06);
@@ -727,41 +1035,311 @@ export class WebAudioHaptics {
   }
 
   /**
-   * Automatic event binder for HTML elements with data-haptic attributes.
-   * e.g. <button data-haptic="click">, <div data-haptic="pop">, <a data-haptic="chime">
+   * Rotary Step / Gear Click: Crisp mechanical detent with 18ms micro-throttle
+   * and 65% downward frequency sweep simulating physical gear ratchet notch.
    *
-   * @param {Element|Document} [root=document]
+   * @param {number} [step=0] - Current rotary step position
+   * @param {number} [maxSteps=24] - Maximum rotary steps in a revolution
+   * @param {number|Object} [spatialOptions=null] - Stereo pan or element coordinates
+   */
+  playRotaryStep(step = 0, maxSteps = 24, spatialOptions = null) {
+    if (this.isMuted) return;
+
+    // 18ms micro-throttle: drops acoustic congestion during high-speed dial turns
+    const nowMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+    if (this._lastRotaryTime && (nowMs - this._lastRotaryTime < 18)) {
+      return;
+    }
+    this._lastRotaryTime = nowMs;
+
+    try {
+      const ctx = this.getContext();
+      if (!ctx || !this.masterGainNode) return;
+
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      // Pitch dynamically scales by rotary position + 65% downward frequency sweep
+      const stepRatio = clamp((step || 0) / (maxSteps || 24), 0, 1);
+      const startFreq = 780 + stepRatio * 260; // 780Hz - 1040Hz
+      const endFreq = startFreq * (1 - 0.65);  // Sweeps 65% down (to 35% of startFreq: ~273Hz - 364Hz)
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(startFreq, now);
+      osc.frequency.exponentialRampToValueAtTime(Math.max(30, endFreq), now + 0.018);
+
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.018);
+
+      const route = this._createSpatialRoute(ctx, this._resolvePan(spatialOptions), 25);
+      osc.connect(gain);
+      gain.connect(route.input);
+
+      osc.start(now);
+      osc.stop(now + 0.02);
+    } catch {}
+  }
+
+  /**
+   * Success Chord: Harmonious C5-E5-G5 major triad staggered by 35ms.
+   * Smooth exponential decay with balanced gain headroom to prevent peak clipping.
+   *
+   * @param {number|Object} [spatialOptions=null]
+   */
+  playSuccessChord(spatialOptions = null) {
+    if (this.isMuted) return;
+    try {
+      const ctx = this.getContext();
+      if (!ctx || !this.masterGainNode) return;
+
+      const now = ctx.currentTime;
+      // C5, E5, G5 major triad frequencies (Hz)
+      const chordNotes = [523.25, 659.25, 783.99];
+      const staggerDelay = 0.035; // 35ms stagger
+      const noteDuration = 0.38;  // 380ms smooth decay
+
+      const route = this._createSpatialRoute(ctx, this._resolvePan(spatialOptions), 500);
+
+      chordNotes.forEach((freq, idx) => {
+        const noteStartTime = now + idx * staggerDelay;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, noteStartTime);
+
+        // Peak-safe gain: 0.062 per note ensures summed headroom never exceeds 0.2 (< 1.0 peak clipping)
+        gain.gain.setValueAtTime(0.062, noteStartTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, noteStartTime + noteDuration);
+
+        osc.connect(gain);
+        gain.connect(route.input);
+
+        osc.start(noteStartTime);
+        osc.stop(noteStartTime + noteDuration);
+      });
+    } catch {}
+  }
+
+  /**
+   * Dull Thud: Damped bass impact sweeping from 140 Hz down to 40 Hz,
+   * conditioned through a resonant lowpass filter (Q = 2.4).
+   *
+   * @param {number|Object} [spatialOptions=null]
+   */
+  playDullThud(spatialOptions = null) {
+    if (this.isMuted) return;
+    try {
+      const ctx = this.getContext();
+      if (!ctx || !this.masterGainNode) return;
+
+      const now = ctx.currentTime;
+      const duration = 0.09; // 90ms damped duration
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      // Damped bass pitch sweep: 140 Hz down to 40 Hz
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(140, now);
+      osc.frequency.exponentialRampToValueAtTime(40, now + duration);
+
+      // Resonant lowpass filter with Q = 2.4
+      let filter = null;
+      if (typeof ctx.createBiquadFilter === 'function') {
+        filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(160, now);
+        filter.frequency.exponentialRampToValueAtTime(60, now + duration);
+        filter.Q.setValueAtTime(2.4, now);
+      }
+
+      gain.gain.setValueAtTime(0.12, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+      const route = this._createSpatialRoute(ctx, this._resolvePan(spatialOptions), 110);
+
+      if (filter) {
+        osc.connect(filter);
+        filter.connect(gain);
+        const filterTimer = setTimeout(() => {
+          try { filter.disconnect(); } catch {}
+          if (this._activeTimers) this._activeTimers.delete(filterTimer);
+        }, 150);
+        if (typeof filterTimer.unref === 'function') filterTimer.unref();
+        if (this._activeTimers) this._activeTimers.add(filterTimer);
+      } else {
+        osc.connect(gain);
+      }
+
+      gain.connect(route.input);
+
+      osc.start(now);
+      osc.stop(now + duration);
+    } catch {}
+  }
+
+  /**
+   * 2-Phase Mechanical Switch:
+   *  Phase 1 (t = 0): Crisp spring tactile leaf latch
+   *  Phase 2 (t = +16ms): Damped housing bottom-out stem impact
+   *
+   * @param {boolean} [state=true] - Toggle state (true: engage, false: release)
+   * @param {number|Object} [spatialOptions=null]
+   */
+  playMechanicalSwitch(state = true, spatialOptions = null) {
+    if (this.isMuted) return;
+    try {
+      const ctx = this.getContext();
+      if (!ctx || !this.masterGainNode) return;
+
+      const now = ctx.currentTime;
+      const isEngage = Boolean(state);
+      const route = this._createSpatialRoute(ctx, this._resolvePan(spatialOptions), 80);
+
+      // Phase 1 (Thì 1): Spring latch mechanical click at t = 0
+      const osc1 = ctx.createOscillator();
+      const gain1 = ctx.createGain();
+      const p1Duration = 0.015;
+
+      osc1.type = 'triangle';
+      const p1Start = isEngage ? 650 : 820;
+      const p1End = isEngage ? 920 : 480;
+      osc1.frequency.setValueAtTime(p1Start, now);
+      osc1.frequency.exponentialRampToValueAtTime(p1End, now + p1Duration);
+
+      gain1.gain.setValueAtTime(0.07, now);
+      gain1.gain.exponentialRampToValueAtTime(0.001, now + p1Duration);
+
+      osc1.connect(gain1);
+      gain1.connect(route.input);
+      osc1.start(now);
+      osc1.stop(now + p1Duration);
+
+      // Phase 2 (Thì 2): Bottom-out stem impact after 16ms (t = now + 0.016s)
+      const p2StartTime = now + 0.016;
+      const p2Duration = 0.024;
+      const osc2 = ctx.createOscillator();
+      const gain2 = ctx.createGain();
+
+      osc2.type = 'sine';
+      const p2Start = isEngage ? 280 : 220;
+      const p2End = isEngage ? 120 : 90;
+      osc2.frequency.setValueAtTime(p2Start, p2StartTime);
+      osc2.frequency.exponentialRampToValueAtTime(p2End, p2StartTime + p2Duration);
+
+      gain2.gain.setValueAtTime(0.08, p2StartTime);
+      gain2.gain.exponentialRampToValueAtTime(0.001, p2StartTime + p2Duration);
+
+      osc2.connect(gain2);
+      gain2.connect(route.input);
+      osc2.start(p2StartTime);
+      osc2.stop(p2StartTime + p2Duration);
+    } catch {}
+  }
+
+  /**
+   * Automatic event binder for HTML elements with data-haptic attributes.
+   * Supports: click, pop, chime, switch/tab, toggle, rotary/rotary-step, chord/success-chord, thud/dull-thud, mech-switch/mechanical-switch.
+   * Supports spatial audio panning via data-haptic-spatial="true" or data-haptic-spatial="-0.5".
+   *
+   * @param {Element|Document} [root]
    * @returns {Function} Unbind function
    */
-  bind(root = document) {
-    if (!isBrowser() || !root) return () => {};
+  bind(root) {
+    const targetRoot = root || (typeof document !== 'undefined' ? document : null);
+    if (!isBrowser() || !targetRoot) return () => {};
 
-    const handleClick = (e) => {
-      const target = e.target.closest('[data-haptic]');
+    const resolveSpatial = (el, e) => {
+      if (!el || typeof el.getAttribute !== 'function') return null;
+      const attr = el.getAttribute('data-haptic-spatial');
+      if (attr === null || attr === undefined || attr === 'false') return null;
+      if (attr === 'left') return { pan: -0.8, element: el };
+      if (attr === 'right') return { pan: 0.8, element: el };
+      if (attr === 'center') return { pan: 0, element: el };
+      if (attr !== '' && attr !== 'true' && !isNaN(parseFloat(attr))) {
+        return { pan: parseFloat(attr), element: el };
+      }
+      return { clientX: e && typeof e.clientX === 'number' ? e.clientX : undefined, element: el };
+    };
+
+    const handleAction = (e) => {
+      const el = (typeof Element !== 'undefined' && e.target instanceof Element)
+        ? e.target
+        : (e.target?.parentElement || e.target);
+      const target = el?.closest?.('[data-haptic]');
       if (!target) return;
 
-      const soundType = target.getAttribute('data-haptic') || 'click';
+      // Micro-deduplication: Prevents double-trigger audio flutter when browser fires
+      // both 'input' and 'click' events on checkboxes and radio buttons in rapid succession (<25ms)
+      const now = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+      const evtType = e?.type || 'action';
+      if (e && e.type && target._lastHapticEvent && target._lastHapticEvent !== evtType && (now - target._lastHapticTime < 25)) {
+        return;
+      }
+      target._lastHapticTime = now;
+      target._lastHapticEvent = evtType;
+
+      const rawType = target.getAttribute('data-haptic') || 'click';
+      const soundType = String(rawType).trim().toLowerCase();
+      const spatialOpts = resolveSpatial(target, e);
+
       switch (soundType) {
+        case 'rotary':
+        case 'rotary-step':
+        case 'dial':
+        case 'knob': {
+          const step = parseFloat(target.getAttribute('data-haptic-step') || target.value || target.getAttribute('aria-valuenow') || '0');
+          const max = parseFloat(target.getAttribute('data-haptic-max') || target.max || target.getAttribute('aria-valuemax') || '24');
+          this.playRotaryStep(isNaN(step) ? 0 : step, isNaN(max) ? 24 : max, spatialOpts);
+          break;
+        }
+        case 'chord':
+        case 'success':
+        case 'success-chord':
+          this.playSuccessChord(spatialOpts);
+          break;
+        case 'thud':
+        case 'dull-thud':
+        case 'impact':
+        case 'drop':
+          this.playDullThud(spatialOpts);
+          break;
+        case 'mech-switch':
+        case 'mechanical-switch':
+        case 'mechanical': {
+          const isChecked = target.checked !== undefined ? target.checked : (target.getAttribute('aria-checked') !== 'false');
+          this.playMechanicalSwitch(isChecked, spatialOpts);
+          break;
+        }
         case 'pop':
-          this.playPop();
+          this.playPop(spatialOpts);
           break;
         case 'chime':
-          this.playChime();
+          this.playChime(spatialOpts);
           break;
         case 'switch':
         case 'tab':
-          this.playTabSwitch();
+          this.playTabSwitch(spatialOpts);
           break;
+        case 'toggle': {
+          const isChecked = target.checked !== undefined ? target.checked : (target.getAttribute('aria-checked') !== 'false');
+          this.playToggle(isChecked, spatialOpts);
+          break;
+        }
         case 'click':
         default:
-          this.playClick();
+          this.playClick(spatialOpts);
           break;
       }
     };
 
-    root.addEventListener('click', handleClick, { passive: true });
+    targetRoot.addEventListener('click', handleAction, { passive: true });
+    targetRoot.addEventListener('input', handleAction, { passive: true });
     return () => {
-      root.removeEventListener('click', handleClick);
+      targetRoot.removeEventListener('click', handleAction);
+      targetRoot.removeEventListener('input', handleAction);
     };
   }
 }
@@ -803,14 +1381,36 @@ export function initSmoothScroll(options = {}) {
     return {
       destroy: () => {},
       scrollTo: (target, scrollOpts = {}) => {
-        const dest = typeof target === 'number' ? target : resolveElements(target)[0]?.offsetTop || 0;
+        let dest = 0;
+        if (typeof target === 'number') {
+          dest = target;
+        } else {
+          const els = resolveElements(target);
+          if (!els.length) return;
+          dest = els[0].offsetTop || 0;
+        }
         window.scrollTo({ top: dest, behavior: scrollOpts.immediate ? 'instant' : 'smooth' });
       },
       stop: () => {},
       start: () => {},
       onScroll: (cb) => {
-        window.addEventListener('scroll', cb, { passive: true });
-        return () => window.removeEventListener('scroll', cb);
+        const handler = () => {
+          const top = window.pageYOffset || document.documentElement?.scrollTop || 0;
+          const max = Math.max(0, (document.documentElement?.scrollHeight || 0) - window.innerHeight);
+          const prog = max > 0 ? clamp(top / max, 0, 1) : 0;
+          try {
+            cb({
+              scroll: top,
+              target: top,
+              limit: max,
+              velocity: 0,
+              progress: prog,
+              direction: 0,
+            });
+          } catch {}
+        };
+        window.addEventListener('scroll', handler, { passive: true });
+        return () => window.removeEventListener('scroll', handler);
       },
     };
   }
@@ -888,13 +1488,42 @@ export function initSmoothScroll(options = {}) {
     }
   }
 
+  // Detect whether target element or an ancestor is a scrollable container
+  function isScrollableElement(el, deltaY) {
+    let cur = el;
+    while (cur && cur !== document.body && cur !== document.documentElement) {
+      if (cur instanceof Element) {
+        const style = window.getComputedStyle(cur);
+        const overflowY = style.overflowY;
+        if (overflowY === 'auto' || overflowY === 'scroll') {
+          const canScrollDown = deltaY > 0 && cur.scrollTop < cur.scrollHeight - cur.clientHeight - 1;
+          const canScrollUp = deltaY < 0 && cur.scrollTop > 1;
+          if (canScrollDown || canScrollUp) return true;
+        }
+      }
+      cur = cur.parentElement;
+    }
+    return false;
+  }
+
   // Wheel event listener with delta normalization
   function onWheel(e) {
-    if (e.ctrlKey) return; // Allow pinch-to-zoom
+    if (e.ctrlKey || e.defaultPrevented) return; // Allow pinch-to-zoom & respect handled events
+
+    let deltaY = e.deltaY;
+    // If predominantly horizontal, let native handling proceed
+    if (Math.abs(e.deltaX) > Math.abs(deltaY)) return;
+
+    // Check if target is inside a scrollable container that can scroll
+    if (e.target && isScrollableElement(e.target, deltaY)) return;
+
+    // Prevent native scroll jump so inertia engine controls position
+    if (typeof e.preventDefault === 'function') {
+      e.preventDefault();
+    }
 
     updateMaxScroll();
 
-    let deltaY = e.deltaY;
     // Normalize lines to pixels (Firefox deltaMode 1)
     if (e.deltaMode === 1) deltaY *= 40;
     // Normalize pages to pixels (deltaMode 2)
@@ -926,6 +1555,7 @@ export function initSmoothScroll(options = {}) {
 
   // Keyboard navigation (PageUp, PageDown, Space, Arrows, Home, End)
   function onKeyDown(e) {
+    if (e.defaultPrevented) return;
     // Ignore when focus is inside interactive elements
     const tag = (e.target && e.target.tagName) || '';
     if (['INPUT', 'TEXTAREA', 'SELECT'].includes(tag) || e.target.isContentEditable) return;
@@ -946,10 +1576,12 @@ export function initSmoothScroll(options = {}) {
         delta = -window.innerHeight * 0.8;
         break;
       case 'Home':
+        if (typeof e.preventDefault === 'function') e.preventDefault();
         targetY = 0;
         startLoop();
         return;
       case 'End':
+        if (typeof e.preventDefault === 'function') e.preventDefault();
         updateMaxScroll();
         targetY = maxScroll;
         startLoop();
@@ -959,6 +1591,7 @@ export function initSmoothScroll(options = {}) {
     }
 
     if (delta !== 0) {
+      if (typeof e.preventDefault === 'function') e.preventDefault();
       updateMaxScroll();
       targetY = clamp(targetY + delta, 0, maxScroll);
       startLoop();
@@ -966,7 +1599,6 @@ export function initSmoothScroll(options = {}) {
   }
 
   // Sync state if user drags native scrollbar
-  let isInternalScroll = false;
   function onNativeScroll() {
     if (isRunning) return;
     currentY = window.pageYOffset || document.documentElement.scrollTop || 0;
@@ -975,16 +1607,20 @@ export function initSmoothScroll(options = {}) {
 
   // Intercept anchor link clicks for smooth navigation
   function onAnchorClick(e) {
-    const anchor = e.target.closest('a[href^="#"]');
+    const el = e.target instanceof Element ? e.target : e.target?.parentElement;
+    const anchor = el?.closest?.('a[href^="#"]');
     if (!anchor) return;
     const hash = anchor.getAttribute('href');
     if (!hash || hash === '#') return;
 
-    const targetEl = document.querySelector(hash);
-    if (targetEl) {
-      e.preventDefault();
-      scrollTo(targetEl, { offset: 0 });
-    }
+    try {
+      const id = hash.slice(1);
+      const targetEl = document.getElementById(id) || document.querySelector(hash);
+      if (targetEl) {
+        e.preventDefault();
+        scrollTo(targetEl, { offset: 0 });
+      }
+    } catch {}
   }
 
   /**
@@ -997,10 +1633,18 @@ export function initSmoothScroll(options = {}) {
     if (typeof target === 'number') {
       destY = target;
     } else if (typeof target === 'string') {
-      const el = document.querySelector(target);
-      if (el) destY = el.getBoundingClientRect().top + window.pageYOffset;
+      try {
+        const id = target.startsWith('#') ? target.slice(1) : null;
+        const el = (id ? document.getElementById(id) : null) || document.querySelector(target);
+        if (!el) return;
+        destY = el.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop || 0);
+      } catch {
+        return;
+      }
     } else if (target instanceof Element) {
-      destY = target.getBoundingClientRect().top + window.pageYOffset;
+      destY = target.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop || 0);
+    } else {
+      return;
     }
 
     const offset = scrollOpts.offset || 0;
@@ -1018,9 +1662,9 @@ export function initSmoothScroll(options = {}) {
   }
 
   // Attach event listeners
-  window.addEventListener('wheel', onWheel, { passive: true });
+  window.addEventListener('wheel', onWheel, { passive: false });
   window.addEventListener('scroll', onNativeScroll, { passive: true });
-  window.addEventListener('keydown', onKeyDown, { passive: true });
+  window.addEventListener('keydown', onKeyDown, { passive: false });
   document.addEventListener('click', onAnchorClick, { passive: false });
 
   if (smoothTouch) {
@@ -1035,9 +1679,9 @@ export function initSmoothScroll(options = {}) {
   return {
     destroy: () => {
       if (rafId) cancelAnimationFrame(rafId);
-      window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('wheel', onWheel, { passive: false });
       window.removeEventListener('scroll', onNativeScroll);
-      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('keydown', onKeyDown, { passive: false });
       document.removeEventListener('click', onAnchorClick);
       if (smoothTouch) {
         window.removeEventListener('touchstart', onTouchStart);

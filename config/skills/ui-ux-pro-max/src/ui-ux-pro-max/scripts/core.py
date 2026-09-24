@@ -201,7 +201,7 @@ _SEARCH_CALIBRATION_VERSION = "2026-08-12-v1"
 # domain-specific because corpora vary greatly in size and document length.
 # Values are intentionally conservative and are measured by the calibration suite.
 _DOMAIN_SCORE_FLOORS = {
-    "style": 4.3, "landing": 4.0, "product": 6.0, "icons": 5.8,
+    "style": 4.3, "landing": 4.0, "product": 4.0, "icons": 5.8,
     "react": 3.3,
 }
 _SEARCH_THRESHOLDS = {
@@ -436,7 +436,14 @@ def _search_csv_detailed(filepath, search_cols, output_cols, query, max_results,
 
     bm25 = _get_bm25(filepath, search_cols, data, signature, cache_variant)
     search_query, rewrites = _rewrite_query_for_domain(query, routing_domain, bm25)
+    search_query, rewrites, required_core_tokens = _apply_token_coverage_guard(
+        bm25, search_query, routing_domain, rewrites)
     ranked = bm25.score(search_query)
+    if required_core_tokens:
+        ranked = [
+            (idx, score) for idx, score in ranked
+            if score > 0 and (set(bm25.corpus[idx]) & required_core_tokens)
+        ]
     threshold = threshold or _NO_THRESHOLD
     top_score = ranked[0][1] if ranked else 0.0
     runner_up_score = ranked[1][1] if len(ranked) > 1 else 0.0
@@ -555,6 +562,55 @@ def _load_product_keywords():
         if len(label) >= 4:
             keywords.add(label)
     return sorted(keywords, key=len, reverse=True)
+
+
+_SECONDARY_PRODUCT_TOKENS = frozenset({"landing", "page", "pages"})
+_CORE_INDUSTRY_TOKENS = None
+_CORE_INDUSTRY_SIGNATURE = None
+
+
+def _get_core_industry_tokens():
+    global _CORE_INDUSTRY_TOKENS, _CORE_INDUSTRY_SIGNATURE
+    product_path = DATA_DIR / CSV_CONFIG["product"]["file"]
+    signature = _file_signature(product_path) if product_path.exists() else None
+    if _CORE_INDUSTRY_TOKENS is not None and _CORE_INDUSTRY_SIGNATURE == signature:
+        return _CORE_INDUSTRY_TOKENS
+
+    product_keywords = _load_product_keywords()
+    tokens = set()
+    tokenizer = BM25()
+    for kw in product_keywords:
+        tokens.update(tokenizer.tokenize(kw))
+    tokens -= _SECONDARY_PRODUCT_TOKENS
+    tokens -= {
+        "app", "tool", "service", "platform", "builder", "system",
+        "manager", "generator", "tracker", "calculator", "portal",
+        "guide", "general", "custom", "site", "online",
+    }
+    _CORE_INDUSTRY_TOKENS = frozenset(tokens)
+    _CORE_INDUSTRY_SIGNATURE = signature
+    return _CORE_INDUSTRY_TOKENS
+
+
+def _apply_token_coverage_guard(bm25, search_query, routing_domain, rewrites):
+    """Prevent secondary generic tokens ('landing', 'page') from drifting industry queries."""
+    if routing_domain != "product":
+        return search_query, rewrites, None
+    q_tokens = bm25.tokenize(search_query)
+    sec_in_query = set(q_tokens) & _SECONDARY_PRODUCT_TOKENS
+    if not sec_in_query:
+        return search_query, rewrites, None
+    core_industry = _get_core_industry_tokens()
+    core_in_query = [t for t in q_tokens if t in core_industry]
+    if not core_in_query:
+        core_in_query = [t for t in q_tokens if t not in _SECONDARY_PRODUCT_TOKENS]
+    if not core_in_query:
+        return search_query, rewrites, None
+    guarded_query = " ".join(core_in_query)
+    rewrites = list(rewrites) + [
+        f"token_coverage_guard:{'+'.join(sorted(sec_in_query))}->filtered"
+    ]
+    return guarded_query, rewrites, frozenset(core_in_query)
 
 
 _DOMAIN_KEYWORDS = None

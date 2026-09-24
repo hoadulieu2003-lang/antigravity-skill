@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotlight Command Palette — Signature Wow Block</title>
+  <style>
+    /* ==========================================================================
+       LUMINOUS LIGHT THEME TOKENS
+       ========================================================================== */
+    :root {
+      --bg-canvas: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-backdrop: rgba(15, 23, 42, 0.24);
+      --bg-item-active: rgba(2, 132, 199, 0.08);
+      --border-luminous: rgba(15, 23, 42, 0.09);
+      --border-highlight: rgba(255, 255, 255, 0.95);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #94A3B8;
+      --accent-blue: #0284C7;
+      --shadow-palette: 0 24px 64px -12px rgba(15, 23, 42, 0.18), 0 4px 16px rgba(15, 23, 42, 0.06);
+      --shadow-surface: 0 1px 3px rgba(15, 23, 42, 0.04), 0 6px 16px -2px rgba(15, 23, 42, 0.05);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.22, 1.61, 0.36, 1.0);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-canvas);
+      background-image: 
+        radial-gradient(at 20% 20%, rgba(2, 132, 199, 0.04) 0px, transparent 50%),
+        radial-gradient(at 80% 80%, rgba(139, 92, 246, 0.04) 0px, transparent 50%),
+        linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 720px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(2, 132, 199, 0.08);
+      border: 1px solid rgba(2, 132, 199, 0.2);
+      border-radius: 9999px;
+      color: var(--accent-blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    p.subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin: 0 auto 36px;
+      line-height: 1.5;
+    }
+
+    /* Trigger Button */
+    .trigger-palette-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 24px;
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-luminous);
+      border-radius: 14px;
+      box-shadow: var(--shadow-surface), inset 0 1px 0 var(--border-highlight);
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      transition: transform 140ms var(--ease-out), box-shadow 140ms var(--ease-out);
+      outline: none;
+      user-select: none;
+    }
+
+    .trigger-palette-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -2px rgba(15, 23, 42, 0.08), inset 0 1px 0 var(--border-highlight);
+      color: var(--text-primary);
+    }
+
+    .trigger-palette-btn:active {
+      transform: scale(0.965);
+    }
+
+    .kbd-shortcut {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 3px 8px;
+      background: rgba(15, 23, 42, 0.05);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      font-family: ui-monospace, SFMono-Regular, monospace;
+    }
+
+    /* ==========================================================================
+       COMMAND PALETTE BACKDROP & MODAL
+       ========================================================================== */
+    .palette-backdrop {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-backdrop);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 14vh;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms var(--ease-out);
+    }
+
+    .palette-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .palette-modal {
+      width: 100%;
+      max-width: 620px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-luminous);
+      border-radius: 20px;
+      box-shadow: var(--shadow-palette), inset 0 1px 0 var(--border-highlight);
+      overflow: hidden;
+      transform: scale(0.96);
+      opacity: 0;
+      transition: transform 200ms var(--ease-spring), opacity 180ms var(--ease-out);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .palette-backdrop.is-open .palette-modal {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    /* Search Input Bar (Instant response, zero key lag) */
+    .palette-input-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .palette-input-bar svg {
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+    }
+
+    .palette-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-primary);
+      outline: none;
+    }
+
+    .palette-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    /* Results List */
+    .palette-results {
+      max-height: 380px;
+      overflow-y: auto;
+      padding: 10px 8px;
+    }
+
+    .group-label {
+      padding: 8px 12px 4px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .empty-results {
+      padding: 36px 16px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      display: none;
+    }
+
+    .palette-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 100ms var(--ease-out);
+    }
+
+    .palette-item.is-selected {
+      background: var(--bg-item-active);
+    }
+
+    .item-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .item-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+    }
+
+    .palette-item.is-selected .item-icon {
+      background: rgba(2, 132, 199, 0.14);
+      color: var(--accent-blue);
+    }
+
+    .item-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .item-hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: ui-monospace, monospace;
+    }
+
+    /* Footer Controls */
+    .palette-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: rgba(15, 23, 42, 0.02);
+      border-top: 1px solid rgba(15, 23, 42, 0.06);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer-keys {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-keys span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Toast Execution Notice */
+    .notice-toast {
+      position: fixed;
+      bottom: 24px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-luminous);
+      border-radius: 9999px;
+      padding: 8px 18px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent-blue);
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 200ms var(--ease-spring);
+    }
+
+    .notice-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="tag">Signature Wow Block 07</div>
+    <h1>Spotlight Command Palette</h1>
+    <p class="subtitle">Instant Cmd+K quick navigation with optical icon alignment, zero keyboard animation latency, and synthesized acoustic haptics.</p>
+
+    <!-- Trigger Button -->
+    <button class="trigger-palette-btn" id="openBtn" type="button">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <span>Type a command or search...</span>
+      <div class="kbd-shortcut">
+        <span>⌘</span><span>K</span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Command Palette Modal -->
+  <div class="palette-backdrop" id="backdrop" role="dialog" aria-modal="true">
+    <div class="palette-modal">
+      <div class="palette-input-bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" class="palette-input" id="searchInput" placeholder="Search modules, actions, or tokens..." autocomplete="off">
+        <div class="kbd-shortcut">ESC</div>
+      </div>
+
+      <div class="palette-results" id="resultsList">
+        <div class="group-label">Navigation</div>
+        <div class="palette-item is-selected" data-action="Overview">
+          <div class="item-left">
+            <div class="item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></div>
+            <span class="item-label">System Overview</span>
+          </div>
+          <span class="item-hint">Jump to /overview</span>
+        </div>
+
+        <div class="palette-item" data-action="Telemetry">
+          <div class="item-left">
+            <div class="item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+            <span class="item-label">Live Telemetry Bento</span>
+          </div>
+          <span class="item-hint">Jump to /telemetry</span>
+        </div>
+
+        <div class="group-label">Swarm Actions</div>
+        <div class="palette-item" data-action="Deploy Swarm">
+          <div class="item-left">
+            <div class="item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+            <span class="item-label">Deploy 6-Pod Concurrent Swarm</span>
+          </div>
+          <span class="item-hint">Run wp-r2</span>
+        </div>
+
+        <div class="palette-item" data-action="Dual Audit">
+          <div class="item-left">
+            <div class="item-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+            <span class="item-label">Execute Dual Commission Audit</span>
+          </div>
+          <span class="item-hint">Verify WCAG AA & Delight</span>
+        </div>
+
+        <div class="empty-results" id="emptyResults">No matching commands found</div>
+      </div>
+
+      <div class="palette-footer">
+        <div class="footer-keys">
+          <span><kbd class="kbd-shortcut">↑</kbd><kbd class="kbd-shortcut">↓</kbd> Navigate</span>
+          <span><kbd class="kbd-shortcut">↵</kbd> Select</span>
+        </div>
+        <span>Antigravity Spotlight v2.0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="notice-toast" id="toast">Action Executed</div>
+
+  <script>
+    // 1. SOUND SYNTHESIZER
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function playTick() {
+      try {
+        if (!audioCtx) audioCtx = new AudioCtx();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(620, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(380, audioCtx.currentTime + 0.03);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.03);
+      } catch {}
+    }
+
+    function playChime() {
+      try {
+        if (!audioCtx) audioCtx = new AudioCtx();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const now = audioCtx.currentTime;
+        [1046.5, 1318.5].forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.04);
+          gain.gain.setValueAtTime(0.05, now + idx * 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.04 + 0.22);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + idx * 0.04);
+          osc.stop(now + idx * 0.04 + 0.22);
+        });
+      } catch {}
+    }
+
+    // 2. MODAL CONTROLS
+    const openBtn = document.getElementById('openBtn');
+    const backdrop = document.getElementById('backdrop');
+    const searchInput = document.getElementById('searchInput');
+    const toast = document.getElementById('toast');
+    let isOpen = false;
+
+    function openPalette() {
+      isOpen = true;
+      backdrop.classList.add('is-open');
+      searchInput.value = '';
+      filterItems('');
+      setTimeout(() => searchInput.focus(), 60);
+      playTick();
+    }
+
+    function closePalette() {
+      isOpen = false;
+      backdrop.classList.remove('is-open');
+    }
+
+    openBtn.addEventListener('click', openPalette);
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) closePalette();
+    });
+
+    // Global Cmd+K / Ctrl+K
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        isOpen ? closePalette() : openPalette();
+      } else if (e.key === 'Escape' && isOpen) {
+        closePalette();
+      }
+    });
+
+    // 3. KEYBOARD SELECTION & INSTANT FILTERING
+    function getVisibleItems() {
+      return Array.from(document.querySelectorAll('.palette-item')).filter(el => el.style.display !== 'none');
+    }
+
+    function selectItem(index) {
+      const items = getVisibleItems();
+      if (!items.length) return;
+      items.forEach(it => it.classList.remove('is-selected'));
+      const activeIdx = Math.max(0, Math.min(index, items.length - 1));
+      items[activeIdx].classList.add('is-selected');
+      items[activeIdx].scrollIntoView({ block: 'nearest' });
+      playTick();
+    }
+
+    searchInput.addEventListener('keydown', (e) => {
+      const items = getVisibleItems();
+      const currentIdx = items.findIndex(it => it.classList.contains('is-selected'));
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectItem(currentIdx + 1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectItem(currentIdx - 1);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        const selected = items[currentIdx];
+        if (selected) executeAction(selected.getAttribute('data-action'));
+      }
+    });
+
+    // Filter items instantly (0 animation)
+    function filterItems(query) {
+      const q = query.toLowerCase().trim();
+      const items = document.querySelectorAll('.palette-item');
+      items.forEach(it => {
+        const text = it.textContent.toLowerCase();
+        it.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+
+      // Hide group labels if no items in that group are visible
+      document.querySelectorAll('.group-label').forEach(label => {
+        let sibling = label.nextElementSibling;
+        let hasVisible = false;
+        while (sibling && !sibling.classList.contains('group-label')) {
+          if (sibling.classList.contains('palette-item') && sibling.style.display !== 'none') {
+            hasVisible = true;
+            break;
+          }
+          sibling = sibling.nextElementSibling;
+        }
+        label.style.display = hasVisible ? 'block' : 'none';
+      });
+
+      const visible = getVisibleItems();
+      const emptyEl = document.getElementById('emptyResults');
+      if (emptyEl) {
+        emptyEl.style.display = (visible.length === 0) ? 'block' : 'none';
+      }
+
+      items.forEach(it => it.classList.remove('is-selected'));
+      if (visible.length) {
+        visible[0].classList.add('is-selected');
+      }
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      filterItems(e.target.value);
+    });
+
+    function executeAction(name) {
+      playChime();
+      closePalette();
+      toast.textContent = `Executed: ${name}`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    document.querySelectorAll('.palette-item').forEach(it => {
+      it.addEventListener('click', () => {
+        executeAction(it.getAttribute('data-action'));
+      });
+    });
+  </script>
+</body>
+</html>

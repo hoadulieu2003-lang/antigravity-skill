@@ -84,7 +84,7 @@
   1. **Phá vỡ tính đối xứng tuyệt đối**: Đưa vào tỉ lệ bất đối xứng có chủ đích (ví dụ tỉ lệ vàng 62/38 thay vì 50/50 đều đặn).
   2. **Cắt đứt thói quen "Hero + 3 Card đồng dạng"**: Thay các thẻ Card hộp kín bằng danh sách typographic tối giản, phân chia bằng đường kẻ mảnh hoặc khoảng trắng âm.
   3. **Không lạm dụng Bento Grid vô tội vạ**: Chỉ dùng Bento Grid khi các khối dữ liệu thực sự có mức độ ưu tiên thông tin và hình thái khác nhau (1 khối to chứa biểu đồ, 2 khối nhỏ chứa chỉ số).
-  4. **Cấm kỵ gradient màu tím/xanh AI mặc định**: Áp dụng triết lý màu sáng độc bản (`Light Theme Invariant`), tôn vinh màu giấy (`Warm Paper`), màu kem ngà (`Ivory`), tương phản typographic sắc nét.
+  4. **Cấm kỵ gradient màu tím/xanh AI mặc định**: Áp dụng triết lý màu sáng đa tầng độc bản (`Luminous Light Theme Invariant`), tôn vinh màu giấy (`Warm Paper`), màu kem ngà (`Ivory`), tương phản typographic sắc nét và bóng đổ đa chiều siêu mịn (triệt tiêu hoàn toàn giấy bẹt đơn điệu).
   5. **Typography mang cá tính mạnh mẽ**: Kết hợp font Serif cổ điển với Sans-serif hình học hiện đại hoặc Monospace kỹ thuật, không mặc định dùng Inter cho mọi nơi.
 
 ---

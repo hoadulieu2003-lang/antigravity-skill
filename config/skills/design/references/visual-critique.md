@@ -1,4 +1,4 @@
-﻿# Visual Critic & Render Evidence Protocol
+# Visual Critic & Render Evidence Protocol
 
 Quy chuẩn thẩm định thị giác độc lập (Visual Critic) bằng hình ảnh kết xuất thực tế.
 
@@ -8,7 +8,7 @@ Quy chuẩn thẩm định thị giác độc lập (Visual Critic) bằng hình
 1. **Không Tự Khen bằng Tính từ Rỗng tuếch**: Nghiêm cấm nhận xét vô căn cứ như "Looks modern", "Very premium", "Great hierarchy".
 2. **Thẩm định trên Bằng chứng Thực tế (Render Evidence)**: Bắt buộc chụp ảnh màn hình thời gian thực qua CDP / Browser.
 3. **Đối chiếu Trực tiếp với Design Contract**: Từng tiêu chí trong `visual_acceptance` phải được đánh giá PASS/FAIL dựa trên hình ảnh thực tế.
-4. **Đánh giá Rủi ro AI Đại trà (Generic-AI Risk)**: Chấm điểm từ 0-10 về nguy cơ bị rơi vào lối mòn thiết kế (card grid, bento box, purple gradient).
+4. **Đánh giá Rủi ro AI Đại trà (Generic-AI Risk)**: Chấm điểm từ 0-10 về nguy cơ bị rơi vào lối mòn thiết kế (card grid, bento box, purple gradient, monolithic flat paper, unrequested dark theme). Không chấp nhận giao diện phẳng lì thiếu chiều sâu hoặc vi phạm Luminous Light Theme Invariant.
 
 ## 2. Visual Loop Budget
 * `MAX_DESIGN_POLISH_CYCLES = 2`.

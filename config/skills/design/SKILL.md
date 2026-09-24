@@ -137,7 +137,7 @@ Tuyệt đối **KHÔNG ĐƯỢC PHÉP** bật thư viện chuyển động (`gs
 ## 7. Thang Ưu Tiên Công Nghệ Xây Dựng Portfolio (Portfolio Tech Priority Hierarchy)
 
 Khi xây dựng các website trình diễn năng lực nhằm chinh phục khách hàng cao cấp:
-1. **Nền tảng Cốt lõi (70% Đẳng cấp)**: **Typography Đỉnh cao + Every Layout Primitives + Light Theme Độc bản**. Thể hiện tư duy thẩm mỹ vững chắc của một Senior Architect, tách biệt hoàn toàn khỏi các template AI rẻ tiền.
+1. **Nền tảng Cốt lõi (70% Đẳng cấp)**: **Typography Đỉnh cao + Every Layout Primitives + Luminous Light Theme Độc bản** (nền sáng đa tầng, bóng đổ đa chiều siêu mịn, triệt tiêu giấy bẹt đơn điệu). Thể hiện tư duy thẩm mỹ vững chắc của một Senior Architect, tách biệt hoàn toàn khỏi các template AI rẻ tiền.
 2. **Trải nghiệm Tương tác Vi mô (Micro-Interactions)**: Chuyển động CSS thuần túy, tương phản hover/focus tinh tế, căn gióng Cap-Height chính xác.
 3. **Chuyển động Kể chuyện (Storytelling Motion)**: Thư viện `gsap` (ScrollTrigger, Flip, SplitText) dẫn dắt câu chuyện thương hiệu mượt mà 60 FPS.
 4. **Điểm Nhấn Công Nghệ Cao (High-Tech Wow Factor)**: `r3f-pmndrs` hoặc `threejs` cho 01 Hero Scene 3D hoặc tương tác sản phẩm không gian 3 chiều đỉnh cao.

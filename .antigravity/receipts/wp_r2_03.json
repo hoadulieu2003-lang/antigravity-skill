@@ -1,0 +1,37 @@
+{
+  "wp": "WP-R2-03",
+  "task": "Ultra-Lightweight 3D WebGL Micro-Engine",
+  "status": "COMPLETED",
+  "files_created": [
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/webgl_micro_engine.js",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/webgl_micro_engine.umd.js",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/webgl_micro_engine.min.js",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/webgl_micro_engine.umd.min.js",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/build_min.mjs",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/webgl_micro_engine.d.ts",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/demo_webgl_micro_engine.html",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/test_webgl_micro_engine.mjs",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/verify_webgl_micro_engine_types.ts"
+  ],
+  "verification_script": "node test_webgl_micro_engine.mjs",
+  "verification_status": "PASS (104/104 tests passed with 100% success)",
+  "features_delivered": {
+    "procedural_shaders": [
+      "Iridescent Liquid Light Waves: Sóng ánh sáng xà cừ chuyển động chậm, tương thích nền sáng (độ sáng nền >= 0.90), triệt tiêu hoàn toàn Reinhard tone mapping gây xỉn màu xám.",
+      "Interactive Particle Mesh: Lưới hạt vi mô phản ứng tiệm cận theo con trỏ chuột với lực đẩy đàn hồi, 4-tier quantized alpha stroke buckets (chính xác <= 4 lệnh stroke() mỗi khung hình, zero popping), co giãn mượt mà không dịch chuyển ngẫu nhiên khi resize / đổi DPR.",
+      "Titanium Perspective Grid: Lưới titan chiều sâu 3D, điểm sáng Blinn-Phong phản chiếu theo chuột, fwidth standard derivatives anti-aliasing tuân thủ nghiêm ngặt GLSL edge0 < edge1."
+    ],
+    "resource_and_performance_guard": [
+      "FrameBudgetWatchdog: Giám sát 60 FPS runtime, tự động hạ DPR (2.0 -> 1.5 -> 1.0 -> 0.75) kèm thời gian làm nguội hysteresis chống rung giật, miễn nhiễm lỗi NaN.",
+      "IntersectionObserver: Tự động tạm dừng vòng lặp rAF khi canvas cuộn khỏi màn hình và tiếp tục khi hiển thị lại; có cơ chế khóa bảo vệ không ghi đè lệnh pause() thủ công hoặc tùy chọn prefers-reduced-motion.",
+      "Tự động bỏ qua / fallback tĩnh khi người dùng bật prefers-reduced-motion hoặc tham số URL ?test-mode=1, thời gian trôi qua không bao giờ bị âm."
+    ],
+    "module_compatibility": [
+      "ESM xuất khẩu độc lập cho React / Vite / Next.js SSR-safe.",
+      "UMD và Browser global bundle (webgl_micro_engine.umd.js) tương thích tải trực tiếp qua thẻ <script src='...'>.",
+      "Bản nén độc lập webgl_micro_engine.min.js và webgl_micro_engine.umd.min.js tối ưu hóa kích thước.",
+      "TypeScript Definition (webgl_micro_engine.d.ts) định kiểu tường minh toàn bộ interfaces."
+    ]
+  },
+  "summary": "Đã hoàn thành và kiểm toán độc lập toàn diện cỗ máy 3D WebGL / Canvas Micro-Engine siêu nhẹ, 0 KB asset ngoài. Khắc phục triệt để 7 lỗi tiềm ẩn từ bản thi công trước: (1) Lỗi GLSL smoothstep đảo ngược biên gây undefined behavior trên Metal/macOS, (2) Lỗi IntersectionObserver tự ý kích hoạt lại vòng lặp rAF khi prefers-reduced-motion đang bật, (3) Lỗi IntersectionObserver đè lên lệnh pause() thủ công của lập trình viên, (4) Lỗi Particle Mesh hủy và sinh ngẫu nhiên lại toàn bộ hạt khi resize canvas hoặc hạ DPR, (5) Lỗi mouseRadius không tỷ lệ theo DPR, (6) Lỗi renderFrame(0) gán thời gian âm cho shader, (7) Lỗi FrameBudgetWatchdog bị nhiễm NaN khi recordFrame() nhận tham số rỗng. Bộ test test_webgl_micro_engine.mjs mở rộng lên 104/104 tests passed 100%, bảo toàn 189/189 tests wow_engine không hồi quy."
+}

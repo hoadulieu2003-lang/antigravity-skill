@@ -30,6 +30,7 @@ export interface ParallaxTiltOptions {
 export interface ParallaxTiltInstance {
   destroy: () => void;
   reset: () => void;
+  setValues: (values: { rotX?: number; rotY?: number; scale?: number } | number, rotY?: number) => void;
 }
 
 export interface WebAudioHapticsOptions {
@@ -37,19 +38,37 @@ export interface WebAudioHapticsOptions {
   volume?: number;
 }
 
+export interface SpatialAudioOptions {
+  pan?: number;
+  clientX?: number;
+  innerWidth?: number;
+  x?: number;
+  width?: number;
+  element?: Element;
+  target?: Element;
+}
+
 export declare class WebAudioHaptics {
   constructor(options?: WebAudioHapticsOptions);
   getContext(): AudioContext | null;
+  flushSilentBuffer(): void;
+  destroy(): void;
   setMuted(muted: boolean): void;
   getMuted(): boolean;
   toggleMute(): boolean;
   setVolume(volume: number): void;
   getVolume(): number;
-  playClick(): void;
-  playPop(): void;
-  playChime(): void;
-  playTabSwitch(): void;
-  playToggle(state?: boolean): void;
+  _resolvePan(options?: number | SpatialAudioOptions | Element | null): number;
+  _createSpatialRoute(ctx: AudioContext, panVal?: number, durationMs?: number): { input: AudioNode | null; panner: StereoPannerNode | null; disconnect: () => void };
+  playClick(spatialOptions?: number | SpatialAudioOptions | Element | null): void;
+  playPop(spatialOptions?: number | SpatialAudioOptions | Element | null): void;
+  playChime(spatialOptions?: number | SpatialAudioOptions | Element | null): void;
+  playTabSwitch(spatialOptions?: number | SpatialAudioOptions | Element | null): void;
+  playToggle(state?: boolean, spatialOptions?: number | SpatialAudioOptions | Element | null): void;
+  playRotaryStep(step?: number, maxSteps?: number, spatialOptions?: number | SpatialAudioOptions | Element | null): void;
+  playSuccessChord(spatialOptions?: number | SpatialAudioOptions | Element | null): void;
+  playDullThud(spatialOptions?: number | SpatialAudioOptions | Element | null): void;
+  playMechanicalSwitch(state?: boolean, spatialOptions?: number | SpatialAudioOptions | Element | null): void;
   bind(root?: Element | Document): () => void;
 }
 

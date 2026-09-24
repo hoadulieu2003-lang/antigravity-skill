@@ -1,0 +1,19 @@
+{
+  "wp": "WP-03",
+  "task": "Sửa lỗi trôi dạt từ vựng BM25 và định kiến dữ liệu trong config/skills/ui-ux-pro-max",
+  "status": "COMPLETED",
+  "files_modified": [
+    "C:/Users/game/.gemini/config/skills/ui-ux-pro-max/scripts/core.py",
+    "C:/Users/game/.gemini/config/skills/ui-ux-pro-max/src/ui-ux-pro-max/scripts/core.py",
+    "C:/Users/game/.gemini/config/skills/ui-ux-pro-max/cli/assets/scripts/core.py",
+    "C:/Users/game/.gemini/config/skills/ui-ux-pro-max/data/ui-reasoning.csv",
+    "C:/Users/game/.gemini/config/skills/ui-ux-pro-max/src/ui-ux-pro-max/data/ui-reasoning.csv",
+    "C:/Users/game/.gemini/config/skills/ui-ux-pro-max/cli/assets/data/ui-reasoning.csv",
+    "C:/Users/game/.gemini/config/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+    "C:/Users/game/.gemini/config/skills/ui-ux-pro-max/src/ui-ux-pro-max/scripts/tests/test_core.py",
+    "C:/Users/game/.gemini/config/skills/ui-ux-pro-max/cli/assets/scripts/tests/test_core.py"
+  ],
+  "verification_script": "python -m unittest scripts/tests/test_core.py",
+  "verification_status": "PASS (42/42 tests passed)",
+  "summary": "Đã triển khai Token Coverage Guard trong scripts/core.py (kèm đồng bộ các thư mục mirror src/ và cli/assets/) ngăn chặn các từ phụ 'landing'/'page' kéo trôi kết quả sang Link-in-Bio khi truy vấn chứa từ khóa ngành (saas, fintech, ecommerce, portfolio, v.v.). Đã hạ ngưỡng score floor của product từ 6.0 xuống 4.0 để tránh abstain nhầm các sản phẩm hợp lệ. Cập nhật data/ui-reasoning.csv dòng 2 (SaaS General) thay thế 'Excessive animation' thô thiển bằng 'Restrained Tasteful Motion (Emil Kowalski standard)' và phong cách 'Luminous High-Tech + Accent contrast'. Toàn bộ 42 unit test trong test_core.py và các bài test search.py CLI đều chạy pass 100%."
+}

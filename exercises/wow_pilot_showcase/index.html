@@ -16,17 +16,7 @@
  * ============================================================================
  * ANTIGRAVITY 2.0 // LUMINOUS HIGH-TECH TITANIUM & CRISP MONOLITH STYLESHEET
  * ============================================================================
- * Palette:
- *   --bg-canvas: #F8FAFC (Icy Platinum)
- *   --bg-acrylic: rgba(255, 255, 255, 0.76)
- *   --border-specular: rgba(255, 255, 255, 0.92)
- *   --border-hairline: rgba(203, 213, 225, 0.7)
- *   --text-primary: #0F172A (Deep Slate)
- *   --text-secondary: #334155
- *   --text-muted: #64748B
- * ============================================================================
  */
-
 :root {
   --bg-canvas: #F8FAFC;
   --bg-surface: #FFFFFF;
@@ -64,9 +54,6 @@
   --mouse-y: -1000px;
 }
 
-/* ==========================================================================
-   RESET & CORE BASE
-   ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -80,20 +67,20 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100vh;
   position: relative;
+  max-width: 100vw;
   overflow-x: hidden;
   background-color: var(--bg-canvas);
   background-image: radial-gradient(rgba(148, 163, 184, 0.28) 1.25px, transparent 1.25px);
   background-size: 24px 24px;
 }
 
-/* ==========================================================================
-   DUAL-MODE MOTION ENGINE (0ms Instant vs 60 FPS)
-   ========================================================================== */
 .test-mode,
 .test-mode *,
 .test-mode *::before,
@@ -105,9 +92,6 @@ body {
   scroll-behavior: auto !important;
 }
 
-/* ==========================================================================
-   GLOBAL VIEWPORT AMBIENT SPOTLIGHT
-   ========================================================================== */
 .ambient-spotlight-layer {
   position: fixed;
   inset: 0;
@@ -121,9 +105,6 @@ body {
   );
 }
 
-/* ==========================================================================
-   FROSTED ACRYLIC & SPECULAR HAIRLINES
-   ========================================================================== */
 .acrylic-card {
   position: relative;
   background: var(--bg-acrylic-card);
@@ -151,7 +132,7 @@ body {
   );
   opacity: 0;
   transition: opacity 0.3s ease;
-  z-index: 2;
+  z-index: 1;
 }
 
 .acrylic-card:hover::before {
@@ -164,7 +145,6 @@ body {
   border-top-color: #FFFFFF;
 }
 
-/* Specular Hairline Rim Accent */
 .specular-rim {
   position: absolute;
   top: 0;
@@ -173,12 +153,18 @@ body {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9) 20%, rgba(255, 255, 255, 0.9) 80%, transparent);
   pointer-events: none;
-  z-index: 3;
+  z-index: 4;
 }
 
-/* ==========================================================================
-   BUTTONS: MAGNETIC PULL & MECHANICAL BOTTOM-OUT :active scale(0.965)
-   ========================================================================== */
+.card-inner {
+  position: relative;
+  z-index: 3;
+  padding: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .btn-magnetic {
   position: relative;
   display: inline-flex;
@@ -196,14 +182,14 @@ body {
   user-select: none;
   outline: none;
   will-change: transform;
+  transform: translate(var(--mag-x, 0px), var(--mag-y, 0px));
   transition: transform 0.16s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.16s ease, background 0.16s ease;
 }
 
-/* CRITICAL REQUIREMENT: Mechanical Bottom-Out Depression */
 .btn-magnetic:active,
 button:active,
 .tactile-switch:active {
-  transform: scale(0.965) translateY(1.5px) !important;
+  transform: translate(var(--mag-x, 0px), var(--mag-y, 0px)) scale(0.965) translateY(1.5px) !important;
   box-shadow: var(--shadow-pressed) !important;
 }
 
@@ -233,7 +219,6 @@ button:active,
   box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08), inset 0 1px 0 #FFFFFF;
 }
 
-/* Focus Accessibility Rings */
 .btn-magnetic:focus-visible,
 button:focus-visible,
 a:focus-visible,
@@ -242,9 +227,6 @@ input:focus-visible {
   outline-offset: 3px;
 }
 
-/* ==========================================================================
-   STICKY GLASS HUD (Thanh Điều Hướng Kính Mờ)
-   ========================================================================== */
 .sticky-hud {
   position: sticky;
   top: 16px;
@@ -274,6 +256,7 @@ input:focus-visible {
   gap: 12px;
   text-decoration: none;
   color: var(--text-primary);
+  flex-shrink: 0;
 }
 
 .hud-logo-icon {
@@ -286,12 +269,14 @@ input:focus-visible {
   justify-content: center;
   color: #FFFFFF;
   box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2);
+  flex-shrink: 0;
 }
 
 .hud-title {
   font-size: 15px;
   font-weight: 700;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .hud-badge-online {
@@ -306,6 +291,7 @@ input:focus-visible {
   font-size: 11px;
   font-weight: 600;
   color: var(--accent-emerald);
+  white-space: nowrap;
 }
 
 .pulse-dot {
@@ -334,6 +320,7 @@ input:focus-visible {
   color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.15s ease;
+  white-space: nowrap;
 }
 
 .hud-link:hover {
@@ -343,7 +330,8 @@ input:focus-visible {
 .hud-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .hud-pill-btn {
@@ -359,6 +347,7 @@ input:focus-visible {
   color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.18s ease;
+  white-space: nowrap;
 }
 
 .hud-pill-btn:hover {
@@ -367,9 +356,6 @@ input:focus-visible {
   border-color: #94A3B8;
 }
 
-/* ==========================================================================
-   HERO STAGE (Sân Khấu Mở Màn Titanium Monolith)
-   ========================================================================== */
 .hero-section {
   position: relative;
   z-index: 10;
@@ -399,7 +385,7 @@ input:focus-visible {
 }
 
 .hero-title {
-  font-size: clamp(38px, 6vw, 68px);
+  font-size: clamp(34px, 5.5vw, 68px);
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.038em;
@@ -416,7 +402,7 @@ input:focus-visible {
 .hero-subhead {
   max-width: 780px;
   margin: 0 auto 36px;
-  font-size: clamp(17px, 2vw, 20px);
+  font-size: clamp(16px, 1.8vw, 20px);
   line-height: 1.6;
   font-weight: 400;
   color: var(--text-secondary);
@@ -434,7 +420,7 @@ input:focus-visible {
 .hero-telemetry-ribbon {
   display: inline-flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   padding: 10px 24px;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px);
@@ -450,6 +436,7 @@ input:focus-visible {
   display: flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
 }
 
 .ribbon-val {
@@ -457,9 +444,6 @@ input:focus-visible {
   color: var(--text-primary);
 }
 
-/* ==========================================================================
-   INTERACTIVE SANDBOX LABORATORY (Phòng Thí Nghiệm Wow Engine)
-   ========================================================================== */
 .sandbox-section {
   position: relative;
   z-index: 10;
@@ -484,7 +468,7 @@ input:focus-visible {
 }
 
 .section-title {
-  font-size: clamp(26px, 3.5vw, 38px);
+  font-size: clamp(24px, 3.2vw, 38px);
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text-primary);
@@ -501,19 +485,6 @@ input:focus-visible {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
-}
-
-@media (max-width: 900px) {
-  .sandbox-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.card-inner {
-  padding: 30px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .card-header-bar {
@@ -539,6 +510,7 @@ input:focus-visible {
   align-items: center;
   justify-content: center;
   color: var(--text-primary);
+  flex-shrink: 0;
 }
 
 .card-title {
@@ -556,9 +528,9 @@ input:focus-visible {
   background: #F1F5F9;
   color: var(--text-muted);
   border: 1px solid var(--border-hairline);
+  display: inline-block;
 }
 
-/* Module A: 3D Parallax Tilt Showcase */
 .tilt-monolith-stage {
   height: 220px;
   background: linear-gradient(135deg, rgba(248, 250, 252, 0.9), rgba(241, 245, 249, 0.95));
@@ -571,6 +543,8 @@ input:focus-visible {
   margin-bottom: 18px;
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 800px;
 }
 
 .monolith-plate {
@@ -585,6 +559,9 @@ input:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  transform-style: preserve-3d;
+  transform: translateZ(28px);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .monolith-chip {
@@ -596,6 +573,8 @@ input:focus-visible {
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
+  transform: translateZ(20px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);
 }
 
 .monolith-text {
@@ -603,6 +582,7 @@ input:focus-visible {
   font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--text-secondary);
+  transform: translateZ(12px);
 }
 
 .tilt-telemetry-row {
@@ -614,7 +594,6 @@ input:focus-visible {
   color: var(--text-muted);
 }
 
-/* Module B: WebAudioHaptics Synthesizer Pad */
 .haptic-pad-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -676,7 +655,6 @@ input:focus-visible {
   height: 100%;
 }
 
-/* Module C: Magnetic Mechanical Keybed */
 .magnetic-keybed-container {
   display: flex;
   flex-direction: column;
@@ -712,7 +690,6 @@ input:focus-visible {
   color: var(--text-muted);
 }
 
-/* Module D: Dual-Mode Motion Engine Switcher */
 .dualmode-status-box {
   padding: 18px;
   background: #FFFFFF;
@@ -756,9 +733,6 @@ input:focus-visible {
   color: var(--text-secondary);
 }
 
-/* ==========================================================================
-   SWARM TELEMETRY BENTO GRID (Bố Cục Bento Đo Đạc Bầy Tác Tử)
-   ========================================================================== */
 .bento-section {
   position: relative;
   z-index: 10;
@@ -785,14 +759,6 @@ input:focus-visible {
   grid-column: span 6;
 }
 
-@media (max-width: 900px) {
-  .bento-col-8,
-  .bento-col-4,
-  .bento-col-6 {
-    grid-column: span 12;
-  }
-}
-
 .topology-canvas-container {
   height: 280px;
   background: #FFFFFF;
@@ -805,6 +771,7 @@ input:focus-visible {
 .topology-canvas {
   width: 100%;
   height: 100%;
+  display: block;
 }
 
 .spec-list {
@@ -833,9 +800,6 @@ input:focus-visible {
   color: var(--text-primary);
 }
 
-/* ==========================================================================
-   MICRO-TERMINAL FOOTER
-   ========================================================================== */
 .footer-terminal {
   position: relative;
   z-index: 10;
@@ -873,6 +837,7 @@ input:focus-visible {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .footer-badge {
@@ -884,7 +849,112 @@ input:focus-visible {
   color: var(--text-primary);
 }
 
+@media (max-width: 900px) {
+  .sandbox-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-col-8,
+  .bento-col-4,
+  .bento-col-6 {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 768px) {
+  .hud-nav-links {
+    display: none;
+  }
+  .sticky-hud {
+    top: 8px;
+    padding: 0 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .hud-bar {
+    padding: 6px 12px;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .hud-badge-online {
+    display: none;
+  }
+  .hud-brand {
+    gap: 6px;
+  }
+  .hud-title {
+    font-size: 13px;
+  }
+  .hud-actions {
+    gap: 6px;
+  }
+  .hud-actions a.btn-magnetic {
+    display: none;
+  }
+  .hud-pill-btn {
+    padding: 5px 9px;
+    font-size: 11px;
+  }
+  #soundLabel {
+    display: none;
+  }
+  .hero-section {
+    padding: 40px 16px 30px;
+  }
+  .hero-title {
+    font-size: clamp(26px, 7vw, 36px);
+  }
+  .hero-subhead {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .hero-telemetry-ribbon {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 14px;
+    padding: 8px 12px;
+    max-width: 100%;
+    font-size: 11px;
+  }
+  .haptic-pad-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .haptic-pad-btn[style*="grid-column: span 2"] {
+    grid-column: span 2;
+  }
+  .magnetic-demo-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .magnetic-demo-row .btn-magnetic {
+    width: 100%;
+  }
+  .topology-labels {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-inner {
+    padding: 18px 14px;
+  }
+  .hero-cta-group .btn-magnetic {
+    width: 100%;
+  }
+  .hero-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+}
   </style>
+
+  <!-- External Stylesheet for Showcase V2 Interactive Design System Hub -->
+  <link rel="stylesheet" href="showcase.css">
 
   <!-- Optional CDN Libraries (with safe fallback handled in wow_engine.js) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -917,21 +987,28 @@ input:focus-visible {
       <ul class="hud-nav-links">
         <li><a href="#hero" class="hud-link" data-haptic="pop">Tổng quan</a></li>
         <li><a href="#sandbox" class="hud-link" data-haptic="pop">Wow Engine</a></li>
+        <li><a href="#soundboard" class="hud-link" data-haptic="pop">Soundboard V2</a></li>
+        <li><a href="#signature-blocks" class="hud-link" data-haptic="pop">Khối Wow</a></li>
         <li><a href="#telemetry" class="hud-link" data-haptic="pop">Đo từ xa Bento</a></li>
         <li><a href="#specs" class="hud-link" data-haptic="pop">Thông số Kỹ thuật</a></li>
       </ul>
 
       <div class="hud-actions">
-        <!-- Master Sound Toggle Button -->
-        <button type="button" class="hud-pill-btn" id="soundToggleBtn" data-haptic="switch" aria-label="Bật/Tắt Âm thanh Xúc giác">
+        <!-- Master Sound Toggle Button with Audio-Off Icon Swap -->
+        <button type="button" class="hud-pill-btn" id="soundToggleBtn" aria-label="Bật/Tắt Âm thanh Xúc giác">
           <svg id="soundIconOn" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
             <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
           </svg>
+          <svg id="soundIconOff" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
           <span id="soundLabel">Âm thanh: Bật</span>
         </button>
 
-        <!-- Dual-Mode Motion Toggle -->
+        <!-- Dual-Mode Motion Toggle (Instant Seamless Switch) -->
         <button type="button" class="hud-pill-btn" id="modeToggleBtn" data-haptic="pop" aria-label="Chuyển chế độ chuyển động kép">
           <span id="modeLabel">Chế độ: 60 FPS</span>
         </button>
@@ -945,10 +1022,15 @@ input:focus-visible {
   </header>
 
   <!-- ========================================================================
-       2. CINEMATIC HERO STAGE (Sân Khấu Mở Màn Titanium Monolith)
+       2. CINEMATIC HERO STAGE (Sân Khấu Mở Màn Titanium Monolith & 3D WebGL)
        ======================================================================== -->
   <main>
     <section class="hero-section" id="hero">
+      <!-- 3D WebGL Micro-Engine Background Canvas -->
+      <div class="hero-webgl-container" aria-hidden="true">
+        <canvas id="heroWebglCanvas" class="hero-webgl-canvas"></canvas>
+      </div>
+
       <div class="hero-badge animate-entrance">
         <span>⚡ ANTIGRAVITY 2.0 // SPECULAR PILOT EDITION</span>
       </div>
@@ -983,6 +1065,19 @@ input:focus-visible {
         </a>
       </div>
 
+      <!-- 3D WebGL Micro-Engine 3-Mode Selector -->
+      <div class="webgl-mode-pill-bar animate-entrance" style="margin-bottom: 24px;">
+        <button type="button" class="webgl-mode-btn active" data-webgl-mode="waves" data-haptic="pop">
+          <span class="mode-icon">🌊</span> Iridescent Waves
+        </button>
+        <button type="button" class="webgl-mode-btn" data-webgl-mode="particles" data-haptic="pop">
+          <span class="mode-icon">✨</span> Particle Mesh
+        </button>
+        <button type="button" class="webgl-mode-btn" data-webgl-mode="grid" data-haptic="pop">
+          <span class="mode-icon">📐</span> Titanium Grid
+        </button>
+      </div>
+
       <!-- Live Telemetry Ribbon -->
       <div class="hero-telemetry-ribbon animate-entrance">
         <div class="ribbon-item">
@@ -999,7 +1094,7 @@ input:focus-visible {
         </div>
         <div class="ribbon-item">
           <span>CONTRAST:</span>
-          <span class="ribbon-val">16:1 (WCAG AAA)</span>
+          <span class="ribbon-val">17.06:1 (WCAG AAA)</span>
         </div>
       </div>
     </section>
@@ -1018,7 +1113,7 @@ input:focus-visible {
       </div>
 
       <div class="sandbox-grid">
-        <!-- Module A: 3D Parallax Tilt & Specular Spotlight -->
+        <!-- Module A: 3D Parallax Tilt with Layer Depth & Specular Spotlight -->
         <div class="acrylic-card" data-tilt="true" data-tilt-max="12" data-spotlight="true">
           <div class="specular-rim"></div>
           <div class="card-inner">
@@ -1037,8 +1132,8 @@ input:focus-visible {
             </div>
 
             <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px;">
-              Di chuột qua khối thẻ này: Cỗ máy tính toán góc nghiêng 3D Perspective theo tọa độ thực và chiếu luồng sáng 
-              Spotlight rọi theo con trỏ với viền Specular phản quang siêu mảnh.
+              Di chuột qua khối thẻ này: Cỗ máy tính toán góc nghiêng 3D Perspective theo tọa độ thực, tách lớp chiều sâu đa tầng 
+              (Monolith Plate nổi 28px, Chip nổi 20px) và chiếu luồng sáng Spotlight rọi theo con trỏ với viền Specular phản quang siêu mảnh.
             </p>
 
             <div class="tilt-monolith-stage">
@@ -1061,8 +1156,8 @@ input:focus-visible {
           </div>
         </div>
 
-        <!-- Module B: WebAudioHaptics Synthesizer Pad -->
-        <div class="acrylic-card" data-spotlight="true">
+        <!-- Module B: WebAudioHaptics v2.0 Soundboard & Spatial Lab -->
+        <div class="acrylic-card" data-spotlight="true" id="soundboard">
           <div class="specular-rim"></div>
           <div class="card-inner">
             <div class="card-header-bar">
@@ -1074,42 +1169,126 @@ input:focus-visible {
                   </svg>
                 </div>
                 <div>
-                  <h3 class="card-title">WebAudioHaptics Soundboard</h3>
-                  <div class="card-badge">ZERO ASSET LATENCY</div>
+                  <h3 class="card-title">WebAudioHaptics v2.0 Soundboard</h3>
+                  <div class="card-badge">10 PHYSICAL SOUNDS // ZERO LATENCY</div>
                 </div>
               </div>
             </div>
 
             <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px;">
-              Bấm thử các phím xúc giác bên dưới để nghe 5 dạng sóng âm thanh vật lý được tổng hợp theo thời gian thực 
-              (không tải file mp3, triệt tiêu độ trễ mạng):
+              Trọn bộ 10 âm thanh xúc giác vật lý thuần Web Audio API: Thử nghiệm núm xoay Stepped Rotary, 
+              hợp âm Success, công tắc 2 thì và định vị âm thanh không gian trái/phải siêu thực:
             </p>
 
-            <div class="haptic-pad-grid">
-              <button type="button" class="haptic-pad-btn" id="btnHapticClick" data-haptic="click">
-                <span class="pad-label">Click</span>
+            <!-- 10 Tactile Sound Pads Grid -->
+            <div class="soundboard-v2-grid">
+              <button type="button" class="haptic-pad-v2" id="btnHapticClick" data-sound-trigger="click">
+                <span class="pad-num">01</span>
+                <span class="pad-label">Mechanical Click</span>
                 <span class="pad-freq">1400→450Hz</span>
               </button>
 
-              <button type="button" class="haptic-pad-btn" id="btnHapticPop" data-haptic="pop">
-                <span class="pad-label">Pop</span>
+              <button type="button" class="haptic-pad-v2" id="btnHapticPop" data-sound-trigger="pop">
+                <span class="pad-num">02</span>
+                <span class="pad-label">Tactile Pop</span>
                 <span class="pad-freq">360→920Hz</span>
               </button>
 
-              <button type="button" class="haptic-pad-btn" id="btnHapticDetent" data-haptic="detent">
-                <span class="pad-label">Detent Tick</span>
-                <span class="pad-freq">1600→320Hz</span>
-              </button>
-
-              <button type="button" class="haptic-pad-btn" id="btnHapticSwitch" data-haptic="switch">
+              <button type="button" class="haptic-pad-v2" id="btnHapticSwitch" data-sound-trigger="switch">
+                <span class="pad-num">03</span>
                 <span class="pad-label">Switch Clack</span>
                 <span class="pad-freq">Dual Stage</span>
               </button>
 
-              <button type="button" class="haptic-pad-btn" id="btnHapticChime" data-haptic="chime" style="grid-column: span 2;">
-                <span class="pad-label">Harmonic Chime Chord</span>
-                <span class="pad-freq">Triad C5-E5-G5-C6</span>
+              <button type="button" class="haptic-pad-v2" id="btnHapticChime" data-sound-trigger="chime">
+                <span class="pad-num">04</span>
+                <span class="pad-label">Success Chord</span>
+                <span class="pad-freq">Triad C5-C6</span>
               </button>
+
+              <button type="button" class="haptic-pad-v2" id="btnHapticDetent" data-sound-trigger="detent">
+                <span class="pad-num">05</span>
+                <span class="pad-label">Detent Tick</span>
+                <span class="pad-freq">1600→320Hz</span>
+              </button>
+
+              <button type="button" class="haptic-pad-v2" id="btnHapticRotary" data-sound-trigger="rotary">
+                <span class="pad-num">06</span>
+                <span class="pad-label">Stepped Rotary</span>
+                <span class="pad-freq">F-Mod Detent</span>
+              </button>
+
+              <button type="button" class="haptic-pad-v2" id="btnHapticSpring" data-sound-trigger="spring">
+                <span class="pad-num">07</span>
+                <span class="pad-label">Spring Release</span>
+                <span class="pad-freq">680→260Hz Ring</span>
+              </button>
+
+              <button type="button" class="haptic-pad-v2" id="btnHapticSpatialLeft" data-sound-trigger="spatial-left">
+                <span class="pad-num">08</span>
+                <span class="pad-label">Spatial Left</span>
+                <span class="pad-freq">Pan: -0.85</span>
+              </button>
+
+              <button type="button" class="haptic-pad-v2" id="btnHapticSpatialRight" data-sound-trigger="spatial-right">
+                <span class="pad-num">09</span>
+                <span class="pad-label">Spatial Right</span>
+                <span class="pad-freq">Pan: +0.85</span>
+              </button>
+
+              <button type="button" class="haptic-pad-v2" id="btnHapticThud" data-sound-trigger="thud">
+                <span class="pad-num">10</span>
+                <span class="pad-label">Bottom-Out Thud</span>
+                <span class="pad-freq">120→42Hz Deep</span>
+              </button>
+            </div>
+
+            <!-- Stepped Rotary Dial Component -->
+            <div class="rotary-knob-wrapper">
+              <div class="rotary-knob-stage">
+                <div class="rotary-dial" id="steppedRotaryDial" tabindex="0" role="slider" aria-label="Stepped Rotary Dial" aria-valuemin="0" aria-valuemax="360" aria-valuenow="0" title="Kéo chuột, lăn bánh xe hoặc dùng phím mũi tên để xoay núm">
+                  <div class="rotary-indicator"></div>
+                </div>
+              </div>
+              <div class="rotary-knob-info">
+                <div class="rotary-title">Núm Xoay Khấc Bước (Stepped Rotary Dial)</div>
+                <div class="rotary-hint">Kéo chuột theo góc tròn, cuộn con lăn hoặc dùng phím mũi tên để cảm nhận từng khấc rãnh 15° phát ra xung âm thanh detent riêng biệt.</div>
+                <div class="rotary-telemetry">
+                  <span>GÓC XOAY:</span>
+                  <span class="rotary-val-box" id="rotaryAngleReadout">0° (Khấc 1)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Two-Stage Switch Component -->
+            <div class="two-stage-switch-row">
+              <div>
+                <div style="font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 2px;">Công Tắc 2 Thì (Two-Stage Tactile Switch)</div>
+                <div style="font-size: 11.5px; color: var(--text-secondary);" id="twoStageLabel">GIAI ĐOẠN 0: NHẢ</div>
+              </div>
+              <div class="two-stage-lever" id="twoStageLever" tabindex="0" role="button" aria-label="Two-Stage Mechanical Switch" title="Nhấp hoặc bấm Enter/Space để chuyển pha 1 và pha 2">
+                <div class="two-stage-knob"></div>
+              </div>
+            </div>
+
+            <!-- Spatial Stereo Panning Component -->
+            <div class="spatial-panning-row">
+              <div style="min-width: 140px;">
+                <div style="font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 2px;">Âm Thanh Không Gian (Spatial Stereo)</div>
+                <div style="font-size: 11.5px; color: var(--text-secondary);" id="spatialLabel">TRUNG TÂM (0.0)</div>
+              </div>
+              <div class="spatial-meter-container">
+                <span style="font-size: 11px; font-weight: 700; color: var(--text-muted);">L</span>
+                <div class="spatial-meter-track">
+                  <div class="spatial-meter-thumb" id="spatialThumb"></div>
+                </div>
+                <span style="font-size: 11px; font-weight: 700; color: var(--text-muted);">R</span>
+              </div>
+              <div class="spatial-btn-group">
+                <button type="button" class="spatial-btn" data-pan="-0.85">Trái</button>
+                <button type="button" class="spatial-btn" data-pan="0.0">Giữa</button>
+                <button type="button" class="spatial-btn" data-pan="0.85">Phải</button>
+              </div>
             </div>
 
             <!-- Oscilloscope Visualizer -->
@@ -1140,7 +1319,7 @@ input:focus-visible {
 
             <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px;">
               Nút bấm nam châm hút nhẹ theo quỹ đạo con trỏ chuột và lún cơ học chuẩn xác <strong>scale(0.965) translateY(1.5px)</strong> 
-              kèm bóng đổ nén khi bấm giữ:
+              kèm bóng đổ nén khi bấm giữ (không bao giờ bị giật về tâm khi click):
             </p>
 
             <div class="magnetic-keybed-container">
@@ -1204,11 +1383,11 @@ input:focus-visible {
               </p>
             </div>
 
-            <div style="display: flex; gap: 12px; margin-top: auto;">
-              <button type="button" class="btn-magnetic btn-secondary" id="btnSwitchTestMode" data-magnetic="true" data-magnetic-pull="0.2" data-haptic="switch" style="flex: 1;">
+            <div style="display: flex; gap: 12px; margin-top: auto; flex-wrap: wrap;">
+              <button type="button" class="btn-magnetic btn-secondary" id="btnSwitchTestMode" data-magnetic="true" data-magnetic-pull="0.2" data-haptic="switch" style="flex: 1; min-width: 140px;">
                 Bật Test Mode (?test-mode=1)
               </button>
-              <button type="button" class="btn-magnetic btn-primary" id="btnRunBenchmark" data-magnetic="true" data-magnetic-pull="0.2" data-haptic="chime" style="flex: 1;">
+              <button type="button" class="btn-magnetic btn-primary" id="btnRunBenchmark" data-magnetic="true" data-magnetic-pull="0.2" data-haptic="chime" style="flex: 1; min-width: 140px;">
                 Đo Benchmark Thời Gian
               </button>
             </div>
@@ -1218,7 +1397,178 @@ input:focus-visible {
     </section>
 
     <!-- ======================================================================
-         4. SWARM TELEMETRY BENTO GRID (Bố Cục Bento Đo Đạc Bầy Tác Tử)
+         4. SIGNATURE WOW BLOCKS GALLERY (Trưng Bày Các Khối Ấn Tượng Độc Bản)
+         ====================================================================== -->
+    <section class="wow-blocks-section" id="signature-blocks">
+      <div class="section-header">
+        <span class="section-tag">// KHỐI THIẾT KẾ ĐỘC BẢN THẾ HỆ MỚI</span>
+        <h2 class="section-title">Signature Wow Blocks Gallery</h2>
+        <p class="section-desc">
+          Bốn khối tương tác biểu trưng đẳng cấp thế giới kết hợp chuẩn Luminous Light Theme Invariant: 
+          Lưới Bento viền sáng, Odometer đếm số có tiếng detent tick, Toast lò xo đàn hồi và Spotlight card đa tầng.
+        </p>
+      </div>
+
+      <div class="signature-blocks-grid">
+        <!-- Wow Block 1: Mechanical Stepped Odometer -->
+        <div class="acrylic-card sig-block-span-6" data-spotlight="true">
+          <div class="specular-rim"></div>
+          <div class="card-inner odometer-card-inner">
+            <div class="card-header-bar">
+              <div class="card-title-group">
+                <div class="card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="4" y1="9" x2="20" y2="9"></line>
+                    <line x1="4" y1="15" x2="20" y2="15"></line>
+                    <line x1="10" y1="3" x2="8" y2="21"></line>
+                    <line x1="16" y1="3" x2="14" y2="21"></line>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="card-title">Mechanical Stepped Odometer</h3>
+                  <div class="card-badge">AUDIBLE DETENT TICK</div>
+                </div>
+              </div>
+            </div>
+
+            <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 12px;">
+              Đồng hồ số lật cơ học: Mỗi nấc nhảy giá trị phát ra tiếng tick detent bánh răng sắc nét theo nhịp bước:
+            </p>
+
+            <div class="odometer-display-stage">
+              <div class="odometer-counter" id="odometerCounter">012,480</div>
+            </div>
+
+            <div class="odometer-controls">
+              <button type="button" class="odometer-btn" id="btnOdo100" data-haptic="detent">+ 100</button>
+              <button type="button" class="odometer-btn" id="btnOdo1000" data-haptic="detent">+ 1,000</button>
+              <button type="button" class="odometer-btn" id="btnOdoRandom" data-haptic="detent">Tăng Ngẫu Nhiên</button>
+              <button type="button" class="odometer-btn" id="btnOdoReset" data-haptic="pop">Đặt Lại 0</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wow Block 2: Spring Physics Toast Engine -->
+        <div class="acrylic-card sig-block-span-6" data-spotlight="true">
+          <div class="specular-rim"></div>
+          <div class="card-inner">
+            <div class="card-header-bar">
+              <div class="card-title-group">
+                <div class="card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="card-title">Spring Physics Toast</h3>
+                  <div class="card-badge">CUBIC-BEZIER SPRING</div>
+                </div>
+              </div>
+            </div>
+
+            <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 12px;">
+              Thông báo Toast bật nảy theo quỹ đạo vật lý lò xo <code>cubic-bezier(0.22, 1.61, 0.36, 1.0)</code> với âm thanh Pop/Chime:
+            </p>
+
+            <div class="toast-interactive-stage" id="toastInteractiveStage">
+              <div class="spring-toast-item" style="box-shadow: none;">
+                <div class="toast-badge-dot" style="background: #059669;"></div>
+                <div class="toast-content-group">
+                  <div class="toast-title">Cấu hình Đã Lưu</div>
+                  <div class="toast-desc">Thông số xúc giác WebAudioHaptics v2.0 đã kích hoạt thành công.</div>
+                </div>
+                <span style="font-family: var(--font-mono); font-size: 10px; color: var(--accent-emerald);">MẪU</span>
+              </div>
+            </div>
+
+            <button type="button" class="btn-magnetic btn-primary" id="btnTriggerToast" data-magnetic="true" data-magnetic-pull="0.25" data-haptic="chime" style="width: 100%;">
+              Bật Toast Lò Xo Đàn Hồi Live
+            </button>
+          </div>
+        </div>
+
+        <!-- Wow Block 3: Specular Luminous Bento Grid -->
+        <div class="acrylic-card sig-block-span-6" data-spotlight="true">
+          <div class="specular-rim"></div>
+          <div class="card-inner">
+            <div class="card-header-bar">
+              <div class="card-title-group">
+                <div class="card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="card-title">Lưới Bento Viền Sáng Specular</h3>
+                  <div class="card-badge">FROSTED ACRYLIC SHEEN</div>
+                </div>
+              </div>
+            </div>
+
+            <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 12px;">
+              Bố cục Bento Card bất đối xứng phân tầng chiều sâu: Viền sáng quang học 1px Specular Hairlines kết hợp bóng đổ đa tầng mịn màng, triệt tiêu hoàn toàn giấy bẹt vô hồn.
+            </p>
+
+            <ul class="spec-list" style="margin-top: auto;">
+              <li class="spec-row">
+                <span class="spec-key">Bề mặt Canvas:</span>
+                <span class="spec-val">Icy Platinum #F8FAFC + Dot Matrix</span>
+              </li>
+              <li class="spec-row">
+                <span class="spec-key">Viền Quang Học:</span>
+                <span class="spec-val">1px solid rgba(255, 255, 255, 0.95)</span>
+              </li>
+              <li class="spec-row">
+                <span class="spec-key">Bóng Đổ Đa Tầng:</span>
+                <span class="spec-val">Layered Ambient + Key Shadows</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Wow Block 4: Multi-Layer Spotlight Card -->
+        <div class="acrylic-card sig-block-span-6" data-spotlight="true" data-tilt="true" data-tilt-max="10">
+          <div class="specular-rim"></div>
+          <div class="card-inner">
+            <div class="card-header-bar">
+              <div class="card-title-group">
+                <div class="card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="card-title">Spotlight Card Đa Tầng</h3>
+                  <div class="card-badge">CONCAVE SPECULAR SHEEN</div>
+                </div>
+              </div>
+            </div>
+
+            <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 12px;">
+              Thẻ rọi đèn phản quang theo con trỏ chuột với viền sáng Specular Rim chuyển động mềm mại, kính mờ Acrylic che chắn chữ không bị chói.
+            </p>
+
+            <div style="display: flex; gap: 10px; margin-top: auto; flex-wrap: wrap;">
+              <span class="hud-badge-online">SPOTLIGHT: HOẠT ĐỘNG</span>
+              <span class="hud-badge-online" style="background: rgba(2, 132, 199, 0.09); border-color: rgba(2, 132, 199, 0.25); color: var(--accent-cyan);">TILT 3D: SẴN SÀNG</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. SWARM TELEMETRY BENTO GRID (Bố Cục Bento Đo Đạc Bầy Tác Tử)
          ====================================================================== -->
     <section class="bento-section" id="telemetry">
       <div class="section-header">
@@ -1257,7 +1607,7 @@ input:focus-visible {
               <canvas class="topology-canvas" id="topologyCanvas" width="750" height="280"></canvas>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted);">
+            <div class="topology-labels" style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted); flex-wrap: wrap; gap: 8px;">
               <span>POD 1: CORE LOGIC</span>
               <span>POD 2: DATA PERSISTENCE</span>
               <span>POD 3: API TRANSPORT</span>
@@ -1365,7 +1715,7 @@ input:focus-visible {
             <ul class="spec-list">
               <li class="spec-row">
                 <span class="spec-key">Độ tương phản Văn bản Chính:</span>
-                <span class="spec-val" style="color: var(--accent-emerald);">16.0 : 1 (Chuẩn WCAG AAA)</span>
+                <span class="spec-val" style="color: var(--accent-emerald);">17.06 : 1 (Chuẩn WCAG AAA)</span>
               </li>
               <li class="spec-row">
                 <span class="spec-key">Độ tương phản Phụ đề:</span>
@@ -1404,8 +1754,8 @@ input:focus-visible {
       <div class="acrylic-card" data-spotlight="true">
         <div class="specular-rim"></div>
         <div class="card-inner">
-          <div style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px;">
+          <div class="table-responsive-container" style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%;">
+            <table style="width: 100%; min-width: 600px; border-collapse: collapse; text-align: left; font-size: 14px;">
               <thead>
                 <tr style="border-bottom: 2px solid var(--border-hairline-strong);">
                   <th style="padding: 14px 16px; color: var(--text-muted); font-weight: 600;">TIÊU CHÍ KỸ THUẬT</th>
@@ -1473,18 +1823,63 @@ input:focus-visible {
   </footer>
 
   <!-- ========================================================================
-       7. WOW ENGINE LOGIC & CANVAS SCRIPTS
+       LIVE DELIGHT INSPECTOR HUD (Bảng Đo Lường Trực Quan Góc Màn Hình)
+       ======================================================================== -->
+  <aside class="delight-inspector-hud" id="delightHud" aria-label="Delight Inspector Telemetry">
+    <div class="delight-hud-header">
+      <div class="delight-hud-title">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+        <span>DELIGHT INSPECTOR HUD</span>
+      </div>
+      <div class="delight-hud-fps-pill">
+        <span class="pulse-dot"></span>
+        <span id="hudFpsVal">60 FPS</span>
+      </div>
+      <button type="button" class="delight-hud-collapse-btn" id="hudCollapseBtn" aria-label="Thu gọn hoặc mở rộng HUD">Thu gọn</button>
+    </div>
+
+    <div class="delight-hud-body">
+      <div class="delight-metric-row">
+        <span class="delight-metric-name">Độ Lún Xúc Giác:</span>
+        <span class="delight-metric-val cyan" id="hudTactileDepthVal">scale(1.0) 0px (Nhả)</span>
+      </div>
+      <div class="tactile-depth-gauge" title="Độ lún cơ học khi nhấn nút">
+        <div class="tactile-depth-bar" id="hudDepthBar"></div>
+      </div>
+
+      <div class="delight-metric-row" style="margin-top: 4px;">
+        <span class="delight-metric-name">Độ Tương Phản WCAG:</span>
+        <span class="delight-metric-val emerald" id="hudContrastVal">17.06 : 1 (AAA)</span>
+      </div>
+
+      <div class="delight-metric-row">
+        <span class="delight-metric-name">WebAudio Engine:</span>
+        <span class="delight-metric-val" id="hudAudioStatusVal">48kHz Native Synth</span>
+      </div>
+
+      <div class="delight-metric-row">
+        <span class="delight-metric-name">Theme Invariant:</span>
+        <span class="delight-metric-val" style="color: #6366F1;">Luminous #F8FAFC</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Viewport Floating Toast Container -->
+  <div class="toast-floating-container" id="toastFloatingStack" aria-live="polite"></div>
+
+  <!-- ========================================================================
+       7. WOW ENGINE LOGIC & SHOWCASE V2 SCRIPTS
        ======================================================================== -->
   <script src="wow_engine.js"></script>
+  <script src="showcase.js"></script>
 
   <script>
     (function () {
       'use strict';
 
-      // 1. Dual-Mode UI Sync
-      const urlParams = new URLSearchParams(window.location.search);
-      const isTestMode = urlParams.get('test-mode') === '1' || window.__TEST_MODE__ === true;
-
+      // 1. Dual-Mode UI Sync with Seamless Runtime Switching
       const modeBadgeLive = document.getElementById('modeBadgeLive');
       const modeExplainLive = document.getElementById('modeExplainLive');
       const modeLabel = document.getElementById('modeLabel');
@@ -1492,31 +1887,60 @@ input:focus-visible {
       const btnSwitchTestMode = document.getElementById('btnSwitchTestMode');
       const telemetryMotionMode = document.getElementById('telemetryMotionMode');
 
-      if (isTestMode) {
-        if (modeBadgeLive) {
-          modeBadgeLive.className = 'mode-badge-test';
-          modeBadgeLive.textContent = '0ms TEST MODE ACTIVE';
+      function syncModeUI(inTestMode) {
+        if (inTestMode) {
+          if (modeBadgeLive) {
+            modeBadgeLive.className = 'mode-badge-test';
+            modeBadgeLive.textContent = '0ms TEST MODE ACTIVE';
+          }
+          if (modeExplainLive) {
+            modeExplainLive.textContent = 'Mọi transition, animation và delay đã được ép về 0ms. Hệ thống đã sẵn sàng cho kiểm toán và kiểm thử robot tự động siêu tốc.';
+          }
+          if (modeLabel) modeLabel.textContent = 'Chế độ: 0ms Test';
+          if (btnSwitchTestMode) btnSwitchTestMode.textContent = 'Tắt Test Mode (Về 60 FPS)';
+          if (telemetryMotionMode) telemetryMotionMode.textContent = '0ms INSTANT TEST MODE';
+        } else {
+          if (modeBadgeLive) {
+            modeBadgeLive.className = 'mode-badge-kinetic';
+            modeBadgeLive.textContent = '60 FPS GSAP KINETIC';
+          }
+          if (modeExplainLive) {
+            modeExplainLive.textContent = 'Hiệu ứng chuyển động mượt mà 60 FPS qua GSAP & Lenis smooth scroll đang vận hành đầy đủ.';
+          }
+          if (modeLabel) modeLabel.textContent = 'Chế độ: 60 FPS';
+          if (btnSwitchTestMode) btnSwitchTestMode.textContent = 'Bật Test Mode (?test-mode=1)';
+          if (telemetryMotionMode) telemetryMotionMode.textContent = '60 FPS GSAP + LENIS';
         }
-        if (modeExplainLive) {
-          modeExplainLive.textContent = 'Mọi transition, animation và delay đã được ép về 0ms. Hệ thống đã sẵn sàng cho kiểm toán và kiểm thử robot tự động siêu tốc.';
-        }
-        if (modeLabel) modeLabel.textContent = 'Chế độ: 0ms Test';
-        if (btnSwitchTestMode) btnSwitchTestMode.textContent = 'Tắt Test Mode (Về 60 FPS)';
-        if (telemetryMotionMode) telemetryMotionMode.textContent = '0ms INSTANT TEST MODE';
       }
 
+      // Initial sync
+      syncModeUI(window.WowEngine ? window.WowEngine.isTestMode : false);
+
       function toggleTestMode() {
+        if (!window.WowEngine) return;
+        const nextMode = !window.WowEngine.isTestMode;
+        window.WowEngine.setTestMode(nextMode);
+
+        // Update URL query parameter without full-page refresh
         const currentUrl = new URL(window.location.href);
-        if (isTestMode) {
-          currentUrl.searchParams.delete('test-mode');
-        } else {
+        if (nextMode) {
           currentUrl.searchParams.set('test-mode', '1');
+        } else {
+          currentUrl.searchParams.delete('test-mode');
         }
-        window.location.href = currentUrl.toString();
+        try {
+          window.history.replaceState(null, '', currentUrl.toString());
+        } catch (_) {}
+
+        syncModeUI(nextMode);
       }
 
       if (modeToggleBtn) modeToggleBtn.addEventListener('click', toggleTestMode);
       if (btnSwitchTestMode) btnSwitchTestMode.addEventListener('click', toggleTestMode);
+
+      window.addEventListener('wow:modechange', function(e) {
+        syncModeUI(e.detail.isTestMode);
+      });
 
       // Benchmark button
       const btnRunBenchmark = document.getElementById('btnRunBenchmark');
@@ -1527,7 +1951,8 @@ input:focus-visible {
           testEl.style.cssText = 'position:fixed;top:-100px;opacity:0;';
           document.body.appendChild(testEl);
 
-          if (window.gsap && !isTestMode) {
+          const currentIsTest = window.WowEngine ? window.WowEngine.isTestMode : false;
+          if (window.gsap && !currentIsTest) {
             window.gsap.to(testEl, {
               opacity: 1,
               duration: 0.1,
@@ -1546,15 +1971,28 @@ input:focus-visible {
         });
       }
 
-      // 2. Sound Toggle UI Sync
+      // 2. Sound Toggle UI Sync with Icon Swap
       const soundToggleBtn = document.getElementById('soundToggleBtn');
       const soundLabel = document.getElementById('soundLabel');
+      const soundIconOn = document.getElementById('soundIconOn');
+      const soundIconOff = document.getElementById('soundIconOff');
 
       if (soundToggleBtn && window.WowEngine && window.WowEngine.haptics) {
         soundToggleBtn.addEventListener('click', function () {
-          const isMuted = window.WowEngine.haptics.toggleMute();
+          const isMuted = window.WowEngine.haptics.toggleMute(true);
+          if (window.ShowcaseV2 && window.ShowcaseV2.hapticsV2) {
+            window.ShowcaseV2.hapticsV2.setMuted(isMuted);
+          }
           if (soundLabel) {
             soundLabel.textContent = isMuted ? 'Âm thanh: Tắt' : 'Âm thanh: Bật';
+          }
+          if (soundIconOn && soundIconOff) {
+            soundIconOn.style.display = isMuted ? 'none' : 'block';
+            soundIconOff.style.display = isMuted ? 'block' : 'none';
+          }
+          const hudAudioStatus = document.getElementById('hudAudioStatusVal');
+          if (hudAudioStatus) {
+            hudAudioStatus.textContent = isMuted ? 'Muted (Tắt)' : '48kHz Native Synth';
           }
         });
       }
@@ -1603,25 +2041,23 @@ input:focus-visible {
           waveEnergy *= 0.94;
           phase += 0.15;
 
-          if (!isTestMode) {
-            requestAnimationFrame(renderOscilloscope);
-          }
+          requestAnimationFrame(renderOscilloscope);
         }
         renderOscilloscope();
       }
 
-      // 4. Swarm Topology Canvas (6 Pods Neural Swarm)
+      // 4. Swarm Topology Canvas (6 Pods Neural Swarm Responsive Scaling)
       const topoCanvas = document.getElementById('topologyCanvas');
       if (topoCanvas) {
         const tctx = topoCanvas.getContext('2d');
 
-        const nodes = [
-          { name: 'Pod 1: Core', x: 120, y: 70, color: '#0284C7' },
-          { name: 'Pod 2: Data', x: 260, y: 210, color: '#4F46E5' },
-          { name: 'Pod 3: API', x: 380, y: 80, color: '#2563EB' },
-          { name: 'Pod 4: UI', x: 500, y: 200, color: '#0D9488' },
-          { name: 'Pod 5: Motion', x: 620, y: 90, color: '#D97706' },
-          { name: 'Pod 6: Test', x: 670, y: 210, color: '#059669' }
+        const baseNodes = [
+          { name: 'Pod 1: Core', relX: 0.16, relY: 0.25, color: '#0284C7' },
+          { name: 'Pod 2: Data', relX: 0.35, relY: 0.75, color: '#4F46E5' },
+          { name: 'Pod 3: API', relX: 0.51, relY: 0.28, color: '#2563EB' },
+          { name: 'Pod 4: UI', relX: 0.67, relY: 0.72, color: '#0D9488' },
+          { name: 'Pod 5: Motion', relX: 0.83, relY: 0.32, color: '#D97706' },
+          { name: 'Pod 6: Test', relX: 0.89, relY: 0.75, color: '#059669' }
         ];
 
         const connections = [
@@ -1635,7 +2071,16 @@ input:focus-visible {
         ];
 
         function renderTopology() {
-          tctx.clearRect(0, 0, topoCanvas.width, topoCanvas.height);
+          const w = topoCanvas.width;
+          const h = topoCanvas.height;
+          tctx.clearRect(0, 0, w, h);
+
+          const nodes = baseNodes.map(n => ({
+            name: n.name,
+            x: n.relX * w,
+            y: n.relY * h,
+            color: n.color
+          }));
 
           // Draw connections
           tctx.lineWidth = 1.5;
@@ -1661,7 +2106,8 @@ input:focus-visible {
             tctx.arc(px, py, 4, 0, Math.PI * 2);
             tctx.fill();
 
-            if (!isTestMode) {
+            const currentIsTest = window.WowEngine ? window.WowEngine.isTestMode : false;
+            if (!currentIsTest) {
               p.progress += p.speed;
               if (p.progress >= 1) {
                 p.progress = 0;
@@ -1678,7 +2124,7 @@ input:focus-visible {
             tctx.lineWidth = 2.5;
 
             tctx.beginPath();
-            tctx.arc(n.x, n.y, 10, 0, Math.PI * 2);
+            tctx.arc(n.x, n.y, 9, 0, Math.PI * 2);
             tctx.fill();
             tctx.stroke();
 
@@ -1686,12 +2132,10 @@ input:focus-visible {
             tctx.fillStyle = '#0F172A';
             tctx.font = '600 11px ui-monospace, monospace';
             tctx.textAlign = 'center';
-            tctx.fillText(n.name, n.x, n.y + 22);
+            tctx.fillText(n.name, n.x, n.y + 20);
           });
 
-          if (!isTestMode) {
-            requestAnimationFrame(renderTopology);
-          }
+          requestAnimationFrame(renderTopology);
         }
         renderTopology();
       }

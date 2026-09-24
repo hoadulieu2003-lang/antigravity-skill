@@ -1,0 +1,23 @@
+{
+  "wp": "WP-R2-01",
+  "task": "Xây dựng trọn bộ React Hooks chuyên dụng WowEngine (useWowEngine, useSpotlight, useParallaxTilt, useHaptics, useMagnetic, index.js, index.d.ts)",
+  "status": "COMPLETED",
+  "files_modified": [
+    "C:/Users/game/.gemini/config/skills/open-design/react/utils.js",
+    "C:/Users/game/.gemini/config/skills/open-design/react/vanilla-adapters.js",
+    "C:/Users/game/.gemini/config/skills/open-design/react/useSpotlight.js",
+    "C:/Users/game/.gemini/config/skills/open-design/react/useParallaxTilt.js",
+    "C:/Users/game/.gemini/config/skills/open-design/react/useHaptics.js",
+    "C:/Users/game/.gemini/config/skills/open-design/react/useMagnetic.js",
+    "C:/Users/game/.gemini/config/skills/open-design/react/useWowEngine.js",
+    "C:/Users/game/.gemini/config/skills/open-design/react/index.js",
+    "C:/Users/game/.gemini/config/skills/open-design/react/index.d.ts",
+    "C:/Users/game/.gemini/config/skills/open-design/react/wow-engine.css",
+    "C:/Users/game/.gemini/config/skills/open-design/react/test/loader.mjs",
+    "C:/Users/game/.gemini/config/skills/open-design/react/test/test_react_suite.js",
+    "C:/Users/game/.gemini/config/skills/open-design/react/test/test_edge_cases.js"
+  ],
+  "verification_script": "node --check config/skills/open-design/react/*.js && node projects/kronos-01/node_modules/typescript/bin/tsc --noEmit --skipLibCheck --moduleResolution node --typeRoots projects/kronos-01/node_modules/@types config/skills/open-design/react/index.d.ts && node --loader ./config/skills/open-design/react/test/loader.mjs config/skills/open-design/react/test/test_react_suite.js && node --loader ./config/skills/open-design/react/test/loader.mjs config/skills/open-design/react/test/test_edge_cases.js",
+  "verification_status": "PASS (100% clean JavaScript syntax, 100% clean TypeScript AST contracts, 5/5 unit test suites passed, 5/5 edge cases test suites passed, deep SSR renderToString verified)",
+  "summary": "Đã tái cấu trúc và hoàn thiện trọn bộ React Hooks chuyên dụng cho WowEngine tại config/skills/open-design/react/ bám sát đặc tả chuẩn config/wow_engine_react_spec.md và khắc phục triệt để các lỗ hổng của lần thử trước: 1) useMagnetic triển khai kiến trúc 2 tầng DOM tách biệt (anchorRef bắt tiệm cận & targetRef/coreRef nhận biến --mag-x/--mag-y), sửa lỗi kẹt nút đóng băng (stuck-button bug) bằng cơ chế theo dõi con trỏ cấp cửa sổ khi vượt biên vào vùng đệm trễ Hysteresis Deadzone; 2) useParallaxTilt bổ sung cảnh báo chẩn đoán bảo vệ preserve-3d trước xung đột overflow: hidden/clip, dọn dẹp triệt để transform của các tầng con depthChildren và ổn định hóa ref callback onTilt; 3) useSpotlight sửa lỗi setState trong render bằng guard isHoveringRef, bổ sung lắng nghe thoát màn hình trình duyệt pointerleave và ổn định hóa onMove ref; 4) useHaptics hỗ trợ nhận và áp dụng options khởi tạo volume/muted, mở rộng bindHaptic cho phép chuỗi gọi hàm userOnClick tùy biến; 5) useWowEngine hỗ trợ nhận diện nút nam châm 2 tầng DOM, rAF debouncing cho MutationObserver lọc bỏ các thay đổi DOM nội bộ của wow-parallax-glare tránh vòng lặp re-entrant; 6) index.js & index.d.ts đồng bộ 100% export mặc định và hợp đồng kiểu dữ liệu TypeScript AST. Đã kiểm tra cú pháp node --check, typecheck qua tsc và chạy deep verification qua ReactDOMServer.renderToString đạt 100% pass."
+}

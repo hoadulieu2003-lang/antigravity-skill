@@ -1,25 +1,73 @@
 {
   "entries": [
-    { "path": "skills/aider-execution-engine" },
-    { "path": "skills/ast-repo-map" },
-    { "path": "skills/background-remover" },
-    { "path": "skills/cdp-engine" },
-    { "path": "skills/chatgpt-bridge" },
-    { "path": "skills/design" },
-    { "path": "skills/dev" },
-    { "path": "skills/doc-previewer" },
-    { "path": "skills/github-spec-kit" },
-    { "path": "skills/gsap" },
-    { "path": "skills/hermes-agent" },
-    { "path": "skills/oh-my-pi" },
-    { "path": "skills/omnigent" },
-    { "path": "skills/open-design" },
-    { "path": "skills/photoshop-studio" },
-    { "path": "skills/plan" },
-    { "path": "skills/r3f-pmndrs" },
-    { "path": "skills/script-factory-pro" },
-    { "path": "skills/test" },
-    { "path": "skills/threejs" },
-    { "path": "skills/ui-ux-pro-max" }
+    {
+      "path": "skills/aider-execution-engine"
+    },
+    {
+      "path": "skills/ast-repo-map"
+    },
+    {
+      "path": "skills/background-remover"
+    },
+    {
+      "path": "skills/cdp-engine"
+    },
+    {
+      "path": "skills/chatgpt-bridge"
+    },
+    {
+      "path": "skills/design"
+    },
+    {
+      "path": "skills/design-engineering"
+    },
+    {
+      "path": "skills/dev"
+    },
+    {
+      "path": "skills/doc-previewer"
+    },
+    {
+      "path": "skills/github-spec-kit"
+    },
+    {
+      "path": "skills/gsap"
+    },
+    {
+      "path": "skills/hermes-agent"
+    },
+    {
+      "path": "skills/oh-my-pi"
+    },
+    {
+      "path": "skills/omnigent"
+    },
+    {
+      "path": "skills/open-design"
+    },
+    {
+      "path": "skills/photoshop-studio"
+    },
+    {
+      "path": "skills/plan"
+    },
+    {
+      "path": "skills/r3f-pmndrs"
+    },
+    {
+      "path": "skills/script-factory-pro"
+    },
+    {
+      "path": "skills/taste-engine"
+    },
+    {
+      "path": "skills/test"
+    },
+    {
+      "path": "skills/threejs"
+    },
+    {
+      "path": "skills/ui-ux-pro-max"
+    }
   ]
 }

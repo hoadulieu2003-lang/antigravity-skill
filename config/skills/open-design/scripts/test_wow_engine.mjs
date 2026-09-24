@@ -12,6 +12,7 @@
  * 8. Edge Cases: Invalid selectors, empty targets, zero-size elements, reduced motion
  */
 
+import fs from 'fs';
 import {
   initSpotlight,
   initParallaxTilt,
@@ -206,6 +207,22 @@ console.log('\n🔊 Test Suite 3: WebAudioHaptics Synthesizer Verification');
   assert(createdOscillators[0].frequency.events[0].val === 540, 'playTabSwitch starts at 540Hz');
   assert(createdOscillators[0].frequency.events[1].val === 420, 'playTabSwitch ramps down to 420Hz');
 
+  // Test playToggle()
+  createdOscillators = [];
+  createdGains = [];
+  audio.playToggle(true);
+  assert(createdOscillators.length === 1, 'playToggle(true) creates 1 oscillator');
+  assert(createdOscillators[0].type === 'sine', 'playToggle uses sine waveform');
+  assert(createdOscillators[0].frequency.events[0].val === 440, 'playToggle(true) starts ascending chime at 440Hz');
+  assert(createdOscillators[0].frequency.events[1].val === 880, 'playToggle(true) ramps up to 880Hz');
+  assert(createdGains[0].gain.events[0].val === 0.07, 'playToggle gain starts at 0.07');
+
+  createdOscillators = [];
+  audio.playToggle(false);
+  assert(createdOscillators.length === 1, 'playToggle(false) creates 1 oscillator');
+  assert(createdOscillators[0].frequency.events[0].val === 660, 'playToggle(false) starts descending chime at 660Hz');
+  assert(createdOscillators[0].frequency.events[1].val === 330, 'playToggle(false) ramps down to 330Hz');
+
   // Test muting
   audio.setMuted(true);
   assert(audio.getMuted() === true, 'setMuted(true) sets muted state');
@@ -273,6 +290,18 @@ console.log('\n🎨 Test Suite 4: DOM Simulation (Spotlight & Parallax Tilt)');
     }
     getBoundingClientRect() {
       return { left: 100, top: 200, width: 300, height: 200, right: 400, bottom: 400 };
+    }
+    getAttribute(attr) {
+      return this._attrs ? this._attrs[attr] || null : null;
+    }
+    setAttribute(attr, val) {
+      if (!this._attrs) this._attrs = {};
+      this._attrs[attr] = String(val);
+    }
+    closest(selector) {
+      if (selector === '[data-haptic]' && this.getAttribute('data-haptic')) return this;
+      if (selector === 'a[href^="#"]' && this.getAttribute('href')?.startsWith('#')) return this;
+      return null;
     }
     querySelectorAll() {
       return [];
@@ -439,6 +468,579 @@ console.log('\n⚡ Test Suite 6: Edge Cases & Error Paths');
   const reducedScroll = initSmoothScroll();
   assert(typeof reducedScroll.destroy === 'function', 'Reduced motion safely adapts smooth scroll');
   reducedScroll.destroy();
+}
+
+// -----------------------------------------------------------------------------
+// Test 7: Adversarial Verification & Bug-Busting Audits
+// -----------------------------------------------------------------------------
+console.log('\n🔍 Test Suite 7: Adversarial Audits & Bug Verification');
+{
+  // 1. WebAudioHaptics.bind() with zero arguments (Bug Fix: targetRoot vs root)
+  const windowListeners = {};
+  const docListeners = {};
+
+  globalThis.window.matchMedia = () => ({ matches: false });
+  globalThis.window.addEventListener = (evt, fn, opts) => {
+    if (!windowListeners[evt]) windowListeners[evt] = [];
+    windowListeners[evt].push({ fn, opts });
+  };
+  globalThis.window.removeEventListener = (evt, fn) => {
+    if (windowListeners[evt]) {
+      windowListeners[evt] = windowListeners[evt].filter((l) => l.fn !== fn);
+    }
+  };
+  globalThis.document.addEventListener = (evt, fn, opts) => {
+    if (!docListeners[evt]) docListeners[evt] = [];
+    docListeners[evt].push({ fn, opts });
+  };
+  globalThis.document.removeEventListener = (evt, fn) => {
+    if (docListeners[evt]) {
+      docListeners[evt] = docListeners[evt].filter((l) => l.fn !== fn);
+    }
+  };
+
+  let rafQueue = [];
+  globalThis.requestAnimationFrame = (cb) => {
+    rafQueue.push(cb);
+    return rafQueue.length;
+  };
+  globalThis.cancelAnimationFrame = (id) => {
+    rafQueue = rafQueue.filter((_, idx) => idx + 1 !== id);
+  };
+
+  const testHaptics = new WebAudioHaptics();
+  let unbindFn;
+  try {
+    unbindFn = testHaptics.bind(); // Zero arguments!
+    assert(typeof unbindFn === 'function', 'haptics.bind() with zero arguments does not throw and returns unbind');
+    assert(docListeners['click'] && docListeners['click'].length === 1, 'haptics.bind() binds click listener to document by default');
+  } catch (err) {
+    assert(false, `haptics.bind() with zero arguments threw: ${err.message}`);
+  }
+
+  // 2. data-haptic="toggle" support in bind()
+  let togglePlayedState = null;
+  testHaptics.playToggle = (state) => { togglePlayedState = state; };
+  const mockToggleBtn = new Element('button');
+  mockToggleBtn.setAttribute('data-haptic', 'toggle');
+  mockToggleBtn.checked = true;
+
+  // Trigger click on document
+  const clickHandler = docListeners['click'][0].fn;
+  clickHandler({ target: mockToggleBtn });
+  assert(togglePlayedState === true, 'haptics.bind() plays toggle sound with checked=true');
+
+  mockToggleBtn.checked = false;
+  clickHandler({ target: mockToggleBtn });
+  assert(togglePlayedState === false, 'haptics.bind() plays toggle sound with checked=false');
+
+  unbindFn();
+  assert(docListeners['click'].length === 0, 'haptics.bind unbind properly removes listener from document');
+
+  // 3. WebAudioHaptics.destroy()
+  let contextClosed = false;
+  testHaptics.ctx = {
+    close: () => { contextClosed = true; return Promise.resolve(); },
+  };
+  testHaptics.destroy();
+  assert(contextClosed === true, 'haptics.destroy() closes AudioContext and cleans up');
+
+  // 4. initSpotlight update() actually refreshes bounding rect (Bug Fix: update() dummy no-op)
+  let currentRect = { left: 100, top: 100, width: 200, height: 200, right: 300, bottom: 300 };
+  const dynamicCard = new Element('div');
+  dynamicCard.getBoundingClientRect = () => currentRect;
+  globalThis.document.querySelectorAll = (sel) => (sel === '.dynamic-spot' ? [dynamicCard] : []);
+
+  const spotHandle = initSpotlight('.dynamic-spot');
+  dynamicCard.dispatchEvent('pointermove', { clientX: 200, clientY: 200 });
+  while (rafQueue.length > 0) rafQueue.shift()();
+  assert(dynamicCard.style._props['--mouse-x'] === '100px', 'Initial spotlight x is 100px');
+
+  // Move element position and call update()
+  currentRect = { left: 50, top: 50, width: 200, height: 200, right: 250, bottom: 250 };
+  spotHandle.update();
+  dynamicCard.dispatchEvent('pointermove', { clientX: 200, clientY: 200 });
+  while (rafQueue.length > 0) rafQueue.shift()();
+
+  assert(dynamicCard.style._props['--mouse-x'] === '150px', 'After spotHandle.update(), new cached rect computes x=150px');
+  spotHandle.destroy();
+
+  // 5. initSpotlight proximity detection (Bug Fix: proximity was unused dead code)
+  const proximityCard = new Element('div');
+  proximityCard.getBoundingClientRect = () => ({ left: 100, top: 100, width: 200, height: 200, right: 300, bottom: 300 });
+  globalThis.document.querySelectorAll = (sel) => (sel === '.prox-card' ? [proximityCard] : []);
+
+  const proxHandle = initSpotlight('.prox-card', { proximity: 50 });
+  assert(windowListeners['pointermove'] && windowListeners['pointermove'].length > 0, 'Proximity > 0 attaches window pointermove tracker');
+
+  const winMoveHandler = windowListeners['pointermove'][0].fn;
+  // Cursor at (80, 200) -> 20px outside card left edge (left=100) -> distance 20 <= proximity 50
+  winMoveHandler({ clientX: 80, clientY: 200 });
+  while (rafQueue.length > 0) rafQueue.shift()();
+  const proxOpacity = parseFloat(proximityCard.style._props['--spotlight-opacity']);
+  assert(proxOpacity > 0 && proxOpacity <= 1, `Proximity spotlight activates outside card with opacity ${proxOpacity}`);
+
+  // Cursor far away (10, 200) -> distance 90 > proximity 50 -> should be 0 opacity
+  winMoveHandler({ clientX: 10, clientY: 200 });
+  assert(proximityCard.style._props['--spotlight-opacity'] === '0', 'Proximity spotlight turns off when beyond proximity distance');
+  proxHandle.destroy();
+
+  // 6. initParallaxTilt rAF loop resting while hovering still (Zero CPU waste bug fix)
+  let tiltRafCount = 0;
+  let localRafQueue = [];
+  const origRaf = globalThis.requestAnimationFrame;
+  globalThis.requestAnimationFrame = (cb) => {
+    localRafQueue.push(cb);
+    return ++tiltRafCount;
+  };
+
+  const hoverCard = new Element('div');
+  globalThis.document.querySelectorAll = (sel) => (sel === '.hover-card' ? [hoverCard] : []);
+
+  const hoverTilt = initParallaxTilt('.hover-card');
+  hoverCard.dispatchEvent('pointerenter', { clientX: 250, clientY: 250 });
+  hoverCard.dispatchEvent('pointermove', { clientX: 250, clientY: 250 });
+
+  // Run physics frames while mouse stays stationary
+  for (let i = 0; i < 40; i++) {
+    if (localRafQueue.length > 0) localRafQueue.shift()();
+  }
+  assert(localRafQueue.length === 0, 'Parallax tilt rAF loop terminates when card settles while hovering (Zero CPU waste)');
+
+  // 7. initParallaxTilt setValues() and reset() (Bug Fix: setValues was missing)
+  assert(typeof hoverTilt.setValues === 'function', 'Parallax tilt instance exposes setValues()');
+  hoverTilt.setValues({ rotX: 10, rotY: -8 });
+  for (let i = 0; i < 40; i++) {
+    if (localRafQueue.length > 0) localRafQueue.shift()();
+  }
+  assert(hoverCard.style.transform.includes('rotateX(10.00deg)') && hoverCard.style.transform.includes('rotateY(-8.00deg)'), 'setValues() applies programmatic rotation angles');
+
+  hoverTilt.reset();
+  assert(hoverCard.style.transform.includes('rotateX(0deg)') && hoverCard.style.transform.includes('rotateY(0deg)'), 'reset() restores resting transform immediately');
+  assert(localRafQueue.length === 0, 'reset() cancels running animation frames');
+  hoverTilt.destroy();
+  globalThis.requestAnimationFrame = origRaf;
+
+  // 8. initSmoothScroll non-passive wheel prevention (Bug Fix: native scroll fighting)
+  globalThis.window.matchMedia = () => ({ matches: false });
+  const scrollEngine = initSmoothScroll();
+  const wheelHandler = windowListeners['wheel'] && windowListeners['wheel'].find((l) => l.opts && l.opts.passive === false)?.fn;
+  assert(typeof wheelHandler === 'function', 'initSmoothScroll registers wheel listener with passive: false');
+
+  let defaultPrevented = false;
+  const mockWheelEvent = {
+    deltaX: 0,
+    deltaY: 100,
+    deltaMode: 0,
+    preventDefault: () => { defaultPrevented = true; },
+  };
+  wheelHandler(mockWheelEvent);
+  assert(defaultPrevented === true, 'Vertical wheel event calls preventDefault() to eliminate native scroll fighting');
+
+  // Horizontal wheel event should NOT preventDefault
+  let horizontalPrevented = false;
+  const mockHorizEvent = {
+    deltaX: 120,
+    deltaY: 10,
+    deltaMode: 0,
+    preventDefault: () => { horizontalPrevented = true; },
+  };
+  wheelHandler(mockHorizEvent);
+  assert(horizontalPrevented === false, 'Horizontal wheel event does NOT call preventDefault()');
+
+  // 9. initSmoothScroll safe scrollTo with non-existent selector
+  let lastScrolledY = -999;
+  globalThis.window.scrollTo = (opts) => {
+    lastScrolledY = typeof opts === 'number' ? opts : opts.top;
+  };
+  scrollEngine.scrollTo('#definitely-missing-element');
+  assert(lastScrolledY === -999, 'scrollTo with non-existent element does NOT reset scroll to top 0');
+  scrollEngine.destroy();
+
+  // 10. initSmoothScroll reduced motion onScroll structure (Bug Fix: raw event vs contract object)
+  globalThis.window.matchMedia = (query) => ({
+    matches: query.includes('prefers-reduced-motion'),
+  });
+  const reducedMotionEngine = initSmoothScroll();
+  let receivedScrollData = null;
+  reducedMotionEngine.onScroll((data) => {
+    receivedScrollData = data;
+  });
+  if (windowListeners['scroll']) {
+    windowListeners['scroll'].forEach((l) => l.fn());
+  }
+  assert(receivedScrollData !== null && typeof receivedScrollData.scroll === 'number' && typeof receivedScrollData.progress === 'number', 'Reduced motion onScroll emits structured data matching full engine contract');
+  reducedMotionEngine.destroy();
+}
+
+// -----------------------------------------------------------------------------
+// Test 8: WebAudioHaptics v2.0 DSP & Spatial Engine Verification
+// -----------------------------------------------------------------------------
+console.log('\n🎧 Test Suite 8: WebAudioHaptics v2.0 DSP & Spatial Engine Verification');
+{
+  let createdOscillators = [];
+  let createdGains = [];
+  let createdPanners = [];
+  let createdFilters = [];
+  let createdBuffers = [];
+  let createdBufferSources = [];
+
+  class MockAudioParam {
+    constructor(val = 0) {
+      this.value = val;
+      this.events = [];
+    }
+    setValueAtTime(val, time) {
+      this.value = val;
+      this.events.push({ type: 'set', val, time });
+    }
+    exponentialRampToValueAtTime(val, time) {
+      this.value = val;
+      this.events.push({ type: 'ramp', val, time });
+    }
+  }
+
+  class MockOscillator {
+    constructor() {
+      this.type = 'sine';
+      this.frequency = new MockAudioParam(440);
+      this.connectedTo = null;
+      this.startedAt = null;
+      this.stoppedAt = null;
+      createdOscillators.push(this);
+    }
+    connect(dest) {
+      this.connectedTo = dest;
+    }
+    start(time) {
+      this.startedAt = time;
+    }
+    stop(time) {
+      this.stoppedAt = time;
+    }
+  }
+
+  class MockGain {
+    constructor() {
+      this.gain = new MockAudioParam(1);
+      this.connectedTo = null;
+      createdGains.push(this);
+    }
+    connect(dest) {
+      this.connectedTo = dest;
+    }
+    disconnect() {
+      this.connectedTo = null;
+    }
+  }
+
+  class MockStereoPanner {
+    constructor() {
+      this.pan = new MockAudioParam(0);
+      this.connectedTo = null;
+      this.disconnected = false;
+      createdPanners.push(this);
+    }
+    connect(dest) {
+      this.connectedTo = dest;
+    }
+    disconnect() {
+      this.disconnected = true;
+      this.connectedTo = null;
+    }
+  }
+
+  class MockBiquadFilter {
+    constructor() {
+      this.type = 'lowpass';
+      this.frequency = new MockAudioParam(350);
+      this.Q = new MockAudioParam(1);
+      this.connectedTo = null;
+      this.disconnected = false;
+      createdFilters.push(this);
+    }
+    connect(dest) {
+      this.connectedTo = dest;
+    }
+    disconnect() {
+      this.disconnected = true;
+      this.connectedTo = null;
+    }
+  }
+
+  class MockAudioBufferSource {
+    constructor() {
+      this.buffer = null;
+      this.connectedTo = null;
+      this.startedAt = null;
+      this.disconnected = false;
+      createdBufferSources.push(this);
+    }
+    connect(dest) {
+      this.connectedTo = dest;
+    }
+    start(time) {
+      this.startedAt = time;
+    }
+    disconnect() {
+      this.disconnected = true;
+      this.connectedTo = null;
+    }
+  }
+
+  class MockV2AudioContext {
+    constructor() {
+      this.currentTime = 50.0;
+      this.state = 'running';
+      this.destination = { name: 'speakers' };
+    }
+    createOscillator() {
+      return new MockOscillator();
+    }
+    createGain() {
+      return new MockGain();
+    }
+    createStereoPanner() {
+      return new MockStereoPanner();
+    }
+    createBiquadFilter() {
+      return new MockBiquadFilter();
+    }
+    createBuffer(channels, length, sampleRate) {
+      const buf = { channels, length, sampleRate };
+      createdBuffers.push(buf);
+      return buf;
+    }
+    createBufferSource() {
+      return new MockAudioBufferSource();
+    }
+    resume() {
+      return Promise.resolve();
+    }
+    close() {
+      return Promise.resolve();
+    }
+  }
+
+  globalThis.window = {
+    AudioContext: MockV2AudioContext,
+    innerWidth: 1200,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+  };
+
+  const v2Haptics = new WebAudioHaptics();
+
+  // 1. _resolvePan Verification
+  assert(v2Haptics._resolvePan(1.0) === 0.75, '_resolvePan applies k=0.75 compression to +1.0 pan');
+  assert(v2Haptics._resolvePan(-1.0) === -0.75, '_resolvePan applies k=0.75 compression to -1.0 pan');
+  assert(v2Haptics._resolvePan(0.5) === 0.375, '_resolvePan computes 0.5 * 0.75 = 0.375');
+  assert(v2Haptics._resolvePan(0) === 0, '_resolvePan returns 0 for center pan');
+  assert(v2Haptics._resolvePan(null) === 0, '_resolvePan returns 0 for null');
+  assert(v2Haptics._resolvePan(3.0) === 0.75, '_resolvePan clamps out-of-range positive pan to 0.75');
+  assert(v2Haptics._resolvePan(-4.0) === -0.75, '_resolvePan clamps out-of-range negative pan to -0.75');
+  assert(Math.abs(v2Haptics._resolvePan({ pan: 0.8 }) - 0.6) < 0.0001, '_resolvePan handles options.pan correctly');
+  assert(Math.abs(v2Haptics._resolvePan({ clientX: 900, innerWidth: 1200 }) - 0.375) < 0.001, '_resolvePan computes clientX / innerWidth ratio');
+
+  const mockTargetEl = { getBoundingClientRect: () => ({ left: 600, width: 200 }) };
+  assert(Math.abs(v2Haptics._resolvePan({ element: mockTargetEl }) - 0.125) < 0.01, '_resolvePan resolves element center position');
+  assert(Math.abs(v2Haptics._resolvePan(mockTargetEl) - 0.125) < 0.01, '_resolvePan resolves raw Element directly');
+  assert(v2Haptics._resolvePan(NaN) === 0, '_resolvePan returns 0 for NaN input');
+  assert(v2Haptics._resolvePan(Infinity) === 0, '_resolvePan returns 0 for Infinity input');
+  assert(v2Haptics._resolvePan(-Infinity) === 0, '_resolvePan returns 0 for -Infinity input');
+  assert(v2Haptics._resolvePan({ pan: NaN }) === 0, '_resolvePan returns 0 for options.pan NaN');
+  assert(v2Haptics._resolvePan({ clientX: NaN }) === 0, '_resolvePan returns 0 for options.clientX NaN');
+
+  // 2. _createSpatialRoute Verification
+  const ctx = v2Haptics.getContext();
+  createdPanners = [];
+  const route = v2Haptics._createSpatialRoute(ctx, 0.45, 80);
+  assert(createdPanners.length === 1, '_createSpatialRoute creates StereoPannerNode');
+  assert(route.panner === createdPanners[0], 'Route panner matches created instance');
+  assert(route.input === createdPanners[0], 'Route input targets panner node');
+  assert(route.panner.pan.events[0].val === 0.45, 'Panner pan parameter initialized with 0.45');
+  assert(route.panner.connectedTo === v2Haptics.masterGainNode, 'Panner node connects to masterGainNode');
+  assert(route.panner.disconnected === false, 'Panner initially connected before safety timeout');
+  route.disconnect();
+  assert(route.panner.disconnected === true, 'Panner disconnected via route.disconnect()');
+
+  const nanRoute = v2Haptics._createSpatialRoute(ctx, NaN, 50);
+  assert(nanRoute.panner.pan.events[0].val === 0, '_createSpatialRoute sanitizes NaN panVal to 0');
+  nanRoute.disconnect();
+
+  const mockCtxNoPanner = { currentTime: 10, destination: {} };
+  const fallbackRoute = v2Haptics._createSpatialRoute(mockCtxNoPanner, 0.5, 50);
+  assert(fallbackRoute.panner === null, 'Fallback route has null panner when unsupported');
+  assert(fallbackRoute.input === v2Haptics.masterGainNode, 'Fallback route routes to masterGainNode');
+
+  // 3. Silent Buffer Flush Verification
+  createdBuffers = [];
+  createdBufferSources = [];
+  v2Haptics.flushSilentBuffer();
+  assert(createdBuffers.length === 1, 'flushSilentBuffer allocates 1 audio buffer');
+  assert(createdBuffers[0].channels === 1 && createdBuffers[0].length === 1 && createdBuffers[0].sampleRate === 22050, 'Silent buffer is 1-channel 1-frame 22050Hz for immediate DAC wakeup');
+  assert(createdBufferSources.length === 1, 'flushSilentBuffer creates AudioBufferSourceNode');
+  assert(createdBufferSources[0].startedAt === 0, 'Buffer source starts at time 0');
+  assert(createdBufferSources[0].connectedTo === ctx.destination, 'Buffer source connects directly to hardware destination');
+
+  // 4. playRotaryStep Verification
+  createdOscillators = [];
+  createdGains = [];
+  v2Haptics._lastRotaryTime = 0;
+  v2Haptics.playRotaryStep(6, 24, { pan: 0.2 });
+  assert(createdOscillators.length === 1, 'playRotaryStep schedules 1 oscillator');
+  assert(createdOscillators[0].type === 'triangle', 'playRotaryStep uses triangle wave for gear click detent');
+  assert(Math.abs(createdOscillators[0].frequency.events[0].val - 845) < 0.1, 'Rotary start frequency is 845Hz for step 6/24');
+  assert(Math.abs(createdOscillators[0].frequency.events[1].val - 295.75) < 0.1, 'Rotary sweeps 65% downward to 295.75Hz');
+  assert(createdGains[0].gain.events[0].val === 0.08, 'Rotary click starts at 0.08 gain');
+  assert(createdGains[0].gain.events[1].val === 0.001, 'Rotary click decays to 0.001');
+
+  const oscCountBefore = createdOscillators.length;
+  v2Haptics.playRotaryStep(7, 24); // Micro-throttle drops consecutive call within 18ms
+  assert(createdOscillators.length === oscCountBefore, '18ms micro-throttle drops consecutive call to prevent acoustic congestion');
+
+  v2Haptics._lastRotaryTime = 0;
+  v2Haptics.setMuted(true);
+  v2Haptics.playRotaryStep(0, 24);
+  assert(createdOscillators.length === oscCountBefore, 'playRotaryStep produces no sound when muted');
+  v2Haptics.setMuted(false);
+
+  // 5. playSuccessChord Verification
+  createdOscillators = [];
+  createdGains = [];
+  v2Haptics.playSuccessChord({ pan: -0.5 });
+  assert(createdOscillators.length === 3, 'playSuccessChord schedules 3 harmonic oscillators');
+  assert(Math.abs(createdOscillators[0].frequency.events[0].val - 523.25) < 0.1, 'Chord Note 0 is C5 (523.25Hz)');
+  assert(Math.abs(createdOscillators[1].frequency.events[0].val - 659.25) < 0.1, 'Chord Note 1 is E5 (659.25Hz)');
+  assert(Math.abs(createdOscillators[2].frequency.events[0].val - 783.99) < 0.1, 'Chord Note 2 is G5 (783.99Hz)');
+  assert(createdOscillators.every(o => o.type === 'sine'), 'All chord notes synthesize pure sine waves');
+  assert(Math.abs(createdOscillators[1].startedAt - (createdOscillators[0].startedAt + 0.035)) < 0.001, 'Chord notes are staggered by exactly 35ms');
+  assert(createdGains.every(g => g.gain.events[0].val === 0.062), 'Each note starts at safe gain 0.062 (sum < 0.2 headroom, zero digital clipping)');
+  assert(createdGains.every(g => g.gain.events[1].val === 0.0001), 'Each note smoothly decays exponentially to 0.0001');
+
+  // 6. playDullThud Verification
+  createdOscillators = [];
+  createdGains = [];
+  createdFilters = [];
+  v2Haptics.playDullThud();
+  assert(createdOscillators.length === 1, 'playDullThud schedules 1 oscillator');
+  assert(createdOscillators[0].type === 'sine', 'playDullThud uses sine sub-bass waveform');
+  assert(createdOscillators[0].frequency.events[0].val === 140, 'Dull thud starts pitch sweep at 140Hz');
+  assert(createdOscillators[0].frequency.events[1].val === 40, 'Dull thud ramps down to 40Hz sub-bass');
+  assert(createdFilters.length === 1, 'playDullThud creates BiquadFilterNode');
+  assert(createdFilters[0].type === 'lowpass', 'Filter type is lowpass');
+  assert(createdFilters[0].Q.events[0].val === 2.4, 'Filter resonant Q factor is exactly 2.4');
+  assert(createdOscillators[0].connectedTo === createdFilters[0], 'Oscillator connects to resonant filter');
+  assert(createdFilters[0].connectedTo === createdGains[0], 'Filter connects to gain envelope node');
+
+  // 7. playMechanicalSwitch Verification
+  createdOscillators = [];
+  createdGains = [];
+  v2Haptics.playMechanicalSwitch(true);
+  assert(createdOscillators.length === 2, 'playMechanicalSwitch generates 2-phase mechanical actuation (spring latch + bottom-out)');
+  assert(createdOscillators[0].type === 'triangle', 'Phase 1 spring latch uses triangle waveform');
+  assert(createdOscillators[0].frequency.events[0].val === 650, 'Phase 1 spring latch engage starts at 650Hz');
+  assert(createdOscillators[0].frequency.events[1].val === 920, 'Phase 1 spring latch sweeps up to 920Hz');
+  assert(createdOscillators[1].type === 'sine', 'Phase 2 bottom-out impact uses sine waveform');
+  assert(Math.abs(createdOscillators[1].startedAt - (createdOscillators[0].startedAt + 0.016)) < 0.001, 'Phase 2 begins exactly 16ms after Phase 1 bottom-out stroke');
+  assert(createdOscillators[1].frequency.events[0].val === 280, 'Phase 2 bottom-out starts at 280Hz');
+  assert(createdOscillators[1].frequency.events[1].val === 120, 'Phase 2 bottom-out ramps down to 120Hz');
+
+  createdOscillators = [];
+  v2Haptics.playMechanicalSwitch(false);
+  assert(createdOscillators[0].frequency.events[0].val === 820, 'Phase 1 switch release starts at 820Hz');
+  assert(createdOscillators[0].frequency.events[1].val === 480, 'Phase 1 switch release ramps down to 480Hz');
+
+  // 8. bind(root) extensions & data-haptic-spatial Verification
+  const mockDocListeners = {};
+  const mockDoc = {
+    addEventListener: (evt, fn) => {
+      mockDocListeners[evt] = mockDocListeners[evt] || [];
+      mockDocListeners[evt].push(fn);
+    },
+    removeEventListener: (evt, fn) => {
+      if (mockDocListeners[evt]) {
+        mockDocListeners[evt] = mockDocListeners[evt].filter(f => f !== fn);
+      }
+    },
+  };
+
+  let playedSound = null;
+  let capturedOptions = null;
+  const bindHaptics = new WebAudioHaptics();
+  bindHaptics.playRotaryStep = (s, m, opts) => { playedSound = 'rotary'; capturedOptions = { s, m, opts }; };
+  bindHaptics.playSuccessChord = (opts) => { playedSound = 'chord'; capturedOptions = opts; };
+  bindHaptics.playDullThud = (opts) => { playedSound = 'thud'; capturedOptions = opts; };
+  bindHaptics.playMechanicalSwitch = (st, opts) => { playedSound = 'mech'; capturedOptions = { st, opts }; };
+
+  const unbindV2 = bindHaptics.bind(mockDoc);
+  const v2ClickHandler = mockDocListeners['click'][0];
+
+  class SimpleMockElement {
+    constructor(attrs = {}) {
+      this._attrs = attrs;
+      this.checked = false;
+    }
+    getAttribute(k) { return this._attrs[k] !== undefined ? this._attrs[k] : null; }
+    setAttribute(k, v) { this._attrs[k] = String(v); }
+    closest() { return this; }
+  }
+
+  const rotaryEl = new SimpleMockElement({ 'data-haptic': 'rotary', 'data-haptic-step': '8', 'data-haptic-max': '32', 'data-haptic-spatial': '0.4' });
+  v2ClickHandler({ target: rotaryEl });
+  assert(playedSound === 'rotary', 'bind() dispatches playRotaryStep on data-haptic="rotary"');
+  assert(capturedOptions.s === 8 && capturedOptions.m === 32, 'Rotary step 8 and max 32 parsed from attributes');
+  assert(capturedOptions.opts.pan === 0.4, 'data-haptic-spatial="0.4" extracts pan: 0.4');
+
+  const chordEl = new SimpleMockElement({ 'data-haptic': 'success-chord', 'data-haptic-spatial': 'true' });
+  v2ClickHandler({ target: chordEl, clientX: 450 });
+  assert(playedSound === 'chord', 'bind() dispatches playSuccessChord on data-haptic="success-chord"');
+  assert(capturedOptions.clientX === 450, 'data-haptic-spatial="true" captures event clientX');
+
+  const thudEl = new SimpleMockElement({ 'data-haptic': 'thud' });
+  v2ClickHandler({ target: thudEl });
+  assert(playedSound === 'thud', 'bind() dispatches playDullThud on data-haptic="thud"');
+
+  const mechEl = new SimpleMockElement({ 'data-haptic': 'mech-switch' });
+  mechEl.checked = true;
+  v2ClickHandler({ target: mechEl });
+  assert(playedSound === 'mech' && capturedOptions.st === true, 'bind() dispatches playMechanicalSwitch with checked state');
+
+  // Test spatial keyword positions
+  const leftSpatialEl = new SimpleMockElement({ 'data-haptic': 'click', 'data-haptic-spatial': 'left' });
+  bindHaptics.playClick = (opts) => { playedSound = 'click'; capturedOptions = opts; };
+  v2ClickHandler({ target: leftSpatialEl });
+  assert(capturedOptions.pan === -0.8, 'data-haptic-spatial="left" extracts pan: -0.8');
+
+  const rightSpatialEl = new SimpleMockElement({ 'data-haptic': 'click', 'data-haptic-spatial': 'right' });
+  v2ClickHandler({ target: rightSpatialEl });
+  assert(capturedOptions.pan === 0.8, 'data-haptic-spatial="right" extracts pan: 0.8');
+
+  // Test micro-deduplication of input + click on same element within 25ms
+  const checkboxEl = new SimpleMockElement({ 'data-haptic': 'mech-switch' });
+  checkboxEl.checked = true;
+  let triggerCount = 0;
+  bindHaptics.playMechanicalSwitch = () => { triggerCount++; };
+  const v2InputHandler = mockDocListeners['input'][0];
+  v2InputHandler({ target: checkboxEl, type: 'input' });
+  v2ClickHandler({ target: checkboxEl, type: 'click' }); // Dispatched immediately after input event
+  assert(triggerCount === 1, 'bind() deduplicates rapid input+click events on same element to eliminate audio flutter');
+
+  // 9. Showcase wow_engine.js API Parity Verification
+  const showcaseCode = fs.readFileSync('exercises/wow_pilot_showcase/wow_engine.js', 'utf8');
+  const requiredHapticMethods = [
+    'destroy', 'setMuted', 'getMuted', 'toggleMute', 'setVolume', 'getVolume',
+    'bind', 'playClick', 'playPop', 'playChime', 'playTabSwitch', 'playToggle',
+    'playRotaryStep', 'playSuccessChord', 'playDullThud', 'playMechanicalSwitch',
+    'flushSilentBuffer', '_resolvePan', '_createSpatialRoute'
+  ];
+  requiredHapticMethods.forEach(method => {
+    assert(showcaseCode.includes(method), `Showcase wow_engine.js implements ${method}()`);
+  });
+
+  unbindV2();
+  assert(mockDocListeners['click'].length === 0, 'bind unbind removes click listener');
+  assert(mockDocListeners['input'].length === 0, 'bind unbind removes input listener');
 }
 
 console.log(`\n========================================`);

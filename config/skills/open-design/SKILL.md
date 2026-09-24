@@ -15,7 +15,8 @@ Hệ thống thiết kế và mẫu giao diện chuẩn Brand đẳng cấp th�
   - **Live Dashboards & BI**: `live-dashboard` (kèm tweaks panel), `flowai-live-dashboard-template`, `trading-analysis-dashboard-template`, `github-dashboard`.
   - **Prototypes & Web Apps**: `saas-landing`, `pricing-page`, `waitlist-page`, `gamified-app`, `mobile-app`, `kanban-board`.
   - **Motion Graphics**: `hyperframes` (agent-native code animation sang video).
-- **162 Specialized Skills** (`skills/`): `emilkowalski-motion`, `gsap-scrolltrigger`, `pptx-generator`, `threejs`, `shadcn-ui`, `deck-guizang-editorial`, v.v.
+- **Wow Engine Suite** (`scripts/wow_engine.js`): Module tương tác Vanilla JS thuần siêu nhẹ (0 KB external assets): Đèn rọi Spotlight (`initSpotlight`), Thẻ nghiêng 3D Parallax lò xo (`initParallaxTilt`), Âm thanh xúc giác Web Audio API thuần K18 (`WebAudioHaptics`), và Cuộn quán tính Lenis standalone (`initSmoothScroll`).
+- **162 Specialized Skills** (`skills/`): `emilkowalski-motion`, `gsap-scrolltrigger`, `pptx-generator`, `threejs`, `shadcn-ui`, `deck-guizang-editorial`, v.v. (Trong đó 2 siêu kỹ năng tinh hoa đã được thăng hạng First-Class Skills tại `config/skills/`: [`taste-engine`](file:///C:/Users/game/.gemini/config/skills/taste-engine/SKILL.md) và [`design-engineering`](file:///C:/Users/game/.gemini/config/skills/design-engineering/SKILL.md)).
 
 ---
 
@@ -25,7 +26,15 @@ Tự động kích hoạt & tham khảo cho mọi tác vụ thiết kế web UI,
 1. **Thiết kế giao diện theo phong cách một thương hiệu lớn** (vd: "làm theo phong cách Linear / Stripe / Apple / Vercel").
 2. **Làm bộ slide thuyết trình dạng tạp chí (Magazine Deck / Pitch Deck)** (vd: `guizang-ppt` hoặc `html-ppt`).
 3. **Xây dựng Dashboard trực quan hoặc Web Prototype chất lượng cao**.
-4. **Tạo hiệu ứng chuyển động mượt mà (Motion / GSAP)**.
+4. **Tạo hiệu ứng chuyển động mượt mà (Motion / GSAP / Wow Engine)**.
+
+> ☀️ **Kỷ Luật Luminous Light Theme Invariant Bắt Buộc Khi Nạp Brands**:  
+> Mọi hệ thống thiết kế thương hiệu (kể cả các thương hiệu có bản sắc nhận diện tối như Linear, Raycast) **BẮT BUỘC** phải được chuyển đổi và nạp theo chuẩn **Giao Diện Sáng Đa Tầng Luminous (`Luminous Light Theme`)**:
+> - **Nền sáng đa tầng (`Multi-Layered Luminous Surfaces`)**: Base canvas (`#FAF9F6`, `#FDFBF7`, `#F8F9FA`), elevated cards (`#FFFFFF` hoặc frosted glass với viền sáng `inset highlight`).
+> - **Bóng đổ đa chiều siêu mịn (`Multi-Dimensional Layered Shadows`)**: Tầng bóng ambient + key shadow tinh xảo (`box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.05), 0 12px 28px -4px rgba(0,0,0,0.04)`), viền quang học siêu mảnh (`1px solid rgba(0,0,0,0.06)`).
+> - **Triệt tiêu giấy bẹt đơn điệu (`Anti-Flat Monolithic Paper`)**: Nghiêm cấm nền trắng bẹt `#FFFFFF` đơn sắc không đổ bóng, không phân tầng độ cao.
+> - **Ngoại lệ duy nhất**: Chỉ dùng Dark Theme khi Anh yêu cầu tường minh (`Explicit Request Only`).
+
 
 ---
 
@@ -55,7 +64,7 @@ python "C:\Users\game\.gemini\config\skills\open-design\scripts\search_od.py" "<
 
 1. **Khảo sát Brand & Template**:
    - Chạy `search_od.py` hoặc đọc trực tiếp file `design-systems/<brand>/DESIGN.md` và `tokens.css`.
-   - Lấy chính xác mã màu, typography, shadow, border radius của thương hiệu.
+   - Lấy chính xác mã màu, typography, shadow, border radius của thương hiệu và chuyển ngữ sang hệ token Luminous Light Theme (nền sáng đa tầng, bóng đổ đa chiều).
 2. **Đối soát với `ui-ux-pro-max`**:
    - Kiểm tra tương phản màu (WCAG Contrast 4.5:1+).
    - Kiểm tra touch targets tối thiểu (44×44px trên mobile).

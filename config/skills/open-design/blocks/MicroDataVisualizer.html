@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Micro Data Visualizer — Signature Wow Block</title>
+  <style>
+    /* ==========================================================================
+       LUMINOUS LIGHT THEME TOKENS
+       ========================================================================== */
+    :root {
+      --bg-canvas: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --border-luminous: rgba(15, 23, 42, 0.08);
+      --border-highlight: rgba(255, 255, 255, 0.95);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #94A3B8;
+      --accent-blue: #0284C7;
+      --accent-emerald: #10B981;
+      --accent-violet: #8B5CF6;
+      --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
+      --shadow-hover: 0 12px 28px -4px rgba(15, 23, 42, 0.08);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-canvas);
+      background-image: 
+        radial-gradient(at 10% 10%, rgba(2, 132, 199, 0.04) 0px, transparent 50%),
+        radial-gradient(at 90% 90%, rgba(139, 92, 246, 0.04) 0px, transparent 50%),
+        linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 920px;
+      width: 100%;
+    }
+
+    .header-box {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(2, 132, 199, 0.08);
+      border: 1px solid rgba(2, 132, 199, 0.2);
+      border-radius: 9999px;
+      color: var(--accent-blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    p.subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Visualizer Deck */
+    .deck-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .vis-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-luminous);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow-card), inset 0 1px 0 var(--border-highlight);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+    }
+
+    .vis-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover), inset 0 1px 0 var(--border-highlight);
+    }
+
+    .vis-card.full-span {
+      grid-column: span 2;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-emerald);
+      font-family: ui-monospace, monospace;
+      padding: 2px 8px;
+      background: rgba(16, 185, 129, 0.08);
+      border-radius: 9999px;
+    }
+
+    .live-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+
+    /* 1. AUDIO WAVEFORM CANVAS */
+    .waveform-wrapper {
+      position: relative;
+      height: 120px;
+      background: rgba(15, 23, 42, 0.02);
+      border: 1px solid rgba(15, 23, 42, 0.05);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    canvas.waveform-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .audio-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .audio-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      cursor: pointer;
+      outline: none;
+      transition: all 140ms ease;
+    }
+
+    .audio-btn:hover {
+      background: rgba(15, 23, 42, 0.08);
+      color: var(--text-primary);
+    }
+
+    .audio-btn.active {
+      background: rgba(2, 132, 199, 0.1);
+      color: var(--accent-blue);
+      border-color: rgba(2, 132, 199, 0.3);
+    }
+
+    /* 2. INTERACTIVE SPARKLINE WITH CROSSHAIR TOOLTIP */
+    .sparkline-wrapper {
+      position: relative;
+      height: 120px;
+      cursor: crosshair;
+    }
+
+    svg.spark-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .crosshair-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--accent-blue);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 120ms ease;
+    }
+
+    .tooltip-pill {
+      position: absolute;
+      top: 8px;
+      transform: translateX(-50%);
+      background: #FFFFFF;
+      border: 1px solid var(--border-luminous);
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-primary);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+      pointer-events: none;
+      opacity: 0;
+      white-space: nowrap;
+      font-family: ui-monospace, monospace;
+      transition: opacity 120ms ease;
+    }
+
+    /* 3. MINI TELEMETRY PILL STRIP */
+    .pill-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .telemetry-cell {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-luminous);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03), inset 0 1px 0 var(--border-highlight);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cell-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .cell-val {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-primary);
+      font-family: ui-monospace, monospace;
+      margin-top: 4px;
+    }
+
+    .cell-sub {
+      font-size: 11px;
+      color: var(--accent-emerald);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-box">
+      <div class="tag">Signature Wow Block 09</div>
+      <h1>Micro Data Visualizer</h1>
+      <p class="subtitle">High-density 60 FPS audio spectral visualizer and interactive telemetry sparkline with magnetic cursor crosshair inspection.</p>
+    </div>
+
+    <!-- Visualizer Cards Grid -->
+    <div class="deck-grid">
+      
+      <!-- Card 1: 60 FPS Audio Waveform -->
+      <div class="vis-card">
+        <div class="card-top">
+          <span class="card-title">Acoustic Spectral Stream</span>
+          <span class="live-badge"><span class="dot"></span> 60 FPS</span>
+        </div>
+
+        <div class="waveform-wrapper">
+          <canvas class="waveform-canvas" id="waveCanvas" width="400" height="120"></canvas>
+        </div>
+
+        <div class="audio-controls">
+          <span style="font-size: 12px; color: var(--text-muted); font-family: ui-monospace, monospace;">48.0 kHz · 32-bit Float</span>
+          <button class="audio-btn" id="synthBtn" type="button">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            <span>Play Tone Generator</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 2: Telemetry Sparkline with Crosshair -->
+      <div class="vis-card">
+        <div class="card-top">
+          <span class="card-title">Throughput Timeline</span>
+          <span class="live-badge" style="color: var(--accent-blue); background: rgba(2, 132, 199, 0.08);"><span class="dot" style="background: var(--accent-blue);"></span> REALTIME</span>
+        </div>
+
+        <div class="sparkline-wrapper" id="sparkWrapper">
+          <svg class="spark-svg" viewBox="0 0 400 120" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0284C7" stop-opacity="0.25" />
+                <stop offset="100%" stop-color="#0284C7" stop-opacity="0.0" />
+              </linearGradient>
+            </defs>
+            <path id="sparkArea" fill="url(#sparkFill)" />
+            <path id="sparkLine" fill="none" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" />
+          </svg>
+
+          <!-- Magnetic Guideline & Tooltip -->
+          <div class="crosshair-line" id="crosshair"></div>
+          <div class="tooltip-pill" id="tooltip">148K RPS</div>
+        </div>
+
+        <div class="audio-controls">
+          <span style="font-size: 12px; color: var(--text-muted);">Window: Last 60s</span>
+          <span style="font-size: 12px; font-weight: 700; color: var(--text-primary); font-family: ui-monospace, monospace;" id="currentRps">148,200 RPS</span>
+        </div>
+      </div>
+
+      <!-- Card 3: 4-Cell Telemetry Strip -->
+      <div class="vis-card full-span" style="padding: 18px 24px;">
+        <div class="pill-strip">
+          <div class="telemetry-cell">
+            <span class="cell-label">Heap Memory</span>
+            <span class="cell-val">1.24 GB</span>
+            <span class="cell-sub">Optimal (38%)</span>
+          </div>
+          <div class="telemetry-cell">
+            <span class="cell-label">Packet Loss</span>
+            <span class="cell-val">0.001%</span>
+            <span class="cell-sub">Zero Dropped</span>
+          </div>
+          <div class="telemetry-cell">
+            <span class="cell-label">Cache Hit Ratio</span>
+            <span class="cell-val">99.82%</span>
+            <span class="cell-sub">+0.14% vs avg</span>
+          </div>
+          <div class="telemetry-cell">
+            <span class="cell-label">Agent Threads</span>
+            <span class="cell-val">6 Active</span>
+            <span class="cell-sub">Pod Swarm Synced</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // 1. 60 FPS AUDIO SPECTRUM CANVAS VISUALIZER
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas.getContext('2d');
+    const barsCount = 36;
+    let barHeights = new Array(barsCount).fill(10);
+    let targetHeights = new Array(barsCount).fill(10);
+
+    let isAudioPlaying = false;
+    let audioCtx = null;
+    let osc = null;
+
+    function resizeCanvas() {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const w = Math.floor(rect.width || 400);
+      const h = Math.floor(rect.height || 120);
+      if (canvas.width !== w * dpr || canvas.height !== h * dpr) {
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+      }
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { w, h };
+    }
+
+    function renderWaveform() {
+      const { w, h } = resizeCanvas();
+      ctx.clearRect(0, 0, w, h);
+      const barWidth = 6;
+      const gap = (w - barsCount * barWidth) / (barsCount - 1);
+
+      for (let i = 0; i < barsCount; i++) {
+        // Interpolate smoothly
+        barHeights[i] += (targetHeights[i] - barHeights[i]) * 0.18;
+
+        const bh = Math.min(h - 10, barHeights[i]);
+        const x = i * (barWidth + gap);
+        const y = (h - bh) / 2;
+
+        // Gradient
+        const grad = ctx.createLinearGradient(0, y, 0, y + bh);
+        grad.addColorStop(0, '#0284C7');
+        grad.addColorStop(1, '#8B5CF6');
+
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        if (ctx.roundRect) {
+          ctx.roundRect(x, y, barWidth, bh, 3);
+        } else {
+          ctx.rect(x, y, barWidth, bh);
+        }
+        ctx.fill();
+      }
+
+      requestAnimationFrame(renderWaveform);
+    }
+    requestAnimationFrame(renderWaveform);
+
+    // Spectrum Jitter simulation
+    setInterval(() => {
+      for (let i = 0; i < barsCount; i++) {
+        const factor = Math.sin((i / barsCount) * Math.PI);
+        const amp = isAudioPlaying ? 90 : 35;
+        targetHeights[i] = 8 + Math.random() * amp * factor;
+      }
+    }, 90);
+
+    // Synth Button
+    const synthBtn = document.getElementById('synthBtn');
+    synthBtn.addEventListener('click', () => {
+      const AudioClass = window.AudioContext || window.webkitAudioContext;
+      if (!audioCtx) audioCtx = new AudioClass();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      if (!isAudioPlaying) {
+        osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(432, audioCtx.currentTime); // Tuning 432 Hz
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        isAudioPlaying = true;
+        synthBtn.classList.add('active');
+        synthBtn.querySelector('span').textContent = 'Stop Tone';
+      } else {
+        if (osc) {
+          osc.stop();
+          osc.disconnect();
+          osc = null;
+        }
+        isAudioPlaying = false;
+        synthBtn.classList.remove('active');
+        synthBtn.querySelector('span').textContent = 'Play Tone Generator';
+      }
+    });
+
+    // 2. REALTIME SPARKLINE WITH CROSSHAIR TOOLTIP
+    const pointsCount = 30;
+    let dataPoints = [];
+    for (let i = 0; i < pointsCount; i++) {
+      dataPoints.push(140000 + Math.floor(Math.sin(i * 0.4) * 15000) + Math.floor(Math.random() * 6000));
+    }
+
+    const sparkArea = document.getElementById('sparkArea');
+    const sparkLine = document.getElementById('sparkLine');
+    const currentRps = document.getElementById('currentRps');
+
+    function updateSparkline() {
+      const min = 100000;
+      const max = 180000;
+      const width = 400;
+      const height = 120;
+      const step = width / (pointsCount - 1);
+
+      let dLine = `M 0 ${height - ((dataPoints[0] - min) / (max - min)) * (height - 20) - 10}`;
+      for (let i = 1; i < pointsCount; i++) {
+        const x = i * step;
+        const y = height - ((dataPoints[i] - min) / (max - min)) * (height - 20) - 10;
+        dLine += ` L ${x.toFixed(1)} ${y.toFixed(1)}`;
+      }
+
+      sparkLine.setAttribute('d', dLine);
+      sparkArea.setAttribute('d', `${dLine} L ${width} ${height} L 0 ${height} Z`);
+
+      currentRps.textContent = `${dataPoints[pointsCount - 1].toLocaleString()} RPS`;
+    }
+
+    updateSparkline();
+
+    // Stream new point every 1.5s
+    setInterval(() => {
+      const last = dataPoints[dataPoints.length - 1];
+      const next = Math.max(110000, Math.min(175000, last + (Math.random() - 0.48) * 8000));
+      dataPoints.shift();
+      dataPoints.push(Math.round(next));
+      updateSparkline();
+    }, 1500);
+
+    // Crosshair inspection
+    const sparkWrapper = document.getElementById('sparkWrapper');
+    const crosshair = document.getElementById('crosshair');
+    const tooltip = document.getElementById('tooltip');
+
+    sparkWrapper.addEventListener('pointermove', (e) => {
+      const rect = sparkWrapper.getBoundingClientRect();
+      const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+      const ratio = Math.max(0, Math.min(1, x / rect.width));
+      const index = Math.round(ratio * (pointsCount - 1));
+      const val = dataPoints[index];
+
+      crosshair.style.opacity = '1';
+      crosshair.style.left = `${x}px`;
+
+      // Clamp tooltip so it stays inside wrapper without clipping
+      const clampX = Math.max(50, Math.min(x, rect.width - 50));
+      tooltip.style.opacity = '1';
+      tooltip.style.left = `${clampX}px`;
+      tooltip.textContent = `${val.toLocaleString()} RPS`;
+    });
+
+    sparkWrapper.addEventListener('pointerleave', () => {
+      crosshair.style.opacity = '0';
+      tooltip.style.opacity = '0';
+    });
+  </script>
+</body>
+</html>

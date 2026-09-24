@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sonner Luminous Toast — Signature Wow Block</title>
+  <style>
+    /* ==========================================================================
+       LUMINOUS LIGHT THEME TOKENS
+       ========================================================================== */
+    :root {
+      --bg-canvas: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --border-luminous: rgba(15, 23, 42, 0.08);
+      --border-highlight: rgba(255, 255, 255, 0.95);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #94A3B8;
+      --accent-blue: #0284C7;
+      --accent-emerald: #10B981;
+      --accent-amber: #F59E0B;
+      --accent-rose: #EF4444;
+      --shadow-toast: 0 4px 16px -2px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
+      --shadow-toast-hover: 0 12px 32px -4px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.04);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.22, 1.61, 0.36, 1.0);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-canvas);
+      background-image: 
+        radial-gradient(at 10% 10%, rgba(2, 132, 199, 0.04) 0px, transparent 50%),
+        radial-gradient(at 90% 90%, rgba(16, 185, 129, 0.04) 0px, transparent 50%),
+        linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 760px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(2, 132, 199, 0.08);
+      border: 1px solid rgba(2, 132, 199, 0.2);
+      border-radius: 9999px;
+      color: var(--accent-blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    p.subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.5;
+    }
+
+    /* Buttons Panel */
+    .toast-triggers-grid {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .toast-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-luminous);
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), inset 0 1px 0 var(--border-highlight);
+      transition: transform 140ms var(--ease-out), box-shadow 140ms var(--ease-out);
+      outline: none;
+      user-select: none;
+    }
+
+    .toast-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08), inset 0 1px 0 var(--border-highlight);
+    }
+
+    .toast-btn:active {
+      transform: scale(0.965);
+    }
+
+    .toast-btn.success { border-color: rgba(16, 185, 129, 0.3); color: #047857; }
+    .toast-btn.info { border-color: rgba(2, 132, 199, 0.3); color: #0369A1; }
+    .toast-btn.warning { border-color: rgba(245, 158, 11, 0.3); color: #B45309; }
+    .toast-btn.error { border-color: rgba(239, 68, 68, 0.3); color: #B91C1C; }
+
+    /* ==========================================================================
+       SONNER TOAST STACK CONTAINER (EMIL KOWALSKI PRINCIPLES)
+       ========================================================================== */
+    .toaster-viewport {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 360px;
+      z-index: 10000;
+      pointer-events: none;
+    }
+
+    .toaster-stack {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      pointer-events: auto;
+    }
+
+    /* Invisible Bridge pseudo-element to maintain hover when stack expands */
+    .toaster-stack::after {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      pointer-events: auto;
+      z-index: 0;
+    }
+
+    /* Individual Toast Item */
+    .sonner-toast {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 360px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-luminous);
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: var(--shadow-toast), inset 0 1px 0 var(--border-highlight);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: grab;
+      user-select: none;
+      touch-action: pan-y;
+      will-change: transform, opacity;
+      transition: transform 300ms var(--ease-spring), opacity 250ms var(--ease-out), box-shadow 200ms ease;
+      z-index: 1;
+    }
+
+    .sonner-toast:active {
+      cursor: grabbing;
+    }
+
+    /* Default Stack Positions (from bottom upwards) */
+    .toaster-stack:not(:hover) .sonner-toast[data-index="0"] {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+
+    .toaster-stack:not(:hover) .sonner-toast[data-index="1"] {
+      transform: translateY(-14px) scale(0.95);
+      opacity: 0.9;
+    }
+
+    .toaster-stack:not(:hover) .sonner-toast[data-index="2"] {
+      transform: translateY(-28px) scale(0.90);
+      opacity: 0.75;
+    }
+
+    .toaster-stack:not(:hover) .sonner-toast:not([data-index="0"]):not([data-index="1"]):not([data-index="2"]) {
+      transform: translateY(-40px) scale(0.85);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Hover Expansion: Unstacks all toasts vertically with spring physics */
+    .toaster-stack:hover .sonner-toast {
+      box-shadow: var(--shadow-toast-hover), inset 0 1px 0 var(--border-highlight);
+      transform: translateY(calc(var(--index, 0) * -68px)) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Toast Elements */
+    .toast-icon-wrap {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .toast-icon-wrap.success { background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald); }
+    .toast-icon-wrap.info { background: rgba(2, 132, 199, 0.1); color: var(--accent-blue); }
+    .toast-icon-wrap.warning { background: rgba(245, 158, 11, 0.1); color: var(--accent-amber); }
+    .toast-icon-wrap.error { background: rgba(239, 68, 68, 0.1); color: var(--accent-rose); }
+
+    .toast-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .toast-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .toast-msg {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .toast-action-btn {
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 6px;
+      cursor: pointer;
+      outline: none;
+      transition: transform 120ms var(--ease-out);
+    }
+
+    .toast-action-btn:active {
+      transform: scale(0.965);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="tag">Signature Wow Block 08</div>
+    <h1>Sonner Luminous Toast</h1>
+    <p class="subtitle">Multi-stacking notification physics following Emil Kowalski's Sonner principles: hover expansion, tab pause, and synthesized audio chimes.</p>
+
+    <!-- Trigger Buttons -->
+    <div class="toast-triggers-grid">
+      <button class="toast-btn success" id="btnSuccess">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Toast Success</span>
+      </button>
+
+      <button class="toast-btn info" id="btnInfo">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <span>Toast Info</span>
+      </button>
+
+      <button class="toast-btn warning" id="btnWarning">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        <span>Toast Warning</span>
+      </button>
+
+      <button class="toast-btn error" id="btnError">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+        <span>Toast Error</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Sonner Viewport -->
+  <div class="toaster-viewport">
+    <div class="toaster-stack" id="toasterStack">
+      <!-- Toasts inserted dynamically -->
+    </div>
+  </div>
+
+  <script>
+    // 1. SOUND SYNTHESIZER
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function playChime() {
+      try {
+        if (!audioCtx) audioCtx = new AudioCtx();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const now = audioCtx.currentTime;
+        [1046.5, 1318.5, 1567.98].forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.035);
+          gain.gain.setValueAtTime(0.04, now + idx * 0.035);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.035 + 0.24);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now + idx * 0.035);
+          osc.stop(now + idx * 0.035 + 0.24);
+        });
+      } catch {}
+    }
+
+    function playPop() {
+      try {
+        if (!audioCtx) audioCtx = new AudioCtx();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(320, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(840, audioCtx.currentTime + 0.05);
+        gain.gain.setValueAtTime(0.07, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+      } catch {}
+    }
+
+    // 2. SONNER STACK ENGINE
+    const stack = document.getElementById('toasterStack');
+    let activeToasts = [];
+
+    const icons = {
+      success: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
+      info: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`,
+      warning: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>`,
+      error: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`
+    };
+
+    let isStackHovered = false;
+
+    function updateIndices() {
+      activeToasts.forEach((item, idx) => {
+        item.el.setAttribute('data-index', idx);
+        item.el.style.setProperty('--index', idx);
+        item.el.style.zIndex = Math.max(1, 50 - idx * 10);
+      });
+    }
+
+    function pauseToast(item) {
+      if (item.timerId) {
+        clearTimeout(item.timerId);
+        item.timerId = null;
+        const elapsed = Date.now() - item.lastStartedAt;
+        item.remainingMs = Math.max(400, item.remainingMs - elapsed);
+      }
+    }
+
+    function resumeToast(item) {
+      if (!item.timerId && !isStackHovered && !document.hidden) {
+        item.lastStartedAt = Date.now();
+        item.timerId = setTimeout(() => {
+          removeToast(item.id);
+        }, item.remainingMs);
+      }
+    }
+
+    function pauseAll() {
+      activeToasts.forEach(pauseToast);
+    }
+
+    function resumeAll() {
+      activeToasts.forEach(resumeToast);
+    }
+
+    stack.addEventListener('mouseenter', () => {
+      isStackHovered = true;
+      pauseAll();
+    });
+
+    stack.addEventListener('mouseleave', () => {
+      isStackHovered = false;
+      resumeAll();
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        pauseAll();
+      } else {
+        resumeAll();
+      }
+    });
+
+    function removeToast(id) {
+      const idx = activeToasts.findIndex(t => t.id === id);
+      if (idx === -1) return;
+
+      const item = activeToasts[idx];
+      if (item.timerId) {
+        clearTimeout(item.timerId);
+        item.timerId = null;
+      }
+
+      item.el.style.transform = `translateX(120%) scale(0.9)`;
+      item.el.style.opacity = '0';
+
+      setTimeout(() => {
+        if (item.el.parentNode) item.el.parentNode.removeChild(item.el);
+        activeToasts = activeToasts.filter(t => t.id !== id);
+        updateIndices();
+      }, 250);
+    }
+
+    function toast({ type = 'info', title, message, actionText = 'Dismiss' }) {
+      if (type === 'success') playChime();
+      else playPop();
+
+      const id = Date.now() + Math.random();
+      const el = document.createElement('div');
+      el.className = 'sonner-toast';
+
+      el.innerHTML = `
+        <div class="toast-icon-wrap ${type}">
+          ${icons[type] || icons.info}
+        </div>
+        <div class="toast-body">
+          <div class="toast-title">${title}</div>
+          <div class="toast-msg">${message}</div>
+        </div>
+        <button class="toast-action-btn" type="button">${actionText}</button>
+      `;
+
+      el.querySelector('.toast-action-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        removeToast(id);
+      });
+
+      // Swipe to dismiss
+      let startX = 0;
+      el.addEventListener('pointerdown', (e) => {
+        startX = e.clientX;
+      });
+      el.addEventListener('pointerup', (e) => {
+        if (e.clientX - startX > 80) {
+          removeToast(id);
+        }
+      });
+
+      // Insert at front
+      stack.appendChild(el);
+      const toastItem = {
+        id,
+        el,
+        remainingMs: 4200,
+        timerId: null,
+        lastStartedAt: Date.now()
+      };
+      activeToasts.unshift(toastItem);
+
+      if (activeToasts.length > 5) {
+        const oldest = activeToasts.pop();
+        if (oldest.timerId) clearTimeout(oldest.timerId);
+        if (oldest.el.parentNode) oldest.el.parentNode.removeChild(oldest.el);
+      }
+
+      updateIndices();
+      resumeToast(toastItem);
+    }
+
+    // 3. LISTENERS
+    document.getElementById('btnSuccess').addEventListener('click', () => {
+      toast({
+        type: 'success',
+        title: 'Work Package Approved',
+        message: 'WP-R2-02 merged with 100% tests passing.',
+        actionText: 'Undo'
+      });
+    });
+
+    document.getElementById('btnInfo').addEventListener('click', () => {
+      toast({
+        type: 'info',
+        title: 'Telemetry Node Synced',
+        message: 'Tokyo PoP latency normalized to 12ms RTT.'
+      });
+    });
+
+    document.getElementById('btnWarning').addEventListener('click', () => {
+      toast({
+        type: 'warning',
+        title: 'Buffer Memory at 82%',
+        message: 'Shared heap cache eviction recommended.'
+      });
+    });
+
+    document.getElementById('btnError').addEventListener('click', () => {
+      toast({
+        type: 'error',
+        title: 'Connection Interrupted',
+        message: 'Socket timeout on Frankfurt node cluster.'
+      });
+    });
+  </script>
+</body>
+</html>

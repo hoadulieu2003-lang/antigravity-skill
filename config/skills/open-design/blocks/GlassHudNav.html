@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glass HUD Nav — Signature Wow Block</title>
+  <style>
+    /* ==========================================================================
+       LUMINOUS LIGHT THEME TOKENS (Quy chuẩn Sáng Đa Tầng Luminous)
+       ========================================================================== */
+    :root {
+      --bg-canvas: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-frosted: rgba(255, 255, 255, 0.76);
+      --bg-pill: rgba(15, 23, 42, 0.05);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-tertiary: #94A3B8;
+      --border-luminous: rgba(15, 23, 42, 0.07);
+      --border-highlight: rgba(255, 255, 255, 0.95);
+      --accent-primary: #0284C7;
+      --accent-hover: #0369A1;
+      --accent-glow: rgba(2, 132, 199, 0.18);
+      --success-dot: #10B981;
+      --warning-dot: #F59E0B;
+      --shadow-nav: 0 4px 24px -2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.03);
+      --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 6px 16px -2px rgba(15, 23, 42, 0.05);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.22, 1.61, 0.36, 1.0);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-canvas);
+      background-image: 
+        radial-gradient(at 10% 10%, rgba(2, 132, 199, 0.04) 0px, transparent 50%),
+        radial-gradient(at 90% 20%, rgba(245, 158, 11, 0.03) 0px, transparent 40%),
+        radial-gradient(at 50% 90%, rgba(16, 185, 129, 0.03) 0px, transparent 50%),
+        linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      color: var(--text-primary);
+      min-height: 220vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding-top: 100px;
+    }
+
+    /* ==========================================================================
+       GLASS HUD NAV CONTAINER
+       ========================================================================== */
+    .hud-nav-wrapper {
+      position: fixed;
+      top: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+      padding: 0 16px;
+      pointer-events: none; /* Allows click-through outside nav */
+    }
+
+    .hud-nav {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 8px 6px 16px;
+      background: var(--bg-frosted);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid var(--border-luminous);
+      border-radius: 9999px;
+      box-shadow: var(--shadow-nav), inset 0 1px 0 var(--border-highlight);
+      transition: box-shadow 200ms var(--ease-out), transform 200ms var(--ease-out);
+      max-width: 980px;
+      width: 100%;
+    }
+
+    .hud-nav:hover {
+      box-shadow: 0 8px 32px -4px rgba(15, 23, 42, 0.09), 0 2px 6px rgba(15, 23, 42, 0.04), inset 0 1px 0 var(--border-highlight);
+    }
+
+    /* Brand Logo & Name */
+    .hud-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: -0.02em;
+      padding-right: 8px;
+    }
+
+    .brand-symbol {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #0284C7, #0EA5E9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      color: white;
+    }
+
+    .brand-symbol svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Navigation Links with Sliding Pill */
+    .hud-links-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.03);
+      padding: 3px;
+      border-radius: 9999px;
+      border: 1px solid rgba(15, 23, 42, 0.04);
+    }
+
+    .hud-active-pill {
+      position: absolute;
+      top: 3px;
+      bottom: 3px;
+      left: 0;
+      background: var(--bg-surface);
+      border-radius: 9999px;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08), 0 0 1px rgba(15, 23, 42, 0.12);
+      transition: transform 240ms var(--ease-spring), width 240ms var(--ease-spring);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hud-link {
+      position: relative;
+      z-index: 2;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: 9999px;
+      transition: color 150ms var(--ease-out);
+      cursor: pointer;
+      user-select: none;
+      border: none;
+      background: none;
+    }
+
+    .hud-link:hover {
+      color: var(--text-primary);
+    }
+
+    .hud-link.is-active {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Right HUD Telemetry Section */
+    .hud-telemetry {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+    }
+
+    /* Live FPS Monitor Badge */
+    .fps-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(15, 23, 42, 0.035);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      border-radius: 9999px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      user-select: none;
+    }
+
+    .fps-indicator-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--success-dot);
+      box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+      transition: background-color 200ms ease, box-shadow 200ms ease;
+    }
+
+    .fps-value {
+      letter-spacing: -0.02em;
+    }
+
+    /* Haptic Audio Sound Toggle Button */
+    .haptic-toggle-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--border-luminous);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05), inset 0 1px 0 var(--border-highlight);
+      transition: transform 140ms var(--ease-out), color 140ms ease, background 140ms ease;
+      outline: none;
+    }
+
+    .haptic-toggle-btn:hover {
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .haptic-toggle-btn:active {
+      transform: scale(0.965);
+    }
+
+    .haptic-toggle-btn.is-muted {
+      color: var(--text-tertiary);
+      background: rgba(15, 23, 42, 0.02);
+    }
+
+    .haptic-toggle-btn svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    /* Action CTA Button */
+    .hud-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: linear-gradient(180deg, #0284C7 0%, #0369A1 100%);
+      border: 1px solid rgba(2, 132, 199, 0.8);
+      border-radius: 9999px;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      transition: transform 140ms var(--ease-out), box-shadow 140ms var(--ease-out);
+      outline: none;
+      user-select: none;
+    }
+
+    .hud-cta-btn:hover {
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .hud-cta-btn:active {
+      transform: scale(0.965);
+    }
+
+    /* ==========================================================================
+       DEMO SHOWCASE HERO & MULTI-LAYER CARDS
+       ========================================================================== */
+    .demo-container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 100px;
+    }
+
+    .demo-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .demo-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-primary);
+      background: var(--accent-glow);
+      border: 1px solid rgba(2, 132, 199, 0.2);
+      border-radius: 9999px;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .demo-title {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.15;
+    }
+
+    .demo-subtitle {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .demo-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-luminous);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--shadow-card), inset 0 1px 0 var(--border-highlight);
+      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+    }
+
+    .demo-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.08), inset 0 1px 0 var(--border-highlight);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(2, 132, 199, 0.08);
+      color: var(--accent-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hud-nav {
+        gap: 8px;
+        padding: 5px 8px;
+      }
+      .fps-badge {
+        display: none;
+      }
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+      .demo-title {
+        font-size: 30px;
+      }
+      .hud-link {
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       GLASS HUD NAV COMPONENT
+       ======================================================================== -->
+  <div class="hud-nav-wrapper">
+    <nav class="hud-nav" role="navigation" aria-label="Main Navigation">
+      <!-- Brand Identifier -->
+      <a href="#home" class="hud-brand" aria-label="Antigravity Home">
+        <div class="brand-symbol">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <span>Antigravity</span>
+      </a>
+
+      <!-- Animated Links Track with Sliding Pill Marker -->
+      <div class="hud-links-container" id="hudLinksTrack">
+        <div class="hud-active-pill" id="hudActivePill"></div>
+        <button class="hud-link is-active" data-index="0" data-haptic="tab">Overview</button>
+        <button class="hud-link" data-index="1" data-haptic="tab">Telemetry</button>
+        <button class="hud-link" data-index="2" data-haptic="tab">Modules</button>
+        <button class="hud-link" data-index="3" data-haptic="tab">Docs</button>
+      </div>
+
+      <!-- Telemetry & Controls Section -->
+      <div class="hud-telemetry">
+        <!-- Live FPS Counter -->
+        <div class="fps-badge" title="Realtime Client Render Framerate" aria-label="FPS Telemetry">
+          <span class="fps-indicator-dot" id="fpsDot"></span>
+          <span class="fps-value" id="fpsVal">60.0 FPS</span>
+        </div>
+
+        <!-- Web Audio Haptic Sound Mute/Unmute Toggle -->
+        <button class="haptic-toggle-btn" id="hapticToggleBtn" title="Toggle Tactile Mechanical Sound" aria-label="Sound Toggle" data-haptic="toggle">
+          <svg id="soundIconOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+          <svg id="soundIconOff" style="display: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+
+        <!-- CTA Launch Button with Tactile Co-lún :active scale 0.965 -->
+        <a href="#launch" class="hud-cta-btn" data-haptic="chime">
+          <span>Deploy</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- ========================================================================
+       DEMO CONTENT (For testing scroll & frosted refraction)
+       ======================================================================== -->
+  <main class="demo-container">
+    <header class="demo-header">
+      <div class="demo-tag">Signature Wow Block 01</div>
+      <h1 class="demo-title">Glass HUD Navigation</h1>
+      <p class="demo-subtitle">Multi-layered frosted glass navbar featuring real-time client FPS telemetry, sliding pill state interpolation, and pure Web Audio mechanical feedback.</p>
+    </header>
+
+    <div class="demo-grid">
+      <div class="demo-card">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 class="card-title">Multi-Layered Blur</h3>
+        <p class="card-desc">Backdrop-filter blur 16px with saturate 180% and 1px luminous border inset highlight. 100% compliant with Luminous Light Theme.</p>
+      </div>
+
+      <div class="demo-card">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 class="card-title">Live FPS Telemetry</h3>
+        <p class="card-desc">Tracks real-time render performance over a 60-frame moving window. Instant visual color shift when framerate fluctuates.</p>
+      </div>
+
+      <div class="demo-card">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        </div>
+        <h3 class="card-title">Web Audio Haptics</h3>
+        <p class="card-desc">Zero audio file dependencies. Synthesizes subtle tactile mechanical clicks and harmonious chimes using client Web Audio API.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       SCRIPTS: SLIDING PILL, LIVE FPS, AND WEB AUDIO SYNTHESIZER
+       ======================================================================== -->
+  <script>
+    // 1. PURE WEB AUDIO SYNTHESIZER (Zero external audio files)
+    class MiniAudioHaptics {
+      constructor() {
+        this.ctx = null;
+        this.isMuted = false;
+      }
+      init() {
+        if (!this.ctx && (window.AudioContext || window.webkitAudioContext)) {
+          const AudioClass = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioClass();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+      playTab() {
+        if (this.isMuted) return;
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(540, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(420, this.ctx.currentTime + 0.05);
+        gain.gain.setValueAtTime(0.06, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.05);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.05);
+      }
+      playToggle(state) {
+        if (this.isMuted && !state) return;
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        const startFreq = state ? 440 : 660;
+        const endFreq = state ? 880 : 330;
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(startFreq, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(endFreq, this.ctx.currentTime + 0.06);
+        gain.gain.setValueAtTime(0.07, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.06);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.06);
+      }
+      playChime() {
+        if (this.isMuted) return;
+        this.init();
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        [1046.5, 1318.5, 1567.98].forEach((freq, idx) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.04);
+          gain.gain.setValueAtTime(0.04, now + idx * 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.04 + 0.28);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now + idx * 0.04);
+          osc.stop(now + idx * 0.04 + 0.28);
+        });
+      }
+    }
+
+    const sound = new MiniAudioHaptics();
+
+    // 2. SLIDING PILL INTERPOLATOR
+    const track = document.getElementById('hudLinksTrack');
+    const pill = document.getElementById('hudActivePill');
+    const links = document.querySelectorAll('.hud-link');
+
+    function positionPill(targetEl) {
+      if (!targetEl) return;
+      const targetRect = targetEl.getBoundingClientRect();
+      const trackRect = track.getBoundingClientRect();
+      const leftOffset = targetRect.left - trackRect.left;
+      pill.style.transform = `translateX(${leftOffset}px)`;
+      pill.style.width = `${targetRect.width}px`;
+    }
+
+    // Set initial position
+    const activeLink = document.querySelector('.hud-link.is-active');
+    if (activeLink) {
+      positionPill(activeLink);
+    }
+
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        links.forEach(l => l.classList.remove('is-active'));
+        link.classList.add('is-active');
+        positionPill(link);
+        sound.playTab();
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      const cur = document.querySelector('.hud-link.is-active');
+      if (cur) positionPill(cur);
+    });
+
+    // 3. SOUND TOGGLE BUTTON
+    const hapticBtn = document.getElementById('hapticToggleBtn');
+    const iconOn = document.getElementById('soundIconOn');
+    const iconOff = document.getElementById('soundIconOff');
+
+    hapticBtn.addEventListener('click', () => {
+      sound.isMuted = !sound.isMuted;
+      if (sound.isMuted) {
+        hapticBtn.classList.add('is-muted');
+        iconOn.style.display = 'none';
+        iconOff.style.display = 'block';
+      } else {
+        hapticBtn.classList.remove('is-muted');
+        iconOn.style.display = 'block';
+        iconOff.style.display = 'none';
+        sound.playToggle(true);
+      }
+    });
+
+    // CTA Chime
+    document.querySelector('.hud-cta-btn').addEventListener('click', () => {
+      sound.playChime();
+    });
+
+    // 4. LIVE 60 FPS TELEMETRY MONITOR
+    let frameTimes = [];
+    let lastTimestamp = performance.now();
+    const fpsVal = document.getElementById('fpsVal');
+    const fpsDot = document.getElementById('fpsDot');
+
+    function updateFPS(now) {
+      const delta = now - lastTimestamp;
+      lastTimestamp = now;
+      const fps = 1000 / (delta || 16.6);
+
+      frameTimes.push(fps);
+      if (frameTimes.length > 30) {
+        frameTimes.shift();
+      }
+
+      const avgFps = frameTimes.reduce((a, b) => a + b, 0) / frameTimes.length;
+      const displayFps = Math.min(240, avgFps).toFixed(1);
+      fpsVal.textContent = `${displayFps} FPS`;
+
+      if (avgFps >= 50) {
+        fpsDot.style.backgroundColor = '#10B981'; // Green
+        fpsDot.style.boxShadow = '0 0 6px rgba(16, 185, 129, 0.6)';
+      } else if (avgFps >= 30) {
+        fpsDot.style.backgroundColor = '#F59E0B'; // Amber
+        fpsDot.style.boxShadow = '0 0 6px rgba(245, 158, 11, 0.6)';
+      } else {
+        fpsDot.style.backgroundColor = '#EF4444'; // Red
+        fpsDot.style.boxShadow = '0 0 6px rgba(239, 68, 68, 0.6)';
+      }
+
+      requestAnimationFrame(updateFPS);
+    }
+    requestAnimationFrame(updateFPS);
+  </script>
+</body>
+</html>

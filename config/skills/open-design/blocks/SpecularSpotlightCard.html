@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Specular Spotlight Card — Signature Wow Block</title>
+  <style>
+    /* ==========================================================================
+       LUMINOUS LIGHT THEME TOKENS
+       ========================================================================== */
+    :root {
+      --bg-canvas: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --border-luminous: rgba(15, 23, 42, 0.08);
+      --border-highlight: rgba(255, 255, 255, 0.95);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #94A3B8;
+      --accent-blue: #0284C7;
+      --accent-violet: #7C3AED;
+      --shadow-card: 0 4px 24px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
+      --shadow-hover: 0 16px 40px -4px rgba(15, 23, 42, 0.09), 0 2px 6px rgba(15, 23, 42, 0.04);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.22, 1.61, 0.36, 1.0);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-canvas);
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(2, 132, 199, 0.05) 0px, transparent 50%),
+        radial-gradient(at 85% 85%, rgba(124, 58, 237, 0.04) 0px, transparent 50%),
+        linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(2, 132, 199, 0.08);
+      border: 1px solid rgba(2, 132, 199, 0.2);
+      border-radius: 9999px;
+      color: var(--accent-blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    p.subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 48px;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       SPECULAR SPOTLIGHT CARD
+       ========================================================================== */
+    .cards-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 32px;
+      perspective: 1000px;
+    }
+
+    .spotlight-card {
+      --mouse-x: 50%;
+      --mouse-y: 50%;
+      --spotlight-opacity: 0;
+      position: relative;
+      background: var(--bg-surface);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: var(--shadow-card), inset 0 1px 0 var(--border-highlight);
+      border: 1px solid var(--border-luminous);
+      overflow: hidden;
+      text-align: left;
+      transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .spotlight-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover), inset 0 1px 0 var(--border-highlight);
+    }
+
+    /* 1. LAYER 1: Ambient Face Glow */
+    .spotlight-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle 320px at var(--mouse-x) var(--mouse-y),
+        rgba(2, 132, 199, 0.08),
+        rgba(124, 58, 237, 0.03) 40%,
+        transparent 80%
+      );
+      opacity: var(--spotlight-opacity);
+      pointer-events: none;
+      transition: opacity 120ms var(--ease-out);
+      z-index: 1;
+    }
+
+    /* 2. LAYER 2: Ultra-Crisp Specular 1px Border Highlight */
+    .spotlight-card::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 25px;
+      padding: 1.5px;
+      background: radial-gradient(
+        circle 240px at var(--mouse-x) var(--mouse-y),
+        rgba(2, 132, 199, 0.8),
+        rgba(124, 58, 237, 0.6) 35%,
+        transparent 70%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: var(--spotlight-opacity);
+      pointer-events: none;
+      transition: opacity 120ms var(--ease-out);
+      z-index: 2;
+    }
+
+    /* Content Layer */
+    .card-inner {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Visual Product Header */
+    .product-visual-stage {
+      height: 180px;
+      background: linear-gradient(135deg, rgba(241, 245, 249, 0.8) 0%, rgba(248, 250, 252, 0.9) 100%);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.03);
+    }
+
+    /* Floating Micro-Engine Chip */
+    .engine-chip {
+      width: 76px;
+      height: 76px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #0284C7, #7C3AED);
+      box-shadow: 
+        0 8px 24px -2px rgba(2, 132, 199, 0.35),
+        inset 0 1px 1px rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      transition: transform 300ms var(--ease-spring);
+    }
+
+    .spotlight-card:hover .engine-chip {
+      transform: scale(1.08) translateZ(20px);
+    }
+
+    .engine-chip svg {
+      width: 38px;
+      height: 38px;
+    }
+
+    /* Card Typography & Details */
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: rgba(2, 132, 199, 0.08);
+      color: var(--accent-blue);
+      border: 1px solid rgba(2, 132, 199, 0.2);
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Spec List */
+    .spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .spec-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .spec-val {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      margin-top: 2px;
+    }
+
+    /* Action CTA */
+    .card-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #0284C7 0%, #0369A1 100%);
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(2, 132, 199, 0.85);
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      transition: transform 140ms var(--ease-out), box-shadow 140ms var(--ease-out);
+      outline: none;
+    }
+
+    .card-cta-btn:hover {
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    }
+
+    .card-cta-btn:active {
+      transform: scale(0.965);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="tag">Signature Wow Block 05</div>
+    <h1>Specular Spotlight Card</h1>
+    <p class="subtitle">Dual-layer Euclidean proximity spotlight tracking with 1px luminous border specular reflection and subtle parallax reaction.</p>
+
+    <div class="cards-wrapper">
+      
+      <!-- Card 1 -->
+      <div class="spotlight-card" data-proximity="140">
+        <div class="card-inner">
+          <div class="product-visual-stage">
+            <div class="engine-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+                <line x1="9" y1="1" x2="9" y2="4"></line>
+                <line x1="15" y1="1" x2="15" y2="4"></line>
+                <line x1="9" y1="20" x2="9" y2="23"></line>
+                <line x1="15" y1="20" x2="15" y2="23"></line>
+                <line x1="20" y1="9" x2="23" y2="9"></line>
+                <line x1="20" y1="14" x2="23" y2="14"></line>
+                <line x1="1" y1="9" x2="4" y2="9"></line>
+                <line x1="1" y1="14" x2="4" y2="14"></line>
+              </svg>
+            </div>
+          </div>
+
+          <div class="badge-row">
+            <span class="card-badge">Enterprise Tier</span>
+          </div>
+
+          <h2 class="card-title">Antigravity Neural Node</h2>
+          <p class="card-desc">Low-latency agent orchestrator delivering synchronized multi-pod parallel processing and instant telemetry streaming.</p>
+
+          <div class="spec-grid">
+            <div class="spec-item">
+              <span class="spec-label">Throughput</span>
+              <span class="spec-val">120K RPS</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Latency</span>
+              <span class="spec-val">&lt; 14ms RTT</span>
+            </div>
+          </div>
+
+          <button class="card-cta-btn" type="button">Deploy Instance</button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="spotlight-card" data-proximity="140">
+        <div class="card-inner">
+          <div class="product-visual-stage">
+            <div class="engine-chip" style="background: linear-gradient(135deg, #10B981, #0284C7);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+            </div>
+          </div>
+
+          <div class="badge-row">
+            <span class="card-badge" style="color: #10B981; background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2);">Global Mesh</span>
+          </div>
+
+          <h2 class="card-title">Telemetry Vector Fabric</h2>
+          <p class="card-desc">Zero-copy shared memory buffer interconnecting distributed LLM compute nodes with continuous self-verification.</p>
+
+          <div class="spec-grid">
+            <div class="spec-item">
+              <span class="spec-label">Concurrency</span>
+              <span class="spec-val">12 Agents</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Reliability</span>
+              <span class="spec-val">99.99% SLO</span>
+            </div>
+          </div>
+
+          <button class="card-cta-btn" style="background: linear-gradient(180deg, #10B981 0%, #059669 100%); border-color: rgba(16, 185, 129, 0.85); box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);" type="button">Connect Mesh</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // EUCLIDEAN PROXIMITY SPOTLIGHT ENGINE
+    const cards = document.querySelectorAll('.spotlight-card');
+
+    function calculateDistance(x1, y1, x2, y2) {
+      const dx = x1 - x2;
+      const dy = y1 - y2;
+      return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    function onPointerMove(e) {
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+
+        // Euclidean closest point on card bounding rectangle
+        const closestX = Math.max(rect.left, Math.min(mouseX, rect.right));
+        const closestY = Math.max(rect.top, Math.min(mouseY, rect.bottom));
+        const distance = calculateDistance(mouseX, mouseY, closestX, closestY);
+
+        const proximityLimit = parseFloat(card.getAttribute('data-proximity') || '120');
+
+        if (distance <= proximityLimit) {
+          // Inside or within proximity radius
+          const relativeX = mouseX - rect.left;
+          const relativeY = mouseY - rect.top;
+
+          // Compute smooth proximity alpha
+          let opacity = 1;
+          if (distance > 0) {
+            opacity = Math.max(0, 1 - (distance / proximityLimit));
+          }
+
+          card.style.setProperty('--mouse-x', `${relativeX}px`);
+          card.style.setProperty('--mouse-y', `${relativeY}px`);
+          card.style.setProperty('--spotlight-opacity', opacity.toFixed(3));
+        } else {
+          card.style.setProperty('--spotlight-opacity', '0');
+        }
+      });
+    }
+
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    window.addEventListener('pointerleave', () => {
+      cards.forEach(card => card.style.setProperty('--spotlight-opacity', '0'));
+    });
+  </script>
+</body>
+</html>

@@ -1526,3 +1526,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-24 12:06:46`
+
+<untrusted_external_content>
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Silent Failures in Agent-Tool Interaction: An Audit of ToolUniverse](https://arxiv.org/abs/2609.26836)
+  > arXiv:2609.26836v1 Announce Type: new Abstract: Agentic AI systems are increasingly adopting automated pipelines that integrate multiple tools. While prior r...
+- **[ArXiv CS.AI]** [Harness as a Language: A Minimalist Agent Framework With Maximal Expressivity](https://arxiv.org/abs/2609.26891)
+  > arXiv:2609.26891v1 Announce Type: new Abstract: Modern language-model agents are built around the \textit{agent loop}, where the LLM is placed in an environm...
+
+</untrusted_external_content>
+
+---

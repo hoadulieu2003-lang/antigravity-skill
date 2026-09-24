@@ -1,13 +1,14 @@
 ---
 name: taste-engine
-description: "Siêu Động Cơ Gu Thẩm Mỹ UI/UX & Chống Rác AI (Taste Engine & Anti-AI Slop). Định hình phong cách độc bản cho landing pages, portfolios, SaaS và redesigns. Điều hướng 3 Dial cốt lõi (Variance 8, Motion 6, Density 4), triệt tiêu các đặc trưng khuôn mẫu AI (Anti-AI Tells), tuân thủ nghiêm ngặt chuẩn mực Light Theme mặc định và độ tương phản WCAG AA."
+description: "Siêu Động Cơ Gu Thẩm Mỹ UI/UX & Chống Rác AI (Taste Engine & Anti-AI Slop). Định hình phong cách độc bản cho landing pages, portfolios, SaaS và redesigns. Điều hướng 3 Dial cốt lõi (Variance 8, Motion 6, Density 4), triệt tiêu các đặc trưng khuôn mẫu AI (Anti-AI Tells), tuân thủ nghiêm ngặt chuẩn mực Luminous Light Theme Invariant và độ tương phản WCAG AA."
 ---
 
 # Taste Engine: Triết Lý Thẩm Mỹ Độc Bản & Bộ Quy Tắc Chống Rác AI (Anti-AI Slop)
 
-> **Mục tiêu chuyên biệt**: Landing pages, portfolios (hồ sơ năng lực), trang giới thiệu sản phẩm SaaS và các dự án thiết kế lại (redesigns). Không áp dụng cho dashboard nội bộ, bảng dữ liệu thuần túy hay biểu mẫu nhiều bước.
-> **Quy tắc ngữ cảnh**: Không tự động kích hoạt máy móc. Luôn luôn đọc vị bối cảnh (Brief Inference) trước khi điều chỉnh các tham số thiết kế.
-> **Quy chuẩn bất biến**: Mặc định 100% Giao diện Sáng (Mandatory Light Theme Default Invariant) - Giao diện tối chỉ triển khai khi có yêu cầu tường minh từ Anh.
+> **Mục tiêu chuyên biệt**: Landing pages, portfolios (hồ sơ năng lực), trang giới thiệu sản phẩm SaaS và các dự án thiết kế lại (redesigns). Không áp dụng cho dashboard nội bộ, bảng dữ liệu thuần túy hay biểu mẫu nhiều bước.  
+> **Nguồn gốc tri thức (Upstream Heritage)**: Kế thừa và tinh chỉnh sâu rộng từ `Leonxlnx/taste-skill` (https://github.com/Leonxlnx/taste-skill).  
+> **Quy tắc ngữ cảnh (Contextual Execution)**: Không tự động kích hoạt máy móc. Luôn luôn đọc vị bối cảnh (Brief Inference) trước khi điều chỉnh các tham số thiết kế.  
+> **Quy chuẩn bất biến tối cao**: Mặc định 100% Giao diện Sáng Đa Tầng Luminous (Luminous Light Theme Invariant). Giao diện tối chỉ triển khai khi có yêu cầu tường minh từ Anh.
 
 ---
 
@@ -166,9 +167,10 @@ Mô hình AI thường mắc các lỗi thẩm mỹ rập khuôn. Dưới đây 
 * Tối đa 1 màu nhấn (accent color). Độ bão hòa (saturation) < 80% theo mặc định.
 * **QUY TẮC LILA (The Lila Rule)**: Cấm tiệt hào quang tím AI (AI purple glow) hoặc gradient neon ngẫu nhiên trên nút bấm. Sử dụng màu nền trung tính (Zinc / Slate / Stone) kết hợp với 1 điểm nhấn tương phản cao (Emerald, Electric Blue, Deep Rose, Burnt Orange).
 * **KHÓA ĐỒNG NHẤT MÀU SẮC (Color Consistency Lock)**: Khi đã chọn màu nhấn cho trang, toàn bộ các nút bấm, huy hiệu và liên kết phải tuân thủ nhất quán. Không thể phần đầu màu cam mà footer lại nhảy sang xanh ngọc.
-* **LỆNH CẤM BẢNG MÀU BE / ĐỒNG NÔNG CẠN (Premium-Consumer Palette Ban)**:
-  * Với các bài toán đồ gia dụng, thủ công, sản phẩm xa xỉ, AI mặc định dùng nền màu be/kem (`#f5f1ea`, `#fbf8f1`) + chữ nâu đen (`#1a1714`) + điểm nhấn màu đồng/đất sét (`#b08947`, `#b6553a`). Đây là bẫy nhận diện AI lớn thứ hai.
-  * Đổi mới bằng các bảng màu khác:
+* **PHÂN BIỆT BẢNG MÀU RẬP KHUÔN VS NỀN SÁNG LUMINOUS**:
+  * **Cấm bảng màu rập khuôn AI (Muddy Cliché Ban)**: Bẫy nhận diện AI phổ biến là sự kết hợp u tối giữa nền be xỉn màu (`#f5f1ea`) + chữ nâu đen mờ nhạt (`#1a1714`) + điểm nhấn đồng/đất sét xỉn thiếu tương phản.
+  * **Khác biệt hoàn toàn với Nền Sáng Đa Tầng Luminous**: Chuẩn mực Luminous Light Theme sử dụng Canvas nền tinh khiết (`Warm Paper #FAF9F6`, `Ivory #FDFBF7`, `Alabaster #F8F9FA`), nâng tầm bằng thẻ trắng tinh khôi (`Elevated Pure White #FFFFFF`), viền quang học siêu mảnh và chữ đen than chì sắc nét (`#0f172a` hoặc `#18181b`) đạt chuẩn tương phản cao WCAG AAA.
+  * **Các bảng màu sang trọng độc bản thay thế**:
     - **Cold Luxury (Sang trọng lạnh lùng)**: Xám bạc + chrome + khói sương (kiểu Apple Watch Ultra, Tesla).
     - **Forest (Rừng sâu)**: Xanh rêu đậm + màu xương + điểm nhấn hổ phách.
     - **Cobalt + Cream**: Xanh cobalt sắc nét trên nền sáng trang nhã.
@@ -230,21 +232,32 @@ Mô hình AI thường mắc các lỗi thẩm mỹ rập khuôn. Dưới đây 
   - Những con số chính xác giả tạo (`99.99%`, `4.1x`, `48k`) không có nguồn gốc từ đề bài.
   - Văn phong sáo rỗng giả dạng thợ thủ công khiêm tốn.
 
-### 4.9 Mandatory Light Theme Default Invariant (Quy Chuẩn Giao Diện Sáng Mặc Định Tối Cao)
-* **Khóa chết 100% Giao diện Sáng (Light Theme Default)**: Toàn bộ thành phần thiết kế, màu nền, thẻ card, văn bản đều mặc định chạy trên nền sáng trang nhã (trắng tinh khôi, kem pastel, xám khói, xanh ngọc nhạt).
-* **CẤM TỰ Ý DÙNG NỀN ĐEN / DARK THEME**: Chỉ thiết kế Dark Theme khi Anh có chỉ đạo rõ ràng bằng văn bản.
-* **Đồng nhất chủ đề toàn trang (Theme Lock)**: Khi trang đã là Light Theme, mọi section đều phải là Light Theme. Không có chuyện đang đi trên nền sáng bỗng nhiên xuất hiện một section nền đen kẹp ở giữa làm gãy đổ trải nghiệm thị giác.
+### 4.9 Luminous Light Theme Invariant (Quy Chuẩn Giao Diện Sáng Đa Tầng Tối Cao)
+* **Khóa chết 100% Giao diện Sáng Đa Tầng (Luminous Light Theme Default)**: Toàn bộ thành phần thiết kế, màu nền, thẻ card, văn bản đều mặc định chạy trên nền sáng đa tầng tinh xảo. Triệt tiêu hoàn toàn nền đơn sắc phẳng bẹt vô hồn ("giấy bẹt đơn điệu" / `Monolithic Flat Paper`).
+* **Kiến trúc Nền Sáng Đa Tầng (Multi-Layered Luminous Surfaces)**:
+  - Canvas nền cơ sở (`Base Canvas`): `Warm Paper #FAF9F6`, `Ivory #FDFBF7`, hoặc `Alabaster #F8F9FA`.
+  - Bề mặt thẻ nổi (`Elevated Surfaces / Cards`): Sắc trắng tinh khiết `#FFFFFF` hoặc Frosted Glass với `backdrop-filter: blur(12px)`.
+  - Viền quang học siêu mảnh (`Luminous Borders`): `1px solid rgba(0, 0, 0, 0.06)` hoặc viền kép phản quang.
+* **Bóng đổ Đa chiều & Quang học Tinh xảo (Multi-Dimensional Layered Shadows)**:
+  - Tuyệt đối cấm bóng đổ đen đặc bẹt dính (`Hard Black Drop Shadows`).
+  - Bắt buộc xếp lớp bóng đổ đa tầng mịn màng kết hợp viền sáng phản quang:
+    ```css
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.05), 0 12px 28px -4px rgba(0, 0, 0, 0.04);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    ```
+* **CẤM TỰ Ý DÙNG NỀN ĐEN / DARK THEME**: Chỉ thiết kế Dark Theme khi Anh có chỉ đạo rõ ràng bằng văn bản (Explicit Request Only).
+* **Đồng nhất chủ đề toàn trang (Theme Lock)**: Khi trang đã là Light Theme, mọi section đều phải là Light Theme. Tuyệt đối không để section nền đen kẹp ở giữa làm gãy đổ trải nghiệm thị giác.
 
 ---
 
-## 5. MOTION DISCIPLINE & CANONICAL PATTERNS (Kỷ Luật Chuyển Động & Mã Mẫu GSAP)
+## 5. MOTION DISCIPLINE & CANONICAL GSAP PATTERNS (Kỷ Luật Chuyển Động & Mã Mẫu GSAP)
 
 Chuyển động trong giao diện người dùng phải có lý do tồn tại (Motivated Motion): định hướng phân cấp thị giác, kể câu chuyện sản phẩm, phản hồi thao tác người dùng hoặc chuyển trạng thái mượt mà.
 
 ### 5.A Kỷ luật chung về Hoạt Ảnh
 * **Quy tắc Marquee**: Băng chuyền chữ chạy ngang vô tận chỉ được xuất hiện TỐI ĐA 1 LẦN trên toàn bộ trang. Việc lặp lại marquee nhiều lần tạo cảm giác lười biếng trong thiết kế.
 * **Khai báo chuyển động tương xứng**: Nếu đặt `MOTION_INTENSITY: 6` trở lên, giao diện bắt buộc phải có chuyển động thực tế (hiệu ứng vào của hero, scroll-reveal cho các section, hover physics trên nút). Không thể công bố chỉ số chuyển động cao trên một trang web tĩnh lặng.
-* **Hỗ trợ giảm chuyển động (`prefers-reduced-motion`)**: Luôn tôn trọng người dùng bằng cách cung cấp phương án mờ dần nhẹ nhàng thay cho các dịch chuyển không gian lớn.
+* **Hỗ trợ giảm chuyển động (`prefers-reduced-motion`)**: Luôn kiểm tra `window.matchMedia("(prefers-reduced-motion: reduce)").matches` để cung cấp phương án mờ dần nhẹ nhàng thay cho các dịch chuyển không gian lớn.
 
 ### 5.B Mã mẫu Chuẩn GSAP Sticky-Stack (Thẻ Xếp Chồng Cuộn Chuẩn Xác)
 ```tsx
@@ -252,16 +265,16 @@ Chuyển động trong giao diện người dùng phải có lý do tồn tại 
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useReducedMotion } from "motion/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function StickyStack({ cards }: { cards: React.ReactNode[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const shouldReduce = useReducedMotion();
 
   useEffect(() => {
-    if (shouldReduce || !containerRef.current) return;
+    const isReduced = typeof window !== "undefined" && 
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isReduced || !containerRef.current) return;
     
     const ctx = gsap.context(() => {
       const cardElements = gsap.utils.toArray<HTMLElement>(".stack-card");
@@ -292,7 +305,7 @@ export function StickyStack({ cards }: { cards: React.ReactNode[] }) {
     }, containerRef);
 
     return () => ctx.revert();
-  }, [shouldReduce]);
+  }, []);
 
   return (
     <div ref={containerRef} className="relative w-full">
@@ -315,17 +328,17 @@ export function StickyStack({ cards }: { cards: React.ReactNode[] }) {
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useReducedMotion } from "motion/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function HorizontalPan({ children }: { children: React.ReactNode }) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const shouldReduce = useReducedMotion();
 
   useEffect(() => {
-    if (shouldReduce || !sectionRef.current || !trackRef.current) return;
+    const isReduced = typeof window !== "undefined" && 
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isReduced || !sectionRef.current || !trackRef.current) return;
 
     const ctx = gsap.context(() => {
       const track = trackRef.current!;
@@ -346,7 +359,7 @@ export function HorizontalPan({ children }: { children: React.ReactNode }) {
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [shouldReduce]);
+  }, []);
 
   return (
     <div ref={sectionRef} className="overflow-hidden bg-transparent">
@@ -360,44 +373,128 @@ export function HorizontalPan({ children }: { children: React.ReactNode }) {
 
 ---
 
-## 6. AI TELLS & FORBIDDEN PATTERNS (Bộ Nhận Diện Rác AI Cấm Tuyệt Đối)
+## 6. REFERENCE VOCABULARY (Bản Đồ Thuật Ngữ Mô Hình Giao Diện Độc Bản)
+
+Đây là kho thuật ngữ chuẩn để AI Agent tư duy và vận dụng chính xác các mẫu thiết kế:
+
+### 6.1 Mô thức Hero (Hero Paradigms)
+* **Asymmetric Split Hero**: Bố cục chữ bên trái, hình ảnh/packshot bên phải, khoảng trắng âm hào phóng.
+* **Editorial Manifesto Hero**: Tiêu đề typography khổ lớn, không hình ảnh nền, tựa như trang bìa tạp chí in ấn.
+* **Video / Media Mask Hero**: Kiểu chữ khoét rỗng làm mặt nạ hé lộ video nền chuyển động bên dưới.
+* **Kinetic-Type Hero**: Kiểu chữ động tương tác là tâm điểm thị giác chính.
+* **Curtain-Reveal Hero**: Hero mở cánh màn sang hai bên khi người dùng bắt đầu cuộn trang.
+* **Scroll-Pinned Hero**: Hero ghim chặt vị trí trong khi nội dung cuộn trượt bên dưới.
+
+### 6.2 Thanh Điều Hướng & Menu (Navigation & Menus)
+* **Mac OS Dock Magnification**: Menu mép màn hình, icon phóng to mượt mà khi di chuột qua.
+* **Magnetic Button**: Nút bấm tự hút nhẹ theo tọa độ con trỏ chuột khi đến gần.
+* **Dynamic Island**: Khối thuôn bo tròn biến hình linh hoạt để hiển thị trạng thái và thông báo.
+* **Contextual Radial Menu**: Menu dạng nan hoa tròn bung tỏa ngay tại vị trí nhấp chuột.
+* **Mega Menu Reveal**: Menu thả xuống toàn màn hình với hiệu ứng thác đổ so le (stagger).
+
+### 6.3 Bố Cục & Lưới (Layout & Grids)
+* **Bento Grid**: Lưới các ô bất đối xứng phân cấp dữ liệu trực quan theo phong cách Apple Control Center.
+* **Masonry Layout**: Lưới so le tự nhiên, các ô không bị ép theo chiều cao hàng cố định.
+* **Split-Screen Scroll**: Hai nửa màn hình trượt theo hai hướng ngược chiều nhau khi cuộn.
+* **Sticky-Stack Sections**: Các section ghim và xếp chồng lớp vật lý khi cuộn trang.
+
+### 6.4 Thẻ Card & Khối Chứa (Cards & Containers)
+* **Parallax Tilt Card**: Thẻ xoay 3D nghiêng theo tọa độ chuột của người dùng.
+* **Spotlight Border Card**: Đường viền phát sáng cục bộ di chuyển theo vị trí con trỏ chuột.
+* **Glassmorphism Panel**: Thẻ kính mờ tinh xảo với khúc xạ ánh sáng đa tầng.
+* **Morphing Modal**: Nút bấm bung nở mượt mà biến hình thành chính hộp thoại dialog.
+
+### 6.5 Hoạt Ảnh Cuộn & Vi Tương Tác (Scroll & Micro-Interactions)
+* **Horizontal Scroll Hijack**: Chuyển đổi tiến trình cuộn dọc thành chuyển động trượt ngang.
+* **Skeleton Shimmer**: Vệt sáng quét ngang qua khung xương đang tải dữ liệu.
+* **Directional Hover-Aware Button**: Màu nền nút tràn vào từ đúng hướng con trỏ chuột di vào.
+* **Lens Blur Depth**: Làm mờ nhẹ nền UI để tập trung mắt nhìn vào cửa sổ thao tác phía trước.
+* **Phân định Thư viện Hoạt ảnh**: Dùng **Motion (`motion/react`)** cho UI/Bento/trạng thái; dùng **GSAP + ScrollTrigger** cho scrollytelling và scroll-hijack. Tuyệt đối không trộn lẫn GSAP và Motion trong cùng một cây component.
+
+---
+
+## 7. REDESIGN PROTOCOL (Kỷ Luật Nâng Cấp & Thiết Kế Lại)
+
+Kỹ năng này xử lý cả **xây dựng mới từ đầu (Greenfield) VÀ nâng cấp thiết kế lại (Redesign)**. Nhận định sai chế độ là nguyên nhân hàng đầu dẫn đến sản phẩm redesign hỏng hóc.
+
+### 7.A Xác định Chế độ (Detect Mode)
+* **Greenfield**: Dự án chưa có giao diện cũ hoặc đã duyệt làm mới toàn diện từ đầu. Sử dụng Dial cơ sở `8 / 6 / 4`.
+* **Redesign - Preserve (Bảo tồn)**: Hiện đại hóa mà không làm đứt gãy nhận diện thương hiệu. Kiểm toán trước, trích xuất token, nâng cấp cuốn chiếu.
+* **Redesign - Overhaul (Lột xác)**: Ngôn ngữ thị giác hoàn toàn mới trên nền nội dung hiện có. Thiết kế thị giác như mới nhưng giữ trọn nội dung và kiến trúc thông tin.
+
+### 7.B Kiểm Toán Trước Khi Sửa Mã Nguồn (Audit Before Touching)
+Khảo sát và ghi nhận hiện trạng trước khi đề xuất bất kỳ thay đổi nào:
+1. **Brand tokens**: Màu chính/nhấn, font chữ, logo, bán kính bo góc.
+2. **Kiến trúc thông tin (IA)**: Sơ đồ cây trang, thanh điều hướng chính, luồng chuyển đổi cốt lõi.
+3. **Khối nội dung**: Những gì đang mang lại giá trị, những gì là nội dung thừa thãi.
+4. **Họa tiết cần bảo tồn**: Tương tác mang tính dấu ấn, giọng điệu văn bản (copy voice).
+5. **Họa tiết cần loại bỏ**: Rác AI, bố cục vỡ trên di động, liên kết chết, ảnh stock chung chung, bẫy hiệu năng.
+6. **Điểm tựa SEO (SEO Baseline)**: Các trang đang có thứ hạng tìm kiếm, thẻ meta title, dữ liệu có cấu trúc. **Di chuyển SEO là rủi ro số 1 trong các dự án Redesign.**
+
+### 7.C Quy Tắc Bảo Tồn Bất Biến (Preservation Rules)
+* **Không tự ý thay đổi Kiến trúc Thông tin**: Giữ nguyên đường dẫn URL slug, định danh anchor ID, nhãn điều hướng chính để bảo toàn SEO và thói quen người dùng.
+* **Trích xuất màu thương hiệu trước**: Nếu thương hiệu đã có màu nhận diện, hãy bảo tồn và chuẩn hóa sang chuẩn tương phản cao.
+* **Bảo tồn giọng điệu văn bản**: Hiện đại hóa thị giác KHÔNG ĐỒNG NGHĨA với việc viết lại nội dung nếu không được yêu cầu.
+* **Bảo toàn khả năng tiếp cận (Accessibility)**: Không làm mất trạng thái focus bàn phím, thẻ alt ảnh và độ tương phản vốn có.
+* **Tôn trọng mã theo dõi sự kiện (Analytics)**: Không đổi tên button, form fields hoặc section IDs mà các hệ thống tracking phụ thuộc.
+
+### 7.D Bậc Thang Đòn Bẩy Hiện Đại Hóa (Priority Levers)
+Thực hiện lần lượt theo thứ tự, dừng lại khi yêu cầu đã được đáp ứng trọn vẹn:
+1. **Nâng cấp Typography**: Đem lại bước nhảy vọt thị giác lớn nhất với rủi ro thấp nhất.
+2. **Khoảng cách & Nhịp điệu (Spacing & Rhythm)**: Tăng padding section, chuẩn hóa nhịp điệu dọc.
+3. **Hiệu chuẩn Màu sắc**: Giảm độ bão hòa, thống nhất màu trung tính, giữ vững màu nhấn thương hiệu.
+4. **Lớp Chuyển động**: Thêm vi tương tác phù hợp với `MOTION_INTENSITY` vào component có sẵn.
+5. **Tái cấu trúc Hero & Section chủ chốt**: Sắp xếp lại đỉnh phễu chuyển đổi sử dụng kho thuật ngữ Mục 6.
+6. **Thay thế khối giao diện toàn diện**: Chỉ tiến hành khi khối cũ hoàn toàn không thể cứu vãn.
+
+### 7.E Những Thứ TUYỆT ĐỐI KHÔNG Thay Đổi Âm Thầm
+Không bao giờ sửa đổi khi chưa có lệnh tường minh từ Anh:
+* Cấu trúc URL và route slugs.
+* Nhãn của thanh điều hướng chính.
+* Tên trường hoặc thứ tự trong biểu mẫu form (tránh làm hỏng autofill và analytics).
+* Logo hoặc wordmark của thương hiệu.
+* Các điều khoản pháp lý, cookie consent và bản quyền.
+
+---
+
+## 8. AI TELLS & FORBIDDEN PATTERNS (Bộ Nhận Diện Rác AI Cấm Tuyệt Đối)
 
 Đây là danh sách đen các dấu hiệu đặc trưng thường thấy ở code AI sinh ra:
 
-### 6.A LỆNH CẤM DẤU GẠCH NGANG DÀI EM-DASH (U+2014) TUYỆT ĐỐI 100%
+### 8.A LỆNH CẤM DẤU GẠCH NGANG DÀI EM-DASH (U+2014) TUYỆT ĐỐI 100%
 * Dấu gạch ngang dài Em-Dash là dấu hiệu nhận diện số 1 của văn bản AI.
 * **CẤM HOÀN TOÀN** trong tiêu đề, nhãn phụ (eyebrow), đoạn văn bản, trích dẫn, nút bấm và mô tả ảnh.
 * Thay thế bằng: dấu gạch nối tiêu chuẩn `-` kèm khoảng trắng (` - `), dấu phẩy, dấu hai chấm hoặc ngắt dòng.
 * Không dùng ký tự gạch ngang dài trong phạm vi ngày tháng hay dải số (dùng `2024-2026` với dấu gạch ngang chuẩn, không dùng en-dash hoặc em-dash).
 
-### 6.B Cấm Nhãn Phiên Bản & Đánh Số Thô Thiển
+### 8.B Cấm Nhãn Phiên Bản & Đánh Số Thô Thiển
 * **CẤM nhãn phiên bản trên Hero**: Không đặt `V0.6`, `v2.0`, `BETA`, `INVITE-ONLY PREVIEW` làm nhãn trên Hero trừ khi đề bài yêu cầu trực tiếp.
 * **CẤM đánh số thứ tự trên nhãn Section**: `001 / Capabilities`, `02 · How it works`, `03 / Portfolio` là khuôn mẫu sáo rỗng. Hãy dùng từ ngữ tự nhiên mô tả nội dung section.
 * **CẤM nhãn phân trang trên ảnh**: Không viết `01 / 4` lên trên hình ảnh hoặc ô bento.
 
-### 6.C Tiết Chế Dấu Chấm & Đốm Màu Trang Trí
+### 8.C Tiết Chế Dấu Chấm & Đốm Màu Trang Trí
 * **Định mức dấu chấm giữa (`·`)**: Tối đa 1 ký tự `·` trên 1 dòng văn bản thông tin. Không dùng nó để ngăn cách mọi cụm từ ("thiết kế · xây dựng · vận hành · tối ưu").
 * **CẤM đốm tròn màu trang trí vô nghĩa**: Cấm đặt các chấm tròn xanh/đỏ/tím trước mọi liên kết menu hoặc đầu mục danh sách. Chỉ dùng khi thể hiện trạng thái hoạt động thực tế của máy chủ.
 
-### 6.D Cấm Dữ Liệu & Từ Ngữ Rập Khuôn (Anti-Slop Content)
+### 8.D Cấm Dữ Liệu & Từ Ngữ Rập Khuôn (Anti-Slop Content)
 * **CẤM tên nhân vật vô hồn**: "John Doe", "Jane Doe", "Sarah Chan", "Alex Smith" $\to$ Hãy dùng tên có bản sắc văn hóa thực tế, đáng tin cậy.
 * **CẤM tên công ty khởi nghiệp giả tưởng**: "Acme", "Nexus", "SmartFlow", "Cloudly" $\to$ Đặt tên có ngữ cảnh và sắc thái thương hiệu thực thụ.
 * **CẤM động từ quảng cáo sáo rỗng**: "Elevate", "Seamless", "Unleash", "Next-Gen", "Revolutionize" $\to$ Thay bằng các động từ hành động cụ thể, chân phương.
 * **CẤM nhãn bước giả tạo**: "Stage 1 / Stage 2 / Stage 3" $\to$ Đặt tên bước bằng trực tiếp hành động ("Cài đặt", "Cấu hình", "Triển khai").
 
-### 6.E Cấm Chỉ Dẫn Cuộn & Dải Thời Tiết Ảo
+### 8.E Cấm Chỉ Dẫn Cuộn & Dải Thời Tiết Ảo
 * **CẤM chỉ dẫn cuộn chuột vô nghĩa**: `Scroll`, `↓ scroll`, icon con chuột nhấp nháy ở chân trang Hero. Người dùng lướt web luôn biết cách cuộn chuột, không cần AI phải nhắc.
 * **CẤM dải địa danh/thời tiết**: "Tokyo 14:20 · 22°C" hay "Lisbon, Portugal" đặt ở footer hoặc nav của các trang web không liên quan đến du lịch hay mạng lưới văn phòng toàn cầu.
 
 ---
 
-## 7. FINAL PRE-FLIGHT VERIFICATION CHECKLIST (Bảng Kiểm Tra Xuất Xưởng Cuối Cùng)
+## 9. FINAL PRE-FLIGHT VERIFICATION CHECKLIST (Bảng Kiểm Tra Xuất Xưởng Cuối Cùng)
 
 Trước khi gửi kết quả hoàn tất mã nguồn, tự động rà soát qua bảng tiêu chí sau:
 
 1. [ ] **Design Read**: Đã xuất ra câu định hình bối cảnh ở dòng đầu tiên chưa?
 2. [ ] **The Three Dials**: Đã xác lập `DESIGN_VARIANCE: 8`, `MOTION_INTENSITY: 6`, `VISUAL_DENSITY: 4` hoặc giá trị ghi đè hợp lý chưa?
-3. [ ] **Light Theme Default**: Giao diện có đang vận hành 100% trên nền sáng tươi mới, sang trọng không? (Tuyệt đối không tự ý dùng dark theme).
+3. [ ] **Luminous Light Theme**: Giao diện có đang vận hành 100% trên nền sáng đa tầng Luminous (Warm Paper / Ivory / Elevated White, bóng đổ đa chiều siêu mịn, viền quang học) không? (Tuyệt đối không tự ý dùng dark theme).
 4. [ ] **Hero Viewport**: Tiêu đề có nằm trong 2 dòng, subtext dưới 20 từ, và toàn bộ Hero hiển thị trọn vẹn trong `min-h-[100dvh]` mà không bị tràn màn hình không?
 5. [ ] **Hero Top Padding**: Khoảng đệm đỉnh Hero có được khống chế dưới mức `pt-24` không?
 6. [ ] **CTA Button 1-Line**: Nhãn chữ trên nút kêu gọi hành động chính ở desktop có nằm trọn vẹn trên 1 dòng duy nhất không?
@@ -407,3 +504,5 @@ Trước khi gửi kết quả hoàn tất mã nguồn, tự động rà soát q
 10. [ ] **Zero Em-Dash**: Toàn bộ mã nguồn và chuỗi hiển thị có sạch bóng ký tự Em-Dash (U+2014) không?
 11. [ ] **Zero Div-Fake-Screenshots**: Không có bất kỳ khối div nào vẽ giả lập màn hình sản phẩm, dùng hình ảnh thật hoặc component thật chưa?
 12. [ ] **Tactile Scale(0.965)**: Các nút bấm và phần tử click được có cài đặt độ lún `:active { transform: scale(0.965); }` chưa?
+13. [ ] **Redesign Protocol Checked**: Nếu là dự án redesign, đã đối chiếu danh sách bất biến (URL slug, nav labels, analytics IDs, SEO) chưa?
+14. [ ] **No Mixed Animation Engines**: Đảm bảo không trộn lẫn GSAP và Motion trong cùng một cây component.

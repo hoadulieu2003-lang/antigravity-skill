@@ -1,6 +1,6 @@
 ---
 name: gsap
-description: "Official GreenSock (GSAP) Animation Engine — 60 FPS performant UI motion, timelines, ScrollTrigger, React useGSAP, and Club plugins (SplitText, MorphSVG, ScrollSmoother, Flip). Automatically activate and reference for smooth interactions, 60 FPS motion choreography, scroll-driven animations, micro-interactions, and premium UI dynamics in web UI, landing pages, and dashboards. DO NOT use for non-visual backend tasks (DESIGN_NONE)."
+description: "Official GreenSock (GSAP) Animation Engine — 60 FPS performant UI motion, timelines, ScrollTrigger, React useGSAP, and Club plugins (SplitText, MorphSVG, ScrollSmoother, Flip). Automatically activate and reference for all web UI design tasks, smooth interactions, 60 FPS motion choreography, scroll-driven animations, micro-interactions, and premium UI dynamics in landing pages and dashboards. DO NOT use for non-visual backend tasks (DESIGN_NONE)."
 ---
 
 # Master GSAP Animation Engine (`$gsap`)
@@ -13,6 +13,16 @@ Kiến trúc sư trưởng chuyển động giao diện chuẩn **60 FPS** dựa
 > npm install gsap @gsap/react
 > ```
 > Tuyệt đối không yêu cầu thẻ thành viên, không cần `.npmrc`, auth token hay private registry.
+
+---
+
+## Khi Nào Tự Động Kích Hoạt & Sử Dụng Skill Này
+
+Tự động kích hoạt & tham khảo cho mọi tác vụ thiết kế web UI, landing page, dashboard cần tương tác mượt mà 60 FPS, micro-interactions, animation timelines, scrollytelling:
+1. **Vi tương tác vật lý (Micro-interactions)**: Phản hồi nút bấm co lún đàn hồi `scale(0.965)`, hiệu ứng hover, nút bấm nam châm (`magnetic button`), theo dõi con trỏ chuột mượt mà (`quickTo`).
+2. **Biên đạo chuyển động tuần tự (Animation Timelines)**: Xuất hiện phân tầng (stagger reveal), chuyển cảnh bố cục với `Flip`, tách chữ nghệ thuật (`SplitText`).
+3. **Kể chuyện theo cuộn trang (Scrollytelling & Parallax)**: Ghim khung hình (`pin`), cuộn đồng bộ (`scrub`), kích hoạt theo viewport (`ScrollTrigger`).
+4. **Chuẩn mực 20% Delight Budget**: Tự động áp dụng tối thiểu 20% ngân sách thăng hoa trải nghiệm giao diện cho các tương tác sống động, đồng thời bảo đảm 100% chuẩn tiếp cận WCAG AA (`prefers-reduced-motion`) và hòa quyện với hệ nền `Luminous Light Theme`.
 
 ---
 

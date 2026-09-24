@@ -1,0 +1,85 @@
+/* ============================================================================
+   ⚡ WOW ENGINE PURE CSS UTILITIES
+   Zero-Tailwind Standalone Fallback & Universal Stylesheet
+   ============================================================================ */
+:root {
+  --wow-ease-spring: cubic-bezier(0.22, 1.61, 0.36, 1.0);
+  --wow-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --wow-ease-tactile: cubic-bezier(0.22, 1, 0.36, 1);
+  --wow-shadow-pressed: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.wow-spotlight {
+  position: relative;
+  --mouse-x: -9999px;
+  --mouse-y: -9999px;
+  --spotlight-opacity: 0;
+  --spotlight-radius: 380px;
+  --spotlight-color: rgba(56, 189, 248, 0.15);
+}
+
+.wow-spotlight-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    var(--spotlight-radius, 380px) circle at var(--mouse-x, -9999px) var(--mouse-y, -9999px),
+    var(--spotlight-color, rgba(56, 189, 248, 0.15)) 0%,
+    transparent 70%
+  );
+  opacity: var(--spotlight-opacity, 0);
+  transition: opacity 250ms var(--wow-ease-out);
+  z-index: 1;
+}
+
+.wow-tilt {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.wow-magnetic {
+  position: relative;
+  will-change: transform;
+  transform: translate(var(--mag-x, 0px), var(--mag-y, 0px));
+}
+
+.wow-bottom-out,
+.btn-magnetic {
+  user-select: none;
+  cursor: pointer;
+  transform: translate(var(--mag-x, 0px), var(--mag-y, 0px));
+  transition: transform 140ms var(--wow-ease-tactile), box-shadow 140ms ease;
+}
+
+.wow-bottom-out:active,
+.btn-magnetic:active {
+  transform: translate(var(--mag-x, 0px), var(--mag-y, 0px)) scale(0.965) translateY(1.5px) !important;
+  box-shadow: var(--wow-shadow-pressed) !important;
+}
+
+.wow-card-luminous {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-top-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px -4px rgba(0, 0, 0, 0.06);
+}
+
+.wow-content {
+  position: relative;
+  z-index: 2;
+}
+
+.wow-parallax-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  mix-blend-mode: overlay;
+  z-index: 10;
+}

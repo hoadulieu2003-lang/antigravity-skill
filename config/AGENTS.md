@@ -77,7 +77,7 @@
         - `Pod 1: Core Logic` (Nghiệp vụ cốt lõi, State Machine, Data processing)
         - `Pod 2: Data Models & Persistence` (Schema, Storage, Cache, State persistence)
         - `Pod 3: API Transport & Integration` (Endpoint, Network protocol, Bridge, Adapter)
-        - **Design Engineering Duo — `Pod 4: Visual UI Layout & Brand Tokens`** (Khung bố cục giao diện, Semantic HTML, Tailwind, nạp CSS Tokens từ 153 Brands như Linear, Stripe, Apple; Responsive grid, tuân thủ chuẩn Light Theme Invariant mặc định)
+        - **Design Engineering Duo — `Pod 4: Visual UI Layout & Brand Tokens`** (Khung bố cục giao diện, Semantic HTML, Tailwind, nạp CSS Tokens từ 153 Brands như Linear, Stripe, Apple; Responsive grid, tuân thủ chuẩn Luminous Light Theme Invariant mặc định)
         - **Design Engineering Duo — `Pod 5: Interaction, State & Motion 60 FPS`** (Micro-interactions, Event handlers, Animation timeline 60 FPS — Bắt buộc phân bổ tối thiểu 20% Delight Budget cho vi tương tác vật lý, hiệu ứng spotlight theo con trỏ chuột, cuộn mượt lenis scroll và âm thanh phản hồi WebAudioHaptics)
         - `Pod 6: Developer Test & Verification Harness` (Unit tests, Integration test harness, Mock suite).
       - Với dự án xử lý dữ liệu / thuật toán / backend không UI (`DESIGN_NONE`): Tự động bung tối thiểu **6 Tầng Phổ Quát**:

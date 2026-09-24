@@ -1,0 +1,778 @@
+/**
+ * ============================================================================
+ * ANTIGRAVITY 2.0 // SHOWCASE V2 INTERACTIVE DESIGN SYSTEM HUB STYLESHEET
+ * ============================================================================
+ * File: exercises/wow_pilot_showcase/showcase.css
+ * Palette: Luminous Light Theme Invariant (Icy Platinum #F8FAFC)
+ * Spec:
+ *   1. 3D WebGL Micro-Engine Hero Background & Mode Controls
+ *   2. WebAudioHaptics v2.0 Soundboard (10 Tactile Sounds, Stepped Rotary, Stereo Pan)
+ *   3. Signature Wow Blocks (Luminous Bento, Stepped Odometer, Spring Toast, Spotlight)
+ *   4. Live Delight Inspector HUD (Real-time FPS, Tactile Depth, Contrast Ratio)
+ * ============================================================================
+ */
+
+/* ==========================================================================
+   1. 3D WEBGL HERO BACKGROUND & MODE SWITCHER
+   ========================================================================== */
+.hero-webgl-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.hero-webgl-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0.82;
+  transition: opacity 0.5s ease;
+}
+
+.webgl-mode-pill-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  margin-top: 22px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-hairline);
+  border-top-color: var(--border-specular);
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06), inset 0 1px 1px #FFFFFF;
+}
+
+.webgl-mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.webgl-mode-btn:hover {
+  color: var(--text-primary);
+  background: rgba(241, 245, 249, 0.8);
+}
+
+.webgl-mode-btn.active {
+  color: #0284C7;
+  background: #FFFFFF;
+  border-color: rgba(2, 132, 199, 0.3);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.12), inset 0 1px 0 #FFFFFF;
+}
+
+.webgl-mode-btn .mode-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   2. WEBAUDIOHAPTICS V2.0 SOUNDBOARD (10 TACTILE SOUNDS & CONTROLS)
+   ========================================================================== */
+.soundboard-v2-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.haptic-pad-v2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 10px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border: 1px solid var(--border-hairline-strong);
+  border-top-color: #FFFFFF;
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04), inset 0 1px 0 #FFFFFF;
+  cursor: pointer;
+  transition: transform 0.12s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.12s ease, border-color 0.12s ease;
+  user-select: none;
+  outline: none;
+  min-height: 76px;
+}
+
+.haptic-pad-v2:hover {
+  border-color: #94A3B8;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08), inset 0 1px 0 #FFFFFF;
+  transform: translateY(-1.5px);
+}
+
+.haptic-pad-v2:active {
+  transform: scale(0.965) translateY(1.5px) !important;
+  box-shadow: var(--shadow-pressed) !important;
+  border-color: var(--accent-cyan) !important;
+}
+
+.haptic-pad-v2.playing {
+  border-color: var(--accent-cyan);
+  background: linear-gradient(180deg, #F0F9FF 0%, #E0F2FE 100%);
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.25), 0 2px 8px rgba(2, 132, 199, 0.15);
+}
+
+.haptic-pad-v2 .pad-num {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.haptic-pad-v2 .pad-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.25;
+  margin-top: 4px;
+}
+
+.haptic-pad-v2 .pad-freq {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent-cyan);
+  margin-top: 3px;
+  white-space: nowrap;
+}
+
+/* Stepped Rotary Dial Controller */
+.rotary-knob-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.rotary-knob-stage {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+}
+
+.rotary-dial {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FFFFFF 0%, #E2E8F0 100%);
+  border: 2px solid #CBD5E1;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12), inset 0 2px 4px #FFFFFF, inset 0 -2px 4px rgba(15, 23, 42, 0.1);
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  transition: transform 0.05s linear;
+}
+
+.rotary-dial:active {
+  cursor: grabbing;
+}
+
+.rotary-dial:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.25);
+}
+
+.rotary-indicator {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 16px;
+  background: var(--accent-cyan);
+  border-radius: 9999px;
+  box-shadow: 0 0 6px rgba(2, 132, 199, 0.6);
+}
+
+.rotary-knob-info {
+  flex: 1;
+  min-width: 180px;
+}
+
+.rotary-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.rotary-hint {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.rotary-telemetry {
+  display: flex;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.rotary-val-box {
+  padding: 2px 8px;
+  background: #F1F5F9;
+  border-radius: 6px;
+  border: 1px solid var(--border-hairline);
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+/* Two-Stage Switch Controller */
+.two-stage-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.two-stage-lever {
+  position: relative;
+  width: 90px;
+  height: 38px;
+  background: #E2E8F0;
+  border-radius: 9999px;
+  padding: 3px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.12);
+  transition: background 0.25s ease;
+}
+
+.two-stage-lever:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.25), inset 0 2px 4px rgba(15, 23, 42, 0.12);
+}
+
+.two-stage-lever.stage-1 {
+  background: #BAE6FD;
+}
+
+.two-stage-lever.stage-2 {
+  background: #0284C7;
+}
+
+.two-stage-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 32px;
+  height: 32px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.2), inset 0 1px 0 #FFFFFF;
+  transition: transform 0.2s cubic-bezier(0.22, 1.61, 0.36, 1);
+}
+
+.two-stage-lever.stage-1 .two-stage-knob {
+  transform: translateX(26px);
+}
+
+.two-stage-lever.stage-2 .two-stage-knob {
+  transform: translateX(52px);
+}
+
+/* Spatial Stereo Panning Controller */
+.spatial-panning-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.spatial-meter-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 180px;
+}
+
+.spatial-meter-track {
+  position: relative;
+  flex: 1;
+  height: 8px;
+  background: #E2E8F0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.spatial-meter-thumb {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 18px;
+  height: 100%;
+  background: var(--accent-cyan);
+  border-radius: 9999px;
+  transform: translateX(-50%);
+  transition: left 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 6px rgba(2, 132, 199, 0.5);
+}
+
+.spatial-btn-group {
+  display: flex;
+  gap: 6px;
+}
+
+.spatial-btn {
+  padding: 5px 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 8px;
+  background: #F1F5F9;
+  border: 1px solid var(--border-hairline-strong);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.spatial-btn:hover {
+  background: #FFFFFF;
+  color: var(--text-primary);
+  border-color: #94A3B8;
+}
+
+.spatial-btn:active {
+  transform: scale(0.965);
+}
+
+/* ==========================================================================
+   3. SIGNATURE WOW BLOCKS GALLERY (BENTO, ODOMETER, TOAST, SPOTLIGHT)
+   ========================================================================== */
+.wow-blocks-section {
+  position: relative;
+  z-index: 10;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.signature-blocks-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+.sig-block-span-6 {
+  grid-column: span 6;
+}
+
+.sig-block-span-12 {
+  grid-column: span 12;
+}
+
+@media (max-width: 900px) {
+  .sig-block-span-6 {
+    grid-column: span 12;
+  }
+}
+
+/* Mechanical Stepped Odometer */
+.odometer-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.odometer-display-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px;
+  background: linear-gradient(180deg, #F1F5F9 0%, #FFFFFF 100%);
+  border: 1px solid var(--border-hairline-strong);
+  border-radius: 16px;
+  box-shadow: inset 0 2px 6px rgba(15, 23, 42, 0.06), 0 2px 4px rgba(15, 23, 42, 0.02);
+  margin: 16px 0;
+  overflow: hidden;
+}
+
+.odometer-counter {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: clamp(38px, 4.5vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+}
+
+.odometer-digit-reel {
+  position: relative;
+  display: inline-block;
+  height: 1.15em;
+  line-height: 1.15em;
+  overflow: hidden;
+  transition: color 0.15s ease;
+}
+
+.odometer-digit-strip {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.28s cubic-bezier(0.22, 1.61, 0.36, 1);
+}
+
+.odometer-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.odometer-btn {
+  flex: 1;
+  min-width: 90px;
+  padding: 8px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 10px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline-strong);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.odometer-btn:hover {
+  background: #F8FAFC;
+  border-color: #94A3B8;
+}
+
+.odometer-btn:active {
+  transform: scale(0.965) translateY(1.5px) !important;
+  box-shadow: var(--shadow-pressed) !important;
+}
+
+/* Spring Physics Toast System */
+.toast-interactive-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+  padding: 16px;
+  background: #F8FAFC;
+  border: 1px dashed var(--border-hairline-strong);
+  border-radius: 14px;
+  min-height: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.spring-toast-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-hairline);
+  border-top-color: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.08), inset 0 1px 0 #FFFFFF;
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  transition: transform 0.4s cubic-bezier(0.22, 1.61, 0.36, 1), opacity 0.3s ease;
+}
+
+.spring-toast-item.entering {
+  transform: translateY(30px) scale(0.92);
+  opacity: 0;
+}
+
+.spring-toast-item.exiting {
+  transform: translateY(-20px) scale(0.95);
+  opacity: 0;
+}
+
+.toast-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-emerald);
+  flex-shrink: 0;
+}
+
+.toast-content-group {
+  flex: 1;
+}
+
+.toast-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.toast-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.toast-dismiss-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.toast-dismiss-btn:hover {
+  background: #F1F5F9;
+  color: var(--text-primary);
+}
+
+/* Floating Viewport Toast Stack */
+.toast-floating-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+  max-width: 360px;
+  width: calc(100vw - 48px);
+}
+
+.toast-floating-container > * {
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   4. LIVE DELIGHT INSPECTOR HUD (DIAGNOSTIC TELEMETRY WIDGET)
+   ========================================================================== */
+.delight-inspector-hud {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-hairline);
+  border-top-color: var(--border-specular);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px -4px rgba(15, 23, 42, 0.12), inset 0 1px 1px #FFFFFF;
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+  user-select: none;
+  max-width: 320px;
+}
+
+.delight-hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.delight-hud-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.delight-hud-fps-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 7px;
+  background: rgba(5, 150, 105, 0.1);
+  border: 1px solid rgba(5, 150, 105, 0.25);
+  border-radius: 9999px;
+  color: var(--accent-emerald);
+  font-weight: 700;
+  font-size: 10.5px;
+}
+
+.delight-hud-fps-pill.warning {
+  background: rgba(217, 119, 6, 0.1);
+  border-color: rgba(217, 119, 6, 0.25);
+  color: var(--accent-amber);
+}
+
+.delight-hud-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.delight-metric-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.delight-metric-name {
+  color: var(--text-muted);
+  font-size: 10.5px;
+}
+
+.delight-metric-val {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.delight-metric-val.cyan {
+  color: var(--accent-cyan);
+}
+
+.delight-metric-val.emerald {
+  color: var(--accent-emerald);
+}
+
+/* Real-time Tactile Depth Visualizer Gauge */
+.tactile-depth-gauge {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background: #E2E8F0;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+.tactile-depth-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo));
+  border-radius: 9999px;
+  transition: width 0.08s ease;
+}
+
+.delight-hud-collapse-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px 4px;
+  font-size: 11px;
+  border-radius: 4px;
+  transition: color 0.15s ease;
+}
+
+.delight-hud-collapse-btn:hover {
+  color: var(--text-primary);
+}
+
+.delight-inspector-hud.collapsed .delight-hud-body,
+.delight-inspector-hud.collapsed .tactile-depth-gauge {
+  display: none;
+}
+
+.delight-inspector-hud.collapsed .delight-hud-header {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   5. MOBILE RESPONSIVE GUARDS (375px VIEWPORT ZERO-OVERFLOW INVARIANT)
+   ========================================================================== */
+@media (max-width: 640px) {
+  .soundboard-v2-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .webgl-mode-pill-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 16px;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .webgl-mode-btn {
+    flex: 1 1 auto;
+    justify-content: center;
+    font-size: 11.5px;
+    padding: 6px 10px;
+  }
+
+  .rotary-knob-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .two-stage-switch-row,
+  .spatial-panning-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .spatial-meter-container {
+    width: 100%;
+  }
+
+  .delight-inspector-hud {
+    left: 10px;
+    bottom: 10px;
+    max-width: calc(100vw - 20px);
+  }
+}

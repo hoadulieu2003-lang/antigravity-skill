@@ -22,11 +22,12 @@ art_direction:
     - "excessive_bento_box"
     - "purple_ai_gradient"
     - "unrequested_dark_theme"
+    - "monolithic_flat_paper"
     - "arbitrary_magic_numbers"
     - "3d_without_information_value"
 
 color_system:
-  theme_mode: "LIGHT_ONLY" # Mặc định 100% Light Theme; Dark Theme chỉ khi Anh yêu cầu
+  theme_mode: "LUMINOUS_LIGHT_ONLY" # Mặc định 100% Luminous Light Theme (nền sáng đa tầng, bóng đổ đa chiều); Dark Theme chỉ khi Anh yêu cầu tường minh
   canvas_background: "string (e.g. #FAF9F6 - Warm Alabaster)"
   surface_background: "string (e.g. #FFFFFF - Crisp Surface)"
   primary_text: "string (e.g. #0F172A - Deep Slate)"

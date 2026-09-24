@@ -8,7 +8,8 @@ description: "Siêu Kỹ Năng Kỹ Thuật Thiết Kế (Design Engineering) th
 > **Tôn chỉ cốt lõi**:  
 > Gu thẩm mỹ không phải là năng khiếu trời sinh, mà là bản năng được trui rèn qua quan sát và thực hành khắt khe.  
 > Chi tiết vô hình cộng hưởng tạo nên sự kỳ diệu ("A thousand barely audible voices all singing in tune").  
-> Vẻ đẹp là đòn bẩy kỹ thuật mang tính sống còn để tạo sự khác biệt vượt trội.
+> Vẻ đẹp là đòn bẩy kỹ thuật mang tính sống còn để tạo sự khác biệt vượt trội.  
+> **Nguồn gốc tri thức (Upstream Heritage)**: Kế thừa từ triết lý Kỹ nghệ Thiết kế của Emil Kowalski (https://animations.dev/ và https://github.com/emilkowalski/skills).
 
 ---
 
@@ -98,7 +99,7 @@ Các đường cong mặc định của CSS (`ease`, `ease-in`) quá yếu ớt 
 ```
 
 ### 4.1 LỆNH CẤM EASE-IN CHO HOẠT ẢNH UI
-`ease-in` xuất phát cực kỳ chậm chạp. Nó khiến giao diện tạo cảm giác ì ạch và không chịu phản hồi. Một menu thả xuống dùng `ease-in` 300ms mang lại cảm giác chậm hơn hẳn `ease-out` cùng 300ms, bởi vì `ease-in` trì hoãn chuyển động ban đầu - đúng ngay khoảnh khắc người dùng đang dán mắt theo dõi.
+`ease-in` xuất phát cực kỳ chậm chạp. Nó khiến giao diện tạo cảm giác ì ạch và không chịu phản hồi. Một menu thả xuống dùng `ease-in` 300ms mang lại cảm giác chậm hơn hẳn `ease-out` cùng 300ms, bởi vì `ease-in` trì hoãn chuyển động ban đầu, đúng ngay khoảnh khắc người dùng đang dán mắt theo dõi.
 
 ### 4.2 Hiệu Năng Nhận Thức (Perceived Performance)
 Nhận thức về tốc độ quan trọng không kém tốc độ đo đạc thực tế:
@@ -221,37 +222,66 @@ Chuẩn CSS hiện đại cho phép animate phần tử khi vừa xuất hiện 
 
 ---
 
-## 9. CỬ CHỈ KÉO VUỐT & VẬT LÝ ĐƯỜNG BIÊN (Gesture & Boundary Physics)
+## 9. HIỆU ỨNG THÁC ĐỔ SO LE (Stagger Animations)
 
-### 9.1 Đóng theo vận tốc vuốt (Velocity-Based Dismissal)
+Khi nhiều phần tử cùng xuất hiện đồng thời (danh sách thẻ, menu items, badges), việc cho tất cả cùng hiện ra cùng lúc tạo cảm giác thô cứng. Hãy áp dụng hoạt ảnh thác đổ so le (Stagger):
+
+```css
+.stagger-item {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: staggerIn 250ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0ms; }
+.stagger-item:nth-child(2) { animation-delay: 40ms; }
+.stagger-item:nth-child(3) { animation-delay: 80ms; }
+.stagger-item:nth-child(4) { animation-delay: 120ms; }
+
+@keyframes staggerIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+```
+
+* **Khoảng trễ lý tưởng (Stagger Delay)**: Giữ khoảng cách giữa các phần tử cực ngắn từ **30ms đến 60ms** (tối đa 80ms). Khoảng trễ quá dài khiến giao diện tạo cảm giác chậm chạp và làm phiền người dùng.
+* **Quy tắc bất biến không chặn tương tác (Non-Blocking Invariant)**: Hoạt ảnh thác đổ chỉ mang tính chất trang trí thẩm mỹ. TUYỆT ĐỐI KHÔNG khóa con trỏ hoặc vô hiệu hóa hành động bấm nút của người dùng trong lúc hoạt ảnh stagger đang chạy.
+
+---
+
+## 10. CỬ CHỈ KÉO VUỐT & VẬT LÝ ĐƯỜNG BIÊN (Gesture & Boundary Physics)
+
+### 10.1 Đóng theo vận tốc vuốt (Velocity-Based Dismissal)
 Không bắt người dùng phải kéo vượt qua một khoảng cách cố định. Hãy đo vận tốc vuốt: `velocity = Math.abs(dragDistance) / elapsedTime`.  
 Nếu vận tốc vuốt vượt quá ngưỡng `> 0.11`, cho phép đóng phần tử ngay lập tức (a quick flick) bất kể quãng đường kéo được bao xa.
 
-### 9.2 Lực cản giảm chấn tại đường biên (Damping at Boundaries)
+### 10.2 Lực cản giảm chấn tại đường biên (Damping at Boundaries)
 Khi người dùng kéo vượt quá giới hạn tự nhiên (ví dụ kéo ngăn kéo lên trên khi đã chạm đỉnh), áp dụng lực cản (friction) tăng dần: người dùng kéo càng xa, phần tử di chuyển càng chậm lại. Tránh việc chặn đứng đột ngột như đâm sầm vào tường.
 
-### 9.3 Khóa con trỏ & Bảo vệ đa điểm chạm (Pointer Capture & Multi-touch)
+### 10.3 Khóa con trỏ & Bảo vệ đa điểm chạm (Pointer Capture & Multi-touch)
 - Bật `pointer capture` ngay khi bắt đầu kéo để cử chỉ vuốt không bị đứt đoạn kể cả khi con trỏ văng ra khỏi biên phần tử.
 - Chặn các điểm chạm phát sinh tiếp theo sau khi cử chỉ kéo đã bắt đầu, tránh tình trạng giao diện nhảy giật vị trí khi người dùng vô tình chạm thêm ngón tay thứ hai.
 
 ---
 
-## 10. QUY TẮC HIỆU NĂNG GPU & KHẢ NĂNG TIẾP CẬN (Performance & A11y)
+## 11. QUY TẮC HIỆU NĂNG GPU & KHẢ NĂNG TIẾP CẬN (Performance & A11y)
 
-### 10.1 CHỈ animate transform và opacity
+### 11.1 CHỈ animate transform và opacity
 Hai thuộc tính này được xử lý trực tiếp trên chip đồ họa (GPU) và bỏ qua hoàn toàn các bước tính toán bố cục (Layout) và quét màu (Paint). Animating `width`, `height`, `padding`, `margin` sẽ kích hoạt lại toàn bộ chu trình render của trình duyệt, gây tụt khung hình thảm hại.
 
-### 10.2 Tránh bẫy kế thừa biến CSS (CSS Variable Trap)
+### 11.2 Tránh bẫy kế thừa biến CSS (CSS Variable Trap)
 Thay đổi giá trị biến CSS trên phần tử cha sẽ buộc trình duyệt tính toán lại kiểu dáng cho toàn bộ phần tử con cháu. Khi kéo vuốt ngăn kéo chứa hàng trăm phần tử, tuyệt đối không cập nhật `--swipe-amount` lên container cha, hãy gán `element.style.transform = translateY(...)` trực tiếp lên phần tử chuyển động.
 
-### 10.3 Tăng tốc phần cứng trong Motion
+### 11.3 Tăng tốc phần hardware trong Motion
 Các thuộc tính viết tắt (`x`, `y`, `scale`) trong Motion chạy trên luồng chính thông qua `requestAnimationFrame`. Khi muốn đảm bảo 60 FPS tuyệt đối dưới tải nặng, sử dụng chuỗi thuộc tính đầy đủ:
 ```jsx
 // Chạy trên luồng phụ GPU, không bao giờ giật lag dưới tải nặng
 <motion.div animate={{ transform: "translateX(100px)" }} />
 ```
 
-### 10.4 Tôn trọng chế độ giảm chuyển động & Cảm ứng
+### 11.4 Tôn trọng chế độ giảm chuyển động & Cảm ứng
 ```css
 /* Tôn trọng người dùng nhạy cảm chuyển động */
 @media (prefers-reduced-motion: reduce) {
@@ -271,7 +301,7 @@ Các thuộc tính viết tắt (`x`, `y`, `scale`) trong Motion chạy trên lu
 
 ---
 
-## 11. NGUYÊN TẮC SONNER XÂY DỰNG COMPONENT KINH ĐIỂN (The Sonner Principles)
+## 12. NGUYÊN TẮC SONNER XÂY DỰNG COMPONENT KINH ĐIỂN (The Sonner Principles)
 
 Được đúc kết từ việc xây dựng Sonner (thư viện Toast đạt hơn 13 triệu lượt tải hàng tuần trên npm):
 
@@ -284,7 +314,23 @@ Các thuộc tính viết tắt (`x`, `y`, `scale`) trong Motion chạy trên lu
 
 ---
 
-## 12. BẢNG KIỂM TRA THẨM ĐỊNH MÃ NGUỒN (Design Engineering Review Checklist)
+## 13. QUY TRÌNH GỠ LỖI & GIÁM ĐỊNH CHUYỂN ĐỘNG (Animation Debugging & Inspection)
+
+### 13.1 Kiểm tra ở tốc độ chậm (Slow-Motion Testing)
+Chạy hoạt ảnh ở tốc độ giảm (25% - 50% hoặc thời lượng tăng 2-5x) trong bảng Animations của Chrome DevTools để phát hiện các lỗi vô hình ở tốc độ thông thường:
+- Màu sắc có chuyển đổi mềm mại không, hay có hai trạng thái đè chéo lên nhau làm lộ mép?
+- Điểm tựa phóng to (`transform-origin`) có chuẩn xác từ vị trí kích hoạt không?
+- Các thuộc tính hoạt ảnh đồng thời (opacity, transform) có kết thúc ăn khớp nhịp nhàng không?
+
+### 13.2 Soi từng khung hình (Frame-by-Frame Inspection)
+Tua từng bước khung hình để kiểm tra tính liên tục của chuyển động và đảm bảo không có khung hình trắng hoặc giật khựng vị trí.
+
+### 13.3 Kiểm thử trên thiết bị phần cứng thực tế (Real Device Testing)
+Các thao tác kéo vuốt cử chỉ (drag, swipe, pull-down) bắt buộc phải kiểm tra trên màn hình cảm ứng điện thoại thực tế hoặc giả lập DevTools touch events, không thể kết luận chỉ bằng chuột máy tính bàn.
+
+---
+
+## 14. BẢNG KIỂM TRA THẨM ĐỊNH MÃ NGUỒN (Design Engineering Review Checklist)
 
 | Vấn đề phát hiện | Giải pháp chuẩn mực |
 |---|---|
@@ -298,3 +344,5 @@ Các thuộc tính viết tắt (`x`, `y`, `scale`) trong Motion chạy trên lu
 | Hover kích hoạt nhầm trên di động | Bọc trong `@media (hover: hover) and (pointer: fine)` |
 | Icon Play bị lệch thị giác | Thêm bù lề quang học `translate-x-[1.5px]` sang phải |
 | Thiếu hỗ trợ chế độ giảm chuyển động | Tích hợp `@media (prefers-reduced-motion: reduce)` |
+| Nhiều phần tử xuất hiện cùng lúc | Áp dụng hoạt ảnh thác đổ so le (Stagger) 30-60ms |
+| Chưa kiểm tra hoạt ảnh ở tốc độ chậm | Soi kỹ lưỡng ở tốc độ 25% trong DevTools Animations |

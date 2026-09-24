@@ -36,8 +36,8 @@ When executing:
      - 🔹 `Worker Pod 1 (Core Logic & Domain Engine)`: Thực thể nghiệp vụ (`Domain Entities`), business rules lõi, thuật toán ứng dụng, controller & logic xử lý trung tâm.
      - 🔹 `Worker Pod 2 (Data Models & Persistence Layer)`: Schemas, ORM/DB queries, migrations, repository layer, cache và quản lý lưu trữ dữ liệu bền vững.
      - 🔹 `Worker Pod 3 (API Transport & Integration Gateway)`: REST/GraphQL/WebSocket endpoints, client SDKs, serialization/deserialization, auth middlewares và tích hợp dịch vụ ngoài.
-     - 🔹 `Worker Pod 4 (Visual UI & Layout Structure - Light Theme)`: Cấu trúc component, semantic HTML, layout lưới/flex, token màu sáng mặc định (`Light Theme Invariant`), responsiveness đa kích thước màn hình.
-     - 🔹 `Worker Pod 5 (Interaction, State & Motion 60 FPS)`: Quản lý trạng thái client (`State Management`), form validation, micro-interactions, chuyển động GSAP/CSS mượt mà 60 FPS, âm thanh/haptics.
+     - 🔹 **Design Engineering Duo — `Worker Pod 4 (Visual UI Layout & Brand Tokens)`**: Cấu trúc component, semantic HTML, layout responsive grid, nạp CSS Tokens từ 153 Brands (Linear, Stripe, Apple, v.v.), tuân thủ chuẩn Luminous Light Theme Invariant mặc định (nền sáng đa tầng, bóng đổ đa chiều, cấm giấy bẹt đơn điệu).
+     - 🔹 **Design Engineering Duo — `Worker Pod 5 (Interaction, State & Motion 60 FPS)`**: Quản lý trạng thái client (`State Management`), form validation, animation timeline 60 FPS — Bắt buộc phân bổ tối thiểu 20% Delight Budget cho vi tương tác vật lý, hiệu ứng spotlight theo con trỏ chuột, cuộn mượt lenis scroll và âm thanh phản hồi WebAudioHaptics.
      - 🔹 `Worker Pod 6 (Developer Test & Verification Harness)`: Unit tests, integration tests, mock data/fixtures, browser test automation và kịch bản tự kiểm chứng (`Self-Verification`).
    - ⚡ **Khung 2 — Dự Án Dữ Liệu / Tính Toán / Không UI (`DESIGN_NONE` — 6 Tầng Phổ Quát Tương Ứng)**:
      - 🔹 `Worker Pod 1 (Ingestion & Transport Layer)`: Thu nạp dữ liệu đa nguồn, streaming I/O, connection pools, network protocols, bộ đệm buffer & cache sơ cấp.

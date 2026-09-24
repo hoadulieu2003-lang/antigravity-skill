@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bento Telemetry Grid — Signature Wow Block</title>
+  <style>
+    /* ==========================================================================
+       LUMINOUS LIGHT THEME TOKENS
+       ========================================================================== */
+    :root {
+      --bg-canvas: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-card: rgba(255, 255, 255, 0.88);
+      --border-luminous: rgba(15, 23, 42, 0.08);
+      --border-highlight: rgba(255, 255, 255, 0.95);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #94A3B8;
+      --accent-blue: #0284C7;
+      --accent-emerald: #10B981;
+      --accent-violet: #8B5CF6;
+      --accent-amber: #F59E0B;
+      --shadow-ambient: 0 1px 3px rgba(15, 23, 42, 0.04);
+      --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
+      --shadow-hover: 0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.22, 1.61, 0.36, 1.0);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-canvas);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.04) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.04) 0px, transparent 50%),
+        linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 60px 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    /* Header Section */
+    .bento-header {
+      margin-bottom: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .bento-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(2, 132, 199, 0.08);
+      border: 1px solid rgba(2, 132, 199, 0.2);
+      border-radius: 9999px;
+      color: var(--accent-blue);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .bento-title {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    .bento-subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-luminous);
+      border-radius: 9999px;
+      box-shadow: var(--shadow-ambient), inset 0 1px 0 var(--border-highlight);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-emerald);
+      position: relative;
+    }
+
+    .pulse-dot::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1.5px solid var(--accent-emerald);
+      animation: pulseAnim 2s infinite;
+    }
+
+    @keyframes pulseAnim {
+      0% { transform: scale(0.9); opacity: 0.9; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    /* ==========================================================================
+       ASYMMETRIC BENTO GRID
+       ========================================================================== */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    /* Col Spans */
+    .col-span-8 { grid-column: span 8; }
+    .col-span-4 { grid-column: span 4; }
+    .col-span-6 { grid-column: span 6; }
+    .col-span-12 { grid-column: span 12; }
+
+    /* ==========================================================================
+       ACRYLIC CARD WITH CSS EDGE-STREAM LIGHT BEAM
+       ========================================================================== */
+    .bento-card {
+      position: relative;
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow-card), inset 0 1px 0 var(--border-highlight);
+      border: 1px solid var(--border-luminous);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+    }
+
+    .bento-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover), inset 0 1px 0 var(--border-highlight);
+    }
+
+    @property --edge-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    /* Edge-Stream Animated Border Light Beam */
+    .bento-card.has-edge-stream::before {
+      content: '';
+      position: absolute;
+      inset: -1.5px;
+      border-radius: 21.5px;
+      padding: 1.5px;
+      background: conic-gradient(
+        from var(--edge-angle, 0deg) at 50% 50%,
+        transparent 0deg,
+        transparent 60deg,
+        rgba(2, 132, 199, 0.75) 110deg,
+        rgba(139, 92, 246, 0.8) 150deg,
+        transparent 190deg,
+        transparent 360deg
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      animation: edgeStreamRotate 6s linear infinite;
+      opacity: 0.85;
+      transition: opacity 300ms ease;
+    }
+
+    .bento-card.has-edge-stream:hover::before {
+      opacity: 1;
+      animation-duration: 3.5s;
+    }
+
+    @keyframes edgeStreamRotate {
+      from { --edge-angle: 0deg; }
+      to { --edge-angle: 360deg; }
+    }
+
+    /* Card Internal Typography & Layout */
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .card-title-group h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .card-title-group p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    /* ==========================================================================
+       CARD 1: MAIN THROUGHPUT METRIC & SVG WAVE
+       ========================================================================== */
+    .metric-main {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .metric-val {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--text-primary);
+      font-feature-settings: "tnum";
+    }
+
+    .metric-unit {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .metric-delta {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-emerald);
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .sparkline-svg {
+      width: 100%;
+      height: 90px;
+      overflow: visible;
+    }
+
+    /* ==========================================================================
+       CARD 2: GLOBAL EDGE REGIONS
+       ========================================================================== */
+    .region-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .region-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+
+    .region-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .region-flag {
+      font-size: 14px;
+    }
+
+    .region-ping {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-emerald);
+    }
+
+    .ping-bar-track {
+      width: 60px;
+      height: 4px;
+      background: rgba(15, 23, 42, 0.06);
+      border-radius: 9999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ping-bar-fill {
+      height: 100%;
+      background: var(--accent-emerald);
+      border-radius: 9999px;
+      transition: width 400ms var(--ease-out);
+    }
+
+    /* ==========================================================================
+       CARD 3: RADIAL EFFICIENCY GAUGE
+       ========================================================================== */
+    .gauge-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin: 8px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gauge-svg {
+      transform: rotate(-90deg);
+      width: 100%;
+      height: 100%;
+    }
+
+    .gauge-bg {
+      stroke: rgba(15, 23, 42, 0.06);
+      stroke-width: 8;
+      fill: none;
+    }
+
+    .gauge-progress {
+      stroke: url(#gaugeGradient);
+      stroke-width: 8;
+      stroke-linecap: round;
+      fill: none;
+      stroke-dasharray: 377;
+      stroke-dashoffset: 20;
+      transition: stroke-dashoffset 800ms var(--ease-spring);
+    }
+
+    .gauge-text {
+      position: absolute;
+      text-align: center;
+    }
+
+    .gauge-number {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    .gauge-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       CARD 4: MEMORY PRESSURE BLOCKS
+       ========================================================================== */
+    .memory-blocks-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 5px;
+      margin: 16px 0;
+    }
+
+    .mem-block {
+      height: 24px;
+      border-radius: 4px;
+      background: rgba(15, 23, 42, 0.05);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      transition: background-color 300ms ease, transform 150ms var(--ease-out);
+    }
+
+    .mem-block.active {
+      background: linear-gradient(135deg, #0284C7, #38BDF8);
+      border-color: rgba(2, 132, 199, 0.3);
+      box-shadow: 0 1px 4px rgba(2, 132, 199, 0.2);
+    }
+
+    .mem-block:hover {
+      transform: scale(1.1);
+    }
+
+    .mem-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    /* ==========================================================================
+       CARD 5: AGENT SWARM PODS
+       ========================================================================== */
+    .agent-pods-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pod-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: rgba(15, 23, 42, 0.025);
+      border: 1px solid rgba(15, 23, 42, 0.05);
+      border-radius: 10px;
+      font-size: 13px;
+      transition: background 150ms ease;
+    }
+
+    .pod-item:hover {
+      background: rgba(15, 23, 42, 0.045);
+    }
+
+    .pod-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .pod-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+    }
+
+    .pod-state {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .col-span-8, .col-span-4, .col-span-6 {
+        grid-column: span 12;
+      }
+      .bento-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="bento-header">
+      <div>
+        <div class="bento-tag">Signature Wow Block 02</div>
+        <h1 class="bento-title">Bento Telemetry Grid</h1>
+        <p class="bento-subtitle">Asymmetric acrylic cards with 60 FPS CSS keyframe edge-stream perimeter beams and live metrics.</p>
+      </div>
+
+      <div class="status-pill">
+        <span class="pulse-dot"></span>
+        <span>Telemetry Stream Live</span>
+      </div>
+    </header>
+
+    <!-- 12-Column Bento Grid -->
+    <div class="bento-grid">
+      
+      <!-- CARD 1: Throughput Telemetry (Span 8) -->
+      <div class="bento-card col-span-8 has-edge-stream">
+        <div class="card-top">
+          <div class="card-title-group">
+            <h3>Global Ingestion Telemetry</h3>
+            <p>Real-time edge requests across distributed clusters</p>
+          </div>
+          <span class="card-badge">LIVE · 60 FPS</span>
+        </div>
+
+        <div class="metric-main">
+          <span class="metric-val" id="throughputVal">148,290</span>
+          <span class="metric-unit">req / sec</span>
+          <span class="metric-delta">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"/></svg>
+            +12.4%
+          </span>
+        </div>
+
+        <!-- Realtime Sparkline SVG -->
+        <svg class="sparkline-svg" viewBox="0 0 700 90" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#0284C7" stop-opacity="0.28" />
+              <stop offset="100%" stop-color="#0284C7" stop-opacity="0.0" />
+            </linearGradient>
+            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#0284C7" />
+              <stop offset="100%" stop-color="#8B5CF6" />
+            </linearGradient>
+          </defs>
+          <path id="sparklineArea" d="M 0 90 L 0 50 Q 150 20, 300 45 T 600 25 T 700 35 L 700 90 Z" fill="url(#areaGradient)" />
+          <path id="sparklineStroke" d="M 0 50 Q 150 20, 300 45 T 600 25 T 700 35" fill="none" stroke="url(#lineGradient)" stroke-width="2.5" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <!-- CARD 2: Edge Node Latency (Span 4) -->
+      <div class="bento-card col-span-4 has-edge-stream">
+        <div class="card-top">
+          <div class="card-title-group">
+            <h3>Global Edge Latency</h3>
+            <p>RTT ping to nearest PoP instances</p>
+          </div>
+          <span class="card-badge">DNS 1.1</span>
+        </div>
+
+        <div class="region-list">
+          <div class="region-row">
+            <div class="region-name"><span class="region-flag">🇯🇵</span> Tokyo NRT</div>
+            <div class="ping-bar-track"><div class="ping-bar-fill" style="width: 28%;"></div></div>
+            <span class="region-ping" id="pingNrt">12 ms</span>
+          </div>
+          <div class="region-row">
+            <div class="region-name"><span class="region-flag">🇸🇬</span> Singapore SIN</div>
+            <div class="ping-bar-track"><div class="ping-bar-fill" style="width: 38%;"></div></div>
+            <span class="region-ping" id="pingSin">21 ms</span>
+          </div>
+          <div class="region-row">
+            <div class="region-name"><span class="region-flag">🇩🇪</span> Frankfurt FRA</div>
+            <div class="ping-bar-track"><div class="ping-bar-fill" style="width: 50%;"></div></div>
+            <span class="region-ping" id="pingFra">34 ms</span>
+          </div>
+          <div class="region-row">
+            <div class="region-name"><span class="region-flag">🇺🇸</span> San Francisco SFO</div>
+            <div class="ping-bar-track"><div class="ping-bar-fill" style="width: 65%;"></div></div>
+            <span class="region-ping" id="pingSfo">48 ms</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3: Circular Efficiency Gauge (Span 4) -->
+      <div class="bento-card col-span-4">
+        <div class="card-top">
+          <div class="card-title-group">
+            <h3>Cluster Efficiency</h3>
+            <p>Weighted thermal throughput</p>
+          </div>
+          <span class="card-badge">SLO 99.9%</span>
+        </div>
+
+        <div class="gauge-wrapper">
+          <svg class="gauge-svg" viewBox="0 0 140 140">
+            <defs>
+              <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#10B981" />
+                <stop offset="100%" stop-color="#0284C7" />
+              </linearGradient>
+            </defs>
+            <circle class="gauge-bg" cx="70" cy="70" r="60" />
+            <circle class="gauge-progress" cx="70" cy="70" r="60" />
+          </svg>
+          <div class="gauge-text">
+            <div class="gauge-number" id="efficiencyVal">99.4%</div>
+            <div class="gauge-label">Nominal</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 4: Memory Buffer Heap (Span 4) -->
+      <div class="bento-card col-span-4">
+        <div class="card-top">
+          <div class="card-title-group">
+            <h3>Buffer Memory Heap</h3>
+            <p>Zero-copy shared RAM buffer</p>
+          </div>
+          <span class="card-badge">32 GB ALLOC</span>
+        </div>
+
+        <div class="memory-blocks-grid" id="memGrid">
+          <!-- 16 memory blocks populated dynamically -->
+        </div>
+
+        <div class="mem-footer">
+          <span>Used: 14.8 GB</span>
+          <span>Free: 17.2 GB</span>
+        </div>
+      </div>
+
+      <!-- CARD 5: Swarm Pod Dispatcher (Span 4) -->
+      <div class="bento-card col-span-4">
+        <div class="card-top">
+          <div class="card-title-group">
+            <h3>Autonomous Pods</h3>
+            <p>Teamwork Multi-Agent status</p>
+          </div>
+          <span class="card-badge">6 PODS</span>
+        </div>
+
+        <div class="agent-pods-container">
+          <div class="pod-item">
+            <div class="pod-meta"><span class="pod-dot"></span> Pod 1: Core Logic</div>
+            <span class="pod-state">ACTIVE</span>
+          </div>
+          <div class="pod-item">
+            <div class="pod-meta"><span class="pod-dot"></span> Pod 4: Brand Tokens</div>
+            <span class="pod-state">ACTIVE</span>
+          </div>
+          <div class="pod-item">
+            <div class="pod-meta"><span class="pod-dot"></span> Pod 5: 60 FPS Motion</div>
+            <span class="pod-state">ACTIVE</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // 1. POPULATE MEMORY BLOCKS
+    const memGrid = document.getElementById('memGrid');
+    for (let i = 0; i < 24; i++) {
+      const block = document.createElement('div');
+      block.className = `mem-block ${i < 11 ? 'active' : ''}`;
+      memGrid.appendChild(block);
+    }
+
+    // 2. LIVE SIMULATION TICKER
+    let baseThroughput = 148290;
+    const throughputVal = document.getElementById('throughputVal');
+
+    setInterval(() => {
+      // Small jitter on throughput
+      const delta = Math.floor((Math.random() - 0.48) * 1200);
+      baseThroughput = Math.max(120000, baseThroughput + delta);
+      throughputVal.textContent = baseThroughput.toLocaleString();
+
+      // Jitter pings
+      document.getElementById('pingNrt').textContent = `${(12 + Math.floor(Math.random() * 3))} ms`;
+      document.getElementById('pingSin').textContent = `${(21 + Math.floor(Math.random() * 4))} ms`;
+
+      // Random memory block toggle
+      const blocks = document.querySelectorAll('.mem-block');
+      const randIdx = 8 + Math.floor(Math.random() * 6);
+      if (blocks[randIdx]) {
+        blocks[randIdx].classList.toggle('active');
+      }
+    }, 1800);
+  </script>
+</body>
+</html>

@@ -192,6 +192,14 @@ promoted_skills:
   promoted_at: '2026-09-20T07:37:29Z'
   approved_by: Anh (Product Owner)
   manifest: config/skills/zeroshot/SKILL.md
+- skill: taste-engine
+  promoted_at: '2026-09-24T08:40:00Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/taste-engine/SKILL.md
+- skill: design-engineering
+  promoted_at: '2026-09-24T08:40:00Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/design-engineering/SKILL.md
 capability_routing_history:
 - capability: gsap
   domain: visual_choreography

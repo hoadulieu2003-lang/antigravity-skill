@@ -4,9 +4,13 @@ import yaml
 
 sys.stdout.reconfigure(encoding='utf-8')
 
+# Dynamically resolve base directory
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+SKILLS_DIR = os.path.join(BASE_DIR, "config", "skills")
+
 files = [
-    r'c:\Users\game\.gemini\config\skills\taste-engine\SKILL.md',
-    r'c:\Users\game\.gemini\config\skills\design-engineering\SKILL.md'
+    os.path.join(SKILLS_DIR, "taste-engine", "SKILL.md"),
+    os.path.join(SKILLS_DIR, "design-engineering", "SKILL.md")
 ]
 
 all_passed = True
@@ -59,13 +63,17 @@ for path in files:
     else:
         print(f'PASS: Balanced code blocks ({code_blocks // 2} blocks)')
     
-    # 3. Em-dash AI-slop test
+    # 3. Em-dash and En-dash AI-slop test
     em_dashes = content.count('\u2014')
+    en_dashes = content.count('\u2013')
     if em_dashes > 0:
-        print(f'WARNING/FAIL: Found {em_dashes} em-dashes (—) in {name}')
+        print(f'FAIL: Found {em_dashes} em-dashes (—) in {name}')
+        all_passed = False
+    elif en_dashes > 0:
+        print(f'FAIL: Found {en_dashes} en-dashes (–) in {name}')
         all_passed = False
     else:
-        print('PASS: Zero em-dashes (—) found.')
+        print('PASS: Zero em-dashes (—) and zero en-dashes (–) found.')
     
     # 4. Table validation
     lines = content.splitlines()
@@ -91,7 +99,16 @@ for path in files:
     
     # 5. Check required domain concepts
     if name == 'taste-engine':
-        reqs = ['DESIGN_VARIANCE: 8', 'MOTION_INTENSITY: 6', 'VISUAL_DENSITY: 4', 'Anti-AI Slop', 'Light Theme', 'Design Read']
+        reqs = [
+            'DESIGN_VARIANCE: 8',
+            'MOTION_INTENSITY: 6',
+            'VISUAL_DENSITY: 4',
+            'Anti-AI Slop',
+            'Luminous Light Theme',
+            'Design Read',
+            'Redesign Protocol',
+            'Reference Vocabulary'
+        ]
         for r in reqs:
             if r.lower() in content.lower():
                 print(f'PASS: Found required concept "{r}"')
@@ -99,7 +116,15 @@ for path in files:
                 print(f'FAIL: Missing required concept "{r}"')
                 all_passed = False
     elif name == 'design-engineering':
-        reqs = ['Emil Kowalski', 'scale(0.965)', 'cubic-bezier', 'quang học', 'Sonner']
+        reqs = [
+            'Emil Kowalski',
+            'scale(0.965)',
+            'cubic-bezier',
+            'quang học',
+            'Sonner',
+            'Stagger',
+            'Debugging'
+        ]
         for r in reqs:
             if r.lower() in content.lower():
                 print(f'PASS: Found required concept "{r}"')

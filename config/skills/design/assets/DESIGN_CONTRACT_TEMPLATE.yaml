@@ -38,8 +38,8 @@ design_contract:
       - "Fluid clamp typography scale without line wraps at desktop"
 
   color_strategy:
-    theme_mode: "LIGHT_ONLY" # Mặc định 100% Light Theme; Dark Theme chỉ khi Anh yêu cầu
-    philosophy: "Warm Alabaster Light Studio (#FAF9F6) with crisp obsidian typography and surgical cyan-blue optical accents"
+    theme_mode: "LUMINOUS_LIGHT_ONLY" # Mặc định 100% Luminous Light Theme (nền sáng đa tầng, bóng đổ đa chiều); Dark Theme chỉ khi Anh yêu cầu tường minh
+    philosophy: "Warm Alabaster Light Studio (#FAF9F6) base canvas with elevated white cards (#FFFFFF), multi-layered soft shadows, crisp obsidian typography and surgical optical accents"
     accent_usage: "Selective optical glow on cursor interaction and active states only"
 
   spatial_strategy:

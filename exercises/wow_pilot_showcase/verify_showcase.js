@@ -1,9 +1,10 @@
 /**
  * ============================================================================
- * AUTOMATED RUNTIME VERIFICATION SUITE FOR WOW PILOT SHOWCASE
+ * AUTOMATED RUNTIME VERIFICATION SUITE FOR WOW PILOT SHOWCASE (V2 HARDENED)
  * ============================================================================
  * Uses headless Chrome via puppeteer-core to inspect live DOM, styles,
- * Wow Engine interactions, WebAudioHaptics, and Dual-Mode motion (?test-mode=1).
+ * Wow Engine interactions, WebAudioHaptics, Parallax 3D layer depth,
+ * Mobile responsive layout (375px zero-overflow), and Dual-Mode runtime switching.
  * ============================================================================
  */
 
@@ -40,7 +41,7 @@ function parseRgb(colorStr) {
 
 async function runSuite() {
   console.log('================================================================');
-  console.log('⚡ ANTIGRAVITY 2.0 // WOW PILOT SHOWCASE RUNTIME AUDIT');
+  console.log('⚡ ANTIGRAVITY 2.0 // WOW PILOT SHOWCASE RUNTIME AUDIT (HARDENED)');
   console.log('Target:', FILE_URL);
   console.log('================================================================\n');
 
@@ -68,9 +69,9 @@ async function runSuite() {
 
   try {
     // ------------------------------------------------------------------------
-    // TEST SUITE 1: STANDARD 60 FPS MODE
+    // TEST SUITE 1: STANDARD 60 FPS MODE (DESKTOP 1440x900)
     // ------------------------------------------------------------------------
-    console.log('\n--- 1. Testing Standard 60 FPS Mode ---');
+    console.log('\n--- 1. Testing Standard 60 FPS Mode (Desktop 1440x900) ---');
     const page = await browser.newPage();
     await page.setViewport({ width: 1440, height: 900 });
 
@@ -116,6 +117,20 @@ async function runSuite() {
     assert('Acrylic Card has backdrop-filter blur', acrylicCardStyles && acrylicCardStyles.backdropFilter.includes('blur'), acrylicCardStyles?.backdropFilter);
     assert('Acrylic Card has Specular Hairline border & shadow', acrylicCardStyles && acrylicCardStyles.borderRadius !== '0px');
 
+    // Bug Fix 3 Verification: Card-inner stacking context over ::before spotlight sheen
+    const stackingContext = await page.evaluate(() => {
+      const cardInner = document.querySelector('.card-inner');
+      if (!cardInner) return null;
+      const s = window.getComputedStyle(cardInner);
+      return {
+        position: s.position,
+        zIndex: s.zIndex
+      };
+    });
+    assert('Card Inner has position: relative and z-index >= 2 (prevents spotlight hazing over text)',
+      stackingContext && stackingContext.position === 'relative' && parseInt(stackingContext.zIndex) >= 2,
+      `pos: ${stackingContext?.position}, z: ${stackingContext?.zIndex}`);
+
     // Check WCAG AA contrast ratio of primary text
     const contrastRatio = await page.evaluate(() => {
       const title = document.querySelector('.hero-title');
@@ -158,6 +173,22 @@ async function runSuite() {
     assert('3D Parallax Tilt applies perspective transformation', tiltTest && tiltTest.hasTransform);
     assert('Parallax Tilt updates Pitch/Roll telemetry readouts', tiltTest && tiltTest.pitch !== '0.0°');
 
+    // Bug Fix 9 Verification: 3D Parallax Layer Depth (translateZ on child layers)
+    const layerDepthTest = await page.evaluate(() => {
+      const stage = document.querySelector('.tilt-monolith-stage');
+      const plate = document.querySelector('.monolith-plate');
+      const chip = document.querySelector('.monolith-chip');
+      if (!stage || !plate || !chip) return null;
+      const stageStyle = window.getComputedStyle(stage);
+      const plateStyle = window.getComputedStyle(plate);
+      return {
+        stagePreserve3D: stageStyle.transformStyle === 'preserve-3d',
+        plateHasTransform: plateStyle.transform !== 'none'
+      };
+    });
+    assert('Parallax Stage has transform-style: preserve-3d', layerDepthTest && layerDepthTest.stagePreserve3D);
+    assert('Monolith plate floats with translateZ layer depth', layerDepthTest && layerDepthTest.plateHasTransform);
+
     // Test Magnetic Button
     const magneticTest = await page.evaluate(() => {
       const btn = document.querySelector('.btn-magnetic');
@@ -169,9 +200,14 @@ async function runSuite() {
         clientY: rect.top + rect.height + 20
       }));
       const transform = btn.style.transform;
-      return { hasTranslate: transform.includes('translate') };
+      const magX = btn.style.getPropertyValue('--mag-x');
+      const magY = btn.style.getPropertyValue('--mag-y');
+      return {
+        hasTranslate: transform.includes('translate'),
+        hasVars: !!magX && !!magY
+      };
     });
-    assert('Magnetic Button shifts towards cursor (translate)', magneticTest && magneticTest.hasTranslate);
+    assert('Magnetic Button shifts towards cursor and sets --mag-x/--mag-y', magneticTest && magneticTest.hasTranslate && magneticTest.hasVars);
 
     // Test Mechanical Bottom-Out CSS rule (:active scale(0.965))
     const mechanicalScaleRule = await page.evaluate(() => {
@@ -199,32 +235,67 @@ async function runSuite() {
         window.WowEngine.haptics.playDetent();
         window.WowEngine.haptics.playSwitch(true);
         window.WowEngine.haptics.playChime();
-        const initialMute = window.WowEngine.haptics.getMuted();
-        const toggledMute = window.WowEngine.haptics.toggleMute();
-        window.WowEngine.haptics.setMuted(initialMute);
-        return { pass: true, toggledMute: toggledMute !== initialMute };
+        return { pass: true };
       } catch (e) {
         return { pass: false, error: e.message };
       }
     });
     assert('WebAudioHaptics synthesizes all 5 physical waveforms with zero error', hapticsTest.pass, hapticsTest.error || '');
-    assert('WebAudioHaptics mute toggle alters state correctly', hapticsTest.toggledMute);
 
-    await page.close();
+    // Bug Fix 6 & 7 Verification: Sound button click toggles mute, swaps icon, updates label
+    const muteToggleTest = await page.evaluate(() => {
+      const btn = document.getElementById('soundToggleBtn');
+      const label = document.getElementById('soundLabel');
+      const iconOn = document.getElementById('soundIconOn');
+      const iconOff = document.getElementById('soundIconOff');
+      if (!btn) return null;
+
+      // Click to mute
+      btn.click();
+      const mutedState = window.WowEngine.haptics.getMuted();
+      const mutedLabel = label.textContent;
+      const iconOffVisible = iconOff.style.display !== 'none';
+      const iconOnHidden = iconOn.style.display === 'none';
+
+      // Click to unmute
+      btn.click();
+      const unmutedState = window.WowEngine.haptics.getMuted();
+      const unmutedLabel = label.textContent;
+
+      return {
+        mutedState,
+        mutedLabel,
+        iconOffVisible,
+        iconOnHidden,
+        unmutedState,
+        unmutedLabel
+      };
+    });
+    assert('Sound toggle button mutes and swaps to muted speaker icon',
+      muteToggleTest && muteToggleTest.mutedState === true && muteToggleTest.iconOffVisible && muteToggleTest.mutedLabel.includes('Tắt'));
+    assert('Sound toggle button un-mutes and restores active icon',
+      muteToggleTest && muteToggleTest.unmutedState === false && muteToggleTest.unmutedLabel.includes('Bật'));
+
+    // Bug Fix 2 Verification: refresh() does not leak duplicate listeners
+    const refreshTest = await page.evaluate(() => {
+      const tiltCard = document.querySelector('[data-tilt]');
+      const magBtn = document.querySelector('.btn-magnetic');
+      const beforeTilt = tiltCard?.__wowTiltBound;
+      const beforeMag = magBtn?.__wowMagBound;
+      window.WowEngine.refresh();
+      return beforeTilt === true && beforeMag === true && tiltCard.__wowTiltBound === true && magBtn.__wowMagBound === true;
+    });
+    assert('window.WowEngine.refresh() deduplicates and guards event listeners', refreshTest);
 
     // ------------------------------------------------------------------------
-    // TEST SUITE 2: DUAL-MODE TEST-MODE (?test-mode=1)
+    // TEST SUITE 2: SEAMLESS RUNTIME DUAL-MODE TOGGLE (Without Reload)
     // ------------------------------------------------------------------------
-    console.log('\n--- 2. Testing Dual-Mode Engine (?test-mode=1) ---');
-    const testPage = await browser.newPage();
-    const testUrl = FILE_URL + '?test-mode=1';
-    await testPage.goto(testUrl, { waitUntil: 'load', timeout: 15000 });
-    await new Promise(r => setTimeout(r, 400));
-
-    const testModeVerification = await testPage.evaluate(() => {
+    console.log('\n--- 2. Testing Seamless Runtime Dual-Mode Toggle ---');
+    const runtimeToggleTest = await page.evaluate(() => {
+      // Toggle to test mode at runtime
+      window.WowEngine.setTestMode(true);
+      const isTestNow = window.WowEngine.isTestMode;
       const hasClass = document.documentElement.classList.contains('test-mode');
-      const attr = document.documentElement.getAttribute('data-test-mode');
-      const engineIsTest = window.WowEngine && window.WowEngine.isTestMode;
       const telemetryText = document.getElementById('telemetryMotionMode')?.textContent || '';
 
       // Test a dynamically created element's transition duration under test-mode
@@ -232,23 +303,109 @@ async function runSuite() {
       sample.className = 'sample-test-el';
       sample.style.transition = 'transform 2s ease';
       document.body.appendChild(sample);
-      const computedDuration = window.getComputedStyle(sample).transitionDuration;
+      const durationTest = window.getComputedStyle(sample).transitionDuration;
       sample.remove();
+
+      // Toggle back to kinetic mode
+      window.WowEngine.setTestMode(false);
+      const isKineticNow = !window.WowEngine.isTestMode;
+      const hasKineticClass = document.documentElement.classList.contains('kinetic-mode');
+
+      return {
+        isTestNow,
+        hasClass,
+        durationTest,
+        telemetryText,
+        isKineticNow,
+        hasKineticClass
+      };
+    });
+
+    assert('Runtime switch to test-mode applies .test-mode in 0ms', runtimeToggleTest.isTestNow && runtimeToggleTest.hasClass);
+    assert('Transitions bypassed under runtime test-mode (<= 0.002s)', parseFloat(runtimeToggleTest.durationTest) <= 0.002, runtimeToggleTest.durationTest);
+    assert('Telemetry text updates to 0ms Instant Test Mode', runtimeToggleTest.telemetryText.includes('0ms INSTANT'));
+    assert('Runtime switch back to kinetic mode restores 60 FPS state', runtimeToggleTest.isKineticNow && runtimeToggleTest.hasKineticClass);
+
+    await page.close();
+
+    // ------------------------------------------------------------------------
+    // TEST SUITE 3: MOBILE RESPONSIVE ZERO-OVERFLOW AUDIT (375x667)
+    // ------------------------------------------------------------------------
+    console.log('\n--- 3. Testing Mobile Responsive Layout (Viewport 375x667) ---');
+    const mobilePage = await browser.newPage();
+    await mobilePage.setViewport({ width: 375, height: 667 });
+    await mobilePage.goto(FILE_URL, { waitUntil: 'load', timeout: 15000 });
+    await new Promise(r => setTimeout(r, 400));
+
+    const mobileAudit = await mobilePage.evaluate(() => {
+      const docWidth = document.documentElement.clientWidth;
+      const bodyWidth = document.body.scrollWidth;
+      const hudBar = document.querySelector('.hud-bar');
+      const hudWidth = hudBar ? hudBar.scrollWidth : 0;
+      const ribbon = document.querySelector('.hero-telemetry-ribbon');
+      const ribbonRect = ribbon ? ribbon.getBoundingClientRect() : null;
+
+      // Find any elements exceeding docWidth (excluding intentional scrollable containers)
+      const overflowing = Array.from(document.querySelectorAll('*'))
+        .filter(el => {
+          if (el.closest('.table-responsive-container, [style*="overflow-x: auto"], [style*="overflow-x:auto"]')) return false;
+          const r = el.getBoundingClientRect();
+          return r.right > docWidth + 2;
+        })
+        .map(el => `${el.tagName}.${el.className}`);
+
+      return {
+        docWidth,
+        bodyWidth,
+        hudWidth,
+        ribbonWidth: ribbonRect ? ribbonRect.width : 0,
+        overflowingCount: overflowing.length,
+        overflowing: overflowing.slice(0, 5)
+      };
+    });
+
+    assert('Mobile zero-overflow: body.scrollWidth <= viewport width (375px)',
+      mobileAudit.bodyWidth <= mobileAudit.docWidth + 2,
+      `body: ${mobileAudit.bodyWidth}px, viewport: ${mobileAudit.docWidth}px`);
+    assert('HUD bar fits within mobile viewport width',
+      mobileAudit.hudWidth <= mobileAudit.docWidth + 2,
+      `hud: ${mobileAudit.hudWidth}px, viewport: ${mobileAudit.docWidth}px`);
+    assert('Hero telemetry ribbon wraps cleanly on mobile',
+      mobileAudit.ribbonWidth <= mobileAudit.docWidth,
+      `ribbon: ${mobileAudit.ribbonWidth}px`);
+    assert('Zero overflowing elements on 375px mobile screen',
+      mobileAudit.overflowingCount === 0,
+      mobileAudit.overflowing.join(', ') || 'clean');
+
+    await mobilePage.close();
+
+    // ------------------------------------------------------------------------
+    // TEST SUITE 4: DUAL-MODE BOOT VIA URL (?test-mode=1)
+    // ------------------------------------------------------------------------
+    console.log('\n--- 4. Testing URL Boot Parameter (?test-mode=1) ---');
+    const testPage = await browser.newPage();
+    const testUrl = FILE_URL + '?test-mode=1';
+    await testPage.goto(testUrl, { waitUntil: 'load', timeout: 15000 });
+    await new Promise(r => setTimeout(r, 400));
+
+    const bootTestVerification = await testPage.evaluate(() => {
+      const hasClass = document.documentElement.classList.contains('test-mode');
+      const attr = document.documentElement.getAttribute('data-test-mode');
+      const engineIsTest = window.WowEngine && window.WowEngine.isTestMode;
+      const telemetryText = document.getElementById('telemetryMotionMode')?.textContent || '';
 
       return {
         hasClass,
         attr,
         engineIsTest,
-        telemetryText,
-        computedDuration
+        telemetryText
       };
     });
 
-    assert('HTML element has .test-mode class applied', testModeVerification.hasClass);
-    assert('HTML element data-test-mode is "true"', testModeVerification.attr === 'true');
-    assert('WowEngine.isTestMode is true', testModeVerification.engineIsTest);
-    assert('Telemetry ribbon indicates 0ms Instant Test Mode', testModeVerification.telemetryText.includes('0ms INSTANT'));
-    assert('CSS transitions bypassed in test-mode (duration <= 0.001s)', parseFloat(testModeVerification.computedDuration) <= 0.002, testModeVerification.computedDuration);
+    assert('HTML element has .test-mode class applied from URL', bootTestVerification.hasClass);
+    assert('HTML element data-test-mode is "true" from URL', bootTestVerification.attr === 'true');
+    assert('WowEngine.isTestMode is true on boot', bootTestVerification.engineIsTest);
+    assert('Telemetry ribbon indicates 0ms Instant Test Mode on boot', bootTestVerification.telemetryText.includes('0ms INSTANT'));
 
     await testPage.close();
 

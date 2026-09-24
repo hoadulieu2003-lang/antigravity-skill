@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luminous Palette Morpher — Signature Wow Block</title>
+  <style>
+    /* ==========================================================================
+       LUMINOUS LIGHT THEME TOKENS (DYNAMIC CSS VARIABLES)
+       ========================================================================== */
+    :root {
+      --bg-canvas: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --border-luminous: rgba(15, 23, 42, 0.08);
+      --border-highlight: rgba(255, 255, 255, 0.95);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #94A3B8;
+      --accent-primary: #0284C7;
+      --accent-gradient-start: #0284C7;
+      --accent-gradient-end: #0369A1;
+      --accent-tint: rgba(2, 132, 199, 0.08);
+      --shadow-color: rgba(15, 23, 42, 0.06);
+      --shadow-ambient: 0 1px 3px var(--shadow-color);
+      --shadow-elevated: 0 8px 30px -4px var(--shadow-color), 0 2px 6px rgba(15, 23, 42, 0.03);
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.22, 1.61, 0.36, 1.0);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 300ms var(--ease-out), border-color 300ms var(--ease-out), color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-canvas);
+      background-image: 
+        radial-gradient(at 10% 10%, var(--accent-tint) 0px, transparent 50%),
+        radial-gradient(at 90% 90%, var(--accent-tint) 0px, transparent 50%),
+        linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 860px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: var(--accent-tint);
+      border: 1px solid var(--border-luminous);
+      border-radius: 9999px;
+      color: var(--accent-primary);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    p.subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto 36px;
+      line-height: 1.5;
+    }
+
+    /* Palette Preset Selector Pills */
+    .presets-track {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .preset-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-luminous);
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03), inset 0 1px 0 var(--border-highlight);
+      outline: none;
+      user-select: none;
+    }
+
+    .preset-pill:hover {
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .preset-pill:active {
+      transform: scale(0.965);
+    }
+
+    .preset-pill.active {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border-color: var(--accent-primary);
+      box-shadow: 0 2px 8px var(--shadow-color), inset 0 1px 0 var(--border-highlight);
+    }
+
+    .color-swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* Morphing Preview Surface Card */
+    .morpher-surface-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-luminous);
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: var(--shadow-elevated), inset 0 1px 0 var(--border-highlight);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .card-title-group h3 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .card-title-group p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .sample-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: var(--accent-tint);
+      border: 1px solid var(--border-luminous);
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Elements Demo Row */
+    .elements-demo-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border-luminous);
+      border-bottom: 1px solid var(--border-luminous);
+    }
+
+    .demo-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .cell-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .action-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      background: linear-gradient(180deg, var(--accent-gradient-start) 0%, var(--accent-gradient-end) 100%);
+      color: #FFFFFF;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 8px var(--shadow-color), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      outline: none;
+    }
+
+    .action-btn-primary:active {
+      transform: scale(0.965);
+    }
+
+    .action-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--border-luminous);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), inset 0 1px 0 var(--border-highlight);
+      cursor: pointer;
+      outline: none;
+    }
+
+    .action-btn-secondary:active {
+      transform: scale(0.965);
+    }
+
+    /* Metric Box */
+    .metric-box {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      font-family: ui-monospace, monospace;
+    }
+
+    /* Copy Export Bar */
+    .export-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .export-btns {
+      display: flex;
+      gap: 10px;
+    }
+
+    .export-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: rgba(15, 23, 42, 0.03);
+      border: 1px solid var(--border-luminous);
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      outline: none;
+      user-select: none;
+    }
+
+    .export-btn:hover {
+      background: rgba(15, 23, 42, 0.06);
+      color: var(--text-primary);
+    }
+
+    .export-btn:active {
+      transform: scale(0.965);
+    }
+
+    .export-notice {
+      font-size: 12px;
+      color: var(--accent-primary);
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 200ms ease;
+    }
+
+    .export-notice.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="tag">Signature Wow Block 10</div>
+    <h1>Luminous Palette Morpher</h1>
+    <p class="subtitle">Multi-layered elevation design system morphing across 6 curated luminous brand palettes with smooth token transitions.</p>
+
+    <!-- Presets Selector -->
+    <div class="presets-track" id="presetsTrack">
+      <button class="preset-pill active" data-preset="icy">
+        <span class="color-swatch" style="background: #0284C7;"></span>
+        <span>Icy Platinum</span>
+      </button>
+      <button class="preset-pill" data-preset="ivory">
+        <span class="color-swatch" style="background: #B45309;"></span>
+        <span>Ivory Luxury</span>
+      </button>
+      <button class="preset-pill" data-preset="alabaster">
+        <span class="color-swatch" style="background: #6366F1;"></span>
+        <span>Warm Alabaster</span>
+      </button>
+      <button class="preset-pill" data-preset="emerald">
+        <span class="color-swatch" style="background: #059669;"></span>
+        <span>Emerald Pearl</span>
+      </button>
+      <button class="preset-pill" data-preset="rose">
+        <span class="color-swatch" style="background: #E11D48;"></span>
+        <span>Rose Quartz</span>
+      </button>
+      <button class="preset-pill" data-preset="violet">
+        <span class="color-swatch" style="background: #7C3AED;"></span>
+        <span>Violet Celestial</span>
+      </button>
+    </div>
+
+    <!-- Morphing Surface Preview Card -->
+    <div class="morpher-surface-card">
+      <div class="card-top">
+        <div class="card-title-group">
+          <h3 id="paletteName">Icy Platinum Theme</h3>
+          <p id="paletteDesc">Default Linear-grade high-tech palette with cool depth and crisp optical reflections.</p>
+        </div>
+        <span class="sample-badge" id="paletteBadge">Luminous Active</span>
+      </div>
+
+      <!-- Elements Demo -->
+      <div class="elements-demo-row">
+        <div class="demo-cell">
+          <span class="cell-title">Primary Action</span>
+          <button class="action-btn-primary" type="button">
+            <span>Deploy Model</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+
+        <div class="demo-cell">
+          <span class="cell-title">Secondary Action</span>
+          <button class="action-btn-secondary" type="button">Inspect Tokens</button>
+        </div>
+
+        <div class="demo-cell">
+          <span class="cell-title">Telemetry Metric</span>
+          <div class="metric-box">99.98%</div>
+        </div>
+      </div>
+
+      <!-- Export Utilities -->
+      <div class="export-bar">
+        <div class="export-btns">
+          <button class="export-btn" id="copyCssBtn" type="button">Copy CSS Variables</button>
+          <button class="export-btn" id="copyTailwindBtn" type="button">Copy Tailwind Config</button>
+        </div>
+        <span class="export-notice" id="exportNotice">Copied to Clipboard!</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 1. PALETTE DEFINITIONS (100% Luminous Light Theme Invariant)
+    const palettes = {
+      icy: {
+        name: "Icy Platinum Theme",
+        desc: "Default Linear-grade high-tech palette with cool depth and crisp optical reflections.",
+        canvas: "#F8FAFC",
+        surface: "#FFFFFF",
+        border: "rgba(15, 23, 42, 0.08)",
+        accent: "#0284C7",
+        accentStart: "#0284C7",
+        accentEnd: "#0369A1",
+        accentTint: "rgba(2, 132, 199, 0.08)",
+        shadow: "rgba(15, 23, 42, 0.06)"
+      },
+      ivory: {
+        name: "Ivory Luxury Theme",
+        desc: "Magazine Deck and editorial aesthetics with warm parchment surface and amber accents.",
+        canvas: "#FDFBF7",
+        surface: "#FFFFFF",
+        border: "rgba(120, 53, 15, 0.08)",
+        accent: "#B45309",
+        accentStart: "#D97706",
+        accentEnd: "#B45309",
+        accentTint: "rgba(180, 83, 9, 0.08)",
+        shadow: "rgba(120, 53, 15, 0.06)"
+      },
+      alabaster: {
+        name: "Warm Alabaster Theme",
+        desc: "Stripe-inspired SaaS clean architecture with indigo focus points and layered elevations.",
+        canvas: "#FAF9F6",
+        surface: "#FFFFFF",
+        border: "rgba(30, 41, 59, 0.08)",
+        accent: "#6366F1",
+        accentStart: "#6366F1",
+        accentEnd: "#4F46E5",
+        accentTint: "rgba(99, 102, 241, 0.08)",
+        shadow: "rgba(30, 41, 59, 0.06)"
+      },
+      emerald: {
+        name: "Emerald Pearl Theme",
+        desc: "FinTech and cryptographic reliability with deep mint and forest green balance.",
+        canvas: "#F0FDF4",
+        surface: "#FFFFFF",
+        border: "rgba(6, 78, 59, 0.08)",
+        accent: "#059669",
+        accentStart: "#10B981",
+        accentEnd: "#059669",
+        accentTint: "rgba(5, 150, 105, 0.08)",
+        shadow: "rgba(6, 78, 59, 0.06)"
+      },
+      rose: {
+        name: "Rose Quartz Theme",
+        desc: "Apple-inspired warm blush elegance with crimson keynotes and soft ambient depth.",
+        canvas: "#FFF1F2",
+        surface: "#FFFFFF",
+        border: "rgba(136, 19, 55, 0.08)",
+        accent: "#E11D48",
+        accentStart: "#F43F5E",
+        accentEnd: "#E11D48",
+        accentTint: "rgba(225, 29, 72, 0.08)",
+        shadow: "rgba(136, 19, 55, 0.06)"
+      },
+      violet: {
+        name: "Violet Celestial Theme",
+        desc: "Raycast modernism with electric purple gradients and deep ultraviolet accents.",
+        canvas: "#F5F3FF",
+        surface: "#FFFFFF",
+        border: "rgba(76, 29, 149, 0.08)",
+        accent: "#7C3AED",
+        accentStart: "#8B5CF6",
+        accentEnd: "#7C3AED",
+        accentTint: "rgba(124, 58, 237, 0.08)",
+        shadow: "rgba(76, 29, 149, 0.06)"
+      }
+    };
+
+    let activeKey = 'icy';
+
+    function applyPalette(key) {
+      const p = palettes[key];
+      if (!p) return;
+      activeKey = key;
+
+      const root = document.documentElement;
+      root.style.setProperty('--bg-canvas', p.canvas);
+      root.style.setProperty('--bg-surface', p.surface);
+      root.style.setProperty('--border-luminous', p.border);
+      root.style.setProperty('--accent-primary', p.accent);
+      root.style.setProperty('--accent-gradient-start', p.accentStart);
+      root.style.setProperty('--accent-gradient-end', p.accentEnd);
+      root.style.setProperty('--accent-tint', p.accentTint);
+      root.style.setProperty('--shadow-color', p.shadow);
+
+      document.getElementById('paletteName').textContent = p.name;
+      document.getElementById('paletteDesc').textContent = p.desc;
+
+      document.querySelectorAll('.preset-pill').forEach(pill => {
+        pill.classList.toggle('active', pill.getAttribute('data-preset') === key);
+      });
+    }
+
+    document.querySelectorAll('.preset-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        applyPalette(pill.getAttribute('data-preset'));
+      });
+    });
+
+    // 2. EXPORT HELPERS
+    const notice = document.getElementById('exportNotice');
+    function showNotice(text) {
+      notice.textContent = text;
+      notice.classList.add('show');
+      setTimeout(() => notice.classList.remove('show'), 2000);
+    }
+
+    function copyText(str, successMsg) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(str).then(() => {
+          showNotice(successMsg);
+        }).catch(() => {
+          fallbackCopy(str, successMsg);
+        });
+      } else {
+        fallbackCopy(str, successMsg);
+      }
+    }
+
+    function fallbackCopy(str, successMsg) {
+      const ta = document.createElement('textarea');
+      ta.value = str;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showNotice(successMsg);
+      } catch {
+        showNotice("Tokens ready");
+      }
+      document.body.removeChild(ta);
+    }
+
+    document.getElementById('copyCssBtn').addEventListener('click', () => {
+      const p = palettes[activeKey];
+      const css = `:root {
+  --bg-canvas: ${p.canvas};
+  --bg-surface: ${p.surface};
+  --border-luminous: ${p.border};
+  --accent-primary: ${p.accent};
+  --shadow-color: ${p.shadow};
+}`;
+      copyText(css, "CSS Tokens Copied!");
+    });
+
+    document.getElementById('copyTailwindBtn').addEventListener('click', () => {
+      const p = palettes[activeKey];
+      const tw = `colors: {
+  canvas: '${p.canvas}',
+  surface: '${p.surface}',
+  accent: '${p.accent}',
+}`;
+      copyText(tw, "Tailwind Config Copied!");
+    });
+  </script>
+</body>
+</html>

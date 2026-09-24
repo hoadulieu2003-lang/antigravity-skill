@@ -339,5 +339,46 @@ class TestDiagnosticsContracts(unittest.TestCase):
         self.assertIn("diagnostics", diagnosed)
 
 
+class TestTokenCoverageGuard(unittest.TestCase):
+    def test_guard_prevents_landing_page_drift_to_link_in_bio(self):
+        cases = [
+            ("saas landing page", "SaaS (General)"),
+            ("portfolio landing page", "Portfolio/Personal"),
+            ("ecommerce landing page", "E-commerce"),
+            ("fintech landing page", "Fintech/Crypto"),
+            ("healthcare landing page", "Healthcare App"),
+            ("crypto landing page", "Fintech/Crypto"),
+        ]
+        for query, expected_product in cases:
+            with self.subTest(query=query):
+                res = search(query, domain="product", max_results=1)
+                self.assertGreater(res["count"], 0)
+                self.assertEqual(res["results"][0]["Product Type"], expected_product)
+
+    def test_link_in_bio_queries_still_match_link_in_bio(self):
+        cases = [
+            "link in bio",
+            "link in bio landing page",
+            "linktree landing page",
+            "landing page",
+        ]
+        for query in cases:
+            with self.subTest(query=query):
+                res = search(query, domain="product", max_results=1)
+                self.assertGreater(res["count"], 0)
+                self.assertEqual(res["results"][0]["Product Type"], "Link-in-Bio Page Builder")
+
+    def test_saas_design_system_resolves_kowalski_motion_and_luminous_palette(self):
+        gen = DesignSystemGenerator()
+        ds = gen.generate("saas landing page")
+        self.assertEqual(ds["category"], "SaaS (General)")
+        self.assertEqual(ds["pattern"]["name"], "Hero + Features + CTA")
+        rule = gen._find_reasoning_rule("SaaS (General)")
+        self.assertIn("Restrained Tasteful Motion (Emil Kowalski standard)", rule.get("Key_Effects", ""))
+        self.assertIn("Luminous High-Tech", rule.get("Color_Mood", ""))
+        self.assertNotIn("Excessive animation", rule.get("Anti_Patterns", ""))
+
+
 if __name__ == "__main__":
     unittest.main()
+
