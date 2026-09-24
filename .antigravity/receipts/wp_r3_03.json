@@ -1,0 +1,43 @@
+{
+  "wp": "WP-R3-03",
+  "task": "Multi-Scene Scrollytelling Pinned Stage Engine",
+  "status": "COMPLETED",
+  "files_created": [
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/scrolly_stage_engine.js",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/scrolly_stage_engine.umd.js",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/scrolly_stage_engine.d.ts",
+    "C:/Users/game/.gemini/config/skills/open-design/scripts/test_scrolly_stage_engine.mjs"
+  ],
+  "verification_script": "node test_scrolly_stage_engine.mjs",
+  "verification_status": "PASS (167/167 tests passed with 100% success)",
+  "features_delivered": {
+    "dynamic_multi_scene_support": [
+      "Nhận mảng kịch bản N scenes linh hoạt kèm cấu hình lifecycle (onEnter, onLeave, onUpdate, customAnimation).",
+      "Tự động tính toán chiều cao đường ray cuộn trackHeight = (N * 100) + 'vh' (hỗ trợ tùy biến trackMultiplier).",
+      "Cơ chế Locked-VH Architecture: Đo đạc 1 lần và khóa cứng biến CSS --locked-vh trên :root và stage, chống triệt để lỗi nhảy cóc / giật layout khi thanh địa chỉ Safari iOS co giãn khi cuộn."
+    ],
+    "gsap_ticker_master_bridge": [
+      "Tự động rà soát và khóa cứng Lenis autoRaf: false, triệt tiêu hoàn toàn hiện tượng Double Ticking rAF nội bộ.",
+      "Đồng bộ chuẩn xác Lenis vào GSAP ticker: gsap.ticker.add((time) => lenis.raf(time * 1000)), tự động quy đổi đơn vị giây sang mili-giây.",
+      "Thiết lập bộ giảm chấn an toàn gsap.ticker.lagSmoothing(500, 33), ngăn chặn hoàn toàn giật timeline khi trình duyệt tạm dừng Garbage Collection.",
+      "Tích hợp ScrollTrigger.scrollerProxy chuẩn mực kết nối tọa độ cuộn Lenis và auto resize khi ScrollTrigger refresh."
+    ],
+    "safe_pinning_guard": [
+      "assertNoTransformedAncestor(element): Tự động duyệt cây DOM tổ tiên, phát hiện và cảnh báo các thuộc tính CSS tạo local stacking context phá vỡ position: fixed (transform, filter, perspective, contain: paint/layout, will-change).",
+      "Tự động đề xuất hoặc chuyển đổi pinType từ 'fixed' sang 'transform' an toàn khi phát hiện tổ tiên biến đổi.",
+      "Scrub Progress Bar tương tác: Tự động cập nhật tỉ lệ tiến trình và hỗ trợ click/scrub để cuộn mượt tới vị trí chính xác.",
+      "Chapter Markers tương tác: Đánh dấu các mốc chương theo tiến trình N cảnh, hiển thị trạng thái active (aria-current='step'), hỗ trợ click mượt mà tới từng cảnh."
+    ],
+    "sixty_fps_transitions_and_power_management": [
+      "Chuyển cảnh 60 FPS tối ưu GPU bằng CSS transforms (translate3d, scale, opacity) theo các preset: fade, slide, zoom, stack, custom.",
+      "IntersectionObserver Watchdog: Tự động tạm dừng tính toán và rAF khi sân khấu cuộn khỏi viewport để tiết kiệm pin/CPU, tự động phục hồi khi quay lại (bảo toàn cờ pause() thủ công).",
+      "Khả năng tiếp cận & Phân tầng phần cứng: Tự động fallback sang chuyển cảnh tĩnh (không 3D scale/translate) khi người dùng bật prefers-reduced-motion: reduce hoặc trên thiết bị phần cứng yếu (TIER_LITE / dual-core)."
+    ],
+    "module_compatibility": [
+      "ESM xuất khẩu độc lập cho React / Vite / Next.js SSR-safe không phụ thuộc DOM.",
+      "UMD độc lập (scrolly_stage_engine.umd.js) tương thích nhúng trực tiếp qua thẻ <script> hoặc môi trường Electron / CommonJS.",
+      "TypeScript Definition (scrolly_stage_engine.d.ts) định kiểu tường minh toàn bộ interfaces và static methods."
+    ]
+  },
+  "summary": "Đã hoàn thành và kiểm chứng độc lập 100% cỗ máy sân khấu ghim đa cảnh Scrollytelling (ScrollyStageEngine) theo đúng khế ước Master Plan Vòng 3. Bộ kiểm thử test_scrolly_stage_engine.mjs gồm 10 Test Suites với 167/167 assertions đỗ tuyệt đối (100% PASS), bảo toàn tính toàn vẹn của hệ thống Open-Design."
+}

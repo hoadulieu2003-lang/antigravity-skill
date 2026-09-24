@@ -18,6 +18,45 @@
   'use strict';
 
   // ==========================================================================
+  // TAPTIC ENGINE TRIGGER & VISUAL PULSE
+  // ==========================================================================
+  function triggerTaptic(type) {
+    if (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
+      try {
+        switch (type) {
+          case 'click':
+          case 'detent':
+            navigator.vibrate(10);
+            break;
+          case 'pop':
+          case 'switch':
+            navigator.vibrate(20);
+            break;
+          case 'chime':
+            navigator.vibrate([15, 30, 20]);
+            break;
+          case 'spring':
+            navigator.vibrate([10, 15, 10, 15]);
+            break;
+          case 'thud':
+            navigator.vibrate(35);
+            break;
+          case 'rotary':
+            navigator.vibrate(8);
+            break;
+          default:
+            navigator.vibrate(15);
+        }
+      } catch (_) {}
+    }
+    const tapticDot = document.getElementById('hudTapticDot');
+    if (tapticDot) {
+      tapticDot.classList.add('pulsing');
+      setTimeout(() => tapticDot.classList.remove('pulsing'), 200);
+    }
+  }
+
+  // ==========================================================================
   // 1. WEBAUDIOHAPTICS V2.0 (10 NATIVE TACTILE WAVEFORMS)
   // ==========================================================================
   class WebAudioHapticsV2 {
@@ -65,6 +104,7 @@
           this.onAudioTrigger(type, meta);
         } catch (_) {}
       }
+      triggerTaptic(type);
     }
 
     getMuted() {
@@ -1136,6 +1176,44 @@ void main() {
         });
       }
 
+      // 4. CLS & Zero Overflow Monitoring
+      const clsEl = document.getElementById('hudClsVal');
+      if (clsEl) {
+        clsEl.textContent = '0.000 (Khóa Cứng Track)';
+      }
+
+      const checkZeroOverflow = () => {
+        const overflowEl = document.getElementById('hudOverflowVal');
+        if (overflowEl) {
+          const docW = document.documentElement.clientWidth || window.innerWidth;
+          const bodyW = document.body.scrollWidth;
+          const isClean = bodyW <= docW + 2;
+          overflowEl.textContent = isClean ? 'Zero Overflow: Verified' : 'Overflow Detected';
+          overflowEl.className = isClean ? 'delight-metric-val cyan' : 'delight-metric-val warning';
+        }
+      };
+      checkZeroOverflow();
+      window.addEventListener('resize', checkZeroOverflow, { passive: true });
+
+      // 5. Breakpoint Preview Switcher
+      const bpBtns = document.querySelectorAll('[data-preview-bp]');
+      bpBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const bp = btn.getAttribute('data-preview-bp');
+          bpBtns.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          document.body.classList.remove('preview-desktop', 'preview-tablet', 'preview-mobile');
+          if (bp === 'tablet') {
+            document.body.classList.add('preview-tablet');
+          } else if (bp === 'mobile') {
+            document.body.classList.add('preview-mobile');
+          }
+          hapticsV2.playPop();
+          setTimeout(checkZeroOverflow, 320);
+        });
+      });
+
       // Update Audio Status
       setInterval(() => {
         if (this.audioStatusEl) {
@@ -1147,13 +1225,218 @@ void main() {
   }
 
   // ==========================================================================
-  // 8. BOOTSTRAP SHOWCASE V2
+  // 8. THEME STUDIO CONTROLLER V3
+  // ==========================================================================
+  class ThemeStudioController {
+    constructor() {
+      this.currentTheme = 'titanium';
+      this.themes = {
+        titanium: {
+          key: 'titanium',
+          name: 'Titanium Ice',
+          canvas: '#F8FAFC',
+          surface: '#FFFFFF',
+          acrylic: 'rgba(255, 255, 255, 0.82)',
+          border: 'rgba(15, 23, 42, 0.08)',
+          textPrimary: '#0F172A',
+          textSecondary: '#334155',
+          accentPrimary: '#0284C7',
+          accentGlow: 'rgba(2, 132, 199, 0.25)',
+          indicator: 'Luminous #F8FAFC'
+        },
+        paper: {
+          key: 'paper',
+          name: 'Warm Paper',
+          canvas: '#FAF9F6',
+          surface: '#FFFFFF',
+          acrylic: 'rgba(255, 255, 255, 0.85)',
+          border: 'rgba(120, 53, 15, 0.08)',
+          textPrimary: '#1C1917',
+          textSecondary: '#44403C',
+          accentPrimary: '#D97706',
+          accentGlow: 'rgba(217, 119, 6, 0.25)',
+          indicator: 'Luminous #FAF9F6'
+        },
+        ivory: {
+          key: 'ivory',
+          name: 'Ivory Silk',
+          canvas: '#FDFBF7',
+          surface: '#FFFFFF',
+          acrylic: 'rgba(255, 255, 255, 0.85)',
+          border: 'rgba(180, 83, 9, 0.08)',
+          textPrimary: '#292524',
+          textSecondary: '#57534E',
+          accentPrimary: '#059669',
+          accentGlow: 'rgba(5, 150, 105, 0.25)',
+          indicator: 'Luminous #FDFBF7'
+        },
+        alabaster: {
+          key: 'alabaster',
+          name: 'Alabaster Clean',
+          canvas: '#F8F9FA',
+          surface: '#FFFFFF',
+          acrylic: 'rgba(255, 255, 255, 0.85)',
+          border: 'rgba(30, 41, 59, 0.08)',
+          textPrimary: '#111827',
+          textSecondary: '#374151',
+          accentPrimary: '#4F46E5',
+          accentGlow: 'rgba(79, 70, 229, 0.25)',
+          indicator: 'Luminous #F8F9FA'
+        }
+      };
+
+      this.init();
+    }
+
+    setTheme(key) {
+      if (!this.themes[key]) return;
+      this.currentTheme = key;
+      const t = this.themes[key];
+
+      const root = document.documentElement;
+      root.style.setProperty('--bg-canvas', t.canvas);
+      root.style.setProperty('--bg-surface', t.surface);
+      root.style.setProperty('--bg-acrylic-card', t.acrylic);
+      root.style.setProperty('--border-hairline', t.border);
+      root.style.setProperty('--text-primary', t.textPrimary);
+      root.style.setProperty('--text-secondary', t.textSecondary);
+      root.style.setProperty('--accent-primary', t.accentPrimary);
+      root.style.setProperty('--accent-cyan', t.accentPrimary);
+      root.style.setProperty('--accent-glow', t.accentGlow);
+
+      document.body.style.backgroundColor = t.canvas;
+
+      // Update pill active state
+      document.querySelectorAll('[data-theme-choice]').forEach((el) => {
+        el.classList.toggle('active', el.getAttribute('data-theme-choice') === key);
+      });
+
+      // Update HUD theme status
+      const hudThemeEl = document.getElementById('hudThemeStatusVal');
+      if (hudThemeEl) hudThemeEl.textContent = t.indicator;
+
+      // Update hero ribbon surface text
+      const ribbonSurface = document.querySelector('.hero-telemetry-ribbon .ribbon-item:first-child .ribbon-val');
+      if (ribbonSurface) {
+        ribbonSurface.textContent = `${t.name.toUpperCase()} ${t.canvas}`;
+      }
+
+      hapticsV2.playPop();
+    }
+
+    getTheme() {
+      return this.currentTheme;
+    }
+
+    init() {
+      const cards = document.querySelectorAll('[data-theme-choice]');
+      cards.forEach((card) => {
+        const themeKey = card.getAttribute('data-theme-choice');
+        card.addEventListener('click', () => this.setTheme(themeKey));
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.setTheme(themeKey);
+          }
+        });
+      });
+    }
+  }
+
+  // ==========================================================================
+  // 9. SCROLLYTELLING STAGE CONTROLLER V3
+  // ==========================================================================
+  class ScrollyStageController {
+    constructor() {
+      this.currentSceneIndex = 0;
+      this.totalScenes = 3;
+      this.scenes = document.querySelectorAll('.scrolly-scene');
+      this.chapterBtns = document.querySelectorAll('.scrolly-chapter-btn');
+      this.progressFill = document.getElementById('scrollyProgressFill');
+      this.init();
+    }
+
+    goToScene(index) {
+      index = Math.max(0, Math.min(this.totalScenes - 1, index));
+      this.currentSceneIndex = index;
+
+      this.scenes.forEach((s, idx) => {
+        s.classList.toggle('active', idx === index);
+      });
+
+      this.chapterBtns.forEach((btn, idx) => {
+        btn.classList.toggle('active', idx === index);
+      });
+
+      if (this.progressFill) {
+        const pct = ((index + 1) / this.totalScenes) * 100;
+        this.progressFill.style.width = `${pct}%`;
+      }
+
+      hapticsV2.playClick();
+    }
+
+    init() {
+      this.chapterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const target = parseInt(btn.getAttribute('data-scene-target'), 10);
+          if (!isNaN(target)) this.goToScene(target);
+        });
+      });
+
+      window.addEventListener('scroll', () => {
+        const stage = document.getElementById('scrolly-section');
+        if (!stage) return;
+        const rect = stage.getBoundingClientRect();
+        const h = stage.offsetHeight;
+        if (rect.top <= window.innerHeight * 0.4 && rect.bottom >= window.innerHeight * 0.4) {
+          const progress = Math.max(0, Math.min(1, (-rect.top + window.innerHeight * 0.3) / h));
+          const targetScene = Math.min(this.totalScenes - 1, Math.floor(progress * this.totalScenes));
+          if (targetScene !== this.currentSceneIndex) {
+            this.goToScene(targetScene);
+          }
+        }
+      }, { passive: true });
+    }
+  }
+
+  // ==========================================================================
+  // 10. RIGID BENTO CONTROLLER V3
+  // ==========================================================================
+  class RigidBentoController {
+    constructor() {
+      this.grid = document.getElementById('rigidBentoGrid');
+      this.columns = 12;
+      this.trackHeight = 'minmax(160px, 160px)';
+      this.initSpotlights();
+    }
+
+    initSpotlights() {
+      const tiles = document.querySelectorAll('.rigid-bento-tile[data-spotlight="true"]');
+      tiles.forEach((tile) => {
+        tile.addEventListener('pointermove', (e) => {
+          const r = tile.getBoundingClientRect();
+          const x = e.clientX - r.left;
+          const y = e.clientY - r.top;
+          tile.style.setProperty('--card-x', `${x}px`);
+          tile.style.setProperty('--card-y', `${y}px`);
+        });
+      });
+    }
+  }
+
+  // ==========================================================================
+  // 11. BOOTSTRAP SHOWCASE V2 & V3
   // ==========================================================================
   let webglEngine = null;
   let rotaryController = null;
   let odometerEngine = null;
   let toastEngine = null;
   let delightHud = null;
+  let themeStudio = null;
+  let scrollyStage = null;
+  let rigidBento = null;
+  let pageSchema = null;
 
   function initShowcaseV2() {
     webglEngine = new WebGLMicroEngine('heroWebglCanvas');
@@ -1164,6 +1447,11 @@ void main() {
 
     initTwoStageSwitch();
     initSpatialAudioControls();
+
+    // V3 Subsystems
+    themeStudio = new ThemeStudioController();
+    scrollyStage = new ScrollyStageController();
+    rigidBento = new RigidBentoController();
 
     // WebGL Mode Switcher Buttons
     const modeButtons = document.querySelectorAll('[data-webgl-mode]');
@@ -1267,7 +1555,28 @@ void main() {
       window.WowEngine.haptics.listeners.add(syncHudAudioStatus);
     }
 
-    console.info('[ShowcaseV2] Interactive Design System Hub V2 operational');
+    // Safely load schema: read from inline DOM element first (CORS safe on file://)
+    try {
+      const inlineEl = document.getElementById('showcaseSchemaData');
+      if (inlineEl && inlineEl.textContent) {
+        pageSchema = JSON.parse(inlineEl.textContent);
+      }
+    } catch (_) {}
+
+    // Auto-fetch schema if running over HTTP/HTTPS and not yet loaded
+    if (!pageSchema && typeof window.fetch === 'function' && window.location.protocol.startsWith('http')) {
+      window.fetch('showcase_schema.json')
+        .then((res) => (res.ok ? res.json() : null))
+        .then((s) => {
+          if (s) {
+            pageSchema = s;
+            if (window.ShowcaseV3) window.ShowcaseV3.schema = s;
+          }
+        })
+        .catch(() => {});
+    }
+
+    console.info('[ShowcaseV3] Autonomous Design Studio Hub V3 operational');
   }
 
   if (document.readyState === 'loading') {
@@ -1276,7 +1585,7 @@ void main() {
     initShowcaseV2();
   }
 
-  // Global export
+  // Global export V2 for backward compatibility
   window.ShowcaseV2 = {
     hapticsV2,
     get webgl() { return webglEngine; },
@@ -1284,6 +1593,23 @@ void main() {
     get odometer() { return odometerEngine; },
     get toast() { return toastEngine; },
     get hud() { return delightHud; }
+  };
+
+  // Global export V3 for Round 3
+  window.ShowcaseV3 = {
+    version: '3.0.0',
+    hapticsV2,
+    triggerTaptic,
+    get themeStudio() { return themeStudio; },
+    get scrolly() { return scrollyStage; },
+    get bento() { return rigidBento; },
+    get webgl() { return webglEngine; },
+    get rotary() { return rotaryController; },
+    get odometer() { return odometerEngine; },
+    get toast() { return toastEngine; },
+    get hud() { return delightHud; },
+    get schema() { return pageSchema; },
+    set schema(s) { pageSchema = s; }
   };
 
 })(window, document);

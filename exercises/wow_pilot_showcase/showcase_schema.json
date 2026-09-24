@@ -1,0 +1,257 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "metadata": {
+    "title": "Antigravity 2.0 // Autonomous Design Studio Hub V3",
+    "description": "Siêu Trung Tâm Trình Diễn Lắp Ghép Giao Diện Tự Trị V3: Schema-Driven Page Assembly, Luminous Palette Engine, 3D WebGL Micro-Engine, Scrollytelling Pinned Stage, Rigid Bento Grid, Dual Audio-Haptics.",
+    "lang": "vi",
+    "charset": "UTF-8",
+    "author": "Antigravity 2.0 Open-Design System",
+    "keywords": [
+      "Luminous Light Theme",
+      "Schema-Driven Assembly",
+      "WebGL 3D",
+      "Scrollytelling",
+      "WebAudioHaptics",
+      "Bento Grid",
+      "Dual Audio-Haptic",
+      "Zero-XSS"
+    ]
+  },
+  "theme": {
+    "canvas": "#F8FAFC",
+    "surface": "#FFFFFF",
+    "elevated": "rgba(255, 255, 255, 0.94)",
+    "border": "rgba(15, 23, 42, 0.08)",
+    "highlight": "rgba(255, 255, 255, 0.95)",
+    "text": {
+      "primary": "#0F172A",
+      "secondary": "#334155",
+      "muted": "#64748B"
+    },
+    "accent": {
+      "primary": "#0284C7",
+      "hover": "#0369A1",
+      "glow": "rgba(2, 132, 199, 0.25)"
+    },
+    "shadows": {
+      "sm": "0 1px 2px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.95)",
+      "md": "0 4px 16px -2px rgba(15, 23, 42, 0.06), inset 0 1px 1px #FFFFFF",
+      "lg": "0 10px 30px -4px rgba(15, 23, 42, 0.08), inset 0 1px 1px #FFFFFF",
+      "ambient": "0 1px 2px rgba(15, 23, 42, 0.04)",
+      "key": "0 10px 30px -4px rgba(15, 23, 42, 0.06)"
+    }
+  },
+  "navigation": {
+    "brandName": "ANTIGRAVITY 2.0",
+    "tagline": "Autonomous Design Studio V3",
+    "links": [
+      { "label": "Tổng quan", "href": "#hero" },
+      { "label": "Theme Studio", "href": "#theme-studio" },
+      { "label": "Scrolly Stage", "href": "#scrolly-section" },
+      { "label": "Rigid Bento", "href": "#rigid-bento" },
+      { "label": "Soundboard V3", "href": "#soundboard" },
+      { "label": "Thông số", "href": "#specs" }
+    ],
+    "ctaButton": {
+      "text": "Khởi Chạy Studio",
+      "link": "#theme-studio",
+      "haptic": true
+    },
+    "glassHud": true
+  },
+  "hero": {
+    "shaderType": "liquid-waves",
+    "particleCount": 120,
+    "interactiveRadius": 180,
+    "dprCap": 2.0,
+    "headline": "Lắp Ghép Giao Diện Tự Trị V3",
+    "subheadline": "Kiến trúc Schema-Driven DOM Assembly chuẩn Luminous Light Theme Invariant kết hợp Cỗ máy 3D WebGL, Scrollytelling Pinned Stage đa cảnh và Phản hồi Xúc giác Kép.",
+    "badges": [
+      "V3 Production Release",
+      "Luminous Multi-Layer",
+      "Zero-XSS Certified",
+      "60 FPS Verified",
+      "Rigid Bento 12-Col"
+    ],
+    "ctaButtons": [
+      {
+        "text": "Khám Phá Theme Studio",
+        "link": "#theme-studio",
+        "primary": true,
+        "haptic": true
+      },
+      {
+        "text": "Xem Scrollytelling Stage",
+        "link": "#scrolly-section",
+        "primary": false,
+        "haptic": true
+      }
+    ],
+    "showLiveBadge": true,
+    "minHeight": "85vh"
+  },
+  "bentoGrid": {
+    "columns": 12,
+    "gap": "1.5rem",
+    "title": "Rigid Bento Telemetry Grid (12 Cột Khóa Cứng Track minmax(160px, 160px))",
+    "subtitle": "Kiến trúc lưới Bento 12 cột khóa cứng track minmax(160px, 160px), loại bỏ 100% tình trạng vỡ layout hoặc nhảy layout (CLS = 0.000).",
+    "badge": "Bento Grid System",
+    "cellMatrix": [
+      {
+        "id": "cell-fps",
+        "colSpan": 4,
+        "type": "stat",
+        "statValue": "60 FPS",
+        "statLabel": "Render Frame Budget",
+        "title": "Khung Hình 60 FPS",
+        "subtitle": "GSAP Ticker + Lenis Smooth Scroll",
+        "badge": "PERFORMANCE",
+        "spotlight": true,
+        "haptic": true
+      },
+      {
+        "id": "cell-cls",
+        "colSpan": 4,
+        "type": "stat",
+        "statValue": "0.000",
+        "statLabel": "Cumulative Layout Shift (CLS)",
+        "title": "CLS Tuyệt Đối 0.000",
+        "subtitle": "Khóa cứng track minmax(160px, 160px)",
+        "badge": "RIGID METRICS",
+        "spotlight": true,
+        "haptic": true
+      },
+      {
+        "id": "cell-theme",
+        "colSpan": 4,
+        "type": "stat",
+        "statValue": "100%",
+        "statLabel": "Luminous Light Invariant",
+        "title": "Luminous Theme Sáng Đa Tầng",
+        "subtitle": "Triệt tiêu giấy bẹt đơn điệu",
+        "badge": "AESTHETIC LAW",
+        "spotlight": true,
+        "haptic": true
+      },
+      {
+        "id": "cell-track",
+        "colSpan": 8,
+        "type": "feature",
+        "title": "Rigid MinMax(160px, 160px) Track Locking",
+        "subtitle": "Khóa cứng track size CSS Grid ngăn chặn hoàn toàn biến dạng bố cục",
+        "content": "Mọi ô lưới Bento đều được neo chắc chắn với chiều cao chuẩn minmax(160px, 160px) trên hệ thống lưới 12 cột, phân phối không gian tối ưu cho cả thẻ Stat lẫn thẻ Telemetry phức hợp.",
+        "badge": "GRID ARCHITECTURE",
+        "spotlight": true,
+        "interactive": true
+      },
+      {
+        "id": "cell-haptic",
+        "colSpan": 4,
+        "type": "telemetry",
+        "title": "Dual Audio-Haptic Feedback",
+        "subtitle": "10 Dạng Sóng Âm Thanh + Rung Taptic",
+        "content": "Tổng hợp thời gian thực WebAudio 48kHz kết hợp navigator.vibrate() mang lại cảm nhận cơ khí chân thực trong từng cú nhấp chuột.",
+        "badge": "PHYSICAL FEEL",
+        "spotlight": true,
+        "interactive": true
+      },
+      {
+        "id": "cell-compiler",
+        "colSpan": 6,
+        "type": "feature",
+        "title": "Schema-Driven DOM Compiler",
+        "subtitle": "SafeDOMAssembler Anti-XSS & Anti-Prototype Pollution",
+        "content": "Biên dịch trực tiếp từ JSON Schema sang DOM phân tầng với cơ chế lọc XSS đa lớp (escapeHtml, sanitizeUrl, sanitizeCssValue).",
+        "badge": "CORE ENGINE",
+        "spotlight": true,
+        "interactive": true
+      },
+      {
+        "id": "cell-oklab",
+        "colSpan": 6,
+        "type": "feature",
+        "title": "Perceptual Oklab & OKLCH Engine",
+        "subtitle": "Giải thuật Nhị Phân Bisection 10^-5",
+        "content": "Chuyển đổi màu sắc liên tục trong không gian Oklab của Björn Ottosson, bảo đảm tỷ lệ tương phản WCAG AAA 17.06:1 và triệt tiêu dính màu mờ đục.",
+        "badge": "COLOR MATH",
+        "spotlight": true,
+        "interactive": true
+      }
+    ]
+  },
+  "scrollytelling": {
+    "pinnedDurationVh": 300,
+    "transitionCurve": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "title": "Scrollytelling Pinned Stage Đa Cảnh",
+    "subtitle": "Hành trình cuộn khám phá 3 phân hệ công nghệ cốt lõi của Antigravity 2.0",
+    "showProgressIndicator": true,
+    "scenes": [
+      {
+        "id": "scene-multi-agent",
+        "badge": "SCENE 01 // KIẾN TRÚC",
+        "title": "Kiến Trúc Đa Tác Tử Hiệp Đồng",
+        "description": "Bầy tác tử 6-12 Pods vận hành tự trị, phân rã song song từ AST Schema Contract đến Safe DOM Assembly, thi công khép kín không ma sát.",
+        "metric": {
+          "label": "Độ Trễ Đồng Bộ",
+          "value": "< 12ms"
+        },
+        "visualAsset": {
+          "type": "diagram",
+          "caption": "Multi-Agent Swarm Orchestration Matrix"
+        }
+      },
+      {
+        "id": "scene-luminous-math",
+        "badge": "SCENE 02 // TOÁN HỌC MÀU SẮC",
+        "title": "Động Cơ Toán Học Luminous Oklab",
+        "description": "Tính toán độ chói tương đối liên tục theo Björn Ottosson, giải thuật nhị phân Bisection đạt độ chính xác 10^-5, đảm bảo tương phản WCAG AA/AAA và triệt tiêu dính màu bẹt.",
+        "metric": {
+          "label": "Tương Phản Tối Thiểu",
+          "value": ">= 4.5:1 (AA)"
+        },
+        "visualAsset": {
+          "type": "metric",
+          "caption": "Perceptual Oklab Color Space Transformation"
+        }
+      },
+      {
+        "id": "scene-dual-haptics",
+        "badge": "SCENE 03 // XÚC GIÁC & ÂM THANH",
+        "title": "Phản Hồi Xúc Giác Kép (Dual Audio-Haptic)",
+        "description": "Tổng hợp sóng âm vật lý 48kHz không dùng file mp3 mẫu kết hợp rung phản hồi Taptic Navigator.vibrate() cho trải nghiệm cơ khí chân thực.",
+        "metric": {
+          "label": "Âm Thanh Xúc Giác",
+          "value": "10 Dạng Sóng + Taptic"
+        },
+        "visualAsset": {
+          "type": "code",
+          "caption": "WebAudio Native Waveform Synthesis Pipeline"
+        }
+      }
+    ]
+  },
+  "soundboard": {
+    "waveforms": ["sine", "triangle", "square", "sawtooth"],
+    "rotaryTicks": true,
+    "mechanicalSwitch": true,
+    "spatialPanning": true,
+    "volume": 0.18,
+    "muted": false,
+    "enabled": true
+  },
+  "footer": {
+    "copyright": "© 2026 Antigravity 2.0 Open Design System. All rights reserved.",
+    "tagline": "Autonomous Design Studio Showcase V3 — Production Grade",
+    "links": [
+      { "label": "Tài Liệu Kỹ Thuật", "href": "#" },
+      { "label": "JSON Schema", "href": "showcase_schema.json" },
+      { "label": "Kiểm Chứng V3", "href": "#" }
+    ],
+    "badges": [
+      "Luminous Invariant",
+      "WCAG AAA 17:1",
+      "CLS 0.000",
+      "Zero XSS"
+    ]
+  }
+}

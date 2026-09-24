@@ -20,6 +20,8 @@ import {
   haptics,
   initSmoothScroll,
   WowEngine,
+  HAPTIC_PATTERNS,
+  canVibrate,
 } from './wow_engine.js';
 
 let passedTests = 0;
@@ -1027,12 +1029,18 @@ console.log('\n🎧 Test Suite 8: WebAudioHaptics v2.0 DSP & Spatial Engine Veri
   assert(triggerCount === 1, 'bind() deduplicates rapid input+click events on same element to eliminate audio flutter');
 
   // 9. Showcase wow_engine.js API Parity Verification
-  const showcaseCode = fs.readFileSync('exercises/wow_pilot_showcase/wow_engine.js', 'utf8');
+  const showcasePath = fs.existsSync('exercises/wow_pilot_showcase/wow_engine.js')
+    ? 'exercises/wow_pilot_showcase/wow_engine.js'
+    : fs.existsSync('../../../../exercises/wow_pilot_showcase/wow_engine.js')
+      ? '../../../../exercises/wow_pilot_showcase/wow_engine.js'
+      : new URL('../../../../exercises/wow_pilot_showcase/wow_engine.js', import.meta.url).pathname;
+  const showcaseCode = fs.readFileSync(showcasePath, 'utf8');
   const requiredHapticMethods = [
     'destroy', 'setMuted', 'getMuted', 'toggleMute', 'setVolume', 'getVolume',
     'bind', 'playClick', 'playPop', 'playChime', 'playTabSwitch', 'playToggle',
     'playRotaryStep', 'playSuccessChord', 'playDullThud', 'playMechanicalSwitch',
-    'flushSilentBuffer', '_resolvePan', '_createSpatialRoute'
+    'flushSilentBuffer', '_resolvePan', '_createSpatialRoute',
+    'setHapticMode', 'getHapticMode', 'vibrate', 'playRotary', 'playDetent'
   ];
   requiredHapticMethods.forEach(method => {
     assert(showcaseCode.includes(method), `Showcase wow_engine.js implements ${method}()`);
@@ -1041,6 +1049,367 @@ console.log('\n🎧 Test Suite 8: WebAudioHaptics v2.0 DSP & Spatial Engine Veri
   unbindV2();
   assert(mockDocListeners['click'].length === 0, 'bind unbind removes click listener');
   assert(mockDocListeners['input'].length === 0, 'bind unbind removes input listener');
+}
+
+// -----------------------------------------------------------------------------
+// Test Suite 9: Dual Audio-Haptic Syncer & Memory Leak Verification (WP-R3-04)
+// -----------------------------------------------------------------------------
+console.log('\n📳 Test Suite 9: Dual Audio-Haptic Syncer & Memory Leak Verification (WP-R3-04)');
+{
+  // 1. Haptic Vibration Patterns Verification
+  assert(typeof HAPTIC_PATTERNS === 'object' && HAPTIC_PATTERNS !== null, 'HAPTIC_PATTERNS is exported as an object');
+  assert(Array.isArray(HAPTIC_PATTERNS.click) && HAPTIC_PATTERNS.click[0] === 12, "Haptic pattern 'click' is [12]ms");
+  assert(Array.isArray(HAPTIC_PATTERNS.pop) && HAPTIC_PATTERNS.pop[0] === 18, "Haptic pattern 'pop' is [18]ms");
+  assert(Array.isArray(HAPTIC_PATTERNS.switch) && HAPTIC_PATTERNS.switch.length === 3 &&
+    HAPTIC_PATTERNS.switch[0] === 10 && HAPTIC_PATTERNS.switch[1] === 16 && HAPTIC_PATTERNS.switch[2] === 12,
+    "Haptic pattern 'switch' is [10, 16, 12]ms (2-phase spring latch + bottom-out)");
+  assert(Array.isArray(HAPTIC_PATTERNS.success) && HAPTIC_PATTERNS.success.length === 5 &&
+    HAPTIC_PATTERNS.success[0] === 15 && HAPTIC_PATTERNS.success[4] === 30,
+    "Haptic pattern 'success' is [15, 35, 20, 35, 30]ms chord cadence");
+  assert(Array.isArray(HAPTIC_PATTERNS.thud) && HAPTIC_PATTERNS.thud[0] === 35, "Haptic pattern 'thud' is [35]ms impact damping");
+  assert(Array.isArray(HAPTIC_PATTERNS.rotary) && HAPTIC_PATTERNS.rotary[0] === 8, "Haptic pattern 'rotary' is [8]ms micro notch");
+  assert(Array.isArray(HAPTIC_PATTERNS.detent) && HAPTIC_PATTERNS.detent[0] === 10, "Haptic pattern 'detent' is [10]ms detent notch");
+
+  // 2. Hardware Vibration Support Detection (canVibrate)
+  let mockUserAgent = 'Mozilla/5.0 (Linux; Android 14; Pixel 8)';
+  let vibrateCalls = [];
+  const mockNavigator = {
+    get userAgent() { return mockUserAgent; },
+    vibrate: (pattern) => {
+      vibrateCalls.push(pattern);
+      return true;
+    },
+  };
+  Object.defineProperty(globalThis, 'navigator', {
+    value: mockNavigator,
+    configurable: true,
+    writable: true,
+  });
+
+  const dualHaptics = new WebAudioHaptics();
+  assert(dualHaptics.canVibrate === true, 'canVibrate getter returns true for Android mobile userAgent');
+  assert(canVibrate() === true, 'canVibrate() function returns true for mobile device with navigator.vibrate');
+
+  mockUserAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)';
+  assert(dualHaptics.canVibrate === true, 'canVibrate returns true for iPhone');
+
+  mockUserAgent = 'Mozilla/5.0 (iPad; CPU OS 17_0 like Mac OS X)';
+  assert(dualHaptics.canVibrate === true, 'canVibrate returns true for iPad');
+
+  mockUserAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)';
+  assert(dualHaptics.canVibrate === false, 'canVibrate returns false for Windows Desktop userAgent');
+
+  // Reset to Android mobile environment for dual syncer tests
+  mockUserAgent = 'Mozilla/5.0 (Linux; Android 14; Pixel 8)';
+
+  // 3. Haptic Operational Modes (setHapticMode / getHapticMode)
+  assert(dualHaptics.getHapticMode() === 'dual', 'Default haptic mode is dual');
+
+  dualHaptics.setHapticMode('audio-only');
+  assert(dualHaptics.getHapticMode() === 'audio-only', "setHapticMode('audio-only') sets mode to audio-only");
+  assert(dualHaptics.shouldPlayAudio() === true, 'shouldPlayAudio() is true in audio-only mode');
+  assert(dualHaptics.shouldVibrate() === false, 'shouldVibrate() is false in audio-only mode');
+
+  dualHaptics.setHapticMode('vibrate-only');
+  assert(dualHaptics.getHapticMode() === 'vibrate-only', "setHapticMode('vibrate-only') sets mode to vibrate-only");
+  assert(dualHaptics.shouldPlayAudio() === false, 'shouldPlayAudio() is false in vibrate-only mode');
+  assert(dualHaptics.shouldVibrate() === true, 'shouldVibrate() is true in vibrate-only mode');
+
+  dualHaptics.setHapticMode('mute');
+  assert(dualHaptics.getHapticMode() === 'mute', "setHapticMode('mute') sets mode to mute");
+  assert(dualHaptics.getMuted() === true, "setHapticMode('mute') automatically activates isMuted");
+  assert(dualHaptics.shouldPlayAudio() === false, 'shouldPlayAudio() is false in mute mode');
+  assert(dualHaptics.shouldVibrate() === false, 'shouldVibrate() is false in mute mode');
+
+  dualHaptics.setHapticMode('dual');
+  assert(dualHaptics.getHapticMode() === 'dual', "setHapticMode('dual') restores dual mode");
+  assert(dualHaptics.getMuted() === false, "setHapticMode('dual') unsets isMuted");
+  assert(dualHaptics.shouldPlayAudio() === true, 'shouldPlayAudio() is true in dual mode');
+  assert(dualHaptics.shouldVibrate() === true, 'shouldVibrate() is true in dual mode');
+
+  // 4. Mock Audio Graph with Disconnect Tracking for Memory Leak Testing
+  let disconnectedGains = [];
+  let disconnectedOscillators = [];
+  let disconnectedFilters = [];
+  let capturedOscillators = [];
+
+  class MockDisconnectGain {
+    constructor() {
+      this.gain = {
+        value: 1,
+        setValueAtTime: () => {},
+        exponentialRampToValueAtTime: () => {},
+      };
+      this.connectedTo = null;
+    }
+    connect(dest) { this.connectedTo = dest; }
+    disconnect() { disconnectedGains.push(this); }
+  }
+
+  class MockDisconnectOscillator {
+    constructor() {
+      this.type = 'sine';
+      this.frequency = {
+        value: 440,
+        setValueAtTime: () => {},
+        exponentialRampToValueAtTime: () => {},
+      };
+      this.connectedTo = null;
+      this.onended = null;
+      capturedOscillators.push(this);
+    }
+    connect(dest) { this.connectedTo = dest; }
+    disconnect() { disconnectedOscillators.push(this); }
+    start() {}
+    stop() {}
+  }
+
+  class MockDisconnectFilter {
+    constructor() {
+      this.type = 'lowpass';
+      this.frequency = { setValueAtTime: () => {}, exponentialRampToValueAtTime: () => {} };
+      this.Q = { setValueAtTime: () => {} };
+      this.connectedTo = null;
+    }
+    connect(dest) { this.connectedTo = dest; }
+    disconnect() { disconnectedFilters.push(this); }
+  }
+
+  class MockDisconnectAudioContext {
+    constructor() {
+      this.currentTime = 100.0;
+      this.state = 'running';
+      this.destination = {};
+    }
+    createOscillator() { return new MockDisconnectOscillator(); }
+    createGain() { return new MockDisconnectGain(); }
+    createBiquadFilter() { return new MockDisconnectFilter(); }
+    resume() { return Promise.resolve(); }
+  }
+
+  globalThis.window.AudioContext = MockDisconnectAudioContext;
+  const syncer = new WebAudioHaptics({ mode: 'dual' });
+  assert(syncer.getContext() !== null, 'Syncer AudioContext initialized with leak-tracking mock');
+
+  // 5. Dual Dispatch & osc.onended Memory Leak Fix Verification
+  // 5a. playClick()
+  vibrateCalls = [];
+  disconnectedGains = [];
+  disconnectedOscillators = [];
+  capturedOscillators = [];
+  syncer.playClick();
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 12, 'playClick() dispatches [12]ms haptic vibration');
+  assert(capturedOscillators.length === 1, 'playClick() synthesizes 1 audio oscillator');
+  assert(typeof capturedOscillators[0].onended === 'function', 'playClick() assigns osc.onended handler');
+  capturedOscillators[0].onended();
+  assert(disconnectedGains.length === 1, 'osc.onended disconnects GainNode to eliminate memory leak');
+  assert(disconnectedOscillators.length === 1, 'osc.onended disconnects OscillatorNode to eliminate memory leak');
+
+  // 5b. playPop()
+  vibrateCalls = [];
+  capturedOscillators = [];
+  syncer.playPop();
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 18, 'playPop() dispatches [18]ms haptic vibration');
+  assert(typeof capturedOscillators[0].onended === 'function', 'playPop() assigns osc.onended handler');
+  capturedOscillators[0].onended();
+  assert(disconnectedOscillators.length === 2, 'playPop() osc.onended cleanly disconnects');
+
+  // 5c. playTabSwitch()
+  vibrateCalls = [];
+  capturedOscillators = [];
+  syncer.playTabSwitch();
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 10 && vibrateCalls[0][1] === 16 && vibrateCalls[0][2] === 12,
+    'playTabSwitch() dispatches [10, 16, 12]ms haptic vibration');
+  assert(typeof capturedOscillators[0].onended === 'function', 'playTabSwitch() assigns osc.onended handler');
+  capturedOscillators[0].onended();
+
+  // 5d. playToggle()
+  vibrateCalls = [];
+  capturedOscillators = [];
+  syncer.playToggle(true);
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 10 && vibrateCalls[0][1] === 16,
+    'playToggle() dispatches [10, 16, 12]ms switch haptic vibration');
+  assert(typeof capturedOscillators[0].onended === 'function', 'playToggle() assigns osc.onended handler');
+  capturedOscillators[0].onended();
+
+  // 5e. playSuccessChord()
+  vibrateCalls = [];
+  capturedOscillators = [];
+  syncer.playSuccessChord();
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 15 && vibrateCalls[0][4] === 30,
+    'playSuccessChord() dispatches [15, 35, 20, 35, 30]ms chord haptic vibration');
+  assert(capturedOscillators.length === 3, 'playSuccessChord() generates 3 chord oscillators');
+  capturedOscillators.forEach((osc, idx) => {
+    assert(typeof osc.onended === 'function', `playSuccessChord() note ${idx} has onended handler`);
+    osc.onended();
+  });
+
+  // 5f. playChime()
+  vibrateCalls = [];
+  capturedOscillators = [];
+  syncer.playChime();
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 15 && vibrateCalls[0][4] === 30,
+    'playChime() dispatches [15, 35, 20, 35, 30]ms chime haptic vibration');
+  capturedOscillators.forEach(osc => osc.onended());
+
+  // 5g. playDullThud() with BiquadFilter cleanup
+  vibrateCalls = [];
+  capturedOscillators = [];
+  disconnectedFilters = [];
+  syncer.playDullThud();
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 35, 'playDullThud() dispatches [35]ms thud haptic vibration');
+  assert(typeof capturedOscillators[0].onended === 'function', 'playDullThud() assigns osc.onended handler');
+  capturedOscillators[0].onended();
+  assert(disconnectedFilters.length === 1, 'playDullThud() osc.onended disconnects BiquadFilterNode');
+
+  // 5h. playMechanicalSwitch() 2-phase actuation
+  vibrateCalls = [];
+  capturedOscillators = [];
+  syncer.playMechanicalSwitch(true);
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 10 && vibrateCalls[0][1] === 16 && vibrateCalls[0][2] === 12,
+    'playMechanicalSwitch() dispatches [10, 16, 12]ms switch haptic vibration');
+  assert(capturedOscillators.length === 2, 'playMechanicalSwitch() creates Phase 1 and Phase 2 oscillators');
+  assert(typeof capturedOscillators[0].onended === 'function', 'Phase 1 osc has onended');
+  assert(typeof capturedOscillators[1].onended === 'function', 'Phase 2 osc has onended');
+  capturedOscillators[0].onended();
+  capturedOscillators[1].onended();
+
+  // 5i. playRotaryStep() & playRotary()
+  vibrateCalls = [];
+  capturedOscillators = [];
+  syncer._lastRotaryTime = 0; // Reset throttle for test
+  syncer.playRotary(4, 24);
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 8, 'playRotary() dispatches [8]ms rotary haptic vibration');
+  assert(typeof capturedOscillators[0].onended === 'function', 'playRotary() assigns osc.onended handler');
+  capturedOscillators[0].onended();
+
+  // 5j. playDetent()
+  vibrateCalls = [];
+  capturedOscillators = [];
+  syncer.playDetent();
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 10, 'playDetent() dispatches [10]ms detent haptic vibration');
+  assert(typeof capturedOscillators[0].onended === 'function', 'playDetent() assigns osc.onended handler');
+  capturedOscillators[0].onended();
+
+  // 6. Mode Enforcement during Sound Playback
+  // Mode: audio-only -> sound plays, zero vibration
+  syncer.setHapticMode('audio-only');
+  vibrateCalls = [];
+  capturedOscillators = [];
+  syncer.playClick();
+  assert(capturedOscillators.length === 1, 'audio-only mode synthesizes audio');
+  assert(vibrateCalls.length === 0, 'audio-only mode suppresses hardware vibration');
+
+  // Mode: vibrate-only -> vibration fires, zero audio oscillators
+  syncer.setHapticMode('vibrate-only');
+  vibrateCalls = [];
+  capturedOscillators = [];
+  syncer.playClick();
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 12, 'vibrate-only mode dispatches vibration');
+  assert(capturedOscillators.length === 0, 'vibrate-only mode creates ZERO audio oscillators (CPU/Audio Graph idle)');
+
+  // Mode: mute -> zero audio, zero vibration
+  syncer.setHapticMode('mute');
+  vibrateCalls = [];
+  capturedOscillators = [];
+  syncer.playClick();
+  assert(vibrateCalls.length === 0, 'mute mode suppresses vibration');
+  assert(capturedOscillators.length === 0, 'mute mode suppresses audio');
+
+  // Reset to dual
+  syncer.setHapticMode('dual');
+
+  // 7. HTML Element Attribute Extensions in bind()
+  // Mock element with data-haptic-mode & data-haptic-vibrate
+  class AdvancedMockElement {
+    constructor(attrs = {}) {
+      this._attrs = { ...attrs };
+    }
+    getAttribute(attr) { return this._attrs[attr] !== undefined ? this._attrs[attr] : null; }
+    setAttribute(attr, val) { this._attrs[attr] = String(val); }
+    closest(selector) {
+      if (selector === '[data-haptic]' && this._attrs['data-haptic']) return this;
+      if (selector === '[data-haptic-vibrate]' && this._attrs['data-haptic-vibrate']) return this;
+      if (selector === '[data-haptic-mode]' && this._attrs['data-haptic-mode']) return this;
+      return null;
+    }
+  }
+
+  const suite9Listeners = { click: [], input: [] };
+  const suite9Doc = {
+    addEventListener: (type, fn) => { suite9Listeners[type].push(fn); },
+    removeEventListener: (type, fn) => {
+      suite9Listeners[type] = suite9Listeners[type].filter(f => f !== fn);
+    },
+  };
+
+  const bindSyncer = new WebAudioHaptics();
+  const unbindSuite9 = bindSyncer.bind(suite9Doc);
+  const clickDispatcher = suite9Listeners['click'][0];
+
+  // 7a. Element with data-haptic-mode="vibrate-only"
+  const vibrateOnlyEl = new AdvancedMockElement({
+    'data-haptic': 'click',
+    'data-haptic-mode': 'vibrate-only',
+  });
+  vibrateCalls = [];
+  capturedOscillators = [];
+  clickDispatcher({ target: vibrateOnlyEl });
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 12, 'data-haptic-mode="vibrate-only" element dispatches vibration');
+  assert(capturedOscillators.length === 0, 'data-haptic-mode="vibrate-only" element creates zero audio nodes');
+
+  // 7b. Element with data-haptic-mode="audio-only"
+  const audioOnlyEl = new AdvancedMockElement({
+    'data-haptic': 'click',
+    'data-haptic-mode': 'audio-only',
+  });
+  vibrateCalls = [];
+  capturedOscillators = [];
+  clickDispatcher({ target: audioOnlyEl });
+  assert(capturedOscillators.length === 1, 'data-haptic-mode="audio-only" element creates audio node');
+  assert(vibrateCalls.length === 0, 'data-haptic-mode="audio-only" element suppresses vibration');
+
+  // 7c. Element with data-haptic-vibrate="false"
+  const noVibrateEl = new AdvancedMockElement({
+    'data-haptic': 'pop',
+    'data-haptic-vibrate': 'false',
+  });
+  vibrateCalls = [];
+  capturedOscillators = [];
+  clickDispatcher({ target: noVibrateEl });
+  assert(capturedOscillators.length === 1, 'data-haptic-vibrate="false" element plays audio');
+  assert(vibrateCalls.length === 0, 'data-haptic-vibrate="false" element suppresses vibration');
+
+  // 7d. Element with custom vibration pattern data-haptic-vibrate="25, 50, 25"
+  const customVibrateEl = new AdvancedMockElement({
+    'data-haptic': 'click',
+    'data-haptic-vibrate': '25, 50, 25',
+  });
+  vibrateCalls = [];
+  clickDispatcher({ target: customVibrateEl });
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 25 && vibrateCalls[0][1] === 50 && vibrateCalls[0][2] === 25,
+    'data-haptic-vibrate="25, 50, 25" dispatches custom haptic vibration sequence [25, 50, 25]ms');
+
+  // 7e. Element with data-haptic="detent"
+  const detentEl = new AdvancedMockElement({
+    'data-haptic': 'detent',
+  });
+  vibrateCalls = [];
+  clickDispatcher({ target: detentEl });
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 10, 'data-haptic="detent" element dispatches [10]ms detent pulse');
+
+  // 7f. Element with only data-haptic-vibrate="true" (no data-haptic)
+  const vibrateAttrOnlyEl = new AdvancedMockElement({
+    'data-haptic-vibrate': 'true',
+  });
+  vibrateCalls = [];
+  clickDispatcher({ target: vibrateAttrOnlyEl });
+  assert(vibrateCalls.length === 1 && vibrateCalls[0][0] === 12, 'Element with data-haptic-vibrate="true" defaults to click vibration [12]ms');
+
+  unbindSuite9();
+  syncer.destroy();
+  bindSyncer.destroy();
+  dualHaptics.destroy();
 }
 
 console.log(`\n========================================`);

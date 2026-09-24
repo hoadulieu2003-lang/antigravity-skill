@@ -581,24 +581,152 @@ export function initParallaxTilt(selector, options = {}) {
 // =============================================================================
 
 /**
- * Pure Web Audio API Mechanical Sound Synthesizer.
+ * Standard tactile vibration patterns in milliseconds (Bảng mã nhịp rung xúc giác chuẩn)
+ */
+export const HAPTIC_PATTERNS = Object.freeze({
+  click: [12],
+  pop: [18],
+  switch: [10, 16, 12],
+  'mech-switch': [10, 16, 12],
+  'mechanical-switch': [10, 16, 12],
+  tab: [10, 16, 12],
+  toggle: [10, 16, 12],
+  success: [15, 35, 20, 35, 30],
+  chord: [15, 35, 20, 35, 30],
+  'success-chord': [15, 35, 20, 35, 30],
+  chime: [15, 35, 20, 35, 30],
+  thud: [35],
+  'dull-thud': [35],
+  impact: [35],
+  drop: [35],
+  rotary: [8],
+  'rotary-step': [8],
+  dial: [8],
+  knob: [8],
+  detent: [10],
+});
+
+/**
+ * Dynamic check for hardware vibration support on mobile devices
+ */
+export const canVibrate = () =>
+  typeof navigator !== 'undefined' &&
+  typeof navigator.vibrate === 'function' &&
+  /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent || '');
+
+/**
+ * Pure Web Audio API Mechanical Sound Synthesizer & Dual Audio-Haptic Syncer.
  * 100% zero audio files (0 KB mp3/wav download), zero latency, client-side synthesized.
+ * Seamless mobile vibration + desktop WebAudio dual synchronization.
  * Direct inheritance & expansion from Portfolio K18 architectural heritage.
  */
 export class WebAudioHaptics {
   constructor(options = {}) {
     this.ctx = null;
     this.isMuted = options.muted || false;
+    this.hapticMode = options.hapticMode || options.mode || 'dual';
+    this._previousHapticMode = this.hapticMode;
     this.masterVolume = typeof options.volume === 'number' ? clamp(options.volume, 0, 1) : 1.0;
     this.masterGainNode = null;
     this._unlocked = false;
     this._unlockListeners = [];
     this._lastRotaryTime = 0;
     this._activeTimers = new Set();
+    this.vibrationPatterns = { ...HAPTIC_PATTERNS };
+
+    if (this.isMuted && this.hapticMode !== 'mute') {
+      this._previousHapticMode = this.hapticMode;
+      this.hapticMode = 'mute';
+    }
 
     if (isBrowser()) {
       this._bindAutoUnlock();
     }
+  }
+
+  /**
+   * Hardware vibration support detection on mobile platforms
+   */
+  get canVibrate() {
+    return typeof navigator !== 'undefined' &&
+      typeof navigator.vibrate === 'function' &&
+      /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent || '');
+  }
+
+  /**
+   * Configure haptic operational mode: 'dual' | 'audio-only' | 'vibrate-only' | 'mute'
+   * @param {string} mode
+   */
+  setHapticMode(mode) {
+    const validModes = ['dual', 'audio-only', 'vibrate-only', 'mute'];
+    const m = String(mode || '').trim().toLowerCase();
+    if (validModes.includes(m)) {
+      this.hapticMode = m;
+      if (m === 'mute') {
+        this.isMuted = true;
+      } else if (this.isMuted && m !== 'mute') {
+        this.isMuted = false;
+      }
+    }
+    return this.hapticMode;
+  }
+
+  getHapticMode() {
+    return this.hapticMode;
+  }
+
+  shouldPlayAudio(mode = this.hapticMode) {
+    if (this.isMuted) return false;
+    const m = String(mode || this.hapticMode || 'dual').toLowerCase();
+    if (m === 'mute' || m === 'vibrate-only') return false;
+    return true;
+  }
+
+  shouldVibrate(mode = this.hapticMode) {
+    if (this.isMuted) return false;
+    const m = String(mode || this.hapticMode || 'dual').toLowerCase();
+    if (m === 'mute' || m === 'audio-only') return false;
+    return this.canVibrate;
+  }
+
+  /**
+   * Dispatches vibration pulse to hardware haptic motor on mobile devices
+   * @param {string|number|number[]} pattern
+   * @param {boolean} [force=false]
+   */
+  vibrate(pattern = 'click', force = false) {
+    if (!force && !this.shouldVibrate()) return false;
+    if (this.isMuted && !force) return false;
+    try {
+      let pat = pattern;
+      if (typeof pattern === 'string') {
+        pat = this.vibrationPatterns[pattern.toLowerCase()] || HAPTIC_PATTERNS[pattern.toLowerCase()] || [12];
+      } else if (typeof pattern === 'number') {
+        pat = [pattern];
+      }
+      if (Array.isArray(pat) && typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
+        return navigator.vibrate(pat);
+      }
+    } catch (_) {}
+    return false;
+  }
+
+  /**
+   * Coordinates dual execution: dispatches haptic vibration and checks audio readiness
+   */
+  _resolveHapticTrigger(spatialOptions, defaultPatternKey) {
+    const opts = (spatialOptions && typeof spatialOptions === 'object') ? spatialOptions : null;
+    const effMode = (opts && opts.hapticMode) ? opts.hapticMode : this.hapticMode;
+    const allowVibrate = opts && (opts.vibrate === false || opts.vibrate === 'false') ? false : true;
+
+    if (allowVibrate && this.shouldVibrate(effMode)) {
+      const pat = (opts && opts.customPattern)
+        ? opts.customPattern
+        : (this.vibrationPatterns[defaultPatternKey] || HAPTIC_PATTERNS[defaultPatternKey] || [12]);
+      this.vibrate(pat, true);
+    }
+
+    return this.shouldPlayAudio(effMode);
   }
 
   /**
@@ -711,6 +839,16 @@ export class WebAudioHaptics {
    */
   setMuted(muted) {
     this.isMuted = Boolean(muted);
+    if (this.isMuted) {
+      if (this.hapticMode !== 'mute') {
+        this._previousHapticMode = this.hapticMode;
+        this.hapticMode = 'mute';
+      }
+    } else {
+      if (this.hapticMode === 'mute') {
+        this.hapticMode = this._previousHapticMode || 'dual';
+      }
+    }
   }
 
   getMuted() {
@@ -718,7 +856,7 @@ export class WebAudioHaptics {
   }
 
   toggleMute() {
-    this.isMuted = !this.isMuted;
+    this.setMuted(!this.isMuted);
     if (!this.isMuted) {
       this.playPop();
     }
@@ -855,10 +993,11 @@ export class WebAudioHaptics {
 
   /**
    * Subtle wood/glass mechanical tap for buttons & chips (K18 Signature)
+   * Synchronized with 'click' vibration pattern [12ms] on mobile.
    * @param {number|Object} [spatialOptions=null]
    */
   playClick(spatialOptions = null) {
-    if (this.isMuted) return;
+    if (!this._resolveHapticTrigger(spatialOptions, 'click')) return;
     try {
       const ctx = this.getContext();
       if (!ctx || !this.masterGainNode) return;
@@ -883,6 +1022,10 @@ export class WebAudioHaptics {
         gain.connect(this.masterGainNode);
       }
 
+      osc.onended = () => {
+        try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+      };
+
       osc.start();
       osc.stop(ctx.currentTime + 0.04);
     } catch {}
@@ -890,10 +1033,11 @@ export class WebAudioHaptics {
 
   /**
    * Playful organic pop for drawer open, badges, modals (K18 Signature)
+   * Synchronized with 'pop' vibration pattern [18ms] on mobile.
    * @param {number|Object} [spatialOptions=null]
    */
   playPop(spatialOptions = null) {
-    if (this.isMuted) return;
+    if (!this._resolveHapticTrigger(spatialOptions, 'pop')) return;
     try {
       const ctx = this.getContext();
       if (!ctx || !this.masterGainNode) return;
@@ -918,6 +1062,10 @@ export class WebAudioHaptics {
         gain.connect(this.masterGainNode);
       }
 
+      osc.onended = () => {
+        try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+      };
+
       osc.start();
       osc.stop(ctx.currentTime + 0.07);
     } catch {}
@@ -925,10 +1073,11 @@ export class WebAudioHaptics {
 
   /**
    * Harmonious three-tone triad chime (C6, E6, G6) for success/launches
+   * Synchronized with 'success' vibration pattern [15, 35, 20, 35, 30ms] on mobile.
    * @param {number|Object} [spatialOptions=null]
    */
   playChime(spatialOptions = null) {
-    if (this.isMuted) return;
+    if (!this._resolveHapticTrigger(spatialOptions, 'chime')) return;
     try {
       const ctx = this.getContext();
       if (!ctx || !this.masterGainNode) return;
@@ -954,6 +1103,10 @@ export class WebAudioHaptics {
         osc.connect(gain);
         gain.connect(route ? route.input : this.masterGainNode);
 
+        osc.onended = () => {
+          try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+        };
+
         osc.start(now + index * 0.04);
         osc.stop(now + index * 0.04 + 0.28);
       });
@@ -962,10 +1115,11 @@ export class WebAudioHaptics {
 
   /**
    * Soft mechanical switch for tabs and segmented controls
+   * Synchronized with 'switch' vibration pattern [10, 16, 12ms] on mobile.
    * @param {number|Object} [spatialOptions=null]
    */
   playTabSwitch(spatialOptions = null) {
-    if (this.isMuted) return;
+    if (!this._resolveHapticTrigger(spatialOptions, 'switch')) return;
     try {
       const ctx = this.getContext();
       if (!ctx || !this.masterGainNode) return;
@@ -990,6 +1144,10 @@ export class WebAudioHaptics {
         gain.connect(this.masterGainNode);
       }
 
+      osc.onended = () => {
+        try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+      };
+
       osc.start();
       osc.stop(ctx.currentTime + 0.05);
     } catch {}
@@ -997,11 +1155,12 @@ export class WebAudioHaptics {
 
   /**
    * Tonal confirmation chime for toggles (on: ascending, off: descending)
+   * Synchronized with 'switch' vibration pattern [10, 16, 12ms] on mobile.
    * @param {boolean} [state=true]
    * @param {number|Object} [spatialOptions=null]
    */
   playToggle(state = true, spatialOptions = null) {
-    if (this.isMuted) return;
+    if (!this._resolveHapticTrigger(spatialOptions, 'switch')) return;
     try {
       const ctx = this.getContext();
       if (!ctx || !this.masterGainNode) return;
@@ -1029,6 +1188,10 @@ export class WebAudioHaptics {
         gain.connect(this.masterGainNode);
       }
 
+      osc.onended = () => {
+        try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+      };
+
       osc.start();
       osc.stop(ctx.currentTime + 0.06);
     } catch {}
@@ -1037,20 +1200,21 @@ export class WebAudioHaptics {
   /**
    * Rotary Step / Gear Click: Crisp mechanical detent with 18ms micro-throttle
    * and 65% downward frequency sweep simulating physical gear ratchet notch.
+   * Synchronized with 'rotary' vibration pattern [8ms] on mobile.
    *
    * @param {number} [step=0] - Current rotary step position
    * @param {number} [maxSteps=24] - Maximum rotary steps in a revolution
    * @param {number|Object} [spatialOptions=null] - Stereo pan or element coordinates
    */
   playRotaryStep(step = 0, maxSteps = 24, spatialOptions = null) {
-    if (this.isMuted) return;
-
     // 18ms micro-throttle: drops acoustic congestion during high-speed dial turns
     const nowMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
     if (this._lastRotaryTime && (nowMs - this._lastRotaryTime < 18)) {
       return;
     }
     this._lastRotaryTime = nowMs;
+
+    if (!this._resolveHapticTrigger(spatialOptions, 'rotary')) return;
 
     try {
       const ctx = this.getContext();
@@ -1076,19 +1240,70 @@ export class WebAudioHaptics {
       osc.connect(gain);
       gain.connect(route.input);
 
+      osc.onended = () => {
+        try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+      };
+
       osc.start(now);
       osc.stop(now + 0.02);
     } catch {}
   }
 
   /**
+   * Alias for playRotaryStep
+   */
+  playRotary(step = 0, maxSteps = 24, spatialOptions = null) {
+    return this.playRotaryStep(step, maxSteps, spatialOptions);
+  }
+
+  /**
+   * Rotary micro detent tick [10ms]
+   * @param {number|Object} [spatialOptions=null]
+   */
+  playDetent(spatialOptions = null) {
+    if (!this._resolveHapticTrigger(spatialOptions, 'detent')) return;
+    try {
+      const ctx = this.getContext();
+      if (!ctx || !this.masterGainNode) return;
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(800, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 0.04);
+
+      gain.gain.setValueAtTime(0.08, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+
+      const pan = this._resolvePan(spatialOptions);
+      if (pan !== 0 && typeof ctx.createStereoPanner === 'function') {
+        const route = this._createSpatialRoute(ctx, pan, 50);
+        osc.connect(gain);
+        gain.connect(route.input);
+      } else {
+        osc.connect(gain);
+        gain.connect(this.masterGainNode);
+      }
+
+      osc.onended = () => {
+        try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+      };
+
+      osc.start();
+      osc.stop(ctx.currentTime + 0.04);
+    } catch {}
+  }
+
+  /**
    * Success Chord: Harmonious C5-E5-G5 major triad staggered by 35ms.
    * Smooth exponential decay with balanced gain headroom to prevent peak clipping.
+   * Synchronized with 'success' vibration pattern [15, 35, 20, 35, 30ms] on mobile.
    *
    * @param {number|Object} [spatialOptions=null]
    */
   playSuccessChord(spatialOptions = null) {
-    if (this.isMuted) return;
+    if (!this._resolveHapticTrigger(spatialOptions, 'success')) return;
     try {
       const ctx = this.getContext();
       if (!ctx || !this.masterGainNode) return;
@@ -1116,6 +1331,10 @@ export class WebAudioHaptics {
         osc.connect(gain);
         gain.connect(route.input);
 
+        osc.onended = () => {
+          try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+        };
+
         osc.start(noteStartTime);
         osc.stop(noteStartTime + noteDuration);
       });
@@ -1125,11 +1344,12 @@ export class WebAudioHaptics {
   /**
    * Dull Thud: Damped bass impact sweeping from 140 Hz down to 40 Hz,
    * conditioned through a resonant lowpass filter (Q = 2.4).
+   * Synchronized with 'thud' vibration pattern [35ms] on mobile.
    *
    * @param {number|Object} [spatialOptions=null]
    */
   playDullThud(spatialOptions = null) {
-    if (this.isMuted) return;
+    if (!this._resolveHapticTrigger(spatialOptions, 'thud')) return;
     try {
       const ctx = this.getContext();
       if (!ctx || !this.masterGainNode) return;
@@ -1175,6 +1395,14 @@ export class WebAudioHaptics {
 
       gain.connect(route.input);
 
+      osc.onended = () => {
+        try {
+          if (filter) { filter.disconnect(); }
+          gain.disconnect();
+          osc.disconnect();
+        } catch (_) {}
+      };
+
       osc.start(now);
       osc.stop(now + duration);
     } catch {}
@@ -1184,12 +1412,13 @@ export class WebAudioHaptics {
    * 2-Phase Mechanical Switch:
    *  Phase 1 (t = 0): Crisp spring tactile leaf latch
    *  Phase 2 (t = +16ms): Damped housing bottom-out stem impact
+   * Synchronized with 'switch' vibration pattern [10, 16, 12ms] on mobile.
    *
    * @param {boolean} [state=true] - Toggle state (true: engage, false: release)
    * @param {number|Object} [spatialOptions=null]
    */
   playMechanicalSwitch(state = true, spatialOptions = null) {
-    if (this.isMuted) return;
+    if (!this._resolveHapticTrigger(spatialOptions, 'switch')) return;
     try {
       const ctx = this.getContext();
       if (!ctx || !this.masterGainNode) return;
@@ -1214,6 +1443,11 @@ export class WebAudioHaptics {
 
       osc1.connect(gain1);
       gain1.connect(route.input);
+
+      osc1.onended = () => {
+        try { gain1.disconnect(); osc1.disconnect(); } catch (_) {}
+      };
+
       osc1.start(now);
       osc1.stop(now + p1Duration);
 
@@ -1234,6 +1468,11 @@ export class WebAudioHaptics {
 
       osc2.connect(gain2);
       gain2.connect(route.input);
+
+      osc2.onended = () => {
+        try { gain2.disconnect(); osc2.disconnect(); } catch (_) {}
+      };
+
       osc2.start(p2StartTime);
       osc2.stop(p2StartTime + p2Duration);
     } catch {}
@@ -1241,8 +1480,9 @@ export class WebAudioHaptics {
 
   /**
    * Automatic event binder for HTML elements with data-haptic attributes.
-   * Supports: click, pop, chime, switch/tab, toggle, rotary/rotary-step, chord/success-chord, thud/dull-thud, mech-switch/mechanical-switch.
+   * Supports: click, pop, chime, switch/tab, toggle, rotary/rotary-step, chord/success-chord, thud/dull-thud, mech-switch/mechanical-switch, detent.
    * Supports spatial audio panning via data-haptic-spatial="true" or data-haptic-spatial="-0.5".
+   * Supports haptic vibration via data-haptic-vibrate="true" / "false" / "12,24" and data-haptic-mode="dual" | "audio-only" | "vibrate-only" | "mute".
    *
    * @param {Element|Document} [root]
    * @returns {Function} Unbind function
@@ -1254,21 +1494,62 @@ export class WebAudioHaptics {
     const resolveSpatial = (el, e) => {
       if (!el || typeof el.getAttribute !== 'function') return null;
       const attr = el.getAttribute('data-haptic-spatial');
-      if (attr === null || attr === undefined || attr === 'false') return null;
-      if (attr === 'left') return { pan: -0.8, element: el };
-      if (attr === 'right') return { pan: 0.8, element: el };
-      if (attr === 'center') return { pan: 0, element: el };
-      if (attr !== '' && attr !== 'true' && !isNaN(parseFloat(attr))) {
-        return { pan: parseFloat(attr), element: el };
+      let spatial = null;
+      if (attr === 'left') spatial = { pan: -0.8, element: el };
+      else if (attr === 'right') spatial = { pan: 0.8, element: el };
+      else if (attr === 'center') spatial = { pan: 0, element: el };
+      else if (attr !== null && attr !== undefined && attr !== 'false' && attr !== '' && attr !== 'true' && !isNaN(parseFloat(attr))) {
+        spatial = { pan: parseFloat(attr), element: el };
+      } else if (attr !== null && attr !== undefined && attr !== 'false') {
+        spatial = { clientX: e && typeof e.clientX === 'number' ? e.clientX : undefined, element: el };
       }
-      return { clientX: e && typeof e.clientX === 'number' ? e.clientX : undefined, element: el };
+
+      const hapticModeAttr = el.getAttribute('data-haptic-mode');
+      const vibrateAttr = el.getAttribute('data-haptic-vibrate');
+
+      let customPattern = null;
+      let allowVibrate = null;
+      if (vibrateAttr !== null && vibrateAttr !== undefined) {
+        if (vibrateAttr === 'false') {
+          allowVibrate = false;
+        } else if (vibrateAttr === 'true' || vibrateAttr === '') {
+          allowVibrate = true;
+        } else {
+          const parts = String(vibrateAttr).split(',').map((s) => parseInt(s.trim(), 10)).filter((n) => !isNaN(n));
+          if (parts.length > 0) {
+            customPattern = parts;
+            allowVibrate = true;
+          }
+        }
+      }
+
+      if (spatial) {
+        if (hapticModeAttr) spatial.hapticMode = hapticModeAttr;
+        if (allowVibrate !== null) spatial.vibrate = allowVibrate;
+        if (customPattern) spatial.customPattern = customPattern;
+        return spatial;
+      }
+
+      if (hapticModeAttr || allowVibrate !== null || customPattern) {
+        return {
+          element: el,
+          pan: 0,
+          hapticMode: hapticModeAttr || undefined,
+          vibrate: allowVibrate !== null ? allowVibrate : undefined,
+          customPattern: customPattern || undefined,
+        };
+      }
+
+      return null;
     };
 
     const handleAction = (e) => {
       const el = (typeof Element !== 'undefined' && e.target instanceof Element)
         ? e.target
         : (e.target?.parentElement || e.target);
-      const target = el?.closest?.('[data-haptic]');
+      const target = (typeof el?.closest === 'function')
+        ? (el.closest('[data-haptic]') || el.closest('[data-haptic-vibrate]') || el.closest('[data-haptic-mode]'))
+        : null;
       if (!target) return;
 
       // Micro-deduplication: Prevents double-trigger audio flutter when browser fires
@@ -1295,6 +1576,9 @@ export class WebAudioHaptics {
           this.playRotaryStep(isNaN(step) ? 0 : step, isNaN(max) ? 24 : max, spatialOpts);
           break;
         }
+        case 'detent':
+          this.playDetent(spatialOpts);
+          break;
         case 'chord':
         case 'success':
         case 'success-chord':
@@ -1724,10 +2008,12 @@ export const WowEngine = {
   WebAudioHaptics,
   haptics,
   initSmoothScroll,
+  HAPTIC_PATTERNS,
+  canVibrate,
 
   /**
    * One-line master initializer: automatically discovers and powers up all
-   * [data-spotlight], [data-parallax-tilt], [data-haptic], and smooth scrolling.
+   * [data-spotlight], [data-parallax-tilt], [data-haptic], [data-haptic-vibrate], [data-haptic-mode], and smooth scrolling.
    *
    * @param {Object} [config]
    * @param {boolean|Object} [config.spotlight=true]
@@ -1757,7 +2043,7 @@ export const WowEngine = {
       cleanups.push(tiltHandle.destroy);
     }
 
-    // 3. Web Audio Haptics on [data-haptic]
+    // 3. Web Audio Haptics on [data-haptic], [data-haptic-vibrate], [data-haptic-mode]
     if (config.haptics !== false) {
       const unbindHaptics = haptics.bind(document);
       cleanups.push(unbindHaptics);
@@ -1787,6 +2073,8 @@ if (isBrowser()) {
   window.WebAudioHaptics = WebAudioHaptics;
   window.haptics = haptics;
   window.initSmoothScroll = initSmoothScroll;
+  window.HAPTIC_PATTERNS = HAPTIC_PATTERNS;
+  window.canVibrate = canVibrate;
 
   // Auto-init on DOMContentLoaded if data-wow-auto is present on body or html
   if (document.readyState === 'loading') {

@@ -1,32 +1,100 @@
 {
-  "timestamp": "2026-09-24T02:51:13.757Z",
+  "timestamp": "2026-09-24T07:09:48.569Z",
   "url": "file:///C:/Users/game/.gemini/exercises/wow_pilot_showcase/index.html",
   "port": 9223,
-  "threshold": 8.5,
+  "threshold": 9,
   "overallScore": 9.36,
   "verdict": "PASS",
+  "hardGated": false,
+  "hardGateReason": null,
+  "cls": {
+    "totalCls": 0.0001,
+    "entriesCount": 1,
+    "entries": [
+      {
+        "value": 0.00011,
+        "startTime": 132.6,
+        "sources": [
+          {
+            "name": "span",
+            "currentRect": {
+              "width": 147,
+              "height": 14
+            }
+          }
+        ]
+      }
+    ],
+    "cls": 0.0001,
+    "rating": "EXCELLENT",
+    "penalty": 0,
+    "status": "PASS",
+    "description": "CLS cực thấp (0.0001 <= 0.05), độ ổn định bố cục đạt mức tối đa."
+  },
+  "breakpoints": {
+    "matrix": [
+      {
+        "id": "desktop",
+        "name": "Desktop HiDPI",
+        "viewport": "1440x900",
+        "innerWidth": 1440,
+        "scrollWidth": 1425,
+        "hasOverflow": false,
+        "overflowPx": 0,
+        "status": "PASS",
+        "offendingElements": []
+      },
+      {
+        "id": "tablet",
+        "name": "Tablet (iPad)",
+        "viewport": "768x1024",
+        "innerWidth": 768,
+        "scrollWidth": 768,
+        "hasOverflow": false,
+        "overflowPx": 0,
+        "status": "PASS",
+        "offendingElements": []
+      },
+      {
+        "id": "mobile",
+        "name": "Mobile (iPhone / Android)",
+        "viewport": "375x812",
+        "innerWidth": 375,
+        "scrollWidth": 375,
+        "hasOverflow": false,
+        "overflowPx": 0,
+        "status": "PASS",
+        "offendingElements": []
+      }
+    ],
+    "allPassed": true,
+    "mobileOverflow": false
+  },
   "pillars": [
     {
       "pillar": "Pillar 1: Chuyển động 60 FPS (Motion Smoothness)",
-      "score": 1.9,
+      "score": 2,
       "maxScore": 2,
       "pass": true,
       "metrics": {
-        "totalFrames": 262,
+        "totalFrames": 368,
         "avgFps": 60,
-        "avgDeltaMs": 12.55,
-        "jankCount": 11,
-        "severeJankCount": 2,
-        "smoothRatio": 0.958,
-        "maxDeltaMs": 288.6
+        "avgDeltaMs": 7.91,
+        "jankCount": 0,
+        "severeJankCount": 0,
+        "smoothRatio": 0.997,
+        "maxDeltaMs": 24.1,
+        "cls": {
+          "totalCls": 0.0001,
+          "rating": "EXCELLENT",
+          "penalty": 0
+        }
       },
-      "findings": [
-        "Phát hiện 11 khung hình giật (> 25ms, Max: 288.6ms)."
-      ]
+      "findings": []
     },
     {
       "pillar": "Pillar 2: Độ lún cơ học (Mechanical Bottom-Out)",
-      "score": 1.85,
+      "score": 1.83,
       "maxScore": 2,
       "pass": true,
       "metrics": {
@@ -41,12 +109,12 @@
           ".btn-magnetic:active, button:active, .tactile-switch:active",
           ".haptic-pad-btn:active"
         ],
-        "totalInteractiveCount": 38,
+        "totalInteractiveCount": 47,
         "smallIconButtonsCount": 0,
         "smallButtonsWithShift": 0,
-        "standardButtonsCount": 38,
-        "standardButtonsWithScale": 31,
-        "coverageRatio": 0.816,
+        "standardButtonsCount": 47,
+        "standardButtonsWithScale": 37,
+        "coverageRatio": 0.787,
         "samples": [
           {
             "tag": "a",
@@ -59,63 +127,63 @@
           {
             "tag": "a",
             "class": "hud-link",
-            "width": 66,
-            "height": 18,
+            "width": 56,
+            "height": 15,
             "isSmall": false,
             "tactile": false
           },
           {
             "tag": "a",
             "class": "hud-link",
-            "width": 76,
-            "height": 18,
+            "width": 72,
+            "height": 15,
             "isSmall": false,
             "tactile": false
           },
           {
             "tag": "a",
             "class": "hud-link",
-            "width": 95,
-            "height": 18,
+            "width": 67,
+            "height": 15,
             "isSmall": false,
             "tactile": false
           },
           {
             "tag": "a",
             "class": "hud-link",
-            "width": 62,
-            "height": 18,
+            "width": 61,
+            "height": 15,
             "isSmall": false,
             "tactile": false
           },
           {
             "tag": "a",
             "class": "hud-link",
-            "width": 92,
-            "height": 18,
+            "width": 64,
+            "height": 15,
             "isSmall": false,
             "tactile": false
           },
           {
             "tag": "a",
             "class": "hud-link",
-            "width": 112,
-            "height": 18,
+            "width": 65,
+            "height": 15,
             "isSmall": false,
             "tactile": false
           },
           {
-            "tag": "button",
-            "class": "hud-pill-btn",
-            "width": 135,
-            "height": 28,
+            "tag": "a",
+            "class": "hud-link",
+            "width": 53,
+            "height": 15,
             "isSmall": false,
-            "tactile": true
+            "tactile": false
           }
         ]
       },
       "findings": [
-        "Độ phủ lún cơ học chỉ đạt 81.6% (Dưới ngưỡng tối ưu 90%)."
+        "Độ phủ lún cơ học chỉ đạt 78.7% (Dưới ngưỡng tối ưu 90%)."
       ]
     },
     {
@@ -134,12 +202,12 @@
         "tilt": {
           "found": true,
           "hasPerspective": true,
-          "transformC1": "perspective(1000px) rotateX(8.41deg) rotateY(-8.43deg) scale3d(1.02, 1.02, 1.02)",
-          "transformC2": "perspective(1000px) rotateX(-7.03deg) rotateY(7.28deg) scale3d(1.02, 1.02, 1.02)",
-          "pitch1": 8.41,
+          "transformC1": "perspective(1000px) rotateX(8.4deg) rotateY(-8.43deg) scale3d(1.02, 1.02, 1.02)",
+          "transformC2": "perspective(1000px) rotateX(-7.19deg) rotateY(7.16deg) scale3d(1.02, 1.02, 1.02)",
+          "pitch1": 8.4,
           "roll1": -8.43,
-          "pitch2": -7.03,
-          "roll2": 7.28,
+          "pitch2": -7.19,
+          "roll2": 7.16,
           "telemetryInverted": true,
           "angleInverted": true,
           "matrixInverted": false,
@@ -156,17 +224,17 @@
     },
     {
       "pillar": "Pillar 4: Độ tương phản màu sắc WCAG AA & AAA trên Acrylic",
-      "score": 1.61,
+      "score": 1.53,
       "maxScore": 2,
       "pass": false,
       "metrics": {
-        "totalEvaluated": 175,
-        "aaPassCount": 144,
-        "aaaPassCount": 113,
-        "aaRatio": 0.823,
-        "aaaRatio": 0.646,
+        "totalEvaluated": 230,
+        "aaPassCount": 178,
+        "aaaPassCount": 139,
+        "aaRatio": 0.774,
+        "aaaRatio": 0.604,
         "minContrast": 3.32,
-        "minContrastElement": "span. (\"90 FPS\")",
+        "minContrastElement": "span. (\"128 FPS\")",
         "acrylicHasBlur": true,
         "acrylicHasSpecularBorder": true,
         "sampleResults": [
@@ -202,47 +270,47 @@
           },
           {
             "selector": "a.hud-link",
+            "text": "Theme Studio",
+            "fg": "rgb(51, 65, 85)",
+            "bg": "rgb(254,254,254)",
+            "ratio": 10.27,
+            "isLargeText": false,
+            "passesAA": true,
+            "passesAAA": true
+          },
+          {
+            "selector": "a.hud-link",
+            "text": "Scrolly Stage",
+            "fg": "rgb(51, 65, 85)",
+            "bg": "rgb(254,254,254)",
+            "ratio": 10.27,
+            "isLargeText": false,
+            "passesAA": true,
+            "passesAAA": true
+          },
+          {
+            "selector": "a.hud-link",
+            "text": "Rigid Bento",
+            "fg": "rgb(51, 65, 85)",
+            "bg": "rgb(254,254,254)",
+            "ratio": 10.27,
+            "isLargeText": false,
+            "passesAA": true,
+            "passesAAA": true
+          },
+          {
+            "selector": "a.hud-link",
+            "text": "Soundboard",
+            "fg": "rgb(51, 65, 85)",
+            "bg": "rgb(254,254,254)",
+            "ratio": 10.27,
+            "isLargeText": false,
+            "passesAA": true,
+            "passesAAA": true
+          },
+          {
+            "selector": "a.hud-link",
             "text": "Wow Engine",
-            "fg": "rgb(51, 65, 85)",
-            "bg": "rgb(254,254,254)",
-            "ratio": 10.27,
-            "isLargeText": false,
-            "passesAA": true,
-            "passesAAA": true
-          },
-          {
-            "selector": "a.hud-link",
-            "text": "Soundboard V2",
-            "fg": "rgb(51, 65, 85)",
-            "bg": "rgb(254,254,254)",
-            "ratio": 10.27,
-            "isLargeText": false,
-            "passesAA": true,
-            "passesAAA": true
-          },
-          {
-            "selector": "a.hud-link",
-            "text": "Khối Wow",
-            "fg": "rgb(51, 65, 85)",
-            "bg": "rgb(254,254,254)",
-            "ratio": 10.27,
-            "isLargeText": false,
-            "passesAA": true,
-            "passesAAA": true
-          },
-          {
-            "selector": "a.hud-link",
-            "text": "Đo từ xa Bento",
-            "fg": "rgb(51, 65, 85)",
-            "bg": "rgb(254,254,254)",
-            "ratio": 10.27,
-            "isLargeText": false,
-            "passesAA": true,
-            "passesAAA": true
-          },
-          {
-            "selector": "a.hud-link",
-            "text": "Thông số Kỹ thuật",
             "fg": "rgb(51, 65, 85)",
             "bg": "rgb(254,254,254)",
             "ratio": 10.27,
@@ -253,11 +321,11 @@
         ]
       },
       "findings": [
-        "Tỷ lệ đạt WCAG AA là 82.3% (Dưới ngưỡng 95%). Min contrast: 3.32:1 tại span. (\"90 FPS\")."
+        "Tỷ lệ đạt WCAG AA là 77.4% (Dưới ngưỡng 95%). Min contrast: 3.32:1 tại span. (\"128 FPS\")."
       ]
     },
     {
-      "pillar": "Pillar 5: Phản hồi âm thanh WebAudioHaptics",
+      "pillar": "Pillar 5: Phản hồi âm thanh WebAudioHaptics v2.0 & Dual Audio-Haptic Syncer",
       "score": 2,
       "maxScore": 2,
       "pass": true,
@@ -272,6 +340,18 @@
           "playSwitch": "PASS",
           "playChime": "PASS"
         },
+        "dualSyncer": {
+          "detected": true,
+          "isV2": true,
+          "version": "2.1",
+          "v2MethodsPassed": 2,
+          "totalV2Methods": 5,
+          "hasSetHapticMode": true,
+          "setHapticModeWorks": true,
+          "hasVibrateSupportDetection": true,
+          "currentHapticMode": "dual",
+          "platformVibrateAvailable": true
+        },
         "hasToggleBtn": true,
         "toggleWorks": true,
         "toggleStates": {
@@ -280,14 +360,14 @@
           "unmutedAfterSecondClick": false,
           "iconOffVisible": true
         },
-        "hapticCount": 33,
-        "hapticCoverage": 0.868,
+        "hapticCount": 25,
+        "hapticCoverage": 0.532,
         "hapticTypes": {
-          "pop": 17,
-          "chime": 4,
-          "click": 4,
-          "switch": 3,
-          "detent": 5
+          "pop": 15,
+          "chime": 3,
+          "click": 2,
+          "switch": 2,
+          "detent": 3
         }
       },
       "findings": []
@@ -295,5 +375,5 @@
   ],
   "outputFile": ".antigravity/delight_audit_report.json",
   "ledgerFile": ".antigravity/delight_audit_ledger.md",
-  "receiptFile": ".antigravity/receipts/wp_r2_05.json"
+  "receiptFile": ".antigravity/receipts/wp_r3_05.json"
 }

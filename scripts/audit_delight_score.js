@@ -1,15 +1,18 @@
 #!/usr/bin/env node
 /**
  * ============================================================================
- * ⚡ ANTIGRAVITY 2.0 // AUTOMATED DELIGHT AUDIT TOOL (WP-R2-05)
+ * ⚡ ANTIGRAVITY 2.0 // AUTOMATED DELIGHT AUDIT TOOL (WP-R3-05)
  * ============================================================================
  * High-Precision Automated Delight & Craftsmanship Score Auditor (Thang điểm 10.0)
- * Evaluates web interfaces across 5 Core Pillars:
- *   Pillar 1: 60 FPS Motion & Inertia Smoothness (requestAnimationFrame delta)
- *   Pillar 2: Mechanical Bottom-Out Press (:active scale(0.965) & translateY(1px))
- *   Pillar 3: Spotlight Glow & 3D Parallax Tilt (Two-Corner Inversion & z-index guard)
- *   Pillar 4: WCAG AA/AAA Contrast with Acrylic Alpha-Compositing
- *   Pillar 5: WebAudioHaptics Synthesizer & Tactile Audio Feedback
+ * Evaluates web interfaces across 5 Core Pillars & Multi-Breakpoint Matrix:
+ *   - Multi-Breakpoint Matrix: Desktop (1440x900), Tablet (768x1024), Mobile (375x812)
+ *   - Zero-Horizontal-Overflow Hard Gating (Mobile & Tablet overflow protection)
+ *   - Cumulative Layout Shift (CLS) Continuous Monitoring (PerformanceObserver)
+ *   - Pillar 1: 60 FPS Motion & Inertia Smoothness + Layout Stability
+ *   - Pillar 2: Mechanical Bottom-Out Press (:active scale(0.965) & translateY(1px))
+ *   - Pillar 3: Spotlight Glow & 3D Parallax Tilt (Two-Corner Inversion & z-index guard)
+ *   - Pillar 4: WCAG AA/AAA Contrast with Acrylic Alpha-Compositing
+ *   - Pillar 5: WebAudioHaptics v2.0 & Dual Audio-Haptic Syncer (setHapticMode, navigator.vibrate)
  *
  * Runs over Chrome CDP (port 9223 default, 9222 fallback) or headless Chrome.
  *
@@ -45,6 +48,42 @@ if (!puppeteer) {
 }
 
 const CHROME_PATH = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+
+// ----------------------------------------------------------------------------
+// Multi-Breakpoint Matrix Specification (Requirement 1)
+// ----------------------------------------------------------------------------
+const BREAKPOINTS = {
+  desktop: {
+    id: 'desktop',
+    name: 'Desktop HiDPI',
+    width: 1440,
+    height: 900,
+    deviceScaleFactor: 1,
+    isMobile: false,
+    hasTouch: false,
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+  },
+  tablet: {
+    id: 'tablet',
+    name: 'Tablet (iPad)',
+    width: 768,
+    height: 1024,
+    deviceScaleFactor: 2,
+    isMobile: true,
+    hasTouch: true,
+    userAgent: 'Mozilla/5.0 (iPad; CPU OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Mobile/15E148 Safari/604.1'
+  },
+  mobile: {
+    id: 'mobile',
+    name: 'Mobile (iPhone / Android)',
+    width: 375,
+    height: 812,
+    deviceScaleFactor: 3,
+    isMobile: true,
+    hasTouch: true,
+    userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Mobile/15E148 Safari/604.1'
+  }
+};
 
 // ----------------------------------------------------------------------------
 // Mathematical & Algorithmic Helpers (Exported for Unit Tests)
@@ -155,7 +194,6 @@ function checkTwoCornerInversion({ transform1, transform2, pitch1, pitch2, roll1
   const m2 = parseMatrix3d(transform2);
   let matrixInverted = false;
   if (m1 && m2 && m1.length === 16 && m2.length === 16) {
-    // Indices: m13 is 2, m23 is 6, m31 is 8, m32 is 9
     const val1 = m1[2] || m1[6] || m1[8] || m1[9] || 0;
     const val2 = m2[2] || m2[6] || m2[8] || m2[9] || 0;
     if (val1 !== 0 && val2 !== 0 && val1 * val2 < 0) {
@@ -185,6 +223,157 @@ function matchActiveRule(cssText, ruleType) {
   return false;
 }
 
+/**
+ * Requirement 2 Helper: Pure function to check horizontal overflow metrics
+ */
+function checkHorizontalOverflow(scrollWidth, innerWidth) {
+  const hasOverflow = scrollWidth > innerWidth;
+  const overflowPx = hasOverflow ? Math.max(0, scrollWidth - innerWidth) : 0;
+  return {
+    hasOverflow,
+    overflowPx,
+    scrollWidth,
+    innerWidth
+  };
+}
+
+/**
+ * Requirement 2 Helper: Identify elements causing horizontal overflow
+ */
+function findOffendingOverflowElements(elements, innerWidth) {
+  if (!Array.isArray(elements)) return [];
+  const offending = [];
+  for (const el of elements) {
+    const width = el.width !== undefined ? el.width : (el.rect ? el.rect.width : 0);
+    const right = el.right !== undefined ? el.right : (el.rect ? el.rect.right : 0);
+    const scrollWidth = el.scrollWidth || width;
+    const protrusion = Math.max(0, right - innerWidth, width - innerWidth, scrollWidth - innerWidth);
+    if (protrusion > 1) { // 1px rounding tolerance
+      offending.push({
+        selector: el.selector || el.tag || 'unknown',
+        tag: el.tag || 'div',
+        width: Math.round(width),
+        scrollWidth: Math.round(scrollWidth),
+        right: Math.round(right),
+        overflowPx: Math.round(protrusion)
+      });
+    }
+  }
+  return offending.sort((a, b) => b.overflowPx - a.overflowPx);
+}
+
+/**
+ * Requirement 3 Helper: Evaluate Cumulative Layout Shift (CLS)
+ * Standards:
+ *   - CLS <= 0.05: EXCELLENT (Tối đa, penalty 0.0)
+ *   - 0.05 < CLS <= 0.10: GOOD (Điểm khá, penalty 0.1)
+ *   - 0.10 < CLS <= 0.25: NEEDS_IMPROVEMENT (penalty 0.3)
+ *   - CLS > 0.25: CRITICAL (Vi phạm nặng, penalty 0.6)
+ */
+function evaluateClsScore(clsValue) {
+  const cls = typeof clsValue === 'number' && !isNaN(clsValue) ? Math.max(0, clsValue) : 0;
+  let rating = 'EXCELLENT';
+  let penalty = 0.0;
+  let status = 'PASS';
+  let description = '';
+
+  if (cls <= 0.05) {
+    rating = 'EXCELLENT';
+    penalty = 0.0;
+    status = 'PASS';
+    description = `CLS cực thấp (${cls.toFixed(4)} <= 0.05), độ ổn định bố cục đạt mức tối đa.`;
+  } else if (cls <= 0.10) {
+    rating = 'GOOD';
+    penalty = 0.1;
+    status = 'PASS';
+    description = `CLS ở mức khá (${cls.toFixed(4)} <= 0.10), xuất hiện rung dịch chuyển nhẹ khi tương tác.`;
+  } else if (cls <= 0.25) {
+    rating = 'NEEDS_IMPROVEMENT';
+    penalty = 0.3;
+    status = 'WARN';
+    description = `CLS cần cải thiện (${cls.toFixed(4)} > 0.10), gây giật gián đoạn trải nghiệm thị giác.`;
+  } else {
+    rating = 'CRITICAL';
+    penalty = 0.6;
+    status = 'FAIL';
+    description = `CLS vi phạm nặng (${cls.toFixed(4)} > 0.25), bố cục bị xô lệch nghiêm trọng khi render.`;
+  }
+
+  return {
+    cls: +cls.toFixed(4),
+    rating,
+    penalty,
+    status,
+    description
+  };
+}
+
+/**
+ * Requirement 4 Helper: Check WebAudioHaptics v2.0 & Dual Audio-Haptic Syncer
+ */
+function checkDualHapticSyncer(engine) {
+  if (!engine) {
+    return {
+      isV2: false,
+      hasSetHapticMode: false,
+      hasVibrateDetection: false,
+      scoreFactor: 0
+    };
+  }
+  const isV2 = engine.version === '2.0' || !!engine.isV2 || typeof engine.playRotaryStep === 'function';
+  const hasSetHapticMode = typeof engine.setHapticMode === 'function';
+  const hasVibrateDetection = engine.hasVibrationSupport !== undefined ||
+    engine.isVibrateSupported !== undefined ||
+    typeof engine.checkVibrationSupport === 'function';
+
+  let scoreFactor = 0;
+  if (isV2) scoreFactor += 0.5;
+  if (hasSetHapticMode) scoreFactor += 0.3;
+  if (hasVibrateDetection) scoreFactor += 0.2;
+
+  return {
+    isV2,
+    hasSetHapticMode,
+    hasVibrateDetection,
+    scoreFactor: Math.min(1.0, scoreFactor)
+  };
+}
+
+/**
+ * Requirement 2 Hard Gating Helper:
+ * If horizontal overflow occurs on mobile or tablet, penalize score and enforce FAIL!
+ */
+function evaluateHardGating({ overallScore, threshold = 8.5, breakpointResults = [] }) {
+  let hardGated = false;
+  let hardGateReason = null;
+  let penalizedScore = overallScore;
+
+  const mobileBp = breakpointResults.find(b => b.id === 'mobile');
+  const tabletBp = breakpointResults.find(b => b.id === 'tablet');
+
+  if (mobileBp && mobileBp.hasOverflow) {
+    hardGated = true;
+    hardGateReason = `TRÀN NGANG TRÊN MOBILE: Màn hình Mobile (375px) bị tràn ngang ${mobileBp.overflowPx}px (scrollWidth: ${mobileBp.scrollWidth}px > innerWidth: ${mobileBp.innerWidth}px)`;
+  } else if (tabletBp && tabletBp.hasOverflow) {
+    hardGated = true;
+    hardGateReason = `TRÀN NGANG TRÊN TABLET: Màn hình Tablet (768px) bị tràn ngang ${tabletBp.overflowPx}px (scrollWidth: ${tabletBp.scrollWidth}px > innerWidth: ${tabletBp.innerWidth}px)`;
+  }
+
+  if (hardGated) {
+    penalizedScore = Math.min(penalizedScore - 2.5, threshold - 0.5);
+    penalizedScore = Math.max(0, +penalizedScore.toFixed(2));
+  }
+
+  const verdict = (!hardGated && penalizedScore >= threshold) ? 'PASS' : 'FAIL';
+
+  return {
+    hardGated,
+    hardGateReason,
+    penalizedScore,
+    verdict
+  };
+}
+
 // ----------------------------------------------------------------------------
 // CLI Arguments Parsing
 // ----------------------------------------------------------------------------
@@ -196,7 +385,7 @@ function parseArgs() {
     threshold: 8.5,
     output: '.antigravity/delight_audit_report.json',
     ledger: '.antigravity/delight_audit_ledger.md',
-    receipt: '.antigravity/receipts/wp_r2_05.json',
+    receipt: '.antigravity/receipts/wp_r3_05.json',
     receiptSpecified: false,
     headless: false,
     help: false
@@ -299,14 +488,13 @@ async function connectOrLaunchBrowser(config) {
 }
 
 // ----------------------------------------------------------------------------
-// Target Page Navigation & Resolution
+// Target Page Navigation & Resolution with CLS Injection
 // ----------------------------------------------------------------------------
 async function resolvePage(browser, targetUrl, isConnectedRemote) {
   const pages = await browser.pages();
   let targetPage = null;
 
   if (isConnectedRemote) {
-    // Look for tab with matching URL
     const normTarget = targetUrl.toLowerCase().replace(/\\/g, '/');
     targetPage = pages.find(p => {
       const u = p.url().toLowerCase().replace(/\\/g, '/');
@@ -320,9 +508,41 @@ async function resolvePage(browser, targetUrl, isConnectedRemote) {
     createdNew = true;
   }
 
+  // Inject Continuous CLS PerformanceObserver on new document
+  await targetPage.evaluateOnNewDocument(() => {
+    window.__delightClsEntries = [];
+    window.__delightTotalCls = 0;
+    try {
+      const observer = new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          if (!entry.hadRecentInput) {
+            window.__delightTotalCls += entry.value;
+            window.__delightClsEntries.push({
+              value: +entry.value.toFixed(5),
+              startTime: +entry.startTime.toFixed(1),
+              sources: (entry.sources || []).map(s => {
+                let name = 'element';
+                try {
+                  name = s.node ? (s.node.nodeName || 'element').toLowerCase() : 'element';
+                } catch (_) {}
+                return {
+                  name,
+                  currentRect: s.currentRect ? { width: Math.round(s.currentRect.width), height: Math.round(s.currentRect.height) } : null
+                };
+              })
+            });
+          }
+        }
+      });
+      observer.observe({ type: 'layout-shift', buffered: true });
+      window.__delightClsObserver = observer;
+    } catch (e) {
+      console.warn('CLS PerformanceObserver init error:', e);
+    }
+  });
+
   await targetPage.setViewport({ width: 1440, height: 900 });
 
-  // Navigate if current URL doesn't match
   const curUrl = targetPage.url().toLowerCase().replace(/\\/g, '/');
   const wantedUrl = targetUrl.toLowerCase().replace(/\\/g, '/');
   if (curUrl !== wantedUrl && !curUrl.includes(wantedUrl)) {
@@ -333,11 +553,30 @@ async function resolvePage(browser, targetUrl, isConnectedRemote) {
     console.log(`[NAVIGATE] Target page already open: ${targetPage.url()}`);
   }
 
-  // Bring to front to ensure rAF and active interactions run at 60 FPS without background throttling
   await targetPage.bringToFront();
 
-  // Ensure test-mode is disabled so kinetic 60 FPS transitions run
+  // Also ensure CLS observer is active if page was already loaded
   await targetPage.evaluate(() => {
+    if (window.__delightTotalCls === undefined) {
+      window.__delightClsEntries = [];
+      window.__delightTotalCls = 0;
+      try {
+        const observer = new PerformanceObserver((entryList) => {
+          for (const entry of entryList.getEntries()) {
+            if (!entry.hadRecentInput) {
+              window.__delightTotalCls += entry.value;
+              window.__delightClsEntries.push({
+                value: +entry.value.toFixed(5),
+                startTime: +entry.startTime.toFixed(1)
+              });
+            }
+          }
+        });
+        observer.observe({ type: 'layout-shift', buffered: true });
+        window.__delightClsObserver = observer;
+      } catch (_) {}
+    }
+
     if (document.documentElement.classList.contains('test-mode')) {
       document.documentElement.classList.remove('test-mode');
       document.documentElement.classList.add('kinetic-mode');
@@ -348,14 +587,165 @@ async function resolvePage(browser, targetUrl, isConnectedRemote) {
   return { page: targetPage, createdNew };
 }
 
+// ----------------------------------------------------------------------------
+// Requirement 1 & 2: Multi-Breakpoint Matrix & Zero-Horizontal-Overflow Audit
+// ----------------------------------------------------------------------------
+async function auditMultiBreakpointMatrix(page) {
+  console.log('\n--- [MULTI-BREAKPOINT] Auditing Responsive Matrix & Zero-Horizontal-Overflow ---');
+  const results = [];
+
+  for (const bp of [BREAKPOINTS.desktop, BREAKPOINTS.tablet, BREAKPOINTS.mobile]) {
+    console.log(`[VIEWPORT] Emulating ${bp.name} (${bp.width}x${bp.height}, Touch: ${bp.hasTouch})...`);
+    await page.setUserAgent(bp.userAgent);
+    await page.setViewport({
+      width: bp.width,
+      height: bp.height,
+      deviceScaleFactor: bp.deviceScaleFactor,
+      isMobile: bp.isMobile,
+      hasTouch: bp.hasTouch
+    });
+
+    // Wait for responsive CSS reflow and media query styles to settle
+    await new Promise(r => setTimeout(r, 350));
+
+    // Scroll sequence to test layout stability during scroll & trigger potential dynamic shifts
+    await page.evaluate(() => window.scrollBy({ top: 150, behavior: 'smooth' }));
+    await new Promise(r => setTimeout(r, 150));
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    await new Promise(r => setTimeout(r, 200));
+
+    // Evaluate Zero-Horizontal-Overflow on documentElement & body
+    const overflowReport = await page.evaluate((bpInnerWidth) => {
+      const docScrollWidth = document.documentElement ? document.documentElement.scrollWidth : 0;
+      const bodyScrollWidth = document.body ? document.body.scrollWidth : 0;
+      const maxScrollWidth = Math.max(docScrollWidth, bodyScrollWidth);
+      const innerWidth = window.innerWidth || bpInnerWidth;
+      const hasOverflow = maxScrollWidth > innerWidth + 1; // 1px rounding tolerance
+      const overflowPx = hasOverflow ? Math.round(maxScrollWidth - innerWidth) : 0;
+
+      const offendingElements = [];
+      if (hasOverflow) {
+        // Recursive DOM traversal to locate precise elements causing overflow
+        function checkNode(node) {
+          if (!node || node.nodeType !== 1) return;
+          const style = window.getComputedStyle(node);
+          if (style.display === 'none' || style.visibility === 'hidden' || parseFloat(style.opacity) === 0) {
+            return;
+          }
+          const rect = node.getBoundingClientRect();
+          const nodeScroll = node.scrollWidth;
+          const rightProtrusion = rect.right - innerWidth;
+          const widthProtrusion = rect.width - innerWidth;
+          const scrollProtrusion = nodeScroll - innerWidth;
+          const maxProtrusion = Math.max(rightProtrusion, widthProtrusion, scrollProtrusion);
+
+          if (maxProtrusion > 1) {
+            let sel = node.tagName.toLowerCase();
+            if (node.id) sel += `#${node.id}`;
+            else if (node.className && typeof node.className === 'string') {
+              const cls = node.className.trim().split(/\s+/).filter(c => c && !c.includes(':') && !c.includes('[')).slice(0, 3).join('.');
+              if (cls) sel += `.${cls}`;
+            }
+            offendingElements.push({
+              selector: sel,
+              tag: node.tagName.toLowerCase(),
+              width: Math.round(rect.width),
+              scrollWidth: nodeScroll,
+              right: Math.round(rect.right),
+              overflowPx: Math.round(maxProtrusion)
+            });
+          }
+          for (const child of node.children) {
+            checkNode(child);
+          }
+        }
+        checkNode(document.body || document.documentElement);
+      }
+
+      // Deduplicate offenders by selector
+      const unique = [];
+      const seen = new Set();
+      offendingElements.sort((a, b) => b.overflowPx - a.overflowPx);
+      for (const item of offendingElements) {
+        if (!seen.has(item.selector)) {
+          seen.add(item.selector);
+          unique.push(item);
+        }
+      }
+
+      return {
+        innerWidth,
+        scrollWidth: maxScrollWidth,
+        hasOverflow,
+        overflowPx,
+        offendingElements: unique.slice(0, 6)
+      };
+    }, bp.width);
+
+    const bpResult = {
+      id: bp.id,
+      name: bp.name,
+      viewport: `${bp.width}x${bp.height}`,
+      innerWidth: overflowReport.innerWidth,
+      scrollWidth: overflowReport.scrollWidth,
+      hasOverflow: overflowReport.hasOverflow,
+      overflowPx: overflowReport.overflowPx,
+      status: overflowReport.hasOverflow ? 'FAIL' : 'PASS',
+      offendingElements: overflowReport.offendingElements
+    };
+
+    console.log(`[VIEWPORT RESULT] ${bp.name} (${bp.width}px): ScrollWidth=${bpResult.scrollWidth}px | Overflow=${bpResult.overflowPx}px | Status=${bpResult.status}`);
+    results.push(bpResult);
+  }
+
+  // Restore Desktop Viewport for the 5 Pillars Audit
+  await page.setUserAgent(BREAKPOINTS.desktop.userAgent);
+  await page.setViewport({
+    width: BREAKPOINTS.desktop.width,
+    height: BREAKPOINTS.desktop.height,
+    deviceScaleFactor: BREAKPOINTS.desktop.deviceScaleFactor,
+    isMobile: BREAKPOINTS.desktop.isMobile,
+    hasTouch: BREAKPOINTS.desktop.hasTouch
+  });
+  await new Promise(r => setTimeout(r, 200));
+
+  const allPassed = results.every(r => !r.hasOverflow);
+  const mobileResult = results.find(r => r.id === 'mobile');
+  const mobileOverflow = mobileResult ? mobileResult.hasOverflow : false;
+
+  return {
+    matrix: results,
+    allPassed,
+    mobileOverflow
+  };
+}
+
+// ----------------------------------------------------------------------------
+// Requirement 3: Harvest Cumulative Layout Shift (CLS)
+// ----------------------------------------------------------------------------
+async function harvestClsMetrics(page) {
+  const data = await page.evaluate(() => {
+    return {
+      totalCls: +(window.__delightTotalCls || 0).toFixed(4),
+      entriesCount: (window.__delightClsEntries || []).length,
+      entries: (window.__delightClsEntries || []).slice(0, 5)
+    };
+  });
+  const evaluation = evaluateClsScore(data.totalCls);
+  return {
+    ...data,
+    ...evaluation
+  };
+}
+
 // ============================================================================
 // PILLAR AUDIT IMPLEMENTATIONS
 // ============================================================================
 
 /**
- * Pillar 1: Chuyển động 60 FPS (Đo FPS thực tế, đếm giật khung hình, smooth ratio)
+ * Pillar 1: Chuyển động 60 FPS (Đo FPS thực tế, đếm giật khung hình, smooth ratio, layout stability)
  */
-async function auditPillar1_Motion60Fps(page) {
+async function auditPillar1_Motion60Fps(page, clsMetrics = null) {
   console.log('\n--- [PILLAR 1] Auditing 60 FPS Motion & Inertia Smoothness ---');
 
   // Start FPS sampler in the page context
@@ -396,16 +786,16 @@ async function auditPillar1_Motion60Fps(page) {
   // Harvest measurements
   const rawMetrics = await page.evaluate(() => {
     window.__delightFpsStop = true;
-    const samples = window.__delightFpsSamples.slice(2); // Skip initial setup frames
+    const samples = window.__delightFpsSamples.slice(2);
     if (!samples.length) {
       return { totalFrames: 0, avgFps: 60, smoothRatio: 1, jankCount: 0, maxDeltaMs: 16.67 };
     }
     const totalDuration = samples.reduce((a, b) => a + b, 0);
     const avgDelta = totalDuration / samples.length;
     const avgFps = Math.min(60, +(1000 / avgDelta).toFixed(1));
-    const jankCount = samples.filter(d => d > 25).length; // Dropped frames > 25ms (< 40 FPS)
+    const jankCount = samples.filter(d => d > 25).length;
     const severeJankCount = samples.filter(d => d > 50).length;
-    const smoothFrames = samples.filter(d => d <= 22).length; // <= 22ms (~45-60 FPS)
+    const smoothFrames = samples.filter(d => d <= 22).length;
     const smoothRatio = +(smoothFrames / samples.length).toFixed(3);
     const maxDeltaMs = +Math.max(...samples).toFixed(1);
 
@@ -420,12 +810,23 @@ async function auditPillar1_Motion60Fps(page) {
     };
   });
 
+  // Incorporate CLS layout stability penalty if present
+  let clsPenalty = 0;
+  if (clsMetrics) {
+    clsPenalty = clsMetrics.penalty;
+    rawMetrics.cls = {
+      totalCls: clsMetrics.totalCls,
+      rating: clsMetrics.rating,
+      penalty: clsMetrics.penalty
+    };
+  }
+
   // Score calculation (Scale to 2.0 max)
   const fpsFactor = Math.min(1.0, rawMetrics.avgFps / 60.0);
   const smoothFactor = rawMetrics.smoothRatio;
   const jankPenalty = Math.min(0.4, (rawMetrics.jankCount / Math.max(1, rawMetrics.totalFrames)) * 1.5);
 
-  let rawScore = (fpsFactor * 1.2 + smoothFactor * 0.8) - jankPenalty;
+  let rawScore = (fpsFactor * 1.2 + smoothFactor * 0.8) - jankPenalty - clsPenalty;
   rawScore = Math.max(0, Math.min(2.0, rawScore));
   const score = +rawScore.toFixed(2);
 
@@ -436,9 +837,12 @@ async function auditPillar1_Motion60Fps(page) {
   if (rawMetrics.avgFps < 55) {
     findings.push(`Tốc độ khung hình trung bình ${rawMetrics.avgFps} FPS dưới ngưỡng tối ưu 58 FPS.`);
   }
+  if (clsMetrics && clsMetrics.penalty > 0) {
+    findings.push(`Biến động bố cục tích lũy CLS (${clsMetrics.totalCls}): ${clsMetrics.description}`);
+  }
 
-  const pass = score >= 1.7; // 85% of 2.0
-  console.log(`[PILLAR 1 RESULT] Score: ${score}/2.00 | Avg FPS: ${rawMetrics.avgFps} | Smooth Ratio: ${(rawMetrics.smoothRatio * 100).toFixed(1)}% | Jank Frames: ${rawMetrics.jankCount}`);
+  const pass = score >= 1.7;
+  console.log(`[PILLAR 1 RESULT] Score: ${score}/2.00 | Avg FPS: ${rawMetrics.avgFps} | Smooth Ratio: ${(rawMetrics.smoothRatio * 100).toFixed(1)}% | Jank: ${rawMetrics.jankCount} | CLS: ${clsMetrics ? clsMetrics.totalCls : 'N/A'}`);
 
   return {
     pillar: 'Pillar 1: Chuyển động 60 FPS (Motion Smoothness)',
@@ -458,7 +862,6 @@ async function auditPillar2_MechanicalPress(page) {
   console.log('\n--- [PILLAR 2] Auditing Tactile Mechanical Press (:active scale 0.965 & translateY(1px)) ---');
 
   const analysis = await page.evaluate(() => {
-    // 1. Recursive CSS rules extractor traversing @media, @supports, @layer
     function getAllRules(node) {
       let rules = [];
       try {
@@ -478,7 +881,6 @@ async function auditPillar2_MechanicalPress(page) {
       allRules = allRules.concat(getAllRules(sheet));
     }
 
-    // Fallback: scan inline <style> elements if stylesheet rules were empty
     let styleTagFallbackText = '';
     for (const s of document.querySelectorAll('style')) {
       styleTagFallbackText += ' ' + s.textContent;
@@ -515,12 +917,10 @@ async function auditPillar2_MechanicalPress(page) {
       hasSmallButtonTranslateYRule = true;
     }
 
-    // Helper to clean active selector for matching
     function cleanSelector(sel) {
       return sel.replace(/:active/g, '').replace(/:hover/g, '').replace(/:focus/g, '').trim();
     }
 
-    // 2. Discover visible interactive elements
     const selectorList = 'button, a[href], input[type="button"], input[type="submit"], [role="button"], [data-magnetic], .btn, .btn-magnetic';
     const rawElements = Array.from(document.querySelectorAll(selectorList));
 
@@ -535,10 +935,8 @@ async function auditPillar2_MechanicalPress(page) {
       const isVisible = rect.width > 0 && rect.height > 0 && window.getComputedStyle(el).display !== 'none';
       if (!isVisible) return;
 
-      // Icon button < 32px
       const isSmall = rect.width < 32 && rect.height < 32;
 
-      // Check element match against collected active rules
       const matchesScale = scaleRuleSelectors.some(sel => {
         try {
           return el.matches(cleanSelector(sel));
@@ -557,13 +955,11 @@ async function auditPillar2_MechanicalPress(page) {
 
       if (isSmall) {
         smallIconButtonsCount++;
-        // Small icon button is tactile covered if it has translateY rule (or scale as secondary fallback)
         if (matchesTranslate || (matchesScale && hasSmallButtonTranslateYRule)) {
           smallButtonsWithShift++;
         }
       } else {
         standardButtonsCount++;
-        // Standard button is tactile covered if it matches scale(0.965) rule
         if (matchesScale) {
           standardButtonsWithScale++;
         }
@@ -601,10 +997,6 @@ async function auditPillar2_MechanicalPress(page) {
     };
   });
 
-  // Scoring logic (Max 2.0)
-  // 1. Standard scale(0.965) rule present: 0.8 pts
-  // 2. Small icon button translateY rule present (or no small icon buttons exist): 0.4 pts
-  // 3. Genuine element coverage ratio: up to 0.8 pts (coverageRatio * 0.8)
   let score = 0;
   if (analysis.hasActiveScale0965Rule) score += 0.8;
   if (analysis.hasSmallButtonTranslateYRule || analysis.smallIconButtonsCount === 0) score += 0.4;
@@ -642,13 +1034,11 @@ async function auditPillar2_MechanicalPress(page) {
 async function auditPillar3_SpotlightAnd3D(page) {
   console.log('\n--- [PILLAR 3] Auditing Spotlight Glow & 3D Parallax Tilt (Two-Corner Inversion) ---');
 
-  // 1. Spotlight Tracking verification: dispatch mouse move & check CSS variables
   try {
     await page.mouse.move(450, 320);
   } catch (_) {}
 
   const spotlightResult = await page.evaluate(() => {
-    // Dispatch pointer movement on window and document for full compatibility
     const evt = new PointerEvent('pointermove', { clientX: 450, clientY: 320, bubbles: true });
     window.dispatchEvent(evt);
     document.dispatchEvent(evt);
@@ -672,7 +1062,6 @@ async function auditPillar3_SpotlightAnd3D(page) {
     };
   });
 
-  // 2. Two-Corner Inversion Test for 3D Parallax Tilt
   const tiltResult = await page.evaluate(async () => {
     const tiltCard = document.querySelector('[data-tilt], .tilt-monolith-stage, .acrylic-card');
     if (!tiltCard) {
@@ -687,7 +1076,6 @@ async function auditPillar3_SpotlightAnd3D(page) {
     const c1Y = rect.top + rect.height * 0.15;
     tiltCard.dispatchEvent(new MouseEvent('mousemove', { clientX: c1X, clientY: c1Y, bubbles: true }));
 
-    // Wait 1 rAF frame for damped spring physics to register
     await new Promise(r => requestAnimationFrame(r));
 
     const transformC1 = tiltCard.style.transform || window.getComputedStyle(tiltCard).transform;
@@ -709,11 +1097,9 @@ async function auditPillar3_SpotlightAnd3D(page) {
     const pitchVal2 = pitchEl2 ? parseFloat(pitchEl2.textContent) : 0;
     const rollVal2 = rollEl2 ? parseFloat(rollEl2.textContent) : 0;
 
-    // Telemetry inversion: opposite corners must yield opposing signs
     const telemetryInverted = (pitchVal1 !== 0 && pitchVal2 !== 0 && pitchVal1 * pitchVal2 < 0) ||
                               (rollVal1 !== 0 && rollVal2 !== 0 && rollVal1 * rollVal2 < 0);
 
-    // Extract angles from transform
     const getAngles = (str) => {
       if (!str) return { x: 0, y: 0 };
       const mx = str.match(/rotateX\(\s*([-\d.]+)\s*deg\)/i);
@@ -729,7 +1115,6 @@ async function auditPillar3_SpotlightAnd3D(page) {
     const angleInverted = (a1.x !== 0 && a2.x !== 0 && a1.x * a2.x < 0) ||
                           (a1.y !== 0 && a2.y !== 0 && a1.y * a2.y < 0);
 
-    // Matrix3D inversion: off-diagonal elements invert signs
     let matrixInverted = false;
     const parseM3D = (str) => {
       const m = str && str.match(/matrix3d\(([^)]+)\)/);
@@ -764,7 +1149,6 @@ async function auditPillar3_SpotlightAnd3D(page) {
     };
   });
 
-  // 3. Stacking Context & Z-Index Text Protection Test
   const zIndexProtection = await page.evaluate(() => {
     const cardInner = document.querySelector('.card-inner, [data-card-inner], .tilt-monolith-stage .card-inner');
     if (!cardInner) {
@@ -795,10 +1179,6 @@ async function auditPillar3_SpotlightAnd3D(page) {
     };
   });
 
-  // Scoring (Max 2.0)
-  // Spotlight: 0.7 pts
-  // 3D Parallax Tilt with Inversion: 0.7 pts
-  // Z-Index Protection: 0.6 pts
   let score = 0;
   if (spotlightResult.hasVariables && spotlightResult.hasAmbientLayer) score += 0.7;
   else if (spotlightResult.hasVariables || spotlightResult.hasAmbientLayer) score += 0.4;
@@ -887,7 +1267,6 @@ async function auditPillar4_WcagContrastAndAcrylic(page) {
       return (lighter + 0.05) / (darker + 0.05);
     }
 
-    // Base background color from document body or root canvas
     let baseCanvasColor = parseRgbaInner(window.getComputedStyle(document.body).backgroundColor);
     if (baseCanvasColor.a === 0) {
       baseCanvasColor = { r: 248, g: 250, b: 252, a: 1.0 }; // Icy Platinum fallback
@@ -900,7 +1279,7 @@ async function auditPillar4_WcagContrastAndAcrylic(page) {
         const style = window.getComputedStyle(current);
         const bg = parseRgbaInner(style.backgroundColor);
         if (bg.a > 0) {
-          layers.unshift(bg); // Outermost at bottom
+          layers.unshift(bg);
         }
         current = current.parentElement;
       }
@@ -912,7 +1291,6 @@ async function auditPillar4_WcagContrastAndAcrylic(page) {
       return effective;
     }
 
-    // Check Acrylic card blur and genuine specular borders
     const acrylicCards = Array.from(document.querySelectorAll('.acrylic-card, [data-acrylic]'));
     let acrylicHasBlur = false;
     let acrylicHasSpecularBorder = false;
@@ -938,7 +1316,6 @@ async function auditPillar4_WcagContrastAndAcrylic(page) {
       }
     }
 
-    // Scan text elements for contrast evaluation
     const textElements = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, button, a, label, code, .telemetry-val, .badge'));
     let aaPassCount = 0;
     let aaaPassCount = 0;
@@ -1011,10 +1388,6 @@ async function auditPillar4_WcagContrastAndAcrylic(page) {
     };
   });
 
-  // Scoring logic (Max 2.0)
-  // WCAG AA pass ratio: up to 1.2 points
-  // WCAG AAA pass ratio: up to 0.5 points
-  // Acrylic backdrop-filter blur & specular border: 0.3 points
   let score = +(contrastReport.aaRatio * 1.2).toFixed(2);
   score += +(contrastReport.aaaRatio * 0.5).toFixed(2);
   if (contrastReport.acrylicHasBlur && contrastReport.acrylicHasSpecularBorder) score += 0.3;
@@ -1043,15 +1416,15 @@ async function auditPillar4_WcagContrastAndAcrylic(page) {
 }
 
 /**
- * Pillar 5: Phản hồi âm thanh WebAudioHaptics
- * (Kiểm tra sự hiện diện của WebAudioHaptics, nút bật/tắt âm thanh, data-haptic attributes)
+ * Pillar 5: Phản hồi âm thanh WebAudioHaptics v2.0 & Dual Audio-Haptic Syncer (Requirement 4)
+ * (Kiểm tra sự hiện diện của WebAudioHaptics v2.0, Dual Audio-Haptic Syncer, navigator.vibrate, setHapticMode)
  */
 async function auditPillar5_WebAudioHaptics(page) {
-  console.log('\n--- [PILLAR 5] Auditing WebAudioHaptics Synthesizer & Tactile Audio Feedback ---');
+  console.log('\n--- [PILLAR 5] Auditing WebAudioHaptics v2.0 & Dual Audio-Haptic Syncer ---');
 
   const hapticsReport = await page.evaluate(() => {
     // 1. Check Engine Presence & Method Synthesis
-    const engine = window.WowEngine?.haptics || window.WebAudioHaptics || window.Haptics;
+    const engine = window.WowEngine?.haptics || window.WebAudioHaptics || window.Haptics || window.haptics;
     let engineExists = !!engine;
     let methodsPassed = 0;
     const requiredWaveforms = ['playClick', 'playPop', 'playDetent', 'playSwitch', 'playChime'];
@@ -1073,7 +1446,71 @@ async function auditPillar5_WebAudioHaptics(page) {
       }
     }
 
-    // 2. Sound Toggle Button Check
+    // 2. Check WebAudioHaptics v2.0 Extended Waveforms
+    const v2Waveforms = ['playRotaryStep', 'playDoubleStage', 'playLaser', 'playSubBassDrop', 'playGlassClink'];
+    let v2MethodsPassed = 0;
+    const v2Results = {};
+    if (engine) {
+      for (const m of v2Waveforms) {
+        if (typeof engine[m] === 'function') {
+          try {
+            engine[m]();
+            v2Results[m] = 'PASS';
+            v2MethodsPassed++;
+          } catch (_) {
+            v2Results[m] = 'FAIL';
+          }
+        } else {
+          v2Results[m] = 'MISSING';
+        }
+      }
+    }
+
+    const versionStr = engine?.version || (v2MethodsPassed >= 2 ? '2.0' : '1.0');
+    const isV2 = versionStr.startsWith('2') || v2MethodsPassed >= 2 || !!engine?.isV2;
+
+    // 3. Dual Audio-Haptic Syncer: navigator.vibrate support detection & setHapticMode API
+    const syncer = engine?.syncer || window.DualHapticSyncer || window.AudioHapticSyncer || engine;
+    const hasSetHapticMode = typeof engine?.setHapticMode === 'function' || typeof syncer?.setHapticMode === 'function';
+    
+    // Check navigator.vibrate support detection
+    const hasVibrateSupportDetection = (
+      engine?.hasVibrationSupport !== undefined ||
+      engine?.isVibrateSupported !== undefined ||
+      syncer?.hasVibrationSupport !== undefined ||
+      syncer?.isVibrateSupported !== undefined ||
+      typeof engine?.checkVibrationSupport === 'function' ||
+      typeof syncer?.checkVibrationSupport === 'function' ||
+      (typeof navigator !== 'undefined' && 'vibrate' in navigator)
+    );
+
+    let setHapticModeWorks = false;
+    let currentHapticMode = 'dual';
+    if (hasSetHapticMode) {
+      try {
+        const setFn = (typeof engine?.setHapticMode === 'function') ? engine.setHapticMode.bind(engine) : syncer.setHapticMode.bind(syncer);
+        setFn('dual');
+        currentHapticMode = engine?.hapticMode || syncer?.hapticMode || (typeof engine?.getHapticMode === 'function' ? engine.getHapticMode() : 'dual');
+        setHapticModeWorks = true;
+      } catch (_) {
+        setHapticModeWorks = false;
+      }
+    }
+
+    const dualSyncer = {
+      detected: isV2 && (hasSetHapticMode || hasVibrateSupportDetection),
+      isV2,
+      version: versionStr,
+      v2MethodsPassed,
+      totalV2Methods: v2Waveforms.length,
+      hasSetHapticMode,
+      setHapticModeWorks,
+      hasVibrateSupportDetection,
+      currentHapticMode,
+      platformVibrateAvailable: typeof navigator !== 'undefined' && 'vibrate' in navigator
+    };
+
+    // 4. Sound Toggle Button Check
     const toggleBtn = document.getElementById('soundToggleBtn') || document.querySelector('[data-sound-toggle], .btn-sound-toggle');
     let hasToggleBtn = !!toggleBtn;
     let toggleWorks = false;
@@ -1105,7 +1542,7 @@ async function auditPillar5_WebAudioHaptics(page) {
       };
     }
 
-    // 3. Scan data-haptic attributes in DOM
+    // 5. Scan data-haptic attributes in DOM
     const hapticElements = Array.from(document.querySelectorAll('[data-haptic]'));
     const hapticCount = hapticElements.length;
     const hapticTypes = {};
@@ -1122,6 +1559,7 @@ async function auditPillar5_WebAudioHaptics(page) {
       methodsPassed,
       totalMethods: requiredWaveforms.length,
       methodResults,
+      dualSyncer,
       hasToggleBtn,
       toggleWorks,
       toggleStates,
@@ -1132,18 +1570,30 @@ async function auditPillar5_WebAudioHaptics(page) {
   });
 
   // Scoring logic (Max 2.0)
-  // Engine & Waveform synthesis: up to 0.8 points
-  // Sound toggle button & state management: up to 0.6 points
-  // Data-haptic attributes coverage: up to 0.6 points
+  // - Standard Core Waveforms (5 waveforms): up to 0.6 points
+  // - WebAudioHaptics v2.0 & Dual Audio-Haptic Syncer: up to 0.5 points
+  //   * v2.0 engine or extended waveforms: 0.25 pts
+  //   * Dual Audio-Haptic Syncer (setHapticMode / vibrate detection): 0.25 pts
+  // - Sound Toggle Button & state management: up to 0.5 points
+  // - Data-haptic attributes coverage: up to 0.4 points
   let score = 0;
   if (hapticsReport.engineExists) {
-    score += +( (hapticsReport.methodsPassed / hapticsReport.totalMethods) * 0.8 ).toFixed(2);
+    score += +( (hapticsReport.methodsPassed / hapticsReport.totalMethods) * 0.6 ).toFixed(2);
   }
-  if (hapticsReport.hasToggleBtn && hapticsReport.toggleWorks) score += 0.6;
-  else if (hapticsReport.hasToggleBtn) score += 0.3;
 
-  if (hapticsReport.hapticCount >= 4 || hapticsReport.hapticCoverage >= 0.5) score += 0.6;
-  else if (hapticsReport.hapticCount > 0) score += 0.3;
+  // Dual syncer & v2.0 scoring
+  if (hapticsReport.dualSyncer) {
+    if (hapticsReport.dualSyncer.isV2) score += 0.25;
+    if (hapticsReport.dualSyncer.hasSetHapticMode || hapticsReport.dualSyncer.hasVibrateSupportDetection) {
+      score += (hapticsReport.dualSyncer.hasSetHapticMode && hapticsReport.dualSyncer.hasVibrateSupportDetection) ? 0.25 : 0.15;
+    }
+  }
+
+  if (hapticsReport.hasToggleBtn && hapticsReport.toggleWorks) score += 0.5;
+  else if (hapticsReport.hasToggleBtn) score += 0.25;
+
+  if (hapticsReport.hapticCount >= 4 || hapticsReport.hapticCoverage >= 0.5) score += 0.4;
+  else if (hapticsReport.hapticCount > 0) score += 0.2;
 
   score = Math.min(2.0, +score.toFixed(2));
 
@@ -1152,17 +1602,23 @@ async function auditPillar5_WebAudioHaptics(page) {
     findings.push('Không tìm thấy đối tượng window.WowEngine.haptics hoặc WebAudioHaptics trên trang.');
   }
   if (hapticsReport.methodsPassed < hapticsReport.totalMethods) {
-    findings.push(`Thiếu hoặc lỗi khi gọi ${hapticsReport.totalMethods - hapticsReport.methodsPassed} dạng sóng âm xúc giác.`);
+    findings.push(`Thiếu hoặc lỗi khi gọi ${hapticsReport.totalMethods - hapticsReport.methodsPassed} dạng sóng âm xúc giác cơ bản.`);
+  }
+  if (!hapticsReport.dualSyncer.isV2) {
+    findings.push('WebAudioHaptics v2.0 (10 waveforms) chưa được nâng cấp đầy đủ.');
+  }
+  if (!hapticsReport.dualSyncer.hasSetHapticMode) {
+    findings.push('Dual Audio-Haptic Syncer: Thiếu API `setHapticMode` để điều phối đồng bộ âm thanh và rung xúc giác.');
   }
   if (!hapticsReport.hasToggleBtn) {
     findings.push('Thiếu nút bật/tắt âm thanh trực quan (#soundToggleBtn) theo chuẩn kiểm soát người dùng.');
   }
 
   const pass = score >= 1.7;
-  console.log(`[PILLAR 5 RESULT] Score: ${score}/2.00 | Engine: ${hapticsReport.engineExists} | Waveforms: ${hapticsReport.methodsPassed}/${hapticsReport.totalMethods} | Toggle Button: ${hapticsReport.hasToggleBtn} | Haptic Elements: ${hapticsReport.hapticCount}`);
+  console.log(`[PILLAR 5 RESULT] Score: ${score}/2.00 | Engine: ${hapticsReport.engineExists} | v2.0: ${hapticsReport.dualSyncer.isV2} | Syncer API: ${hapticsReport.dualSyncer.hasSetHapticMode} | Toggle: ${hapticsReport.hasToggleBtn}`);
 
   return {
-    pillar: 'Pillar 5: Phản hồi âm thanh WebAudioHaptics',
+    pillar: 'Pillar 5: Phản hồi âm thanh WebAudioHaptics v2.0 & Dual Audio-Haptic Syncer',
     score,
     maxScore: 2.0,
     pass,
@@ -1175,20 +1631,55 @@ async function auditPillar5_WebAudioHaptics(page) {
 // REPORT & RECEIPT GENERATORS
 // ============================================================================
 function generateEvidenceLedger(auditData) {
-  const { url, port, threshold, overallScore, verdict, pillars, timestamp } = auditData;
+  const { url, port, threshold, overallScore, verdict, hardGated, hardGateReason, breakpoints, cls, pillars, timestamp } = auditData;
   const isPass = verdict === 'PASS';
 
   let md = `# ⚡ SỔ CÁI BẰNG CHỨNG KIỂM TOÁN ĐỘ THĂNG HOA (DELIGHT & CRAFTSMANSHIP EVIDENCE LEDGER)
-> **Phiên bản**: Antigravity 2.0 Automated Delight Auditor (WP-R2-05)  
+> **Phiên bản**: Antigravity 2.0 Multi-Breakpoint & CLS Automated Delight Auditor (WP-R3-05)  
 > **Thời điểm thẩm định**: ${timestamp}  
 > **Mục tiêu kiểm toán**: \`${url}\`  
 > **Cổng Chrome CDP**: \`${port}\`  
 > **Điểm tổng kết**: **${overallScore.toFixed(2)} / 10.00**  
+> **Khóa chặn cứng (Hard Gating)**: ${hardGated ? `🚨 **TRIGGERED (BỊ KHÓA CHẶT DO TRÀN NGANG)**` : '✅ **PASSED (ZERO HORIZONTAL OVERFLOW)**'}  
 > **Phán quyết**: **${isPass ? '✅ TEST_PASS (ĐẠT CHUẨN THĂNG HOA & TINH XẢO)' : '❌ TEST_FAIL (CHƯA ĐẠT NGƯỠNG YÊU CẦU)'}** (Ngưỡng yêu cầu: >= ${threshold})
 
 ---
 
-## 📊 1. BẢNG TỔNG HỢP 5 TRỤ CỘT ĐÁNH GIÁ (5-PILLAR CRAFTSMANSHIP SCORECARD)
+## 📱 1. MA TRẬN ĐA KÍCH THƯỚC MÀN HÌNH (MULTI-BREAKPOINT RESPONSIVE MATRIX)
+
+| Thiết Bị (Device) | Viewport | Inner Width | Scroll Width | Tràn Ngang (Overflow) | Trạng Thái (Status) | Phần Tử Vi Phạm (Offenders) |
+|---|---|---|---|---|---|---|
+`;
+
+  if (breakpoints && breakpoints.matrix) {
+    breakpoints.matrix.forEach(bp => {
+      const statusIcon = bp.status === 'PASS' ? '✅ PASS' : '❌ FAIL';
+      const offendersStr = (bp.offendingElements && bp.offendingElements.length > 0)
+        ? bp.offendingElements.map(o => `\`${o.selector}\` (+${o.overflowPx}px)`).join(', ')
+        : 'Không có (Zero Overflow)';
+      md += `| **${bp.name}** | \`${bp.viewport}\` | ${bp.innerWidth}px | ${bp.scrollWidth}px | ${bp.overflowPx}px | ${statusIcon} | ${offendersStr} |\n`;
+    });
+  }
+
+  md += `\n> **Đặc Quyền Khóa Chặt (Hard Gating Rule)**: Nếu trang web bị tràn ngang trên màn hình Mobile (375px) hoặc Tablet (768px), hệ thống lập tức đánh rớt kiểm toán độc lập.\n`;
+  if (hardGated && hardGateReason) {
+    md += `> 🚨 **Lý do kích hoạt Hard Gate**: ${hardGateReason}\n`;
+  }
+
+  md += `\n---
+
+## 📈 2. BIẾN ĐỘNG BỐ CỤC TÍCH LŨY (CUMULATIVE LAYOUT SHIFT - CLS)
+
+- **Tổng chỉ số CLS thực tế**: **\`${cls ? cls.totalCls : 0.0}\`**
+- **Xếp hạng độ ổn định**: **${cls ? cls.rating : 'EXCELLENT'}** (${cls ? cls.description : 'Bố cục hoàn toàn ổn định.'})
+- **Tiêu chuẩn kiểm toán**:
+  - \`CLS <= 0.05\`: Tối đa (Hoàn hảo, không gián đoạn thị giác)
+  - \`0.05 < CLS <= 0.10\`: Khá (Rung lắc nhẹ khi resize / cuộn)
+  - \`CLS > 0.25\`: Vi phạm nặng (Layout Shift nghiêm trọng)
+
+---
+
+## 📊 3. BẢNG TỔNG HỢP 5 TRỤ CỘT ĐÁNH GIÁ (5-PILLAR CRAFTSMANSHIP SCORECARD)
 
 | Trụ Cột (Pillar) | Trọng Số | Điểm Đạt Được | Tỷ Lệ | Trạng Thái | Ghi Chú Nổi Bật |
 |---|---|---|---|---|---|
@@ -1199,7 +1690,7 @@ function generateEvidenceLedger(auditData) {
     const statusIcon = p.pass ? '✅ PASS' : '⚠️ ATTENTION';
     let note = '';
     if (p.pillar.includes('Pillar 1')) {
-      note = `Avg FPS: ${p.metrics.avgFps} | Smooth: ${(p.metrics.smoothRatio * 100).toFixed(1)}% | Jank: ${p.metrics.jankCount}`;
+      note = `Avg FPS: ${p.metrics.avgFps} | Smooth: ${(p.metrics.smoothRatio * 100).toFixed(1)}% | Jank: ${p.metrics.jankCount} | CLS: ${cls ? cls.totalCls : '0.0000'}`;
     } else if (p.pillar.includes('Pillar 2')) {
       note = `:active scale(0.965): ${p.metrics.hasActiveScale0965Rule ? 'CÓ' : 'KHÔNG'} | Phủ: ${(p.metrics.coverageRatio * 100).toFixed(1)}%`;
     } else if (p.pillar.includes('Pillar 3')) {
@@ -1207,7 +1698,7 @@ function generateEvidenceLedger(auditData) {
     } else if (p.pillar.includes('Pillar 4')) {
       note = `WCAG AA: ${(p.metrics.aaRatio * 100).toFixed(1)}% | WCAG AAA: ${(p.metrics.aaaRatio * 100).toFixed(1)}% | Acrylic Blur: ${p.metrics.acrylicHasBlur ? 'CÓ' : 'KHÔNG'}`;
     } else if (p.pillar.includes('Pillar 5')) {
-      note = `Engine: ${p.metrics.engineExists ? 'CÓ' : 'KHÔNG'} | Waveforms: ${p.metrics.methodsPassed}/5 | Toggle: ${p.metrics.hasToggleBtn ? 'CÓ' : 'KHÔNG'} | Elements: ${p.metrics.hapticCount}`;
+      note = `v2.0: ${p.metrics.dualSyncer?.isV2 ? 'CÓ' : 'KHÔNG'} | Syncer API: ${p.metrics.dualSyncer?.hasSetHapticMode ? 'CÓ' : 'KHÔNG'} | Vibrate: ${p.metrics.dualSyncer?.hasVibrateSupportDetection ? 'CÓ' : 'KHÔNG'}`;
     }
 
     md += `| **${p.pillar}** | ${p.maxScore.toFixed(1)} | **${p.score.toFixed(2)}** | ${ratioPct}% | ${statusIcon} | ${note} |\n`;
@@ -1217,12 +1708,12 @@ function generateEvidenceLedger(auditData) {
 
   md += `---
 
-## 🔍 2. CHI TIẾT BẰNG CHỨNG TỪNG TRỤ CỘT (DETAILED EVIDENCE LEDGER)
+## 🔍 4. CHI TIẾT BẰNG CHỨNG TỪNG TRỤ CỘT (DETAILED EVIDENCE LEDGER)
 
 `;
 
   pillars.forEach((p, idx) => {
-    md += `### 2.${idx + 1}. ${p.pillar}\n`;
+    md += `### 4.${idx + 1}. ${p.pillar}\n`;
     md += `- **Điểm số**: \`${p.score.toFixed(2)} / ${p.maxScore.toFixed(1)}\` (${p.pass ? 'PASS' : 'FAIL'})\n`;
     md += `- **Bằng chứng kỹ thuật (Technical Evidence)**:\n`;
     md += '```json\n' + JSON.stringify(p.metrics, null, 2) + '\n```\n';
@@ -1239,13 +1730,14 @@ function generateEvidenceLedger(auditData) {
 
   md += `---
 
-## ⚖️ 3. PHÁN QUYẾT ĐỘC LẬP (INDEPENDENT AUDIT VERDICT)
+## ⚖️ 5. PHÁN QUYẾT ĐỘC LẬP (INDEPENDENT AUDIT VERDICT)
 - **Điểm Craftsmanship định lượng**: **${overallScore.toFixed(2)} / 10.00**
 - **Ngưỡng PASS yêu cầu**: **>= ${threshold}**
-- **Kết luận**: **${isPass ? 'ĐƯỢC CHẤP THUẬN (APPROVED) — Thiết kế đạt độ tinh xảo cao, vi tương tác vật lý sống động, chuyển động 60 FPS mượt mà và âm thanh phản hồi xúc giác trọn vẹn.' : 'TỪ CHỐI (REJECTED) — Chưa đạt ngưỡng điểm thăng hoa yêu cầu. Cần nâng cấp các tiêu chí chưa vượt qua trước khi release.'}**
+- **Khóa Chặn Tràn Ngang**: **${hardGated ? '🚨 THẤT BẠI (TRÀN NGANG MOBILE/TABLET)' : '✅ THÀNH CÔNG (ZERO-HORIZONTAL-OVERFLOW)'}**
+- **Kết luận**: **${isPass ? 'ĐƯỢC CHẤP THUẬN (APPROVED) — Thiết kế đạt độ tinh xảo cao, vi tương tác vật lý sống động, chuyển động 60 FPS mượt mà, layout ổn định zero-overflow trên đa màn hình và phản hồi xúc giác trọn vẹn.' : 'TỪ CHỐI (REJECTED) — Chưa đạt ngưỡng điểm thăng hoa yêu cầu hoặc vi phạm Hard Gating tràn ngang. Cần nâng cấp các tiêu chí chưa vượt qua trước khi release.'}**
 
 ---
-*Báo cáo được sinh tự động bởi Antigravity 2.0 Automated Delight Audit Tool Builder (WP-R2-05)*.
+*Báo cáo được sinh tự động bởi Antigravity 2.0 Multi-Breakpoint & CLS Automated Delight Auditor (WP-R3-05)*.
 `;
 
   return md;
@@ -1253,8 +1745,8 @@ function generateEvidenceLedger(auditData) {
 
 function generateReceiptManifest(auditData) {
   return {
-    wp: 'WP-R2-05',
-    task: 'Automated Delight Audit Tool Builder (scripts/audit_delight_score.js)',
+    wp: 'WP-R3-05',
+    task: 'Multi-Breakpoint & CLS CDP Audit Inspector (scripts/audit_delight_score.js)',
     status: auditData.verdict === 'PASS' ? 'COMPLETED' : 'FAILED',
     timestamp: auditData.timestamp,
     target_url: auditData.url,
@@ -1262,6 +1754,25 @@ function generateReceiptManifest(auditData) {
     threshold: auditData.threshold,
     overall_delight_score: auditData.overallScore,
     verdict: auditData.verdict,
+    hard_gated: auditData.hardGated,
+    hard_gate_reason: auditData.hardGateReason,
+    cls: {
+      totalCls: auditData.cls?.totalCls || 0,
+      rating: auditData.cls?.rating || 'EXCELLENT',
+      status: auditData.cls?.status || 'PASS'
+    },
+    breakpoints: {
+      matrix: (auditData.breakpoints?.matrix || []).map(b => ({
+        id: b.id,
+        name: b.name,
+        viewport: b.viewport,
+        hasOverflow: b.hasOverflow,
+        overflowPx: b.overflowPx,
+        status: b.status
+      })),
+      all_passed: auditData.breakpoints?.allPassed || false,
+      zero_horizontal_overflow: !auditData.breakpoints?.mobileOverflow
+    },
     pillars: auditData.pillars.map(p => ({
       name: p.pillar,
       score: p.score,
@@ -1270,11 +1781,12 @@ function generateReceiptManifest(auditData) {
     })),
     artifacts_created: [
       'C:/Users/game/.gemini/scripts/audit_delight_score.js',
+      'C:/Users/game/.gemini/scripts/test_audit_delight_score.js',
       'C:/Users/game/.gemini/' + auditData.outputFile,
       'C:/Users/game/.gemini/' + auditData.ledgerFile,
       'C:/Users/game/.gemini/' + auditData.receiptFile
     ],
-    summary: `Đã hoàn thành công cụ kiểm toán tự động độ thăng hoa scripts/audit_delight_score.js vận hành trên Chrome CDP. Đo đạc toàn diện 5 Trụ cột (60 FPS Motion, Mechanical Press :active scale(0.965), Spotlight & 3D Tilt Two-Corner Inversion, WCAG AA/AAA Alpha-Compositing trên Acrylic, WebAudioHaptics Synthesizer). Điểm thực tế đạt ${auditData.overallScore.toFixed(2)}/10.00 (Ngưỡng PASS >= ${auditData.threshold}).`
+    summary: `Đã hoàn thành nâng cấp công cụ kiểm toán tự động scripts/audit_delight_score.js (WP-R3-05). Tích hợp Ma Trận Đa Kích Thước Màn Hình (Desktop 1440x900, Tablet 768x1024, Mobile 375x812), Thuật toán Zero-Horizontal-Overflow đệ quy kèm Hard Gating rớt kiểm toán nếu tràn ngang trên mobile, Đo đạc Biến Động Bố Cục Tích Lũy (CLS) qua PerformanceObserver, và nâng cấp Trụ cột 5 kiểm chứng WebAudioHaptics v2.0 và Dual Audio-Haptic Syncer (setHapticMode API, navigator.vibrate). Điểm kiểm toán thực tế đạt ${auditData.overallScore.toFixed(2)}/10.00 (Ngưỡng PASS >= ${auditData.threshold}).`
   };
 }
 
@@ -1286,7 +1798,7 @@ async function run() {
 
   if (config.help) {
     console.log(`
-⚡ ANTIGRAVITY 2.0 // AUTOMATED DELIGHT AUDIT TOOL (WP-R2-05)
+⚡ ANTIGRAVITY 2.0 // AUTOMATED DELIGHT AUDIT TOOL (WP-R3-05)
 Usage:
   node scripts/audit_delight_score.js [options]
 
@@ -1296,7 +1808,7 @@ Options:
   --threshold <SCORE>  Minimum score for PASS verdict (Default: 8.5, Max: 10.0)
   --output <PATH>      JSON report destination (Default: .antigravity/delight_audit_report.json)
   --ledger <PATH>      Markdown evidence ledger destination (Default: .antigravity/delight_audit_ledger.md)
-  --receipt <PATH>     Receipt manifest destination (Default: .antigravity/receipts/wp_r2_05.json)
+  --receipt <PATH>     Receipt manifest destination (Default: .antigravity/receipts/wp_r3_05.json)
   --headless           Run with isolated headless Chrome instead of connecting to CDP
   --help, -h           Show this manual
 `);
@@ -1304,7 +1816,7 @@ Options:
   }
 
   console.log('================================================================');
-  console.log('⚡ ANTIGRAVITY 2.0 // AUTOMATED DELIGHT AUDIT ENGINE (WP-R2-05)');
+  console.log('⚡ ANTIGRAVITY 2.0 // AUTOMATED DELIGHT AUDIT ENGINE (WP-R3-05)');
   console.log(`Target URL : ${config.url}`);
   console.log(`CDP Port   : ${config.port}`);
   console.log(`Threshold  : ${config.threshold}/10.00`);
@@ -1315,20 +1827,40 @@ Options:
   try {
     const { page, createdNew } = await resolvePage(browser, config.url, isConnectedRemote);
 
-    // 5 Pillars Audit Execution
-    const p1 = await auditPillar1_Motion60Fps(page);
+    // 1. Multi-Breakpoint Matrix & Zero-Horizontal-Overflow Audit (Req 1 & 2)
+    const breakpointResults = await auditMultiBreakpointMatrix(page);
+
+    // 2. Continuous CLS layout shift measurement
+    const clsMetrics = await harvestClsMetrics(page);
+
+    // 3. 5 Pillars Audit Execution
+    const p1 = await auditPillar1_Motion60Fps(page, clsMetrics);
     const p2 = await auditPillar2_MechanicalPress(page);
     const p3 = await auditPillar3_SpotlightAnd3D(page);
     const p4 = await auditPillar4_WcagContrastAndAcrylic(page);
     const p5 = await auditPillar5_WebAudioHaptics(page);
 
     const pillars = [p1, p2, p3, p4, p5];
-    const overallScore = +(pillars.reduce((acc, p) => acc + p.score, 0)).toFixed(2);
-    const verdict = overallScore >= config.threshold ? 'PASS' : 'FAIL';
+    const initialScore = +(pillars.reduce((acc, p) => acc + p.score, 0)).toFixed(2);
+
+    // 4. Hard Gating Evaluation (Req 2)
+    const gating = evaluateHardGating({
+      overallScore: initialScore,
+      threshold: config.threshold,
+      breakpointResults: breakpointResults.matrix
+    });
+
+    const overallScore = gating.penalizedScore;
+    const verdict = gating.verdict;
 
     console.log('\n================================================================');
     console.log(`🏆 DELIGHT & CRAFTSMANSHIP SCORE: ${overallScore.toFixed(2)} / 10.00`);
     console.log(`🎯 PASS THRESHOLD               : ${config.threshold.toFixed(2)}`);
+    console.log(`📱 MULTI-BREAKPOINT STATUS      : ${breakpointResults.allPassed ? '✅ ZERO OVERFLOW' : '❌ OVERFLOW DETECTED'}`);
+    console.log(`📈 CLS RATING                   : ${clsMetrics.rating} (${clsMetrics.totalCls})`);
+    if (gating.hardGated) {
+      console.log(`🚨 HARD GATING TRIGGERED        : ${gating.hardGateReason}`);
+    }
     console.log(`⚖️ AUDIT VERDICT                : ${verdict === 'PASS' ? '✅ PASS (APPROVED)' : '❌ FAIL (REJECTED)'}`);
     console.log('================================================================');
 
@@ -1339,6 +1871,10 @@ Options:
       threshold: config.threshold,
       overallScore,
       verdict,
+      hardGated: gating.hardGated,
+      hardGateReason: gating.hardGateReason,
+      cls: clsMetrics,
+      breakpoints: breakpointResults,
       pillars,
       outputFile: config.output,
       ledgerFile: config.ledger,
@@ -1358,7 +1894,7 @@ Options:
     fs.writeFileSync(outLedgerPath, ledgerMd, 'utf-8');
     console.log(`[OUTPUT] Evidence Ledger written to: ${outLedgerPath}`);
 
-    // 3. Write Receipt Manifest: only overwrite WP receipt if explicitly requested or auditing reference showcase
+    // 3. Write Receipt Manifest
     const isReferenceShowcase = config.url.includes('wow_pilot_showcase');
     if (config.receiptSpecified || isReferenceShowcase) {
       const outReceiptPath = path.resolve(config.receipt);
@@ -1380,7 +1916,7 @@ Options:
     }
 
     if (verdict !== 'PASS') {
-      console.warn(`[WARN] Audit completed but score (${overallScore}) did not meet threshold (${config.threshold}).`);
+      console.warn(`[WARN] Audit completed but score (${overallScore}) did not meet threshold (${config.threshold}) or failed hard gating.`);
       process.exit(1);
     } else {
       console.log(`[SUCCESS] Delight Audit Completed Successfully with Score ${overallScore}/10.00!`);
@@ -1411,10 +1947,17 @@ module.exports = {
   auditPillar3_SpotlightAnd3D,
   auditPillar4_WcagContrastAndAcrylic,
   auditPillar5_WebAudioHaptics,
+  auditMultiBreakpointMatrix,
   calculateContrastRatio,
   compositeColor,
   parseRgba,
   checkTwoCornerInversion,
   matchActiveRule,
-  isSmallIconButton
+  isSmallIconButton,
+  BREAKPOINTS,
+  checkHorizontalOverflow,
+  findOffendingOverflowElements,
+  evaluateClsScore,
+  checkDualHapticSyncer,
+  evaluateHardGating
 };

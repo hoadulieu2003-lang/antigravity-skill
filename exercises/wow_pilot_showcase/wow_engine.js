@@ -46,10 +46,44 @@
   // ==========================================================================
   // 2. WEBAUDIO HAPTICS ENGINE (Cỗ máy Tổng hợp Âm thanh Xúc giác)
   // ==========================================================================
+
+  /**
+   * Standard tactile vibration patterns in milliseconds (Bảng mã nhịp rung xúc giác chuẩn)
+   */
+  const HAPTIC_PATTERNS = Object.freeze({
+    click: [12],
+    pop: [18],
+    switch: [10, 16, 12],
+    'mech-switch': [10, 16, 12],
+    'mechanical-switch': [10, 16, 12],
+    tab: [10, 16, 12],
+    toggle: [10, 16, 12],
+    success: [15, 35, 20, 35, 30],
+    chord: [15, 35, 20, 35, 30],
+    'success-chord': [15, 35, 20, 35, 30],
+    chime: [15, 35, 20, 35, 30],
+    thud: [35],
+    'dull-thud': [35],
+    impact: [35],
+    drop: [35],
+    rotary: [8],
+    'rotary-step': [8],
+    dial: [8],
+    knob: [8],
+    detent: [10],
+  });
+
+  const canVibrate = () =>
+    typeof navigator !== 'undefined' &&
+    typeof navigator.vibrate === 'function' &&
+    /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent || '');
+
   class WebAudioHapticsEngine {
     constructor(options = {}) {
       this.ctx = null;
       this.isMuted = options.muted || false;
+      this.hapticMode = options.hapticMode || options.mode || 'dual'; // 'dual' | 'audio-only' | 'vibrate-only' | 'mute'
+      this._previousHapticMode = this.hapticMode;
       this.masterVolume = typeof options.volume === 'number' ? Math.min(Math.max(options.volume, 0), 1) : 1.0;
       this.masterGainNode = null;
       this.listeners = new Set();
@@ -57,8 +91,109 @@
       this.onAudioTrigger = null; // Callback for visualizers
       this._lastRotaryTime = 0;
       this._activeTimers = new Set();
+      this.version = '2.1';
+      this.isV2 = true;
+      this.vibrationPatterns = { ...HAPTIC_PATTERNS };
+
+      if (this.isMuted && this.hapticMode !== 'mute' && this.hapticMode !== 'muted') {
+        this._previousHapticMode = this.hapticMode;
+        this.hapticMode = 'mute';
+      }
 
       this._initAutoplayUnlock();
+    }
+
+    /**
+     * Hardware vibration support detection on mobile platforms
+     */
+    get canVibrate() {
+      return typeof navigator !== 'undefined' &&
+        typeof navigator.vibrate === 'function' &&
+        /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent || '');
+    }
+
+    get hasVibrationSupport() {
+      return this.canVibrate;
+    }
+
+    checkVibrationSupport() {
+      return this.canVibrate;
+    }
+
+    /**
+     * Configure haptic operational mode: 'dual' | 'audio-only' | 'vibrate-only' | 'mute'
+     * @param {string} mode
+     */
+    setHapticMode(mode) {
+      const valid = ['dual', 'audio-only', 'vibrate-only', 'haptic-only', 'mute', 'muted'];
+      const m = String(mode || '').trim().toLowerCase();
+      if (valid.includes(m)) {
+        this.hapticMode = (m === 'haptic-only') ? 'vibrate-only' : (m === 'muted') ? 'mute' : m;
+        if (this.hapticMode === 'mute') {
+          this.isMuted = true;
+        } else if (this.isMuted && this.hapticMode !== 'mute') {
+          this.isMuted = false;
+        }
+      }
+      return this.hapticMode;
+    }
+
+    getHapticMode() {
+      return this.hapticMode;
+    }
+
+    shouldPlayAudio(mode = this.hapticMode) {
+      if (this.isMuted) return false;
+      const m = String(mode || this.hapticMode || 'dual').toLowerCase();
+      if (m === 'mute' || m === 'muted' || m === 'vibrate-only' || m === 'haptic-only') return false;
+      return true;
+    }
+
+    shouldVibrate(mode = this.hapticMode) {
+      if (this.isMuted) return false;
+      const m = String(mode || this.hapticMode || 'dual').toLowerCase();
+      if (m === 'mute' || m === 'muted' || m === 'audio-only') return false;
+      return this.canVibrate;
+    }
+
+    /**
+     * Dispatches vibration pulse to hardware haptic motor on mobile devices
+     * @param {string|number|number[]} pattern
+     * @param {boolean} [force=false]
+     */
+    vibrate(pattern = 'click', force = false) {
+      if (!force && !this.shouldVibrate()) return false;
+      if (this.isMuted && !force) return false;
+      try {
+        let pat = pattern;
+        if (typeof pattern === 'string') {
+          pat = this.vibrationPatterns[pattern.toLowerCase()] || HAPTIC_PATTERNS[pattern.toLowerCase()] || [12];
+        } else if (typeof pattern === 'number') {
+          pat = [pattern];
+        }
+        if (Array.isArray(pat) && typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
+          return navigator.vibrate(pat);
+        }
+      } catch (_) {}
+      return false;
+    }
+
+    /**
+     * Coordinates dual execution: dispatches haptic vibration and checks audio readiness
+     */
+    _resolveHapticTrigger(spatialOptions, defaultPatternKey) {
+      const opts = (spatialOptions && typeof spatialOptions === 'object') ? spatialOptions : null;
+      const effMode = (opts && opts.hapticMode) ? opts.hapticMode : this.hapticMode;
+      const allowVibrate = opts && (opts.vibrate === false || opts.vibrate === 'false') ? false : true;
+
+      if (allowVibrate && this.shouldVibrate(effMode)) {
+        const pat = (opts && opts.customPattern)
+          ? opts.customPattern
+          : (this.vibrationPatterns[defaultPatternKey] || HAPTIC_PATTERNS[defaultPatternKey] || [12]);
+        this.vibrate(pat, true);
+      }
+
+      return this.shouldPlayAudio(effMode);
     }
 
     _initAutoplayUnlock() {
@@ -77,7 +212,7 @@
     }
 
     _getContext() {
-      if (this.isMuted) return null;
+      if (!this.shouldPlayAudio()) return null;
       if (!this.ctx && typeof window !== 'undefined') {
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
         if (AudioCtx) {
@@ -140,6 +275,16 @@
 
     setMuted(muted) {
       this.isMuted = !!muted;
+      if (this.isMuted) {
+        if (this.hapticMode !== 'mute' && this.hapticMode !== 'muted') {
+          this._previousHapticMode = this.hapticMode;
+          this.hapticMode = 'mute';
+        }
+      } else {
+        if (this.hapticMode === 'mute' || this.hapticMode === 'muted') {
+          this.hapticMode = this._previousHapticMode || 'dual';
+        }
+      }
       this.listeners.forEach((cb) => cb(this.isMuted));
       return this.isMuted;
     }
@@ -281,7 +426,7 @@
     // 1. Mechanical Click: Crisp high-frequency transient (Nút bấm cơ học)
     playClick(spatialOptions = null) {
       this.notify('click');
-      if (this.isMuted) return;
+      if (!this._resolveHapticTrigger(spatialOptions, 'click')) return;
       const ctx = this._getContext();
       if (!ctx) return;
       try {
@@ -304,6 +449,10 @@
         osc.connect(gain);
         gain.connect(route ? route.input : (this.masterGainNode || ctx.destination));
 
+        osc.onended = () => {
+          try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+        };
+
         osc.start(now);
         osc.stop(now + 0.022);
       } catch (_) {}
@@ -312,7 +461,7 @@
     // 2. Soft Tactile Pop: Bubble actuation (Mở hộp thoại, thẻ chip)
     playPop(spatialOptions = null) {
       this.notify('pop');
-      if (this.isMuted) return;
+      if (!this._resolveHapticTrigger(spatialOptions, 'pop')) return;
       const ctx = this._getContext();
       if (!ctx) return;
       try {
@@ -335,6 +484,10 @@
         osc.connect(gain);
         gain.connect(route ? route.input : (this.masterGainNode || ctx.destination));
 
+        osc.onended = () => {
+          try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+        };
+
         osc.start(now);
         osc.stop(now + 0.04);
       } catch (_) {}
@@ -349,7 +502,7 @@
     // 3b. Tab Switch: Soft mechanical switch for tabs and segmented controls
     playTabSwitch(spatialOptions = null) {
       this.notify('tabswitch');
-      if (this.isMuted) return;
+      if (!this._resolveHapticTrigger(spatialOptions, 'switch')) return;
       const ctx = this._getContext();
       if (!ctx) return;
       try {
@@ -372,6 +525,10 @@
         osc.connect(gain);
         gain.connect(route ? route.input : (this.masterGainNode || ctx.destination));
 
+        osc.onended = () => {
+          try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+        };
+
         osc.start(now);
         osc.stop(now + 0.05);
       } catch (_) {}
@@ -380,7 +537,7 @@
     // 3c. Toggle Chime: Ascending on, descending off
     playToggle(state = true, spatialOptions = null) {
       this.notify('toggle');
-      if (this.isMuted) return;
+      if (!this._resolveHapticTrigger(spatialOptions, 'switch')) return;
       const ctx = this._getContext();
       if (!ctx) return;
       try {
@@ -406,6 +563,10 @@
         osc.connect(gain);
         gain.connect(route ? route.input : (this.masterGainNode || ctx.destination));
 
+        osc.onended = () => {
+          try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+        };
+
         osc.start(now);
         osc.stop(now + 0.06);
       } catch (_) {}
@@ -414,7 +575,7 @@
     // 4. Harmonic Chime: Success notification chord (Chuông xác nhận thành công)
     playChime(spatialOptions = null) {
       this.notify('chime');
-      if (this.isMuted) return;
+      if (!this._resolveHapticTrigger(spatialOptions, 'chime')) return;
       const ctx = this._getContext();
       if (!ctx) return;
       try {
@@ -439,6 +600,10 @@
           osc.connect(gain);
           gain.connect(route ? route.input : (this.masterGainNode || ctx.destination));
 
+          osc.onended = () => {
+            try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+          };
+
           osc.start(startTime);
           osc.stop(startTime + 0.38);
         });
@@ -448,13 +613,14 @@
     // 5. Rotary Detent Tick: High-density micro detent (Răng cưa núm xoay)
     playDetent(spatialOptions = null) {
       this.notify('detent');
+      if (!this._resolveHapticTrigger(spatialOptions, 'detent')) return;
       this.playRotaryStep(0, 24, spatialOptions);
     }
 
     // 6. Stepped Rotary Detent: High-density micro detent with frequency modulation
     playRotary(step = 1, direction = 1) {
       this.notify('rotary');
-      if (this.isMuted) return;
+      if (!this._resolveHapticTrigger(null, 'rotary')) return;
       const ctx = this._getContext();
       if (!ctx) return;
       try {
@@ -469,6 +635,11 @@
         gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.01);
         osc.connect(gain);
         gain.connect(this.masterGainNode || ctx.destination);
+
+        osc.onended = () => {
+          try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+        };
+
         osc.start(now);
         osc.stop(now + 0.012);
       } catch (_) {}
@@ -477,7 +648,7 @@
     // 7. Spring Release: Damped mechanical spring resonance
     playSpring() {
       this.notify('spring');
-      if (this.isMuted) return;
+      if (!this._resolveHapticTrigger(null, 'pop')) return;
       const ctx = this._getContext();
       if (!ctx) return;
       try {
@@ -491,6 +662,11 @@
         gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.14);
         osc.connect(gain);
         gain.connect(this.masterGainNode || ctx.destination);
+
+        osc.onended = () => {
+          try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+        };
+
         osc.start(now);
         osc.stop(now + 0.15);
       } catch (_) {}
@@ -499,7 +675,7 @@
     // 8. Spatial Stereo Panning: Left/Right panning impulse
     playSpatial(pan = -0.85) {
       this.notify('spatial');
-      if (this.isMuted) return;
+      if (!this._resolveHapticTrigger(pan, 'click')) return;
       const ctx = this._getContext();
       if (!ctx) return;
       try {
@@ -515,6 +691,11 @@
         const route = this._createSpatialRoute(ctx, pan, 70);
         osc.connect(gain);
         gain.connect(route.input);
+
+        osc.onended = () => {
+          try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+        };
+
         osc.start(now);
         osc.stop(now + 0.07);
       } catch (_) {}
@@ -529,7 +710,7 @@
     // 10. Two-Stage Shutter / Switch
     playDoubleStage(stage = 1) {
       this.notify('doublestage');
-      if (this.isMuted) return;
+      if (!this._resolveHapticTrigger(null, 'switch')) return;
       const ctx = this._getContext();
       if (!ctx) return;
       try {
@@ -551,13 +732,18 @@
         }
         osc.connect(gain);
         gain.connect(this.masterGainNode || ctx.destination);
+
+        osc.onended = () => {
+          try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+        };
+
         osc.start(now);
         osc.stop(now + 0.03);
       } catch (_) {}
     }
 
     // ========================================================================
-    // 5 NEW WEBAUDIOHAPTICS V2.0 DSP SOUND MODELS
+    // 5 WEBAUDIOHAPTICS V2.0 DSP SOUND MODELS
     // ========================================================================
 
     /**
@@ -566,13 +752,14 @@
      */
     playRotaryStep(step = 0, maxSteps = 24, spatialOptions = null) {
       this.notify('rotary');
-      if (this.isMuted) return;
 
       const nowMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
       if (this._lastRotaryTime && (nowMs - this._lastRotaryTime < 18)) {
         return;
       }
       this._lastRotaryTime = nowMs;
+
+      if (!this._resolveHapticTrigger(spatialOptions, 'rotary')) return;
 
       const ctx = this._getContext();
       if (!ctx) return;
@@ -596,6 +783,10 @@
         osc.connect(gain);
         gain.connect(route.input);
 
+        osc.onended = () => {
+          try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+        };
+
         osc.start(now);
         osc.stop(now + 0.02);
       } catch (_) {}
@@ -607,7 +798,7 @@
      */
     playSuccessChord(spatialOptions = null) {
       this.notify('chord');
-      if (this.isMuted) return;
+      if (!this._resolveHapticTrigger(spatialOptions, 'success')) return;
       const ctx = this._getContext();
       if (!ctx) return;
       try {
@@ -632,6 +823,10 @@
           osc.connect(gain);
           gain.connect(route.input);
 
+          osc.onended = () => {
+            try { gain.disconnect(); osc.disconnect(); } catch (_) {}
+          };
+
           osc.start(noteStartTime);
           osc.stop(noteStartTime + noteDuration);
         });
@@ -644,7 +839,7 @@
      */
     playDullThud(spatialOptions = null) {
       this.notify('thud');
-      if (this.isMuted) return;
+      if (!this._resolveHapticTrigger(spatialOptions, 'thud')) return;
       const ctx = this._getContext();
       if (!ctx) return;
       try {
@@ -687,6 +882,14 @@
 
         gain.connect(route.input);
 
+        osc.onended = () => {
+          try {
+            if (filter) { filter.disconnect(); }
+            gain.disconnect();
+            osc.disconnect();
+          } catch (_) {}
+        };
+
         osc.start(now);
         osc.stop(now + duration);
       } catch (_) {}
@@ -699,7 +902,7 @@
      */
     playMechanicalSwitch(state = true, spatialOptions = null) {
       this.notify('mech-switch');
-      if (this.isMuted) return;
+      if (!this._resolveHapticTrigger(spatialOptions, 'switch')) return;
       const ctx = this._getContext();
       if (!ctx) return;
       try {
@@ -723,6 +926,11 @@
 
         osc1.connect(gain1);
         gain1.connect(route.input);
+
+        osc1.onended = () => {
+          try { gain1.disconnect(); osc1.disconnect(); } catch (_) {}
+        };
+
         osc1.start(now);
         osc1.stop(now + p1Duration);
 
@@ -743,6 +951,11 @@
 
         osc2.connect(gain2);
         gain2.connect(route.input);
+
+        osc2.onended = () => {
+          try { gain2.disconnect(); osc2.disconnect(); } catch (_) {}
+        };
+
         osc2.start(p2StartTime);
         osc2.stop(p2StartTime + p2Duration);
       } catch (_) {}
@@ -758,21 +971,62 @@
       const resolveSpatial = (el, e) => {
         if (!el || typeof el.getAttribute !== 'function') return null;
         const attr = el.getAttribute('data-haptic-spatial');
-        if (attr === null || attr === undefined || attr === 'false') return null;
-        if (attr === 'left') return { pan: -0.8, element: el };
-        if (attr === 'right') return { pan: 0.8, element: el };
-        if (attr === 'center') return { pan: 0, element: el };
-        if (attr !== '' && attr !== 'true' && !isNaN(parseFloat(attr))) {
-          return { pan: parseFloat(attr), element: el };
+        let spatial = null;
+        if (attr === 'left') spatial = { pan: -0.8, element: el };
+        else if (attr === 'right') spatial = { pan: 0.8, element: el };
+        else if (attr === 'center') spatial = { pan: 0, element: el };
+        else if (attr !== null && attr !== undefined && attr !== 'false' && attr !== '' && attr !== 'true' && !isNaN(parseFloat(attr))) {
+          spatial = { pan: parseFloat(attr), element: el };
+        } else if (attr !== null && attr !== undefined && attr !== 'false') {
+          spatial = { clientX: e && typeof e.clientX === 'number' ? e.clientX : undefined, element: el };
         }
-        return { clientX: e && typeof e.clientX === 'number' ? e.clientX : undefined, element: el };
+
+        const hapticModeAttr = el.getAttribute('data-haptic-mode');
+        const vibrateAttr = el.getAttribute('data-haptic-vibrate');
+
+        let customPattern = null;
+        let allowVibrate = null;
+        if (vibrateAttr !== null && vibrateAttr !== undefined) {
+          if (vibrateAttr === 'false') {
+            allowVibrate = false;
+          } else if (vibrateAttr === 'true' || vibrateAttr === '') {
+            allowVibrate = true;
+          } else {
+            const parts = String(vibrateAttr).split(',').map((s) => parseInt(s.trim(), 10)).filter((n) => !isNaN(n));
+            if (parts.length > 0) {
+              customPattern = parts;
+              allowVibrate = true;
+            }
+          }
+        }
+
+        if (spatial) {
+          if (hapticModeAttr) spatial.hapticMode = hapticModeAttr;
+          if (allowVibrate !== null) spatial.vibrate = allowVibrate;
+          if (customPattern) spatial.customPattern = customPattern;
+          return spatial;
+        }
+
+        if (hapticModeAttr || allowVibrate !== null || customPattern) {
+          return {
+            element: el,
+            pan: 0,
+            hapticMode: hapticModeAttr || undefined,
+            vibrate: allowVibrate !== null ? allowVibrate : undefined,
+            customPattern: customPattern || undefined,
+          };
+        }
+
+        return null;
       };
 
       const handleAction = (e) => {
         const el = (typeof Element !== 'undefined' && e.target instanceof Element)
           ? e.target
           : (e.target?.parentElement || e.target);
-        const target = el?.closest?.('[data-haptic]');
+        const target = (typeof el?.closest === 'function')
+          ? (el.closest('[data-haptic]') || el.closest('[data-haptic-vibrate]') || el.closest('[data-haptic-mode]'))
+          : null;
         if (!target) return;
 
         // Micro-deduplication: Prevents double-trigger audio flutter when browser fires
@@ -799,6 +1053,9 @@
             this.playRotaryStep(isNaN(step) ? 0 : step, isNaN(max) ? 24 : max, spatialOpts);
             break;
           }
+          case 'detent':
+            this.playDetent(spatialOpts);
+            break;
           case 'chord':
           case 'success':
           case 'success-chord':
@@ -1296,6 +1553,8 @@
     setTestMode: applyMotionMode,
     haptics,
     WebAudioHaptics: WebAudioHapticsEngine,
+    HAPTIC_PATTERNS,
+    canVibrate,
     get spotlight() {
       return spotlightInstance;
     },
@@ -1316,4 +1575,6 @@
   };
   window.WebAudioHaptics = WebAudioHapticsEngine;
   window.haptics = haptics;
+  window.HAPTIC_PATTERNS = HAPTIC_PATTERNS;
+  window.canVibrate = canVibrate;
 })(window, document);

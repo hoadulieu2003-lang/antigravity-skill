@@ -776,3 +776,433 @@
     max-width: calc(100vw - 20px);
   }
 }
+
+/* ==========================================================================
+   6. THEME STUDIO SELECTOR V3 (4 LUMINOUS PALETTES)
+   ========================================================================== */
+.theme-studio-section {
+  padding: 60px 24px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.theme-selector-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.theme-pill-card {
+  position: relative;
+  background: var(--bg-surface, #FFFFFF);
+  border: 1px solid var(--border-hairline, rgba(226, 232, 240, 0.85));
+  border-top-color: var(--border-specular, rgba(255, 255, 255, 0.95));
+  border-radius: 16px;
+  padding: 18px 16px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: var(--shadow-specular, 0 1px 2px rgba(15, 23, 42, 0.04));
+  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  outline: none;
+}
+
+.theme-pill-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-specular-hover, 0 8px 30px -4px rgba(15, 23, 42, 0.12));
+  border-color: rgba(148, 163, 184, 0.45);
+}
+
+.theme-pill-card.active {
+  border-color: var(--accent-primary, #0284C7);
+  box-shadow: 0 0 0 2px var(--accent-glow, rgba(2, 132, 199, 0.25)), 0 8px 24px -4px rgba(15, 23, 42, 0.08);
+}
+
+.theme-pill-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.theme-swatch-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.theme-swatch-canvas {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.theme-swatch-accent {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+}
+
+.theme-pill-badge {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--text-muted);
+}
+
+.theme-pill-card.active .theme-pill-badge {
+  background: var(--accent-glow, rgba(2, 132, 199, 0.15));
+  color: var(--accent-primary, #0284C7);
+}
+
+.theme-pill-name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.theme-pill-desc {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   7. SCROLLYTELLING PINNED STAGE V3 (3 SCENES)
+   ========================================================================== */
+.scrolly-section {
+  padding: 60px 24px;
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.scrolly-pinned-wrapper {
+  position: relative;
+  background: var(--bg-acrylic-card, rgba(255, 255, 255, 0.82));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-hairline);
+  border-top-color: var(--border-specular);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: var(--shadow-specular);
+  overflow: hidden;
+}
+
+.scrolly-header-sticky {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.scrolly-progress-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(15, 23, 42, 0.06);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.scrolly-progress-fill {
+  height: 100%;
+  width: 33.33%;
+  background: linear-gradient(90deg, #0284C7, #4F46E5);
+  border-radius: 9999px;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scrolly-chapter-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.scrolly-chapter-btn {
+  padding: 8px 18px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border-hairline);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.scrolly-chapter-btn:hover {
+  background: #FFFFFF;
+  color: var(--text-primary);
+  border-color: rgba(148, 163, 184, 0.45);
+}
+
+.scrolly-chapter-btn.active {
+  background: var(--text-primary, #0F172A);
+  color: #FFFFFF;
+  border-color: var(--text-primary, #0F172A);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
+}
+
+.scrolly-stage-viewport {
+  position: relative;
+  min-height: 340px;
+}
+
+.scrolly-scene {
+  display: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.scrolly-scene.active {
+  display: grid;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scrolly-scene-text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.scrolly-scene-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-primary, #0284C7);
+  letter-spacing: 0.05em;
+}
+
+.scrolly-scene-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.scrolly-scene-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.scrolly-metric-box {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-hairline);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.scrolly-metric-val {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent-primary, #0284C7);
+}
+
+.scrolly-metric-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.scrolly-scene-visual {
+  background: linear-gradient(135deg, rgba(248, 250, 252, 0.95), rgba(241, 245, 249, 0.95));
+  border: 1px solid var(--border-hairline);
+  border-radius: 16px;
+  padding: 24px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 1px #FFFFFF;
+}
+
+/* ==========================================================================
+   8. RIGID BENTO TELEMETRY GRID V3 (12-COL minmax(160px, 160px))
+   ========================================================================== */
+.rigid-bento-section {
+  padding: 60px 24px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.rigid-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(160px, 160px);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.rigid-bento-tile {
+  position: relative;
+  background: var(--bg-acrylic-card, rgba(255, 255, 255, 0.82));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-hairline);
+  border-top-color: var(--border-specular);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: var(--shadow-specular);
+  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.rigid-bento-tile:hover {
+  box-shadow: var(--shadow-specular-hover);
+  border-color: rgba(148, 163, 184, 0.45);
+}
+
+.rigid-col-4 { grid-column: span 4; }
+.rigid-col-6 { grid-column: span 6; }
+.rigid-col-8 { grid-column: span 8; }
+.rigid-col-12 { grid-column: span 12; }
+.rigid-row-2 { grid-row: span 2; }
+
+.rigid-stat-num {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.rigid-stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   9. LIVE DELIGHT INSPECTOR HUD V3 WITH BREAKPOINT SWITCHER & TAPTIC
+   ========================================================================== */
+.hud-breakpoint-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(15, 23, 42, 0.05);
+  border-radius: 8px;
+  padding: 2px;
+  margin-top: 6px;
+}
+
+.hud-bp-btn {
+  flex: 1;
+  padding: 4px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.hud-bp-btn:hover {
+  color: var(--text-primary);
+}
+
+.hud-bp-btn.active {
+  background: #FFFFFF;
+  color: var(--accent-primary, #0284C7);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+}
+
+.hud-taptic-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-taptic-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #059669;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.hud-taptic-dot.pulsing {
+  transform: scale(1.6);
+  background: #F59E0B;
+}
+
+/* Container Breakpoint Simulation Modes */
+body.preview-tablet .showcase-viewport-container {
+  max-width: 768px !important;
+  margin: 0 auto;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.1), 0 20px 50px rgba(15, 23, 42, 0.1);
+  transition: max-width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.preview-mobile .showcase-viewport-container {
+  max-width: 375px !important;
+  margin: 0 auto;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.1), 0 20px 50px rgba(15, 23, 42, 0.1);
+  transition: max-width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 900px) {
+  .theme-selector-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .scrolly-scene {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .rigid-bento-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .rigid-col-8 { grid-column: span 6; }
+  .rigid-col-6 { grid-column: span 6; }
+  .rigid-col-4 { grid-column: span 3; }
+}
+
+@media (max-width: 640px) {
+  .theme-selector-bar {
+    grid-template-columns: 1fr;
+  }
+  .rigid-bento-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .rigid-col-4,
+  .rigid-col-6,
+  .rigid-col-8,
+  .rigid-col-12 {
+    grid-column: span 1;
+  }
+}
+
