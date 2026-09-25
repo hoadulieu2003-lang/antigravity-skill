@@ -1687,3 +1687,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-25 20:42:02`
+
+<untrusted_external_content>
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [Agents can now set up your website’s security with Turnstile Spin](https://blog.cloudflare.com/turnstile-spin/)
+  > Misconfiguring Turnstile by skipping backend validation leaves sites exposed to bots. Turnstile Spin fixes incomplete setups by using your preferred AI coding agent to wire up server-side verificat...
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (195 ⭐)]** [yusong652/itasca-mcp](https://github.com/yusong652/itasca-mcp)
+  > MCP server connecting AI agents to ITASCA engines (PFC, FLAC, 3DEC, MPoint, MassFlow) — run geotechnical & geomechanics simulations through natural conversation
+
+</untrusted_external_content>
+
+---

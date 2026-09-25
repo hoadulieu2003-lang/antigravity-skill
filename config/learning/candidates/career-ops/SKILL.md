@@ -1,7 +1,7 @@
 ---
 name: career-ops
 description: >-
-  Kỹ năng chuyên gia vận hành cho career-ops-hq/career-ops (72659 ⭐).
+  Kỹ năng chuyên gia vận hành cho career-ops-hq/career-ops (72708 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở career-ops vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Open-source AI job search: scan job portals, evaluate listings into a structured A-H report with a global 1-5 score, tailor your CV, track applications — run
@@ -12,9 +12,9 @@ description: >-
 # career-ops-hq/career-ops — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/career-ops-hq/career-ops`  
-> **Độ uy tín cộng đồng**: 72659 ⭐  
+> **Độ uy tín cộng đồng**: 72708 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-25 07:42:27Z
+> **Tự động đóng gói lúc**: 2026-09-25 13:42:09Z
 
 ---
 
