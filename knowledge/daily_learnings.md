@@ -1651,3 +1651,23 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-25 14:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1920 ⭐)]** [skalesapp/skales](https://github.com/skalesapp/skales)
+  > Personal AI agent for macOS, Windows, Linux, Android & iOS. Set a goal, it works alone: coding (Skales Code), desktop + browser automation, autonomous schedu...
+- **[GitHub (72659 ⭐)]** [career-ops-hq/career-ops](https://github.com/career-ops-hq/career-ops)
+  > Open-source AI job search: scan job portals, evaluate listings into a structured A-H report with a global 1-5 score, tailor your CV, track applications — run...
+- **[GitHub (297 ⭐)]** [chmonitor/chmonitor](https://github.com/chmonitor/chmonitor)
+  > Open-source operational advisor for ClickHouse — real-time monitoring plus AI-driven index/partition/materialized-view recommendations.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [PAWS: Policy-driven Agentic World Simulation](https://arxiv.org/abs/2609.28547)
+  > arXiv:2609.28547v1 Announce Type: new Abstract: Policy interventions propagate through public communication, institutional decisions, and stakeholder respons...
+- **[ArXiv CS.AI]** [Pistis Technical Report](https://arxiv.org/abs/2609.28554)
+  > arXiv:2609.28554v1 Announce Type: new Abstract: We introduce the Pistis model family, comprising 27B- and 9B-parameter multimodal large language models built...
+
+</untrusted_external_content>
+
+---

@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-25T07:42:26.350977+00:00",
+  "skill_name": "skales",
+  "source_repo": "skalesapp/skales",
+  "stars": 1920,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\skales\\SKILL.md",
+  "human_promotion_required": true
+}
