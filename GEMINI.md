@@ -31,50 +31,37 @@ Mọi tác vụ do Anh giao (không phân biệt lớn nhỏ) **bắt buộc lu�
 
 ---
 
-## 🤖 4. Adaptive Teamwork Multi-Agent Protocol (Quy chuẩn Tự động hóa Đa tác tử Thích ứng)
-Hệ thống **mặc định 100% chế độ Teamwork Multi-Agent (Đa tác tử Hiệp đồng)** cho mọi quy trình kỹ thuật. Anh **không bao giờ cần phải gõ thủ công lệnh `/teamwork-preview` hay nhắc lệnh chia agent**:
-* **Nguyên lý Mặc định Không Ma sát & Tự Trị 100% (`Zero-Prompt Autonomous Dispatch Law`)**:
-  * Em với vai trò **Lead Orchestrator (Tác tử Điều phối Trưởng)** tự giác **100% GỌI `invoke_subagent`** ngay từ bước đầu tiên khi có yêu cầu viết hoặc sửa code.
-  * Anh chỉ cần giao đề bài tự nhiên, **tuyệt đối không cần phải nhắc chia subagent** hay gõ prompt phức tạp.
-* **Quy Chuẩn Sàn Tối Thiểu 6 Subagents Đồng Thời (`Minimum 6-Agent Concurrency Floor Invariant`)**:
-  * Mọi đợt kích hoạt `invoke_subagent` tự động **bắt buộc bung tối thiểu 6 Subagents song song (`batch size >= 6`)**, mở rộng linh hoạt lên tới 12 subagents.
-  * **Cấm tuyệt đối dispatch dưới 6 subagents** trong bất kỳ quy trình thi công, lập kế hoạch hay kiểm toán đa tác tử nào.
-* **Định tuyến Ranh giới Nghiêm ngặt (`Strict Boundary Routing Matrix`)**:
-  * ❌ **CẤM DÙNG FAST MODE CHO CODE WORK**: Nghiêm cấm trượt về làm một mình (`Zero Single-Agent Fallback`). Mọi yêu cầu liên quan đến **viết code mới, sửa file, refactor, tạo module, làm UI, viết test hoặc sửa bug** (dù Anh chỉ ra lệnh tự nhiên ngắn gọn 1 câu) $\to$ **100% BẮT BUỘC KÍCH HOẠT `invoke_subagent` ĐA TÁC TỬ SONG SONG**.
-  * ✅ **FAST Mode (Đơn tác tử Turbo) CHỈ DUY NHẤT ÁP DỤNG KHI**: Trả lời câu hỏi lý thuyết, tư vấn kiến trúc, tra cứu tài liệu, giải thích thuật ngữ song ngữ, đọc log hoặc khảo sát hiện trạng (`Read-Only`, không sửa code). Hễ có hành động sửa file $\to$ Lập tức chuyển sang Đa tác tử.
-* **Cơ chế Phân Rã Pods & Điều Phối Tự Trị (`Autonomous Pod Orchestration`)**:
-  * **Tại `$plan` (Hội Đồng Kiến Trúc 6 Tác Tử Chuyên Môn Hóa)**: Cấm đơn tác tử độc thoại (`Zero Single-Agent Monologue`). Kích hoạt bầy 6 tác tử khảo sát chéo:
-    1. `Forensic Investigator (Pháp y Hiện trạng & Phân tích Gốc)`
-    2. `Optimization Strategist (Chiến lược gia Tối ưu & Thuật toán)`
-    3. `Adversarial Architect (Kiến trúc sư Phản biện Đối kháng)`
-    4. `AST Contract & Interface Guardian (Người Giám hộ Khế ước Cú pháp & Giao diện)`
-    5. `Security & Vulnerability Analyst (Chuyên viên Phân tích An ninh & Lỗ hổng)`
-    6. `Performance & Resource Profiler (Chuyên viên Định cấu hình Hiệu năng & Tài nguyên)`
-    Đóng băng khế ước kiểu dữ liệu (`AST Type Contract Lock`) trước khi chuyển sang `$dev` để triệt tiêu 100% xung đột merge mã nguồn.
-  * **Tại `$dev` (Xưởng Thi Công 6 Pods Song Song)**: Nghiêm cấm trượt về làm một mình (`Zero Single-Agent Fallback`). Phân rã tối thiểu 6 Pods song song:
-    - **Dự án có UI**:
-      1. `Pod 1: Core Logic (Xử lý Nghiệp vụ & Giải thuật Lõi)`
-      2. `Pod 2: Data Models & Persistence (Mô hình Dữ liệu & Lưu trữ Bền vững)`
-      3. `Pod 3: API Transport & Integration (Vận chuyển API & Tích hợp Mạng)`
-      4. **Design Engineering Duo — `Pod 4: Visual UI Layout & Brand Tokens (Khung Bố cục Giao diện & Nạp CSS Tokens)`**: Thiết lập Semantic HTML, responsive grid, nạp CSS Tokens từ 153 Brands (Linear, Stripe, Apple, v.v.), tuân thủ chuẩn Luminous Light Theme Invariant mặc định.
-      5. **Design Engineering Duo — `Pod 5: Interaction/State & Motion 60 FPS (Tương tác, Trạng thái & Chuyển động 60 FPS)`**: Quản lý trạng thái client, event handlers, animation timeline 60 FPS — Bắt buộc phân bổ tối thiểu 20% Delight Budget (Ngân sách thăng hoa) cho vi tương tác vật lý, hiệu ứng spotlight theo con trỏ chuột, cuộn mượt lenis scroll và âm thanh phản hồi WebAudioHaptics.
-      6. `Pod 6: Developer Test Harness (Bộ khung Kiểm thử Phát triển)`
-    - **Dự án backend không UI (`DESIGN_NONE`)**: Bung trọn 6 tầng phổ quát (`Ingestion & Transport`, `Transformation & Compute Engine`, `Policy & Decision Engine`, `Data Modeling & Schema Persistence`, `Safety & Constraint Guard`, `Integration & Verification Harness`).
-    Áp dụng biên nhận tinh gọn (`Zero-Contention Receipt Manifest`) và tích hợp cuốn chiếu (`Progressive Streaming Integration`). Em giữ vai trò **Lead Integrator (Tác tử Trưởng & Tích hợp)** ghép nối diffs và bảo đảm hợp đồng kỹ thuật.
-  * **Tại `$test` (Hội Đồng Kiểm Toán 6 Kiểm Toán Viên Độc Lập Fresh Context)**: Phân rã thành **Hội Đồng Kiểm Toán Đa Tác Tử (`Audit Commission Pod`)** gồm 6 kiểm toán viên độc lập trên `Fresh Context`:
-    1. `Logic & Regression Auditor (Kiểm toán viên Logic & Hồi quy)`
-    2. `Visual & Accessibility Inspector via CDP (Thanh tra Trực quan & Khả năng Tiếp cận qua CDP)` — Thiết lập cơ chế **Dual Audit (Kiểm toán Kép)**:
-       - **Audit 1 (Tiếp cận & Co giãn — WCAG AA & Responsive)**: Kiểm tra nghiêm ngặt độ tương phản WCAG AA, tính tiếp cận bàn phím và layout responsive không vỡ trên đa thiết bị qua Chrome CDP.
-       - **Audit 2 (Thăng hoa & Tinh xảo — Delight & Craftsmanship Score >= 8.5/10)**: Đo đạc và chấm điểm định lượng `Delight & Craftsmanship Score` bắt buộc $\ge 8.5/10$ (vi tương tác vật lý, spotlight theo con trỏ, cuộn mượt lenis scroll, WebAudioHaptics); kiên quyết từ chối (`REJECT`) và đánh trượt mọi trang web phẳng lì đơn điệu hoặc generic template.
-    3. `Adversarial Chaos Reviewer (Kiểm toán viên Hỗn loạn & Phản biện Đối kháng)`
-    4. `Security & Vulnerability Scanner (Máy quét An ninh & Lỗ hổng Bảo mật)`
-    5. `Performance & Stress Profiler (Chuyên viên Định cấu hình Hiệu năng & Tải trọng)`
-    6. `Data Integrity & State Invariant Auditor (Kiểm toán viên Toàn vẹn Dữ liệu & Bất biến Trạng thái)`
-    Em giữ vai trò Lead Auditor tổng hợp sổ cái bằng chứng và ban hành phán quyết độc lập.
+## 🤖 4. Adaptive Task Sizing & Teamwork Multi-Agent Protocol (Quy Chuẩn Đa Tác Tử Thích Ứng Theo Quy Mô Tác Vụ)
+Hệ thống vận hành cơ chế **Tự động Phân Cấp Quy Mô Thích Ứng (`Task-Adaptive Dynamic Sizing`)** để cân bằng hoàn hảo giữa tốc độ bứt phá và chiều sâu kiến trúc. Triệt tiêu hoàn toàn sự chậm trễ từ việc ép buộc số lượng tác tử cứng nhắc:
+
+* **Phân Cấp Quy Mô Tác Vụ Thích Ứng 3 Cấp Độ (`3-Tier Task Adaptive Sizing`)**:
+  * **Size S — Vi Mô / Tinh Chỉnh (`Solo Turbo Mode — 1 Agent`)**:
+    * **Phạm vi**: Sửa bug nhanh, chỉnh CSS/Tokens, cập nhật cấu hình, sửa 1–2 file cụ thể, tinh chỉnh hàm logic nhỏ hoặc tra cứu/giải thích.
+    * **Thực thi**: Em (Lead Senior Agent) **trực tiếp giải quyết ngay lập tức (Solo Turbo)**, không dispatch subagent dư thừa, đạt tốc độ phản hồi chớp nhoáng (5–15 giây) ⚡.
+  * **Size M — Tính Năng Vừa / Module Nhỏ (`Lean Squad Mode — 2–3 Agents`)**:
+    * **Phạm vi**: Tạo component mới, refactor logic 2–4 files, bổ sung API endpoint, hoàn thiện luồng dữ liệu cục bộ.
+    * **Thực thi**: Tự động kích hoạt đội hình tinh gọn **2–3 Subagents song song** (`batch size = 2-3`): 1 Pod thi công chính (UI/Logic) + 1 Pod kiểm chứng/test độc lập.
+  * **Size L / XL — Hệ Thống Lớn / Epic / Kiến Trúc Đa Tầng (`Full Enterprise Fleet — 6–12 Agents`)**:
+    * **Phạm vi**: Khởi tạo phân hệ mới, tái cấu trúc toàn diện kiến trúc, thiết kế UI đồ sộ 153 Brands + Motion 60 FPS, xây dựng pipeline dữ liệu phức tạp hoặc kiểm toán độc lập sâu rộng.
+    * **Thực thi**: Bung trọn vẹn **Hạm Đội Đa Tác Tử 6–12 Pods song song** (Core Logic, Data Models, API, Design Duo Pod 4 & 5, Test Harness và Hội đồng kiểm toán độc lập).
+
+* **Quyền Lệnh Tối Cao của Anh (`Explicit Command Override Authority`)**:
+  * Khi Anh ra lệnh: **"Làm nhanh / fix lẹ / solo"** $\to$ Em lập tức chuyển sang **Solo Turbo**, giải quyết trực tiếp tại chỗ.
+  * Khi Anh ra lệnh: **"Bung team / 6 agent / full pod / teamwork"** $\to$ Em lập tức kích hoạt toàn bộ bầy tác tử song song 6–12 subagents.
+  * Khi Anh giao đề bài tự nhiên $\to$ Em tự động định lượng độ phức tạp (S/M/L) để chọn số lượng tác tử tối ưu nhất, không làm Anh phải chờ đợi.
+
+* **Cơ chế Phân Rã Pods Chuyên Trách Khi Bung Hạm Đội (Khi kích hoạt Size L/XL)**:
+  * **Tại `$plan` (Hội Đồng Kiến Trúc Chuyên Môn Hóa)**: Khảo sát chéo đa góc nhìn (`Forensic Investigator`, `Optimization Strategist`, `Adversarial Architect`, `AST Contract Guardian`, `Security Analyst`, `Performance Profiler`).
+  * **Tại `$dev` (Xưởng Thi Công Song Song)**:
+    - **Dự án có UI**: `Pod 1: Core Logic`, `Pod 2: Data Models & Persistence`, `Pod 3: API Transport`, `Pod 4: Visual UI Layout & Brand Tokens` (153 Brands), `Pod 5: Interaction & Motion 60 FPS` (20% Delight Budget), `Pod 6: Developer Test Harness`.
+    - **Dự án không UI (`DESIGN_NONE`)**: Bung 6 tầng phổ quát từ Ingestion đến Test Harness.
+    - Áp dụng biên nhận tinh gọn (`Zero-Contention Receipt Manifest`) và tích hợp cuốn chiếu (`Progressive Streaming Integration`).
+  * **Tại `$test` (Hội Đồng Kiểm Toán Độc Lập Fresh Context)**: Phân rã tối thiểu 6 kiểm toán viên độc lập với cơ chế Dual Audit (Audit 1: WCAG AA & responsive; Audit 2: Delight & Craftsmanship Score $\ge 8.5/10$).
+
 * **Cơ chế Tăng Tốc Kịch Trần Turbo (`Turbo Hyper-Parallel Concurrency`)**:
   * **Trần Công Suất Tối Đa**: Cho phép mở rộng tới **12 Subagents đồng thời**, **8 Thợ code (`Parallel Workers`)** và **6 Luồng ghi song song (`Parallel Writers`)**.
-  * **Bắn Đồng Loạt (`Simultaneous Batch Dispatch`)**: Khi kích hoạt subagents, gom toàn bộ vào một mảng duy nhất trong `invoke_subagent` để xuất phát đồng thời, giảm thiểu độ trễ chờ đợi.
-  * **Phân Tầng Não Bộ Thông Minh (`Smart Model Tiering`)**: Gán model `inherit` (Gemini 3.8 Flash High) cho Logic lõi & Kiểm toán độc lập (`Test Auditors`); model `flash` cho UI, Layout, Boilerplate; model `flash_lite` cho Quét file/Research để tối đa hóa tốc độ sinh mã.
+  * **Bắn Đồng Loạt (`Simultaneous Batch Dispatch`)**: Khi kích hoạt nhiều subagents, gom toàn bộ vào một mảng duy nhất trong `invoke_subagent` để xuất phát đồng thời.
+  * **Phân Tầng Não Bộ Thông Minh (`Smart Model Tiering`)**: Gán model `inherit` (Gemini 3.8 Flash High) cho Logic lõi & Kiểm toán độc lập; model `flash` cho UI, Layout, Boilerplate; model `flash_lite` cho Quét file/Research.
 
 ---
 

@@ -18,20 +18,18 @@ Turn an approved Definition Handoff into an integrated, verifiable release candi
 ## 1. Execution Mode & Topology Routing
 
 Delivery topology adapts strictly to the `execution_mode`:
-- **`FAST` Delivery**: `READ_ONLY / ADVISORY ONLY`. Chỉ áp dụng cho hỏi đáp lý thuyết, review tài liệu, giải thích kiến trúc hoặc sửa chính tả 1 từ trong comment (`Single-Agent Turbo`). Cấm dùng `FAST` để triển khai logic hoặc sửa code ứng dụng một mình.
-- **`STANDARD` Delivery (MẶC ĐỊNH CHO MỌI TÁC VỤ CODE)**: `TEAMWORK_MULTI_AGENT` (Parallel Worker Pods). Bất kể Anh ra lệnh tự nhiên thế nào (không cần gõ nhắc chia agent), hệ thống **100% tự động kích hoạt bầy đa tác tử** qua `invoke_subagent`. Antigravity giữ vai trò Lead Integrator.
-- **`CRITICAL` Delivery**: `TEAMWORK_FULL_POD` (Lead Architect + Parallel Delivery Pods + Adversarial Reviewer + Human Gate). Toàn bộ module trọng yếu phải được thi công song song bởi các tác tử chuyên biệt, thẩm định chéo trước khi Lead Integrator tổng hợp.
+- **`FAST` Delivery (`Solo Turbo Mode — 1 Agent`)**: Áp dụng cho **Size S** (Sửa bug nhanh, chỉnh CSS/Tokens, cập nhật config, sửa 1–2 file cụ thể, hàm logic nhỏ hoặc hỏi đáp/giải thích). Lead Agent trực tiếp xử lý ngay lập tức, phản hồi siêu tốc (5–15 giây) ⚡.
+- **`STANDARD` Delivery (`Lean Squad Mode — 2–3 Agents`)**: Áp dụng cho **Size M** (Tạo component mới, refactor 2–4 files, bổ sung API endpoint). Kích hoạt đội hình tinh gọn 2–3 Subagents song song (1 Pod thi công chính + 1 Pod kiểm chứng/test độc lập).
+- **`CRITICAL` Delivery (`Full Enterprise Fleet — 6–12 Agents`)**: Áp dụng cho **Size L / XL** (Hệ thống lớn, kiến trúc đa tầng, thiết kế UI 153 Brands + Motion 60 FPS, pipeline dữ liệu phức tạp). Bung trọn vẹn hạm đội đa tác tử 6–12 Pods thi công song song.
 
-### 1.1 Autonomous Teamwork Multi-Agent Protocol (Quy chuẩn Đa tác tử Tự Trị Thực thụ)
+### 1.1 Task-Adaptive Dynamic Sizing Protocol (Quy Chuẩn Phân Cấp Quy Mô Thích Ứng)
 When executing:
-1. **Zero-Prompt Autonomous Dispatch**: Product Owner (Anh) **tuyệt đối KHÔNG BAO GIỜ cần gõ thủ công lệnh `/teamwork-preview` hay prompt nhắc chia đa agent**. Khi nhận yêu cầu viết hoặc sửa code, Lead Integrator tự động phân rã và gọi `invoke_subagent` ngay lập tức.
-2. **Cấm Tuyệt Đối Trượt Về Đơn Tác Tử (Zero Single-Agent Fallback Invariant)**:
-   - Nghiêm cấm Lead Integrator tự mình viết toàn bộ code từ đầu đến cuối mà không dispatch subagents song song.
-   - Bắt buộc phân chia `Work Packages (Gói công việc)` thành các ranh giới file/thư mục độc lập (`Isolated Ownership`), triệt tiêu rủi ro tranh chấp ghi mã nguồn (`Race Condition`).
-3. **Mô hình Phân Rã Worker Pods Thích Ứng (`Domain-Adaptive Parallel SWE Pods`)**:
-   - 🚨 **Quy Tắc Sàn Tối Thiểu 6 Subagents Song Song (`Floor Minimum Batch Size >= 6 Invariant`)**:
-     - Khi kích hoạt phân rã thi công mã nguồn, Lead Integrator **bắt buộc khởi tạo sàn tối thiểu 6 subagents đồng thời (`batch size >= 6`)** trong một lệnh gọi `invoke_subagent` duy nhất (`Simultaneous Batch Dispatch`).
-     - Tuyệt đối cấm dispatch tuần tự hoặc cắt giảm dưới 6 workers; đảm bảo tải trọng thi công song song kịch trần (`Hyper-Parallel Concurrency`).
+1. **Quyền Lệnh Tối Cao của Anh (`Explicit Command Override Authority`)**:
+   - Khi Anh ra lệnh: **"Làm nhanh / fix lẹ / solo"** $\to$ Lập tức chuyển sang **Solo Turbo**, giải quyết trực tiếp tại chỗ.
+   - Khi Anh ra lệnh: **"Bung team / 6 agent / full pod / teamwork"** $\to$ Kích hoạt toàn bộ bầy tác tử song song 6–12 subagents.
+   - Khi Anh giao đề bài tự nhiên $\to$ Tự động định lượng độ phức tạp (S/M/L) để chọn số lượng tác tử tối ưu nhất, không làm Anh phải chờ đợi.
+2. **Cơ chế Phân Rã Worker Pods Thích Ứng (`Domain-Adaptive Dynamic Pods`)**:
+   - Khi triển khai tác vụ quy mô lớn (Size L/XL), Lead Integrator kích hoạt đồng thời 6–12 Pods song song trong một lệnh gọi duy nhất (`Simultaneous Batch Dispatch`):
    - 🌐 **Khung 1 — Dự Án Giao Diện / Fullstack Có UI (Tối thiểu 6 Workers song song)**:
      - 🔹 `Worker Pod 1 (Core Logic & Domain Engine)`: Thực thể nghiệp vụ (`Domain Entities`), business rules lõi, thuật toán ứng dụng, controller & logic xử lý trung tâm.
      - 🔹 `Worker Pod 2 (Data Models & Persistence Layer)`: Schemas, ORM/DB queries, migrations, repository layer, cache và quản lý lưu trữ dữ liệu bền vững.

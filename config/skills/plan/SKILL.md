@@ -19,13 +19,12 @@ Before writing the plan, the Engineering Kernel resolves the task into one of th
 
 *Safety Clamp Invariant*: If any critical risk signal is detected, the plan MUST escalate to `CRITICAL`. If uncertain between FAST and STANDARD, default to `STANDARD`.
 
-### 1.1 Multi-Perspective Strategic Board Protocol (Hội Đồng Đa Tác Tử Tự Trị Cho $plan)
-Khi lập kế hoạch cho các bài toán chiến lược, module mới, tối ưu hóa sức mạnh, nâng cấp thuật toán, hoặc luồng dữ liệu (mức `STANDARD` & `CRITICAL`):
-* **Zero-Prompt Autonomous Dispatch**: Anh **tuyệt đối không cần nhắc chia subagent** trong prompt. Tác tử Trưởng tự động 100% kích hoạt bầy tác tử qua `invoke_subagent`.
-* **Cấm Đơn Tác Tử Độc Thoại (`Zero Single-Agent Monologue`)**: Tuyệt đối không để một tác tử duy nhất tự đọc file và tự kết luận kế hoạch theo góc nhìn một chiều (`Tunnel Vision`).
-* **Quy Tắc Sàn Tối Thiểu 6 Subagents Mỗi Đợt (`Minimum Floor: 6 Subagents per Batch Invariant`)**:
-  - Mọi phiên `$plan` bắt buộc kích hoạt đồng loạt tối thiểu **6 Subagents hoạt động song song (`Hyper-Parallel Concurrency`)** trong cùng một lệnh gọi `invoke_subagent` duy nhất, không gọi tuần tự và không cắt giảm số lượng tác tử dưới sàn quy định.
-* **Kích hoạt Hội Đồng Đa Tác Tử Đồng Thời 6 Phân Vai (`Multi-Perspective Pod via invoke_subagent`)**:
+### 1.1 Multi-Perspective Strategic Board Protocol (Quy Chuẩn Hội Đồng Thích Ứng Cho $plan)
+Khi lập kế hoạch:
+* **FAST Plan (Size S)**: Tác tử Trưởng trực tiếp phân tích read-only, lập kế hoạch ngắn gọn (<25 dòng) trong vài giây mà không cần kích hoạt subagent.
+* **STANDARD / CRITICAL Plan (Size M / L / XL)**: Kích hoạt đội ngũ tác tử phân tích chéo thích ứng:
+  - **Size M**: Kích hoạt 2–3 tác tử chuyên biệt (ví dụ: Forensic Investigator + Adversarial Architect).
+  - **Size L / CRITICAL**: Kích hoạt Hội đồng 6 tác tử chuyên môn hóa sâu song song:
   1. 🕵️ **`Subagent 1 — Forensic Investigator`** (Điều tra Hiện trạng & Điểm nghẽn): Quét mã nguồn hiện tại, bóc tách cấu hình, phân tích vết thực thi và tìm ra điểm nghẽn thực tế (`Current Bottlenecks`).
   2. 💡 **`Subagent 2 — Optimization Strategist`** (Chiến lược gia Tối ưu & Khai phóng Sức mạnh): Nghiên cứu các giải pháp kỹ thuật đột phá, đề xuất thuật toán mới nhằm khai phóng tối đa sức mạnh (`Max Potential`).
   3. 🛡️ **`Subagent 3 — Adversarial Architect`** (Kiến trúc sư Đối kháng & Đánh giá Rủi ro): Đóng vai trò phản biện đối kháng, tìm ra các rủi ro tiềm ẩn, bẫy rủi ro (drawdown, overfit, latency, memory leak) và điểm đánh đổi (`Trade-offs`).
