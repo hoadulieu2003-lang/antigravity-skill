@@ -1633,3 +1633,21 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-25 11:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (782 ⭐)]** [lidge-jun/ima2-gen](https://github.com/lidge-jun/ima2-gen)
+  > Local-first visual generation runtime and studio for people and coding agents, with reproducible image and video workflows across multiple providers.
+- **[GitHub (253 ⭐)]** [Innate-Labs/Noobi.ai](https://github.com/Innate-Labs/Noobi.ai)
+  > Local-first desktop agent that turns a prompt into a reviewed, playable browser game with Codex App Server.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [When Should Forecasting Agents Reason? Behavioral Stress Tests for Reliability Routing](https://arxiv.org/abs/2609.28475)
+  > arXiv:2609.28475v1 Announce Type: new Abstract: Forecasting agents increasingly combine language-model reasoning, retrieval, ensembling, and calibration, but...
+- **[ArXiv CS.AI]** [TW3Cast: A Frozen Router of Lightly Fine-Tuned Foundation Models for Time-Series Forecasting on GIFT-Eval, Selected Entirely on the Training Split](https://arxiv.org/abs/2609.28506)
+  > arXiv:2609.28506v1 Announce Type: new Abstract: TW3Cast is a time-series forecasting system that reaches position 3 of 130 entries on the GIFT-Eval benchmark...
+
+</untrusted_external_content>
+
+---
