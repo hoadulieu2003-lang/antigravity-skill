@@ -11,7 +11,7 @@ evidence_files:
 benchmark:
   total_score: 10.0
   rating: RECOMMENDED
-  evaluated_at: '2026-09-25T04:42:10Z'
+  evaluated_at: '2026-09-25T10:42:12Z'
   breakdown:
     structure_metadata: 2.5
     command_safety: 2.5

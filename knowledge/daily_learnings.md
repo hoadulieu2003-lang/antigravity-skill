@@ -1671,3 +1671,19 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-25 17:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (109 ⭐)]** [qkycir-123/dsh-run2skill](https://github.com/qkycir-123/dsh-run2skill)
+  > Automatically turn successful DeepSeek Harness sessions into reusable, reviewable Agent Skills.
+- **[GitHub (54 ⭐)]** [vincemakes/kiso](https://github.com/vincemakes/kiso)
+  > The durable runtime for AI agents: event-sourced sessions, approvals that persist across processes, exact resume after a crash. A 2,200-line TypeScript kerne...
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [BaseCamp --- An Agentic AI Framework for Automating DNA Sequencing Data Pipelines](https://arxiv.org/abs/2609.28557)
+  > arXiv:2609.28557v1 Announce Type: new Abstract: DNA sequencing pipelines, spanning quality control, alignment, variant calling, and annotation, are now relia...
+
+</untrusted_external_content>
+
+---

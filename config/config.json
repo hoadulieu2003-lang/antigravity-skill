@@ -141,7 +141,8 @@
         "read_url(studio.chothongminh.top)",
         "read_url(live.chothongminh.top)",
         "mcp(cdp-bridge/search_code_symbols)",
-        "read_url(share.gemini.google)"
+        "read_url(share.gemini.google)",
+        "mcp(aider-bridge/aider_get_status)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
