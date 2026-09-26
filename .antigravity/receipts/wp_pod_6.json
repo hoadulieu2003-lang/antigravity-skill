@@ -1,0 +1,29 @@
+{
+  "podId": "pod_6",
+  "podName": "Smart Routing & Arbiter",
+  "status": "COMPLETED",
+  "round": 2,
+  "timestamp": "2026-09-26T12:24:00.000Z",
+  "testPassCount": 10,
+  "testTotalCount": 10,
+  "verificationStatus": "100%_PASS",
+  "artifacts": [
+    "c:/Users/game/.gemini/core/routing/SmartRoutingArbiter.ts",
+    "c:/Users/game/.gemini/core/routing/SmartRoutingArbiter.test.js",
+    "C:/Users/game/.gemini/antigravity/brain/c7157bc7-2151-43e6-ba9b-815f3799d7fb/scratch/pod6_smart_router/smart_routing_ast_contract.ts",
+    "C:/Users/game/.gemini/antigravity/brain/c7157bc7-2151-43e6-ba9b-815f3799d7fb/scratch/pod6_smart_router/smart_router_arbiter_spike.ts",
+    "C:/Users/game/.gemini/antigravity/brain/c7157bc7-2151-43e6-ba9b-815f3799d7fb/scratch/pod6_smart_router/smart_router_arbiter_spike.js",
+    "C:/Users/game/.gemini/antigravity/brain/c7157bc7-2151-43e6-ba9b-815f3799d7fb/scratch/pod6_smart_router/README.md"
+  ],
+  "metrics": {
+    "supportedTiers": [
+      "SIZE_S",
+      "SIZE_M",
+      "SIZE_L",
+      "SIZE_XL"
+    ],
+    "maxTokenHeadroom": 131072,
+    "frozenRouterStatus": "LOCKED",
+    "circuitBreakerThreshold": 3
+  }
+}

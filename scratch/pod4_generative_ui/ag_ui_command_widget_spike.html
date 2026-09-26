@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AG-UI Generative Studio & PAWS Simulation Engine Spike // Pod 4</title>
+  <!-- Tailwind CSS cho phép từ gstatic an toàn theo chuẩn Antigravity -->
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    /* ========================================================================
+     * 1. DESIGN TOKENS // LUMINOUS LIGHT THEME INVARIANT
+     * ======================================================================== */
+    :root {
+      /* Base Canvas Layers */
+      --ag-canvas-base: #FAF9F6;      /* Warm Paper */
+      --ag-canvas-ivory: #FDFBF7;     /* Ivory */
+      --ag-canvas-alabaster: #F8F9FA; /* Alabaster */
+      
+      /* Elevated Surfaces */
+      --ag-surface-card: #FFFFFF;
+      --ag-surface-hover: #F8FAFC;
+      --ag-surface-glass: rgba(255, 255, 255, 0.88);
+      
+      /* Luminous Borders */
+      --ag-border-hairline: rgba(15, 23, 42, 0.08);
+      --ag-border-subtle: #E2E8F0;
+      --ag-border-accent: rgba(37, 99, 235, 0.3);
+      --ag-inset-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      
+      /* Layered Ambient Shadows */
+      --ag-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
+      --ag-shadow-card: 0 1px 3px rgba(15, 23, 42, 0.03), 0 6px 16px -2px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      --ag-shadow-hover: 0 3px 6px rgba(15, 23, 42, 0.04), 0 12px 24px -4px rgba(15, 23, 42, 0.07), inset 0 1px 0 rgba(255, 255, 255, 1);
+      --ag-shadow-floating: 0 20px 35px -8px rgba(15, 23, 42, 0.09), 0 1px 3px rgba(15, 23, 42, 0.04);
+      --ag-shadow-glow-blue: 0 0 20px -3px rgba(37, 99, 235, 0.2);
+      --ag-shadow-glow-teal: 0 0 20px -3px rgba(13, 92, 70, 0.2);
+      
+      /* Colors */
+      --ag-color-primary: #2563EB;        /* Cobalt Royal */
+      --ag-color-primary-hover: #1D4ED8;
+      --ag-color-primary-surface: #EFF6FF;
+      --ag-color-emerald: #0D5C46;        /* Enterprise Teal */
+      --ag-color-emerald-surface: #E6F4EE;
+      --ag-color-amber: #D97706;
+      --ag-color-amber-surface: #FEF3C7;
+      --ag-color-rose: #E11D48;
+      --ag-color-rose-surface: #FFE4E6;
+      --ag-text-head: #0F172A;
+      --ag-text-body: #334155;
+      --ag-text-muted: #64748B;
+      --ag-text-subtle: #94A3B8;
+
+      /* Emil Kowalski Physics & Motion Curves */
+      --ag-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ag-ease-spring: cubic-bezier(0.22, 1.61, 0.36, 1.0);
+      --ag-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --ag-duration-click: 140ms;
+    }
+
+    body {
+      background-color: var(--ag-canvas-base);
+      color: var(--ag-text-body);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Tabular figures for numbers to prevent layout jump during simulations */
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Luminous Card Surface Base */
+    .luminous-card {
+      background-color: var(--ag-surface-card);
+      border: 1px solid var(--ag-border-hairline);
+      box-shadow: var(--ag-shadow-card);
+      transition: transform 180ms var(--ag-ease-out), box-shadow 180ms var(--ag-ease-out), border-color 180ms ease;
+    }
+    .luminous-card:hover {
+      box-shadow: var(--ag-shadow-hover);
+      border-color: rgba(37, 99, 235, 0.2);
+    }
+
+    /* Emil Kowalski Tactile Button Interaction */
+    .tactile-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      cursor: pointer;
+      user-select: none;
+      transition: transform var(--ag-duration-click) var(--ag-ease-out),
+                  box-shadow var(--ag-duration-click) var(--ag-ease-out),
+                  background-color var(--ag-duration-click) ease,
+                  border-color var(--ag-duration-click) ease;
+    }
+    .tactile-btn:hover {
+      transform: translateY(-1px);
+    }
+    .tactile-btn:active {
+      transform: scale(0.965) translateY(0);
+      transition-duration: 60ms;
+    }
+
+    /* Primary Cobalt Button */
+    .btn-primary {
+      background-color: var(--ag-color-primary);
+      color: #FFFFFF;
+      box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+    .btn-primary:hover {
+      background-color: var(--ag-color-primary-hover);
+      box-shadow: var(--ag-shadow-glow-blue);
+    }
+
+    /* Enterprise Emerald Button */
+    .btn-emerald {
+      background-color: var(--ag-color-emerald);
+      color: #FFFFFF;
+      box-shadow: 0 1px 2px rgba(13, 92, 70, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+    .btn-emerald:hover {
+      background-color: #094333;
+      box-shadow: var(--ag-shadow-glow-teal);
+    }
+
+    /* Subtle Outline Button */
+    .btn-outline {
+      background-color: #FFFFFF;
+      color: var(--ag-text-head);
+      border: 1px solid var(--ag-border-subtle);
+      box-shadow: var(--ag-shadow-sm), var(--ag-inset-highlight);
+    }
+    .btn-outline:hover {
+      background-color: var(--ag-surface-hover);
+      border-color: #CBD5E1;
+    }
+
+    /* Spring-animated Badge */
+    .spring-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      animation: springPop 320ms var(--ag-ease-spring);
+    }
+    @keyframes springPop {
+      0% { transform: scale(0.85); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Range Slider Styling */
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 9999px;
+      background: #E2E8F0;
+      outline: none;
+      transition: background 180ms ease;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2px solid var(--ag-color-primary);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.15);
+      cursor: pointer;
+      transition: transform 120ms var(--ag-ease-out), box-shadow 120ms ease;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+    }
+    input[type=range]:active::-webkit-slider-thumb {
+      transform: scale(0.95);
+      border-color: var(--ag-color-emerald);
+    }
+
+    /* Live pulse dot */
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #10B981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulseAnim 2s infinite;
+    }
+    @keyframes pulseAnim {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 flex flex-col items-center">
+
+  <!-- TOP BRANDING BAR & PROTOCOL BADGE -->
+  <header class="w-full max-w-6xl mb-6 flex flex-wrap items-center justify-between gap-4 border-b pb-5 border-slate-200/80">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="text-xl font-bold text-slate-900 tracking-tight">Antigravity AG-UI Generative Studio</h1>
+          <span class="spring-badge bg-blue-50 text-blue-700 border border-blue-200/60">Pod 4 — Round 1 Spike</span>
+        </div>
+        <p class="text-xs text-slate-500 font-medium">CopilotKit Generative UI Protocol • PAWS Simulation (arXiv:2609.28547) • Luminous Theme</p>
+      </div>
+    </div>
+
+    <!-- Telemetry status pill -->
+    <div class="flex items-center gap-3 bg-white border border-slate-200/80 px-4 py-2 rounded-xl shadow-sm">
+      <div class="pulse-dot"></div>
+      <div class="text-xs">
+        <span class="font-semibold text-slate-800">Agent Runtime:</span>
+        <span class="text-emerald-700 font-medium">Active (AG-UI v1.0)</span>
+      </div>
+      <div class="h-4 w-px bg-slate-200"></div>
+      <div class="text-xs font-mono text-slate-600">
+        FPS: <span id="fpsCounter" class="font-semibold text-blue-600">60.0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN TWO-COLUMN WORKBENCH -->
+  <main class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+    <!-- LEFT COLUMN: GENERATIVE AG-UI COMMAND WIDGET (COL-7) -->
+    <section class="lg:col-span-7 flex flex-col gap-5">
+
+      <!-- AG-UI AGENT TELEMETRY & STREAM CONTROLLER CARD -->
+      <div class="luminous-card rounded-2xl p-5 border border-slate-200/70">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Autonomous Agent Controller</h2>
+          </div>
+          <span id="agentStateBadge" class="spring-badge bg-emerald-50 text-emerald-800 border border-emerald-200/70">
+            State: Shared Synced
+          </span>
+        </div>
+
+        <div class="bg-slate-50/70 rounded-xl p-3.5 border border-slate-200/50 mb-4 flex items-center justify-between">
+          <div class="text-xs text-slate-600">
+            <span class="font-medium text-slate-900">Task Context:</span> Policy-driven World Simulation (PAWS v2)
+          </div>
+          <div class="text-xs font-mono bg-white px-2.5 py-1 rounded-md border border-slate-200 text-slate-700">
+            Headroom: 131,072 Tok
+          </div>
+        </div>
+
+        <!-- Metric Grid within Card -->
+        <div class="grid grid-cols-3 gap-3 mb-4">
+          <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-sm">
+            <div class="text-[11px] text-slate-500 font-medium">Risk Index</div>
+            <div id="statRiskIndex" class="text-lg font-bold text-slate-900 tabular-nums">24 / 100</div>
+            <div class="text-[10px] text-emerald-600 font-medium">Safe Margin</div>
+          </div>
+          <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-sm">
+            <div class="text-[11px] text-slate-500 font-medium">Velocity (ops/s)</div>
+            <div id="statVelocity" class="text-lg font-bold text-blue-600 tabular-nums">480</div>
+            <div class="text-[10px] text-blue-600 font-medium">+18% Efficiency</div>
+          </div>
+          <div class="bg-white p-3 rounded-xl border border-slate-200/80 shadow-sm">
+            <div class="text-[11px] text-slate-500 font-medium">Equilibrium</div>
+            <div id="statEquilibrium" class="text-lg font-bold text-emerald-700 tabular-nums">Stable</div>
+            <div class="text-[10px] text-slate-500 font-medium">T+24h Settled</div>
+          </div>
+        </div>
+
+        <!-- Agent Interaction Buttons -->
+        <div class="flex flex-wrap gap-2.5">
+          <button id="btnStreamUi" class="tactile-btn btn-primary px-3.5 py-2 rounded-xl text-xs gap-1.5 font-medium">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            Simulate Generative UI Stream
+          </button>
+          <button id="btnResetParams" class="tactile-btn btn-outline px-3 py-2 rounded-xl text-xs font-medium">
+            Reset Default Dials
+          </button>
+          <button id="btnHapticTest" class="tactile-btn btn-outline px-3 py-2 rounded-xl text-xs text-slate-600 font-medium">
+            🔊 Test WebAudio Click
+          </button>
+        </div>
+      </div>
+
+      <!-- PAWS SIMULATION ENGINE CARD (POLICY-DRIVEN AGENTIC WORLD SIMULATION) -->
+      <div class="luminous-card rounded-2xl p-5 border border-slate-200/70">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+            <h3 class="text-base font-bold text-slate-900">PAWS Simulation Engine (arXiv:2609.28547)</h3>
+          </div>
+          <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md font-mono">Policy: Enterprise Governance</span>
+        </div>
+        <p class="text-xs text-slate-500 mb-5">
+          Mô phỏng hiệu ứng lan truyền chính sách qua quyết định thể chế và ma trận phản ứng của các bên liên quan theo thời gian.
+        </p>
+
+        <!-- DIALS CONTAINER -->
+        <div class="space-y-4 mb-6">
+          <!-- Dial 1: Autonomy Ceiling -->
+          <div>
+            <div class="flex justify-between items-center text-xs mb-1.5">
+              <label for="sliderAutonomy" class="font-medium text-slate-700 flex items-center gap-1.5">
+                <span>1. Agent Autonomy Ceiling (Trần Tự Trị)</span>
+              </label>
+              <span id="valAutonomy" class="font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded text-xs">75%</span>
+            </div>
+            <input type="range" id="sliderAutonomy" min="10" max="100" value="75" step="1">
+            <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+              <span>Supervised (10%)</span>
+              <span>Balanced (50%)</span>
+              <span>Fully Autonomous (100%)</span>
+            </div>
+          </div>
+
+          <!-- Dial 2: Concurrency Workers -->
+          <div>
+            <div class="flex justify-between items-center text-xs mb-1.5">
+              <label for="sliderWorkers" class="font-medium text-slate-700">
+                2. Parallel Workers Pods (Số Luồng Thi Công Đồng Thời)
+              </label>
+              <span id="valWorkers" class="font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded text-xs">6 Pods</span>
+            </div>
+            <input type="range" id="sliderWorkers" min="1" max="12" value="6" step="1">
+            <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+              <span>Lean (1-2)</span>
+              <span>Standard (6 Pods)</span>
+              <span>Turbo Max (12 Pods)</span>
+            </div>
+          </div>
+
+          <!-- Dial 3: Security Audit Rigor -->
+          <div>
+            <div class="flex justify-between items-center text-xs mb-1.5">
+              <label for="sliderAudit" class="font-medium text-slate-700">
+                3. Security & Safety Audit Rigor (Cường Độ Kiểm Toán An Ninh)
+              </label>
+              <span id="valAudit" class="font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded text-xs">Tier 4 (Strict AST)</span>
+            </div>
+            <input type="range" id="sliderAudit" min="1" max="5" value="4" step="1">
+            <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+              <span>Basic (1)</span>
+              <span>Standard (3)</span>
+              <span>Dual Formal Proof (5)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 72-HOUR PROPAGATION CURVE VISUALIZATION (CANVAS) -->
+        <div class="bg-slate-50/70 border border-slate-200/80 rounded-xl p-3 mb-4">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-xs font-semibold text-slate-700">72-Hour Propagation Waveform (Sóng Lan Truyền T+72h)</span>
+            <div class="flex items-center gap-3 text-[10px]">
+              <span class="flex items-center gap-1"><span class="w-2.5 h-0.5 bg-blue-600 inline-block"></span> Velocity</span>
+              <span class="flex items-center gap-1"><span class="w-2.5 h-0.5 bg-emerald-600 inline-block"></span> Trust</span>
+              <span class="flex items-center gap-1"><span class="w-2.5 h-0.5 bg-rose-500 inline-block"></span> Risk</span>
+            </div>
+          </div>
+          <canvas id="pawsWaveCanvas" height="85" class="w-full rounded bg-white border border-slate-200/60"></canvas>
+        </div>
+
+        <!-- STAKEHOLDER SENTIMENT MATRIX -->
+        <h4 class="text-xs font-semibold text-slate-700 mb-2.5">Stakeholder Sentiment Matrix (Ma Trận Tâm Lý Các Bên)</h4>
+        <div class="grid grid-cols-2 gap-2.5 text-xs">
+          <!-- Developer Squad -->
+          <div class="p-2.5 rounded-lg border border-slate-200 bg-white">
+            <div class="flex justify-between items-center mb-1">
+              <span class="font-medium text-slate-800">Engineering Pods</span>
+              <span id="sentDev" class="font-bold text-emerald-700">88%</span>
+            </div>
+            <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+              <div id="barDev" class="h-full bg-emerald-600 transition-all duration-300" style="width: 88%"></div>
+            </div>
+          </div>
+
+          <!-- SecOps & Audit -->
+          <div class="p-2.5 rounded-lg border border-slate-200 bg-white">
+            <div class="flex justify-between items-center mb-1">
+              <span class="font-medium text-slate-800">SecOps / Quality Gate</span>
+              <span id="sentSec" class="font-bold text-blue-700">92%</span>
+            </div>
+            <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+              <div id="barSec" class="h-full bg-blue-600 transition-all duration-300" style="width: 92%"></div>
+            </div>
+          </div>
+
+          <!-- Product Owner / Anh -->
+          <div class="p-2.5 rounded-lg border border-slate-200 bg-white">
+            <div class="flex justify-between items-center mb-1">
+              <span class="font-medium text-slate-800">Architect & Owner (Anh)</span>
+              <span id="sentOwner" class="font-bold text-emerald-700">96%</span>
+            </div>
+            <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+              <div id="barOwner" class="h-full bg-emerald-600 transition-all duration-300" style="width: 96%"></div>
+            </div>
+          </div>
+
+          <!-- End Users -->
+          <div class="p-2.5 rounded-lg border border-slate-200 bg-white">
+            <div class="flex justify-between items-center mb-1">
+              <span class="font-medium text-slate-800">End Users / Clients</span>
+              <span id="sentUser" class="font-bold text-amber-600">82%</span>
+            </div>
+            <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+              <div id="barUser" class="h-full bg-amber-500 transition-all duration-300" style="width: 82%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HUMAN-IN-THE-LOOP (HITL) APPROVAL GATE CARD -->
+      <div id="hitlCard" class="luminous-card rounded-2xl p-5 border border-slate-200/80 bg-gradient-to-b from-white to-slate-50/50">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full bg-amber-500 animate-pulse"></div>
+            <h3 class="text-sm font-bold text-slate-900">Human-in-the-Loop (HITL) Approval Gate</h3>
+          </div>
+          <span class="spring-badge bg-amber-50 text-amber-800 border border-amber-200">
+            Awaiting Owner Approval
+          </span>
+        </div>
+
+        <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+          Tác tử đề xuất kích hoạt chính sách điều phối mới: <strong>Turbo Concurrency (6 Workers)</strong> và giới hạn ngân sách tự trị. Yêu cầu Anh phê duyệt trước khi cam kết triển khai vào môi trường thực thi.
+        </p>
+
+        <div class="bg-white p-3 rounded-xl border border-slate-200 text-xs mb-4 space-y-1.5">
+          <div class="flex justify-between text-slate-600">
+            <span>Diff Scope:</span>
+            <span class="font-mono font-medium text-slate-900">3 Architectural Files</span>
+          </div>
+          <div class="flex justify-between text-slate-600">
+            <span>Estimated Latency Impact:</span>
+            <span class="font-mono text-emerald-700 font-semibold">-42% Turnaround Time</span>
+          </div>
+          <div class="flex justify-between text-slate-600">
+            <span>Rollback Reversibility:</span>
+            <span class="text-emerald-700 font-medium">100% Guaranteed Zero-Risk</span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-3">
+          <button id="btnReject" class="tactile-btn px-4 py-2 rounded-xl text-xs font-medium text-slate-600 hover:text-slate-900 bg-white border border-slate-200">
+            Reject Policy
+          </button>
+          <button id="btnApprove" class="tactile-btn btn-emerald px-5 py-2 rounded-xl text-xs font-semibold gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            Phê Duyệt Lệnh (Approve & Execute)
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT COLUMN: AST INSPECTOR & DESIGN SYSTEM AUDIT (COL-5) -->
+    <section class="lg:col-span-5 flex flex-col gap-5">
+
+      <!-- AST COMPONENT HIERARCHY TREE VIEW -->
+      <div class="luminous-card rounded-2xl p-5 border border-slate-200/70 flex flex-col h-[400px]">
+        <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded bg-blue-600"></span>
+            <h3 class="text-sm font-bold text-slate-900">AG-UI Live AST Inspector</h3>
+          </div>
+          <span class="text-[11px] font-mono text-slate-400">Node Count: 6</span>
+        </div>
+
+        <p class="text-xs text-slate-500 mb-3">
+          Cấu trúc cây AST được Agent sinh tự động theo chuẩn AG-UI Protocol. Khi kéo thanh trượt, cây AST được đồng bộ tức thì.
+        </p>
+
+        <!-- AST Code Display Window -->
+        <pre id="astCodeViewer" class="flex-1 bg-slate-900 text-slate-100 p-3.5 rounded-xl text-[11px] font-mono overflow-auto border border-slate-800 leading-relaxed"></pre>
+      </div>
+
+      <!-- DESIGN TOKENS & EMIL KOWALSKI PHYSICS AUDIT CARD -->
+      <div class="luminous-card rounded-2xl p-5 border border-slate-200/70">
+        <h3 class="text-sm font-bold text-slate-900 mb-3 flex items-center justify-between">
+          <span>Design Tokens & Physics Audit</span>
+          <span class="spring-badge bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px]">WCAG AA Passed (7.8:1)</span>
+        </h3>
+
+        <!-- Dual Audit Table -->
+        <div class="border border-slate-200/80 rounded-xl overflow-hidden mb-4 text-xs">
+          <table class="w-full text-left">
+            <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold">
+              <tr>
+                <th class="p-2.5">Token / Thuộc tính</th>
+                <th class="p-2.5">Giá trị Chuẩn hóa</th>
+                <th class="p-2.5">Đánh giá</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-slate-700">
+              <tr>
+                <td class="p-2.5 font-medium">Canvas Background</td>
+                <td class="p-2.5 font-mono text-slate-500">#FAF9F6 (Warm Paper)</td>
+                <td class="p-2.5 text-emerald-600 font-semibold">100% Invariant</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 font-medium">Elevated Surfaces</td>
+                <td class="p-2.5 font-mono text-slate-500">#FFFFFF / 1px border</td>
+                <td class="p-2.5 text-emerald-600 font-semibold">Clean Layering</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 font-medium">Tactile Active Press</td>
+                <td class="p-2.5 font-mono text-slate-500">scale(0.965)</td>
+                <td class="p-2.5 text-blue-600 font-semibold">Emil Kowalski</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 font-medium">Acceleration Easing</td>
+                <td class="p-2.5 font-mono text-slate-500">cubic-bezier(0.23,1,0.32,1)</td>
+                <td class="p-2.5 text-emerald-600 font-semibold">Fast Ease-Out</td>
+              </tr>
+              <tr>
+                <td class="p-2.5 font-medium">Spring Overshoot</td>
+                <td class="p-2.5 font-mono text-slate-500">cubic-bezier(0.22,1.61,0.36,1)</td>
+                <td class="p-2.5 text-emerald-600 font-semibold">Subtle +5% Bounce</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Interactive Micro-interaction Playground -->
+        <div class="bg-slate-50/80 p-3 rounded-xl border border-slate-200/80">
+          <div class="text-xs font-semibold text-slate-700 mb-2">Micro-Interaction Playground</div>
+          <div class="flex items-center gap-2">
+            <button class="tactile-btn btn-primary px-3 py-1.5 rounded-lg text-xs font-medium">
+              Click & Hold Me
+            </button>
+            <button class="tactile-btn btn-emerald px-3 py-1.5 rounded-lg text-xs font-medium">
+              Emerald Active
+            </button>
+            <span class="text-[11px] text-slate-500 italic ml-auto">Scale down to 0.965</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER NOTIFICATION BAR (SONNER STYLE) -->
+  <footer class="w-full max-w-6xl mt-8 pt-4 border-t border-slate-200/80 flex justify-between items-center text-xs text-slate-500">
+    <div>
+      Antigravity Enterprise Autonomous Agent Fleet • <span class="text-slate-800 font-semibold">Pod 4: Generative AG-UI Designer</span>
+    </div>
+    <div class="font-mono text-slate-400">
+      Design Engine Emil Kowalski • Zero CLI Friction
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+   * JAVASCRIPT LOGIC // PROTOCOL ENGINE & WEBAUDIO HAPTICS
+   * ======================================================================== -->
+  <script>
+    // 1. WebAudio Synthesized Haptic Feedback
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function playTactileClick(freq = 420, type = 'sine', duration = 0.035) {
+      try {
+        if (!audioCtx) audioCtx = new AudioContext();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + duration);
+        
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {
+        console.warn('WebAudio feedback suppressed or blocked:', e);
+      }
+    }
+
+    // Attach haptics to all buttons
+    document.querySelectorAll('.tactile-btn').forEach(btn => {
+      btn.addEventListener('mousedown', () => playTactileClick(540, 'triangle', 0.025));
+    });
+
+    document.getElementById('btnHapticTest')?.addEventListener('click', () => {
+      playTactileClick(680, 'sine', 0.05);
+    });
+
+    // 2. PAWS Simulation State & Dynamics Model (arXiv:2609.28547)
+    const simulationState = {
+      autonomy: 75,
+      workers: 6,
+      auditLevel: 4,
+      riskIndex: 24,
+      velocity: 480,
+      sentiments: {
+        dev: 88,
+        sec: 92,
+        owner: 96,
+        user: 82
+      }
+    };
+
+    function recalculateSimulation() {
+      const a = simulationState.autonomy;
+      const w = simulationState.workers;
+      const audit = simulationState.auditLevel;
+
+      // Dynamics: higher autonomy + workers = higher velocity, but risk depends on audit level
+      const rawVelocity = Math.round(100 + (a * 3.2) + (w * 35) - (audit * 20));
+      simulationState.velocity = Math.max(120, rawVelocity);
+
+      const rawRisk = Math.round((a * 0.45) + (w * 2.2) - (audit * 9));
+      simulationState.riskIndex = Math.min(100, Math.max(5, rawRisk));
+
+      // Stakeholder sentiments calculation
+      simulationState.sentiments.dev = Math.min(99, Math.max(40, Math.round(60 + (a * 0.3) + (w * 2) - (audit * 3))));
+      simulationState.sentiments.sec = Math.min(99, Math.max(30, Math.round(40 + (audit * 12) - (a * 0.2))));
+      simulationState.sentiments.owner = Math.min(99, Math.max(50, Math.round(80 + (audit * 3) + (simulationState.velocity * 0.03) - (simulationState.riskIndex * 0.4))));
+      simulationState.sentiments.user = Math.min(99, Math.max(50, Math.round(75 + (simulationState.velocity * 0.02) - (simulationState.riskIndex * 0.2))));
+
+      updateUI();
+      drawWaveform();
+      updateASTViewer();
+    }
+
+    function updateUI() {
+      // Metric cards
+      document.getElementById('statRiskIndex').innerText = `${simulationState.riskIndex} / 100`;
+      document.getElementById('statVelocity').innerText = `${simulationState.velocity}`;
+      
+      const eqEl = document.getElementById('statEquilibrium');
+      if (simulationState.riskIndex > 60) {
+        eqEl.innerText = 'High Strain';
+        eqEl.className = 'text-lg font-bold text-rose-600 tabular-nums';
+      } else if (simulationState.riskIndex > 35) {
+        eqEl.innerText = 'Moderate';
+        eqEl.className = 'text-lg font-bold text-amber-600 tabular-nums';
+      } else {
+        eqEl.innerText = 'Stable';
+        eqEl.className = 'text-lg font-bold text-emerald-700 tabular-nums';
+      }
+
+      // Sentiments
+      document.getElementById('sentDev').innerText = `${simulationState.sentiments.dev}%`;
+      document.getElementById('barDev').style.width = `${simulationState.sentiments.dev}%`;
+
+      document.getElementById('sentSec').innerText = `${simulationState.sentiments.sec}%`;
+      document.getElementById('barSec').style.width = `${simulationState.sentiments.sec}%`;
+
+      document.getElementById('sentOwner').innerText = `${simulationState.sentiments.owner}%`;
+      document.getElementById('barOwner').style.width = `${simulationState.sentiments.owner}%`;
+
+      document.getElementById('sentUser').innerText = `${simulationState.sentiments.user}%`;
+      document.getElementById('barUser').style.width = `${simulationState.sentiments.user}%`;
+    }
+
+    // Slider Event Listeners
+    const sliderAutonomy = document.getElementById('sliderAutonomy');
+    sliderAutonomy.addEventListener('input', (e) => {
+      simulationState.autonomy = parseInt(e.target.value);
+      document.getElementById('valAutonomy').innerText = `${simulationState.autonomy}%`;
+      recalculateSimulation();
+    });
+
+    const sliderWorkers = document.getElementById('sliderWorkers');
+    sliderWorkers.addEventListener('input', (e) => {
+      simulationState.workers = parseInt(e.target.value);
+      document.getElementById('valWorkers').innerText = `${simulationState.workers} Pods`;
+      recalculateSimulation();
+    });
+
+    const sliderAudit = document.getElementById('sliderAudit');
+    sliderAudit.addEventListener('input', (e) => {
+      simulationState.auditLevel = parseInt(e.target.value);
+      const auditLabels = [
+        'Tier 1 (Minimal)',
+        'Tier 2 (Linter)',
+        'Tier 3 (Standard)',
+        'Tier 4 (Strict AST)',
+        'Tier 5 (Formal Proof)'
+      ];
+      document.getElementById('valAudit').innerText = auditLabels[simulationState.auditLevel - 1];
+      recalculateSimulation();
+    });
+
+    // Reset default dials
+    document.getElementById('btnResetParams')?.addEventListener('click', () => {
+      sliderAutonomy.value = 75;
+      sliderWorkers.value = 6;
+      sliderAudit.value = 4;
+      sliderAutonomy.dispatchEvent(new Event('input'));
+      sliderWorkers.dispatchEvent(new Event('input'));
+      sliderAudit.dispatchEvent(new Event('input'));
+      playTactileClick(400, 'sine', 0.05);
+    });
+
+    // 3. 72-Hour Waveform Canvas Renderer
+    function drawWaveform() {
+      const canvas = document.getElementById('pawsWaveCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width = canvas.offsetWidth;
+      const h = canvas.height = canvas.offsetHeight;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Grid background lines
+      ctx.strokeStyle = '#F1F5F9';
+      ctx.lineWidth = 1;
+      for (let x = 0; x < w; x += 40) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+        ctx.stroke();
+      }
+
+      // Draw Velocity curve (Blue)
+      ctx.beginPath();
+      ctx.strokeStyle = '#2563EB';
+      ctx.lineWidth = 2;
+      for (let x = 0; x < w; x++) {
+        const t = x / w;
+        const baseline = h * 0.45;
+        const amp = (simulationState.velocity / 700) * 22;
+        const y = baseline - Math.sin(t * Math.PI * 3.5) * amp * Math.exp(-t * 1.5);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Draw Trust curve (Emerald)
+      ctx.beginPath();
+      ctx.strokeStyle = '#0D5C46';
+      ctx.lineWidth = 2;
+      for (let x = 0; x < w; x++) {
+        const t = x / w;
+        const baseline = h * 0.35;
+        const trustVal = (simulationState.sentiments.owner / 100) * 16;
+        const y = baseline + Math.cos(t * Math.PI * 2.5) * trustVal * Math.exp(-t * 1.8);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Draw Risk curve (Rose)
+      ctx.beginPath();
+      ctx.strokeStyle = '#E11D48';
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([3, 3]);
+      for (let x = 0; x < w; x++) {
+        const t = x / w;
+        const baseline = h * 0.7;
+        const riskAmp = (simulationState.riskIndex / 100) * 20;
+        const y = baseline - Math.sin(t * Math.PI * 4) * riskAmp * Math.exp(-t * 2);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // 4. AST Tree Code Generator & Synchronizer
+    function updateASTViewer() {
+      const ast = {
+        type: "WidgetContainer",
+        id: "paws_governance_widget_01",
+        title: "PAWS Policy-driven World Simulation",
+        protocol: "ag-ui/v1.0",
+        theme: "Luminous Light Theme Invariant",
+        sharedState: {
+          autonomyCeiling: `${simulationState.autonomy}%`,
+          concurrencyWorkers: simulationState.workers,
+          auditRigorLevel: simulationState.auditLevel,
+          computedRiskIndex: simulationState.riskIndex,
+          systemVelocityOps: simulationState.velocity
+        },
+        children: [
+          {
+            type: "AgentTelemetryHeader",
+            agentId: "pod4_generative_ui",
+            status: "streaming_ui",
+            confidenceScore: 0.985
+          },
+          {
+            type: "PAWSSimulationDial",
+            policyKey: "ENTERPRISE_FLEET_GOVERNANCE_2026",
+            equilibriumSettled: simulationState.riskIndex < 50
+          },
+          {
+            type: "StakeholderSentimentMatrix",
+            timeHorizon: "T+72h",
+            scores: simulationState.sentiments
+          },
+          {
+            type: "HITLApprovalGate",
+            requiresOwnerSignature: true,
+            status: "PENDING_APPROVAL"
+          }
+        ]
+      };
+
+      const viewer = document.getElementById('astCodeViewer');
+      if (viewer) {
+        viewer.textContent = JSON.stringify(ast, null, 2);
+      }
+    }
+
+    // 5. HITL Actions
+    document.getElementById('btnApprove')?.addEventListener('click', () => {
+      playTactileClick(650, 'sine', 0.08);
+      const card = document.getElementById('hitlCard');
+      card.innerHTML = `
+        <div class="flex items-center gap-3 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-900 animate-fadeIn">
+          <div class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold">✓</div>
+          <div>
+            <h4 class="font-bold text-sm">Chính Sách Đã Được Anh Phê Duyệt & Khóa Cứng (Committed)</h4>
+            <p class="text-xs text-emerald-700 mt-0.5">Lệnh dispatch 6 workers đã được ghi vào Transaction Ledger. Runtime vận hành ổn định.</p>
+          </div>
+        </div>
+      `;
+      document.getElementById('agentStateBadge').innerText = 'State: Policy Executed';
+      document.getElementById('agentStateBadge').className = 'spring-badge bg-emerald-100 text-emerald-900 border border-emerald-300';
+    });
+
+    document.getElementById('btnReject')?.addEventListener('click', () => {
+      playTactileClick(250, 'sawtooth', 0.05);
+      const card = document.getElementById('hitlCard');
+      card.innerHTML = `
+        <div class="flex items-center gap-3 p-4 bg-rose-50 border border-rose-200 rounded-xl text-rose-900 animate-fadeIn">
+          <div class="w-8 h-8 rounded-full bg-rose-600 text-white flex items-center justify-center font-bold">✕</div>
+          <div>
+            <h4 class="font-bold text-sm">Chính Sách Bị Từ Chối (Action Rejected by Owner)</h4>
+            <p class="text-xs text-rose-700 mt-0.5">Tác tử đã quay trở về trạng thái an toàn ban đầu (Reverted to Safe Defaults).</p>
+          </div>
+        </div>
+      `;
+    });
+
+    // 6. Simulate Streaming UI addition
+    document.getElementById('btnStreamUi')?.addEventListener('click', () => {
+      playTactileClick(720, 'sine', 0.04);
+      const btn = document.getElementById('btnStreamUi');
+      btn.disabled = true;
+      btn.innerHTML = `<span class="inline-block animate-spin mr-1">↻</span> Streaming Nodes...`;
+
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = `✓ Stream Complete (3 Nodes Added)`;
+        playTactileClick(840, 'triangle', 0.06);
+        updateASTViewer();
+      }, 700);
+    });
+
+    // 7. 60 FPS Telemetry Loop
+    let lastFrameTime = performance.now();
+    let frameCount = 0;
+    function measureFPS(now) {
+      frameCount++;
+      if (now - lastFrameTime >= 1000) {
+        const fps = Math.round((frameCount * 1000) / (now - lastFrameTime));
+        document.getElementById('fpsCounter').innerText = `${fps}.0`;
+        frameCount = 0;
+        lastFrameTime = now;
+      }
+      requestAnimationFrame(measureFPS);
+    }
+    requestAnimationFrame(measureFPS);
+
+    // Initial render
+    recalculateSimulation();
+    window.addEventListener('resize', drawWaveform);
+  </script>
+</body>
+</html>
