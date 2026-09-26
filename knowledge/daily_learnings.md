@@ -1723,3 +1723,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-26 23:15:32`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (68 ⭐)]** [daha1216/dsh-adult-tension](https://github.com/daha1216/dsh-adult-tension)
+  > DeepSeek 自带破甲 18+ 互动叙事：活人感 NPC（自主决策/拒绝迎合）、52 个世界与上千素材、开局随心定制、世界自行运转、全维 YAML 存档。
+- **[GitHub (5164 ⭐)]** [FailproofAI/failproofai](https://github.com/FailproofAI/failproofai)
+  > Observability and enforcement for AI agent harnesses. Capture every run and runtime reliability with policy enforcement.
+
+</untrusted_external_content>
+
+---
