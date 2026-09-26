@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-26T04:42:12.369809+00:00",
+  "skill_name": "auto-empirical-research-skills",
+  "source_repo": "brycewang-stanford/Auto-Empirical-Research-Skills",
+  "stars": 4377,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\auto-empirical-research-skills\\SKILL.md",
+  "human_promotion_required": true
+}
