@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-26T01:42:10.135289+00:00",
+  "skill_name": "deepseek-reasonix",
+  "source_repo": "esengine/DeepSeek-Reasonix",
+  "stars": 35710,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\deepseek-reasonix\\SKILL.md",
+  "human_promotion_required": true
+}
