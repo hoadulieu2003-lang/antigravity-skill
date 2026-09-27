@@ -1745,3 +1745,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-27 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (67 ⭐)]** [shubzkothekar/antigravity-acp](https://github.com/shubzkothekar/antigravity-acp)
+  > An Agent Client Protocol (ACP) server for Google Antigravity's `agy` CLI, built on Bun. Connects ACP-compatible editors to drive `agy` with live streaming an...
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [Edge0/Audio8-ASR-Infinite](https://huggingface.co/Edge0/Audio8-ASR-Infinite)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
