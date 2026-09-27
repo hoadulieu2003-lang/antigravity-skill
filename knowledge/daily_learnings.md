@@ -1783,3 +1783,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-28 05:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (147 ⭐)]** [kaishi00/hermes-conduit](https://github.com/kaishi00/hermes-conduit)
+  > Conduit — native SwiftUI iOS client for Hermes Agent
+- **[GitHub (283 ⭐)]** [MichaelKinsy/PiG](https://github.com/MichaelKinsy/PiG)
+  > PiG (Pi in Go) is a faithful Go port of upstream Pi, the TypeScript codebase behind the Pi coding agent. It is a parity-bound translation, not a rewrite: ups...
+
+</untrusted_external_content>
+
+---
