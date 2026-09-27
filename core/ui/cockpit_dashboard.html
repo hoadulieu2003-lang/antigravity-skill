@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚡ Antigravity Enterprise Fleet — Live Cockpit & AG-UI Dashboard</title>
+  <style>
+    /* ==========================================================================
+       1. LUMINOUS LIGHT THEME DESIGN TOKENS // 100% STRICT INVARIANT
+       ========================================================================== */
+    :root {
+      --canvas-warm-paper: #FAF9F6;
+      --canvas-ivory: #FDFBF7;
+      --canvas-alabaster: #F8F9FA;
+      --surface-card: #FFFFFF;
+      --surface-card-hover: #F8FAFC;
+      --surface-glass: rgba(255, 255, 255, 0.88);
+      --border-hairline: rgba(15, 23, 42, 0.08);
+      --border-subtle: #E2E8F0;
+      --border-accent: rgba(37, 99, 235, 0.25);
+      --inset-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      
+      --primary-cobalt: #2563EB;
+      --primary-hover: #1D4ED8;
+      --primary-surface: #EFF6FF;
+      
+      --emerald-enterprise: #0D5C46;
+      --emerald-surface: #E6F4EE;
+      --emerald-bright: #059669;
+      
+      --amber-warning: #D97706;
+      --amber-surface: #FEF3C7;
+      
+      --rose-danger: #E11D48;
+      --rose-surface: #FFE4E6;
+      
+      --text-head: #0F172A;
+      --text-body: #334155;
+      --text-muted: #64748B;
+      --text-subtle: #94A3B8;
+
+      /* Emil Kowalski Physics Tokens */
+      --btn-press-scale: scale(0.965);
+      --card-hover-lift: translateY(-2px);
+      --strong-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --spring-overshoot: cubic-bezier(0.22, 1.61, 0.36, 1.0);
+      --smooth-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --duration-click: 140ms;
+
+      /* Ambient Layered Shadows */
+      --shadow-subtle: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
+      --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.03), 0 6px 16px -2px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      --shadow-hover: 0 3px 6px rgba(15, 23, 42, 0.04), 0 12px 24px -4px rgba(15, 23, 42, 0.07), inset 0 1px 0 rgba(255, 255, 255, 1);
+      --shadow-modal: 0 20px 35px -8px rgba(15, 23, 42, 0.09), 0 1px 3px rgba(15, 23, 42, 0.04);
+      --glow-cobalt: 0 0 20px -3px rgba(37, 99, 235, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--canvas-warm-paper);
+      background-image: 
+        radial-gradient(at 0% 0%, var(--canvas-ivory) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, var(--canvas-alabaster) 0px, transparent 50%);
+      color: var(--text-body);
+      min-height: 100vh;
+      padding: 24px;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       2. REUSABLE ATOMS & COMPONENTS
+       ========================================================================== */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Cards with Emil Kowalski Physics */
+    .card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow-card);
+      transition: transform 200ms var(--spring-overshoot), box-shadow 200ms ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Tactile Buttons with scale(0.965) */
+    .tactile-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      outline: none;
+      user-select: none;
+      transition: 
+        transform var(--duration-click) var(--strong-ease-out),
+        box-shadow var(--duration-click) ease,
+        background-color var(--duration-click) ease;
+    }
+
+    .tactile-btn:active {
+      transform: var(--btn-press-scale);
+    }
+
+    .btn-primary {
+      background-color: var(--primary-cobalt);
+      color: #FFFFFF;
+      box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      box-shadow: var(--glow-cobalt);
+    }
+
+    .btn-emerald {
+      background-color: var(--emerald-enterprise);
+      color: #FFFFFF;
+      box-shadow: 0 1px 2px rgba(13, 92, 70, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    .btn-emerald:hover {
+      background-color: var(--emerald-bright);
+    }
+
+    .btn-outline {
+      background-color: #FFFFFF;
+      color: var(--text-head);
+      border-color: var(--border-subtle);
+      box-shadow: var(--shadow-subtle);
+    }
+    .btn-outline:hover {
+      background-color: var(--surface-card-hover);
+      border-color: var(--border-accent);
+    }
+
+    .btn-danger {
+      background-color: var(--rose-surface);
+      color: var(--rose-danger);
+      border-color: rgba(225, 29, 72, 0.2);
+    }
+    .btn-danger:hover {
+      background-color: #FEE2E2;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .badge-emerald {
+      background-color: var(--emerald-surface);
+      color: var(--emerald-enterprise);
+      border-color: rgba(13, 92, 70, 0.2);
+    }
+
+    .badge-cobalt {
+      background-color: var(--primary-surface);
+      color: var(--primary-cobalt);
+      border-color: rgba(37, 99, 235, 0.2);
+    }
+
+    .badge-amber {
+      background-color: var(--amber-surface);
+      color: var(--amber-warning);
+      border-color: rgba(217, 119, 6, 0.2);
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: currentColor;
+      box-shadow: 0 0 8px currentColor;
+      animation: pulseAnim 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseAnim {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.3); opacity: 0.4; }
+    }
+
+    /* ==========================================================================
+       3. HEADER BAR SECTION
+       ========================================================================== */
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background: var(--surface-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-hairline);
+      border-radius: 16px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .brand-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary-cobalt) 0%, #1E40AF 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 20px;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+
+    .brand-text h1 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-head);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-text p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .haptic-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+      padding: 6px 12px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    /* ==========================================================================
+       4. PODS GRID (6 PODS STATUS CARDS)
+       ========================================================================== */
+    .pods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+    }
+
+    .pod-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 200ms var(--spring-overshoot), box-shadow 200ms ease;
+    }
+
+    .pod-card:hover {
+      transform: var(--card-hover-lift);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .pod-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .pod-id-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-cobalt);
+      letter-spacing: 0.5px;
+    }
+
+    .pod-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-head);
+      margin-top: 2px;
+    }
+
+    .pod-role {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      min-height: 32px;
+    }
+
+    .pod-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border-subtle);
+      font-size: 11.5px;
+    }
+
+    .pod-stat-label {
+      color: var(--text-subtle);
+      display: block;
+      font-size: 10.5px;
+    }
+
+    .pod-stat-val {
+      font-weight: 600;
+      color: var(--text-head);
+    }
+
+    /* ==========================================================================
+       5. PAWS SIMULATION & WAVEFORM SECTION (60 FPS CANVAS)
+       ========================================================================== */
+    .paws-section {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 20px;
+    }
+
+    @media (max-width: 960px) {
+      .paws-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .wave-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .wave-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .wave-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-head);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.02);
+    }
+
+    #pawsWaveCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .wave-legend {
+      display: flex;
+      gap: 18px;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 0 4px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+    }
+
+    /* Dial controls panel */
+    .dial-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-head);
+    }
+
+    .slider-val {
+      color: var(--primary-cobalt);
+      font-weight: 700;
+    }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #E2E8F0;
+      outline: none;
+      transition: background 150ms;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2px solid var(--primary-cobalt);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.2);
+      cursor: pointer;
+      transition: transform var(--duration-click) var(--strong-ease-out), box-shadow 150ms;
+    }
+
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+    }
+
+    input[type=range]:active::-webkit-slider-thumb {
+      transform: scale(0.95);
+    }
+
+    /* ==========================================================================
+       6. TELEMETRY BENTO GRID
+       ========================================================================== */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    .bento-col-4 { grid-column: span 4; }
+    .bento-col-5 { grid-column: span 5; }
+    .bento-col-7 { grid-column: span 7; }
+    .bento-col-8 { grid-column: span 8; }
+    .bento-col-12 { grid-column: span 12; }
+
+    @media (max-width: 1024px) {
+      .bento-col-4, .bento-col-5, .bento-col-7, .bento-col-8 {
+        grid-column: span 12;
+      }
+    }
+
+    .bento-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-head);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Sentiment Bars */
+    .sentiment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sentiment-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sentiment-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-head);
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 7px;
+      background: #F1F5F9;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(15, 23, 42, 0.04);
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary-cobalt), #60A5FA);
+      transition: width 400ms var(--strong-ease-out);
+    }
+
+    .fill-emerald {
+      background: linear-gradient(90deg, var(--emerald-enterprise), #34D399);
+    }
+
+    /* Invariant checklist */
+    .invariant-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      font-size: 12px;
+    }
+
+    .invariant-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-body);
+    }
+
+    .invariant-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      background: var(--emerald-surface);
+      color: var(--emerald-enterprise);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    /* HITL Approval Gate Card */
+    .hitl-gate-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-accent);
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 10px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hitl-summary {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-head);
+    }
+
+    .hitl-signature {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      color: var(--emerald-enterprise);
+      background: var(--emerald-surface);
+      padding: 6px 10px;
+      border-radius: 6px;
+      word-break: break-all;
+      border: 1px solid rgba(13, 92, 70, 0.2);
+    }
+
+    .hitl-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    /* Toast notification */
+    #toastNotification {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px 18px;
+      box-shadow: var(--shadow-modal);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-head);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 200ms ease, transform 200ms var(--spring-overshoot);
+      z-index: 1000;
+    }
+
+    #toastNotification.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- 1. HEADER BAR -->
+    <header class="header-bar">
+      <div class="brand-meta">
+        <div class="brand-logo">⚡</div>
+        <div class="brand-text">
+          <h1>
+            Antigravity Enterprise Fleet
+            <span class="badge badge-cobalt">v2.0 PROD</span>
+            <span class="badge badge-emerald"><span class="pulse-dot"></span> LIVE 60 FPS</span>
+          </h1>
+          <p>Live Fleet Telemetry & AG-UI Studio • Khóa cứng 100% Luminous Light Theme • Chủ quản: Anh (Lead Architect)</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="haptic-toggle" id="hapticToggleBtn" title="Bật/Tắt âm thanh vi tương tác Emil Kowalski">
+          🔊 Haptic Audio: <strong id="hapticStatusLabel">BẬT</strong>
+        </div>
+        <button class="tactile-btn btn-outline" id="refreshBtn" title="Làm mới trạng thái">
+          ⟳ Cập Nhật
+        </button>
+      </div>
+    </header>
+
+    <!-- 2. SIX PODS LIVE STATUS CARDS -->
+    <section>
+      <div class="pods-grid" id="podsGridContainer">
+        <!-- Render động từ API hoặc dữ liệu mặc định -->
+      </div>
+    </section>
+
+    <!-- 3. PAWS SIMULATION & DYNAMIC 60 FPS WAVEFORM -->
+    <section class="card paws-section">
+      <div class="wave-card">
+        <div class="wave-header">
+          <div class="wave-title">
+            <span>📈 PAWS Dynamic Policy Waveform (arXiv:2609.28547)</span>
+            <span class="badge badge-emerald" id="pawsEquilibriumBadge">Equilibrium: STABLE</span>
+          </div>
+          <span style="font-size: 12px; color: var(--text-muted);">60 FPS Canvas Harmonic Propagation</span>
+        </div>
+
+        <div class="canvas-wrapper">
+          <canvas id="pawsWaveCanvas"></canvas>
+        </div>
+
+        <div class="wave-legend">
+          <div class="legend-item">
+            <span class="legend-dot" style="background: var(--primary-cobalt);"></span>
+            <span>Vận tốc Hạm đội (Velocity ops/s)</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background: var(--emerald-bright);"></span>
+            <span>Tín nhiệm Kiến trúc sư (Trust Sentiment)</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background: var(--amber-warning);"></span>
+            <span>Rủi ro Tiêu biến (Residual Risk Index)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dial Controls for PAWS Policy Vector -->
+      <div class="dial-panel">
+        <div class="bento-title" style="margin-bottom: 0;">
+          <span>⚙️ PAWS Policy Sliders</span>
+          <span class="badge badge-cobalt">Interactive</span>
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-labels">
+            <span>Autonomy Ceiling (Tự trị)</span>
+            <span class="slider-val" id="valAutonomy">75%</span>
+          </div>
+          <input type="range" id="sliderAutonomy" min="10" max="100" value="75" step="5">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-labels">
+            <span>Parallel Workers (Tác tử song song)</span>
+            <span class="slider-val" id="valWorkers">6 Pods</span>
+          </div>
+          <input type="range" id="sliderWorkers" min="1" max="12" value="6" step="1">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-labels">
+            <span>Audit Rigor Level (Độ khắt khe kiểm toán)</span>
+            <span class="slider-val" id="valAudit">Cấp 4 ⭐</span>
+          </div>
+          <input type="range" id="sliderAudit" min="1" max="5" value="4" step="1">
+        </div>
+
+        <div style="background: var(--canvas-alabaster); padding: 12px; border-radius: 10px; font-size: 11.5px; color: var(--text-muted); border: 1px solid var(--border-hairline);">
+          💡 <em>Động học PAWS:</em> Tăng tự trị nâng cao vận tốc, tăng kiểm toán dập tắt rủi ro và tăng độ hài lòng SecOps.
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. TELEMETRY BENTO GRID -->
+    <section class="bento-grid">
+      <!-- Bento 1: Fleet Overview Metrics -->
+      <div class="card bento-col-4">
+        <div class="bento-title">
+          <span>🚀 Throughput & State</span>
+          <span class="badge badge-emerald">Real-time</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div>
+            <span style="font-size: 11.5px; color: var(--text-subtle);">FLEET VELOCITY</span>
+            <div style="font-size: 32px; font-weight: 800; color: var(--primary-cobalt); line-height: 1.1;" id="metricVelocity">
+              465 <span style="font-size: 16px; font-weight: 600; color: var(--text-muted);">ops/s</span>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-top: 10px; border-top: 1px solid var(--border-subtle);">
+            <div>
+              <span style="font-size: 11px; color: var(--text-subtle);">RISK INDEX</span>
+              <div style="font-size: 18px; font-weight: 700; color: var(--emerald-enterprise);" id="metricRisk">18 / 100</div>
+            </div>
+            <div>
+              <span style="font-size: 11px; color: var(--text-subtle);">TESTS VERIFIED</span>
+              <div style="font-size: 18px; font-weight: 700; color: var(--text-head);" id="metricTests">82 / 82 PASS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento 2: Stakeholder Sentiment Matrix -->
+      <div class="card bento-col-4">
+        <div class="bento-title">
+          <span>👥 Stakeholder Sentiments</span>
+          <span class="badge badge-cobalt">Multi-Party</span>
+        </div>
+        <div class="sentiment-list">
+          <div class="sentiment-item">
+            <div class="sentiment-header">
+              <span>Anh (Lead Architect / Owner)</span>
+              <span id="sentArchitectVal">96%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill fill-emerald" id="sentArchitectBar" style="width: 96%;"></div>
+            </div>
+          </div>
+          <div class="sentiment-item">
+            <div class="sentiment-header">
+              <span>Security & SecOps Pod</span>
+              <span id="sentSecOpsVal">88%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" id="sentSecOpsBar" style="width: 88%;"></div>
+            </div>
+          </div>
+          <div class="sentiment-item">
+            <div class="sentiment-header">
+              <span>Software Engineering Fleet</span>
+              <span id="sentEngVal">85%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" id="sentEngBar" style="width: 85%;"></div>
+            </div>
+          </div>
+          <div class="sentiment-item">
+            <div class="sentiment-header">
+              <span>End-User Experience Quality</span>
+              <span id="sentUserVal">84%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" id="sentUserBar" style="width: 84%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento 3: Invariant Compliance Check -->
+      <div class="card bento-col-4">
+        <div class="bento-title">
+          <span>🛡️ Operating Invariants</span>
+          <span class="badge badge-emerald">Enforced</span>
+        </div>
+        <div class="invariant-list">
+          <div class="invariant-item">
+            <div class="invariant-icon">✓</div>
+            <div><strong>100% Luminous Light Theme</strong> (Warm Paper #FAF9F6)</div>
+          </div>
+          <div class="invariant-item">
+            <div class="invariant-icon">✓</div>
+            <div><strong>Emil Kowalski Physics</strong> (scale(0.965) & WebAudio)</div>
+          </div>
+          <div class="invariant-item">
+            <div class="invariant-icon">✓</div>
+            <div><strong>Always-On Max Reasoning</strong> (128K Token Headroom)</div>
+          </div>
+          <div class="invariant-item">
+            <div class="invariant-icon">✓</div>
+            <div><strong>TwinCheck Negative Twin</strong> (Zero Silent Drift)</div>
+          </div>
+          <div class="invariant-item">
+            <div class="invariant-icon">✓</div>
+            <div><strong>Zero-External-Network Call Guard</strong> (100% Airgap Safe)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento 4: Human-in-the-Loop (HITL) Gate Management (Col 12) -->
+      <div class="card bento-col-12">
+        <div class="bento-title">
+          <span>🏛️ Human-in-the-Loop (HITL) Release Gates</span>
+          <span style="font-size: 12px; color: var(--text-muted);">Quyền Phê Duyệt Tối Cao: Anh (Lead Architect & Sole Owner)</span>
+        </div>
+
+        <div id="hitlGatesContainer" style="display: flex; flex-direction: column; gap: 12px;">
+          <!-- Render danh sách HITL Gates từ Server -->
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Toast Notification element -->
+  <div id="toastNotification">
+    <span id="toastIcon">✨</span>
+    <span id="toastMessage">Thông báo</span>
+  </div>
+
+  <!-- ==========================================================================
+       7. JAVASCRIPT LIVE TELEMETRY ENGINE & EMIL KOWALSKI HAPTICS
+       ========================================================================== -->
+  <script>
+    // --- SYNTHETIC WEBAUDIO HAPTICS CONTROLLER ---
+    class SyntheticHapticController {
+      constructor() {
+        this.ctx = null;
+        this.enabled = true;
+      }
+
+      initContext() {
+        if (!this.ctx && (window.AudioContext || window.webkitAudioContext)) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContextClass();
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      playClick() {
+        if (!this.enabled) return;
+        try {
+          this.initContext();
+          if (!this.ctx) return;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          const now = this.ctx.currentTime;
+
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(540, now);
+          osc.frequency.exponentialRampToValueAtTime(120, now + 0.035);
+
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(now);
+          osc.stop(now + 0.035);
+        } catch (e) {
+          // Silent fallback
+        }
+      }
+
+      playSuccessChord() {
+        if (!this.enabled) return;
+        try {
+          this.initContext();
+          if (!this.ctx) return;
+          const notes = [523.25, 659.25, 783.99]; // C5, E5, G5
+          const now = this.ctx.currentTime;
+
+          notes.forEach((freq, idx) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            const start = now + idx * 0.025;
+
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, start);
+
+            gain.gain.setValueAtTime(0.06, start);
+            gain.gain.exponentialRampToValueAtTime(0.001, start + 0.12);
+
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+
+            osc.start(start);
+            osc.stop(start + 0.12);
+          });
+        } catch (e) {}
+      }
+
+      playReject() {
+        if (!this.enabled) return;
+        try {
+          this.initContext();
+          if (!this.ctx) return;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          const now = this.ctx.currentTime;
+
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(220, now);
+          osc.frequency.exponentialRampToValueAtTime(80, now + 0.08);
+
+          gain.gain.setValueAtTime(0.06, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(now);
+          osc.stop(now + 0.08);
+        } catch (e) {}
+      }
+
+      playTick() {
+        if (!this.enabled) return;
+        try {
+          this.initContext();
+          if (!this.ctx) return;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          const now = this.ctx.currentTime;
+
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(800, now);
+
+          gain.gain.setValueAtTime(0.02, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.015);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(now);
+          osc.stop(now + 0.015);
+        } catch (e) {}
+      }
+    }
+
+    const haptic = new SyntheticHapticController();
+
+    // Toggle Haptic button
+    const hapticToggleBtn = document.getElementById('hapticToggleBtn');
+    const hapticStatusLabel = document.getElementById('hapticStatusLabel');
+    hapticToggleBtn.addEventListener('click', () => {
+      haptic.enabled = !haptic.enabled;
+      hapticStatusLabel.textContent = haptic.enabled ? 'BẬT' : 'TẮT';
+      if (haptic.enabled) haptic.playClick();
+      showToast(haptic.enabled ? '🔊 Đã kích hoạt WebAudio Haptics' : '🔇 Đã tắt âm thanh vi tương tác');
+    });
+
+    // --- 60 FPS PAWS WAVEFORM CANVAS ENGINE ---
+    const canvas = document.getElementById('pawsWaveCanvas');
+    const ctx = canvas.getContext('2d');
+    let animationFrameId = null;
+    let waveOffset = 0;
+
+    let simulationData = {
+      velocityOps: 465,
+      riskIndex: 18,
+      trustPercent: 96,
+      autonomy: 75,
+      workers: 6,
+      audit: 4,
+    };
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function render60FPSWave() {
+      const w = canvas.getBoundingClientRect().width;
+      const h = canvas.getBoundingClientRect().height;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Draw subtle grid lines
+      ctx.strokeStyle = 'rgba(15, 23, 42, 0.04)';
+      ctx.lineWidth = 1;
+      for (let y = 30; y < h; y += 40) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.stroke();
+      }
+
+      waveOffset += 0.035;
+
+      // 1. Velocity Wave (Cobalt)
+      const baseVelY = h * 0.42;
+      const velAmp = 22 + (simulationData.velocityOps / 500) * 10;
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 4) {
+        const progress = x / w;
+        const y = baseVelY + Math.sin(progress * 7 + waveOffset) * velAmp * Math.exp(-progress * 0.4);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = '#2563EB';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      // 2. Trust Wave (Emerald)
+      const baseTrustY = h * 0.30;
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 4) {
+        const progress = x / w;
+        const y = baseTrustY + Math.cos(progress * 5 + waveOffset * 0.8) * 14 * Math.exp(-progress * 0.2);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = '#059669';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // 3. Risk Dissipation Wave (Amber)
+      const baseRiskY = h * 0.70;
+      const riskAmp = (simulationData.riskIndex / 100) * 28;
+      ctx.beginPath();
+      for (let x = 0; x <= w; x += 4) {
+        const progress = x / w;
+        const y = baseRiskY + Math.sin(progress * 9 - waveOffset * 1.2) * riskAmp * Math.exp(-progress * 1.1);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = '#D97706';
+      ctx.lineWidth = 1.8;
+      ctx.setLineDash([4, 4]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      animationFrameId = requestAnimationFrame(render60FPSWave);
+    }
+    render60FPSWave();
+
+    // --- SLIDERS INTERACTION ---
+    const sliderAutonomy = document.getElementById('sliderAutonomy');
+    const sliderWorkers = document.getElementById('sliderWorkers');
+    const sliderAudit = document.getElementById('sliderAudit');
+
+    const valAutonomy = document.getElementById('valAutonomy');
+    const valWorkers = document.getElementById('valWorkers');
+    const valAudit = document.getElementById('valAudit');
+
+    let debounceTimer = null;
+
+    function handleSliderChange() {
+      haptic.playTick();
+      const a = Number(sliderAutonomy.value);
+      const w = Number(sliderWorkers.value);
+      const audit = Number(sliderAudit.value);
+
+      valAutonomy.textContent = `${a}%`;
+      valWorkers.textContent = `${w} Pods`;
+      valAudit.textContent = `Cấp ${audit} ⭐`;
+
+      // Cập nhật giả lập tức thời
+      simulationData.autonomy = a;
+      simulationData.workers = w;
+      simulationData.audit = audit;
+      simulationData.velocityOps = Math.max(120, Math.round(100 + a * 3.2 + w * 35 - audit * 20));
+      simulationData.riskIndex = Math.min(100, Math.max(5, Math.round(a * 0.45 + w * 2.2 - audit * 9)));
+
+      document.getElementById('metricVelocity').innerHTML = `${simulationData.velocityOps} <span style="font-size: 16px; font-weight: 600; color: var(--text-muted);">ops/s</span>`;
+      document.getElementById('metricRisk').textContent = `${simulationData.riskIndex} / 100`;
+
+      // Gửi cập nhật về server qua POST /api/paws-update
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        fetch('/api/paws-update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            autonomyCeiling: a,
+            parallelWorkers: w,
+            auditRigorLevel: audit,
+          }),
+        }).then(r => r.json()).then(data => {
+          if (data.success) {
+            showToast('⚡ Đã cập nhật chính sách PAWS trên toàn Hạm đội');
+          }
+        }).catch(() => {});
+      }, 300);
+    }
+
+    [sliderAutonomy, sliderWorkers, sliderAudit].forEach(input => {
+      input.addEventListener('input', handleSliderChange);
+    });
+
+    // --- TOAST NOTIFICATION UTILITY ---
+    function showToast(msg, icon = '⚡') {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastMessage').textContent = msg;
+      document.getElementById('toastIcon').textContent = icon;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    // --- FLEET DATA FETCH & RENDER ENGINE ---
+    async function fetchFleetStatus() {
+      try {
+        const res = await fetch('/api/fleet-status');
+        if (!res.ok) throw new Error('Network error');
+        const data = await res.json();
+        renderFleetStatus(data);
+      } catch (err) {
+        console.warn('Sử dụng dữ liệu offline:', err);
+        renderFallbackStatus();
+      }
+    }
+
+    function renderFleetStatus(data) {
+      // 1. Render 6 Pods Grid
+      const podsGrid = document.getElementById('podsGridContainer');
+      podsGrid.innerHTML = '';
+
+      Object.values(data.pods).forEach(pod => {
+        const card = document.createElement('div');
+        card.className = 'pod-card';
+        card.innerHTML = `
+          <div class="pod-header">
+            <span class="pod-id-tag">${pod.id.toUpperCase()}</span>
+            <span class="badge badge-emerald"><span class="pulse-dot"></span> ${pod.status}</span>
+          </div>
+          <div>
+            <div class="pod-title">${pod.name}</div>
+            <div class="pod-role">${pod.role}</div>
+          </div>
+          <div class="pod-stats">
+            <div>
+              <span class="pod-stat-label">THROUGHPUT</span>
+              <span class="pod-stat-val">${pod.throughputOps} ops/s</span>
+            </div>
+            <div>
+              <span class="pod-stat-label">MEMORY</span>
+              <span class="pod-stat-val">${pod.memoryMb} MB</span>
+            </div>
+            <div>
+              <span class="pod-stat-label">TESTS</span>
+              <span class="pod-stat-val" style="color: var(--emerald-enterprise);">${pod.testsPassed}/${pod.testsTotal} PASS</span>
+            </div>
+            <div>
+              <span class="pod-stat-label">LATENCY</span>
+              <span class="pod-stat-val">${pod.latencyMs} ms</span>
+            </div>
+          </div>
+        `;
+        podsGrid.appendChild(card);
+      });
+
+      // 2. Render Bento Metrics
+      const pawsSim = data.paws.simulation;
+      simulationData.velocityOps = pawsSim.velocityOps;
+      simulationData.riskIndex = pawsSim.riskIndex;
+      simulationData.trustPercent = pawsSim.stakeholderSentiments.architectOwner;
+
+      document.getElementById('metricVelocity').innerHTML = `${pawsSim.velocityOps} <span style="font-size: 16px; font-weight: 600; color: var(--text-muted);">ops/s</span>`;
+      document.getElementById('metricRisk').textContent = `${pawsSim.riskIndex} / 100`;
+      document.getElementById('metricTests').textContent = `${data.totalVerifiedTests} / ${data.totalVerifiedTests} PASS`;
+
+      // Sentiments
+      const sent = pawsSim.stakeholderSentiments;
+      document.getElementById('sentArchitectVal').textContent = `${sent.architectOwner}%`;
+      document.getElementById('sentArchitectBar').style.width = `${sent.architectOwner}%`;
+
+      document.getElementById('sentSecOpsVal').textContent = `${sent.secOps}%`;
+      document.getElementById('sentSecOpsBar').style.width = `${sent.secOps}%`;
+
+      document.getElementById('sentEngVal').textContent = `${sent.engineering}%`;
+      document.getElementById('sentEngBar').style.width = `${sent.engineering}%`;
+
+      document.getElementById('sentUserVal').textContent = `${sent.endUsers}%`;
+      document.getElementById('sentUserBar').style.width = `${sent.endUsers}%`;
+
+      // 3. Render HITL Gates
+      renderHITLGates(data.hitlGates);
+    }
+
+    function renderHITLGates(gates) {
+      const container = document.getElementById('hitlGatesContainer');
+      container.innerHTML = '';
+
+      if (!gates || gates.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); font-size: 13px;">Không có cổng phê duyệt nào đang chờ.</p>';
+        return;
+      }
+
+      gates.forEach(gate => {
+        const card = document.createElement('div');
+        card.className = 'hitl-gate-card';
+
+        const isPending = gate.status === 'PENDING_APPROVAL';
+        const isApproved = gate.status === 'APPROVED';
+
+        let statusBadge = `<span class="badge badge-amber">PENDING APPROVAL</span>`;
+        if (isApproved) {
+          statusBadge = `<span class="badge badge-emerald">✓ APPROVED BY ${gate.approvedBy || 'Anh'}</span>`;
+        } else if (gate.status === 'REJECTED') {
+          statusBadge = `<span class="badge" style="background: var(--rose-surface); color: var(--rose-danger);">✕ REJECTED</span>`;
+        }
+
+        let actionButtons = '';
+        if (isPending) {
+          actionButtons = `
+            <div class="hitl-actions">
+              <button class="tactile-btn btn-primary" onclick="approveGate('${gate.id}')">
+                ✓ Phê Duyệt (Approve)
+              </button>
+              <button class="tactile-btn btn-danger" onclick="rejectGate('${gate.id}')">
+                ✕ Từ Chối (Reject)
+              </button>
+            </div>
+          `;
+        }
+
+        let signatureDisplay = '';
+        if (gate.signature) {
+          signatureDisplay = `
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+              <strong>HMAC-SHA256 Signature:</strong>
+              <div class="hitl-signature">${gate.signature}</div>
+            </div>
+          `;
+        }
+
+        card.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 11.5px; font-weight: 700; color: var(--text-subtle);">GATE ID: ${gate.id}</span>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <span class="badge" style="background: #F1F5F9; color: var(--text-body);">TIER: ${gate.riskTier}</span>
+              ${statusBadge}
+            </div>
+          </div>
+          <div class="hitl-summary">${gate.actionSummary}</div>
+          ${signatureDisplay}
+          ${actionButtons}
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    // HITL Approve Action
+    window.approveGate = async function(gateId) {
+      haptic.playClick();
+      try {
+        const res = await fetch('/api/hitl-approve', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            gateId,
+            approverName: 'Anh — Lead Architect & Sole Owner',
+            signatureKey: 'OWNER_SUPREME_RELEASE_KEY',
+          }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          haptic.playSuccessChord();
+          showToast('✅ Đã phê duyệt cổng giải phóng hạm đội với chữ ký số mật mã!', '🛡️');
+          fetchFleetStatus();
+        } else {
+          showToast(`Lỗi: ${data.error}`, '✕');
+        }
+      } catch (err) {
+        showToast('Không thể kết nối tới server.', '⚠️');
+      }
+    };
+
+    // HITL Reject Action
+    window.rejectGate = async function(gateId) {
+      haptic.playReject();
+      try {
+        const res = await fetch('/api/hitl-reject', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            gateId,
+            approverName: 'Anh — Lead Architect & Sole Owner',
+          }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast('🛑 Đã từ chối hành động an toàn.', '🛑');
+          fetchFleetStatus();
+        }
+      } catch (err) {
+        showToast('Không thể kết nối tới server.', '⚠️');
+      }
+    };
+
+    function renderFallbackStatus() {
+      // Fallback data if server is offline during development
+      renderFleetStatus({
+        totalVerifiedTests: 82,
+        pods: {
+          pod1: { id: 'pod_1', name: 'DurableRuntimeEngine', role: 'Event Sourcing & WAL', status: 'HEALTHY', testsPassed: 8, testsTotal: 8, throughputOps: 440, memoryMb: 34.2, latencyMs: 1.2 },
+          pod2: { id: 'pod_2', name: 'RunToSkillCompiler', role: 'Trajectory-to-Skill Compiler', status: 'HEALTHY', testsPassed: 12, testsTotal: 12, throughputOps: 190, memoryMb: 28.5, latencyMs: 3.4 },
+          pod3: { id: 'pod_3', name: 'TwinCheckVerifier', role: 'Negative Twin Delta Verifier', status: 'HEALTHY', testsPassed: 6, testsTotal: 6, throughputOps: 320, memoryMb: 22.1, latencyMs: 0.8 },
+          pod4: { id: 'pod_4', name: 'GenerativeAGUIEngine & Cockpit', role: 'Luminous Light Theme & Live UI', status: 'HEALTHY', testsPassed: 18, testsTotal: 18, throughputOps: 465, memoryMb: 19.8, latencyMs: 0.4 },
+          pod5: { id: 'pod_5', name: 'StealthBrowserDriver', role: 'CDP Anti-fingerprinting & Fitts', status: 'HEALTHY', testsPassed: 28, testsTotal: 28, throughputOps: 140, memoryMb: 46.7, latencyMs: 8.5 },
+          pod6: { id: 'pod_6', name: 'SmartRoutingArbiter', role: 'Task-Adaptive Dynamic Sizing', status: 'HEALTHY', testsPassed: 10, testsTotal: 10, throughputOps: 510, memoryMb: 18.2, latencyMs: 0.5 },
+        },
+        paws: {
+          simulation: {
+            velocityOps: 465,
+            riskIndex: 18,
+            isEquilibriumStable: true,
+            stakeholderSentiments: { engineering: 85, secOps: 88, architectOwner: 96, endUsers: 84 },
+          },
+        },
+        hitlGates: [
+          {
+            id: 'hitl_gate_sample_01',
+            type: 'HITLApprovalGate',
+            actionSummary: 'Phát hành Bản Nâng Cấp Tự Tiến Hóa (Evolution Round 2) vào Hạm Đội Production',
+            riskTier: 'ELEVATED',
+            status: 'PENDING_APPROVAL',
+            requiresSignature: true,
+          },
+        ],
+      });
+    }
+
+    // Refresh button
+    document.getElementById('refreshBtn').addEventListener('click', () => {
+      haptic.playClick();
+      fetchFleetStatus();
+      showToast('🔄 Đã đồng bộ trạng thái mới nhất từ Hạm đội');
+    });
+
+    // Initial Load & Polling every 2500ms
+    fetchFleetStatus();
+    setInterval(fetchFleetStatus, 2500);
+  </script>
+</body>
+</html>

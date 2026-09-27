@@ -25,9 +25,11 @@ const SUITES = [
   { pod: 'Pod 1', name: 'DurableRuntimeEngine', cmd: 'node core/runtime/DurableRuntimeEngine.test.js' },
   { pod: 'Pod 2', name: 'RunToSkillCompiler', cmd: 'node core/evolution/RunToSkillCompiler.test.js' },
   { pod: 'Pod 3', name: 'TwinCheckVerifier', cmd: 'node core/verification/TwinCheckVerifier.test.js' },
+  { pod: 'Pod 3 (Failproof)', name: 'FailproofPolicyHarness', cmd: 'node core/verification/FailproofPolicyHarness.test.js' },
   { pod: 'Pod 4', name: 'GenerativeAGUIEngine', cmd: 'node core/ui/GenerativeAGUIEngine.test.js' },
   { pod: 'Pod 5', name: 'StealthBrowserDriver', cmd: 'node --experimental-strip-types core/stealth/StealthBrowserDriver.test.js' },
-  { pod: 'Pod 6', name: 'SmartRoutingArbiter', cmd: 'node core/routing/SmartRoutingArbiter.test.js' }
+  { pod: 'Pod 6', name: 'SmartRoutingArbiter', cmd: 'node core/routing/SmartRoutingArbiter.test.js' },
+  { pod: 'Pod 6 (Cost Controller)', name: 'TokenCostController', cmd: 'node core/routing/TokenCostController.test.js' }
 ];
 
 let totalPassedTests = 0;

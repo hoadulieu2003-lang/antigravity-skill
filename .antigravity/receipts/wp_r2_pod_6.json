@@ -1,0 +1,27 @@
+{
+  "podId": "pod_6",
+  "workPackageId": "wp_r2_pod_6",
+  "podName": "Dynamic Token Cost Controller",
+  "status": "COMPLETED",
+  "round": 2,
+  "timestamp": "2026-09-27T09:03:00.000Z",
+  "testPassCount": 12,
+  "testTotalCount": 12,
+  "verificationStatus": "100%_PASS",
+  "artifacts": [
+    "c:/Users/game/.gemini/core/routing/TokenCostController.ts",
+    "c:/Users/game/.gemini/core/routing/TokenCostController.js",
+    "c:/Users/game/.gemini/core/routing/TokenCostController.test.js",
+    "c:/Users/game/.gemini/core/routing/SmartRoutingArbiter.ts",
+    "c:/Users/game/.gemini/core/routing/SmartRoutingArbiter.test.js",
+    "c:/Users/game/.gemini/.antigravity/receipts/wp_r2_pod_6.json"
+  ],
+  "metrics": {
+    "tokenThroughputTelemetry": "ACTIVE (tokens/sec, effective & peak TPS)",
+    "costSavingsCalculation": "ACTIVE (flash ~50%, flash_lite ~90% vs inherit)",
+    "tokenWastagePenaltyEngine": "ACTIVE (auditTokenWastage, over-allocation alerts, severe under-allocation prevention)",
+    "headroom128KInvariant": "ENFORCED (131,072 Tokens, Multiplier 8, HYPER_OVERCLOCKED_X8_ENGINEERING_ONLY)",
+    "truncationRiskGuard": "ACTIVE (Safe < 75%, Warning >= 75%, Critical >= 90%)",
+    "networkExternalCalls": "STRICTLY_ZERO (100% Local Offline Execution)"
+  }
+}

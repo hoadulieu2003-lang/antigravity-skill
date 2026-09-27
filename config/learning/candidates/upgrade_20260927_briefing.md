@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20260927` | **Thời gian**: `2026-09-27 01:42:19 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20260927` | **Thời gian**: `2026-09-27 04:42:08 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -8,12 +8,12 @@
 ## 📊 1. Bức Tranh Tổng Thể (Executive Summary & Metrics)
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
-| **Phiên học đã quét (Sessions Evaluated)** | `107` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
-| **Tài nguyên công nghệ (Items Processed)** | `293` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
+| **Phiên học đã quét (Sessions Evaluated)** | `105` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
+| **Tài nguyên công nghệ (Items Processed)** | `280` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `63` | Kho năng lực sẵn có tại `config/skills/` |
-| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `154` | Các khoảng trống công nghệ cần bổ sung độc lập |
-| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `98` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
-| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `37` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
+| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `151` | Các khoảng trống công nghệ cần bổ sung độc lập |
+| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `95` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
+| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `30` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
 ---
 
@@ -140,31 +140,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng pr
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.6. `dsh-desktop-eac` — DSH-EAC/DSH-Desktop-EAC 🔥 [HIGH PRIORITY]
-- **Nguồn gốc (Source)**: [GitHub (1634 ⭐)](https://github.com/DSH-EAC/DSH-Desktop-EAC)
-- **Lĩnh vực (Domain)**: `Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)`
-- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).
-- **Giá trị Đề xuất (Proposed Value)**: DeepSeek Harness Desktop (dsh-desktop). EAC: Embracing All Creation (揽尽万象). Bundled Node.js runtime with full dsh-CLI kernel, one-click startup, 10 built-in ...
-
-```yaml
-# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
----
-name: dsh-desktop-eac
-description: Tự động kích hoạt khi người dùng muốn tận dụng DSH-EAC/DSH-Desktop-EAC cho các tác vụ Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).
----
-
-# DSH-EAC/DSH-DESKTOP-EAC SKILL ARCHITECTURE
-
-## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
-- Kế thừa giải pháp từ: `DSH-EAC/DSH-Desktop-EAC` (https://github.com/DSH-EAC/DSH-Desktop-EAC)
-- Lĩnh vực: Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)
-
-## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
-- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
-- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
-```
-
-### 2.7. `awesome-dsh-plugin` — Anil-matcha/awesome-dsh-plugin 🔥 [HIGH PRIORITY]
+### 2.6. `awesome-dsh-plugin` — Anil-matcha/awesome-dsh-plugin 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1013 ⭐)](https://github.com/Anil-matcha/awesome-dsh-plugin)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -188,7 +164,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng An
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.8. `skills-hub` — qufei1993/skills-hub 🔥 [HIGH PRIORITY]
+### 2.7. `skills-hub` — qufei1993/skills-hub 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1680 ⭐)](https://github.com/qufei1993/skills-hub)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -212,7 +188,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng qu
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.9. `mediary-scout` — fancydirty/mediary-scout 🔥 [HIGH PRIORITY]
+### 2.8. `mediary-scout` — fancydirty/mediary-scout 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1418 ⭐)](https://github.com/fancydirty/mediary-scout)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -236,7 +212,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng fa
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.10. `fyagent` — fy-agent/fyagent 🔥 [HIGH PRIORITY]
+### 2.9. `fyagent` — fy-agent/fyagent 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1135 ⭐)](https://github.com/fy-agent/fyagent)
 - **Lĩnh vực (Domain)**: `Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).
@@ -260,7 +236,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng fy
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.11. `vcptoolbox` — lioensky/VCPToolBox 🔥 [HIGH PRIORITY]
+### 2.10. `vcptoolbox` — lioensky/VCPToolBox 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2324 ⭐)](https://github.com/lioensky/VCPToolBox)
 - **Lĩnh vực (Domain)**: `Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).
@@ -284,7 +260,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng li
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.12. `failproofai` — FailproofAI/failproofai 🔥 [HIGH PRIORITY]
+### 2.11. `failproofai` — FailproofAI/failproofai 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (5164 ⭐)](https://github.com/FailproofAI/failproofai)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -308,6 +284,30 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng Fa
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
+### 2.12. `free4chat` — i365dev/free4chat 🔥 [HIGH PRIORITY]
+- **Nguồn gốc (Source)**: [GitHub (1185 ⭐)](https://github.com/i365dev/free4chat)
+- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
+- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
+- **Giá trị Đề xuất (Proposed Value)**: Free4Chat provides the temporary boundary. Participants bring the capabilities.
+
+```yaml
+# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
+---
+name: free4chat
+description: Tự động kích hoạt khi người dùng muốn tận dụng i365dev/free4chat cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
+---
+
+# I365DEV/FREE4CHAT SKILL ARCHITECTURE
+
+## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
+- Kế thừa giải pháp từ: `i365dev/free4chat` (https://github.com/i365dev/free4chat)
+- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
+
+## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
+- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
+- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
+```
+
 ---
 
 ## 🛠️ 3. Đề Xuất Nâng Cấp Kỹ Năng Hiện Hữu (`SKILL_ENHANCEMENT`)
@@ -315,7 +315,6 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 
 | Kỹ năng Mục tiêu (Target) | Công nghệ Đối chiếu (Source Tech) | Mức độ Ưu tiên (Priority) | Hành động Đề xuất (Recommended Action) |
 | :--- | :--- | :--- | :--- |
-| **`vm0`** | [vm0-ai/vm0](https://github.com/vm0-ai/vm0) | `HIGH` | Bổ sung tri thức và thuật toán từ vm0-ai/vm0 vào module vm0. |
 | **`nanobot`** | [HKUDS/nanobot](https://github.com/HKUDS/nanobot) | `HIGH` | Bổ sung tri thức và thuật toán từ HKUDS/nanobot vào module nanobot. |
 | **`cherry-studio`** | [CherryHQ/cherry-studio](https://github.com/CherryHQ/cherry-studio) | `HIGH` | Bổ sung tri thức và thuật toán từ CherryHQ/cherry-studio vào module cherry-studio. |
 | **`aider-execution-engine`** | [zebbern/claude-code-guide](https://github.com/zebbern/claude-code-guide) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
@@ -327,67 +326,66 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 | **`aihawk`** | [feder-cr/AIHawk](https://github.com/feder-cr/AIHawk) | `HIGH` | Bổ sung tri thức và thuật toán từ feder-cr/AIHawk vào module aihawk. |
 | **`dramaclaw`** | [dramaclaw/dramaclaw](https://github.com/dramaclaw/dramaclaw) | `HIGH` | Bổ sung tri thức và thuật toán từ dramaclaw/dramaclaw vào module dramaclaw. |
 | **`distilly`** | [titanwings/distilly](https://github.com/titanwings/distilly) | `HIGH` | Bổ sung tri thức và thuật toán từ titanwings/distilly vào module distilly. |
+| **`maka`** | [apache/maka](https://github.com/apache/maka) | `HIGH` | Bổ sung tri thức và thuật toán từ apache/maka vào module maka. |
 
 
 ## 🏛️ 4. Đề Xuất Tối Ưu Kiến Trúc & Quy Chuẩn (`ARCHITECTURE_OPTIMIZATION`)
 Các phát hiện mang tầm chiến lược tác động đến Hiến chương Tự trị và Quy tắc Suy luận Cấp cao:
 
-#### 4.1. ToolGrad: Efficient tool-use dataset generation with textual "gradients" — `Thuật toán Suy luận & Gọi Công cụ (Reasoning & Tool Execution)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/toolgrad-efficient-tool-use-dataset-generation-with-textual-gradients/)
-- **Bối cảnh lý thuyết**: Machine Intelligence
-- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Nâng cấp kỹ thuật Textual Gradients và chuỗi quy tắc đa tầng vào AGENTS.md Rule 1.**
-
-#### 4.2. Transfer learning for genomic prediction in underrepresented populations — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/transfer-learning-for-genomic-prediction-in-underrepresented-populations/)
-- **Bối cảnh lý thuyết**: General Science
-- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
-
-#### 4.3. A connectomics milestone: Mapping the complete male fruit fly brain — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/a-connectomics-milestone-mapping-the-complete-male-fruit-fly-brain/)
-- **Bối cảnh lý thuyết**: General Science
-- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
-
-#### 4.4. AlphaGenome Atlas: A predictive map of every possible DNA letter change in the human genome — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/)
-- **Bối cảnh lý thuyết**: AlphaGenome Atlas maps the molecular effects of 9 billion single-letter DNA variants across the human genome.
-- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
-
-#### 4.5. Introducing WeatherNext 3, our most advanced and accurate global weather AI model — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model/)
-- **Bối cảnh lý thuyết**: - **[Google DeepMind]** [Proactive cyber defense for governments and enterprises](https://deepmind.google/blog/proactive-cyber-defense-for-governments-and-enterprises/) >
-- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
-
-#### 4.6. Mapping global methane emissions from space with deep learning — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.1. Mapping global methane emissions from space with deep learning — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/mapping-global-methane-emissions-from-space-with-deep-learning/)
 - **Bối cảnh lý thuyết**: Climate & Sustainability
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.7. Introducing Gemini 3.8 Flash and 3.8 Flash Cyber — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.2. Introducing Gemini 3.8 Flash and 3.8 Flash Cyber — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/introducing-gemini-3-8-flash-and-38-flash-cyber/)
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.8. Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.3. Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/introducing-gemini-3-8-live-and-3-8-live-extended-thinking/)
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.9. Bypassing inference bottlenecks: Accelerating complex AI search with Retrieve-for-Train — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.4. Bypassing inference bottlenecks: Accelerating complex AI search with Retrieve-for-Train — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/bypassing-inference-bottlenecks-accelerating-complex-ai-search-with-retrieve-for-train/)
 - **Bối cảnh lý thuyết**: Algorithms & Theory
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.10. The future of practice: Enabling teachers to create learning interactives with generative UI — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.5. The future of practice: Enabling teachers to create learning interactives with generative UI — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/the-future-of-practice-enabling-teachers-to-create-learning-interactives-with-generative-ui/)
 - **Bối cảnh lý thuyết**: Education Innovation
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.11. MilleMiglia: A realistic instance generator for middle-mile logistics — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.6. MilleMiglia: A realistic instance generator for middle-mile logistics — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/millemiglia-a-realistic-instance-generator-for-middle-mile-logistics/)
 - **Bối cảnh lý thuyết**: Algorithms & Theory
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.12. Advancing Private AI Compute with secure, server-side memory — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.7. Advancing Private AI Compute with secure, server-side memory — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/)
 - **Bối cảnh lý thuyết**: Introducing private, server-side memory to Private AI Compute for personal AI.
+- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
+
+#### 4.8. Gemini 3.8 text-to-speech says hello — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/say-hello-to-gemini-38-text-to-speech/)
+- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
+
+#### 4.9. Introducing Gemini 3.8 Live with Live Avatar — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/introducing-gemini-38-live-with-live-avatar/)
+- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
+
+#### 4.10. Automating coherent long-form video generation — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/coherent-long-form-video-generation/)
+- **Bối cảnh lý thuyết**: Generative AI
+- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
+
+#### 4.11. How we rebuilt Cloudflare Workers’ module registry for Node.js compatibility — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/workers-module-registry-nodejs/)
+- **Bối cảnh lý thuyết**: Workers now enables Node.js compatibility by default, supports applications up to 64 mebibytes, and adds a URL-based module registry with import.meta, lazy compilation, shared code caches, and clea...
+- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
+
+#### 4.12. Have it both ways: stay discoverable in search while disallowing AI training — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/)
+- **Bối cảnh lý thuyết**: Cloudflare is giving site owners a way to stay discoverable while disallowing AI training. New controls and an Accountable designation establish a shared model with Apple, Google, and Microsoft.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
 ---
