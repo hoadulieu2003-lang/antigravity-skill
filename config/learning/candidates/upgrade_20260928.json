@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-09-27T22:42:08.990578+00:00",
+    "scan_date": "2026-09-28T00:59:49.098330+00:00",
     "cycle_id": "EVO-20260928",
     "sessions_evaluated": 108,
-    "total_items_processed": 279,
+    "total_items_processed": 275,
     "active_skills_count": 63,
     "candidates_count": 154,
-    "enhancements_count": 93,
-    "optimizations_count": 28
+    "enhancements_count": 90,
+    "optimizations_count": 27
   },
   "new_skill_candidates": [
     {
@@ -157,16 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "cherry-studio",
-      "source_technology": "CherryHQ/cherry-studio",
-      "source_url": "https://github.com/CherryHQ/cherry-studio",
-      "source_type": "GitHub (51733 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ CherryHQ/cherry-studio vào module cherry-studio."
-    },
-    {
       "target_skill": "aider-execution-engine",
       "source_technology": "zebbern/claude-code-guide",
       "source_url": "https://github.com/zebbern/claude-code-guide",
@@ -275,6 +265,16 @@
       "priority_score": 85,
       "enhancement_rationale": "Open-source, desktop-grade AI agent that gets real work done — data analysis, slides, docs, video & web research. Built on OpenClaw; runs tools on your real ...",
       "recommended_action": "Bổ sung tri thức và thuật toán từ netease-youdao/LobsterAI vào module lobsterai."
+    },
+    {
+      "target_skill": "vibe-coding-cn",
+      "source_technology": "tradecatlabs/vibe-coding-cn",
+      "source_url": "https://github.com/tradecatlabs/vibe-coding-cn",
+      "source_type": "GitHub (16237 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Vibe Coding 从入门到精通教程｜AI 结对编程工作流｜Prompt、Skill、Workflow、上下文管理、codex实战指南",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ tradecatlabs/vibe-coding-cn vào module vibe-coding-cn."
     }
   ],
   "architecture_optimizations": [
