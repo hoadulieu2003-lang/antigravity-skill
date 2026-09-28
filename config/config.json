@@ -143,7 +143,8 @@
         "mcp(cdp-bridge/search_code_symbols)",
         "read_url(share.gemini.google)",
         "mcp(aider-bridge/aider_get_status)",
-        "read_url(api.chothongminh.top)"
+        "read_url(api.chothongminh.top)",
+        "mcp(google-workspace/sheets_read)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

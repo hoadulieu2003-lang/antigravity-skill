@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-09-28T00:59:49.098330+00:00",
+    "scan_date": "2026-09-28T02:48:35.050262+00:00",
     "cycle_id": "EVO-20260928",
-    "sessions_evaluated": 108,
-    "total_items_processed": 275,
+    "sessions_evaluated": 107,
+    "total_items_processed": 272,
     "active_skills_count": 63,
-    "candidates_count": 154,
-    "enhancements_count": 90,
+    "candidates_count": 152,
+    "enhancements_count": 89,
     "optimizations_count": 27
   },
   "new_skill_candidates": [
@@ -157,16 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "aider-execution-engine",
-      "source_technology": "zebbern/claude-code-guide",
-      "source_url": "https://github.com/zebbern/claude-code-guide",
-      "source_type": "GitHub (4619 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Claude Code Guide - Setup, Commands, workflows, agents, skills & tips-n-tricks from beginner to power user!",
-      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
-    },
-    {
       "target_skill": "genoffice",
       "source_technology": "genspark-ai/genoffice",
       "source_url": "https://github.com/genspark-ai/genoffice",
@@ -275,6 +265,16 @@
       "priority_score": 85,
       "enhancement_rationale": "Vibe Coding 从入门到精通教程｜AI 结对编程工作流｜Prompt、Skill、Workflow、上下文管理、codex实战指南",
       "recommended_action": "Bổ sung tri thức và thuật toán từ tradecatlabs/vibe-coding-cn vào module vibe-coding-cn."
+    },
+    {
+      "target_skill": "okou",
+      "source_technology": "vm0-ai/okou",
+      "source_url": "https://github.com/vm0-ai/okou",
+      "source_type": "GitHub (1153 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ vm0-ai/okou vào module okou."
     }
   ],
   "architecture_optimizations": [
