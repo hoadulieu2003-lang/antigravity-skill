@@ -1981,3 +1981,17 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-30 05:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (77 ⭐)]** [MCERQUA/OpenVoiceUI](https://github.com/MCERQUA/OpenVoiceUI)
+  > Voice-powered AI assistant platform — connect any LLM, any TTS, with a live web canvas, music generation, and agent orchestration using openclaw. Install: np...
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [XingChen-AGI/TeleOCR](https://huggingface.co/XingChen-AGI/TeleOCR)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---

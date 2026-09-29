@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-09-29T19:42:12.001799+00:00",
+    "scan_date": "2026-09-29T22:42:09.165918+00:00",
     "cycle_id": "EVO-20260930",
     "sessions_evaluated": 108,
-    "total_items_processed": 270,
+    "total_items_processed": 269,
     "active_skills_count": 64,
-    "candidates_count": 151,
-    "enhancements_count": 81,
+    "candidates_count": 153,
+    "enhancements_count": 78,
     "optimizations_count": 36
   },
   "new_skill_candidates": [
@@ -157,26 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "neo",
-      "source_technology": "neomjs/neo",
-      "source_url": "https://github.com/neomjs/neo",
-      "source_type": "GitHub (3272 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Neo.mjs is a self-evolving software organism: a professional end-to-end AI engineering team whose cross-model swarm inhabits live apps via Neural Link, Activ...",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ neomjs/neo vào module neo."
-    },
-    {
-      "target_skill": "aihawk",
-      "source_technology": "feder-cr/AIHawk",
-      "source_url": "https://github.com/feder-cr/AIHawk",
-      "source_type": "GitHub (31573 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Anti detect browser and web browsing agent: an open-source MCP server for undetected browsing, AI web scraping and computer use agents. No captchas.",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ feder-cr/AIHawk vào module aihawk."
-    },
-    {
       "target_skill": "dramaclaw",
       "source_technology": "dramaclaw/dramaclaw",
       "source_url": "https://github.com/dramaclaw/dramaclaw",
@@ -275,6 +255,26 @@
       "priority_score": 85,
       "enhancement_rationale": "AI 基础知识 - GPU 架构、CUDA 编程、大模型基础及AI Agent 相关知识。",
       "recommended_action": "Bổ sung tri thức và thuật toán từ ForceInjection/AI-fundamentals vào module ai-fundamentals."
+    },
+    {
+      "target_skill": "openbiliclaw",
+      "source_technology": "whiteguo233/OpenBiliClaw",
+      "source_url": "https://github.com/whiteguo233/OpenBiliClaw",
+      "source_type": "GitHub (3313 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "本地私有、开源的自进化跨平台 AI 内容发现 Agent：先理解你，再主动从 B站、小红书、抖音、YouTube、X、知乎、Reddit、微博等平台与开放 Web 寻找内容。（支持 deepseek harness 插件） | Local-first open-source cross-platform AI c...",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ whiteguo233/OpenBiliClaw vào module openbiliclaw."
+    },
+    {
+      "target_skill": "codewhale",
+      "source_technology": "Hmbown/Codewhale",
+      "source_url": "https://github.com/Hmbown/Codewhale",
+      "source_type": "GitHub (40986 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Open-source coding agent for your terminal, built in Rust and on a journey of continuous community improvement. Issues and PRs welcome.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ Hmbown/Codewhale vào module codewhale."
     }
   ],
   "architecture_optimizations": [
