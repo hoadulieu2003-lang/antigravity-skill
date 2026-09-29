@@ -1965,3 +1965,19 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-30 02:42:02`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google Research]** [How Diffusion Controller unifies and simplifies AI image generation](https://research.google/blog/how-diffusion-controller-unifies-and-simplifies-ai-image-generation/)
+  > Algorithms & Theory
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (5033 ⭐)]** [clidey/whodb](https://github.com/clidey/whodb)
+  > Where data access meets operational intelligence
+- **[GitHub (206 ⭐)]** [pivoshenko/kasetto](https://github.com/pivoshenko/kasetto)
+  > 📼 Declarative AI agent environment manager, written in Rust
+
+</untrusted_external_content>
+
+---

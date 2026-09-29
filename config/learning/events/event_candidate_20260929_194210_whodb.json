@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-29T19:42:10.116105+00:00",
+  "skill_name": "whodb",
+  "source_repo": "clidey/whodb",
+  "stars": 5033,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\whodb\\SKILL.md",
+  "human_promotion_required": true
+}
