@@ -24,6 +24,8 @@ SESSION_STATE.md
 # Sensitive Tokens & Credentials (AGENTS.md Rule 14)
 **/.env*
 **/hub_config.json
+config/google_service_account.json
+**/*service_account*.json
 config/sidecars/antigravity_master_hub/.env.local
 config/sidecars/antigravity_master_hub/*.png
 

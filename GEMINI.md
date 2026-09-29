@@ -46,25 +46,31 @@ Hệ thống vận hành cơ chế **Tự động Phân Cấp Quy Mô Thích Ứ
 
 * **Ma Trận Phân Cấp Quy Mô Thích Ứng 3 Cấp Độ Chuẩn Hóa (`Rigorous 3-Tier Task Adaptive Sizing Matrix`)**:
   * **Size S — Vi Mô / Đơn Điểm Cực Hạn (`Solo Turbo Mode — 1 Agent`)**:
-    * **Phạm vi khắt khe**: CHỈ áp dụng khi phạm vi gói gọn trong **ĐÚNG 1 FILE ĐƠN LẺ DUY NHẤT (Single isolated file)**: sửa 1 typo, chỉnh 1 class CSS cục bộ, cập nhật 1 biến cấu hình/env, hoặc tra cứu/giải thích ngắn.
+    * **Phạm vi khắt khe**: CHỈ áp dụng khi phạm vi gói gọn trong **ĐÚNG 1 FILE ĐƠN LẺ DUY NHẤT (Strict Single Isolated File Only)**: sửa 1 typo, chỉnh 1 class CSS cục bộ, cập nhật 1 biến cấu hình/env, hoặc tra cứu/giải thích ngắn.
     * **Hàng Rào Cấm Tuyệt Đối (Size S Invariant Prohibitions)**: CẤM TUYỆT ĐỐI phân loại vào Size S các bài toán liên quan đến:
       - Bất đồng bộ dữ liệu (`Data Desynchronization`), F5 còn dữ liệu cũ, Cache invalidation, Ký số, Luồng phê duyệt (`Approval Workflow`).
-      - Bài toán chạm vào từ $\ge 2$ files hoặc $\ge 2$ tầng kiến trúc khác nhau (ví dụ: vừa sửa Client vừa sửa Repo, vừa sửa Adapter vừa sửa UI).
+      - **BẤT KỲ TÁC VỤ NÀO CHẠM VÀO TỪ $\ge 2$ FILES BẤT KỲ** (bất kể cùng hay khác thư mục, cùng hay khác module/tầng, bao gồm cả cặp 1 file mã nguồn + 1 file test/config).
     * **Thực thi**: Em (Lead Senior Agent) trực tiếp giải quyết ngay lập tức (Solo Turbo), đạt tốc độ chớp nhoáng (5–15 giây) ⚡.
-  * **Size M — Tính Năng Vừa / Lỗi Đa Tầng Cục Bộ (`Lean Squad Mode — 2–3 Subagents`)**:
-    * **Phạm vi**: Tạo component mới, refactor 2–4 files, bổ sung API endpoint, hoặc sửa các lỗi bất đồng bộ/cache chạm vào 2–3 tầng (ví dụ: DB/Repo + Adapter/Client + Presentation UI Dashboard).
-    * **Thực thi**: Bắt buộc kích hoạt đội hình tinh gọn **2–3 Subagents song song** qua `invoke_subagent`: 1 Pod xử lý Core Logic/Persistence/Cache + 1 Pod xử lý UI/Adapter + 1 Pod kiểm chứng/test độc lập.
+  * **Size M — Tính Năng Vừa / Tác Vụ Đa File Cục Bộ (`Lean Squad Mode — 2–3 Subagents`)**:
+    * **Phạm vi**: **MỌI TÁC VỤ SỬA ĐỔI HOẶC TẠO MỚI TỪ 2–4 FILES BẤT KỲ** (kể cả cùng thư mục), bổ sung API endpoint, hoặc sửa các lỗi bất đồng bộ/cache chạm vào 2–3 tầng (ví dụ: DB/Repo + Adapter/Client + Presentation UI Dashboard, hoặc Code + Unit Test).
+    * **Thực thi**: Bắt buộc kích hoạt đội hình tinh gọn **2–3 Subagents song song** qua `invoke_subagent`:
+      - *Mô hình Song song*: Pod 1 xử lý File A + Pod 2 xử lý File B chạy đua đồng thời.
+      - *Mô hình Chuyên trách*: 1 Pod xử lý Core Logic/Persistence + 1 Pod xử lý UI/Adapter + 1 Pod kiểm chứng/test độc lập trên Fresh Context.
   * **Size L / XL — Hệ Thống Lớn / Epic / Kiến Trúc Đa Tầng (`Full Enterprise Fleet — 6–12 Subagents`)**:
     * **Phạm vi**: Khởi tạo phân hệ mới, tái cấu trúc toàn diện kiến trúc, thiết kế UI đồ sộ 153 Brands + Motion 60 FPS, xây dựng pipeline dữ liệu phức tạp hoặc kiểm toán độc lập sâu rộng.
     * **Thực thi**: Bung trọn vẹn **Hạm Đội Đa Tác Tử 6–12 Pods song song** (Core Logic, Data Models, API, Design Duo Pod 4 & 5, Test Harness và Hội đồng kiểm toán độc lập).
 
-* **Quy Tắc Tự Động Leo Thang Giữa Chừng & Trần Khảo Sát Đơn Luồng (`Mid-Flight Dynamic Scale-Up & Exploration Ceiling Invariant`)**:
+* **Quy Tắc Tự Động Leo Thang Giữa Chừng & Khóa Bút File Thứ 2 (`Mid-Flight Dynamic Scale-Up & Second-File Write Lockout Invariant`)**:
   * **Trần Khảo Sát Đơn Luồng Cực Hạn ($\le 3$ Files / 3 Commands Ceiling)**: Em (Lead Agent) chỉ được phép chạy tối đa 1–3 lệnh hoặc đọc 1–3 files để định vị điểm vào (`Entrypoint`). CẤM TUYỆT ĐỐI tự mình đi mò mẫm hàng chục files hay chạy hàng chục lệnh build/test đơn độc trong luồng chính.
+  * **QUY TẮC KHÓA BÚT FILE THỨ 2 (Second-File Hard Write-Lockout Invariant)**:
+    - *Nghiêm cấm tuyệt đối Lead Agent tự mình gọi lệnh ghi mã nguồn (`replace_file_content` hoặc `write_to_file`) trên file thứ 2 trong cùng một tác vụ!*
+    - Nếu trong quá trình thực thi, phát hiện cần sửa đổi thêm file thứ 2 (bất kể cùng hay khác thư mục, bao gồm cả file unit test):
+      $\to$ **CẤM TUYỆT ĐỐI TỰ Ý SỬA TIẾP SOLO**. Bắt buộc dừng tay ngay lập tức, ngắt luồng và triệu hồi Subagents (`invoke_subagent`) để chia việc xử lý song song!
   * **Cơ Chế Ngắt Quán Tính Đơn Luồng (`Inertia Circuit Breaker`)**: Nếu phát hiện một trong các dấu hiệu sau:
     1. Đã duyệt/khảo sát $\ge 3$ files hoặc chạy $\ge 3$ lệnh mà bài toán thuộc phạm vi hệ thống/đa module.
     2. Tác vụ liên quan đến: Triển khai / Deploy (Zalo Mini App, VPS, Docker, Build errors), Tích hợp API/Auth, Đồng bộ dữ liệu/F5/Ký số.
-    3. Cần sửa đổi từ $\ge 2$ files ở các tầng kiến trúc khác nhau (ví dụ: Repo + UI, Client + Adapter).
-  * $\to$ **LẬP TỨC DỪNG MỌI HÀNH VI KHẢO SÁT & SỬA CODE SOLO**. Tự động leo thang quy mô lên **Size M / Size L**, phân rã các Work Packages độc lập và triệu hồi ngay Subagents song song (`invoke_subagent`) ngay tại lượt đầu tiên (`Turn-1 Zero-Delay Delegation`). Triệt tiêu 100% tình trạng 1 Agent đơn độc cày cuốc 20-50 files tuần tự rồi mới chịu gọi subagent.
+    3. **Cần sửa đổi hoặc tạo mới từ $\ge 2$ files bất kỳ (bất kể cùng hay khác tầng kiến trúc)**.
+  * $\to$ **LẬP TỨC DỪNG MỌI HÀNH VI KHẢO SÁT & SỬA CODE SOLO**. Tự động leo thang quy mô lên **Size M / Size L**, phân rã các Work Packages độc lập và triệu hồi ngay Subagents song song (`invoke_subagent`) ngay tại lượt đầu tiên (`Turn-1 Zero-Delay Delegation`). Triệt tiêu 100% tình trạng 1 Agent đơn độc cày cuốc $\ge 2$ files tuần tự.
 
 * **Cơ chế Phân Rã Pods Chuyên Trách Khi Bung Hạm Đội (Khi kích hoạt Size L/XL)**:
   * **Tại `$plan` (Hội Đồng Kiến Trúc Chuyên Môn Hóa)**: Khảo sát chéo đa góc nhìn (`Forensic Investigator`, `Optimization Strategist`, `Adversarial Architect`, `AST Contract Guardian`, `Security Analyst`, `Performance Profiler`).

@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-29T01:42:25.086302+00:00",
+  "skill_name": "siyuan",
+  "source_repo": "siyuan-note/siyuan",
+  "stars": 46545,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\siyuan\\SKILL.md",
+  "human_promotion_required": true
+}

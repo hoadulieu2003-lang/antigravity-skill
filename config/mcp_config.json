@@ -22,7 +22,10 @@
       "command": "node",
       "args": [
         "C:\\Users\\game\\.antigravity-ide\\extensions\\mercurial.google-workspace-mcp-0.1.1-universal\\dist\\mcp\\server.js"
-      ]
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "C:\\Users\\game\\.gemini\\config\\google_service_account.json"
+      }
     },
     "notebooks": {
       "command": "node",
