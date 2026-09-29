@@ -1,7 +1,7 @@
 ---
 name: vibe-trading
 description: >-
-  Kỹ năng chuyên gia vận hành cho HKUDS/Vibe-Trading (34274 ⭐).
+  Kỹ năng chuyên gia vận hành cho HKUDS/Vibe-Trading (34285 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở vibe-trading vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến "Vibe-Trading: Your Personal Trading Agent"
@@ -12,9 +12,9 @@ description: >-
 # HKUDS/Vibe-Trading — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/HKUDS/Vibe-Trading`  
-> **Độ uy tín cộng đồng**: 34274 ⭐  
+> **Độ uy tín cộng đồng**: 34285 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-29 07:42:12Z
+> **Tự động đóng gói lúc**: 2026-09-29 10:41:07Z
 
 ---
 

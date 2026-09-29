@@ -1919,3 +1919,13 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-29 17:40:56`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (51 ⭐)]** [leeguooooo/iphone-use](https://github.com/leeguooooo/iphone-use)
+  > Computer-use, but for the iPhone — AI agents (and your browser) see and drive a real phone over macOS iPhone Mirroring. Low-latency WebRTC video, near-native...
+
+</untrusted_external_content>
+
+---
