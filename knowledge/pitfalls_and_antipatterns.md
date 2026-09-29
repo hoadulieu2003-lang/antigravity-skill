@@ -1504,3 +1504,21 @@
 * **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
 
 ---
+### 🚨 [2026-09-29 23:42] Bypassing inference bottlenecks: Accelerating complex AI search with Retrieve-for-Train
+* **Nguồn cảnh báo**: Google Research | [Chi tiết bài viết](https://research.google/blog/bypassing-inference-bottlenecks-accelerating-complex-ai-search-with-retrieve-for-train/)
+* **Bài học nhận thức**: Algorithms & Theory
+* **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
+
+---
+### 🚨 [2026-09-29 23:42] Adaptive application security for the AI era: how Cloudflare connects code, traffic, and intelligence to stop attacks
+* **Nguồn cảnh báo**: Cloudflare Engineering | [Chi tiết bài viết](https://blog.cloudflare.com/ai-era-framework/)
+* **Bài học nhận thức**: Cloudflare introduces an adaptive security framework connecting risk discovery, agent governance, runtime protection, and AI-powered response in a continuous learning loop.
+* **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
+
+---
+### 🚨 [2026-09-29 23:42] Stealth Apart, Harm Together: Skill Cascading Attacks on Skill-Based Agent Systems
+* **Nguồn cảnh báo**: ArXiv CS.AI | [Chi tiết bài viết](https://arxiv.org/abs/2609.30383)
+* **Bài học nhận thức**: arXiv:2609.30383v1 Announce Type: new Abstract: A skill is a modular package of natural-language instructions, executable scripts, and reference resources th...
+* **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
+
+---
