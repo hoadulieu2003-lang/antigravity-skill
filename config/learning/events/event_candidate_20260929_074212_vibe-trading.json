@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-09-29T07:42:12.410954+00:00",
+  "skill_name": "vibe-trading",
+  "source_repo": "HKUDS/Vibe-Trading",
+  "stars": 34274,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\vibe-trading\\SKILL.md",
+  "human_promotion_required": true
+}
