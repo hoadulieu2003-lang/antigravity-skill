@@ -1929,3 +1929,13 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-29 18:38:50`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (47161 ⭐)]** [zhayujie/CowAgent](https://github.com/zhayujie/CowAgent)
+  > Open-source personal AI assistant & Agent Harness. Plans tasks, runs tools and skills, self-evolves with memory and knowledge. Multi-agent, multi-model, mult...
+
+</untrusted_external_content>
+
+---
