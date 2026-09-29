@@ -1939,3 +1939,19 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-29 20:42:02`
+
+<untrusted_external_content>
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [Using AI to chart a course for our post-quantum migration](https://blog.cloudflare.com/ai-driven-cryptography-discovery/)
+  > We’re building CryptoLabe, an internal AI-powered tool that discovers cryptography across our codebase, surfaces dependencies, and helps us progress toward a full post-quantum migration by 2029. He...
+- **[Cloudflare Engineering]** [Building a certificate authority for the whole Internet](https://blog.cloudflare.com/cloudflare-certificate-authority/)
+  > Twelve years after launching Universal SSL, Cloudflare is applying to become a certificate authority. By combining an established root, an ACME-first approach, and Merkle Tree Certificates, we are ...
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (56 ⭐)]** [zenstory-ai/zenstory](https://github.com/zenstory-ai/zenstory)
+  > 对话即创作 · AI Agent 驱动的小说写作工作台 ｜ Chat to create — an AI-agent-driven novel-writing workbench
+
+</untrusted_external_content>
+
+---
