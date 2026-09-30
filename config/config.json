@@ -144,7 +144,10 @@
         "read_url(share.gemini.google)",
         "mcp(aider-bridge/aider_get_status)",
         "read_url(api.chothongminh.top)",
-        "mcp(google-workspace/sheets_read)"
+        "mcp(google-workspace/sheets_read)",
+        "mcp(google-workspace/drive_search)",
+        "mcp(google-workspace/drive_admin)",
+        "mcp(google-workspace/docs_admin)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

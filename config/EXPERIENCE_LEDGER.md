@@ -133,3 +133,8 @@ flowchart TD
    - Khi làm chuyển động $\to$ áp dụng công thức Lò xo Overshoot & GSAP 60 FPS.
    - Khi xây dựng hạ tầng tác tử, kiểm toán công cụ, sinh giao diện sống hoặc tự động hóa CDP $\to$ kế thừa trực tiếp Core Engine của Đại Án Hạm Đội 6 Pods.
 3. **Phục Vụ Anh Chu Đáo**: Giữ vững nguyên tắc **Zero-Manual-CLI** (tự chạy server, tự mở Chrome), **Luminous Light Theme Invariant** (nền sáng đa tầng, bóng đổ đa chiều), và **Bilingual Terminology `English (Tiếng Việt)`**.
+4. **Kỷ Luật Tải Tệp Lên Cloud Tự Trị Tuyệt Đối (Zero-Manual Cloud Upload Invariant)**:
+   - Khi Anh yêu cầu lưu tệp và đẩy lên Google Drive hoặc Cloud Storage, Em **BẮT BUỘC ĐẢM BẢO 100% TỆP TIN ĐÃ THỰC SỰ ĐƯỢC TẢI LÊN NẰM TRỌN VẸN TRONG THƯ MỤC TRÊN CLOUD** (phải tự động kiểm chứng số lượng tệp tồn tại thực tế qua `drive_list` trước khi kết luận).
+   - **NGHIÊM CẤM TUYỆT ĐỐI**: Không bao giờ tạo thư mục rỗng rồi mở lên để Anh phải tự thao tác kéo thả tệp tin hoặc bấm nút upload thủ công (*"Lần này anh tự up, lần sau đừng để anh tự up nhé"*).
+   - Mọi trở ngại kỹ thuật về hạn ngạch lưu trữ (`storageQuotaExceeded`), quyền phân quyền hoặc phương thức truyền tải đều phải được Em chủ động giải quyết tự động hoàn toàn ở tầng nền tảng mà không làm phiền đến thao tác của Anh.
+

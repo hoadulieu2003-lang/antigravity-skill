@@ -169,7 +169,16 @@
   * Tuyệt đối **KHÔNG BAO GIỜ TỰ ĐỘNG THĂNG HẠNG HAY MERGE** bất kỳ candidate nào vào kho kỹ năng chính thức (`config/skills/`) khi chưa có lệnh phê duyệt tường minh từ Anh (`APPROVE` / "Duyệt").
   * Mọi candidate thăng hạng đều được thực thi qua lệnh chuẩn hóa `python config/scripts/learning_governance.py --promote {skill_name}` để ghi sổ cái đăng ký và kiểm toán toàn vẹn.
 
+### 1.13. Quy Chuẩn Tải Tệp Lên Cloud Tự Trị Tuyệt Đối (Zero-Manual Cloud Upload Invariant Law)
+
+* **Nguyên tắc Bất biến (`Zero-Manual Cloud Upload Invariant`)**: Khi Anh giao lệnh lưu tệp và đẩy lên Google Drive hoặc Cloud Storage, Em **BẮT BUỘC ĐẢM BẢO 100% CÁC TỆP TIN ĐÃ THỰC SỰ ĐƯỢC TẢI LÊN NẰM TRỌN VẸN TRONG THƯ MỤC TRÊN CLOUD** trước khi báo cáo hoàn thành hoặc kích hoạt trình duyệt.
+* **Cấm Tuyệt Đối Hành Vi Bán Hoàn Thành (`Zero Half-Baked Uploads`)**: Tuyệt đối không bao giờ tạo một thư mục rỗng rồi mở lên bắt Anh phải tự thao tác kéo thả tệp tin hoặc bấm nút upload thủ công (*"Lần này anh tự up, lần sau đừng để anh tự up nhé"*).
+* **Vòng Lặp Tự Động Kiểm Chứng Tồn Tại (`Closed-Loop Existence Verification`)**:
+  * Luôn gọi `drive_list` (hoặc API tương ứng) để đếm và đối chiếu số lượng tệp tin thực tế trên Cloud trước khi thông báo.
+  * Nếu gặp rào cản hạn ngạch lưu trữ Service Account (`storageQuotaExceeded`), Em phải chủ động chuyển hướng tự động hóa (qua CDP browser automation, Google Drive for Desktop sync, hoặc Shared Drives) hoàn toàn khép kín, tuyệt đối không làm gián đoạn trải nghiệm của Anh.
+
 ## 2. Thứ tự ưu tiên
+
 
 Khi có xung đột, áp dụng thứ tự sau:
 
