@@ -1,10 +1,10 @@
 ---
 name: deepseek-reasonix
 description: >-
-  Kỹ năng chuyên gia vận hành cho esengine/DeepSeek-Reasonix (35713 ⭐).
+  Kỹ năng chuyên gia vận hành cho esengine/DeepSeek-Reasonix (35721 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở deepseek-reasonix vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến DeepSeek-native AI coding agent for your terminal
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến A reliable coding agent for complex software engineering tasks
     - Thiết lập cấu hình và vận hành lệnh CLI của esengine/DeepSeek-Reasonix
   KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'deepseek-reasonix'.
 ---
@@ -12,15 +12,15 @@ description: >-
 # esengine/DeepSeek-Reasonix — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/esengine/DeepSeek-Reasonix`  
-> **Độ uy tín cộng đồng**: 35713 ⭐  
+> **Độ uy tín cộng đồng**: 35721 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-29 16:42:09Z
+> **Tự động đóng gói lúc**: 2026-09-30 19:42:09Z
 
 ---
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.
+* **Mục tiêu cốt lõi**: A reliable coding agent for complex software engineering tasks.
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
 - **macOS** — first launch hits Gatekeeper. One-time fix: `xattr -dr com.apple.quarantine /Applications/Reasonix.app` (or right-click → Open → confirm).

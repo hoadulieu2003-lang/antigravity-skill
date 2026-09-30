@@ -1600,3 +1600,9 @@
 * **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
 
 ---
+### 🚨 [2026-10-01 02:42] Detect and send production issues straight to your agent
+* **Nguồn cảnh báo**: Cloudflare Engineering | [Chi tiết bài viết](https://blog.cloudflare.com/real-time-issue-detection/)
+* **Bài học nhận thức**: You can now use built-in error monitoring in Cloudflare Workers to group production failures and send stack traces, logs, traces, and application context directly to a coding agent to investigate f...
+* **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
+
+---
