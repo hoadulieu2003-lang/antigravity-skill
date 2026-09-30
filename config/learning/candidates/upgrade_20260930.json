@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-09-30T10:56:57.862065+00:00",
+    "scan_date": "2026-09-30T14:21:58.298959+00:00",
     "cycle_id": "EVO-20260930",
-    "sessions_evaluated": 109,
-    "total_items_processed": 264,
+    "sessions_evaluated": 108,
+    "total_items_processed": 257,
     "active_skills_count": 64,
-    "candidates_count": 152,
-    "enhancements_count": 75,
+    "candidates_count": 149,
+    "enhancements_count": 71,
     "optimizations_count": 36
   },
   "new_skill_candidates": [
@@ -157,26 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "maka",
-      "source_technology": "apache/maka",
-      "source_url": "https://github.com/apache/maka",
-      "source_type": "GitHub (5434 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Apache Maka (Incubating) is a high-performance agent workspace that keeps a complete record of everything it did.",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ apache/maka vào module maka."
-    },
-    {
-      "target_skill": "lobsterai",
-      "source_technology": "netease-youdao/LobsterAI",
-      "source_url": "https://github.com/netease-youdao/LobsterAI",
-      "source_type": "GitHub (6031 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Open-source, desktop-grade AI agent that gets real work done — data analysis, slides, docs, video & web research. Built on OpenClaw; runs tools on your real ...",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ netease-youdao/LobsterAI vào module lobsterai."
-    },
-    {
       "target_skill": "vibe-coding-cn",
       "source_technology": "tradecatlabs/vibe-coding-cn",
       "source_url": "https://github.com/tradecatlabs/vibe-coding-cn",
@@ -275,6 +255,26 @@
       "priority_score": 85,
       "enhancement_rationale": "AI skill for OpenClaw & Claude Code — recommend from 10000+ Nano Banana Pro (Gemini) image prompts. Smart search by use case, content remix, sample images.",
       "recommended_action": "Bổ sung tri thức và thuật toán từ YouMind-OpenLab/nano-banana-pro-prompts-recommend-skill vào module nano-banana-pro-prompts-recommend-skill."
+    },
+    {
+      "target_skill": "zeroshot",
+      "source_technology": "the-open-engine/zeroshot",
+      "source_url": "https://github.com/the-open-engine/zeroshot",
+      "source_type": "GitHub (1840 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Independent executor–verifier orchestration for software changes.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ the-open-engine/zeroshot vào module zeroshot."
+    },
+    {
+      "target_skill": "cua",
+      "source_technology": "trycua/cua",
+      "source_url": "https://github.com/trycua/cua",
+      "source_type": "GitHub (23472 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Scale computer-use 2.0 with open-source drivers, cross-OS fleets, and benchmarks for training, evaluation, and data generation.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ trycua/cua vào module cua."
     }
   ],
   "architecture_optimizations": [
@@ -369,26 +369,6 @@
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     },
     {
-      "title": "Have it both ways: stay discoverable in search while disallowing AI training",
-      "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/accountable-mixed-use-ai-crawlers/",
-      "priority": "STRATEGIC",
-      "priority_score": 85,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Cloudflare is giving site owners a way to stay discoverable while disallowing AI training. New controls and an Accountable designation establish a shared model with Apple, Google, and Microsoft.",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
-      "title": "Give every teammate and agent the right level of access to your Workers",
-      "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/workers-granular-authorization/",
-      "priority": "STRATEGIC",
-      "priority_score": 85,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "You can now scope access to individual Workers and assign narrower Developer Platform roles, so teammates, CI tokens, and agents get only the access they need to debug, deploy, or monitor safely.",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
       "title": "When scanners miss the attack: how Cloudflare Client-Side Security protects storefronts",
       "source": "Cloudflare Engineering",
       "url": "https://blog.cloudflare.com/client-side-security-finds-4-malicious-campaigns/",
@@ -396,6 +376,26 @@
       "priority_score": 85,
       "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
       "rationale": "A modern storefront can look healthy while malicious JavaScript quietly siphons revenue, hijacks clicks, or rewrites analytics. See how Cloudflare's machine learning models surface evasive client-s...",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Saving another 100TB of RAM with math (and Rust)",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Cloudflare's global network is immense but not limitless. As we look for small ways to trim our resource usage, we sometimes get lucky and we can cut significantly more. Here’s how we reduced one o...",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Python Workers are now generally available",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/python-workers-ga/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Python Workers allow developers to run Python web frameworks and AI orchestration libraries natively in the Cloudflare Workers runtime. You can seamlessly integrate with Cloudflare's ecosystem incl...",
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     }
   ]
