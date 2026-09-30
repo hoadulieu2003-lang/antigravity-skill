@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-09-30T04:43:06.618556+00:00",
+    "scan_date": "2026-09-30T07:42:12.377007+00:00",
     "cycle_id": "EVO-20260930",
     "sessions_evaluated": 108,
-    "total_items_processed": 266,
+    "total_items_processed": 263,
     "active_skills_count": 64,
-    "candidates_count": 152,
-    "enhancements_count": 77,
+    "candidates_count": 151,
+    "enhancements_count": 75,
     "optimizations_count": 36
   },
   "new_skill_candidates": [
@@ -157,26 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "dramaclaw",
-      "source_technology": "dramaclaw/dramaclaw",
-      "source_url": "https://github.com/dramaclaw/dramaclaw",
-      "source_type": "GitHub (5692 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "A general-purpose AIGC video engine: script to finished film in one pipeline — dramas, ads, product videos, otome games, and more. | 通用 AIGC 视频引擎 —— 从剧本到成片一条...",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ dramaclaw/dramaclaw vào module dramaclaw."
-    },
-    {
-      "target_skill": "distilly",
-      "source_technology": "titanwings/distilly",
-      "source_url": "https://github.com/titanwings/distilly",
-      "source_type": "GitHub (24749 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Distilly — Distill how they think into reusable Skills for any Agent or Bot. Formerly Colleague Skill（原同事 Skill）.",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ titanwings/distilly vào module distilly."
-    },
-    {
       "target_skill": "maka",
       "source_technology": "apache/maka",
       "source_url": "https://github.com/apache/maka",
@@ -275,6 +255,26 @@
       "priority_score": 85,
       "enhancement_rationale": "Open-source coding agent for your terminal, built in Rust and on a journey of continuous community improvement. Issues and PRs welcome.",
       "recommended_action": "Bổ sung tri thức và thuật toán từ Hmbown/Codewhale vào module codewhale."
+    },
+    {
+      "target_skill": "arcreel",
+      "source_technology": "ArcReel/ArcReel",
+      "source_url": "https://github.com/ArcReel/ArcReel",
+      "source_type": "GitHub (4733 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "AI Agent 驱动的开源可自部署视频工作台：将小说与剧本转为角色、场景、道具资产、分镜、视频和剪映草稿，支持跨镜头一致性、多供应商与费用追踪 | Self-hosted AI video workspace for stories, storyboards and short-form video produ...",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ ArcReel/ArcReel vào module arcreel."
+    },
+    {
+      "target_skill": "nano-banana-pro-prompts-recommend-skill",
+      "source_technology": "YouMind-OpenLab/nano-banana-pro-prompts-recommend-skill",
+      "source_url": "https://github.com/YouMind-OpenLab/nano-banana-pro-prompts-recommend-skill",
+      "source_type": "GitHub (1854 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "AI skill for OpenClaw & Claude Code — recommend from 10000+ Nano Banana Pro (Gemini) image prompts. Smart search by use case, content remix, sample images.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ YouMind-OpenLab/nano-banana-pro-prompts-recommend-skill vào module nano-banana-pro-prompts-recommend-skill."
     }
   ],
   "architecture_optimizations": [
