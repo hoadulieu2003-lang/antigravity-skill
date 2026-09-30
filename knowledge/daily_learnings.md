@@ -1995,3 +1995,15 @@
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-09-30 07:58:11`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (87 ⭐)]** [asaotomo/Hx0-HawkEye](https://github.com/asaotomo/Hx0-HawkEye)
+  > 面向 Chrome/Firefox 的轻量级浏览器安全工作台：集成抓包、拦截改包、重放/Fuzz、敏感信息检测、HawkEye MCP 与浏览器级 Agent。（A lightweight Chrome/Firefox browser security workbench for capture, interce...
+- **[GitHub (117 ⭐)]** [ninouanis84-sudo/foxl-orchestrator](https://github.com/ninouanis84-sudo/foxl-orchestrator)
+  > Personal AI Agent Hub 2026 — Build Your 24/7 Autonomous Assistant
+
+</untrusted_external_content>
+
+---
