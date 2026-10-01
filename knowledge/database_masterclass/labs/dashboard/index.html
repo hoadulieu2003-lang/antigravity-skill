@@ -741,6 +741,525 @@
       from { transform: translateX(50px); opacity: 0; }
       to { transform: translateX(0); opacity: 1; }
     }
+
+    /* ==========================================================================
+       NAVIGATION TABS & COCKPIT CONTROLS
+       ========================================================================== */
+    .cockpit-nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 8px 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-tab-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.22s var(--spring-smooth);
+      user-select: none;
+    }
+
+    .nav-tab-btn:hover {
+      color: var(--text-main);
+      background: var(--bg-hover);
+    }
+
+    .nav-tab-btn.active {
+      color: var(--accent-blue);
+      background: var(--accent-blue-light);
+      border-color: var(--accent-blue-border);
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
+    }
+
+    .nav-tab-btn:active {
+      transform: scale(0.965);
+    }
+
+    .nav-tab-icon {
+      font-size: 16px;
+    }
+
+    .nav-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.06);
+      color: var(--text-muted);
+    }
+
+    .nav-tab-btn.active .nav-badge {
+      background: #FFFFFF;
+      color: var(--accent-blue);
+    }
+
+    .nav-badge.highlight {
+      background: #FEF3C7;
+      color: #B45309;
+    }
+
+    /* ==========================================================================
+       COMMAND ARSENAL & RUNBOOKS STYLES
+       ========================================================================== */
+    .arsenal-hero-banner {
+      background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .arsenal-hero-text h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .arsenal-hero-text p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      max-width: 800px;
+    }
+
+    .arsenal-controls-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .search-filter-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .arsenal-search-box {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+
+    .arsenal-search-box input {
+      width: 100%;
+      padding: 12px 16px 12px 42px;
+      border-radius: 14px;
+      border: 1px solid var(--border-medium);
+      background: var(--bg-surface);
+      font-size: 13px;
+      color: var(--text-main);
+      outline: none;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .arsenal-search-box input:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .arsenal-search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      pointer-events: none;
+      font-size: 16px;
+    }
+
+    /* Filter Chips Bar */
+    .filter-chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: transform 0.22s var(--spring-smooth), background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      user-select: none;
+    }
+
+    .filter-chip:hover {
+      background: var(--bg-hover);
+      color: var(--text-main);
+      border-color: var(--border-medium);
+    }
+
+    .filter-chip.active {
+      background: var(--accent-blue);
+      color: #FFFFFF;
+      border-color: var(--accent-blue);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+
+    .filter-chip:active {
+      transform: scale(0.965);
+    }
+
+    .filter-chip-count {
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.08);
+    }
+
+    .filter-chip.active .filter-chip-count {
+      background: rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+    }
+
+    /* Command Grid */
+    .command-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .command-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .command-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s var(--spring-smooth), box-shadow 0.25s var(--spring-smooth), border-color 0.2s ease;
+      position: relative;
+    }
+
+    .command-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(37, 99, 235, 0.28);
+    }
+
+    .command-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .command-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .cmd-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cmd-badge.category-postgresql { background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; }
+    .cmd-badge.category-mysql { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+    .cmd-badge.category-redis { background: #FFF1F2; color: #BE123C; border: 1px solid #FECDD3; }
+    .cmd-badge.category-clickhouse { background: #F0FDFA; color: #0F766E; border: 1px solid #99F6E4; }
+    .cmd-badge.category-vector { background: #EEF2FF; color: #4338CA; border: 1px solid #C7D2FE; }
+    .cmd-badge.category-linux { background: #F8FAFC; color: #334155; border: 1px solid #CBD5E1; }
+    .cmd-badge.category-docker { background: #F0F9FF; color: #0369A1; border: 1px solid #BAE6FD; }
+
+    .cmd-badge.context {
+      background: var(--bg-subtle);
+      color: var(--text-subtle);
+      font-family: monospace;
+      font-size: 10px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .cmd-badge.severity-sev1 {
+      background: #FEE2E2;
+      color: #991B1B;
+      border: 1px solid #FCA5A5;
+    }
+
+    .command-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.35;
+      margin-bottom: 4px;
+    }
+
+    .command-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 14px;
+    }
+
+    /* Code Snippet Box */
+    .code-box-wrapper {
+      position: relative;
+      margin: 12px 0;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #334155;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    }
+
+    .code-box-header {
+      background: #0F172A;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #94A3B8;
+      font-size: 11px;
+      font-family: monospace;
+    }
+
+    .code-box-lang {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .code-box-pre {
+      background: #1E293B;
+      color: #F8FAFC;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.55;
+      padding: 14px;
+      margin: 0;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 7px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #334155;
+      color: #F1F5F9;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+      transition: transform 0.22s var(--spring-smooth), background 0.15s ease, color 0.15s ease;
+      user-select: none;
+    }
+
+    .btn-copy:hover {
+      background: #475569;
+      color: #FFFFFF;
+    }
+
+    .btn-copy:active {
+      transform: scale(0.965);
+    }
+
+    .btn-copy.copied {
+      background: #059669;
+      color: #FFFFFF;
+      border-color: #10B981;
+    }
+
+    /* Parameter Explanation Callout */
+    .params-callout {
+      background: var(--bg-subtle);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    .params-callout-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .param-row {
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .param-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .param-row strong {
+      font-family: monospace;
+      color: var(--accent-blue);
+      background: rgba(37, 99, 235, 0.06);
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+
+    .runbook-tip-box {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(15, 23, 42, 0.08);
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+
+    /* Modal Backdrop & Container */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      max-width: 960px;
+      width: 100%;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-modal);
+      overflow: hidden;
+      transform: translateY(20px) scale(0.98);
+      transition: transform 0.25s var(--spring-smooth);
+    }
+
+    .modal-backdrop.open .modal-container {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-surface);
+    }
+
+    .modal-header h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--text-main);
+    }
+
+    .modal-body pre {
+      background: #1E293B;
+      color: #F8FAFC;
+      padding: 16px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin: 14px 0;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border-subtle);
+      background: var(--bg-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   </style>
 </head>
 <body>
@@ -773,8 +1292,34 @@
       </div>
     </header>
 
-    <!-- TELEMETRY STATS BANNER -->
-    <div class="stats-strip">
+    <!-- MASTER NAVIGATION TABS -->
+    <nav class="cockpit-nav-bar">
+      <div class="nav-tab-group">
+        <button id="navTabLabs" class="nav-tab-btn active" onclick="switchCockpitTab('labs')">
+          <span class="nav-tab-icon">🧪</span>
+          <span>8 Phòng Thí Nghiệm (Interactive Labs)</span>
+          <span class="nav-badge">8 / 8 PASS</span>
+        </button>
+
+        <button id="navTabArsenal" class="nav-tab-btn" onclick="switchCockpitTab('arsenal')">
+          <span class="nav-tab-icon">⚡</span>
+          <span>Kho Lệnh Tác Chiến (Command Arsenal)</span>
+          <span class="nav-badge highlight">22+ Runbooks</span>
+        </button>
+      </div>
+
+      <div class="nav-actions-group">
+        <button class="btn btn-secondary btn-sm" onclick="openArsenalDocModal()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Mở Cẩm Nang Runbook (COMMAND_ARSENAL.md)
+        </button>
+      </div>
+    </nav>
+
+    <!-- TAB 1: 8 INTERACTIVE LABS -->
+    <section id="tabContentLabs">
+      <!-- TELEMETRY STATS BANNER -->
+      <div class="stats-strip">
       <div class="stat-card">
         <div class="stat-info">
           <div class="stat-label">Tổng Số Phòng Thí Nghiệm</div>
@@ -1149,6 +1694,110 @@
         </div>
       </div>
 
+    </div>
+    </section> <!-- END TAB 1: 8 INTERACTIVE LABS -->
+
+    <!-- TAB 2: KHO LỆNH TÁC CHIẾN (COMMAND ARSENAL & RUNBOOKS) -->
+    <section id="tabContentArsenal" style="display: none;">
+      <!-- ARSENAL HERO BANNER -->
+      <div class="arsenal-hero-banner">
+        <div class="arsenal-hero-text">
+          <h2>
+            <span>⚡</span>
+            <span>Kho Lệnh Tác Chiến & Cẩm Nang Khắc Phục Sự Cố</span>
+            <span class="badge-enterprise">Enterprise Runbooks</span>
+          </h2>
+          <p>
+            Bộ sưu tập 22+ câu truy vấn cứu hộ khẩn cấp, câu lệnh pháp y hiệu năng và quy chuẩn cấu hình tối ưu cho PostgreSQL, MySQL, Redis, ClickHouse, DuckDB, Vector AI, Linux Kernel và Docker Compose.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <button class="btn btn-primary btn-sm" onclick="openArsenalDocModal()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Xem Tài Liệu Đầy Đủ COMMAND_ARSENAL.md
+          </button>
+        </div>
+      </div>
+
+      <!-- ARSENAL CONTROLS BAR: SEARCH & FILTER CHIPS -->
+      <div class="arsenal-controls-bar">
+        <div class="search-filter-wrapper">
+          <div class="arsenal-search-box">
+            <span class="arsenal-search-icon">🔍</span>
+            <input type="text" id="arsenalSearchInput" placeholder="Tìm kiếm theo tên lệnh, câu SQL, tham số, mã lỗi (ví dụ: Deadlock, BigKeys, HNSW, Bloat)..." oninput="onArsenalSearchInput(this.value)">
+          </div>
+          <div style="font-size: 13px; color: var(--text-subtle); font-weight: 600;" id="arsenalCounter">
+            Đang tải danh mục lệnh...
+          </div>
+        </div>
+
+        <!-- Filter Chips by DBMS Engine -->
+        <div class="filter-chips-container" id="filterChipsContainer">
+          <button class="filter-chip active" data-category="all" onclick="filterArsenalByChip('all')">
+            <span>✨ Tất Cả</span>
+            <span class="filter-chip-count" id="count-all">22</span>
+          </button>
+          <button class="filter-chip" data-category="postgresql" onclick="filterArsenalByChip('postgresql')">
+            <span>🐘 PostgreSQL</span>
+            <span class="filter-chip-count" id="count-postgresql">6</span>
+          </button>
+          <button class="filter-chip" data-category="mysql" onclick="filterArsenalByChip('mysql')">
+            <span>🐬 MySQL</span>
+            <span class="filter-chip-count" id="count-mysql">3</span>
+          </button>
+          <button class="filter-chip" data-category="redis" onclick="filterArsenalByChip('redis')">
+            <span>⚡ Redis</span>
+            <span class="filter-chip-count" id="count-redis">4</span>
+          </button>
+          <button class="filter-chip" data-category="clickhouse" onclick="filterArsenalByChip('clickhouse')">
+            <span>📊 ClickHouse & DuckDB</span>
+            <span class="filter-chip-count" id="count-clickhouse">3</span>
+          </button>
+          <button class="filter-chip" data-category="vector" onclick="filterArsenalByChip('vector')">
+            <span>🧠 Vector & AI</span>
+            <span class="filter-chip-count" id="count-vector">3</span>
+          </button>
+          <button class="filter-chip" data-category="linux" onclick="filterArsenalByChip('linux')">
+            <span>🐧 Linux OS & DBRE</span>
+            <span class="filter-chip-count" id="count-linux">3</span>
+          </button>
+          <button class="filter-chip" data-category="docker" onclick="filterArsenalByChip('docker')">
+            <span>🐳 Docker Compose</span>
+            <span class="filter-chip-count" id="count-docker">3</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- DYNAMIC COMMAND CARDS GRID -->
+      <div class="command-grid" id="arsenalGrid">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </section>
+
+    <!-- MODAL POPUP: COMMAND_ARSENAL.MD VIEWER -->
+    <div class="modal-backdrop" id="arsenalDocModal" onclick="handleModalBackdropClick(event)">
+      <div class="modal-container">
+        <div class="modal-header">
+          <h3>
+            <span>📖</span>
+            <span>COMMAND_ARSENAL.md — Cẩm Nang Tác Chiến Cơ Sở Dữ Liệu</span>
+          </h3>
+          <button class="btn btn-secondary btn-sm" onclick="closeArsenalDocModal()">Đóng (✕)</button>
+        </div>
+        <div class="modal-body" id="arsenalModalBody">
+          <div style="text-align: center; padding: 40px; color: var(--text-subtle);">
+            <span class="dot pulse"></span> Đang nạp tài liệu COMMAND_ARSENAL.md...
+          </div>
+        </div>
+        <div class="modal-footer">
+          <span style="font-size: 12px; color: var(--text-subtle);">Vị trí tệp: <code>knowledge/database_masterclass/COMMAND_ARSENAL.md</code></span>
+          <div style="display: flex; gap: 8px;">
+            <a href="/COMMAND_ARSENAL.md" target="_blank" class="btn btn-secondary btn-sm" style="text-decoration: none;">Tải Tệp Markdown (.md)</a>
+            <button class="btn btn-primary btn-sm" onclick="closeArsenalDocModal()">Đóng (Done)</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- TERMINAL CONSOLE DRAWER -->

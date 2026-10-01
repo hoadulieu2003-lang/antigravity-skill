@@ -2182,3 +2182,21 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-01 14:46:13`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (9853 ⭐)]** [Companion-Inc/feynman](https://github.com/Companion-Inc/feynman)
+  > The open source AI research agent.
+- **[GitHub (105 ⭐)]** [alexvilelabah/bah-browser](https://github.com/alexvilelabah/bah-browser)
+  > Open-source AI browser agent — type plain-language commands and Bah operates the web for you. Works with cloud AI (DeepSeek, Mistral, NVIDIA) or local Ollama...
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [MoFlow: Multi-Objective Agentic Workflow Generation](https://arxiv.org/abs/2609.38294)
+  > arXiv:2609.38294v1 Announce Type: new Abstract: We study the generation of agentic workflows that jointly optimize multiple objectives, such as accuracy, cos...
+- **[ArXiv CS.AI]** [AI Agents are Vulnerable to Radicalization](https://arxiv.org/abs/2609.38296)
+  > arXiv:2609.38296v1 Announce Type: new Abstract: Large language models (LLMs) can influence people's beliefs, yet little is known about whether and how they c...
+
+</untrusted_external_content>
+
+---

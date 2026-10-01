@@ -1,11 +1,11 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-01T05:04:39.648112+00:00",
+    "scan_date": "2026-10-01T07:46:22.884315+00:00",
     "cycle_id": "EVO-20261001",
     "sessions_evaluated": 108,
-    "total_items_processed": 248,
+    "total_items_processed": 247,
     "active_skills_count": 64,
-    "candidates_count": 143,
+    "candidates_count": 142,
     "enhancements_count": 69,
     "optimizations_count": 36
   },
@@ -157,16 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "tabularis",
-      "source_technology": "TabularisDB/tabularis",
-      "source_url": "https://github.com/TabularisDB/tabularis",
-      "source_type": "GitHub (4952 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Open-source desktop SQL workspace with 3 built-in database drivers and 16 shipped plugins, including SQL Server, DuckDB, ClickHouse and Redis. Built-in MCP s...",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ TabularisDB/tabularis vào module tabularis."
-    },
-    {
       "target_skill": "opensandbox",
       "source_technology": "opensandbox-group/OpenSandbox",
       "source_url": "https://github.com/opensandbox-group/OpenSandbox",
@@ -275,6 +265,16 @@
       "priority_score": 85,
       "enhancement_rationale": "Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control.",
       "recommended_action": "Bổ sung tri thức và thuật toán từ okou-ai/okou vào module okou."
+    },
+    {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "aipoch/open-science",
+      "source_url": "https://github.com/aipoch/open-science",
+      "source_type": "GitHub (4784 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "AIPOCH Open-Science: an open-source AI research workbench for scientific agent workflows and reproducible science. Local-first, model-agnostic desktop app wi...",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
     }
   ],
   "architecture_optimizations": [

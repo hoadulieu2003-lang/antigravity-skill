@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-01T07:46:20.881638+00:00",
+  "skill_name": "feynman",
+  "source_repo": "Companion-Inc/feynman",
+  "stars": 9853,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\feynman\\SKILL.md",
+  "human_promotion_required": true
+}
