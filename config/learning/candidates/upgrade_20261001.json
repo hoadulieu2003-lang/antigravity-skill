@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-01T02:04:29.659176+00:00",
+    "scan_date": "2026-10-01T05:04:39.648112+00:00",
     "cycle_id": "EVO-20261001",
-    "sessions_evaluated": 109,
-    "total_items_processed": 251,
+    "sessions_evaluated": 108,
+    "total_items_processed": 248,
     "active_skills_count": 64,
-    "candidates_count": 144,
-    "enhancements_count": 70,
+    "candidates_count": 143,
+    "enhancements_count": 69,
     "optimizations_count": 36
   },
   "new_skill_candidates": [
@@ -157,16 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "okou",
-      "source_technology": "vm0-ai/okou",
-      "source_url": "https://github.com/vm0-ai/okou",
-      "source_type": "GitHub (1153 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control.",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ vm0-ai/okou vào module okou."
-    },
-    {
       "target_skill": "tabularis",
       "source_technology": "TabularisDB/tabularis",
       "source_url": "https://github.com/TabularisDB/tabularis",
@@ -275,6 +265,16 @@
       "priority_score": 85,
       "enhancement_rationale": "Open-source AI browser agent for Chrome and Firefox (monorepo) 🧠",
       "recommended_action": "Bổ sung tri thức và thuật toán từ webbrain-one/webbrain vào module webbrain."
+    },
+    {
+      "target_skill": "okou",
+      "source_technology": "okou-ai/okou",
+      "source_url": "https://github.com/okou-ai/okou",
+      "source_type": "GitHub (1154 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ okou-ai/okou vào module okou."
     }
   ],
   "architecture_optimizations": [
