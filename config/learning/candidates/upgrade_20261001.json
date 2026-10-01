@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-01T10:42:09.646250+00:00",
+    "scan_date": "2026-10-01T13:42:08.842650+00:00",
     "cycle_id": "EVO-20261001",
-    "sessions_evaluated": 108,
-    "total_items_processed": 247,
+    "sessions_evaluated": 107,
+    "total_items_processed": 246,
     "active_skills_count": 64,
-    "candidates_count": 142,
-    "enhancements_count": 68,
-    "optimizations_count": 37
+    "candidates_count": 141,
+    "enhancements_count": 66,
+    "optimizations_count": 39
   },
   "new_skill_candidates": [
     {
@@ -157,26 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "ppt-master",
-      "source_technology": "hugohe3/ppt-master",
-      "source_url": "https://github.com/hugohe3/ppt-master",
-      "source_type": "GitHub (54741 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "AI turns documents or topics into real, native PowerPoint decks—with native shapes, transitions and animations, data-backed charts and tables on demand, audi...",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ hugohe3/ppt-master vào module ppt-master."
-    },
-    {
-      "target_skill": "ai-fundamentals",
-      "source_technology": "ForceInjection/AI-fundamentals",
-      "source_url": "https://github.com/ForceInjection/AI-fundamentals",
-      "source_type": "GitHub (2687 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "AI 基础知识 - GPU 架构、CUDA 编程、大模型基础及AI Agent 相关知识。",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ ForceInjection/AI-fundamentals vào module ai-fundamentals."
-    },
-    {
       "target_skill": "openbiliclaw",
       "source_technology": "whiteguo233/OpenBiliClaw",
       "source_url": "https://github.com/whiteguo233/OpenBiliClaw",
@@ -275,6 +255,26 @@
       "priority_score": 85,
       "enhancement_rationale": "Job application tracker and AI-powered job search assistant. Helps job seekers manage their search journey with AI resume review, job matching, task logging,...",
       "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
+    },
+    {
+      "target_skill": "cdp-engine",
+      "source_technology": "iFurySt/open-codex-computer-use",
+      "source_url": "https://github.com/iFurySt/open-codex-computer-use",
+      "source_type": "GitHub (2179 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "👾 Open Computer Use – Open-Source Alternative to Codex Computer Use",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
+      "target_skill": "ast-repo-map",
+      "source_technology": "fuxicodex/Fuxi",
+      "source_url": "https://github.com/fuxicodex/Fuxi",
+      "source_type": "GitHub (3357 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "FuXi is a fast, self-contained AI coding agent that lives in your terminal — edit code, run commands, and drive tools, with cost-aware routing across LLM pro...",
+      "recommended_action": "Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context."
     }
   ],
   "architecture_optimizations": [
