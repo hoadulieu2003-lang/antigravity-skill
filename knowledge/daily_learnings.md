@@ -2200,3 +2200,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-01 17:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (156 ⭐)]** [NiceEval/NiceEval](https://github.com/NiceEval/NiceEval)
+  > build eval for your agent in 10 mins
+- **[GitHub (93 ⭐)]** [wangmiaozero/pi-harness](https://github.com/wangmiaozero/pi-harness)
+  > The operational superset of Pi Coding Agent — everything Pi, plus observability, governance, recovery, evaluation and multi-agent orchestration.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [CARAT: Do Materials LLMs Reason or Recite?](https://arxiv.org/abs/2609.38340)
+  > arXiv:2609.38340v1 Announce Type: new Abstract: When a materials LLM answers a question about crystal structure, does it reason from the structure or copy an...
+
+</untrusted_external_content>
+
+---
