@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261003` | **Thời gian**: `2026-10-02 19:42:07 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261003` | **Thời gian**: `2026-10-02 22:42:08 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -9,11 +9,11 @@
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
 | **Phiên học đã quét (Sessions Evaluated)** | `103` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
-| **Tài nguyên công nghệ (Items Processed)** | `238` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
+| **Tài nguyên công nghệ (Items Processed)** | `234` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `64` | Kho năng lực sẵn có tại `config/skills/` |
-| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `134` | Các khoảng trống công nghệ cần bổ sung độc lập |
-| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `60` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
-| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `44` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
+| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `133` | Các khoảng trống công nghệ cần bổ sung độc lập |
+| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `58` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
+| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `43` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
 ---
 
@@ -332,62 +332,62 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 ## 🏛️ 4. Đề Xuất Tối Ưu Kiến Trúc & Quy Chuẩn (`ARCHITECTURE_OPTIMIZATION`)
 Các phát hiện mang tầm chiến lược tác động đến Hiến chương Tự trị và Quy tắc Suy luận Cấp cao:
 
-#### 4.1. The future of practice: Enabling teachers to create learning interactives with generative UI — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/the-future-of-practice-enabling-teachers-to-create-learning-interactives-with-generative-ui/)
-- **Bối cảnh lý thuyết**: Education Innovation
-- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
-
-#### 4.2. MilleMiglia: A realistic instance generator for middle-mile logistics — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.1. MilleMiglia: A realistic instance generator for middle-mile logistics — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/millemiglia-a-realistic-instance-generator-for-middle-mile-logistics/)
 - **Bối cảnh lý thuyết**: Algorithms & Theory
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.3. Advancing Private AI Compute with secure, server-side memory — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.2. Advancing Private AI Compute with secure, server-side memory — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/)
 - **Bối cảnh lý thuyết**: Introducing private, server-side memory to Private AI Compute for personal AI.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.4. Gemini 3.8 text-to-speech says hello — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.3. Gemini 3.8 text-to-speech says hello — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/say-hello-to-gemini-38-text-to-speech/)
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.5. Introducing Gemini 3.8 Live with Live Avatar — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.4. Introducing Gemini 3.8 Live with Live Avatar — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/introducing-gemini-38-live-with-live-avatar/)
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.6. Automating coherent long-form video generation — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.5. Automating coherent long-form video generation — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/coherent-long-form-video-generation/)
 - **Bối cảnh lý thuyết**: Generative AI
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.7. How Diffusion Controller unifies and simplifies AI image generation — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.6. How Diffusion Controller unifies and simplifies AI image generation — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/how-diffusion-controller-unifies-and-simplifies-ai-image-generation/)
 - **Bối cảnh lý thuyết**: Algorithms & Theory
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.8. Introducing SynthID Bio — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.7. Introducing SynthID Bio — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/introducing-synthid-bio/)
 - **Bối cảnh lý thuyết**: Proof of concept for watermarking AI-generated proteins while preserving biological function.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.9. Gemini 4 Argon: our next era of frontier intelligence — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.8. Gemini 4 Argon: our next era of frontier intelligence — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/)
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.10. Toward provably private learning from federated data — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.9. Toward provably private learning from federated data — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/toward-provably-private-learning-from-federated-data/)
 - **Bối cảnh lý thuyết**: Mobile Systems
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.11. Saving another 100TB of RAM with math (and Rust) — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.10. Saving another 100TB of RAM with math (and Rust) — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/saving-100-tb-of-ram-with-math/)
 - **Bối cảnh lý thuyết**: Cloudflare's global network is immense but not limitless. As we look for small ways to trim our resource usage, we sometimes get lucky and we can cut significantly more. Here’s how we reduced one o...
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.12. Python Workers are now generally available — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.11. Python Workers are now generally available — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/python-workers-ga/)
 - **Bối cảnh lý thuyết**: Python Workers allow developers to run Python web frameworks and AI orchestration libraries natively in the Cloudflare Workers runtime. You can seamlessly integrate with Cloudflare's ecosystem incl...
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
+
+#### 4.12. Introducing Worker Previews: isolated preview environments for every change your agent makes — `Môi trường Thử nghiệm Cách ly (Isolated Sandbox Preview)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/worker-previews/)
+- **Bối cảnh lý thuyết**: Worker Previews gives every branch its own URL, configuration, state, and observability, so you and your agents can test changes in parallel without affecting production.
+- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Tự động kích hoạt môi trường xem trước (Preview branch) cho mỗi thay đổi do Subagents thực hiện.**
 
 ---
 

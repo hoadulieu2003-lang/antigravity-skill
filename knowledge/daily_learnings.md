@@ -2358,3 +2358,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-03 05:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (74 ⭐)]** [gtapps/hermitd](https://github.com/gtapps/hermitd)
+  > Turn Claude Code into a 24/7 Agent
+
+</untrusted_external_content>
+
+---

@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-02T19:42:07.544244+00:00",
+    "scan_date": "2026-10-02T22:42:08.499759+00:00",
     "cycle_id": "EVO-20261003",
     "sessions_evaluated": 103,
-    "total_items_processed": 238,
+    "total_items_processed": 234,
     "active_skills_count": 64,
-    "candidates_count": 134,
-    "enhancements_count": 60,
-    "optimizations_count": 44
+    "candidates_count": 133,
+    "enhancements_count": 58,
+    "optimizations_count": 43
   },
   "new_skill_candidates": [
     {
@@ -279,16 +279,6 @@
   ],
   "architecture_optimizations": [
     {
-      "title": "The future of practice: Enabling teachers to create learning interactives with generative UI",
-      "source": "Google Research",
-      "url": "https://research.google/blog/the-future-of-practice-enabling-teachers-to-create-learning-interactives-with-generative-ui/",
-      "priority": "STRATEGIC",
-      "priority_score": 95,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Education Innovation",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
       "title": "MilleMiglia: A realistic instance generator for middle-mile logistics",
       "source": "Google Research",
       "url": "https://research.google/blog/millemiglia-a-realistic-instance-generator-for-middle-mile-logistics/",
@@ -397,6 +387,16 @@
       "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
       "rationale": "Python Workers allow developers to run Python web frameworks and AI orchestration libraries natively in the Cloudflare Workers runtime. You can seamlessly integrate with Cloudflare's ecosystem incl...",
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Introducing Worker Previews: isolated preview environments for every change your agent makes",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/worker-previews/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Môi trường Thử nghiệm Cách ly (Isolated Sandbox Preview)",
+      "rationale": "Worker Previews gives every branch its own URL, configuration, state, and observability, so you and your agents can test changes in parallel without affecting production.",
+      "architectural_recommendation": "Tự động kích hoạt môi trường xem trước (Preview branch) cho mỗi thay đổi do Subagents thực hiện."
     }
   ]
 }
