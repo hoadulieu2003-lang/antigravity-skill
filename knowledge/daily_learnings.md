@@ -2346,3 +2346,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-03 02:42:01`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (993 ⭐)]** [asheshgoplani/agent-deck](https://github.com/asheshgoplani/agent-deck)
+  > Terminal session manager for AI coding agents. One TUI for Claude, Gemini, OpenCode, Codex, and more.
+- **[GitHub (82 ⭐)]** [NameetP/pdfmux](https://github.com/NameetP/pdfmux)
+  > PDF extraction that audits its own output — and certifies any other extractor's, catching pages they silently dropped. Verify signed manifests offline: free,...
+
+</untrusted_external_content>
+
+---
