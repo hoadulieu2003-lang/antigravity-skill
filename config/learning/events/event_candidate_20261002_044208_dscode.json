@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-02T04:42:08.887951+00:00",
+  "skill_name": "dscode",
+  "source_repo": "qiz029/dscode",
+  "stars": 1014,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\dscode\\SKILL.md",
+  "human_promotion_required": true
+}
