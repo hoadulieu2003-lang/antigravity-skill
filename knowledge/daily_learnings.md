@@ -2250,3 +2250,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-02 07:50:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (54 ⭐)]** [Zenglian990/AI_Tutor_Release](https://github.com/Zenglian990/AI_Tutor_Release)
+  > EduAgent: Open-Source RAG AI Tutor for K-9 Education. 国内首个专为1-9年级量身定制的开源 RAG AI 教辅智能体
+- **[GitHub (54 ⭐)]** [SnowWarri0r/licai](https://github.com/SnowWarri0r/licai)
+  > 本地化个人理财助手 — A股/基金/理财/现金/数字资产/机器人全资产看板 + 市场AI问答 + 个股K线盘口详情 + 板块对比 + 早盘信息简报 + 资讯AI解读。只给客观信息，不荐买卖。
+- **[GitHub (894 ⭐)]** [LvcidPsyche/auto-browser](https://github.com/LvcidPsyche/auto-browser)
+  > Give your AI agent a real browser — with a human in the loop. Open-source MCP-native browser agent.
+
+</untrusted_external_content>
+
+---
