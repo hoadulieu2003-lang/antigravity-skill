@@ -2296,3 +2296,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-02 20:36:11`
+
+<untrusted_external_content>
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [Introducing Web Search API via AI Gateway](https://blog.cloudflare.com/introducing-web-search-api/)
+  > Cloudflare AI Gateway now supports native web search API integration in partnership with Ceramic.ai, Exa, and Linkup. Developers can now inject real-time web context into model inference calls via ...
+- **[Cloudflare Engineering]** [8 major updates to Cloudflare Observability](https://blog.cloudflare.com/one-observability-platform/)
+  > Cloudflare is launching eight major updates that bring logs, traces, analytics, alerts, dashboards, querying, and telemetry export into one observability platform, with simpler and more predictable...
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Measuring the Microtask Eligibility Gap: When Is an Off-the-Shelf SLM Enough for an Agent Harness?](https://arxiv.org/abs/2610.00025)
+  > arXiv:2610.00025v1 Announce Type: new Abstract: Agent harnesses increasingly want to run small language models (SLMs) on the microtasks around a frontier lar...
+
+</untrusted_external_content>
+
+---
