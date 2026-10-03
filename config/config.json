@@ -148,7 +148,10 @@
         "mcp(google-workspace/drive_search)",
         "mcp(google-workspace/drive_admin)",
         "mcp(google-workspace/docs_admin)",
-        "mcp(ai-engineering-team/ai_codebase_analyze)"
+        "mcp(ai-engineering-team/ai_codebase_analyze)",
+        "read_url(semi-victor-deluxe-reviewed.trycloudflare.com)",
+        "read_url(yuinchien.com)",
+        "read_url(press.stripe.com)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

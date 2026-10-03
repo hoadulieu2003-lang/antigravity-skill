@@ -2390,3 +2390,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-03 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (87 ⭐)]** [Blave-TW/blave-agent](https://github.com/Blave-TW/blave-agent)
+  > Quant infrastructure for AI agents — a free, open-source macOS workspace where your Claude Code or Codex turns a trading idea into a backtested strategy and ...
+
+</untrusted_external_content>
+
+---
