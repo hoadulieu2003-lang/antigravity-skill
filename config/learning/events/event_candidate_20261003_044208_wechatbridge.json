@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-03T04:42:08.815273+00:00",
+  "skill_name": "wechatbridge",
+  "source_repo": "freestylefly/WeChatBridge",
+  "stars": 1017,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\wechatbridge\\SKILL.md",
+  "human_promotion_required": true
+}

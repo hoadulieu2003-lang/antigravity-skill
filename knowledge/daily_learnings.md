@@ -2378,3 +2378,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-03 11:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (71 ⭐)]** [zjunlp/LightRSI](https://github.com/zjunlp/LightRSI)
+  > [EMNLP 2026] LightRSI is a modular runtime for lightly deploying recursive self-improvement loops in long-horizon LLM agents.
+- **[GitHub (1017 ⭐)]** [freestylefly/WeChatBridge](https://github.com/freestylefly/WeChatBridge)
+  > 微信聊天记录一键转发到 AI Agent 与 Obsidian 的原生 macOS 工具
+
+</untrusted_external_content>
+
+---

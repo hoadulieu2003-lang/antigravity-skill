@@ -147,7 +147,8 @@
         "mcp(google-workspace/sheets_read)",
         "mcp(google-workspace/drive_search)",
         "mcp(google-workspace/drive_admin)",
-        "mcp(google-workspace/docs_admin)"
+        "mcp(google-workspace/docs_admin)",
+        "mcp(ai-engineering-team/ai_codebase_analyze)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
