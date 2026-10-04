@@ -2472,3 +2472,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-04 17:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (73 ⭐)]** [tykimos/agent-native-agent](https://github.com/tykimos/agent-native-agent)
+  > Self-hosted apps you operate by watching a dashboard and talking to a coding agent that IS the runtime — it proposes, applies, and evolves the app live. Buil...
+- **[GitHub (104 ⭐)]** [OneCuriousLearner/anyplane](https://github.com/OneCuriousLearner/anyplane)
+  > Self-hosted, vendor-neutral control plane for your local coding agents (Claude Code & Codex). Run your agents, on any plane.
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [Cloudflare/clef-flash](https://huggingface.co/Cloudflare/clef-flash)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---

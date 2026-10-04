@@ -155,7 +155,14 @@
         "read_url(komori-aya.com)",
         "read_url(ougon.jp)",
         "mcp(cdp-bridge/cdp-list_tabs)",
-        "read_url(elenagonci.com)"
+        "read_url(elenagonci.com)",
+        "read_url(stewart-slight-customize-breaking.trycloudflare.com)",
+        "mcp(memory/read_graph)",
+        "mcp(memory/create_entities)",
+        "mcp(memory/create_relations)",
+        "mcp(memory/add_observations)",
+        "mcp(google-workspace/calendar_list_events)",
+        "mcp(google-workspace/gmail_list)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
