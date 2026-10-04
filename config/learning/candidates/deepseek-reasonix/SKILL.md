@@ -1,7 +1,7 @@
 ---
 name: deepseek-reasonix
 description: >-
-  Kỹ năng chuyên gia vận hành cho esengine/DeepSeek-Reasonix (35742 ⭐).
+  Kỹ năng chuyên gia vận hành cho esengine/DeepSeek-Reasonix (35739 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở deepseek-reasonix vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến A reliable coding agent for complex software engineering tasks
@@ -12,9 +12,9 @@ description: >-
 # esengine/DeepSeek-Reasonix — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/esengine/DeepSeek-Reasonix`  
-> **Độ uy tín cộng đồng**: 35742 ⭐  
+> **Độ uy tín cộng đồng**: 35739 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-04 00:20:13Z
+> **Tự động đóng gói lúc**: 2026-10-04 16:42:08Z
 
 ---
 

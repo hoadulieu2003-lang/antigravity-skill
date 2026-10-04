@@ -168,7 +168,8 @@
         "mcp(puppeteer/puppeteer_evaluate)",
         "mcp(github/search_repositories)",
         "mcp(puppeteer/puppeteer_click)",
-        "mcp(puppeteer/puppeteer_press_key)"
+        "mcp(puppeteer/puppeteer_press_key)",
+        "mcp(ai-engineering-team/ai_orchestrate_task)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
