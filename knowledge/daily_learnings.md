@@ -2498,3 +2498,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-05 02:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (80 ⭐)]** [bulutarkan/mac-mcp](https://github.com/bulutarkan/mac-mcp)
+  > Talk to your AI agent and let it work on your Mac. Open source MCP control for browser, files, apps, shell, and agents.
+
+</untrusted_external_content>
+
+---

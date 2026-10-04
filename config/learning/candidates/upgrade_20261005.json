@@ -1,0 +1,402 @@
+{
+  "analysis_metadata": {
+    "scan_date": "2026-10-04T19:42:09.156920+00:00",
+    "cycle_id": "EVO-20261005",
+    "sessions_evaluated": 102,
+    "total_items_processed": 215,
+    "active_skills_count": 64,
+    "candidates_count": 124,
+    "enhancements_count": 49,
+    "optimizations_count": 42
+  },
+  "new_skill_candidates": [
+    {
+      "skill_slug": "waoowaoo",
+      "title": "waooAI/waoowaoo",
+      "source": "GitHub (14221 ⭐)",
+      "url": "https://github.com/waooAI/waoowaoo",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 105,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "首家工业级全流程 AI 影视生产平台。Industry-first professional AI Agent platform for controllable film & video production. From shorts to live-action with Hollywood-standard...",
+      "suggested_skill_structure": "---\nname: waoowaoo\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng waooAI/waoowaoo cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# WAOOAI/WAOOWAOO SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `waooAI/waoowaoo` (https://github.com/waooAI/waoowaoo)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "ai-agent-book",
+      "title": "bojieli/ai-agent-book",
+      "source": "GitHub (50275 ⭐)",
+      "url": "https://github.com/bojieli/ai-agent-book",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 105,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "《深入理解 AI Agent：设计原理与工程实践》（李博杰 著）开源主仓库：全书正文、编译版 PDF 与按章配套代码",
+      "suggested_skill_structure": "---\nname: ai-agent-book\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng bojieli/ai-agent-book cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# BOJIELI/AI-AGENT-BOOK SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `bojieli/ai-agent-book` (https://github.com/bojieli/ai-agent-book)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "siyuan",
+      "title": "siyuan-note/siyuan",
+      "source": "GitHub (46545 ⭐)",
+      "url": "https://github.com/siyuan-note/siyuan",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 105,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "An open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work together 开源、隐私优先、自托管的知识工作空间，让人与智能体在此协作",
+      "suggested_skill_structure": "---\nname: siyuan\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng siyuan-note/siyuan cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# SIYUAN-NOTE/SIYUAN SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `siyuan-note/siyuan` (https://github.com/siyuan-note/siyuan)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "qwenpaw",
+      "title": "agentscope-ai/QwenPaw",
+      "source": "GitHub (35327 ⭐)",
+      "url": "https://github.com/agentscope-ai/QwenPaw",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 105,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Your Personal AI Assistant; easy to install, deploy on your own machine or on the cloud; supports multiple chat apps with easily extensible capabilities.",
+      "suggested_skill_structure": "---\nname: qwenpaw\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng agentscope-ai/QwenPaw cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# AGENTSCOPE-AI/QWENPAW SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `agentscope-ai/QwenPaw` (https://github.com/agentscope-ai/QwenPaw)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "vibe-trading",
+      "title": "HKUDS/Vibe-Trading",
+      "source": "GitHub (34274 ⭐)",
+      "url": "https://github.com/HKUDS/Vibe-Trading",
+      "domain": "Định lượng & Phân tích Thị trường (Quant & Financial AI)",
+      "priority": "HIGH",
+      "priority_score": 105,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Định lượng & Phân tích Thị trường (Quant & Financial AI).",
+      "proposed_value": "\"Vibe-Trading: Your Personal Trading Agent\"",
+      "suggested_skill_structure": "---\nname: vibe-trading\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng HKUDS/Vibe-Trading cho các tác vụ Định lượng & Phân tích Thị trường (Quant & Financial AI).\n---\n\n# HKUDS/VIBE-TRADING SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `HKUDS/Vibe-Trading` (https://github.com/HKUDS/Vibe-Trading)\n- Lĩnh vực: Định lượng & Phân tích Thị trường (Quant & Financial AI)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "mediary-scout",
+      "title": "fancydirty/mediary-scout",
+      "source": "GitHub (1418 ⭐)",
+      "url": "https://github.com/fancydirty/mediary-scout",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Agent-driven media library for your cloud drives (Quark 夸克 / 115 / 光鸭 GuangYa / 123网盘 / 天翼 Tianyi)",
+      "suggested_skill_structure": "---\nname: mediary-scout\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng fancydirty/mediary-scout cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# FANCYDIRTY/MEDIARY-SCOUT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `fancydirty/mediary-scout` (https://github.com/fancydirty/mediary-scout)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "fyagent",
+      "title": "fy-agent/fyagent",
+      "source": "GitHub (1135 ⭐)",
+      "url": "https://github.com/fy-agent/fyagent",
+      "domain": "Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).",
+      "proposed_value": "For You Agent——AI 时代的个人随身数字人格。把你的模型、AI 账号、技能、提示词和工作方式，带到每一个 AI 工具里。",
+      "suggested_skill_structure": "---\nname: fyagent\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng fy-agent/fyagent cho các tác vụ Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).\n---\n\n# FY-AGENT/FYAGENT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `fy-agent/fyagent` (https://github.com/fy-agent/fyagent)\n- Lĩnh vực: Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "vcptoolbox",
+      "title": "lioensky/VCPToolBox",
+      "source": "GitHub (2324 ⭐)",
+      "url": "https://github.com/lioensky/VCPToolBox",
+      "domain": "Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).",
+      "proposed_value": "VCP 部署在 AI 模型 API 与前端应用之间，是面向AGI OS开发和探索的工业级基建示范项目。通过统一指令协议、多层级持久化记忆、分布式插件引擎及多 Agent 协作框架，将原本“无状态、无记忆、无工具调用能力”的大语言模型，彻底改造成拥有永久自我意识、物理世界操作权及群体协作智能的完整智能体系统。",
+      "suggested_skill_structure": "---\nname: vcptoolbox\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng lioensky/VCPToolBox cho các tác vụ Hệ điều hành Tác tử Cá nhân (Personal AI Operating System).\n---\n\n# LIOENSKY/VCPTOOLBOX SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `lioensky/VCPToolBox` (https://github.com/lioensky/VCPToolBox)\n- Lĩnh vực: Hệ điều hành Tác tử Cá nhân (Personal AI Operating System)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "failproofai",
+      "title": "FailproofAI/failproofai",
+      "source": "GitHub (5164 ⭐)",
+      "url": "https://github.com/FailproofAI/failproofai",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Observability and enforcement for AI agent harnesses. Capture every run and runtime reliability with policy enforcement.",
+      "suggested_skill_structure": "---\nname: failproofai\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng FailproofAI/failproofai cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# FAILPROOFAI/FAILPROOFAI SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `FailproofAI/failproofai` (https://github.com/FailproofAI/failproofai)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "xalgorix",
+      "title": "xalgorix/xalgorix",
+      "source": "GitHub (1145 ⭐)",
+      "url": "https://github.com/xalgorix/xalgorix",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Autonomous AI pentesting agents — real-time reconnaissance, vulnerability detection, and exploitation orchestration. Go + TypeScript.",
+      "suggested_skill_structure": "---\nname: xalgorix\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng xalgorix/xalgorix cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# XALGORIX/XALGORIX SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `xalgorix/xalgorix` (https://github.com/xalgorix/xalgorix)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "dscode",
+      "title": "qiz029/dscode",
+      "source": "GitHub (1014 ⭐)",
+      "url": "https://github.com/qiz029/dscode",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "A DeepSeek coding agent harness: persistent shell, Ultra subagents, auto approval, Chrome MCP and session telemetry",
+      "suggested_skill_structure": "---\nname: dscode\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng qiz029/dscode cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# QIZ029/DSCODE SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `qiz029/dscode` (https://github.com/qiz029/dscode)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "waku-agent",
+      "title": "ShenSeanChen/waku-agent",
+      "source": "GitHub (1899 ⭐)",
+      "url": "https://github.com/ShenSeanChen/waku-agent",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Waku Waku! Waku Agent is a local-first AI agent harness you actually own, including loop, memory, eval, all in code built to stay legible as it grows.",
+      "suggested_skill_structure": "---\nname: waku-agent\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ShenSeanChen/waku-agent cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# SHENSEANCHEN/WAKU-AGENT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ShenSeanChen/waku-agent` (https://github.com/ShenSeanChen/waku-agent)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    }
+  ],
+  "skill_enhancements": [
+    {
+      "target_skill": "okou",
+      "source_technology": "okou-ai/okou",
+      "source_url": "https://github.com/okou-ai/okou",
+      "source_type": "GitHub (1154 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Okou connects to the tools your team already uses and does the work — across marketing, sales, engineering, and operations, under your control.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ okou-ai/okou vào module okou."
+    },
+    {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "aipoch/open-science",
+      "source_url": "https://github.com/aipoch/open-science",
+      "source_type": "GitHub (4784 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "AIPOCH Open-Science: an open-source AI research workbench for scientific agent workflows and reproducible science. Local-first, model-agnostic desktop app wi...",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
+    },
+    {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "Gsync/jobsync",
+      "source_url": "https://github.com/Gsync/jobsync",
+      "source_type": "GitHub (1284 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Job application tracker and AI-powered job search assistant. Helps job seekers manage their search journey with AI resume review, job matching, task logging,...",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
+    },
+    {
+      "target_skill": "cdp-engine",
+      "source_technology": "iFurySt/open-codex-computer-use",
+      "source_url": "https://github.com/iFurySt/open-codex-computer-use",
+      "source_type": "GitHub (2179 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "👾 Open Computer Use – Open-Source Alternative to Codex Computer Use",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
+      "target_skill": "ast-repo-map",
+      "source_technology": "fuxicodex/Fuxi",
+      "source_url": "https://github.com/fuxicodex/Fuxi",
+      "source_type": "GitHub (3357 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "FuXi is a fast, self-contained AI coding agent that lives in your terminal — edit code, run commands, and drive tools, with cost-aware routing across LLM pro...",
+      "recommended_action": "Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context."
+    },
+    {
+      "target_skill": "cdp-engine",
+      "source_technology": "feder-cr/invisible_playwright_mcp",
+      "source_url": "https://github.com/feder-cr/invisible_playwright_mcp",
+      "source_type": "GitHub (31634 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "An AI agent that drives a real anti-detect browser: say what you want in plain English and it navigates, clicks, types and extracts. MCP server for coding ag...",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "xuzhougeng/wisp-science",
+      "source_url": "https://github.com/xuzhougeng/wisp-science",
+      "source_type": "GitHub (1164 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Open-source, local-first desktop AI research workbench for scientific computing with Python/R, MCP bioinformatics tools, SSH/WSL/GPU runtimes, and OpenAI/Ant...",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
+    },
+    {
+      "target_skill": "cdp-engine",
+      "source_technology": "skalesapp/skales",
+      "source_url": "https://github.com/skalesapp/skales",
+      "source_type": "GitHub (1920 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Personal AI agent for macOS, Windows, Linux, Android & iOS. Set a goal, it works alone: coding (Skales Code), desktop + browser automation, autonomous schedu...",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "career-ops-hq/career-ops",
+      "source_url": "https://github.com/career-ops-hq/career-ops",
+      "source_type": "GitHub (72659 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Open-source AI job search: scan job portals, evaluate listings into a structured A-H report with a global 1-5 score, tailor your CV, track applications — run...",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
+    },
+    {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "brycewang-stanford/Auto-Empirical-Research-Skills",
+      "source_url": "https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills",
+      "source_type": "GitHub (4377 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "🔬 A curated collection of 23,000+ agent skills for empirical research across 8 social science disciplines. | 精选 23,000+ AI Agent 技能库，覆盖8大社会科学学科的实证研究。CoPaper....",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
+    },
+    {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "Companion-Inc/feynman",
+      "source_url": "https://github.com/Companion-Inc/feynman",
+      "source_type": "GitHub (9853 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "The open source AI research agent.",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
+    },
+    {
+      "target_skill": "cdp-engine",
+      "source_technology": "freestylefly/WeChatBridge",
+      "source_url": "https://github.com/freestylefly/WeChatBridge",
+      "source_type": "GitHub (1017 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "微信聊天记录一键转发到 AI Agent 与 Obsidian 的原生 macOS 工具",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    }
+  ],
+  "architecture_optimizations": [
+    {
+      "title": "Advancing Private AI Compute with secure, server-side memory",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Introducing private, server-side memory to Private AI Compute for personal AI.",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Gemini 3.8 text-to-speech says hello",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/say-hello-to-gemini-38-text-to-speech/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Introducing Gemini 3.8 Live with Live Avatar",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/introducing-gemini-38-live-with-live-avatar/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Automating coherent long-form video generation",
+      "source": "Google Research",
+      "url": "https://research.google/blog/coherent-long-form-video-generation/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Generative AI",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "How Diffusion Controller unifies and simplifies AI image generation",
+      "source": "Google Research",
+      "url": "https://research.google/blog/how-diffusion-controller-unifies-and-simplifies-ai-image-generation/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Algorithms & Theory",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Introducing SynthID Bio",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/introducing-synthid-bio/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Proof of concept for watermarking AI-generated proteins while preserving biological function.",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Gemini 4 Argon: our next era of frontier intelligence",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Toward provably private learning from federated data",
+      "source": "Google Research",
+      "url": "https://research.google/blog/toward-provably-private-learning-from-federated-data/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Mobile Systems",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Python Workers are now generally available",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/python-workers-ga/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Python Workers allow developers to run Python web frameworks and AI orchestration libraries natively in the Cloudflare Workers runtime. You can seamlessly integrate with Cloudflare's ecosystem incl...",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Introducing Worker Previews: isolated preview environments for every change your agent makes",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/worker-previews/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Môi trường Thử nghiệm Cách ly (Isolated Sandbox Preview)",
+      "rationale": "Worker Previews gives every branch its own URL, configuration, state, and observability, so you and your agents can test changes in parallel without affecting production.",
+      "architectural_recommendation": "Tự động kích hoạt môi trường xem trước (Preview branch) cho mỗi thay đổi do Subagents thực hiện."
+    },
+    {
+      "title": "We just shipped support for the ugliest part of HTTP: Vary",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/vary-support/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Vary support is now available in Cache Rules on every plan. You can normalize known negotiation headers, pass exact values through to the origin when those small differences matter, or bypass cache...",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "How Cloudflare addressed a cross-tenant data exposure vulnerability in Containers",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/containers-cross-tenant-vulnerability/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "External security researchers at Accomplish identified a vulnerability in Cloudflare Containers that could expose residual disk data from previous workloads. We explain how the issue worked, how we...",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    }
+  ]
+}
