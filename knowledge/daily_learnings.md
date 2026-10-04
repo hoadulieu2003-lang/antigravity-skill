@@ -2420,3 +2420,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-04 07:20:06`
+
+<untrusted_external_content>
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [Lightricks/LTX-2.5](https://huggingface.co/Lightricks/LTX-2.5)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
