@@ -2460,3 +2460,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-04 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (556 ⭐)]** [BlockRunAI/Franklin](https://github.com/BlockRunAI/Franklin)
+  > The AI agent with a wallet — spends USDC autonomously to get real work done. Apache-2.0, TypeScript.
+- **[GitHub (1834 ⭐)]** [DSH-EAC/EAC-Desktop](https://github.com/DSH-EAC/EAC-Desktop)
+  > Embracing All Creation (Desktop) — Dedicated to the Harmonious Coexistence of Hundreds of DSH Plugins / 揽尽万象（桌面版） —— 致力于让数百个DSH插件和谐共存
+
+</untrusted_external_content>
+
+---
