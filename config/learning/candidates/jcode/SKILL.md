@@ -1,7 +1,7 @@
 ---
 name: jcode
 description: >-
-  Kỹ năng chuyên gia vận hành cho 1jehuang/jcode (20250 ⭐).
+  Kỹ năng chuyên gia vận hành cho 1jehuang/jcode (20293 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở jcode vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến High performance coding agent harness written in rust
@@ -12,9 +12,9 @@ description: >-
 # 1jehuang/jcode — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/1jehuang/jcode`  
-> **Độ uy tín cộng đồng**: 20250 ⭐  
+> **Độ uy tín cộng đồng**: 20293 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-01 05:04:38Z
+> **Tự động đóng gói lúc**: 2026-10-04 04:42:09Z
 
 ---
 

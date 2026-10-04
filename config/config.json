@@ -154,7 +154,8 @@
         "read_url(press.stripe.com)",
         "read_url(komori-aya.com)",
         "read_url(ougon.jp)",
-        "mcp(cdp-bridge/cdp-list_tabs)"
+        "mcp(cdp-bridge/cdp-list_tabs)",
+        "read_url(elenagonci.com)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
