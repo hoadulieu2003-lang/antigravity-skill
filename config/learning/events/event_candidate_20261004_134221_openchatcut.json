@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-04T13:42:21.507097+00:00",
+  "skill_name": "openchatcut",
+  "source_repo": "0xsline/OpenChatCut",
+  "stars": 2104,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\openchatcut\\SKILL.md",
+  "human_promotion_required": true
+}

@@ -1,6 +1,6 @@
 ---
 name: design-engineering
-description: "Siêu Kỹ Năng Kỹ Thuật Thiết Kế (Design Engineering) theo triết lý Emil Kowalski. Đóng gói chuẩn mực vi tương tác bấm co lún scale(0.965), đường cong cubic-bezier bứt tốc, lề quang học (optical alignment & margins), lò xo vật lý (spring physics), tối ưu hóa GPU transform/opacity và chuẩn mực Sonner Component."
+description: "Siêu Kỹ Năng Kỹ Thuật Thiết Kế (Design Engineering) theo triết lý Emil Kowalski & 6 Repo GitHub Đỉnh Cao (Vaul, Magic UI, Motion-Primitives, Lenis, Cmdk, Craft). Đóng gói chuẩn mực vi tương tác bấm co lún scale(0.965), đường cong cubic-bezier bứt tốc, lề quang học, lò xo vật lý, tối ưu hóa GPU, nguyên tắc Sonner và 5 Trụ Cột Tương Tác Cảm Ứng Xúc Giác Di Động & iPadOS Touch (Sticky-hover elimination, Gestural drawer, Sliding pill indicator, Dual haptic engine, 120Hz ProMotion momentum scroll)."
 ---
 
 # Design Engineering: Triết Lý Tinh Hoa & Kỹ Thuật Giao Diện Emil Kowalski
@@ -346,3 +346,147 @@ Các thao tác kéo vuốt cử chỉ (drag, swipe, pull-down) bắt buộc ph�
 | Thiếu hỗ trợ chế độ giảm chuyển động | Tích hợp `@media (prefers-reduced-motion: reduce)` |
 | Nhiều phần tử xuất hiện cùng lúc | Áp dụng hoạt ảnh thác đổ so le (Stagger) 30-60ms |
 | Chưa kiểm tra hoạt ảnh ở tốc độ chậm | Soi kỹ lưỡng ở tốc độ 25% trong DevTools Animations |
+| Hover bị kẹt dính vĩnh viễn trên iOS/iPadOS | Phân lập `@media (hover: hover) and (pointer: fine)`, dùng `:active` trên cảm ứng |
+| Drawer đóng cứng đờ khi kéo ngược | Áp dụng giảm chấn cao su logarit `rubber-banding` |
+| Drawer bắt buộc kéo hết chiều cao | Áp dụng ngưỡng đóng kép: vận tốc $> 0.12\text{ px/ms}$ hoặc quãng đường $> 25\%$ |
+| Tab active giật nháy khi chuyển | Dùng phần tử nền trượt duy nhất (Sliding Pill Indicator) 180-240ms |
+| Âm thanh xúc giác bị chặn trên iOS | Mở khóa `AudioContext` tại `touchstart` đầu tiên + phát sóng sin thuần |
+| Rung xúc giác quá mạnh gây phiền | Giới hạn xung rung cơ học siêu ngắn `navigator.vibrate(8)` (8ms) |
+| Neo trang bị TopBar che khuất | Trừ chiều cao header động + padding an toàn: `offset = top - headerHeight - 16` |
+| Cuộn giật khựng trên iPad 120Hz | Đồng bộ rAF, nội suy quán tính lerp 120Hz ProMotion chuẩn Lenis |
+
+---
+
+## 15. CHUẨN MỰC TƯƠNG TÁC XÚC GIÁC CẢM ỨNG DI ĐỘNG & iPadOS (Touch-First & Gestural Interaction Standards)
+
+Được đúc kết từ quá trình khảo sát thực chiến 6 thư viện và sản phẩm tương tác hàng đầu GitHub (`vaul`, `craft.rauno.me`, `cmdk`, `magicui`, `motion-primitives`, `lenis`), đóng gói trọn vẹn 5 trụ cột kỹ thuật tương tác cảm ứng xúc giác đỉnh cao cho Web & iPadOS Touch:
+
+### 15.1 Trụ Cột 1 — Sticky-Hover Elimination (Quy Chuẩn Triệt Tiêu Bẫy Dính Hover trên Safari iOS/iPadOS)
+* **Nguyên nhân gốc rễ (Root Cause)**: Trên các thiết bị cảm ứng (đặc biệt là WebKit Safari trên iOS và iPadOS), khi người dùng chạm ngón tay vào một phần tử có pseudo-class `:hover`, trình duyệt sẽ kích hoạt style `:hover` và giữ nguyên trạng thái đó vĩnh viễn ("Sticky-Hover"). Trạng thái này chỉ bị hủy khi người dùng chạm vào một phần tử tương tác khác. Hậu quả là các nút bấm bị kẹt màu, tooltip mở lơ lửng không chịu đóng, và giao diện trở nên luộm thuộm.
+* **Quy chuẩn Cách ly Bắt buộc (Strict Isolation Rule)**: Toàn bộ hiệu ứng hover thị giác BẮT BUỘC phải được bọc trong media query kép:
+  ```css
+  /* CHỈ kích hoạt hiệu ứng hover trên thiết bị có chuột / con trỏ chuẩn xác */
+  @media (hover: hover) and (pointer: fine) {
+    .interactive-element:hover {
+      background-color: var(--color-surface-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+  }
+
+  /* Trên thiết bị cảm ứng: Phản hồi thuần túy bằng vi tương tác co lún khi chạm */
+  .interactive-element:active {
+    transform: scale(0.965);
+    transition: transform 120ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  ```
+* **Kỷ luật Tailwind CSS**: Tuyệt đối không dùng class `hover:...` đơn độc cho các hiệu ứng trạng thái nếu không có cơ chế cách ly con trỏ chuột chuẩn xác, ngăn ngừa triệt để lỗi kẹt màu trên iPadOS.
+
+### 15.2 Trụ Cột 2 — Gestural Drawer & Swipe-to-Dismiss (Ngăn Kéo Cử Chỉ & Vuốt Để Đóng — Vaul Pattern)
+Kế thừa tinh hoa từ kiến trúc của Emil Kowalski trong thư viện `vaul`:
+* **Thanh Kéo Vuốt (Drag Handle)**:
+  - Bố trí tại mép trên của ngăn kéo với kích thước chuẩn: `w-12 h-1.5 rounded-full bg-stone-300 dark:bg-stone-600`.
+  - Khóa hành vi cuộn mặc định của trình duyệt tại khu vực kéo: `touch-action: none;`.
+  - Dự trữ vùng chạm quang học an toàn (`touch-target` $\ge 44\text{px}$) bằng đệm padding vô hình xung quanh thanh kéo.
+* **Theo Dõi Dịch Chuyển & Giảm Chấn Cao Su (Rubber-Banding / Damping)**:
+  - Khi người dùng chạm và kéo ngón tay theo trục Y (`deltaY = currentTouchY - initialTouchY`):
+    - Khi kéo xuống (`deltaY > 0`): Dịch chuyển ngăn kéo theo tỷ lệ 1:1: `transform: translateY(${deltaY}px)`.
+    - Khi kéo ngược lên trên đường biên tự nhiên (`deltaY < 0`): Tuyệt đối không chặn cứng đờ. Bắt buộc áp dụng công thức giảm chấn cao su logarit:
+      $$\text{dampedDelta} = -(\left|\text{deltaY}\right|^{0.75}) \times 1.2$$
+      hoặc hệ số ma sát $\text{deltaY} \times 0.25$, tạo cảm giác như kéo dãn một sợi dây cao su chân thực.
+* **Ngưỡng Đóng Kép (Dual Dismiss Thresholds)**:
+  Ngăn kéo tự động trượt xuống đóng khi thỏa mãn **MỘT TRONG HAI** điều kiện:
+  1. *Ngưỡng Quãng Đường (Distance Threshold)*: $\text{deltaY} > 120\text{px}$ hoặc $\ge 25\%$ chiều cao toàn phần của drawer.
+  2. *Ngưỡng Vận Tốc Vuốt Nhanh (Velocity / Flick Threshold)*: $\text{velocity} = \frac{\left|\text{deltaY}\right|}{\Delta t} > 0.12\text{ px/ms}$ theo hướng đi xuống.
+  - Nếu không đạt ngưỡng đóng: Ngăn kéo tự động bật nảy (snap back) về vị trí mở ban đầu bằng đường cong lò xo `--ease-spring: cubic-bezier(0.22, 1.61, 0.36, 1.0)`.
+
+### 15.3 Trụ Cột 3 — Sliding Pill Active Indicator (Viên Thuốc Trượt Sáng Theo Dấu — Magic UI & Motion-Primitives Pattern)
+* **Bản chất Kiến trúc (Architectural Insight)**:
+  Thay vì thay đổi nền và màu chữ độc lập cho từng tab khiến mắt người phải nhận thức nhiều điểm nhấp nháy rời rạc, cơ chế "Sliding Pill" sử dụng duy nhất **MỘT phần tử nền động (Sliding Backdrop Pill)** trượt êm phía sau các nhãn tab:
+  ```tsx
+  // Đo đạc hình học vị trí chính xác của Tab đang kích hoạt
+  const activeTabEl = tabRefs.current[activeTabId];
+  if (activeTabEl && pillRef.current) {
+    const { offsetLeft, offsetWidth, offsetHeight } = activeTabEl;
+    pillRef.current.style.transform = `translateX(${offsetLeft}px)`;
+    pillRef.current.style.width = `${offsetWidth}px`;
+    pillRef.current.style.height = `${offsetHeight}px`;
+  }
+  ```
+* **Động Lực Học Đường Cong (Easing Dynamics)**:
+  - Áp dụng đường cong bứt tốc dứt khoát: `transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1), width 220ms cubic-bezier(0.23, 1, 0.32, 1);`.
+  - Giữ thời lượng trong khoảng vàng 180ms - 240ms, vừa đủ để mắt người nhận diện hướng di chuyển của "viên thuốc", vừa không gây trễ thao tác chuyển đổi ngữ cảnh.
+* **Đảo Màu Quang Học (Contrast Bridging)**:
+  - Nhãn tab sử dụng `relative z-10`, trong khi viên thuốc trượt nằm ở `absolute inset-y-1 z-0 rounded-full bg-white dark:bg-stone-800 shadow-sm`.
+  - Kết hợp chuyển đổi màu chữ `transition-colors duration-200` để chữ trở nên đậm nét và tương phản tuyệt đối khi viên thuốc trượt tới.
+
+### 15.4 Trụ Cột 4 — Dual Haptic Tactile Engine (Động Cơ Xúc Giác Kép — Web Audio API + Vibration API)
+* **Vấn Đề Phần Cứng Di Động (Mobile Hardware Constraints)**:
+  - iOS/iPadOS WebKit khóa hoàn toàn `AudioContext` cho đến khi có cử chỉ tương tác đầu tiên của người dùng (`user gesture policy`), đồng thời **không hỗ trợ** `navigator.vibrate()`.
+  - Android hỗ trợ `navigator.vibrate()`, nhưng nếu dùng tệp âm thanh tải qua mạng (`.mp3`, `.wav`) sẽ gặp độ trễ tải về (network lag), làm mất tính đồng bộ giữa cú chạm ngón tay và âm thanh phát ra.
+* **Cơ Chế Động Cơ Kép Tự Trị (Autonomous Dual Haptic Engine)**:
+  1. **Mở khóa AudioContext Ngay Lập Tức**: Bắt sự kiện `touchstart` hoặc `pointerdown` đầu tiên trên toàn `window` để đánh thức `AudioContext`:
+     ```typescript
+     const unlockAudioContext = () => {
+       if (audioCtx && audioCtx.state === 'suspended') {
+         audioCtx.resume();
+       }
+       window.removeEventListener('touchstart', unlockAudioContext);
+       window.removeEventListener('pointerdown', unlockAudioContext);
+     };
+     window.addEventListener('touchstart', unlockAudioContext, { passive: true });
+     window.addEventListener('pointerdown', unlockAudioContext, { passive: true });
+     ```
+  2. **Tự Tổng Hợp Sóng Âm Thuần (Zero-Asset Synthetic Waveforms)**:
+     Không tải tệp âm thanh ngoài. Sử dụng `OscillatorNode` và `GainNode` để tạo xung âm click cơ học trong 12-18ms:
+     ```typescript
+     export function playTactileTick(frequency = 800, duration = 0.015) {
+       if (!audioCtx) return;
+       const osc = audioCtx.createOscillator();
+       const gain = audioCtx.createGain();
+       osc.type = 'sine';
+       osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+       osc.frequency.exponentialRampToValueAtTime(180, audioCtx.currentTime + duration);
+       gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+       gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+       osc.connect(gain);
+       gain.connect(audioCtx.destination);
+       osc.start();
+       osc.stop(audioCtx.currentTime + duration);
+     }
+     ```
+  3. **Rung Cơ Học Siêu Nhẹ (Micro-Haptic Pulse)**:
+     Trên thiết bị hỗ trợ `navigator.vibrate`, kích hoạt xung rung siêu ngắn:
+     ```typescript
+     if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
+       navigator.vibrate(8); // 8ms: cảm giác như một khấc bi cơ học, không rung bần bật
+     }
+     ```
+
+### 15.5 Trụ Cột 5 — 120Hz ProMotion Momentum Smooth Scroll (Cuộn Mượt Quán Tính 120Hz — Lenis Pattern)
+* **Đặc Thù Màn Hình iPadOS ProMotion (120Hz Display Refresh Rate)**:
+  Màn hình ProMotion của iPad Pro và iPhone có tần số quét 120Hz (mỗi khung hình chỉ kéo dài ~8.33ms). Các thư viện cuộn cũ sử dụng `setInterval` hoặc bước nhảy 16.6ms (chuẩn 60Hz) sẽ gây hiện tượng xé hình (stutter/jitter) thảm hại trên màn hình cảm ứng cao cấp.
+* **Cơ Chế Nội Suy Quán Tính Liên Tục (Continuous Momentum Lerp)**:
+  - Đồng bộ chặt chẽ với `requestAnimationFrame`:
+    $$\text{currentScroll} = \text{lerp}(\text{currentScroll}, \text{targetScroll}, 0.1)$$
+  - Duy trì vận tốc quán tính tự nhiên của ngón tay, tạo cảm giác lướt êm như mặt băng.
+* **Tính Toán Offset Thông Minh Cho Thanh Điều Hướng (Smart Anchor Offset)**:
+  Khi cuộn tới một phân mục qua liên kết neo (Anchor Link), BẮT BUỘC phải trừ đi chiều cao thực tế của thanh điều hướng (Dynamic Island / TopBar) cộng với khoảng đệm an toàn (`safe-area-inset-top`):
+  ```typescript
+  export function scrollToSection(targetId: string, headerSelector = '.dynamic-island-topbar') {
+    const targetEl = document.getElementById(targetId);
+    if (!targetEl) return;
+    const headerEl = document.querySelector(headerSelector);
+    const headerHeight = headerEl ? headerEl.getBoundingClientRect().height : 64;
+    const safePadding = 16;
+    const elementPosition = targetEl.getBoundingClientRect().top + window.scrollY;
+    const offsetPosition = elementPosition - headerHeight - safePadding;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+  ```
+  Ngăn chặn triệt để lỗi tiêu đề phân mục bị thanh điều hướng che khuất trên màn hình iPad và thiết bị di động.
+

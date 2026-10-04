@@ -17,7 +17,7 @@ flowchart TD
     subgraph CombatVault ["BỘ KÝ ỨC THỰC CHIẾN NÓNG THƯỜNG TRỰC"]
         P1["🛡️ KGLVS (Quản lý Xã Phường)\n• Phòng vệ chiều sâu Defense-in-Depth\n• Khắc phục 9 lỗ hổng SEC-01..09\n• Đồng bộ đa thiết bị PC & Mobile"]
         P2["🛒 SMARTMARKET & FOOD COURT\n• Kế thừa 75% Grid Canvas Engine 24x15\n• Chu trình F&B 18 quầy & 64 bàn\n• Đạt chuẩn 215/215 tests xanh tuyệt đối"]
-        P3["🎨 PORTFOLIO & ĐẠI ÁN K18\n• Xử lý sự cố K18 SEV-1 Rollback Engine\n• Sankou Design スマホ特化 Mobile-First\n• Lò xo nảy đàn hồi & WebAudioHaptics"]
+        P3["🎨 PORTFOLIO & ĐẠI ÁN K18\n• Xử lý sự cố K18 SEV-1 Rollback Engine\n• Sankou Design スマホ特化 & Dynamic Island\n• Bộ xúc giác 6 repo GitHub & 120Hz ProMotion iPad"]
         P4["⚡ KRONOS-01 HARDWARE CONSOLE\n• GSAP Scrollytelling 60 FPS\n• E-Stop Bus State Machine & RotaryKnob WCAG AA\n• Swarm Telemetry Bento Grid"]
         P5["🎬 SCRIPT FACTORY PRO & FLOW\n• Khóa cứng 100% Model 0-Credit Veo 3.1 Lite\n• Tự động Dispatch Prompt qua Chrome CDP 9222/9223\n• Xưởng kịch bản 6 AI Showrunner"]
         P6["🔬 DESIGN TRAINING 001 - 012\n• Kỷ luật Thẩm định Thực tế Evidence Integrity\n• Loại bỏ 100% Fake Pass / Regex tĩnh\n• Đo đạc Runtime Headless Browser"]
@@ -70,6 +70,13 @@ flowchart TD
   - *Động học Lò xo Nảy Đàn hồi (`Spring Elastic Overshoot Engine`)*: `cubic-bezier(0.22, 1.61, 0.36, 1.0)`, mở rộng từ 86% lên 100%, trễ gối đầu domino (`.vn-delay-1..4`).
   - *Âm thanh Xúc giác Trọng lượng Nhẹ (`WebAudioHaptics`)*: Tự tổng hợp sóng âm Click, Pop, Chime, Switch bằng Web Audio API thuần (zero asset latency).
   - *Không gian 3D Sống động (`forest3DScene.ts`)*: Cảnh quan rừng nhiệt đới 3D cho showcase Vân Atelier, cuộn ảo GPU Compositor 60 FPS mượt mà.
+* **Chiến tích Tích Hợp Toàn Diện Mẫu 2 Dynamic Island TopBar & Bộ Tương Tác Xúc Giác 6 Repo GitHub (`vaul`, `craft.rauno.me`, `cmdk`, `magicui`, `motion-primitives`, `lenis`)**:
+  - *Dynamic Island Floating Bar (Thanh điều hướng đảo động thích ứng)*: Tự co giãn mượt mà theo trạng thái cuộn, tích hợp Sliding Pill Active Indicator theo dõi vị trí tab thời gian thực với easing `cubic-bezier(0.23, 1, 0.32, 1)`.
+  - *Triệt tiêu Bẫy Sticky-Hover (Safari iOS/iPadOS)*: Phân tách triệt để bằng `@media (hover: hover) and (pointer: fine)`, loại bỏ 100% lỗi hover kẹt màu trên màn hình cảm ứng di động.
+  - *Gestural Drawer & Swipe-to-Dismiss (Vaul Pattern)*: Thanh kéo vuốt drag handle, độ dịch chuyển trục Y, cản cao su logarit `rubber-banding`, và ngưỡng nhả tay vận tốc $> 0.12\text{ px/ms}$ đóng modal tức thì.
+  - *Động cơ Xúc giác Kép (Dual Haptic Engine)*: Tự động mở khóa `AudioContext` tại cú chạm `touchstart` đầu tiên trên iOS Safari + phát xung âm thanh tổng hợp siêu nhẹ (15ms sine wave) + vi rung cơ học `navigator.vibrate(8)` 8ms trên thiết bị tương thích.
+  - *Tối ưu hóa 100% cho Màn hình Cảm ứng Retina & 120Hz ProMotion của iPad qua Cloudflare Tunnel HTTP/2*: Nhịp cuộn quán tính momentum mượt mà chuẩn Lenis, bù trừ offset thông minh (`headerHeight + 16px`) bảo vệ tầm nhìn các anchor section, không xé hình trên màn hình iPad Pro 120Hz.
+
 
 ---
 
@@ -129,7 +136,7 @@ flowchart TD
 2. **Kế Thừa Tư Duy Đã Kiểm Chứng**: 
    - Khi làm bảo mật $\to$ áp dụng tiêu chuẩn KGLVS.
    - Khi làm hệ thống lớn, quản lý F&B, sàn thương mại $\to$ áp dụng tiêu chuẩn SmartMarket.
-   - Khi xử lý sự cố hoặc làm giao diện cảm xúc / Mobile-First $\to$ áp dụng tiêu chuẩn Portfolio & Sankou Design.
+   - Khi xử lý sự cố hoặc làm giao diện cảm xúc / Mobile-First / Touch-First $\to$ áp dụng tiêu chuẩn Portfolio, Sankou Design & Bộ Tương Tác Xúc Giác 6 Repo GitHub (Dynamic Island, Gestural Drawer, Dual Haptics, 120Hz ProMotion).
    - Khi làm chuyển động $\to$ áp dụng công thức Lò xo Overshoot & GSAP 60 FPS.
    - Khi xây dựng hạ tầng tác tử, kiểm toán công cụ, sinh giao diện sống hoặc tự động hóa CDP $\to$ kế thừa trực tiếp Core Engine của Đại Án Hạm Đội 6 Pods.
 3. **Phục Vụ Anh Chu Đáo**: Giữ vững nguyên tắc **Zero-Manual-CLI** (tự chạy server, tự mở Chrome), **Luminous Light Theme Invariant** (nền sáng đa tầng, bóng đổ đa chiều), và **Bilingual Terminology `English (Tiếng Việt)`**.

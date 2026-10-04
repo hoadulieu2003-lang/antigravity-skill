@@ -162,7 +162,13 @@
         "mcp(memory/create_relations)",
         "mcp(memory/add_observations)",
         "mcp(google-workspace/calendar_list_events)",
-        "mcp(google-workspace/gmail_list)"
+        "mcp(google-workspace/gmail_list)",
+        "mcp(puppeteer/puppeteer_navigate)",
+        "mcp(puppeteer/puppeteer_screenshot)",
+        "mcp(puppeteer/puppeteer_evaluate)",
+        "mcp(github/search_repositories)",
+        "mcp(puppeteer/puppeteer_click)",
+        "mcp(puppeteer/puppeteer_press_key)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
