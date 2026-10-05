@@ -172,7 +172,8 @@
         "mcp(ai-engineering-team/ai_orchestrate_task)",
         "read_url(magicui.design)",
         "read_url(reactbits.dev)",
-        "mcp(puppeteer/puppeteer_hover)"
+        "mcp(puppeteer/puppeteer_hover)",
+        "read_url(ngxui.com)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
