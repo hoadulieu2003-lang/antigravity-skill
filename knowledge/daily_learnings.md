@@ -2564,3 +2564,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-05 17:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (118 ⭐)]** [PerryLink/dsh-permission-rules](https://github.com/PerryLink/dsh-permission-rules)
+  > Claude Code-style declarative permission rules for DeepSeek Harness: ordered allow/deny/ask rules with tool-name, argument (glob/regex), and workspace-path m...
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Choosing Before Acting: Comparative Value Estimation for Long-Horizon Tool-Use Agents](https://arxiv.org/abs/2610.02330)
+  > arXiv:2610.02330v1 Announce Type: new Abstract: Large language models (LLMs) rely on long-horizon tool invocation sequences for complex tasks, where each inv...
+
+</untrusted_external_content>
+
+---
