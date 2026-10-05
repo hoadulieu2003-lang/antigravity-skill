@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-05T19:42:11.520396+00:00",
+  "skill_name": "career-ops",
+  "source_repo": "career-ops-hq/career-ops",
+  "stars": 73552,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\career-ops\\SKILL.md",
+  "human_promotion_required": true
+}

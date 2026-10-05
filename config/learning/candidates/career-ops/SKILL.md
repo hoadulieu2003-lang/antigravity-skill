@@ -1,10 +1,10 @@
 ---
 name: career-ops
 description: >-
-  Kỹ năng chuyên gia vận hành cho career-ops-hq/career-ops (73267 ⭐).
+  Kỹ năng chuyên gia vận hành cho career-ops-hq/career-ops (73552 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở career-ops vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Open-source AI job search agent: scan job portals, evaluate listings into a structured A-H report with a global 1-5 score, tailor your CV, track applications
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Open-source AI job search agent and job finder: scan job boards, score each job 1-5 against your CV before you apply, tailor an ATS-friendly resume and cover
     - Thiết lập cấu hình và vận hành lệnh CLI của career-ops-hq/career-ops
   KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'career-ops'.
 ---
@@ -12,15 +12,15 @@ description: >-
 # career-ops-hq/career-ops — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/career-ops-hq/career-ops`  
-> **Độ uy tín cộng đồng**: 73267 ⭐  
+> **Độ uy tín cộng đồng**: 73552 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-02 07:42:08Z
+> **Tự động đóng gói lúc**: 2026-10-05 19:42:11Z
 
 ---
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: Open-source AI job search agent: scan job portals, evaluate listings into a structured A-H report with a global 1-5 score, tailor your CV, track applications...
+* **Mục tiêu cốt lõi**: Open-source AI job search agent and job finder: scan job boards, score each job 1-5 against your CV before you apply, tailor an ATS-friendly resume and cover...
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
 - **Still open?** It checks that the posting is still live before you write a word.
