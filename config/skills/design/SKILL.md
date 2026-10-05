@@ -66,11 +66,26 @@ PROJECT CONTEXT & INTENT
 READY    POLISH (Max 2 cycles) ──(if structural)──> RETURN TO DESIGN DIRECTOR
 ```
 
+### 2.1 Đặc Tả Phase 6 & Phase 7: MCP Capability Routing & Design Engineering (Song Kiếm Hợp Bích Dual-Core Vault)
+
+* **Phase 6 — MCP Capability Routing & Vault Selection (`Định tuyến Năng lực & Kho Linh kiện`)**:
+  - Khi lựa chọn năng lực thiết kế (`Capability Selection`), Design Director vận hành cơ chế **"Song Kiếm Hợp Bích" (Dual-Core Design Engineering Vault)** kết hợp đồng bộ 3 nguồn linh kiện tinh hoa:
+    1. **Nguồn 1 — [`open-design`](file:///C:/Users/game/.gemini/config/skills/open-design/SKILL.md)**: 153 Brand Design Systems (Linear, Stripe, Apple, Supabase, v.v.) & 114 Interactive Templates (Magazine Decks, live dashboards, SaaS landings).
+    2. **Nguồn 2 — [`magic-ui-vault`](file:///C:/Users/game/.gemini/config/skills/magic-ui-vault/SKILL.md)**: 84+ Bố cục thẻ Bento Grid, Animated Beam kết nối nodes mạng nơ-ron, Dock điều hướng macOS, Marquee vô tận và viền phản quang Shimmer/Border Beam.
+    3. **Nguồn 3 — [`react-bits-vault`](file:///C:/Users/game/.gemini/config/skills/react-bits-vault/SKILL.md)**: 150+ Hiệu ứng con trỏ sống động (Ghost Cursor #13dafc, Swarm Cursor, Antigravity 3D), AI Attention Typography (True Focus, Text Pressure, Decrypted Text), WebGL Shaders (Liquid Chrome, Ballpit, Ferrofluid), và vi tương tác xúc giác đời thực (Paper Crumple, Shredder, Tear Ticket, Sling Button).
+  - Design Director định tuyến chuẩn xác tổ hợp linh kiện theo yêu cầu bài toán, bảo đảm tuân thủ nghiêm ngặt chuẩn mực **`Luminous Light Theme Invariant (Giao diện sáng đa tầng Luminous)`** (nền sáng đa tầng `#FAF9F6`/`#FDFBF7`, thẻ nổi `#FFFFFF`, bóng đổ đa chiều siêu mịn, viền quang học siêu mảnh, triệt tiêu hoàn toàn giấy bẹt đơn điệu).
+* **Phase 7 — Design Engineer Implementation (`Thi công Kỹ thuật Thiết kế`)**:
+  - Design Engineer lập tức khai thác kho vũ khí song hành: dựng khung sườn bố cục vững chắc từ **`open-design`** & **`magic-ui-vault`**, kết hợp thổi hồn cảm xúc và tương tác xúc giác đỉnh cao từ **`react-bits-vault`** (tra cứu siêu tốc qua `search_magic.py` và `search_bits.py`).
+  - Phối hợp cùng chuẩn mực vi tương tác từ **[`design-engineering`](file:///C:/Users/game/.gemini/config/skills/design-engineering/SKILL.md)**: bảo đảm thực thi chuẩn xác từng điểm ảnh (`Pixel-perfect implementation`), vi tương tác bấm co lún `scale(0.965)`, phản hồi xúc giác âm thanh `WebAudioHaptics`, tối ưu hóa GPU compositor layers và chuyển động 60 FPS mượt mà trong giới hạn của `DESIGN_CONTRACT.yaml`.
+
 ---
 
 ## 3. Modular Reference Guides & Design Intelligence
 
 Read only the matching reference for current stage:
+- **Magic UI Vault (84+ Components & Visual Effects)**: [`config/skills/magic-ui-vault/SKILL.md`](file:///C:/Users/game/.gemini/config/skills/magic-ui-vault/SKILL.md)
+- **React Bits Vault (150+ Components & Tactile Cursors)**: [`config/skills/react-bits-vault/SKILL.md`](file:///C:/Users/game/.gemini/config/skills/react-bits-vault/SKILL.md)
+- **OpenDesign Studio (153 Brand Systems & 114 Templates)**: [`config/skills/open-design/SKILL.md`](file:///C:/Users/game/.gemini/config/skills/open-design/SKILL.md)
 - **Design Foundation Research (10 Repos Intelligence)**: [references/DESIGN_FOUNDATION_RESEARCH.md](references/DESIGN_FOUNDATION_RESEARCH.md)
 - **Design Foundation Rules (Testable Rules)**: [assets/DESIGN_FOUNDATION_RULES.yaml](assets/DESIGN_FOUNDATION_RULES.yaml)
 - **Canonical Design Contract Schema**: [assets/DESIGN_CONTRACT_SCHEMA.yaml](assets/DESIGN_CONTRACT_SCHEMA.yaml)

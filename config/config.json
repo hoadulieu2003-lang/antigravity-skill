@@ -169,7 +169,10 @@
         "mcp(github/search_repositories)",
         "mcp(puppeteer/puppeteer_click)",
         "mcp(puppeteer/puppeteer_press_key)",
-        "mcp(ai-engineering-team/ai_orchestrate_task)"
+        "mcp(ai-engineering-team/ai_orchestrate_task)",
+        "read_url(magicui.design)",
+        "read_url(reactbits.dev)",
+        "mcp(puppeteer/puppeteer_hover)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

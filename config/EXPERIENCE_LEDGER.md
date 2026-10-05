@@ -131,6 +131,20 @@ flowchart TD
 
 ---
 
+### 9. ⚡ ĐẠI KHO VŨ KHÍ GIAO DIỆN REACT BITS & MAGIC UI VAULTS (234 WEAPONS) & CHUẨN VISUAL PARITY GHOST CURSOR
+* **Vị trí lưu trữ**: `C:/Users/game/.gemini/config/skills/magic-ui-vault/` và `react-bits-vault/`
+* **Chiến tích Xây dựng Kho Vũ khí Toàn diện (234 Vũ Khí UI/UX Đỉnh cao)**:
+  1. **Tích hợp Toàn diện 234 Vũ Khí Kỹ nghệ**:
+     - `magic-ui-vault`: 84 components thuộc 6 phân khu (AI Copilot, Bento Cards, Atmospheric Backgrounds, Typography & Text FX, Data/Code/3D, Navigation & Mockups).
+     - `react-bits-vault`: 150 components thuộc 5 binh chủng (Cursor & Particle Physics, AI Attention Typography, WebGL Liquid & Shaders, Advanced UI & Glass, Tactile Micro-Interactions).
+     - 2 Công cụ tìm kiếm CLI tốc độ cao: `search_magic.py` và `search_bits.py` kết nối trực tiếp vào `/design` và `/dev`.
+  2. **Bài học Kỹ thuật Đột phá: Phục dựng Trực quan Tuyệt đối (`Visual Parity Invariant`)**:
+     - *Phá bỏ cạm bẫy mô phỏng bề mặt*: Không bao giờ thay thế hiệu ứng WebGL phức tạp bằng 2D CSS / Canvas phẳng lì. Mọi thành phần tương tác cao cấp phải đạt 100% fidelity so với bản thiết kế gốc.
+     - *Bóc tách kiến trúc Ghost Cursor chuẩn*: Mô phỏng khói plasma thể tích bằng Shader FBM 5 octaves (`Dual-Domain Warping`), hậu kỳ phát sáng thực `UnrealBloomPass` (Three.js), bộ đệm quán tính 50 điểm (`50-Point Trailing Buffer`) và lọc hạt phim điện ảnh (`Film Grain Shader`).
+     - *Bí quyết render trong suốt không đen hình*: Loại bỏ `UnpremultiplyPass` khi xuất màn hình với `mixBlendMode: 'screen'` để triệt tiêu việc chia alpha sai lệch; bổ sung cơ chế **Quỹ đạo Tự Trôi Hữu cơ (Ambient Infinity Float)** giữ luồng khói luôn sống động quanh typography trung tâm; tích hợp cơ chế Dual-Stage hỗ trợ cả **The Void (Bản gốc)** và **Luminous Light Studio (Đảo sắc quang học trên nền giấy sáng #FAF9F6)**.
+
+---
+
 ## 📌 QUY TẮC NHẬN THỨC MẶC ĐỊNH CHO MỌI PHIÊN MỚI (INVARIANT FOR ALL SESSIONS)
 1. **Tự Động Nhớ Không Chờ Nhắc**: Khi bắt đầu bất kỳ phiên làm việc nào, Em coi nội dung Sổ cái này là kiến thức nền tảng đã ngấm vào bản năng.
 2. **Kế Thừa Tư Duy Đã Kiểm Chứng**: 
