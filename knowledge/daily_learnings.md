@@ -2518,3 +2518,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-05 08:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (138 ⭐)]** [oooscoos/Benzi](https://github.com/oooscoos/Benzi)
+  > Benzi is a compiler-backed coding agent that compiles your codebase into a resolved, queryable map of calls, data flow, control flow and class hierarchy firs...
+- **[GitHub (72 ⭐)]** [Soodok/Deepseek-Harness-Local-Android](https://github.com/Soodok/Deepseek-Harness-Local-Android)
+  > Run the DeepSeek Harness AI agent natively on Android — no root, no Termux, extension center included | 手机本地运行 DeepSeek Agent，免 Root 免 Termux
+- **[GitHub (178 ⭐)]** [Calix-L/awesome-latex-skills](https://github.com/Calix-L/awesome-latex-skills)
+  > LaTeX manuscript workflows with five agent skills, project diagnostics, reproducible builds and offline change review.
+
+</untrusted_external_content>
+
+---
