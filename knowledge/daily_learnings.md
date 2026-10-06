@@ -2626,3 +2626,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-06 11:42:05`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (83 ⭐)]** [raia-live/amfs](https://github.com/raia-live/amfs)
+  > Continual Learning for AI agents, helping your agents self-improve with every run
+- **[GitHub (380 ⭐)]** [qybaihe/mu](https://github.com/qybaihe/mu)
+  > mu (μ): a coding agent that thinks before it acts. A small, fast judge makes the routine calls, the big model does the work. Built on pi and AionUi.
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [autotrust/JEV-27B-VL](https://huggingface.co/autotrust/JEV-27B-VL)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
