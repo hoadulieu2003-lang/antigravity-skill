@@ -1,7 +1,7 @@
 ---
 name: free4chat
 description: >-
-  Kỹ năng chuyên gia vận hành cho i365dev/free4chat (1202 ⭐).
+  Kỹ năng chuyên gia vận hành cho i365dev/free4chat (1208 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở free4chat vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Temporary rooms for Humans and AI Agents — run, supervise and steer Agent Tasks without a permanent workspace
@@ -12,9 +12,9 @@ description: >-
 # i365dev/free4chat — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/i365dev/free4chat`  
-> **Độ uy tín cộng đồng**: 1202 ⭐  
+> **Độ uy tín cộng đồng**: 1208 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-30 04:42:54Z
+> **Tự động đóng gói lúc**: 2026-10-06 13:42:10Z
 
 ---
 
