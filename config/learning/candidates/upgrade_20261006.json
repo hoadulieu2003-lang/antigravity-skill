@@ -1,27 +1,15 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-06T07:42:10.865694+00:00",
+    "scan_date": "2026-10-06T10:42:18.520338+00:00",
     "cycle_id": "EVO-20261006",
     "sessions_evaluated": 99,
-    "total_items_processed": 208,
+    "total_items_processed": 207,
     "active_skills_count": 66,
-    "candidates_count": 116,
+    "candidates_count": 115,
     "enhancements_count": 48,
     "optimizations_count": 44
   },
   "new_skill_candidates": [
-    {
-      "skill_slug": "waoowaoo",
-      "title": "waooAI/waoowaoo",
-      "source": "GitHub (14221 ⭐)",
-      "url": "https://github.com/waooAI/waoowaoo",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 105,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "首家工业级全流程 AI 影视生产平台。Industry-first professional AI Agent platform for controllable film & video production. From shorts to live-action with Hollywood-standard...",
-      "suggested_skill_structure": "---\nname: waoowaoo\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng waooAI/waoowaoo cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# WAOOAI/WAOOWAOO SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `waooAI/waoowaoo` (https://github.com/waooAI/waoowaoo)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
     {
       "skill_slug": "ai-agent-book",
       "title": "bojieli/ai-agent-book",
@@ -153,6 +141,18 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "Production-ready open source terminal coding agent with readable, layered code: permission rules, OS sandboxing, MCP, skills, sub-agents, and Anthropic, Open...",
       "suggested_skill_structure": "---\nname: easy-agent\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ConardLi/easy-agent cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# CONARDLI/EASY-AGENT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ConardLi/easy-agent` (https://github.com/ConardLi/easy-agent)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "eac-desktop",
+      "title": "DSH-EAC/EAC-Desktop",
+      "source": "GitHub (1834 ⭐)",
+      "url": "https://github.com/DSH-EAC/EAC-Desktop",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Embracing All Creation (Desktop) — Dedicated to the Harmonious Coexistence of Hundreds of DSH Plugins / 揽尽万象（桌面版） —— 致力于让数百个DSH插件和谐共存",
+      "suggested_skill_structure": "---\nname: eac-desktop\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng DSH-EAC/EAC-Desktop cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# DSH-EAC/EAC-DESKTOP SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `DSH-EAC/EAC-Desktop` (https://github.com/DSH-EAC/EAC-Desktop)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
