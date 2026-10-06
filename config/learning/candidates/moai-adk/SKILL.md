@@ -1,18 +1,18 @@
 ---
-name: deepseek-reasonix
+name: moai-adk
 description: >-
-  Kỹ năng chuyên gia vận hành cho esengine/DeepSeek-Reasonix (35741 ⭐).
+  Kỹ năng chuyên gia vận hành cho modu-ai/moai-adk (1229 ⭐).
   Tự động kích hoạt khi người dùng muốn:
-    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở deepseek-reasonix vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến A reliable coding agent for complex software engineering tasks
-    - Thiết lập cấu hình và vận hành lệnh CLI của esengine/DeepSeek-Reasonix
-  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'deepseek-reasonix'.
+    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở moai-adk vào hệ thống
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Agentic development harness for Claude Code — SPEC-driven plan/run/sync, TRUST 5 quality gates, model+effort routing, and Claude×GLM multi-LLM cost control
+    - Thiết lập cấu hình và vận hành lệnh CLI của modu-ai/moai-adk
+  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'moai-adk'.
 ---
 
-# esengine/DeepSeek-Reasonix — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
+# modu-ai/moai-adk — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
-> **Nguồn gốc**: GitHub Repository `https://github.com/esengine/DeepSeek-Reasonix`  
-> **Độ uy tín cộng đồng**: 35741 ⭐  
+> **Nguồn gốc**: GitHub Repository `https://github.com/modu-ai/moai-adk`  
+> **Độ uy tín cộng đồng**: 1229 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
 > **Tự động đóng gói lúc**: 2026-10-06 22:42:09Z
 
@@ -20,15 +20,12 @@ description: >-
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: A reliable coding agent for complex software engineering tasks.
+* **Mục tiêu cốt lõi**: Agentic development harness for Claude Code — SPEC-driven plan/run/sync, TRUST 5 quality gates, model+effort routing, and Claude×GLM multi-LLM cost control. ...
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- **macOS** — first launch hits Gatekeeper. One-time fix: `xattr -dr com.apple.quarantine /Applications/Reasonix.app` (or right-click → Open → confirm).
-- **Windows** — SmartScreen warns "Unknown publisher". Click **More info → Run anyway**.
-- **Linux** — `.deb` and `.AppImage` ship plain, no extra step.
-- **Multi-provider flexibility.** DeepSeek-only on purpose. Coupling to one backend is the feature, not a limitation.
-- **IDE integration.** Terminal-first. The diff lives in `git diff`, the file tree in `ls`. The dashboard is a companion, not a Cursor replacement.
-- **Air-gapped / fully-free.** Reasonix needs a paid DeepSeek API key. For air-gapped or zero-cost runs see Aider + Ollama or [Continue](https://continue.dev).
+- **Git** — required on all platforms
+- **Claude Code** — moai-adk is a harness for Claude Code
+- **Recommended**: `gh` CLI (PR automation), `tmux` (worktree windows), your language's lint/test toolchain (e.g. `golangci-lint`)
 
 ---
 
@@ -37,8 +34,9 @@ description: >-
 Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
 
 ```bash
-# Tham khảo tài liệu gốc tại GitHub: esengine/DeepSeek-Reasonix
-git clone https://github.com/esengine/DeepSeek-Reasonix.git
+curl -fsSL https://adk.mo.ai.kr/install.sh | bash
+
+irm https://adk.mo.ai.kr/install.ps1 | iex
 ```
 
 ---

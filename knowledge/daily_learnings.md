@@ -2692,3 +2692,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-07 05:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1229 ⭐)]** [modu-ai/moai-adk](https://github.com/modu-ai/moai-adk)
+  > Agentic development harness for Claude Code — SPEC-driven plan/run/sync, TRUST 5 quality gates, model+effort routing, and Claude×GLM multi-LLM cost control. ...
+- **[GitHub (51 ⭐)]** [omarqaterge/hermes-mobile-app](https://github.com/omarqaterge/hermes-mobile-app)
+  > Your agent, on your phone. A native Android app for Hermes Agent, running entirely on-device (Termux).
+
+</untrusted_external_content>
+
+---

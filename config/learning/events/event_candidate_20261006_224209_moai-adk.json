@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-06T22:42:09.687111+00:00",
+  "skill_name": "moai-adk",
+  "source_repo": "modu-ai/moai-adk",
+  "stars": 1229,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\moai-adk\\SKILL.md",
+  "human_promotion_required": true
+}
