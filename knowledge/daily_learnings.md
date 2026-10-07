@@ -2742,3 +2742,23 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-07 14:43:05`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (213 ⭐)]** [PerryLink/dsh-industry-research](https://github.com/PerryLink/dsh-industry-research)
+  > Industry and company research domain pack for DeepSeek Harness: methodology skills, industry chain mapping, public-source policy/news tracking, company resea...
+- **[GitHub (68 ⭐)]** [PerryLink/dsh-fund-research](https://github.com/PerryLink/dsh-fund-research)
+  > DeepSeek Harness plugin: deterministic research reports for Chinese public mutual funds
+- **[GitHub (55 ⭐)]** [PerryLink/dsh-doublecheck](https://github.com/PerryLink/dsh-doublecheck)
+  > Double-check before you ship: grill the requirements, test the implementation, prove the delivery. An engineering-discipline bundle for DeepSeek Harness.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [FluidPD: In-Place Elasticity for SLO-Aware Prefill-Decode Disaggregated LLM Serving](https://arxiv.org/abs/2610.06917)
+  > arXiv:2610.06917v1 Announce Type: new Abstract: Prefill-decode disaggregation is becoming a common architecture for LLM serving because it separates two phas...
+- **[ArXiv CS.AI]** [Anchor Divergence for Semantic Geometry in Contrastive Learning](https://arxiv.org/abs/2610.06919)
+  > arXiv:2610.06919v1 Announce Type: new Abstract: This paper concerns how semantic context determines geometry in learned vector representations. Similarity is...
+
+</untrusted_external_content>
+
+---

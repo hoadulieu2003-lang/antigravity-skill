@@ -16,7 +16,12 @@
   },
   "plugins": {
     "android-cli-plugin": {
-      "enabled": false
+      "enabled": false,
+      "installedFrom": {
+        "id": "antigravity-plugins-official/plugin/android-cli-plugin",
+        "marketplace": "antigravity-plugins-official",
+        "version": "1.0.15985488"
+      }
     },
     "chrome-devtools-plugin": {
       "enabled": true
@@ -37,7 +42,12 @@
       "enabled": true
     },
     "science": {
-      "enabled": false
+      "enabled": false,
+      "installedFrom": {
+        "id": "antigravity-plugins-official/plugin/science",
+        "marketplace": "antigravity-plugins-official",
+        "version": "1.2.4"
+      }
     }
   },
   "userSettings": {
@@ -174,7 +184,8 @@
         "read_url(reactbits.dev)",
         "mcp(puppeteer/puppeteer_hover)",
         "read_url(ngxui.com)",
-        "mcp(aider-bridge/aider_run_task)"
+        "mcp(aider-bridge/aider_run_task)",
+        "read_url(registered-invention-wake-intensive.trycloudflare.com)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
