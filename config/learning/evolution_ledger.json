@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "last_updated": "2026-10-07T10:42:10.367607+00:00",
+  "last_updated": "2026-10-07T13:42:19.191353+00:00",
   "total_cycles_run": 15,
   "cycles": [
     {
@@ -201,12 +201,12 @@
     },
     {
       "cycle_id": "EVO-20261007",
-      "timestamp": "2026-10-07T10:42:10.346493+00:00",
+      "timestamp": "2026-10-07T13:42:19.166530+00:00",
       "sessions_analyzed": 99,
-      "items_processed": 216,
-      "candidates_count": 120,
-      "enhancements_count": 51,
-      "optimizations_count": 45,
+      "items_processed": 217,
+      "candidates_count": 123,
+      "enhancements_count": 50,
+      "optimizations_count": 44,
       "artifacts": {
         "json_report": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\upgrade_20261007.json",
         "briefing_markdown": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\upgrade_20261007_briefing.md"

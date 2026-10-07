@@ -2780,3 +2780,21 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-07 20:42:02`
+
+<untrusted_external_content>
+### 🌐 Tin tức Sản phẩm Google & Frontier Labs
+- **[Google AI Official]** [Introducing Playground: Create and play custom games](https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform/)
+  > Playground is a new experimental gaming platform that lets you create, play, and share custom games.
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (203 ⭐)]** [BDFFZI/Alife](https://github.com/BDFFZI/Alife)
+  > 一款专注于桌宠方向的AIAgent。特点是一键安装、功能齐全、极低开销、完全暴露上下文、全功能插件化、AI自主插件开发、永久唯一会话、类游戏引擎交互策略。具有极高的扩展性和拟人程度上限，非常适合想长期培养和自定义需求高的用户。
+- **[GitHub (14212 ⭐)]** [e2b-dev/E2B](https://github.com/e2b-dev/E2B)
+  > Open-source, secure environment with real-world tools for enterprise-grade agents.
+- **[GitHub (161 ⭐)]** [nano-muse/nanoMuse](https://github.com/nano-muse/nanoMuse)
+  > nanoMuse: an open-source personal agent for every device you own — one agent with a name and a face that does things, keeps working while the app is closed, ...
+
+</untrusted_external_content>
+
+---
