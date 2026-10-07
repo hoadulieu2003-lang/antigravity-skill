@@ -143,6 +143,15 @@ flowchart TD
      - *Bóc tách kiến trúc Ghost Cursor chuẩn*: Mô phỏng khói plasma thể tích bằng Shader FBM 5 octaves (`Dual-Domain Warping`), hậu kỳ phát sáng thực `UnrealBloomPass` (Three.js), bộ đệm quán tính 50 điểm (`50-Point Trailing Buffer`) và lọc hạt phim điện ảnh (`Film Grain Shader`).
      - *Bí quyết render trong suốt không đen hình*: Loại bỏ `UnpremultiplyPass` khi xuất màn hình với `mixBlendMode: 'screen'` để triệt tiêu việc chia alpha sai lệch; bổ sung cơ chế **Quỹ đạo Tự Trôi Hữu cơ (Ambient Infinity Float)** giữ luồng khói luôn sống động quanh typography trung tâm; tích hợp cơ chế Dual-Stage hỗ trợ cả **The Void (Bản gốc)** và **Luminous Light Studio (Đảo sắc quang học trên nền giấy sáng #FAF9F6)**.
 
+### 10. 🏛️ ĐẠI ÁN BẢN HIẾN CHƯƠNG BỐ CỤC THỊ GIÁC & NGHỆ THUẬT SẮP ĐẶT HÌNH ẢNH ĐỈNH CAO (2026-10-07)
+* **Vị trí lưu trữ**: `C:/Users/game/.gemini/config/knowledge/master_visual_layout_constitution.md`
+* **Chiến tích Xóa bỏ Hội chứng Nhồi nhét Cơ học & 'Ảnh dán tem' (5 Trụ cột Tinh hoa Nhân loại)**:
+  1. **Toán học Lưới Mô-đun Thụy Sĩ (Josef Müller-Brockmann)**: Lưới 12/16 cột, tỷ lệ vàng $\Phi \approx 1.618$ ($7:5$ và $10:6$), độ rộng cột mô-đun bất biến $W_{col} \approx 76\text{px}-78\text{px}$ trên mọi màn hình, nhịp cơ sở đứng 8px.
+  2. **Nguyên lý Khối Độc Tôn Apple (The Monolith Hero Principle)**: Duy nhất 1 điểm neo thị giác (Single Focal Anchor) ở Hero, triệt tiêu xung đột Saccadic Oscillation; 3 giải pháp phối hợp Avatar Founder & 3D Render (Con Dấu Bảo Chứng, Buồng Lái Hợp Nhất, Phân Tầng Thời Gian).
+  3. **Kỹ nghệ Bento Grid 3.0 (Linear/Stripe)**: Định luật bo góc đồng tâm $R_{outer} = R_{inner} + Padding$; nhịp điệu bất đối xứng luân chuyển giữa ô vi mô 1x1, ô trung 2x1, ô lớn 2x2 và toàn cảnh 4x1/4x2.
+  4. **Kinh tế học Khoảng Trống Xa Xỉ (Editorial Luxury)**: Khoảng trống 65% là tín hiệu thặng dư nguồn lực; loại bỏ Horror Vacui; lề đệm Passe-Partout 32–64px cho thẻ dự án; modal 2 cánh Diptych 60/40.
+  5. **Vật lý Quang học & Hướng sáng 135° (Global Lighting Vector)**: Ánh sáng Top-Left $\implies$ bóng đổ dịch chuyển $+X > 0, +Y > 0$; viền Inset Top-Left; nhuộm bóng Warm Umber `rgb(45,36,26)` trên nền sáng Luminous; hòa tan rìa ảnh 3 tầng (Radial Mask + Contact AO Ground + Ambient Bleed).
+
 ---
 
 ## 📌 QUY TẮC NHẬN THỨC MẶC ĐỊNH CHO MỌI PHIÊN MỚI (INVARIANT FOR ALL SESSIONS)

@@ -1,0 +1,7 @@
+{
+  "event_type": "ARCHITECTURAL_PATTERN_DISTILLED",
+  "title": "FluidPD: In-Place Elasticity for SLO-Aware Prefill-Decode Disaggregated LLM Serving",
+  "source": "ArXiv CS.AI",
+  "pattern_file": "C:\\Users\\game\\.gemini\\knowledge\\architecture_patterns\\fluidpd_in_place_elasticity_for_slo_aware_prefill_decode_dis.md",
+  "timestamp": "2026-10-07 04:42:12 UTC"
+}

@@ -1,31 +1,33 @@
 ---
-name: moai-adk
+name: open-dots
 description: >-
-  Kỹ năng chuyên gia vận hành cho modu-ai/moai-adk (1230 ⭐).
+  Kỹ năng chuyên gia vận hành cho Anil-matcha/open-dots (5501 ⭐).
   Tự động kích hoạt khi người dùng muốn:
-    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở moai-adk vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Agentic development harness for Claude Code — SPEC-driven plan/run/sync, TRUST 5 quality gates, model+effort routing, and Claude×GLM multi-LLM cost control
-    - Thiết lập cấu hình và vận hành lệnh CLI của modu-ai/moai-adk
-  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'moai-adk'.
+    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở open-dots vào hệ thống
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Open-source, self-hosted AI agent workspace and alternative to OpenAI Dots, Meta Muse, Grok Bot, Instinct, Manus Cue, Claude Cowork, and ChatGPT agent
+    - Thiết lập cấu hình và vận hành lệnh CLI của Anil-matcha/open-dots
+  KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'open-dots'.
 ---
 
-# modu-ai/moai-adk — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
+# Anil-matcha/open-dots — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
-> **Nguồn gốc**: GitHub Repository `https://github.com/modu-ai/moai-adk`  
-> **Độ uy tín cộng đồng**: 1230 ⭐  
+> **Nguồn gốc**: GitHub Repository `https://github.com/Anil-matcha/open-dots`  
+> **Độ uy tín cộng đồng**: 5501 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-07 04:42:09Z
+> **Tự động đóng gói lúc**: 2026-10-07 04:42:10Z
 
 ---
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: Agentic development harness for Claude Code — SPEC-driven plan/run/sync, TRUST 5 quality gates, model+effort routing, and Claude×GLM multi-LLM cost control. ...
+* **Mục tiêu cốt lõi**: Open-source, self-hosted AI agent workspace and alternative to OpenAI Dots, Meta Muse, Grok Bot, Instinct, Manus Cue, Claude Cowork, and ChatGPT agent. MIT-l...
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- **Git** — required on all platforms
-- **Claude Code** — moai-adk is a harness for Claude Code
-- **Recommended**: `gh` CLI (PR automation), `tmux` (worktree windows), your language's lint/test toolchain (e.g. `golangci-lint`)
+- **`poll_due_schedules`** — claims schedules whose `next_run_at` has
+- **`sync_active_tasks`** — finishes tasks that have no one polling them,
+- **`report_finished_runs`** — for each finished scheduled run, reported
+- **Telegram**: a message with **Allow once** / **Always allow** / **Deny**
+- **Web UI**: the same three choices appear inline on the task once it's
 
 ---
 
@@ -34,9 +36,15 @@ description: >-
 Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
 
 ```bash
-curl -fsSL https://adk.mo.ai.kr/install.sh | bash
+cd backend
+docker compose up -d                      # Postgres
+uv sync                                   # install deps
+uv run alembic upgrade head               # migrations
+uv run fastapi dev app/main.py            # API (terminal 1)
+uv run python -m app.telegram_bot         # bot (terminal 2)
 
-irm https://adk.mo.ai.kr/install.ps1 | iex
+cd ../frontend
+npm install && npm run dev                # web UI (terminal 3)
 ```
 
 ---

@@ -173,7 +173,8 @@
         "read_url(magicui.design)",
         "read_url(reactbits.dev)",
         "mcp(puppeteer/puppeteer_hover)",
-        "read_url(ngxui.com)"
+        "read_url(ngxui.com)",
+        "mcp(aider-bridge/aider_run_task)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

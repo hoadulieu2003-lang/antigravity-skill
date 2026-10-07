@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-07T04:42:10.382261+00:00",
+  "skill_name": "open-dots",
+  "source_repo": "Anil-matcha/open-dots",
+  "stars": 5501,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\open-dots\\SKILL.md",
+  "human_promotion_required": true
+}

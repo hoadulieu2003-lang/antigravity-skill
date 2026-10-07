@@ -1,13 +1,13 @@
 schema_version: '1.0'
-skill_name: moai-adk
-source_repo: modu-ai/moai-adk
-stars: 1230
+skill_name: open-dots
+source_repo: Anil-matcha/open-dots
+stars: 5501
 status: CANDIDATE
-created_at: '2026-10-07T04:42:09.777581+00:00'
+created_at: '2026-10-07T04:42:10.380312+00:00'
 human_promotion_required: true
 evidence_files:
 - SKILL.md
-- references/moai-adk/README.md
+- references/open-dots/README.md
 benchmark:
   total_score: 10.0
   rating: RECOMMENDED
@@ -19,14 +19,14 @@ benchmark:
     ecosystem_compatibility: 2.5
   notes:
   - Frontmatter YAML hợp lệ (+0.5)
-  - Tên kỹ năng 'moai-adk' khớp thư mục (+0.5)
+  - Tên kỹ năng 'open-dots' khớp thư mục (+0.5)
   - Đặc tả Intent-First chuẩn mực (+1.0/1.0)
   - 'Cấu trúc tài liệu Markdown (4 mục chính: +0.50/0.5)'
   - Có 1 khối mã lệnh thực thi (+0.5)
-  - Nhận diện 1 lệnh CLI tiêu chuẩn (+0.5)
+  - Nhận diện 6 lệnh CLI tiêu chuẩn (+0.5)
   - 'An toàn tuyệt đối: Không chứa lệnh phá hoại hệ thống (+1.5)'
-  - Thư mục tham chiếu references/moai-adk tồn tại (+0.5)
-  - Tài liệu tham chiếu chi tiết (59461 ký tự) (+1.5)
+  - Thư mục tham chiếu references/open-dots tồn tại (+0.5)
+  - Tài liệu tham chiếu chi tiết (14053 ký tự) (+1.5)
   - Tài liệu tham chiếu có kèm ví dụ mã nguồn (+0.3)
   - Tài liệu tham chiếu có cấu trúc rõ ràng (+0.2)
   - 'Tuân thủ AGENTS.md Rule 14 & INV-E07: Không có secret lộ lọt (+1.0)'
