@@ -2762,3 +2762,21 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-07 17:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (133 ⭐)]** [langbyyi/CyberStrikeAI-SRC](https://github.com/langbyyi/CyberStrikeAI-SRC)
+  > No description provided.
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2)
+  > Trending model on Hugging Face hub.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [RadOnc-Agent: An LLM-Orchestrated Framework for AI Workflows Across the Radiotherapy Care Pathway](https://arxiv.org/abs/2610.06923)
+  > arXiv:2610.06923v1 Announce Type: new Abstract: Artificial intelligence has advanced individual radiotherapy tasks, yet these capabilities remain separated a...
+
+</untrusted_external_content>
+
+---
