@@ -1,27 +1,15 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-08T07:42:12.885504+00:00",
+    "scan_date": "2026-10-08T10:42:13.435406+00:00",
     "cycle_id": "EVO-20261008",
-    "sessions_evaluated": 99,
-    "total_items_processed": 212,
+    "sessions_evaluated": 98,
+    "total_items_processed": 209,
     "active_skills_count": 66,
-    "candidates_count": 120,
-    "enhancements_count": 49,
+    "candidates_count": 118,
+    "enhancements_count": 48,
     "optimizations_count": 43
   },
   "new_skill_candidates": [
-    {
-      "skill_slug": "ai-agent-book",
-      "title": "bojieli/ai-agent-book",
-      "source": "GitHub (50275 ⭐)",
-      "url": "https://github.com/bojieli/ai-agent-book",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 105,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "《深入理解 AI Agent：设计原理与工程实践》（李博杰 著）开源主仓库：全书正文、编译版 PDF 与按章配套代码",
-      "suggested_skill_structure": "---\nname: ai-agent-book\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng bojieli/ai-agent-book cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# BOJIELI/AI-AGENT-BOOK SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `bojieli/ai-agent-book` (https://github.com/bojieli/ai-agent-book)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
     {
       "skill_slug": "siyuan",
       "title": "siyuan-note/siyuan",
@@ -153,6 +141,18 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "Open-source, local-first conversational AI video editor with a professional multi-track timeline, Agent Skills, MCP integration, and Remotion rendering.",
       "suggested_skill_structure": "---\nname: openchatcut\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng 0xsline/OpenChatCut cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# 0XSLINE/OPENCHATCUT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `0xsline/OpenChatCut` (https://github.com/0xsline/OpenChatCut)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "atomic-agent",
+      "title": "AtomicBot-ai/atomic-agent",
+      "source": "GitHub (2798 ⭐)",
+      "url": "https://github.com/AtomicBot-ai/atomic-agent",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Atomic Agent is a local-first AI agent. Runs open-weight models on your own machine via llama.cpp.",
+      "suggested_skill_structure": "---\nname: atomic-agent\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng AtomicBot-ai/atomic-agent cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ATOMICBOT-AI/ATOMIC-AGENT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `AtomicBot-ai/atomic-agent` (https://github.com/AtomicBot-ai/atomic-agent)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
