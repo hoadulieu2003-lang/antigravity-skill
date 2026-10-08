@@ -1,7 +1,7 @@
 ---
 name: moai-adk
 description: >-
-  Kỹ năng chuyên gia vận hành cho modu-ai/moai-adk (1230 ⭐).
+  Kỹ năng chuyên gia vận hành cho modu-ai/moai-adk (1232 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở moai-adk vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Agentic development harness for Claude Code — SPEC-driven plan/run/sync, TRUST 5 quality gates, model+effort routing, and Claude×GLM multi-LLM cost control
@@ -12,9 +12,9 @@ description: >-
 # modu-ai/moai-adk — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/modu-ai/moai-adk`  
-> **Độ uy tín cộng đồng**: 1230 ⭐  
+> **Độ uy tín cộng đồng**: 1232 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-07 04:42:09Z
+> **Tự động đóng gói lúc**: 2026-10-08 23:55:41Z
 
 ---
 
