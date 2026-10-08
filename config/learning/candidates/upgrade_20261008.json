@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-08T01:42:15.140270+00:00",
+    "scan_date": "2026-10-08T04:42:11.605714+00:00",
     "cycle_id": "EVO-20261008",
     "sessions_evaluated": 99,
     "total_items_processed": 216,
     "active_skills_count": 66,
-    "candidates_count": 121,
-    "enhancements_count": 51,
+    "candidates_count": 122,
+    "enhancements_count": 50,
     "optimizations_count": 44
   },
   "new_skill_candidates": [
@@ -157,16 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "ast-repo-map",
-      "source_technology": "fuxicodex/Fuxi",
-      "source_url": "https://github.com/fuxicodex/Fuxi",
-      "source_type": "GitHub (3357 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "FuXi is a fast, self-contained AI coding agent that lives in your terminal — edit code, run commands, and drive tools, with cost-aware routing across LLM pro...",
-      "recommended_action": "Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context."
-    },
-    {
       "target_skill": "cdp-engine",
       "source_technology": "feder-cr/invisible_playwright_mcp",
       "source_url": "https://github.com/feder-cr/invisible_playwright_mcp",
@@ -275,6 +265,16 @@
       "priority_score": 85,
       "enhancement_rationale": "Agentic development harness for Claude Code — SPEC-driven plan/run/sync, TRUST 5 quality gates, model+effort routing, and Claude×GLM multi-LLM cost control. ...",
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "codewhale",
+      "source_technology": "codewhale-hq/Codewhale",
+      "source_url": "https://github.com/codewhale-hq/Codewhale",
+      "source_type": "GitHub (41077 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Open-source coding agent for your terminal, built in Rust and on a journey of continuous community improvement. Issues and PRs welcome.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ codewhale-hq/Codewhale vào module codewhale."
     }
   ],
   "architecture_optimizations": [

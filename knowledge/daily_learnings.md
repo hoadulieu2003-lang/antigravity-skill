@@ -2818,3 +2818,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-08 11:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (212 ⭐)]** [TannerMidd/pi-pocket](https://github.com/TannerMidd/pi-pocket)
+  > A durable, multiplayer, mobile-first web app for Pi agents, built on Pi Durable
+
+</untrusted_external_content>
+
+---

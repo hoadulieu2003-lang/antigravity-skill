@@ -490,3 +490,144 @@ Kế thừa tinh hoa từ kiến trúc của Emil Kowalski trong thư viện `va
   ```
   Ngăn chặn triệt để lỗi tiêu đề phân mục bị thanh điều hướng che khuất trên màn hình iPad và thiết bị di động.
 
+---
+
+## 16. MA TRẬN BÙ LỀ QUANG HỌC NGUYÊN TỬ (Atomic Optical Alignment Matrix)
+
+Kế thừa các chuẩn mực căn chỉnh vi mô từ `ibelick/ui-skills` và `jakubkrehel/skills`:  
+Tâm toán học của khung viền bounding box (Mathematical Center) hầu như không bao giờ trùng với trọng tâm thị giác của con người (Perceptual Visual Center). Việc căn giữa thuần túy bằng `flex items-center justify-center` sẽ tạo ra ảo giác thị giác bị xô lệch, khiến giao diện trở nên nghiệp dư và thiếu độ tinh xảo.
+
+### 16.1 Ma Trận Bù Dịch Tọa Độ Cho Icons Phổ Biến (Atomic Icon Offset Matrix)
+
+| Icon / Thành phần | Độ lệch hình học gốc | Lớp bù lề Tailwind CSS | Nguyên lý thị giác quang học |
+|---|---|---|---|
+| **Play Triangle** | Khối lượng dồn về đáy tam giác bên trái | `translate-x-[1.5px]` | Dịch sang phải để trọng tâm diện tích tam giác trùng với tâm vòng tròn bao ngoài. |
+| **Chevron Down** | Trọng tâm mũi tên nhọn chúc xuống thấp | `translate-y-[0.5px]` | Cân bằng trọng tâm ký tự với dòng cơ sở `baseline` của nhãn chữ đi kèm. |
+| **Checkmark** | Nét vát chéo ngắn bên trái kéo lệch trục | `translate-x-[0.5px] translate-y-[-0.5px]` | Bù góc nhọn lệch trục, giúp dấu kiểm định vị vững chãi giữa ô checkbox hoặc badge. |
+| **Search (Kính lúp)** | Cán kính chéo góc $45^\circ$ kéo nặng góc dưới phải | `translate-x-[0.5px] translate-y-[-0.5px]` | Cân bằng khối lượng thấu kính tròn so với cán cầm chéo. |
+| **Close (X)** | Nét chéo giao nhau đối xứng | Không dịch (`translate-x-0`) | Trọng tâm quang học trùng hoàn hảo với tâm hình học. |
+
+```tsx
+// Ví dụ Button tích hợp Icon bù lề quang học chuẩn mực
+export function PlayButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-stone-900 text-white shadow-sm transition-transform duration-140 active:scale-[0.965] hover:bg-stone-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2"
+      aria-label="Phát video"
+    >
+      {/* Bù lề quang học 1.5px sang phải cho tam giác Play */}
+      <PlayIcon className="h-4 w-4 translate-x-[1.5px] fill-current" />
+    </button>
+  );
+}
+```
+
+### 16.2 Kỹ Thuật Thụt Lề Dấu Trích Dẫn Quang Học (Hanging Punctuation in Typography)
+* **Vấn đề thị giác**: Dấu ngoặc kép mở (`"`, `“`) có diện tích quang học rất mỏng manh so với thân ký tự chữ cái thẳng đứng. Khi đặt ở đầu đoạn văn, nó đẩy toàn bộ lề trái thụt vào trong, tạo cảm giác cạnh trái đoạn văn bị thụt thò gãy khúc.
+* **Quy chuẩn bù lề âm quang học (Optical Negative Margin)**:
+  ```css
+  /* Chuẩn CSS hiện đại cho trình duyệt hỗ trợ */
+  .quote-text {
+    hanging-punctuation: first allow-end;
+  }
+
+  /* Fallback dự phòng tương thích mọi trình duyệt */
+  .quote-leading-mark {
+    display: inline-block;
+    margin-left: -0.4em; /* Bù lề âm đưa dấu ngoặc ra ngoài lề thẳng hàng */
+  }
+  ```
+  Nhờ bù lề âm `-0.4em`, lề trái của các chữ cái đầu tiên trong trích dẫn tạo thành một đường thẳng đứng thẳng tắp với tiêu đề và lề khối văn bản.
+
+### 16.3 Nhãn Chữ Hoa Toàn Bộ & Giãn Cách Ký Tự (All-Caps Badges & Tracking Discipline)
+* **Vấn đề thị giác**: Ký tự in hoa toàn bộ (`uppercase`) có chiều cao x-height bằng chiều cao chữ hoa đỉnh đầu (`cap-height`), tạo cảm giác hình khối hình học đặc quánh, nặng nề và lấn át các tiêu đề xung quanh nếu giữ nguyên kích thước mặc định.
+* **Quy tắc bù trừ quang học bắt buộc**:
+  - Giảm `font-size` 1px: Sử dụng `text-[11px]` thay vì `text-xs (12px)` hoặc `text-[10px]` thay vì `text-[11px]`.
+  - Mở rộng khoảng cách ký tự (`Tracking`): BẮT BUỘC bù `letter-spacing: 0.05em` (`tracking-wider` trong Tailwind) hoặc `letter-spacing: 0.08em` (`tracking-widest`).
+  ```tsx
+  // Chuẩn mực Badge nhãn chữ hoa tinh tế
+  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-stone-100 text-stone-700 border border-stone-200/80">
+    Verified
+  </span>
+  ```
+
+---
+
+## 17. KHOA HỌC MÀU SẮC NHẬN THỨC OKLCH & TIẾP CẬN NGUYÊN TỬ (OKLCH Perceptual Uniformity & Primitive Strictness)
+
+Kế thừa tiêu chuẩn công nghệ từ `ibelick/ui-skills` và các khuyến nghị kiến trúc giao diện tương tác:
+
+### 17.1 Khoa Học Màu Sắc Nhận Thức OKLCH (Perceptual Color Uniformity)
+* **Sự Thất Bại của Không Gian Màu HSL (Why HSL Fails)**:
+  Không gian màu HSL (`Hue, Saturation, Lightness`) được thiết kế trên mô hình toán học đơn giản của thập niên 1970 và hoàn toàn **không phản ánh cách mắt người nhận thức ánh sáng** (`Perceptual Non-uniformity`):
+  - Ở cùng giá trị `Lightness: 50%`, màu Vàng (`hsl(60, 100%, 50%)`) có độ chói nhận thức thực tế gấp 3 lần so với màu Xanh lam (`hsl(240, 100%, 50%)`).
+  - Khi xoay góc sắc độ `Hue` trong HSL để tạo bảng màu trạng thái (`Success`, `Warning`, `Error`, `Info`), tỷ lệ tương phản so với màu nền bị biến thiên hỗn loạn, dẫn đến việc chữ trắng đọc rõ trên nền xanh nhưng mờ căm trên nền vàng.
+* **Sự Vượt Trội Tuyệt Đối của OKLCH**:
+  - `OKLCH` phân tách không gian màu theo 3 trục: `L` (Lightness - Độ sáng nhận thức thực tế từ `0` đến `1` hoặc `0%` đến `100%`), `C` (Chroma - Độ bão hòa/độ tinh khiết sắc tố từ `0` đến `0.4`), và `H` (Hue - Góc sắc độ từ `0` đến `360`).
+  - **Đồng nhất nhận thức (Perceptual Uniformity)**: Bất kỳ màu nào có cùng giá trị `L = 0.65` đều mang lại cảm giác sáng ngang nhau cho võng mạc con người. Điều này cho phép tạo các bảng màu trạng thái cân bằng tuyệt đối:
+  ```css
+  :root {
+    /* Semantic Status Tokens với Perceptual Lightness đồng nhất 65% trên Luminous Light Theme */
+    --color-primary: oklch(0.55 0.18 250);   /* Xanh hoàng gia */
+    --color-success: oklch(0.65 0.16 145);   /* Xanh lá ngọc */
+    --color-warning: oklch(0.65 0.16 80);    /* Hổ phách ấm */
+    --color-error:   oklch(0.65 0.18 28);    /* Đỏ san hô */
+    --color-info:    oklch(0.65 0.15 220);   /* Lam thiên thanh */
+
+    /* Bề mặt sáng Luminous Surfaces */
+    --surface-canvas: oklch(0.985 0.003 95);  /* Warm Paper #FAF9F6 */
+    --surface-card:   oklch(1.000 0.000 0);   /* Pure White */
+    --border-subtle:  oklch(0.920 0.005 95);  /* Viền siêu mỏng */
+    --text-primary:   oklch(0.200 0.010 60);  /* Chữ chính tương phản cao */
+    --text-secondary: oklch(0.480 0.015 60);  /* Chữ phụ WCAG AA */
+  }
+  ```
+
+### 17.2 Chuẩn Mực Tương Phản WCAG 2.2 & Thuật Toán APCA (Accessibility Standards)
+* **Kỷ luật WCAG 2.2 AA (Tối thiểu bắt buộc)**:
+  - Văn bản thường (`body text` $< 18\text{pt}$ / $24\text{px}$): Tỷ lệ tương phản $4.5:1$ tối thiểu so với bề mặt nền.
+  - Văn bản lớn ($\ge 18\text{pt}$ hoặc $14\text{pt}$ in đậm) và Thành phần điều khiển UI (`interactive boundaries`, `icons`): Tỷ lệ tương phản $3:1$ tối thiểu.
+* **Tiêu chuẩn Thế hệ Mới APCA (Accessible Perceptual Contrast Algorithm - WCAG 3)**:
+  - Khác với WCAG 2.2 tính toán tỷ lệ thuần túy, APCA tính toán độ tương phản cảm nhận dựa trên kích thước font chữ, độ đậm nét (`font-weight`) và phân cực màu sắc (`Color Polarity`):
+    - *Positive Polarity (Nền sáng chữ tối - Luminous Light Theme)*: Đòi hỏi ngưỡng tương phản quang học khắt khe để tránh mờ chữ:
+      - Body Text ($\ge 15\text{px}$, Regular): Ngưỡng tương phản nhận thức $L^c \ge 60$.
+      - Small Text / Footnote ($12\text{px} - 14\text{px}$): Ngưỡng tương phản nhận thức $L^c \ge 75$.
+      - Headline / Bold Display: Ngưỡng tương phản nhận thức $L^c \ge 45$.
+
+### 17.3 Kỷ Luật Khắt Khe Cho Thành Phần Nguyên Tử (Primitive Components Strictness)
+Kế thừa kiến trúc từ Radix UI, Base UI và React Aria:
+
+1. **Bắt Buộc Bẫy Tiêu Điểm & Hoàn Trả Tiêu Điểm (Focus Trap & Focus Restoration Invariant)**:
+   - Mọi hộp thoại (`Dialog / Modal`), menu thả xuống (`Dropdown Menu`), và bảng thông tin (`Popover`) BẮT BUỘC phải giam tiêu điểm bàn phím (`Focus Trap`) bên trong vùng nội dung khi đang mở, ngăn phím `Tab` nhảy ra các phần tử nền bên ngoài.
+   - Khi đóng hộp thoại (bằng phím `Escape`, nút Close hoặc click ra ngoài), BẮT BUỘC hoàn trả tiêu điểm (`Return Focus`) về chính phần tử kích hoạt ban đầu (`trigger element`).
+2. **Kỷ Luật Viền Tập Trung Bàn Phím Toàn Cầu (Global Focus-Visible Protocol)**:
+   - Tuyệt đối CẤM sử dụng `outline: none` đơn độc làm biến mất dấu hiệu nhận biết của bàn phím.
+   - MỌI phần tử tương tác (`<button>`, `<a>`, `<input>`, `<select>`, `<summary>`, tabs) BẮT BUỘC phải có lớp tương tác bàn phím rõ nét:
+     ```css
+     /* Lớp chuẩn Tailwind CSS cho mọi interactive primitive */
+     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2 dark:focus-visible:ring-white dark:focus-visible:ring-offset-stone-900
+     ```
+   - Sử dụng `:focus-visible` thay vì `:focus` để người dùng chuột không bị khó chịu bởi viền bao ngoài, trong khi người dùng bàn phím luôn thấy rõ điểm focus.
+3. **Lệnh Cấm onClick Trên Thẻ Div/Span Không Semantic (Zero Non-Semantic Clickables)**:
+   - CẤM TUYỆT ĐỐI gắn sự kiện `onClick` trực tiếp trên thẻ `<div>` hoặc `<span>` mà không có các thuộc tính ngữ nghĩa trợ năng.
+   - **Quy tắc ưu tiên số 1**: Luôn luôn sử dụng thẻ `<button type="button">` gốc HTML cho mọi phần tử kích hoạt hành động.
+   - **Quy tắc xử lý bắt buộc (khi buộc phải dùng thẻ tùy biến)**: Phải trang bị đầy đủ 3 yếu tố:
+     1. Khai báo vai trò: `role="button"`.
+     2. Đưa vào thứ tự duyệt phím: `tabIndex={0}`.
+     3. Bắt sự kiện phím bàn phím: Xử lý phím `Enter` và phím cách `Space` (`onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleAction(); } }}`).
+```tsx
+// SAI - Lỗi trợ năng nghiêm trọng, bị từ chối khi audit
+<div onClick={handleOpen}>Mở cài đặt</div>
+
+// ĐÚNG - Chuẩn Semantic HTML nguyên tử
+<button
+  type="button"
+  onClick={handleOpen}
+  className="inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium text-stone-700 hover:bg-stone-100 active:scale-[0.965] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2"
+>
+  <GearIcon className="h-4 w-4" />
+  <span>Mở cài đặt</span>
+</button>
+```
