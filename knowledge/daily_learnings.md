@@ -2838,3 +2838,21 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-08 20:42:02`
+
+<untrusted_external_content>
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [Bridging technical depth and usability: The story behind Radar’s redesign](https://blog.cloudflare.com/radar-redesign/)
+  > We redesigned Cloudflare Radar to make real-time global traffic and outage data accessible to a wider audience — including journalists, less technical researchers, and everyday users. By introducin...
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (174 ⭐)]** [ahaodev/shadmin](https://github.com/ahaodev/shadmin)
+  > An Enterprise-Grade Full-Stack RBAC Permission Management System Built with Go + React
+- **[GitHub (220 ⭐)]** [omega-memory/omega-memory](https://github.com/omega-memory/omega-memory)
+  > Persistent memory for AI coding agents
+- **[GitHub (439 ⭐)]** [minthcm/minthcm](https://github.com/minthcm/minthcm)
+  > Open-source HCM system for managing HR processes with AI agents. Full data ownership, MCP/A2A-native, no vendor lock-in.
+
+</untrusted_external_content>
+
+---
