@@ -186,7 +186,8 @@
         "read_url(ngxui.com)",
         "mcp(aider-bridge/aider_run_task)",
         "read_url(registered-invention-wake-intensive.trycloudflare.com)",
-        "read_url(portfolio-kappa-hazel-33.vercel.app)"
+        "read_url(portfolio-kappa-hazel-33.vercel.app)",
+        "read_url(cdnjs.cloudflare.com)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
