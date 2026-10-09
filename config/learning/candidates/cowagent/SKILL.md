@@ -1,7 +1,7 @@
 ---
 name: cowagent
 description: >-
-  Kỹ năng chuyên gia vận hành cho zhayujie/CowAgent (47161 ⭐).
+  Kỹ năng chuyên gia vận hành cho zhayujie/CowAgent (47300 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở cowagent vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Open-source personal AI assistant & Agent Harness
@@ -12,9 +12,9 @@ description: >-
 # zhayujie/CowAgent — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/zhayujie/CowAgent`  
-> **Độ uy tín cộng đồng**: 47161 ⭐  
+> **Độ uy tín cộng đồng**: 47300 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-29 11:39:01Z
+> **Tự động đóng gói lúc**: 2026-10-09 10:42:09Z
 
 ---
 

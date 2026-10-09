@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-09T07:42:15.436723+00:00",
+    "scan_date": "2026-10-09T10:42:09.682093+00:00",
     "cycle_id": "EVO-20261009",
     "sessions_evaluated": 97,
-    "total_items_processed": 208,
+    "total_items_processed": 207,
     "active_skills_count": 66,
     "candidates_count": 122,
     "enhancements_count": 44,
-    "optimizations_count": 42
+    "optimizations_count": 41
   },
   "new_skill_candidates": [
     {
@@ -257,16 +257,6 @@
       "recommended_action": "Bổ sung tri thức và thuật toán từ codewhale-hq/Codewhale vào module codewhale."
     },
     {
-      "target_skill": "cdp-engine",
-      "source_technology": "dondai44423/bladebro",
-      "source_url": "https://github.com/dondai44423/bladebro",
-      "source_type": "GitHub (203 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "A Fully free agentic browser driver for AI , few tools, full control, real stealth, top-tier token efficiency.",
-      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
-    },
-    {
       "target_skill": "aider-execution-engine",
       "source_technology": "agentforce314/clawcodex",
       "source_url": "https://github.com/agentforce314/clawcodex",
@@ -275,6 +265,16 @@
       "priority_score": 75,
       "enhancement_rationale": "Token efficient Claude Code full Python rebuild. AI Coding Agent in 310K LoC Python.",
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "cdp-engine",
+      "source_technology": "Innate-Labs/Noobi.ai",
+      "source_url": "https://github.com/Innate-Labs/Noobi.ai",
+      "source_type": "GitHub (253 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "Local-first desktop agent that turns a prompt into a reviewed, playable browser game with Codex App Server.",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
     }
   ],
   "architecture_optimizations": [
