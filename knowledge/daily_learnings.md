@@ -2876,3 +2876,21 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-09 11:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1910 ⭐)]** [Paca-AI/paca](https://github.com/Paca-AI/paca)
+  > AI-native, free, open-source alternative to Jira, Trello, ClickUp & Monday. Built for Scrum teams where humans and AI agents collaborate as equals — on the s...
+- **[GitHub (143 ⭐)]** [rookedsysc/kanvibe](https://github.com/rookedsysc/kanvibe)
+  > Keyboard-first desktop Kanban workspace for AI coding agents with embedded terminals, git worktrees, and hook-driven task tracking.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [An Explainable Header-Centric Framework for Large-Scale Semantic Table Interpretation and Data Quality Assessment](https://arxiv.org/abs/2610.10541)
+  > arXiv:2610.10541v1 Announce Type: new Abstract: Knowledge Graph (KG) quality depends not only on downstream graph validation, but also on the quality of tabu...
+- **[ArXiv CS.AI]** [Synthesis Through Simulation: Generating Coherent Enterprise Data via Scalable Agent-System Interaction](https://arxiv.org/abs/2610.10549)
+  > arXiv:2610.10549v1 Announce Type: new Abstract: Tool-calling agents have become central to enterprise AI, yet training and evaluating them at scale remains s...
+
+</untrusted_external_content>
+
+---
