@@ -1,7 +1,7 @@
 ---
 name: dscode
 description: >-
-  Kỹ năng chuyên gia vận hành cho qiz029/dscode (1014 ⭐).
+  Kỹ năng chuyên gia vận hành cho qiz029/dscode (1027 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở dscode vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến A DeepSeek coding agent harness: persistent shell, Ultra subagents, auto approval, Chrome MCP and session telemetry
@@ -12,9 +12,9 @@ description: >-
 # qiz029/dscode — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/qiz029/dscode`  
-> **Độ uy tín cộng đồng**: 1014 ⭐  
+> **Độ uy tín cộng đồng**: 1027 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-02 04:42:08Z
+> **Tự động đóng gói lúc**: 2026-10-10 23:58:16Z
 
 ---
 
