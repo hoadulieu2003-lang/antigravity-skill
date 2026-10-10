@@ -2950,3 +2950,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-10 09:48:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (308 ⭐)]** [fancyboi999/goofish-cli](https://github.com/fancyboi999/goofish-cli)
+  > 闲鱼 CLI · 原生支持 MCP · 为 AI Agent 而生 | Goofish (Xianyu) automation CLI · MCP-ready · Built for AI Agents
+- **[GitHub (2529 ⭐)]** [boxlite-ai/boxlite](https://github.com/boxlite-ai/boxlite)
+  > The micro-VM for AI agents — light enough to embed on your laptop, elastic enough to power an agentic cloud.
+
+</untrusted_external_content>
+
+---
