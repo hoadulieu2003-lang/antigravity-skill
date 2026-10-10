@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-10T04:42:09.464914+00:00",
+    "scan_date": "2026-10-10T07:42:09.838621+00:00",
     "cycle_id": "EVO-20261010",
     "sessions_evaluated": 95,
-    "total_items_processed": 203,
+    "total_items_processed": 199,
     "active_skills_count": 66,
-    "candidates_count": 120,
-    "enhancements_count": 41,
+    "candidates_count": 118,
+    "enhancements_count": 39,
     "optimizations_count": 42
   },
   "new_skill_candidates": [
@@ -157,26 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "cdp-engine",
-      "source_technology": "skalesapp/skales",
-      "source_url": "https://github.com/skalesapp/skales",
-      "source_type": "GitHub (1920 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Personal AI agent for macOS, Windows, Linux, Android & iOS. Set a goal, it works alone: coding (Skales Code), desktop + browser automation, autonomous schedu...",
-      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
-    },
-    {
-      "target_skill": "gemini-super-engine",
-      "source_technology": "career-ops-hq/career-ops",
-      "source_url": "https://github.com/career-ops-hq/career-ops",
-      "source_type": "GitHub (72659 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Open-source AI job search: scan job portals, evaluate listings into a structured A-H report with a global 1-5 score, tailor your CV, track applications — run...",
-      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
-    },
-    {
       "target_skill": "gemini-super-engine",
       "source_technology": "brycewang-stanford/Auto-Empirical-Research-Skills",
       "source_url": "https://github.com/brycewang-stanford/Auto-Empirical-Research-Skills",
@@ -275,6 +255,26 @@
       "priority_score": 75,
       "enhancement_rationale": "Pi — A cross-platform AI coding agent, bringing the Claude Code experience to your desktop. No environment setup, no terminal commands. Download and start co...",
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "TeleAI-UAGI/Awesome-Agent-Memory",
+      "source_url": "https://github.com/TeleAI-UAGI/Awesome-Agent-Memory",
+      "source_type": "GitHub (653 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "Curated systems, benchmarks, and papers etc. on memory for LLMs/MLLMs --- long-term context, retrieval, and reasoning.",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
+    },
+    {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "jaccen/Awesome-Gaussian-Skills",
+      "source_url": "https://github.com/jaccen/Awesome-Gaussian-Skills",
+      "source_type": "GitHub (160 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "图形学与3DGS、空间智能持续更新论文；AI Agent Skills for 3D Gaussian Splatting, NeRF & Computer Graphics Research. 800+ methods, 25categories, 12skills. OpenClaw / Claude Cod...",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
     }
   ],
   "architecture_optimizations": [

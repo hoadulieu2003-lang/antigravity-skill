@@ -2962,3 +2962,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-10 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (322 ⭐)]** [7df-lab/devo](https://github.com/7df-lab/devo)
+  > Model-neutral agent desktop/runtime for private, enterprise, and OpenAI-compatible / Anthropic-compatible model API. Tested on DeepSeek, Qwen, Kimi, GLM mode...
+
+</untrusted_external_content>
+
+---
