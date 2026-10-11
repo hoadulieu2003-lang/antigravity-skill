@@ -2992,3 +2992,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-11 08:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (237 ⭐)]** [zhu1090093659/dsh-trading](https://github.com/zhu1090093659/dsh-trading)
+  > Agent-native trading terminal built on DeepSeek Harness. Crypto, US, CN and HK in one three-column GUI, 19+ hot-swappable connectors, dry-run by default with...
+- **[GitHub (319 ⭐)]** [nirholas/cryptocurrency.cv](https://github.com/nirholas/cryptocurrency.cv)
+  > Free crypto news API - real-time aggregator for Bitcoin, Ethereum, DeFi, Solana & altcoins. No API key required. RSS/Atom feeds, JSON REST API, historical ar...
+
+</untrusted_external_content>
+
+---
