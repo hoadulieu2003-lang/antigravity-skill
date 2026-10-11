@@ -3004,3 +3004,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-11 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (24522 ⭐)]** [nocobase/nocobase](https://github.com/nocobase/nocobase)
+  > NocoBase is an open-source AI + no-code platform for building business systems fast. Instead of generating everything from scratch, AI works on top of produc...
+- **[GitHub (580 ⭐)]** [shanliuling/dsh-image-gen](https://github.com/shanliuling/dsh-image-gen)
+  > AI image studio for DeepSeek Harness — generate, edit & compare images in chat, with 500+ prompts, gallery, multi-model workflows and ComfyUI.
+
+</untrusted_external_content>
+
+---

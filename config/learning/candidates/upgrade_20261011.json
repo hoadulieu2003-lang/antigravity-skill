@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-11T04:42:11.518522+00:00",
+    "scan_date": "2026-10-11T07:42:18.119003+00:00",
     "cycle_id": "EVO-20261011",
-    "sessions_evaluated": 94,
-    "total_items_processed": 195,
+    "sessions_evaluated": 95,
+    "total_items_processed": 197,
     "active_skills_count": 66,
-    "candidates_count": 116,
-    "enhancements_count": 38,
+    "candidates_count": 117,
+    "enhancements_count": 39,
     "optimizations_count": 41
   },
   "new_skill_candidates": [
@@ -237,6 +237,16 @@
       "recommended_action": "Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context."
     },
     {
+      "target_skill": "ast-repo-map",
+      "source_technology": "nocobase/nocobase",
+      "source_url": "https://github.com/nocobase/nocobase",
+      "source_type": "GitHub (24522 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "NocoBase is an open-source AI + no-code platform for building business systems fast. Instead of generating everything from scratch, AI works on top of produc...",
+      "recommended_action": "Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context."
+    },
+    {
       "target_skill": "gemini-super-engine",
       "source_technology": "TeleAI-UAGI/Awesome-Agent-Memory",
       "source_url": "https://github.com/TeleAI-UAGI/Awesome-Agent-Memory",
@@ -265,16 +275,6 @@
       "priority_score": 75,
       "enhancement_rationale": "Open-source AI browser agent — type plain-language commands and Bah operates the web for you. Works with cloud AI (DeepSeek, Mistral, NVIDIA) or local Ollama...",
       "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
-    },
-    {
-      "target_skill": "ast-repo-map",
-      "source_technology": "iflytek/astronclaw-tutorial",
-      "source_url": "https://github.com/iflytek/astronclaw-tutorial",
-      "source_type": "GitHub (361 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "从零到工作流，掌握 AstronClaw（云端）与 Loomy（桌面）的 AI 助手实战教程 | A complete tutorial to master AstronClaw (cloud AI) & Loomy (desktop AI)",
-      "recommended_action": "Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context."
     }
   ],
   "architecture_optimizations": [
