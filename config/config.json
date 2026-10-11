@@ -192,7 +192,8 @@
         "read_url(perappelgren.de)",
         "read_url(pamidordesign.co)",
         "read_url(unsplash.com)",
-        "mcp(brave-search/brave_web_search)"
+        "mcp(brave-search/brave_web_search)",
+        "read_url(ez.blissbiovn.com)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

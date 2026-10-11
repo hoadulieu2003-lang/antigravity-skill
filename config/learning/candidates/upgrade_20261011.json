@@ -1,11 +1,11 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-11T15:14:19.318035+00:00",
+    "scan_date": "2026-10-11T16:42:09.162661+00:00",
     "cycle_id": "EVO-20261011",
     "sessions_evaluated": 97,
-    "total_items_processed": 202,
+    "total_items_processed": 201,
     "active_skills_count": 66,
-    "candidates_count": 120,
+    "candidates_count": 119,
     "enhancements_count": 41,
     "optimizations_count": 41
   },
@@ -57,18 +57,6 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "Open-source, secure environment with real-world tools for enterprise-grade agents.",
       "suggested_skill_structure": "---\nname: e2b\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng e2b-dev/E2B cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# E2B-DEV/E2B SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `e2b-dev/E2B` (https://github.com/e2b-dev/E2B)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
-      "skill_slug": "failproofai",
-      "title": "FailproofAI/failproofai",
-      "source": "GitHub (5164 ⭐)",
-      "url": "https://github.com/FailproofAI/failproofai",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 95,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "Observability and enforcement for AI agent harnesses. Capture every run and runtime reliability with policy enforcement.",
-      "suggested_skill_structure": "---\nname: failproofai\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng FailproofAI/failproofai cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# FAILPROOFAI/FAILPROOFAI SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `FailproofAI/failproofai` (https://github.com/FailproofAI/failproofai)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
       "skill_slug": "xalgorix",
@@ -153,6 +141,18 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "Atomic Agent is a local-first AI agent. Runs open-weight models on your own machine via llama.cpp.",
       "suggested_skill_structure": "---\nname: atomic-agent\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng AtomicBot-ai/atomic-agent cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ATOMICBOT-AI/ATOMIC-AGENT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `AtomicBot-ai/atomic-agent` (https://github.com/AtomicBot-ai/atomic-agent)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "vibe-research",
+      "title": "simonlin1212/Vibe-Research",
+      "source": "GitHub (2631 ⭐)",
+      "url": "https://github.com/simonlin1212/Vibe-Research",
+      "domain": "Định lượng & Phân tích Thị trường (Quant & Financial AI)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Định lượng & Phân tích Thị trường (Quant & Financial AI).",
+      "proposed_value": "Vibe-Research: Your Personal Trading Research Agent · A股/美股/港股 的个人投研 Agent：每日复盘、资讯雷达、个股数据、板块中心、我的持仓、研究记录、回测。Vibe-Research 把数据和功能配齐，由你自己的 Agent 驱动投资研究。基于开源的 C...",
+      "suggested_skill_structure": "---\nname: vibe-research\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng simonlin1212/Vibe-Research cho các tác vụ Định lượng & Phân tích Thị trường (Quant & Financial AI).\n---\n\n# SIMONLIN1212/VIBE-RESEARCH SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `simonlin1212/Vibe-Research` (https://github.com/simonlin1212/Vibe-Research)\n- Lĩnh vực: Định lượng & Phân tích Thị trường (Quant & Financial AI)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
