@@ -3054,3 +3054,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-12 02:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (212 ⭐)]** [asiifdev/business-leads-ai-automation](https://github.com/asiifdev/business-leads-ai-automation)
+  > Open-source AI sales & marketing OS: find leads, draft outreach in your own voice, approve, close. Self-host or use alatpintar.id
+- **[GitHub (87 ⭐)]** [0xbosonax/poly-alpha-lab](https://github.com/0xbosonax/poly-alpha-lab)
+  > 🚀 $150k+ Polymarket Trader & Web3 Developer: Polymarket Bot • Polymarket Trading Bot • AI Agents • GameFi • Provably Fair Casinos • DeFi
+
+</untrusted_external_content>
+
+---
