@@ -3032,3 +3032,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-11 22:14:10`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (86 ⭐)]** [liaisonio/liaison](https://github.com/liaisonio/liaison)
+  > Self-hosted access to private apps, LLMs, and AI agents — browser workspaces, scoped API sharing, and context-aware AI assistance.
+- **[GitHub (215 ⭐)]** [Tenney95/AI-Canvas-tauri](https://github.com/Tenney95/AI-Canvas-tauri)
+  > Local-first AI canvas for visual workflows, AI short drama, image/video generation, storyboarding and asset management. ComfyUI, AI agents, MCP & Blender. 本地...
+
+</untrusted_external_content>
+
+---
