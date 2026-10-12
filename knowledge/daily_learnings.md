@@ -3156,3 +3156,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-13 02:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (188 ⭐)]** [Dodaios/Dodaios](https://github.com/Dodaios/Dodaios)
+  > Your AI assistant, built for the agentic era. Open source and local: talk to it, and it runs your agents, your coding CLIs, your browser and your apps. Windo...
+- **[GitHub (78 ⭐)]** [respawn-llc/kent](https://github.com/respawn-llc/kent)
+  > Agentic Coding platform for Professional SWE work focusing on output quality. Self-review, supervision, dynamic workflows, dynamic agent loops.
+
+</untrusted_external_content>
+
+---
