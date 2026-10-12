@@ -3142,3 +3142,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-12 23:42:02`
+
+<untrusted_external_content>
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [Filter, reshape, and redact logs before export with Transformers](https://blog.cloudflare.com/transformers-on-logpush/)
+  > Logpush now supports Transformers, allowing teams to filter, redact, and reshape log streams using SQL before export. Powered by Apache DataFusion and Apache Arrow, Transformers apply those changes...
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (75 ⭐)]** [cognicore-dev/cognicore-env](https://github.com/cognicore-dev/cognicore-env)
+  > Persistent memory, reflection & safety for AI agents. Zero dependencies — no vector DB, no embedding server. BM25 + multi-hop graph retrieval. MCP server wit...
+
+</untrusted_external_content>
+
+---
