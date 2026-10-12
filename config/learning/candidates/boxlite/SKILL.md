@@ -1,7 +1,7 @@
 ---
 name: boxlite
 description: >-
-  Kỹ năng chuyên gia vận hành cho boxlite-ai/boxlite (2529 ⭐).
+  Kỹ năng chuyên gia vận hành cho boxlite-ai/boxlite (2541 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở boxlite vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến The micro-VM for AI agents — light enough to embed on your laptop, elastic enough to power an agentic cloud
@@ -12,9 +12,9 @@ description: >-
 # boxlite-ai/boxlite — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/boxlite-ai/boxlite`  
-> **Độ uy tín cộng đồng**: 2529 ⭐  
+> **Độ uy tín cộng đồng**: 2541 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-10 02:48:11Z
+> **Tự động đóng gói lúc**: 2026-10-12 13:42:09Z
 
 ---
 

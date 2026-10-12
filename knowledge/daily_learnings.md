@@ -3132,3 +3132,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-12 20:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (94 ⭐)]** [tribgames/mixdog](https://github.com/tribgames/mixdog)
+  > Open-source desktop coding agent that matches Codex on Terminal-Bench 2.1 with 63% fewer tokens.
+
+</untrusted_external_content>
+
+---
