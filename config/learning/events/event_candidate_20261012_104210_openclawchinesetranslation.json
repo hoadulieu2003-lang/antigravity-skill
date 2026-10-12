@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-12T10:42:10.294909+00:00",
+  "skill_name": "openclawchinesetranslation",
+  "source_repo": "1186258278/OpenClawChineseTranslation",
+  "stars": 3795,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\openclawchinesetranslation\\SKILL.md",
+  "human_promotion_required": true
+}
