@@ -3076,3 +3076,23 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-12 11:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (75 ⭐)]** [xi-zhao/OpenQuantum](https://github.com/xi-zhao/OpenQuantum)
+  > Open-source quantum Agent workspace with a desktop client, Web UI, messaging, Qiskit/MCP tools, and scientific validation
+- **[GitHub (14393 ⭐)]** [fathah/hermes-desktop](https://github.com/fathah/hermes-desktop)
+  > Desktop Companion for Hermes Agent
+- **[GitHub (9337 ⭐)]** [zhouxiaoka/autoclip](https://github.com/zhouxiaoka/autoclip)
+  > AutoClip｜一个链接，一键出片。开源 AI 视频剪辑桌面工具，将播客、访谈、课程等长视频自动剪成短视频，生成字幕、封面和发布文案，适配抖音、小红书、TikTok、Reels 与 YouTube Shorts。Open-source AI video clipping & content repurposing.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Faithfulness Without Anchors: A Position Paper on the Structural Misalignments of Explainable AI Faithfulness Metrics for Feature Importance](https://arxiv.org/abs/2610.12493)
+  > arXiv:2610.12493v1 Announce Type: new Abstract: Explainable Artificial Intelligence (XAI) tools have often been presented as methods to increase trust in mac...
+- **[ArXiv CS.AI]** [EliteTable: Self-Improving Program Search for Executable Control Policies](https://arxiv.org/abs/2610.12536)
+  > arXiv:2610.12536v1 Announce Type: new Abstract: EliteTable is a self-improving program-search algorithm guided by large language models (LLMs) that uses a fi...
+
+</untrusted_external_content>
+
+---
