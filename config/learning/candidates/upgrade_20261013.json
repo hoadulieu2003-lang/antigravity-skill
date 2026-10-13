@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-13T10:42:18.178095+00:00",
+    "scan_date": "2026-10-13T13:42:12.824247+00:00",
     "cycle_id": "EVO-20261013",
-    "sessions_evaluated": 101,
-    "total_items_processed": 212,
+    "sessions_evaluated": 100,
+    "total_items_processed": 206,
     "active_skills_count": 66,
-    "candidates_count": 125,
+    "candidates_count": 121,
     "enhancements_count": 45,
-    "optimizations_count": 42
+    "optimizations_count": 40
   },
   "new_skill_candidates": [
     {
@@ -349,26 +349,6 @@
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     },
     {
-      "title": "Four months of VoidZero at Cloudflare: making the open-source JavaScript toolchain faster for all humans and agents",
-      "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/voidzero-update/",
-      "priority": "STRATEGIC",
-      "priority_score": 85,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Since joining Cloudflare, VoidZero has delivered more than 80 releases that drastically speed up JavaScript compilation, linting, and testing. From a 10x faster React compiler to Vite+ 1.0, here’s ...",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
-      "title": "Introducing Forge: the open source pipeline for generating SDKs, CLIs, docs, and more",
-      "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/forge-open-source-generation-pipeline/",
-      "priority": "STRATEGIC",
-      "priority_score": 85,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Forge is a pluggable, open-source pipeline that runs in CI to generate SDKs, CLIs, and documentation directly from API definitions. By shifting generation upstream into individual team repositories...",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
       "title": "Next.js applications, powered by Vite: introducing Vinext 1.0",
       "source": "Cloudflare Engineering",
       "url": "https://blog.cloudflare.com/vinext-nextjs-on-vite/",
@@ -396,6 +376,26 @@
       "priority_score": 85,
       "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
       "rationale": "Cloudflare is open-sourcing the BEACON dataset, making billions of anonymized Real User Monitoring (RUM) performance records publicly available on Google BigQuery. Explore real-world Core Web Vital...",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Using AI to chart a course for our post-quantum migration",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/ai-driven-cryptography-discovery/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "We’re building CryptoLabe, an internal AI-powered tool that discovers cryptography across our codebase, surfaces dependencies, and helps us progress toward a full post-quantum migration by 2029. He...",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Building a certificate authority for the whole Internet",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/cloudflare-certificate-authority/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Twelve years after launching Universal SSL, Cloudflare is applying to become a certificate authority. By combining an established root, an ACME-first approach, and Merkle Tree Certificates, we are ...",
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     }
   ]
