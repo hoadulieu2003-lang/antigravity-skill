@@ -3178,3 +3178,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-13 12:00:12`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (472 ⭐)]** [KitionAI/kition](https://github.com/KitionAI/kition)
+  > Kition brings Markdown, DataTable, WhiteBoard, a tool-using AI agent, browser research, and visual workflows into one desktop workspace.
+- **[GitHub (116 ⭐)]** [gesta-run/subpool](https://github.com/gesta-run/subpool)
+  > A lightweight, self-hosted AI subscription pool for teams.
+
+</untrusted_external_content>
+
+---
