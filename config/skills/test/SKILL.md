@@ -81,6 +81,12 @@ Nhằm loại bỏ hoàn toàn thiên kiến xác nhận (`Confirmation Bias`) v
 
 * Mỗi bước kiểm tra độc lập xuất một bản ghi `test_evidence` (theo mẫu [assets/TEST_EVIDENCE_TEMPLATE.yaml](assets/TEST_EVIDENCE_TEMPLATE.yaml)).
 * Bất kỳ lỗi hoặc vi phạm nào phải được đóng gói thành `finding` (theo mẫu [assets/TEST_FINDING_TEMPLATE.yaml](assets/TEST_FINDING_TEMPLATE.yaml)).
+* **NGUYÊN TẮC KHÔNG CÓ LOG = CHƯA KIỂM CHỨNG (`ZERO-LOG ZERO-TRUST INVARIANT`)**:
+  - Mọi bằng chứng kiểm thử (`test_evidence`) bắt buộc phải ghi lại câu lệnh terminal thực tế, mã thoát `exit_code: 0` và trích xuất log thực tế (`stdout/stderr`).
+  - Cấm tuyệt đối phê duyệt dựa trên nhận định ngữ nghĩa bằng mắt hoặc báo cáo chữ từ Developer. Nếu thiếu log terminal thực tế $\to$ Đánh giá ngay là `TEST_BLOCKED` hoặc `UNVERIFIED`.
+* **BỘ LỌC CHỐNG NHIỄM ĐỘC MOCK (`ANTI-MOCK POISONING GATE`)**:
+  - Tuyệt đối cấm các kịch bản kiểm thử lạm dụng Mocking 100% để tạo báo cáo pass ảo.
+  - Bắt buộc kiểm chứng chạm Runtime thật ở mức L1 (compile/typecheck thật không mock), L3 (contract schema thật) và L4 (khởi chạy server/browser DOM thật).
 * **KHÓA CHẶT AUTO-FIX (`AUTO_FIX = FALSE`)**:
   Khi phát hiện lỗi $\to$ Xuất finding $\to$ Báo cáo $\to$ Dừng lại.
   Tuyệt đối không tự động sửa code.

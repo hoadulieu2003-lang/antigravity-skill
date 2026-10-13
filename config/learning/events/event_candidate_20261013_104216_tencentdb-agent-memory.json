@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-13T10:42:16.904988+00:00",
+  "skill_name": "tencentdb-agent-memory",
+  "source_repo": "TencentCloud/TencentDB-Agent-Memory",
+  "stars": 28325,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\tencentdb-agent-memory\\SKILL.md",
+  "human_promotion_required": true
+}
