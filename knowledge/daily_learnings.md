@@ -3280,3 +3280,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-14 14:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (75 ⭐)]** [BotHarness/DeepSeekBot](https://github.com/BotHarness/DeepSeekBot)
+  > Open-source GrokBot alternative built on DeepSeek Harness. Build your personal bot team: multiple personal agents with persistent memory, identities and perm...
+- **[GitHub (99 ⭐)]** [harryopo/tdsf-terminal-agent](https://github.com/harryopo/tdsf-terminal-agent)
+  > 终端优先的 Linux AI 运维工作台：SSH/SFTP、真实命令回显、分级审批与一步一卡教学。Windows 桌面预稳定版。A terminal-first AI workbench for Linux operations.
+
+</untrusted_external_content>
+
+---
