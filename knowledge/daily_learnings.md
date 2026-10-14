@@ -3262,3 +3262,21 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-14 11:42:02`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google DeepMind]** [Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams](https://deepmind.google/blog/on-device-ai-scam-detection-mddi/)
+  > Learn how Google DeepMind and GovTech Singapore uses lightweight on-device Gemma models to intercept conversational scams in private chats with zero cloud data egress.
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (15001 ⭐)]** [NanmiCoder/cc-haha](https://github.com/NanmiCoder/cc-haha)
+  > 本地优先的跨平台 Claude Code / AI Agent 桌面工作台：多 Agent 协作、Git Worktree、代码 Diff、技能市场、多模型、Computer Use、桌面宠物；支持微信、飞书、钉钉及 H5 等远程访问。 | Local-first Claude Code / AI Agent d...
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [openbmb/MiniCPM-V-4.7-35B-A3B](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
