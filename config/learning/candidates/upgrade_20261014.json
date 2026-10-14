@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-14T10:42:12.021697+00:00",
+    "scan_date": "2026-10-14T13:42:10.570258+00:00",
     "cycle_id": "EVO-20261014",
-    "sessions_evaluated": 99,
-    "total_items_processed": 211,
+    "sessions_evaluated": 98,
+    "total_items_processed": 209,
     "active_skills_count": 66,
     "candidates_count": 124,
     "enhancements_count": 45,
-    "optimizations_count": 41
+    "optimizations_count": 39
   },
   "new_skill_candidates": [
     {
@@ -369,26 +369,6 @@
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     },
     {
-      "title": "Using AI to chart a course for our post-quantum migration",
-      "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/ai-driven-cryptography-discovery/",
-      "priority": "STRATEGIC",
-      "priority_score": 85,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "We’re building CryptoLabe, an internal AI-powered tool that discovers cryptography across our codebase, surfaces dependencies, and helps us progress toward a full post-quantum migration by 2029. He...",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
-      "title": "Building a certificate authority for the whole Internet",
-      "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/cloudflare-certificate-authority/",
-      "priority": "STRATEGIC",
-      "priority_score": 85,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Twelve years after launching Universal SSL, Cloudflare is applying to become a certificate authority. By combining an established root, an ACME-first approach, and Merkle Tree Certificates, we are ...",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
       "title": "Adaptive application security for the AI era: how Cloudflare connects code, traffic, and intelligence to stop attacks",
       "source": "Cloudflare Engineering",
       "url": "https://blog.cloudflare.com/ai-era-framework/",
@@ -396,6 +376,26 @@
       "priority_score": 85,
       "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
       "rationale": "Cloudflare introduces an adaptive security framework connecting risk discovery, agent governance, runtime protection, and AI-powered response in a continuous learning loop.",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Cloudflare Impact reaches $100 million in donations",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/100-million-donations/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "This week, Cloudflare's Impact programs will reach $100 million in donated services. This milestone means that thousands of entities including journalists, civil society, state and local government...",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Cut your AI spend with AI Gateway's Auto Router",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/auto-router/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Cloudflare AI Gateway now features a model router that evaluates request complexity using an edge-deployed classifier to select the optimal model. By balancing expected output quality against token...",
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     }
   ]

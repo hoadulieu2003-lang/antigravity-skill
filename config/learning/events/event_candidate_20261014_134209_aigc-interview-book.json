@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-14T13:42:09.364944+00:00",
+  "skill_name": "aigc-interview-book",
+  "source_repo": "WeThinkIn/AIGC-Interview-Book",
+  "stars": 4970,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\aigc-interview-book\\SKILL.md",
+  "human_promotion_required": true
+}
