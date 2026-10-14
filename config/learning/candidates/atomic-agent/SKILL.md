@@ -1,7 +1,7 @@
 ---
 name: atomic-agent
 description: >-
-  Kỹ năng chuyên gia vận hành cho AtomicBot-ai/atomic-agent (2798 ⭐).
+  Kỹ năng chuyên gia vận hành cho AtomicBot-ai/atomic-agent (3322 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở atomic-agent vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Atomic Agent is a local-first AI agent
@@ -12,9 +12,9 @@ description: >-
 # AtomicBot-ai/atomic-agent — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/AtomicBot-ai/atomic-agent`  
-> **Độ uy tín cộng đồng**: 2798 ⭐  
+> **Độ uy tín cộng đồng**: 3322 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-05 19:42:12Z
+> **Tự động đóng gói lúc**: 2026-10-14 19:42:15Z
 
 ---
 
@@ -26,9 +26,9 @@ description: >-
 - **Nothing is hidden.** Inspect the prompt, replay trace drift, edit skills, and swap parts without waiting for a vendor. Plain local models, SQLite files, and NDJSON traces.
 - **Runs on your hardware.** Small quantized models run on everyday consumer GPUs and CPUs, no datacenter needed.
 - **TurboQuant weights:** Lloyd-Max weight quantization with WHT rotation and fused Metal/Vulkan kernels keeps quality usable while small models fit on consumer hardware.
-- **Custom speculative decoding:** purpose-built Gemma 4 MTP and Qwen 3.6 NextN heads reuse the loaded model (no second context, tokenizer, or model load) for +30-50% throughput.
 - **Curated quantized models:** hand-picked GGUF quants that keep quality usable while fitting real VRAM budgets.
 - **Bounded tail:** conversation, memory, world state, recalled notes, lessons, procedures, and loaded skill bodies are clipped into a predictable prompt budget.
+- **Externalized state:** sessions, memory, tasks, skills, traces, browser snapshots, and model config live outside the prompt.
 
 ---
 

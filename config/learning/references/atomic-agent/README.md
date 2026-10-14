@@ -6,7 +6,7 @@
 
 ### A local-first AI agent that runs on your machine, with local or cloud models.
 
-Drives your browser, edits files, runs approved commands, and remembers context across sessions. Open source, running on our TurboQuant `llama.cpp` for +30-50% throughput on small local models.
+Drives your browser, edits files, runs approved commands, and remembers context across sessions. Open source, running on our TurboQuant `llama.cpp` so long sessions with small local models fit in less memory.
 
 [![GAIA L1 · 69.8%](https://img.shields.io/badge/GAIA%20L1-69.8%25-0b63f6)](#benchmarks)
 [![Release](https://github.com/AtomicBot-ai/atomic-agent/actions/workflows/release.yml/badge.svg)](https://github.com/AtomicBot-ai/atomic-agent/actions/workflows/release.yml)
@@ -191,7 +191,6 @@ We run local models on our own TurboQuant `llama.cpp` ([`AtomicBot-ai/atomic-lla
 
 - **TurboQuant KV-cache:** WHT-rotated low-bit quantization compresses the KV-cache up to ~6.4× versus F16, with a fused Metal decode kernel, so long-context sessions fit in far less memory.
 - **TurboQuant weights:** Lloyd-Max weight quantization with WHT rotation and fused Metal/Vulkan kernels keeps quality usable while small models fit on consumer hardware.
-- **Custom speculative decoding:** purpose-built Gemma 4 MTP and Qwen 3.6 NextN heads reuse the loaded model (no second context, tokenizer, or model load) for +30-50% throughput.
 - **Curated quantized models:** hand-picked GGUF quants that keep quality usable while fitting real VRAM budgets.
 - **Managed mode:** the CLI downloads, keeps up to date, and runs the backend and models for you, no manual `llama.cpp` setup. Set `localModels.managed.autoUpdate: false` to pin the backend.
 
@@ -246,8 +245,9 @@ Atomic Agent's memory is not a giant chat log pasted back into the prompt. It's 
 - **Dedup and eviction** merge near-duplicate memories and evict by usefulness, not age, on by default.
 - **Reflection** runs after turns, off the main agent slot, and writes memory without blocking the reply.
 - **Obsidian export:** `atomic-agent memory export --vault <dir>` writes notes, lessons and procedures into a vault as linked Markdown files.
+- **Re-embedding:** with local embeddings on, switching the embedding model (or turning embeddings on over existing notes) gives older notes vectors for the new model in the background; `atomic-agent memory reindex` does it right away.
 
-New to this? [MEMORY_GUIDE.md](MEMORY_GUIDE.md) walks the whole loop end to end: what gets stored when, where the SQLite file lives, how recall shows up in prompts, worked example transcripts, and how to inspect or wipe it all.
+New to this? [MEMORY_GUIDE.md](docs/user/memory.md) walks the whole loop end to end: what gets stored when, where the SQLite file lives, how recall shows up in prompts, worked example transcripts, and how to inspect or wipe it all.
 
 ## Ways to Use It
 
@@ -275,7 +275,7 @@ atomic-agent trace list --limit 10
 
 Switch modes with `/mode`, `ctrl+g M`, or the composer chip. On an approval prompt, `ctrl+y` approves, `ctrl+d` denies, `ctrl+f` grants the category, `ctrl+b` retargets a write or grants a shell command's shape, `esc` aborts, and typing answers the agent in words. `/theme` switches between six palettes: `classic-dark`, `classic-light`, `toxic-green`, `khorne-red`, `darky-dark`, `moon-yellow`. The TUI is clickable; to select text, drag over plain text, or turn the mouse off with `/mouse off` or `--no-mouse`. Handy slash commands: `/help`, `/tools`, `/model`, `/privacy`. A failed or long turn raises a desktop notification, sessions are named from their first prompt, and inside a [herdr](https://github.com/herdrdev/herdr) pane the TUI labels the pane with its state.
 
-Full TUI guide: [TUI.md](TUI.md).
+Full TUI guide: [TUI.md](docs/user/tui.md).
 
 </details>
 
@@ -326,6 +326,10 @@ atomic-agent tui --cwd /path/to/work
 
 Managed mode downloads the backend, pulls GGUF models, selects the active model, and starts detached chat / embedding daemons when configured.
 
+The default engine is Atomic Chat Core, which installs and runs our TurboQuant `llama.cpp` build for your computer. The first start installs it with progress. If that fails, the error says what happened and how to retry: `atomic-agent models update` (TUI: `R` in Models). The standalone `llama.cpp` server remains a support-only fallback that the app does not show: `atomic-agent models engine llama-server` selects it and `atomic-agent models engine atomic-core` switches back; both engines use the same model files.
+
+`embeddinggemma-2` (Google's EmbeddingGemma 2, multilingual, 768-dim) runs only on the Atomic Core engine: Core serves it from its embedding module and the first `models start-embedding` installs the newer stock `llama.cpp` build it needs.
+
 Big models can download in the background, detached from the terminal that started them:
 
 ```bash
@@ -343,7 +347,7 @@ Model downloads resume. An interrupted pull (a dropped connection, Ctrl+C, a clo
 
 The managed chat daemon stops when the last session exits, freeing the RAM and VRAM the model was holding; set `localModels.managed.stopOnExit: false` in `config.json` to keep the model warm between sessions. Daemons started standalone with `models start` are never touched.
 
-On Windows the backend zip is picked per machine (CUDA when a capable NVIDIA driver is present, Vulkan otherwise). If the GPU build cannot serve a model on your hardware (typical for iGPU-only boxes), the start falls back to the CPU build automatically and records `localModels.managed.backendVariant: "cpu"` in `config.json`; set it to `"auto"`, `"vulkan"`, `"cuda-12.4"` or `"cuda-13.3"` to pick a build yourself (for example after a driver update).
+On Windows the backend zip is picked per machine (the CUDA 12.4 build when the NVIDIA driver supports CUDA 12.4 or newer, Vulkan on RTX 50-series cards and everywhere else). If the GPU build cannot serve a model on your hardware (typical for iGPU-only boxes), the start falls back to the CPU build automatically and records `localModels.managed.backendVariant: "cpu"` in `config.json`; set it to `"auto"`, `"vulkan"`, `"cuda-12.4"` or `"cuda-13.3"` to pick a build yourself (for example after a driver update; the CUDA 13.3 build currently needs the CUDA Toolkit installed).
 
 On Linux arm64 there is a single build and it is used on every machine. It bundles the CUDA runtime and cuBLAS for the NVIDIA GB10 superchip in DGX Spark, and it also carries the dispatched CPU backends (armv8.0 through armv9.2); the GPU backend is loaded at runtime, so a box with no NVIDIA driver runs the same build on its CPU. That bundle makes the download large, ~554 MB against ~30 MB on x64. It needs glibc 2.38 or newer (Ubuntu 24.04, Debian 13, DGX OS 7); on an older or musl system managed mode says so before downloading anything and external mode is the way to run.
 
@@ -757,11 +761,13 @@ Two things worth knowing before you switch a long-running agent onto either: eac
 </details>
 
 <details>
-<summary><b>Qwen / Tinker tagged tool calls</b> (opt-in compatibility provider)</summary>
+<summary><b>Tagged tool calls in text</b> (Qwen, Hermes, vLLM and similar backends)</summary>
 
-Some Qwen-serving OpenAI-compatible backends (Tinker, certain vLLM/llama.cpp front-ends) emit tool calls as inline `<tool_call><function=…>…</function></tool_call>` text instead of the native `tool_calls` field; they show up as assistant prose and never execute (#105).
+Some OpenAI-compatible backends (Tinker, certain vLLM/llama.cpp front-ends serving Qwen or Hermes-style models) emit tool calls as inline `<tool_call>…</tool_call>` text instead of the native `tool_calls` field. Atomic decodes these automatically on every OpenAI-compatible kind (`openai-compatible`, `openrouter`, `aimlapi`, `gemini`, `qwen-openai-compatible`); there is nothing to enable. Both block forms are accepted: Qwen's `<function=…><parameter=…>…</parameter></function>` and the Hermes JSON `{"name": …, "arguments": {…}}`.
 
-To enable the adapter, set the provider `kind` to **`qwen-openai-compatible`** in `config.json` (with `baseUrl` + `defaultChatModel`). Plain `openai-compatible` does **not** enable it; the generic kind is left untouched on purpose. There is no TUI wizard row for this kind yet; it is config-only for now.
+A reply counts as tool calls only when the request offered tools, the response has no native `tool_calls`, and the whole trimmed `content` is `<tool_call>` blocks. Prose around a block keeps it a normal reply.
+
+Qwen thinking models sometimes put the call in `reasoning_content` instead of `content` (#105). Reading that channel is the one Qwen-only part: set the provider `kind` to **`qwen-openai-compatible`** in `config.json` (with `baseUrl` + `defaultChatModel`) to enable it. Other kinds ignore calls quoted in the reasoning channel on purpose. There is no TUI wizard row for this kind yet; it is config-only for now.
 
 ```json
 {
@@ -779,11 +785,11 @@ To enable the adapter, set the provider `kind` to **`qwen-openai-compatible`** i
 ```
 
 Behavior:
-- The tagged call is read from `content`, or from `reasoning_content` when content is empty or holds unparseable tag noise.
+- The tagged call is read from `content`. With `qwen-openai-compatible` it is also read from `reasoning_content` when content is empty or holds unparseable tag noise.
 - Argument values are coerced against the offered tool's JSON schema; a call that does not match is dropped (fail-closed) rather than executed with guessed args.
 - Streaming stays live: text/reasoning deltas stream as usual and the buffered final message is adapted once the stream closes.
 
-**Limitation for MCP tools:** the schema coercion supports a fixed JSON-Schema subset and rejects unknown keywords such as `$ref`. Atomic's built-in tools are fine, but MCP tools that ship a draft-07 `inputSchema` with `$ref` (or other unsupported keywords) will fail coercion and remain prose. MCP + tagged Qwen is therefore unsupported for now.
+**Limitation for MCP tools:** the schema coercion supports a fixed JSON-Schema subset and rejects unknown keywords such as `$ref`. Atomic's built-in tools are fine, but MCP tools that ship a draft-07 `inputSchema` with `$ref` (or other unsupported keywords) will fail coercion and remain prose. MCP tools called through tagged text are therefore unsupported for now.
 </details>
 
 ## Development
@@ -797,13 +803,14 @@ npm run build
 
 Core docs:
 
-- [PROMPT.md](PROMPT.md): prompt anatomy
-- [MEMORY_GUIDE.md](MEMORY_GUIDE.md): memory end to end, with worked examples
-- [MEMORY.md](MEMORY.md): memory and recall internals
-- [MEMORY_FABRIC_V2.md](MEMORY_FABRIC_V2.md) / [MEMORY_FABRIC_V2.5.md](MEMORY_FABRIC_V2.5.md): memory fabric design
-- [SKILLS.md](SKILLS.md): skill format
-- [BUNDLING.md](BUNDLING.md): release packaging
+- [PROMPT.md](src/prompt/README.md): prompt anatomy
+- [MEMORY_GUIDE.md](docs/user/memory.md): memory end to end, with worked examples
+- [MEMORY.md](src/memory/README.md): memory and recall internals
+- [MEMORY_FABRIC_V2.md](docs/archive/2026-10-06/MEMORY_FABRIC_V2.md) / [MEMORY_FABRIC_V2.5.md](docs/archive/2026-10-06/MEMORY_FABRIC_V2.5.md): memory fabric design
+- [SKILLS.md](src/skills/docs/skill-format.md): skill format
+- [BUNDLING.md](scripts/docs/bundling.md): release packaging
 - [AGENTS.md](AGENTS.md): contributor invariants
+- [Large-model adaptation plan](docs/plans/cloud-model-adaptation.md): proposed context, research limits, Fusion review and automatic memory changes
 
 ## Acknowledgements
 

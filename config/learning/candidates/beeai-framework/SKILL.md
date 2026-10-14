@@ -1,7 +1,7 @@
 ---
 name: beeai-framework
 description: >-
-  Kỹ năng chuyên gia vận hành cho i-am-bee/beeai-framework (3427 ⭐).
+  Kỹ năng chuyên gia vận hành cho i-am-bee/beeai-framework (3433 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở beeai-framework vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Build production-ready AI agents in both Python and Typescript
@@ -12,9 +12,9 @@ description: >-
 # i-am-bee/beeai-framework — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/i-am-bee/beeai-framework`  
-> **Độ uy tín cộng đồng**: 3427 ⭐  
+> **Độ uy tín cộng đồng**: 3433 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-08 07:42:11Z
+> **Tự động đóng gói lúc**: 2026-10-14 19:42:14Z
 
 ---
 
