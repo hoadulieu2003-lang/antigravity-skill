@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-14T01:49:51.925993+00:00",
+  "skill_name": "ouroboros",
+  "source_repo": "Q00/ouroboros",
+  "stars": 6215,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\ouroboros\\SKILL.md",
+  "human_promotion_required": true
+}
