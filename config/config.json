@@ -196,7 +196,8 @@
         "read_url(ez.blissbiovn.com)",
         "read_url(youtube.com)",
         "read_url(youtubetranscript.com)",
-        "read_url(data-api.binance.vision)"
+        "read_url(data-api.binance.vision)",
+        "read_url(traderversity.com)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
