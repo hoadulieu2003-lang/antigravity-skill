@@ -3422,3 +3422,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-16 05:42:01`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (85 ⭐)]** [ml8s/liki](https://github.com/ml8s/liki)
+  > Liki — 专业命理 Skill，按命理师的专业标准构建：排盘走天文历算引擎，断语附经典出处，结论可验证， 八字 · 紫微 · 六爻 · 奇门 · 黄历择日 · 风水 · 起名。起名，问卦，风水。 Liki — Professional Skill for Chinese Metaphysics. Built ...
+
+</untrusted_external_content>
+
+---
