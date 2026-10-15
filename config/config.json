@@ -193,7 +193,10 @@
         "read_url(pamidordesign.co)",
         "read_url(unsplash.com)",
         "mcp(brave-search/brave_web_search)",
-        "read_url(ez.blissbiovn.com)"
+        "read_url(ez.blissbiovn.com)",
+        "read_url(youtube.com)",
+        "read_url(youtubetranscript.com)",
+        "read_url(data-api.binance.vision)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

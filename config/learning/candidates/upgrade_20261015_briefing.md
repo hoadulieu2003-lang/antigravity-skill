@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261015` | **Thời gian**: `2026-10-15 13:42:34 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261015` | **Thời gian**: `2026-10-15 16:42:12 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -8,12 +8,12 @@
 ## 📊 1. Bức Tranh Tổng Thể (Executive Summary & Metrics)
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
-| **Phiên học đã quét (Sessions Evaluated)** | `97` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
-| **Tài nguyên công nghệ (Items Processed)** | `210` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
+| **Phiên học đã quét (Sessions Evaluated)** | `96` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
+| **Tài nguyên công nghệ (Items Processed)** | `206` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `66` | Kho năng lực sẵn có tại `config/skills/` |
-| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `124` | Các khoảng trống công nghệ cần bổ sung độc lập |
+| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `122` | Các khoảng trống công nghệ cần bổ sung độc lập |
 | **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `44` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
-| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `41` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
+| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `39` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
 ---
 
@@ -116,31 +116,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng Tw
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.5. `xalgorix` — xalgorix/xalgorix 🔥 [HIGH PRIORITY]
-- **Nguồn gốc (Source)**: [GitHub (1145 ⭐)](https://github.com/xalgorix/xalgorix)
-- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
-- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
-- **Giá trị Đề xuất (Proposed Value)**: Autonomous AI pentesting agents — real-time reconnaissance, vulnerability detection, and exploitation orchestration. Go + TypeScript.
-
-```yaml
-# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
----
-name: xalgorix
-description: Tự động kích hoạt khi người dùng muốn tận dụng xalgorix/xalgorix cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
----
-
-# XALGORIX/XALGORIX SKILL ARCHITECTURE
-
-## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
-- Kế thừa giải pháp từ: `xalgorix/xalgorix` (https://github.com/xalgorix/xalgorix)
-- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
-
-## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
-- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
-- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
-```
-
-### 2.6. `dscode` — qiz029/dscode 🔥 [HIGH PRIORITY]
+### 2.5. `dscode` — qiz029/dscode 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1014 ⭐)](https://github.com/qiz029/dscode)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -164,7 +140,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng qi
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.7. `waku-agent` — ShenSeanChen/waku-agent 🔥 [HIGH PRIORITY]
+### 2.6. `waku-agent` — ShenSeanChen/waku-agent 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1899 ⭐)](https://github.com/ShenSeanChen/waku-agent)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -188,7 +164,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng Sh
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.8. `easy-agent` — ConardLi/easy-agent 🔥 [HIGH PRIORITY]
+### 2.7. `easy-agent` — ConardLi/easy-agent 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1007 ⭐)](https://github.com/ConardLi/easy-agent)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -212,7 +188,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng Co
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.9. `eac-desktop` — DSH-EAC/EAC-Desktop 🔥 [HIGH PRIORITY]
+### 2.8. `eac-desktop` — DSH-EAC/EAC-Desktop 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1834 ⭐)](https://github.com/DSH-EAC/EAC-Desktop)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -236,7 +212,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng DS
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.10. `openchatcut` — 0xsline/OpenChatCut 🔥 [HIGH PRIORITY]
+### 2.9. `openchatcut` — 0xsline/OpenChatCut 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2104 ⭐)](https://github.com/0xsline/OpenChatCut)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -260,7 +236,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng 0x
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.11. `atomic-agent` — AtomicBot-ai/atomic-agent 🔥 [HIGH PRIORITY]
+### 2.10. `atomic-agent` — AtomicBot-ai/atomic-agent 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2798 ⭐)](https://github.com/AtomicBot-ai/atomic-agent)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -284,7 +260,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng At
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.12. `vibe-research` — simonlin1212/Vibe-Research 🔥 [HIGH PRIORITY]
+### 2.11. `vibe-research` — simonlin1212/Vibe-Research 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2631 ⭐)](https://github.com/simonlin1212/Vibe-Research)
 - **Lĩnh vực (Domain)**: `Định lượng & Phân tích Thị trường (Quant & Financial AI)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Định lượng & Phân tích Thị trường (Quant & Financial AI).
@@ -302,6 +278,30 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng si
 ## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
 - Kế thừa giải pháp từ: `simonlin1212/Vibe-Research` (https://github.com/simonlin1212/Vibe-Research)
 - Lĩnh vực: Định lượng & Phân tích Thị trường (Quant & Financial AI)
+
+## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
+- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
+- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
+```
+
+### 2.12. `open-dots` — Anil-matcha/open-dots 🔥 [HIGH PRIORITY]
+- **Nguồn gốc (Source)**: [GitHub (5501 ⭐)](https://github.com/Anil-matcha/open-dots)
+- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
+- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
+- **Giá trị Đề xuất (Proposed Value)**: Open-source, self-hosted AI agent workspace and alternative to OpenAI Dots, Meta Muse, Grok Bot, Instinct, Manus Cue, Claude Cowork, and ChatGPT agent. MIT-l...
+
+```yaml
+# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
+---
+name: open-dots
+description: Tự động kích hoạt khi người dùng muốn tận dụng Anil-matcha/open-dots cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
+---
+
+# ANIL-MATCHA/OPEN-DOTS SKILL ARCHITECTURE
+
+## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
+- Kế thừa giải pháp từ: `Anil-matcha/open-dots` (https://github.com/Anil-matcha/open-dots)
+- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
 
 ## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
 - Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
@@ -326,68 +326,68 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 | **`ast-repo-map`** | [nocobase/nocobase](https://github.com/nocobase/nocobase) | `HIGH` | Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context. |
 | **`ui-ux-pro-max`** | [1186258278/OpenClawChineseTranslation](https://github.com/1186258278/OpenClawChineseTranslation) | `HIGH` | Bổ sung mẫu giao diện quản trị tác tử (Agentic Admin CRUD) và tương tác phản hồi trực quan. |
 | **`aider-execution-engine`** | [NanmiCoder/cc-haha](https://github.com/NanmiCoder/cc-haha) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
-| **`gemini-super-engine`** | [TeleAI-UAGI/Awesome-Agent-Memory](https://github.com/TeleAI-UAGI/Awesome-Agent-Memory) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
+| **`gemini-super-engine`** | [jaccen/Awesome-Gaussian-Skills](https://github.com/jaccen/Awesome-Gaussian-Skills) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
 
 
 ## 🏛️ 4. Đề Xuất Tối Ưu Kiến Trúc & Quy Chuẩn (`ARCHITECTURE_OPTIMIZATION`)
 Các phát hiện mang tầm chiến lược tác động đến Hiến chương Tự trị và Quy tắc Suy luận Cấp cao:
 
-#### 4.1. Introducing SynthID Bio — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/introducing-synthid-bio/)
-- **Bối cảnh lý thuyết**: Proof of concept for watermarking AI-generated proteins while preserving biological function.
-- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
-
-#### 4.2. Gemini 4 Argon: our next era of frontier intelligence — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.1. Gemini 4 Argon: our next era of frontier intelligence — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/)
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.3. Toward provably private learning from federated data — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.2. Toward provably private learning from federated data — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/toward-provably-private-learning-from-federated-data/)
 - **Bối cảnh lý thuyết**: Mobile Systems
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.4. Open and Emergent Problems in Agentic Privacy and Security: A Contextual Angle — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.3. Open and Emergent Problems in Agentic Privacy and Security: A Contextual Angle — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/open-and-emergent-problems-in-agentic-privacy-and-security-a-contextual-angle/)
 - **Bối cảnh lý thuyết**: Education Innovation
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.5. Unlocking Earth AI’s planetary geospatial foundation models for global public health — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.4. Unlocking Earth AI’s planetary geospatial foundation models for global public health — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/earth-ais-planetary-geospatial-foundation-models-for-global-public-health/)
 - **Bối cảnh lý thuyết**: Earth AI
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.6. EmbeddingGemma 2: an open, lightweight multimodal embedding model — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.5. EmbeddingGemma 2: an open, lightweight multimodal embedding model — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/)
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.7. Developing Gemini 4 Argon responsibly and safely — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.6. Developing Gemini 4 Argon responsibly and safely — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/)
 - **Bối cảnh lý thuyết**: - **[Google DeepMind]** [Gemini 4 Argon for Robotics](https://deepmind.google/blog/gemini-4-argon-for-robotics/) >
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.8. Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.7. Google DeepMind and Singapore Government announce new AI tool to protect citizens against scams — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/on-device-ai-scam-detection-mddi/)
 - **Bối cảnh lý thuyết**: Learn how Google DeepMind and GovTech Singapore uses lightweight on-device Gemma models to intercept conversational scams in private chats with zero cloud data egress.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.9. Putting Earth AI to work: Geospatial agents for our planet's biggest challenges — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.8. Putting Earth AI to work: Geospatial agents for our planet's biggest challenges — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/putting-earth-ai-to-work-geospatial-agents-for-our-planets-biggest-challenges/)
 - **Bối cảnh lý thuyết**: Earth AI
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.10. Research@ 2026: 10 ways we're amplifying human ingenuity — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.9. Research@ 2026: 10 ways we're amplifying human ingenuity — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/research-2026-10-ways-were-amplifying-human-ingenuity/)
 - **Bối cảnh lý thuyết**: General Science
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.11. Analyzing technical documents with Deep Review — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.10. Analyzing technical documents with Deep Review — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/analyzing-technical-documents-with-deep-review/)
 - **Bối cảnh lý thuyết**: General Science
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.12. Cloudflare Impact reaches $100 million in donations — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/100-million-donations/)
-- **Bối cảnh lý thuyết**: This week, Cloudflare's Impact programs will reach $100 million in donated services. This milestone means that thousands of entities including journalists, civil society, state and local government...
+#### 4.11. Accelerating the search for antimicrobial peptides with Google Antigravity — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/accelerating-antimicrobial-discovery/)
+- **Bối cảnh lý thuyết**: Accelerating the search for novel antimicrobial peptides using Google Antigravity for Science.
+- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
+
+#### 4.12. One year later: Sovereign AI and the fight for choice — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/sovereign-ai-choice-one-year-later/)
+- **Bối cảnh lý thuyết**: AI sovereignty is not a zero-sum game, but many governments now believe it is. Cloudflare's answer: more local open-source models, model-agnostic security tools, and a commitment to giving nations ...
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
 ---
