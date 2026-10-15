@@ -3380,3 +3380,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-15 20:42:01`
+
+<untrusted_external_content>
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [Cloudflare and OpenAI: making AI discovery better for everyone](https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web/)
+  > How Cloudflare and OpenAI are working together to help AI find useful content, keep up with changes, and make fewer wasted requests — making the experience better for users and website owners alike.
+
+</untrusted_external_content>
+
+---
