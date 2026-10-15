@@ -3334,3 +3334,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-15 11:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (70 ⭐)]** [nornzach/oh-my-pi-gui](https://github.com/nornzach/oh-my-pi-gui)
+  > Desktop GUI for the omp coding agent: parallel sessions, visual tool calls, model/provider management, and usage analytics.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Artificiality's First Exam: An LLM-Referenced C-test for Supraintelligence](https://arxiv.org/abs/2610.14005)
+  > arXiv:2610.14005v1 Announce Type: new Abstract: Under the accelerated pace of AI development, any benchmark whose difficulty is calibrated with humans or cur...
+- **[ArXiv CS.AI]** [The Silent Failures in Agentic Data Science](https://arxiv.org/abs/2610.14115)
+  > arXiv:2610.14115v1 Announce Type: new Abstract: Large language models have significantly lowered the barrier to writing code. Naturally, this has also led to...
+
+</untrusted_external_content>
+
+---
