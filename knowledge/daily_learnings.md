@@ -3350,3 +3350,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-15 14:42:02`
+
+<untrusted_external_content>
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [ClawLoop: Self-Improving Agents via Harness-Native Training Loop](https://arxiv.org/abs/2610.14118)
+  > arXiv:2610.14118v1 Announce Type: new Abstract: The rapid advancement of Large Language Models (LLMs) has driven their deployment toward general-purpose harn...
+- **[ArXiv CS.AI]** [Correction Training for Diffusion Models](https://arxiv.org/abs/2610.14136)
+  > arXiv:2610.14136v2 Announce Type: new Abstract: Iterative sampling in diffusion models can lead to error accumulation due to exposure bias. The denoiser is t...
+
+</untrusted_external_content>
+
+---

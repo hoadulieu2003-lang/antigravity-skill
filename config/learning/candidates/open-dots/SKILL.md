@@ -1,7 +1,7 @@
 ---
 name: open-dots
 description: >-
-  Kỹ năng chuyên gia vận hành cho Anil-matcha/open-dots (5501 ⭐).
+  Kỹ năng chuyên gia vận hành cho Anil-matcha/open-dots (5799 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở open-dots vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Open-source, self-hosted AI agent workspace and alternative to OpenAI Dots, Meta Muse, Grok Bot, Instinct, Manus Cue, Claude Cowork, and ChatGPT agent
@@ -12,9 +12,9 @@ description: >-
 # Anil-matcha/open-dots — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/Anil-matcha/open-dots`  
-> **Độ uy tín cộng đồng**: 5501 ⭐  
+> **Độ uy tín cộng đồng**: 5799 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-07 04:42:10Z
+> **Tự động đóng gói lúc**: 2026-10-15 07:42:10Z
 
 ---
 
