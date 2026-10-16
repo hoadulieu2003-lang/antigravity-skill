@@ -3506,3 +3506,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-16 23:42:01`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (153 ⭐)]** [rongxinzy/RongxinAI](https://github.com/rongxinzy/RongxinAI)
+  > Open-source desktop AI agent: built-in free model, local GGUF models via llama.cpp, dispatch tasks from WeChat/Feishu/DingTalk. Files, browser & MCP tools. |...
+- **[GitHub (116 ⭐)]** [leapmux/leapmux](https://github.com/leapmux/leapmux)
+  > AI Coding Agent Multiplexer
+
+</untrusted_external_content>
+
+---
