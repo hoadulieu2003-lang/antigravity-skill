@@ -1,3 +1,5 @@
+![Science Plugin: scientific tools for your agent](https://www.gstatic.com/antigravity/buildWithGoogle/science/banner.png)
+
 # Science Plugin
 
 A collection of extensions (e.g. skills) for scientific research tasks, spanning
