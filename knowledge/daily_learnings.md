@@ -3442,3 +3442,23 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-16 11:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (138 ⭐)]** [avabbbb/Flovart](https://github.com/avabbbb/Flovart)
+  > Open-source agent-native visual production workspace where humans and coding agents edit the same live canvas — local-first, BYOK image/video models.
+- **[GitHub (220 ⭐)]** [Pal-AI-Lab/Cortico](https://github.com/Pal-AI-Lab/Cortico)
+  > Event-stream AI Agent framework for building your persona bot 🍊
+- **[GitHub (5225 ⭐)]** [iflytek/skillhub](https://github.com/iflytek/skillhub)
+  > Self-hosted, open-source agent skill registry for enterprises. Publish & version skill packages, govern with RBAC and audit logs, deploy on-premise with Dock...
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [The World Won't Wait: Evaluating and Teaching Agents Under a Live Clock](https://arxiv.org/abs/2610.20665)
+  > arXiv:2610.20665v1 Announce Type: new Abstract: Large language model (LLM) agents can solve complex interactive tasks, yet reasoning and tool calls take time...
+- **[ArXiv CS.AI]** [Evaluating Model Capabilities After Benchmark Saturation](https://arxiv.org/abs/2610.20667)
+  > arXiv:2610.20667v1 Announce Type: new Abstract: Rapid advances in AI capabilities are causing benchmarks to saturate. Once several models approach perfect sc...
+
+</untrusted_external_content>
+
+---

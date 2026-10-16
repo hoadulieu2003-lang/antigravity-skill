@@ -1,7 +1,7 @@
 ---
 name: mercury-agent
 description: >-
-  Kỹ năng chuyên gia vận hành cho cosmicstack-labs/mercury-agent (3169 ⭐).
+  Kỹ năng chuyên gia vận hành cho cosmicstack-labs/mercury-agent (3409 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở mercury-agent vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Soul-driven AI agent with permission-hardened tools, token budgets, and multi-channel access
@@ -12,9 +12,9 @@ description: >-
 # cosmicstack-labs/mercury-agent — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/cosmicstack-labs/mercury-agent`  
-> **Độ uy tín cộng đồng**: 3169 ⭐  
+> **Độ uy tín cộng đồng**: 3409 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-01 07:46:21Z
+> **Tự động đóng gói lúc**: 2026-10-16 04:42:09Z
 
 ---
 
@@ -23,12 +23,12 @@ description: >-
 * **Mục tiêu cốt lõi**: Soul-driven AI agent with permission-hardened tools, token budgets, and multi-channel access. Runs 24/7 from CLI, Telegram or More.
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- **Soul-driven** — Personality defined by markdown files you own (`soul.md`, `persona.md`, `taste.md`, `heartbeat.md`). No corporate wrapper.
-- **Token-aware** — Daily budget enforcement. Auto-concise when over 70%. `/budget` command to check, reset, or override.
-- **Live streaming** — Real-time token streaming on CLI with cursor-save/restore and markdown re-rendering. Telegram streaming with editable status messages.
-- **Always on** — Run as a background daemon on any OS. Auto-restarts on crash. Starts on boot. Cron scheduling, heartbeat monitoring, and proactive notifications.
-- **Extensible** — Install community skills with a single command. Schedule skills as recurring tasks. Based on the [Agent Skills](https://agentskills.io) specification.
-- **Web dashboard** — `http://127.0.0.1:6174/skills` has a registry installer (paste `category/slug`) and a URL installer side by side.
+- **Mercury Code** turns it into a careful pair programmer inside your repository, one that only says "done" after the tests pass.
+- **AUTO mode:** plans and builds in one pass, and asks once before large or risky changes.
+- **Verified completion:** a task ends as done only when a build, test or typecheck ran and passed. Otherwise it stops and names the blocker.
+- **Live plan:** every step is shown as pending, active or done.
+- **Background work:** `/code agent <task>` hands a task to a sub-agent while you keep working.
+- **Workspace view:** `/ws` to browse, stage, commit and undo; `/code diff` for a colored diff.
 
 ---
 
@@ -40,7 +40,7 @@ Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chu�
 # macOS / Linux
 curl -fsSL https://mercuryagent.sh/install.sh | sh
 
-# Windows
+# Windows (PowerShell)
 irm https://mercuryagent.sh/install.ps1 | iex
 ```
 
