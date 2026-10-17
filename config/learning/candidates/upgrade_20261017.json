@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-17T15:39:16.983423+00:00",
+    "scan_date": "2026-10-17T16:42:11.025202+00:00",
     "cycle_id": "EVO-20261017",
     "sessions_evaluated": 94,
-    "total_items_processed": 196,
+    "total_items_processed": 195,
     "active_skills_count": 66,
-    "candidates_count": 117,
+    "candidates_count": 118,
     "enhancements_count": 45,
-    "optimizations_count": 33
+    "optimizations_count": 31
   },
   "new_skill_candidates": [
     {
@@ -279,16 +279,6 @@
   ],
   "architecture_optimizations": [
     {
-      "title": "Toward provably private learning from federated data",
-      "source": "Google Research",
-      "url": "https://research.google/blog/toward-provably-private-learning-from-federated-data/",
-      "priority": "STRATEGIC",
-      "priority_score": 95,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Mobile Systems",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
       "title": "Open and Emergent Problems in Agentic Privacy and Security: A Contextual Angle",
       "source": "Google Research",
       "url": "https://research.google/blog/open-and-emergent-problems-in-agentic-privacy-and-security-a-contextual-angle/",
@@ -389,13 +379,23 @@
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     },
     {
-      "title": "Streamline: custom video pipelines with Cloudflare Stream and Workers",
+      "title": "Everything we launched during Birthday Week 2026",
       "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/streamline/",
+      "url": "https://blog.cloudflare.com/birthday-week-2026-wrap-up/",
       "priority": "STRATEGIC",
       "priority_score": 85,
       "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Streamline demonstrates how to build long-running, continuous video processing pipelines by pairing Cloudflare Workers and Durable Objects with a containerized media engine.",
+      "rationale": "We celebrated our 16th birthday with 46 announcements across open source, post-quantum security, AI agents, and developer platform upgrades. Here’s a day-by-day roundup of everything we shipped.",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "One year later: the power of 1.1.1.1 interns",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/one-year-later-1111-interns/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "A year after announcing our goal to hire 1,111 interns, more than 750 early-career builders have shipped real products across 48 teams at Cloudflare. From Birthday Week launches to post-quantum sec...",
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     }
   ]

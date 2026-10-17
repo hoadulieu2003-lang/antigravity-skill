@@ -3570,3 +3570,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-17 23:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (57 ⭐)]** [Bredrumb/TomoriBot](https://github.com/Bredrumb/TomoriBot)
+  > A highly customizable personal AI assistant for Discord featuring smart agentic AI features such as memory, personas, tool usage, and more! ｜ 長期記憶やペルソナ、ツール連携...
+- **[GitHub (105 ⭐)]** [TristanBrotherton/openclaw-voice-call-realtime](https://github.com/TristanBrotherton/openclaw-voice-call-realtime)
+  > Give your AI assistant a phone — OpenClaw plugin for real phone calls via Twilio + OpenAI Realtime, with in-call tools, transcripts, and call screening
+
+</untrusted_external_content>
+
+---
