@@ -1,7 +1,7 @@
 ---
 name: ouroboros
 description: >-
-  Kỹ năng chuyên gia vận hành cho Q00/ouroboros (6215 ⭐).
+  Kỹ năng chuyên gia vận hành cho Q00/ouroboros (6237 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở ouroboros vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Agent OS: the agent gets smarter on its own
@@ -12,9 +12,9 @@ description: >-
 # Q00/ouroboros — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/Q00/ouroboros`  
-> **Độ uy tín cộng đồng**: 6215 ⭐  
+> **Độ uy tín cộng đồng**: 6237 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-14 01:49:51Z
+> **Tự động đóng gói lúc**: 2026-10-17 19:42:11Z
 
 ---
 
