@@ -14,7 +14,7 @@ description: >-
 > **Nguồn gốc**: GitHub Repository `https://github.com/qingchencloud/clawpanel`  
 > **Độ uy tín cộng đồng**: 2934 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-17 04:42:09Z
+> **Tự động đóng gói lúc**: 2026-10-17 22:42:09Z
 
 ---
 
