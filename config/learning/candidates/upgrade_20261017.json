@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-17T10:42:09.110702+00:00",
+    "scan_date": "2026-10-17T15:39:16.983423+00:00",
     "cycle_id": "EVO-20261017",
-    "sessions_evaluated": 95,
-    "total_items_processed": 200,
+    "sessions_evaluated": 94,
+    "total_items_processed": 196,
     "active_skills_count": 66,
-    "candidates_count": 119,
-    "enhancements_count": 44,
-    "optimizations_count": 36
+    "candidates_count": 117,
+    "enhancements_count": 45,
+    "optimizations_count": 33
   },
   "new_skill_candidates": [
     {
@@ -268,12 +268,12 @@
     },
     {
       "target_skill": "aider-execution-engine",
-      "source_technology": "zenstory-ai/video-recap-skills",
-      "source_url": "https://github.com/zenstory-ai/video-recap-skills",
-      "source_type": "GitHub (545 ⭐)",
+      "source_technology": "xbtlin/ai-berkshire",
+      "source_url": "https://github.com/xbtlin/ai-berkshire",
+      "source_type": "GitHub (16773 ⭐)",
       "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "Claude Code / Codex skills that turn a video into a Chinese narration recap (视频解说): scene detection, ASR, VLM, script, TTS, ffmpeg assembly, optional editabl...",
+      "priority_score": 85,
+      "enhancement_rationale": "AI 时代的伯克希尔：基于 Claude Code / Codex 的价值投资研究框架。巴菲特·芒格·段永平·李录四大师方法论 + 多Agent并行研究。| AI-era Berkshire: a value investing research framework built for Claude Code /...",
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     }
   ],
@@ -389,13 +389,13 @@
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     },
     {
-      "title": "Introducing Web Search API via AI Gateway",
+      "title": "Streamline: custom video pipelines with Cloudflare Stream and Workers",
       "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/introducing-web-search-api/",
+      "url": "https://blog.cloudflare.com/streamline/",
       "priority": "STRATEGIC",
       "priority_score": 85,
       "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Cloudflare AI Gateway now supports native web search API integration in partnership with Ceramic.ai, Exa, and Linkup. Developers can now inject real-time web context into model inference calls via ...",
+      "rationale": "Streamline demonstrates how to build long-running, continuous video processing pipelines by pairing Cloudflare Workers and Durable Objects with a containerized media engine.",
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     }
   ]
