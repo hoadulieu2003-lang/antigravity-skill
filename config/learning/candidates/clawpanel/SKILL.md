@@ -1,7 +1,7 @@
 ---
 name: clawpanel
 description: >-
-  Kỹ năng chuyên gia vận hành cho qingchencloud/clawpanel (2933 ⭐).
+  Kỹ năng chuyên gia vận hành cho qingchencloud/clawpanel (2934 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở clawpanel vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến 🦞 OpenClaw & Hermes Agent 多引擎 AI 管理面板 — 内置 AI 助手（工具调用 + 图片识别 + 多模态），一键安装 | Tauri v2 跨平台桌面应用 | 11 种语言
@@ -12,9 +12,9 @@ description: >-
 # qingchencloud/clawpanel — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/qingchencloud/clawpanel`  
-> **Độ uy tín cộng đồng**: 2933 ⭐  
+> **Độ uy tín cộng đồng**: 2934 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-16 13:42:09Z
+> **Tự động đóng gói lúc**: 2026-10-17 04:42:09Z
 
 ---
 
