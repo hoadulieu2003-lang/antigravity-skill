@@ -1,7 +1,7 @@
 ---
 name: feynman
 description: >-
-  Kỹ năng chuyên gia vận hành cho Companion-Inc/feynman (9853 ⭐).
+  Kỹ năng chuyên gia vận hành cho Companion-Inc/feynman (9985 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở feynman vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến The open source AI research agent
@@ -12,9 +12,9 @@ description: >-
 # Companion-Inc/feynman — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/Companion-Inc/feynman`  
-> **Độ uy tín cộng đồng**: 9853 ⭐  
+> **Độ uy tín cộng đồng**: 9985 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-01 07:46:20Z
+> **Tự động đóng gói lúc**: 2026-10-18 13:42:08Z
 
 ---
 
