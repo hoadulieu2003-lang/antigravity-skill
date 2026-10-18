@@ -203,7 +203,15 @@
         "mcp(windows-desktop/desktop_inspect_ui_tree)",
         "mcp(windows-desktop/desktop_type_text)",
         "mcp(windows-desktop/desktop_click)",
-        "mcp(windows-desktop/desktop_focus_window)"
+        "mcp(windows-desktop/desktop_focus_window)",
+        "read_url(concretumgroup.com)",
+        "read_url(mql5.com)",
+        "read_url(quantpedia.com)",
+        "read_url(freqtrade.io)",
+        "read_url(quantifiedstrategies.com)",
+        "read_url(vertexaisearch.cloud.google.com)",
+        "read_url(quantitativo.substack.com)",
+        "read_url(robotwealth.com)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",

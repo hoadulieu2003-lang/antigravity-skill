@@ -1,7 +1,7 @@
 ---
 name: ai-berkshire
 description: >-
-  Kỹ năng chuyên gia vận hành cho xbtlin/ai-berkshire (16773 ⭐).
+  Kỹ năng chuyên gia vận hành cho xbtlin/ai-berkshire (16781 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở ai-berkshire vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến AI 时代的伯克希尔：基于 Claude Code / Codex 的价值投资研究框架。巴菲特·芒格·段永平·李录四大师方法论 + 多Agent并行研究。| AI-era Berkshire: a value investing research framework built for Claude Code /
@@ -12,9 +12,9 @@ description: >-
 # xbtlin/ai-berkshire — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/xbtlin/ai-berkshire`  
-> **Độ uy tín cộng đồng**: 16773 ⭐  
+> **Độ uy tín cộng đồng**: 16781 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-17 15:39:15Z
+> **Tự động đóng gói lúc**: 2026-10-18 16:42:08Z
 
 ---
 

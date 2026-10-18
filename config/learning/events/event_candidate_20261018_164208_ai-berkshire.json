@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-18T16:42:08.162964+00:00",
+  "skill_name": "ai-berkshire",
+  "source_repo": "xbtlin/ai-berkshire",
+  "stars": 16781,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\ai-berkshire\\SKILL.md",
+  "human_promotion_required": true
+}
