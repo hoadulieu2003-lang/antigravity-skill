@@ -438,6 +438,17 @@ def main():
     args = parser.parse_args()
 
     if args.launch or args.ensure:
+        if args.port in (19225, 19226):
+            action = "submit_prompt" if args.port == 19225 else "inspect"
+            ps_script = r"C:\Users\game\.gemini\config\sidecars\windows-desktop\codex_desktop_driver.ps1"
+            subprocess.run(
+                ["powershell.exe", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", ps_script, "-Action", action],
+                capture_output=True,
+                text=True,
+                timeout=14
+            )
+            print(f"[CODEX_DRIVER] Completed {action}")
+            return
         res = launch_chrome_debug(port=args.port)
         if args.json:
             print(json.dumps(res, indent=2, ensure_ascii=False))
