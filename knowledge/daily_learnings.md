@@ -3648,3 +3648,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-19 02:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (84 ⭐)]** [octelium/cordium](https://github.com/octelium/cordium)
+  > Open-source, general-purpose sandbox platform for devs and AI agents that provides identity-based secure access to infrastructure without credentials.
+- **[GitHub (3050 ⭐)]** [abhinavxd/libredesk](https://github.com/abhinavxd/libredesk)
+  > Open-source, self-hosted customer support desk in a single binary. A lightweight alternative to Intercom, Zendesk, Chatwoot.
+
+</untrusted_external_content>
+
+---
