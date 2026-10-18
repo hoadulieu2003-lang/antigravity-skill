@@ -3660,3 +3660,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-19 05:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (369 ⭐)]** [opensec-git/Pi-Bolt](https://github.com/opensec-git/Pi-Bolt)
+  > Pi, the coding agent, compiled ahead of time to native code. Starts 3× sooner than Pi on Bun and uses about a third of its CPU.
+- **[GitHub (612 ⭐)]** [Kentucky-ai/opentakeoff](https://github.com/Kentucky-ai/opentakeoff)
+  > Open-source (AGPL-3.0) PDF takeoff for construction & flooring — the first engine an AI agent drives natively over MCP, not bolted on. Rooms measured on the ...
+- **[GitHub (88 ⭐)]** [MikkoParkkola/trvl](https://github.com/MikkoParkkola/trvl)
+  > Travel MCP server + CLI for AI assistants — flights, hotels, trains, cars, ferries, price alerts. No API keys, single Go binary. 1 smart MCP tool + 66 aliase...
+
+</untrusted_external_content>
+
+---
