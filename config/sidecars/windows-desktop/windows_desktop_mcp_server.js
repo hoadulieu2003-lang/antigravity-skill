@@ -72,6 +72,7 @@ public class WindowInfo {
     public string exePath;
     public bool isMinimized;
     public bool isForeground;
+    public bool isOverlay;
     public int x;
     public int y;
     public int width;
@@ -85,7 +86,26 @@ public static class DesktopWin32 {
     public static extern bool EnumWindows(EnumWindowsProc enumProc, IntPtr lParam);
 
     [DllImport("user32.dll")]
+    public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+    [DllImport("user32.dll")]
     public static extern bool EnumDesktopWindows(IntPtr hDesktop, EnumWindowsProc lpfn, IntPtr lParam);
+
+    [DllImport("user32.dll")]
+    public static extern bool EnumChildWindows(IntPtr hWndParent, EnumWindowsProc lpEnumFunc, IntPtr lParam);
+
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern IntPtr SendMessageTimeout(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam, uint fuFlags, uint uTimeout, out IntPtr lpdwResult);
+
+    public static void WakeChromiumAccessibility(IntPtr hWnd) {
+        IntPtr res = IntPtr.Zero;
+        SendMessageTimeout(hWnd, 0x003D, IntPtr.Zero, new IntPtr(-4), 0x0002, 250, out res);
+        EnumChildWindows(hWnd, delegate(IntPtr child, IntPtr l) {
+            IntPtr r2 = IntPtr.Zero;
+            SendMessageTimeout(child, 0x003D, IntPtr.Zero, new IntPtr(-4), 0x0002, 250, out r2);
+            return true;
+        }, IntPtr.Zero);
+    }
 
     [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
     public static extern IntPtr OpenDesktopW(string lpszDesktop, uint dwFlags, bool fInherit, uint dwDesiredAccess);
@@ -156,12 +176,40 @@ public static class DesktopWin32 {
     [DllImport("user32.dll")]
     public static extern void mouse_event(uint dwFlags, int dx, int dy, uint dwData, int dwExtraInfo);
 
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern bool PrintWindow(IntPtr hWnd, IntPtr hdcBlt, uint nFlags);
+
     public const int SW_RESTORE = 9;
     public const int SW_SHOW = 5;
     public const uint MOUSEEVENTF_LEFTDOWN = 0x0002;
     public const uint MOUSEEVENTF_LEFTUP = 0x0004;
     public const uint MOUSEEVENTF_RIGHTDOWN = 0x0008;
     public const uint MOUSEEVENTF_RIGHTUP = 0x0010;
+    public const uint PW_RENDERFULLCONTENT = 0x00000002;
+
+    public static bool CaptureWindowPng(IntPtr hWnd, string savePath) {
+        EnsureDefaultDesktop();
+        RECT r;
+        if (!GetWindowRect(hWnd, out r)) return false;
+        int w = Math.Max(1, r.Right - r.Left);
+        int h = Math.Max(1, r.Bottom - r.Top);
+        using (System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(w, h, System.Drawing.Imaging.PixelFormat.Format32bppArgb)) {
+            using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bmp)) {
+                IntPtr hdc = g.GetHdc();
+                bool ok = PrintWindow(hWnd, hdc, PW_RENDERFULLCONTENT);
+                if (!ok) {
+                    PrintWindow(hWnd, hdc, 0);
+                }
+                g.ReleaseHdc(hdc);
+            }
+            string dir = System.IO.Path.GetDirectoryName(savePath);
+            if (!string.IsNullOrEmpty(dir) && !System.IO.Directory.Exists(dir)) {
+                System.IO.Directory.CreateDirectory(dir);
+            }
+            bmp.Save(savePath, System.Drawing.Imaging.ImageFormat.Png);
+        }
+        return true;
+    }
 
     [StructLayout(LayoutKind.Sequential)]
     public struct RECT {
@@ -208,6 +256,7 @@ public static class DesktopWin32 {
 
             RECT r;
             GetWindowRect(h, out r);
+            int exStyle = GetWindowLong(h, -20);
             WindowInfo info = new WindowInfo();
             info.hwnd = h.ToInt64();
             info.pid = (int)wpid;
@@ -217,6 +266,7 @@ public static class DesktopWin32 {
             info.exePath = exePath;
             info.isMinimized = IsIconic(h);
             info.isForeground = (h == fg);
+            info.isOverlay = ((exStyle & 0x000000A0) != 0);
             info.x = r.Left;
             info.y = r.Top;
             info.width = r.Right - r.Left;
@@ -270,7 +320,7 @@ public static class DesktopWin32 {
     }
 }
 "@
-Add-Type -TypeDefinition $win32Code -Language CSharp
+Add-Type -TypeDefinition $win32Code -Language CSharp -ReferencedAssemblies "System.Drawing"
 `;
 
 const RESOLVE_WINDOW_PS_FUNC = `
@@ -290,7 +340,7 @@ function Resolve-TargetWindow {
         $matchedList = @($candidates | Where-Object { $_.hwnd -eq $Hwnd })
     }
     elseif ($ProcessId -gt 0) {
-        $matchedList = @($candidates | Where-Object { $_.pid -eq $ProcessId })
+        $matchedList = @($candidates | Where-Object { $_.pid -eq $ProcessId } | Sort-Object isOverlay, isMinimized)
     }
     elseif (-not [string]::IsNullOrWhiteSpace($Query)) {
         $q = $Query.ToLowerInvariant()
@@ -299,7 +349,7 @@ function Resolve-TargetWindow {
             ($_.processName -and $_.processName.ToLowerInvariant().Contains($q)) -or
             ($_.exePath -and $_.exePath.ToLowerInvariant().Contains($q)) -or
             ($_.className -and $_.className.ToLowerInvariant().Contains($q))
-        })
+        } | Sort-Object isOverlay, isMinimized)
     }
 
     if ($matchedList.Count -gt 0) {
@@ -341,28 +391,30 @@ async function handleInspectUiTree(args = {}) {
   const hwnd = Number(args.hwnd || 0);
   const pid = Number(args.pid || 0);
   const query = String(args.query || args.windowTitle || args.processName || '').trim();
-  const maxDepth = Math.min(Math.max(Number(args.maxDepth || 6), 1), 12);
-  const maxNodes = Math.min(Math.max(Number(args.maxNodes || 250), 20), 800);
+  const windowIndex = Number(args.windowIndex || 0);
+  const maxNodes = Math.min(Math.max(Number(args.maxNodes || 150), 10), 600);
   const queryB64 = Buffer.from(query, 'utf8').toString('base64');
 
   const ps = `
 ${WIN32_CSHARP_HEADER}
 ${RESOLVE_WINDOW_PS_FUNC}
 $qStr = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("${queryB64}"))
-$res = Resolve-TargetWindow -Hwnd ${hwnd} -ProcessId ${pid} -Query $qStr
+$res = Resolve-TargetWindow -Hwnd ${hwnd} -ProcessId ${pid} -Query $qStr -WindowIndex ${windowIndex}
 $win = $res.matched
 if (-not $win) {
     @{ ok = $false; error = "Target window not found"; availableWindows = @($res.all | Select-Object hwnd, pid, processName, title) } | ConvertTo-Json -Depth 6 -Compress
     exit 0
 }
 
+[DesktopWin32]::WakeChromiumAccessibility([IntPtr]$win.hwnd)
+Start-Sleep -Milliseconds 150
 $rootEl = [System.Windows.Automation.AutomationElement]::FromHandle([IntPtr]$win.hwnd)
-$nodes = New-Object System.Collections.Generic.List[object]
-$walker = [System.Windows.Automation.TreeWalker]::ControlViewWalker
+$nodes = New-Object System.Collections.ArrayList
 
-function Walk-UiaNode {
-    param($el, [int]$depth)
-    if ($null -eq $el -or $depth -gt ${maxDepth} -or $nodes.Count -ge ${maxNodes}) { return }
+$allElements = $rootEl.FindAll([System.Windows.Automation.TreeScope]::Descendants, [System.Windows.Automation.Condition]::TrueCondition)
+
+foreach ($el in $allElements) {
+    if ($nodes.Count -ge ${maxNodes}) { break }
     try {
         $cur = $el.Current
         $ctrlType = ""
@@ -379,36 +431,24 @@ function Walk-UiaNode {
                 $val = $vp.Current.Value
             }
         } catch {}
-        if ([string]::IsNullOrWhiteSpace($val)) {
-            try {
-                $tp = $null
-                if ($el.TryGetCurrentPattern([System.Windows.Automation.TextPattern]::Pattern, [ref]$tp)) {
-                    $val = $tp.DocumentRange.GetText(2000)
-                }
-            } catch {}
-        }
 
         $r = $cur.BoundingRectangle
         $hasRect = (-not [double]::IsInfinity($r.Width)) -and (-not [double]::IsInfinity($r.Height)) -and ($r.Width -gt 0) -and ($r.Height -gt 0)
-        $hasContent = (-not [string]::IsNullOrWhiteSpace($name)) -or (-not [string]::IsNullOrWhiteSpace($val)) -or (-not [string]::IsNullOrWhiteSpace($autoId)) -or ($ctrlType -in @("Button", "Edit", "Document", "ComboBox", "CheckBox", "MenuItem", "TabItem"))
+        $hasContent = (-not [string]::IsNullOrWhiteSpace($name)) -or (-not [string]::IsNullOrWhiteSpace($val)) -or ($ctrlType -in @("Button", "Edit", "Document", "ComboBox", "CheckBox", "MenuItem", "TabItem", "Hyperlink"))
 
-        if ($hasContent -and $depth -ge 1) {
-            $rectObj = $null
-            if ($hasRect) {
-                $rectObj = @{
-                    x = [int][Math]::Round($r.X)
-                    y = [int][Math]::Round($r.Y)
-                    width = [int][Math]::Round($r.Width)
-                    height = [int][Math]::Round($r.Height)
-                    centerX = [int][Math]::Round($r.X + $r.Width / 2.0)
-                    centerY = [int][Math]::Round($r.Y + $r.Height / 2.0)
-                }
+        if ($hasContent -and $hasRect) {
+            $rectObj = @{
+                x = [int][Math]::Round($r.X)
+                y = [int][Math]::Round($r.Y)
+                width = [int][Math]::Round($r.Width)
+                height = [int][Math]::Round($r.Height)
+                centerX = [int][Math]::Round($r.X + $r.Width / 2.0)
+                centerY = [int][Math]::Round($r.Y + $r.Height / 2.0)
             }
-            $nodes.Add([PSCustomObject]@{
-                depth = $depth
+            [void]$nodes.Add(@{
                 controlType = $ctrlType
-                name = if ($name -and $name.Length -gt 600) { $name.Substring(0, 600) } else { $name }
-                value = if ($val -and $val.Length -gt 1500) { $val.Substring(0, 1500) } else { $val }
+                name = if ($name -and $name.Length -gt 500) { $name.Substring(0, 500) } else { $name }
+                value = if ($val -and $val.Length -gt 1000) { $val.Substring(0, 1000) } else { $val }
                 automationId = $autoId
                 className = $cls
                 isEnabled = $cur.IsEnabled
@@ -416,24 +456,14 @@ function Walk-UiaNode {
             })
         }
     } catch {}
-
-    if ($depth -lt ${maxDepth} -and $nodes.Count -lt ${maxNodes}) {
-        $child = $null
-        try { $child = $walker.GetFirstChild($el) } catch {}
-        while ($null -ne $child -and $nodes.Count -lt ${maxNodes}) {
-            Walk-UiaNode -el $child -depth ($depth + 1)
-            try { $child = $walker.GetNextSibling($child) } catch { $child = $null }
-        }
-    }
 }
-
-Walk-UiaNode -el $rootEl -depth 0
 
 @{
     ok = $true
     window = $win
+    totalMatchedWindows = $res.matchedList.Count
     nodeCount = $nodes.Count
-    nodes = @($nodes)
+    nodes = $nodes.ToArray()
 } | ConvertTo-Json -Depth 7 -Compress
 `;
   return runPowerShellJson(ps, 30000);
@@ -628,6 +658,7 @@ async function handleCaptureWindow(args = {}) {
   const hwnd = Number(args.hwnd || 0);
   const pid = Number(args.pid || 0);
   const query = String(args.query || args.windowTitle || args.processName || '').trim();
+  const windowIndex = Number(args.windowIndex || 0);
   const outPath = args.outputPath
     ? String(args.outputPath)
     : path.join(os.tmpdir(), `desktop_capture_${Date.now()}.png`);
@@ -641,45 +672,22 @@ ${RESOLVE_WINDOW_PS_FUNC}
 $qStr = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("${queryB64}"))
 $savePath = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("${outB64}"))
 
-$win = $null
-$x = 0; $y = 0; $w = 0; $h = 0
-
-if (${hwnd} -gt 0 -or ${pid} -gt 0 -or (-not [string]::IsNullOrWhiteSpace($qStr))) {
-    $res = Resolve-TargetWindow -Hwnd ${hwnd} -ProcessId ${pid} -Query $qStr
-    $win = $res.matched
-    if (-not $win) {
-        @{ ok = $false; error = "Target window not found" } | ConvertTo-Json -Compress
-        exit 0
-    }
-    [DesktopWin32]::ForceForeground([IntPtr]$win.hwnd)
-    Start-Sleep -Milliseconds 200
-    $rect = New-Object DesktopWin32+RECT
-    [void][DesktopWin32]::GetWindowRect([IntPtr]$win.hwnd, [ref]$rect)
-    $x = $rect.Left
-    $y = $rect.Top
-    $w = [Math]::Max(1, $rect.Right - $rect.Left)
-    $h = [Math]::Max(1, $rect.Bottom - $rect.Top)
-} else {
-    $screen = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
-    $x = $screen.X; $y = $screen.Y; $w = $screen.Width; $h = $screen.Height
+$res = Resolve-TargetWindow -Hwnd ${hwnd} -ProcessId ${pid} -Query $qStr -WindowIndex ${windowIndex}
+$win = $res.matched
+if (-not $win) {
+    $win = $res.all | Select-Object -First 1
+}
+if (-not $win) {
+    @{ ok = $false; error = "Target window not found" } | ConvertTo-Json -Compress
+    exit 0
 }
 
-$bmp = New-Object System.Drawing.Bitmap($w, $h)
-$g = [System.Drawing.Graphics]::FromImage($bmp)
-$g.CopyFromScreen($x, $y, 0, 0, (New-Object System.Drawing.Size($w, $h)))
-$g.Dispose()
-
-$dir = [System.IO.Path]::GetDirectoryName($savePath)
-if ($dir -and (-not (Test-Path $dir))) {
-    New-Item -ItemType Directory -Path $dir -Force | Out-Null
-}
-$bmp.Save($savePath, [System.Drawing.Imaging.ImageFormat]::Png)
-$bmp.Dispose()
+$ok = [DesktopWin32]::CaptureWindowPng([IntPtr]$win.hwnd, $savePath)
 
 @{
-    ok = $true
+    ok = $ok
     outputPath = $savePath
-    bounds = @{ x = $x; y = $y; width = $w; height = $h }
+    bounds = @{ x = $win.x; y = $win.y; width = $win.width; height = $win.height }
     window = $win
 } | ConvertTo-Json -Depth 5 -Compress
 `;

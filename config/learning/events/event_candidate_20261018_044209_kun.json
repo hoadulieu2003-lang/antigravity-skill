@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-18T04:42:09.254250+00:00",
+  "skill_name": "kun",
+  "source_repo": "KunAgent/Kun",
+  "stars": 6315,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\kun\\SKILL.md",
+  "human_promotion_required": true
+}

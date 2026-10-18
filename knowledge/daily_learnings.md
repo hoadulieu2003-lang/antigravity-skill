@@ -3602,3 +3602,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-18 11:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (6315 ⭐)]** [KunAgent/Kun](https://github.com/KunAgent/Kun)
+  > Local-first AI agent workspace for coding, writing, design, research, and automation — one runtime for desktop GUI and TUI.
+- **[GitHub (60 ⭐)]** [goosehouse-llc/redde](https://github.com/goosehouse-llc/redde)
+  > iPhone, iPad and CarPlay client for the Hermes AI agent or any OpenAI-compatible model. Talk or type, watch it work, approve what it runs. No account, no tra...
+
+</untrusted_external_content>
+
+---
