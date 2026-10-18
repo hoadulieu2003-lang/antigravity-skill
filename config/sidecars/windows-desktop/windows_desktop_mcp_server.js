@@ -51,14 +51,10 @@ ${psScript}
 }
 
 const WIN32_CSHARP_HEADER = `
-Add-Type -AssemblyName UIAutomationClient
-Add-Type -AssemblyName UIAutomationTypes
-Add-Type -AssemblyName System.Windows.Forms
-Add-Type -AssemblyName System.Drawing
-
 $win32Code = @"
 using System;
 using System.Text;
+using System.Threading;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -81,6 +77,9 @@ public class WindowInfo {
 
 public static class DesktopWin32 {
     public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+
+    [DllImport("user32.dll")]
+    public static extern bool SetProcessDPIAware();
 
     [DllImport("user32.dll")]
     public static extern bool EnumWindows(EnumWindowsProc enumProc, IntPtr lParam);
@@ -120,6 +119,7 @@ public static class DesktopWin32 {
     public static extern bool SetProcessWindowStation(IntPtr hWinSta);
 
     public static IntPtr EnsureDefaultDesktop() {
+        try { SetProcessDPIAware(); } catch {}
         IntPtr hWinSta = OpenWindowStationW("WinSta0", false, 0x037F);
         if (hWinSta != IntPtr.Zero) {
             SetProcessWindowStation(hWinSta);
@@ -129,6 +129,22 @@ public static class DesktopWin32 {
             SetThreadDesktop(hDesk);
         }
         return hDesk;
+    }
+
+    public static void RunOnDefaultDesktop(Action action) {
+        Exception threadEx = null;
+        Thread worker = new Thread(() => {
+            try {
+                EnsureDefaultDesktop();
+                action();
+            } catch (Exception ex) {
+                threadEx = ex;
+            }
+        });
+        worker.SetApartmentState(ApartmentState.STA);
+        worker.Start();
+        worker.Join(10000);
+        if (threadEx != null) throw threadEx;
     }
 
     [DllImport("user32.dll")]
@@ -156,7 +172,7 @@ public static class DesktopWin32 {
     public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
     [DllImport("user32.dll")]
-    public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+    public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
 
     [DllImport("user32.dll")]
     public static extern bool SetForegroundWindow(IntPtr hWnd);
@@ -165,10 +181,7 @@ public static class DesktopWin32 {
     public static extern bool BringWindowToTop(IntPtr hWnd);
 
     [DllImport("user32.dll")]
-    public static extern bool AttachThreadInput(uint idAttach, uint idAttachTo, bool fAttach);
-
-    [DllImport("kernel32.dll")]
-    public static extern uint GetCurrentThreadId();
+    public static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, UIntPtr dwExtraInfo);
 
     [DllImport("user32.dll")]
     public static extern bool SetCursorPos(int X, int Y);
@@ -283,44 +296,54 @@ public static class DesktopWin32 {
     }
 
     public static void ForceForeground(IntPtr hWnd) {
-        if (IsIconic(hWnd)) {
-            ShowWindow(hWnd, SW_RESTORE);
-        } else {
-            ShowWindow(hWnd, SW_SHOW);
-        }
-        IntPtr foreWnd = GetForegroundWindow();
-        uint dummyPid = 0;
-        uint foreThread = GetWindowThreadProcessId(foreWnd, out dummyPid);
-        uint appThread = GetCurrentThreadId();
-        if (foreThread != appThread) {
-            AttachThreadInput(foreThread, appThread, true);
+        RunOnDefaultDesktop(() => {
+            if (IsIconic(hWnd)) {
+                ShowWindowAsync(hWnd, SW_RESTORE);
+            } else {
+                ShowWindowAsync(hWnd, SW_SHOW);
+            }
+            keybd_event(0x12, 0, 0, UIntPtr.Zero);
+            keybd_event(0x12, 0, 0x0002, UIntPtr.Zero);
             BringWindowToTop(hWnd);
             SetForegroundWindow(hWnd);
-            AttachThreadInput(foreThread, appThread, false);
-        } else {
-            BringWindowToTop(hWnd);
-            SetForegroundWindow(hWnd);
-        }
+        });
     }
 
     public static void ClickAt(int x, int y, string button, bool doubleClick) {
-        SetCursorPos(x, y);
-        System.Threading.Thread.Sleep(40);
-        uint down = button == "right" ? MOUSEEVENTF_RIGHTDOWN : MOUSEEVENTF_LEFTDOWN;
-        uint up = button == "right" ? MOUSEEVENTF_RIGHTUP : MOUSEEVENTF_LEFTUP;
-        mouse_event(down, x, y, 0, 0);
-        System.Threading.Thread.Sleep(25);
-        mouse_event(up, x, y, 0, 0);
-        if (doubleClick) {
-            System.Threading.Thread.Sleep(60);
+        RunOnDefaultDesktop(() => {
+            SetCursorPos(x, y);
+            Thread.Sleep(40);
+            uint down = button == "right" ? MOUSEEVENTF_RIGHTDOWN : MOUSEEVENTF_LEFTDOWN;
+            uint up = button == "right" ? MOUSEEVENTF_RIGHTUP : MOUSEEVENTF_LEFTUP;
             mouse_event(down, x, y, 0, 0);
-            System.Threading.Thread.Sleep(25);
+            Thread.Sleep(25);
             mouse_event(up, x, y, 0, 0);
-        }
+            if (doubleClick) {
+                Thread.Sleep(60);
+                mouse_event(down, x, y, 0, 0);
+                Thread.Sleep(25);
+                mouse_event(up, x, y, 0, 0);
+            }
+        });
+    }
+
+    public static void SendKeysOnDefaultDesktop(string keys, bool pressEnter) {
+        RunOnDefaultDesktop(() => {
+            System.Windows.Forms.SendKeys.SendWait(keys);
+            if (pressEnter) {
+                Thread.Sleep(100);
+                System.Windows.Forms.SendKeys.SendWait("{ENTER}");
+            }
+        });
     }
 }
 "@
-Add-Type -TypeDefinition $win32Code -Language CSharp -ReferencedAssemblies "System.Drawing"
+Add-Type -TypeDefinition $win32Code -Language CSharp -ReferencedAssemblies "System.Drawing", "System.Windows.Forms"
+[void][DesktopWin32]::EnsureDefaultDesktop()
+Add-Type -AssemblyName UIAutomationClient
+Add-Type -AssemblyName UIAutomationTypes
+Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
 `;
 
 const RESOLVE_WINDOW_PS_FUNC = `
@@ -541,21 +564,28 @@ if (-not [string]::IsNullOrWhiteSpace($elStr) -and $win) {
                 if (-not [double]::IsInfinity($r.Width) -and $r.Width -gt 0) {
                     $targetX = [int][Math]::Round($r.X + $r.Width / 2.0)
                     $targetY = [int][Math]::Round($r.Y + $r.Height / 2.0)
-                    break
                 }
+                $ip = $null
+                if ($item.TryGetCurrentPattern([System.Windows.Automation.InvokePattern]::Pattern, [ref]$ip)) {
+                    $ip.Invoke()
+                    $invokedDirectly = $true
+                }
+                break
             }
         } catch {}
     }
 }
 
-if ($targetX -lt 0 -or $targetY -lt 0) {
-    @{ ok = $false; error = "Valid coordinates (x, y) or matching elementName not found" } | ConvertTo-Json -Compress
-    exit 0
+if (-not $invokedDirectly) {
+    if ($targetX -lt 0 -or $targetY -lt 0) {
+        @{ ok = $false; error = "Valid coordinates (x, y) or matching elementName not found" } | ConvertTo-Json -Compress
+        exit 0
+    }
+    [DesktopWin32]::ClickAt($targetX, $targetY, "${button}", $${doubleClick})
 }
-
-[DesktopWin32]::ClickAt($targetX, $targetY, "${button}", $${doubleClick})
 @{
     ok = $true
+    invokedDirectly = $invokedDirectly
     clickedAt = @{ x = $targetX; y = $targetY }
     button = "${button}"
     doubleClick = $${doubleClick}
@@ -602,12 +632,7 @@ if (${x !== null ? x : -1} -ge 0 -and ${y !== null ? y : -1} -ge 0) {
 
 Set-Clipboard -Value $textStr
 Start-Sleep -Milliseconds 60
-[System.Windows.Forms.SendKeys]::SendWait("^v")
-Start-Sleep -Milliseconds 100
-
-if ($${pressEnter}) {
-    [System.Windows.Forms.SendKeys]::SendWait("{ENTER}")
-}
+[DesktopWin32]::SendKeysOnDefaultDesktop("^v", $${pressEnter})
 
 @{
     ok = $true
@@ -644,7 +669,7 @@ if (${hwnd} -gt 0 -or ${pid} -gt 0 -or (-not [string]::IsNullOrWhiteSpace($qStr)
     }
 }
 
-[System.Windows.Forms.SendKeys]::SendWait($keysStr)
+[DesktopWin32]::SendKeysOnDefaultDesktop($keysStr, $false)
 @{
     ok = $true
     keys = $keysStr

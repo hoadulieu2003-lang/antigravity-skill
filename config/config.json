@@ -197,7 +197,13 @@
         "read_url(youtube.com)",
         "read_url(youtubetranscript.com)",
         "read_url(data-api.binance.vision)",
-        "read_url(traderversity.com)"
+        "read_url(traderversity.com)",
+        "mcp(windows-desktop/desktop_list_windows)",
+        "mcp(windows-desktop/desktop_capture_window)",
+        "mcp(windows-desktop/desktop_inspect_ui_tree)",
+        "mcp(windows-desktop/desktop_type_text)",
+        "mcp(windows-desktop/desktop_click)",
+        "mcp(windows-desktop/desktop_focus_window)"
       ]
     },
     "nonWorkspaceFileAccessPolicy": "AGENT_SETTING_POLICY_ALLOW",
