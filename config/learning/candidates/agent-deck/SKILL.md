@@ -1,7 +1,7 @@
 ---
 name: agent-deck
 description: >-
-  Kỹ năng chuyên gia vận hành cho asheshgoplani/agent-deck (1051 ⭐).
+  Kỹ năng chuyên gia vận hành cho asheshgoplani/agent-deck (1105 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở agent-deck vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Terminal session manager for AI coding agents
@@ -12,9 +12,9 @@ description: >-
 # asheshgoplani/agent-deck — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/asheshgoplani/agent-deck`  
-> **Độ uy tín cộng đồng**: 1051 ⭐  
+> **Độ uy tín cộng đồng**: 1105 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-10 07:42:08Z
+> **Tự động đóng gói lúc**: 2026-10-18 01:42:08Z
 
 ---
 

@@ -1,5 +1,11 @@
 {
   "mcpServers": {
+    "windows-desktop": {
+      "command": "node",
+      "args": [
+        "C:\\Users\\game\\.gemini\\config\\sidecars\\windows-desktop\\windows_desktop_mcp_server.js"
+      ]
+    },
     "cdp-bridge": {
       "command": "node",
       "args": [
