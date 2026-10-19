@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-19T22:42:10.240531+00:00",
+  "skill_name": "jcode",
+  "source_repo": "1jehuang/jcode",
+  "stars": 21044,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\jcode\\SKILL.md",
+  "human_promotion_required": true
+}

@@ -1,10 +1,10 @@
 ---
 name: jcode
 description: >-
-  Kỹ năng chuyên gia vận hành cho 1jehuang/jcode (20471 ⭐).
+  Kỹ năng chuyên gia vận hành cho 1jehuang/jcode (21044 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở jcode vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến High performance coding agent harness written in rust
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến High performance coding agent harness written in Rust, built for heavy multi-agent dev workflows
     - Thiết lập cấu hình và vận hành lệnh CLI của 1jehuang/jcode
   KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'jcode'.
 ---
@@ -12,23 +12,19 @@ description: >-
 # 1jehuang/jcode — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/1jehuang/jcode`  
-> **Độ uy tín cộng đồng**: 20471 ⭐  
+> **Độ uy tín cộng đồng**: 21044 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-11 22:42:08Z
+> **Tự động đóng gói lúc**: 2026-10-19 22:42:10Z
 
 ---
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: High performance coding agent harness written in rust
+* **Mục tiêu cốt lõi**: High performance coding agent harness written in Rust, built for heavy multi-agent dev workflows
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- `jcode v0.9.1888-dev (be386f2)`
-- `pi 0.62.0`
-- `codex-cli 0.120.0`
-- `opencode 1.0.203`
-- `GitHub Copilot CLI 1.0.24` for the 1-session rerun, `GitHub Copilot CLI 1.0.27` for the 10-session rerun
-- `Cursor Agent 2026.04.08-a41fba1`
+- Khả năng tự động hóa và tích hợp đa nền tảng.
+- Tối ưu hóa hiệu năng và độ ổn định.
 
 ---
 
@@ -39,9 +35,6 @@ Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chu�
 ```bash
 # macOS & Linux
 curl -fsSL https://jcode.sh/install | bash
-
-# Windows 11 (PowerShell 5.1+)
-irm https://jcode.sh/install.ps1 | iex
 ```
 
 ---
