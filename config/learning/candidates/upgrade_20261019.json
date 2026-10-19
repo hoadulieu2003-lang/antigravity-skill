@@ -1,6 +1,6 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-19T13:42:09.061491+00:00",
+    "scan_date": "2026-10-19T16:42:11.278617+00:00",
     "cycle_id": "EVO-20261019",
     "sessions_evaluated": 94,
     "total_items_processed": 202,
@@ -57,18 +57,6 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "runs anywhere. uses anything",
       "suggested_skill_structure": "---\nname: openclaude\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Twigpine/openclaude cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# TWIGPINE/OPENCLAUDE SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Twigpine/openclaude` (https://github.com/Twigpine/openclaude)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
-      "skill_slug": "openchatcut",
-      "title": "0xsline/OpenChatCut",
-      "source": "GitHub (2104 ⭐)",
-      "url": "https://github.com/0xsline/OpenChatCut",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 95,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "Open-source, local-first conversational AI video editor with a professional multi-track timeline, Agent Skills, MCP integration, and Remotion rendering.",
-      "suggested_skill_structure": "---\nname: openchatcut\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng 0xsline/OpenChatCut cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# 0XSLINE/OPENCHATCUT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `0xsline/OpenChatCut` (https://github.com/0xsline/OpenChatCut)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
       "skill_slug": "atomic-agent",
@@ -153,6 +141,18 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "The coding agent that answers to you, your model, your machine, your rules.",
       "suggested_skill_structure": "---\nname: zero\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Twigpine/zero cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# TWIGPINE/ZERO SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Twigpine/zero` (https://github.com/Twigpine/zero)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "autoclip",
+      "title": "zhouxiaoka/autoclip",
+      "source": "GitHub (9337 ⭐)",
+      "url": "https://github.com/zhouxiaoka/autoclip",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "AutoClip｜一个链接，一键出片。开源 AI 视频剪辑桌面工具，将播客、访谈、课程等长视频自动剪成短视频，生成字幕、封面和发布文案，适配抖音、小红书、TikTok、Reels 与 YouTube Shorts。Open-source AI video clipping & content repurposing.",
+      "suggested_skill_structure": "---\nname: autoclip\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng zhouxiaoka/autoclip cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ZHOUXIAOKA/AUTOCLIP SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `zhouxiaoka/autoclip` (https://github.com/zhouxiaoka/autoclip)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
