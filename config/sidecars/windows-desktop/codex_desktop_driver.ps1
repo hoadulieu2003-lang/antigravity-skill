@@ -121,6 +121,15 @@ public static class CodexDesktopNative {
     public static extern bool SetForegroundWindow(IntPtr hWnd);
 
     [DllImport("user32.dll")]
+    public static extern IntPtr GetForegroundWindow();
+
+    [DllImport("user32.dll")]
+    public static extern IntPtr WindowFromPoint(POINT Point);
+
+    [DllImport("user32.dll")]
+    public static extern IntPtr GetAncestor(IntPtr hwnd, uint gaFlags);
+
+    [DllImport("user32.dll")]
     public static extern bool BringWindowToTop(IntPtr hWnd);
 
     [DllImport("user32.dll")]
@@ -139,6 +148,12 @@ public static class CodexDesktopNative {
     public static extern bool PrintWindow(IntPtr hWnd, IntPtr hdcBlt, uint nFlags);
 
     [StructLayout(LayoutKind.Sequential)]
+    public struct POINT {
+        public int X;
+        public int Y;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct RECT {
         public int Left;
         public int Top;
@@ -149,6 +164,7 @@ public static class CodexDesktopNative {
     public const int SW_SHOW = 5;
     public const int SW_SHOWNA = 8;
     public const int SW_RESTORE = 9;
+    public const uint GA_ROOT = 2;
     public const uint MOUSEEVENTF_LEFTDOWN = 0x0002;
     public const uint MOUSEEVENTF_LEFTUP = 0x0004;
     public const uint PW_RENDERFULLCONTENT = 0x00000002;
@@ -287,11 +303,15 @@ public static class CodexDesktopNative {
                     if (IsIconic(mainCodexHwnd)) {
                         ShowWindow(mainCodexHwnd, SW_RESTORE);
                     }
-                    keybd_event(0x12, 0, 0, UIntPtr.Zero);
-                    keybd_event(0x12, 0, 0x0002, UIntPtr.Zero);
-                    BringWindowToTop(mainCodexHwnd);
-                    SetForegroundWindow(mainCodexHwnd);
-                    Thread.Sleep(250);
+                    for (int attempt = 0; attempt < 3; attempt++) {
+                        keybd_event(0x12, 0, 0, UIntPtr.Zero);
+                        keybd_event(0x12, 0, 0x0002, UIntPtr.Zero);
+                        BringWindowToTop(mainCodexHwnd);
+                        SetForegroundWindow(mainCodexHwnd);
+                        Thread.Sleep(150);
+                        if (GetForegroundWindow() == mainCodexHwnd) break;
+                    }
+                    Thread.Sleep(150);
                 } else {
                     if (!IsWindowVisible(mainCodexHwnd)) {
                         ShowWindow(mainCodexHwnd, SW_SHOWNA);
@@ -324,14 +344,32 @@ public static class CodexDesktopNative {
                     if (!double.IsInfinity(br.Width) && br.Width > 0) {
                         int cx = (int)Math.Round(br.X + br.Width / 2.0);
                         int cy = (int)Math.Round(br.Y + br.Height / 2.0);
-                        LeftClick(cx, cy);
+                        POINT pt = new POINT { X = cx, Y = cy };
+                        IntPtr hitHwnd = WindowFromPoint(pt);
+                        IntPtr hitRoot = hitHwnd != IntPtr.Zero ? GetAncestor(hitHwnd, GA_ROOT) : IntPtr.Zero;
+                        if (hitHwnd == mainCodexHwnd || hitRoot == mainCodexHwnd) {
+                            LeftClick(cx, cy);
+                        }
                     }
                     Thread.Sleep(200);
+                    if (GetForegroundWindow() != mainCodexHwnd) {
+                        BringWindowToTop(mainCodexHwnd);
+                        SetForegroundWindow(mainCodexHwnd);
+                        try { editEl.SetFocus(); } catch {}
+                        Thread.Sleep(150);
+                    }
+                    if (GetForegroundWindow() != mainCodexHwnd) {
+                        res.ok = false;
+                        res.statusMessage = "ABORTED_FOREGROUND_MISMATCH: Foreground window is not Codex mainCodexHwnd (" + GetForegroundWindow().ToInt64() + " != " + mainCodexHwnd.ToInt64() + "). Refusing to SendKeys!";
+                        return;
+                    }
                     SendKeys.SendWait("^a");
                     Thread.Sleep(60);
                     SendKeys.SendWait("^v");
                     Thread.Sleep(450);
-                    SendKeys.SendWait("{ENTER}");
+                    if (GetForegroundWindow() == mainCodexHwnd) {
+                        SendKeys.SendWait("{ENTER}");
+                    }
                     Thread.Sleep(700);
                 }
 
