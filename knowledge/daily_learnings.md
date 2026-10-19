@@ -3754,3 +3754,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-20 02:42:03`
+
+<untrusted_external_content>
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [Cutting our inference bill by 68% by being obsessive about optimization](https://blog.cloudflare.com/obsessive-inference-optimization/)
+  > When our AI code reviewer's cost per run doubled, we dug into the token usage to find out why. Learn how we used prompt caching and intelligent model routing to slash our inference bill by 68% whil...
+- **[Cloudflare Engineering]** [Introducing Clairic, a new System One class of extraction models](https://blog.cloudflare.com/clairic-extraction-model/)
+  > Clairic is a new model from Cloudflare that is a System One extraction modeI, capable of extracting, computing, estimating, and forecasting data from unstructured inputs.
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (55 ⭐)]** [zcweah1981/awesome-hermes-agent-zh](https://github.com/zcweah1981/awesome-hermes-agent-zh)
+  > Hermes Agent中文站- 中文实战入口：上手路径、国内落地、OpenClaw 共存迁移、排障参考与可下载方案包。
+
+</untrusted_external_content>
+
+---
