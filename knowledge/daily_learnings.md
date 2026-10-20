@@ -3770,3 +3770,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-20 11:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (663 ⭐)]** [shuxiachai/academic-commercialization-agent](https://github.com/shuxiachai/academic-commercialization-agent)
+  > AI multi-agent tool that turns research papers into cited commercialization and tech-transfer assessments: TRL, patent landscape, market and risks. CrewAI + ...
+
+</untrusted_external_content>
+
+---
