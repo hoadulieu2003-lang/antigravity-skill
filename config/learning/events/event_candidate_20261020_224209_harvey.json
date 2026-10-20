@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-20T22:42:09.980779+00:00",
+  "skill_name": "harvey",
+  "source_repo": "ethanplusai/harvey",
+  "stars": 1822,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\harvey\\SKILL.md",
+  "human_promotion_required": true
+}
