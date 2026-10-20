@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-20T04:42:09.489669+00:00",
+    "scan_date": "2026-10-20T07:42:09.473645+00:00",
     "cycle_id": "EVO-20261020",
-    "sessions_evaluated": 92,
-    "total_items_processed": 199,
+    "sessions_evaluated": 91,
+    "total_items_processed": 195,
     "active_skills_count": 67,
-    "candidates_count": 121,
-    "enhancements_count": 43,
+    "candidates_count": 118,
+    "enhancements_count": 42,
     "optimizations_count": 34
   },
   "new_skill_candidates": [

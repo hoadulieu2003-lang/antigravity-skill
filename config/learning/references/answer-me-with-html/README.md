@@ -173,7 +173,7 @@ Change settings with a slash command. There are no config files to edit by hand.
 | Any agent | `/answer-me-with-html config open off`, or just say "stop opening the browser" |
 | Terminal | `am config` to view, `am config set open off` to change, `am config reset` to restore defaults |
 
-The settings are `open` (open pages in the browser), `theme`, `mode` (light or dark), `style` (writing check), `update_check`, `close_after_reply` (close the tab after the reply is copied) and `voice` (video narration). Defaults and values: [reference](docs/reference.md#settings).
+The settings are `open` (open pages in the browser), `theme`, `mode` (light or dark), `style` (writing check), `scale` (text size on the page; diagrams and charts grow with it), `update_check`, `close_after_reply` (close the tab after the reply is copied) and `voice` (video narration). Defaults and values: [reference](docs/reference.md#settings).
 
 ## Always-on mode (recommended)
 
@@ -181,13 +181,13 @@ With always-on mode, **every conclusion comes with a page**: whenever the agent 
 
 It is off by default. We recommend it: you stop asking for pages, and short answers read as well as long ones. Pages pile up in `~/.answer-me-with-html/`; clear them with `am clean`. To turn it on, paste this to your agent so it writes the rule into its rules file, such as `~/.claude/CLAUDE.md` or `AGENTS.md`:
 
-> Turn on always-on mode for Answer me with HTML: add a global rule — "[answer-me-with-html always-on] Whenever a reply gives a conclusion, summary, plan, comparison, review or explanation, even a short one, also make a page with the answer-me-with-html skill (2 to 4 panels for routine answers), render it with --no-open before you write the reply, and end the reply with a file:// link to the page. Skip casual chat, one- or two-sentence replies with no conclusion, pure command output, and requests for plain text."
+> Turn on always-on mode for Answer me with HTML: add a global rule — "[answer-me-with-html always-on] Whenever a reply gives a conclusion, summary, plan, comparison, review or explanation, even a short one, also make a page with the answer-me-with-html skill (2 to 4 panels for routine answers), render it with --no-open before you write the reply, and end the reply with the page link in the format SKILL.md specifies for your host. Skip casual chat, one- or two-sentence replies with no conclusion, pure command output, and requests for plain text."
 
 To turn it off, delete that rule. Want fewer pages instead? See [less proactive](docs/reference.md#less-proactive).
 
 ## Updating and cleaning up
 
-Updates are manual. Once a week the agent checks GitHub for a new version number and tells you; nothing about you is sent. To update, tell your agent "update answer-me-with-html". Pages pile up in `~/.answer-me-with-html/`. Say "clean up the pages", and the agent asks before it deletes anything. Other install methods and every option: [reference](docs/reference.md#updating-and-cleaning-up).
+Updates are manual. When used, the CLI checks GitHub for a new version in the background at most once a day. If one is available, it prompts the agent at most once every three days; nothing about you is sent. To update, tell your agent "update answer-me-with-html". Pages pile up in `~/.answer-me-with-html/`. Say "clean up the pages", and the agent asks before it deletes anything. Other install methods and every option: [reference](docs/reference.md#updating-and-cleaning-up).
 
 ## Background
 
@@ -262,10 +262,11 @@ The agent picks a component by the shape of the information:
 | `tree` | Folders, modules, taxonomies |
 | `timeline` | History, releases, phases |
 | `limits` | A value against its limit |
+| `chart` | Bars, lines or a pie from a table of numbers: several series, negative values, a highlighted row |
 | `annot` | Word-by-word notes on a sentence |
 | `kv` | Metadata, a drawing's title block |
 | `callout` | A conclusion, a tip, a warning |
-| `ask` | A decision you make on the page; the agent's suggestion starts selected |
+| `ask` | A decision you make on the page; the agent's suggestion has a tag; nothing starts selected |
 | Code block | Real code quoted from a file (`src=` `lines=`), or a sketch |
 | Table | Multi-way comparison. Write `ok` / `no` / `warn` in a cell to get ✓ ✗ ! |
 
@@ -300,6 +301,7 @@ Ask questions, share pages you made, suggest features, or just say hi.
 - [Discord](https://discord.gg/sYQuRRZNzQ)
 - QQ group: `1127099407`
 - [LINUX DO](https://linux.do), a Chinese-language developer forum
+- [AtomGit](https://atomgit.com/weixin_43367137/answer-me-with-html)
 
 Found a bug? Please open a [GitHub issue](https://github.com/QingYunA/answer-me-with-html/issues).
 

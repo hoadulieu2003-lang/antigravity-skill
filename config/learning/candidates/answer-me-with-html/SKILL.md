@@ -1,7 +1,7 @@
 ---
 name: answer-me-with-html
 description: >-
-  Kỹ năng chuyên gia vận hành cho QingYunA/answer-me-with-html (3401 ⭐).
+  Kỹ năng chuyên gia vận hành cho QingYunA/answer-me-with-html (4000 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở answer-me-with-html vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Answer me with HTML — an agent skill that answers hard questions with a one-page HTML you can actually read
@@ -12,9 +12,9 @@ description: >-
 # QingYunA/answer-me-with-html — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/QingYunA/answer-me-with-html`  
-> **Độ uy tín cộng đồng**: 3401 ⭐  
+> **Độ uy tín cộng đồng**: 4000 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-15 07:42:09Z
+> **Tự động đóng gói lúc**: 2026-10-20 07:42:08Z
 
 ---
 
