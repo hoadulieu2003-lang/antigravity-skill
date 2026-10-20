@@ -3780,3 +3780,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-20 17:42:12`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (53 ⭐)]** [wuyhong715/rikkahub-agent-pure](https://github.com/wuyhong715/rikkahub-agent-pure)
+  > RikkaHub Agent · Pure — an Android AI agent that survives long runs. Independent hardening pass on the rikkahub on-device agent: usage ledger & budgets, on-d...
+
+</untrusted_external_content>
+
+---
