@@ -1,7 +1,7 @@
 ---
 name: nocobase
 description: >-
-  Kỹ năng chuyên gia vận hành cho nocobase/nocobase (24522 ⭐).
+  Kỹ năng chuyên gia vận hành cho nocobase/nocobase (24645 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở nocobase vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến NocoBase is an open-source AI + no-code platform for building business systems fast
@@ -12,9 +12,9 @@ description: >-
 # nocobase/nocobase — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/nocobase/nocobase`  
-> **Độ uy tín cộng đồng**: 24522 ⭐  
+> **Độ uy tín cộng đồng**: 24645 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-11 07:42:16Z
+> **Tự động đóng gói lúc**: 2026-10-21 01:42:08Z
 
 ---
 

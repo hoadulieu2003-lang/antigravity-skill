@@ -1,7 +1,7 @@
 ---
 name: qwenpaw
 description: >-
-  Kỹ năng chuyên gia vận hành cho agentscope-ai/QwenPaw (35327 ⭐).
+  Kỹ năng chuyên gia vận hành cho agentscope-ai/QwenPaw (35877 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở qwenpaw vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Your Personal AI Assistant; easy to install, deploy on your own machine or on the cloud; supports multiple chat apps with easily extensible capabilities
@@ -12,9 +12,9 @@ description: >-
 # agentscope-ai/QwenPaw — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/agentscope-ai/QwenPaw`  
-> **Độ uy tín cộng đồng**: 35327 ⭐  
+> **Độ uy tín cộng đồng**: 35877 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-29 01:42:25Z
+> **Tự động đóng gói lúc**: 2026-10-21 01:42:09Z
 
 ---
 

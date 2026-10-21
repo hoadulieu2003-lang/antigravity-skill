@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-21T01:42:08.607515+00:00",
+  "skill_name": "nocobase",
+  "source_repo": "nocobase/nocobase",
+  "stars": 24645,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\nocobase\\SKILL.md",
+  "human_promotion_required": true
+}
