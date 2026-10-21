@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-21T19:42:18.950910+00:00",
+    "scan_date": "2026-10-21T22:42:18.232698+00:00",
     "cycle_id": "EVO-20261022",
-    "sessions_evaluated": 91,
-    "total_items_processed": 195,
+    "sessions_evaluated": 90,
+    "total_items_processed": 193,
     "active_skills_count": 67,
-    "candidates_count": 120,
-    "enhancements_count": 39,
+    "candidates_count": 119,
+    "enhancements_count": 38,
     "optimizations_count": 35
   },
   "new_skill_candidates": [
@@ -157,16 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "aider-execution-engine",
-      "source_technology": "modu-ai/moai-adk",
-      "source_url": "https://github.com/modu-ai/moai-adk",
-      "source_type": "GitHub (1229 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Agentic development harness for Claude Code — SPEC-driven plan/run/sync, TRUST 5 quality gates, model+effort routing, and Claude×GLM multi-LLM cost control. ...",
-      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
-    },
-    {
       "target_skill": "codewhale",
       "source_technology": "codewhale-hq/Codewhale",
       "source_url": "https://github.com/codewhale-hq/Codewhale",
@@ -275,6 +265,16 @@
       "priority_score": 75,
       "enhancement_rationale": "A local coding agent for models with limited context: composable tools, skills, hooks and agents, with a terminal REPL, browser dashboard and ACP.",
       "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
+      "target_skill": "threejs",
+      "source_technology": "Tenney95/AI-Canvas-tauri",
+      "source_url": "https://github.com/Tenney95/AI-Canvas-tauri",
+      "source_type": "GitHub (215 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "Local-first AI canvas for visual workflows, AI short drama, image/video generation, storyboarding and asset management. ComfyUI, AI agents, MCP & Blender. 本地...",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ Tenney95/AI-Canvas-tauri vào module threejs."
     }
   ],
   "architecture_optimizations": [

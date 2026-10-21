@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261022` | **Thời gian**: `2026-10-21 19:42:18 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261022` | **Thời gian**: `2026-10-21 22:42:18 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -8,11 +8,11 @@
 ## 📊 1. Bức Tranh Tổng Thể (Executive Summary & Metrics)
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
-| **Phiên học đã quét (Sessions Evaluated)** | `91` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
-| **Tài nguyên công nghệ (Items Processed)** | `195` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
+| **Phiên học đã quét (Sessions Evaluated)** | `90` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
+| **Tài nguyên công nghệ (Items Processed)** | `193` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `67` | Kho năng lực sẵn có tại `config/skills/` |
-| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `120` | Các khoảng trống công nghệ cần bổ sung độc lập |
-| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `39` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
+| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `119` | Các khoảng trống công nghệ cần bổ sung độc lập |
+| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `38` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
 | **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `35` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
 ---
@@ -315,7 +315,6 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 
 | Kỹ năng Mục tiêu (Target) | Công nghệ Đối chiếu (Source Tech) | Mức độ Ưu tiên (Priority) | Hành động Đề xuất (Recommended Action) |
 | :--- | :--- | :--- | :--- |
-| **`aider-execution-engine`** | [modu-ai/moai-adk](https://github.com/modu-ai/moai-adk) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`codewhale`** | [codewhale-hq/Codewhale](https://github.com/codewhale-hq/Codewhale) | `HIGH` | Bổ sung tri thức và thuật toán từ codewhale-hq/Codewhale vào module codewhale. |
 | **`ast-repo-map`** | [boxlite-ai/boxlite](https://github.com/boxlite-ai/boxlite) | `HIGH` | Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context. |
 | **`ast-repo-map`** | [nocobase/nocobase](https://github.com/nocobase/nocobase) | `HIGH` | Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context. |
@@ -327,6 +326,7 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 | **`gemini-super-engine`** | [synthetic-sciences/openscience](https://github.com/synthetic-sciences/openscience) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
 | **`gemini-super-engine`** | [PerryLink/dsh-industry-research](https://github.com/PerryLink/dsh-industry-research) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
 | **`cdp-engine`** | [lploc94/raw-cli](https://github.com/lploc94/raw-cli) | `HIGH` | Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents. |
+| **`threejs`** | [Tenney95/AI-Canvas-tauri](https://github.com/Tenney95/AI-Canvas-tauri) | `HIGH` | Bổ sung tri thức và thuật toán từ Tenney95/AI-Canvas-tauri vào module threejs. |
 
 
 ## 🏛️ 4. Đề Xuất Tối Ưu Kiến Trúc & Quy Chuẩn (`ARCHITECTURE_OPTIMIZATION`)
