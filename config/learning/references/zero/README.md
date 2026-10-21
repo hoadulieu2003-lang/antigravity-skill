@@ -12,7 +12,7 @@
 
 <p align="center">
   <a href="LICENSE"><img alt="license" src="https://img.shields.io/badge/license-MIT-blue"></a>
-  <img alt="Go 1.26.9+" src="https://img.shields.io/badge/Go-1.26.9+-00ADD8?logo=go&logoColor=white">
+  <img alt="Go 1.26.10+" src="https://img.shields.io/badge/Go-1.26.10+-00ADD8?logo=go&logoColor=white">
   <img alt="25+ providers" src="https://img.shields.io/badge/providers-25+-34E2EA">
   <a href="https://discord.gg/CaQDS6wdFn"><img alt="Discord" src="https://img.shields.io/badge/Discord-join-5865F2?logo=discord&logoColor=white"></a>
   <br>
@@ -158,7 +158,7 @@ irm https://raw.githubusercontent.com/Twigpine/zero/main/scripts/install.ps1 | i
 
 ### From source
 
-Source builds require Go 1.26.9+.
+Source builds require Go 1.26.10+.
 
 ```bash
 git clone https://github.com/Twigpine/zero.git
@@ -173,17 +173,18 @@ If you are testing before the first public release, build from source:
 go build -o zero ./cmd/zero
 ```
 
-On Linux, build the sandbox helper too if you want native sandboxing:
+On Linux, native sandboxing needs Bubblewrap. The main `zero` binary re-executes
+itself as the helper when `zero-linux-sandbox` is absent. A separate helper next
+to `zero` or on `PATH` still takes precedence:
 
 ```bash
-go build -o zero-linux-sandbox ./cmd/zero-linux-sandbox
-go build -o zero-seccomp ./cmd/zero-seccomp   # optional compatibility wrapper
+go build -o zero-linux-sandbox ./cmd/zero-linux-sandbox   # optional
+go build -o zero-seccomp ./cmd/zero-seccomp               # optional compatibility wrapper
 ```
 
-Put `zero` and `zero-linux-sandbox` in the same directory on `PATH`
-(`~/.local/bin` is a good default). macOS does not need an extra helper binary.
-Windows source builds can use the main `zero.exe` as their sandbox helper; release
-archives still ship standalone Windows helper executables.
+Put `zero` on `PATH` (`~/.local/bin` is a good default). macOS does not need an
+extra helper binary. Windows source builds can use the main `zero.exe` as their
+sandbox helper; release archives still ship standalone Windows helper executables.
 
 More install details: [docs/INSTALL.md](docs/INSTALL.md).
 
@@ -216,6 +217,7 @@ export AIMLAPI_API_KEY=...
 export LONGCAT_API_KEY=...
 export FIREWORKS_API_KEY=...
 export GMI_API_KEY=...
+export CONCENTRATE_API_KEY=...
 export MINIMAX_API_KEY=...
 export MINIMAXI_API_KEY=...
 ```
@@ -242,6 +244,12 @@ To configure GMI Cloud directly, run:
 
 ```bash
 zero providers setup gmicloud --set-active
+```
+
+To configure Concentrate directly, run:
+
+```bash
+zero providers setup concentrate --set-active
 ```
 
 MiniMax presets use the Anthropic-compatible endpoints for the global and China

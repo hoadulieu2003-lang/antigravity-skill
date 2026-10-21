@@ -1,7 +1,7 @@
 ---
 name: zero
 description: >-
-  Kỹ năng chuyên gia vận hành cho Twigpine/zero (1736 ⭐).
+  Kỹ năng chuyên gia vận hành cho Twigpine/zero (1739 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở zero vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến The coding agent that answers to you, your model, your machine, your rules
@@ -12,9 +12,9 @@ description: >-
 # Twigpine/zero — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/Twigpine/zero`  
-> **Độ uy tín cộng đồng**: 1736 ⭐  
+> **Độ uy tín cộng đồng**: 1739 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-15 07:42:11Z
+> **Tự động đóng gói lúc**: 2026-10-21 10:42:09Z
 
 ---
 
