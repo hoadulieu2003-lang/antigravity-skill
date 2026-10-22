@@ -3910,3 +3910,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-22 08:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (83 ⭐)]** [VeteranBoLuo/light-note](https://github.com/VeteranBoLuo/light-note)
+  > 免费的书签、笔记与云文件管理平台，内置 AI 助手，支持跨设备同步｜Free bookmark, note and cloud file manager.
+- **[GitHub (51 ⭐)]** [Fly143/ultimate-novel-creation-skill](https://github.com/Fly143/ultimate-novel-creation-skill)
+  > 面向 AI Agent 的全流程长篇小说创作技能。从书名生成到千章完稿，配备三大自动系统（记忆系统/强约束/叙事质量管理）确保长篇连贯性。支持 AI 全自动和分步引导双模式。
+
+</untrusted_external_content>
+
+---

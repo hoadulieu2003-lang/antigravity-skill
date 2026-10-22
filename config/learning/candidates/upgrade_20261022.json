@@ -1,11 +1,11 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-21T22:42:18.232698+00:00",
+    "scan_date": "2026-10-22T01:42:14.950134+00:00",
     "cycle_id": "EVO-20261022",
     "sessions_evaluated": 90,
-    "total_items_processed": 193,
+    "total_items_processed": 192,
     "active_skills_count": 67,
-    "candidates_count": 119,
+    "candidates_count": 118,
     "enhancements_count": 38,
     "optimizations_count": 35
   },
@@ -57,18 +57,6 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "runs anywhere. uses anything",
       "suggested_skill_structure": "---\nname: openclaude\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Twigpine/openclaude cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# TWIGPINE/OPENCLAUDE SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Twigpine/openclaude` (https://github.com/Twigpine/openclaude)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
-      "skill_slug": "vibe-research",
-      "title": "simonlin1212/Vibe-Research",
-      "source": "GitHub (2631 ⭐)",
-      "url": "https://github.com/simonlin1212/Vibe-Research",
-      "domain": "Định lượng & Phân tích Thị trường (Quant & Financial AI)",
-      "priority": "HIGH",
-      "priority_score": 95,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Định lượng & Phân tích Thị trường (Quant & Financial AI).",
-      "proposed_value": "Vibe-Research: Your Personal Trading Research Agent · A股/美股/港股 的个人投研 Agent：每日复盘、资讯雷达、个股数据、板块中心、我的持仓、研究记录、回测。Vibe-Research 把数据和功能配齐，由你自己的 Agent 驱动投资研究。基于开源的 C...",
-      "suggested_skill_structure": "---\nname: vibe-research\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng simonlin1212/Vibe-Research cho các tác vụ Định lượng & Phân tích Thị trường (Quant & Financial AI).\n---\n\n# SIMONLIN1212/VIBE-RESEARCH SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `simonlin1212/Vibe-Research` (https://github.com/simonlin1212/Vibe-Research)\n- Lĩnh vực: Định lượng & Phân tích Thị trường (Quant & Financial AI)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
       "skill_slug": "open-dots",
@@ -153,6 +141,18 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "Agent OS: the agent gets smarter on its own. We just hold the line: Interview-gated, staged evaluation, budgeted evolution loop. MCP server, 14 runtimes: Cla...",
       "suggested_skill_structure": "---\nname: ouroboros\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Q00/ouroboros cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# Q00/OUROBOROS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Q00/ouroboros` (https://github.com/Q00/ouroboros)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "aigc-interview-book",
+      "title": "WeThinkIn/AIGC-Interview-Book",
+      "source": "GitHub (4970 ⭐)",
+      "url": "https://github.com/WeThinkIn/AIGC-Interview-Book",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "【三年面试五年模拟】AIGC/LLM/AI Agent算法工程师面试资源平台。涵盖AIGC、LLM大模型、AI Agent、具身智能、传统深度学习、计算机视觉、自然语言处理、自动驾驶、机器学习、强化学习、大数据挖掘、世界模型、元宇宙、AGI等AI行业面试笔试干货经验与核心跨周期知识。",
+      "suggested_skill_structure": "---\nname: aigc-interview-book\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng WeThinkIn/AIGC-Interview-Book cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# WETHINKIN/AIGC-INTERVIEW-BOOK SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `WeThinkIn/AIGC-Interview-Book` (https://github.com/WeThinkIn/AIGC-Interview-Book)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
