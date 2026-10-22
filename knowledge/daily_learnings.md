@@ -3956,3 +3956,21 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-23 02:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (2907 ⭐)]** [moltis-org/moltis](https://github.com/moltis-org/moltis)
+  > A secure persistent personal agent server in Rust. One binary, sandboxed execution, multi-provider LLMs, voice, memory, Telegram, WhatsApp, Discord, Teams, a...
+- **[GitHub (67 ⭐)]** [VyomKulshrestha/Heliox-OS](https://github.com/VyomKulshrestha/Heliox-OS)
+  > Open-source, local-first desktop AI agent for voice, gesture, gaze, browser and system automation with permission gates and verification.
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [RecursiveSI/flint](https://huggingface.co/RecursiveSI/flint)
+  > Trending model on Hugging Face hub.
+- **[HuggingFace (Model)]** [OpenMOSS-Team/MOSS-Image-Base](https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
