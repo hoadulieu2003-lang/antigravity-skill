@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-22T07:42:17.179655+00:00",
+    "scan_date": "2026-10-22T10:42:19.190976+00:00",
     "cycle_id": "EVO-20261022",
-    "sessions_evaluated": 89,
-    "total_items_processed": 187,
+    "sessions_evaluated": 88,
+    "total_items_processed": 181,
     "active_skills_count": 67,
-    "candidates_count": 115,
-    "enhancements_count": 37,
+    "candidates_count": 113,
+    "enhancements_count": 33,
     "optimizations_count": 34
   },
   "new_skill_candidates": [
@@ -247,16 +247,6 @@
       "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
     },
     {
-      "target_skill": "gemini-super-engine",
-      "source_technology": "PerryLink/dsh-industry-research",
-      "source_url": "https://github.com/PerryLink/dsh-industry-research",
-      "source_type": "GitHub (213 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "Industry and company research domain pack for DeepSeek Harness: methodology skills, industry chain mapping, public-source policy/news tracking, company resea...",
-      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
-    },
-    {
       "target_skill": "cdp-engine",
       "source_technology": "lploc94/raw-cli",
       "source_url": "https://github.com/lploc94/raw-cli",
@@ -275,6 +265,16 @@
       "priority_score": 75,
       "enhancement_rationale": "Local-first AI canvas for visual workflows, AI short drama, image/video generation, storyboarding and asset management. ComfyUI, AI agents, MCP & Blender. 本地...",
       "recommended_action": "Bổ sung tri thức và thuật toán từ Tenney95/AI-Canvas-tauri vào module threejs."
+    },
+    {
+      "target_skill": "cdp-engine",
+      "source_technology": "Dodaios/Dodaios",
+      "source_url": "https://github.com/Dodaios/Dodaios",
+      "source_type": "GitHub (188 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "Your AI assistant, built for the agentic era. Open source and local: talk to it, and it runs your agents, your coding CLIs, your browser and your apps. Windo...",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
     }
   ],
   "architecture_optimizations": [
