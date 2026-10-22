@@ -3946,3 +3946,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-22 23:42:03`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google DeepMind]** [Beyond tree cover: mapping the world’s forest types](https://deepmind.google/blog/beyond-tree-cover-mapping-the-worlds-forest-types/)
+  > A global map categorizing every 10-meter patch of land on Earth into distinct forest types.
+
+</untrusted_external_content>
+
+---
