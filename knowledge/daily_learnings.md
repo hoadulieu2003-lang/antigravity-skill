@@ -4028,3 +4028,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-23 17:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (210 ⭐)]** [index-login/MobileRE-Skill](https://github.com/index-login/MobileRE-Skill)
+  > AI Agent 驱动的移动端逆向技能集：Frida hook、一键脱壳、反检测绕过、内存 DEX dump、Ghidra MCP 符号/结构恢复。AI-agent skill system for mobile reverse engineering.
+- **[GitHub (97 ⭐)]** [Quor-a/ZorvAI](https://github.com/Quor-a/ZorvAI)
+  > Zorv AI — 安卓 Android 端开源 AI Agent 智能体助手。多模型对话、人格系统、记忆、语音全双工 TTS/STT、定时任务、可扩展工具链、飞书/QQ/微信接入。Kotlin + Jetpack Compose 开发。
+- **[GitHub (101 ⭐)]** [wgt19861219/godot-mcp-enhanced](https://github.com/wgt19861219/godot-mcp-enhanced)
+  > Enhanced MCP server for Godot 4.5-4.7: 33 tools / 199 actions, 3-layer architecture (headless + editor + game bridge), secure sandbox, recording & frame-veri...
+
+</untrusted_external_content>
+
+---
