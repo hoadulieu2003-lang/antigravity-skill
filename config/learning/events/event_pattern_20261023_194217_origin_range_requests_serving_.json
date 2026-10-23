@@ -1,0 +1,7 @@
+{
+  "event_type": "ARCHITECTURAL_PATTERN_DISTILLED",
+  "title": "Origin Range Requests: Serving large files without range-request tuning",
+  "source": "Cloudflare Engineering",
+  "pattern_file": "C:\\Users\\game\\.gemini\\knowledge\\architecture_patterns\\origin_range_requests_serving_large_files_without_range_requ.md",
+  "timestamp": "2026-10-23 19:42:17 UTC"
+}
