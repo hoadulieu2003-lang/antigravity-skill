@@ -33,3 +33,14 @@ Hệ thống **Gemini Super-Engine** là bộ mở rộng siêu năng lực toà
    * Cơ chế tự động fallback và retry có kiểm soát nếu chạm hạn mức nhịp (Rate Limit).
 3. **Đồng Bộ Dòng Thời Gian Điện Ảnh**:
    * Hình ảnh từ Imagen 3 và phân tích video từ Video Forensics được liên kết trực tiếp với dòng sản xuất `Script Factory Pro`.
+
+---
+
+## 🧠 3. TINH CHỈNH CÔNG CỤ BẰNG TEXTUAL GRADIENTS & QUERY CLARIFICATION (EVO-20261023)
+
+1. **Tối ưu hóa Gọi Công cụ bằng Đạo hàm Văn bản (`ToolGrad / Textual Gradients`)**:
+   * Khi chuỗi gọi công cụ (`Tool-Use Chain`) trả về cảnh báo lệch schema hoặc kết quả chưa tối ưu, tự động phân tích phản hồi lỗi như một vector đạo hàm văn bản (`Textual Gradient`) để tinh chỉnh tham số đầu vào ở bước kế tiếp mà không lặp lại cùng một lỗi.
+2. **Làm rõ Truy vấn Trước Khi Tra cứu (`Query Clarification for RAG` — arXiv:2610.28686)**:
+   * Trước khi kích hoạt `Search Grounding` trên các chủ đề đa nghĩa, tự động phân rã thành các truy vấn con tường minh (`Disambiguated Sub-Queries`) để thu thập bằng chứng có độ chính xác cao nhất.
+3. **Tiến hóa Suy đoán Tiết kiệm Chi phí (`SpecEvo / Speculative Evolution`)**:
+   * Kết hợp mô hình tốc độ cao (`Flash / Flash-Lite`) để phác thảo nhanh các nhánh tìm kiếm và dùng mô hình suy luận sâu (`Gemini 4 Argon / Pro`) làm trọng tài kiểm định cuối cùng.

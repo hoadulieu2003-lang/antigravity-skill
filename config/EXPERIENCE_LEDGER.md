@@ -154,6 +154,22 @@ flowchart TD
 
 ---
 
+### 11. 🧬 ĐẠI ÁN NÂNG CẤP CÔNG NGHỆ MỚI EVO-20261023 — THĂNG HẠNG 20 KỸ NĂNG TINH HOA & NÂNG CẤP 5 ĐỘNG CƠ LÕI (2026-10-23)
+* **Vị trí lưu trữ**: `C:/Users/game/.gemini/config/skills/` (Tổng cộng **87 Active Skills**) & `C:/Users/game/.gemini/knowledge/architecture_patterns/`
+* **Chiến tích Thăng hạng 20 Kỹ năng Tinh hoa Thực chiến (`Human Gate Promotion`)**:
+  1. **Hạ tầng Agent, Sandbox & Bộ nhớ Đội ngũ**: `e2b` (`14,442 ⭐`), `tencentdb-agent-memory` (`28,325 ⭐`), `ouroboros` (`6,239 ⭐`), `failproofai` (`5,164 ⭐`), `boxlite` (`2,541 ⭐`), `tianshu-harness` (`1,109 ⭐` — Môi trường Thực thi Nhận thức CVM).
+  2. **Trình duyệt Chống phát hiện & Đa tác tử Code**: `invisible-playwright-mcp` (`31,634 ⭐`), `deepseek-reasonix` (`35,878 ⭐`), `jcode` (`21,044 ⭐` — Rust Multi-Agent Harness), `beeai-framework` (`3,433 ⭐`).
+  3. **Xưởng Video AI & Không gian Tri thức**: `siyuan` (`46,545 ⭐`), `nocobase` (`24,645 ⭐`), `waoowaoo` (`14,221 ⭐`), `autoclip` (`9,337 ⭐`), `openchatcut` (`2,104 ⭐`), `answer-me-with-html` (`4,000 ⭐`).
+  4. **Nghiên cứu, Định lượng & Quản trị Dữ liệu**: `vibe-trading` (`34,285 ⭐`), `ai-berkshire` (`16,781 ⭐`), `feynman` (`9,985 ⭐`), `whodb` (`5,035 ⭐`).
+* **Chiến tích Nâng cấp 5 Động cơ Kỹ năng Lõi (`Core Skill Enhancements`)**:
+  - `ast-repo-map`: Tiền lưu trữ cú pháp (`AST Prefix Caching`) & đánh dấu ranh giới gián tiếp (`Stigmergic Symbol Boundary`).
+  - `cdp-engine`: Bổ sung Trụ cột 5 — Chống nhận diện tàng hình (`Anti-Detection Stealth`) & quỹ đạo chuột sinh học `Bézier` (`Fitts's Law`).
+  - `gemini-super-engine`: Tinh chỉnh công cụ bằng Đạo hàm Văn bản (`ToolGrad`), Làm rõ Truy vấn `RAG` (`arXiv:2610.28686`) và Tiến hóa Suy đoán (`SpecEvo`).
+  - `aider-execution-engine`: Định tuyến mô hình nhận biết chi phí (`Cost-Aware Routing`) & Khung nhận thức `CVM` chống trôi mục tiêu.
+  - `ui-ux-pro-max`: Mẫu giao diện quản trị tác tử (`Agentic Admin CRUD`) & bảo toàn tiêu điểm bàn phím ổn định (`Stable Action Element Focus Continuity`).
+
+---
+
 ## 📌 QUY TẮC NHẬN THỨC MẶC ĐỊNH CHO MỌI PHIÊN MỚI (INVARIANT FOR ALL SESSIONS)
 1. **Tự Động Nhớ Không Chờ Nhắc**: Khi bắt đầu bất kỳ phiên làm việc nào, Em coi nội dung Sổ cái này là kiến thức nền tảng đã ngấm vào bản năng.
 2. **Kế Thừa Tư Duy Đã Kiểm Chứng**: 

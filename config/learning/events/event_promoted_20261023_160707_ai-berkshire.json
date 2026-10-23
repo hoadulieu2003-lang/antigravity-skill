@@ -1,0 +1,7 @@
+{
+  "event_type": "SKILL_PROMOTED_HUMAN_GATE",
+  "timestamp": "2026-10-23T16:07:07Z",
+  "skill_name": "ai-berkshire",
+  "approved_by": "Anh (Product Owner)",
+  "target_path": "C:\\Users\\game\\.gemini\\config\\skills\\ai-berkshire\\SKILL.md"
+}

@@ -2,7 +2,7 @@ schema_version: '1.0'
 skill_name: e2b
 source_repo: e2b-dev/E2B
 stars: 14442
-status: CANDIDATE
+status: PROMOTED
 created_at: '2026-10-19T13:42:08.589079+00:00'
 human_promotion_required: true
 evidence_files:

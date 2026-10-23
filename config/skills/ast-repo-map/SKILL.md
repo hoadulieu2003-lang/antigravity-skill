@@ -23,3 +23,7 @@ Khi thực hiện các tác vụ phát triển tính năng mới, gỡ lỗi li�
 1. **Khảo sát:** Gọi `search_code_symbols` để xác định các file phụ thuộc.
 2. **Kế hoạch:** Xác định input/output types chính xác trước khi sửa file.
 3. **Thực thi:** Sửa đúng file mục tiêu, đảm bảo không phá vỡ Type Signature đã có trong Repo Map.
+
+## 4. Tối Ưu Hóa Tiền Lưu Trữ Cú Pháp & Stigmergy (Prefix Caching & Stigmergic Indexing — EVO-20261023)
+* **Tiền lưu trữ cây cú pháp (`AST Prefix Caching`)**: Ưu tiên nạp phần khung chữ ký tĩnh (`Interfaces`, `Types`, `Exported Signatures`) vào đầu ngữ cảnh để tận dụng bộ đệm tiền tố (`Context Prefix Cache`), giảm tới 70% độ trễ quét kho mã nguồn đa module.
+* **Phối hợp gián tiếp qua dấu vết cú pháp (`Stigmergic Symbol Boundary` kế thừa `boxlite` & `nocobase`)**: Khi vận hành chế độ Đa Tác Tử (`Multi-Agent Mode`), sử dụng kết quả `get_ast_repo_map` để khóa cứng khế ước giao diện (`AST Contract Lock`) và phân vùng độc quyền tệp tin (`Isolated File Manifest`) cho từng Pod trước khi viết code.

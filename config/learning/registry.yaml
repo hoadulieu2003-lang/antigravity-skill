@@ -1,6 +1,6 @@
 schema_version: '1.0'
 registry_id: FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY
-last_updated: '2026-09-20T07:37:32Z'
+last_updated: '2026-10-23T16:07:20Z'
 governance_mode: STRICT_HUMAN_PROMOTION_GATE
 tri_state_lifecycle:
   record: Stored as CANDIDATE; no execution authority
@@ -200,6 +200,86 @@ promoted_skills:
   promoted_at: '2026-09-24T08:40:00Z'
   approved_by: Anh (Product Owner)
   manifest: config/skills/design-engineering/SKILL.md
+- skill: e2b
+  promoted_at: '2026-10-23T16:07:05Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/e2b/SKILL.md
+- skill: invisible-playwright-mcp
+  promoted_at: '2026-10-23T16:07:05Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/invisible-playwright-mcp/SKILL.md
+- skill: tencentdb-agent-memory
+  promoted_at: '2026-10-23T16:07:06Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/tencentdb-agent-memory/SKILL.md
+- skill: waoowaoo
+  promoted_at: '2026-10-23T16:07:06Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/waoowaoo/SKILL.md
+- skill: autoclip
+  promoted_at: '2026-10-23T16:07:06Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/autoclip/SKILL.md
+- skill: jcode
+  promoted_at: '2026-10-23T16:07:06Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/jcode/SKILL.md
+- skill: ouroboros
+  promoted_at: '2026-10-23T16:07:06Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/ouroboros/SKILL.md
+- skill: failproofai
+  promoted_at: '2026-10-23T16:07:06Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/failproofai/SKILL.md
+- skill: deepseek-reasonix
+  promoted_at: '2026-10-23T16:07:06Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/deepseek-reasonix/SKILL.md
+- skill: siyuan
+  promoted_at: '2026-10-23T16:07:06Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/siyuan/SKILL.md
+- skill: nocobase
+  promoted_at: '2026-10-23T16:07:06Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/nocobase/SKILL.md
+- skill: vibe-trading
+  promoted_at: '2026-10-23T16:07:07Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/vibe-trading/SKILL.md
+- skill: ai-berkshire
+  promoted_at: '2026-10-23T16:07:07Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/ai-berkshire/SKILL.md
+- skill: feynman
+  promoted_at: '2026-10-23T16:07:07Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/feynman/SKILL.md
+- skill: whodb
+  promoted_at: '2026-10-23T16:07:07Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/whodb/SKILL.md
+- skill: answer-me-with-html
+  promoted_at: '2026-10-23T16:07:07Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/answer-me-with-html/SKILL.md
+- skill: beeai-framework
+  promoted_at: '2026-10-23T16:07:07Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/beeai-framework/SKILL.md
+- skill: boxlite
+  promoted_at: '2026-10-23T16:07:07Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/boxlite/SKILL.md
+- skill: openchatcut
+  promoted_at: '2026-10-23T16:07:07Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/openchatcut/SKILL.md
+- skill: tianshu-harness
+  promoted_at: '2026-10-23T16:07:07Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/tianshu-harness/SKILL.md
 capability_routing_history:
 - capability: gsap
   domain: visual_choreography
@@ -215,8 +295,8 @@ active_domain_packs:
   activated_at: '2026-09-06T09:16:00Z'
   approved_by: Anh (Product Owner)
 runtime_sync:
-  last_sync: '2026-09-20T07:37:32Z'
-  total_events_processed: 265
+  last_sync: '2026-10-23T16:07:20Z'
+  total_events_processed: 809
   autonomous_captures: 10
   knowledge_ingestions: 1
   failure_events: 0

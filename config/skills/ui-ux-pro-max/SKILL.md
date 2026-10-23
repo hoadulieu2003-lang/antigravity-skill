@@ -214,3 +214,12 @@ Then synthesize the design system + detailed searches and implement.
 ## Before Delivering App UI
 
 Read `references/pro-rules.md` and run through its canonical Pre-Delivery Checklist. It covers icon/visual-element discipline, interaction feedback, light/dark contrast, safe-area layout, and accessibility — scoped to native/mobile app UI (iOS/Android/React Native/Flutter).
+
+
+## Agentic Admin CRUD & Generative UI Patterns (EVO-20261023)
+
+When designing AI Agent management panels, operational dispatch ledgers, or Generative UI views:
+- **Luminous Light Theme Invariant**: Default 100% to multi-layered warm light surfaces (`#FAF9F6` Warm Paper, `#FDFBF7` Ivory, `#FFFFFF` Elevated Cards) with multi-dimensional ambient + key shadows and 135° top-left inset highlights.
+- **Workflow Navigation vs. Faceted Filters**: Separate top-level mutually exclusive workflow state tabs from orthogonal AND-combined faceted filters.
+- **Stable Action Element Focus Continuity**: Keep a single stable DOM node across async state transitions (`IDLE -> SAVING -> ERROR/RETRY -> SUCCESS`) and use `aria-disabled="true"` with a behavioral JS guard instead of native HTML `disabled` so keyboard focus is never evicted to `document.body`.
+- **Tactile Micro-Interactions**: Apply Emil Kowalski press compression `scale(0.965)` and `@media (hover: hover) and (pointer: fine)` isolation to prevent sticky hover traps on touch devices.

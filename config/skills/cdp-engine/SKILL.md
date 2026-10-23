@@ -105,3 +105,9 @@ flowchart LR
 
 ### 🛡️ Trụ Cột 4: Tự Chữa Lành
 * **`cdp_ensure_browser`**: Tự động kiểm tra và khởi động Google Chrome với cờ Remote Debugging nếu trình duyệt đang tắt (`Zero-Manual-CLI`).
+
+---
+
+### 🕵️ Trụ Cột 5: Chống Nhận Diện Tàng Hình & Quỹ Đạo Sinh Học (Anti-Detection Stealth & Biometric Trajectory — EVO-20261023)
+* **Đồng bộ Danh tính Phần cứng Tất định (`Seed-Consistency Invariant` & `invisible-playwright-mcp`)**: Tự động xóa cờ `navigator.webdriver` và giữ nguyên dấu vân tay phần cứng (`WebGL`, `Canvas`, `AudioContext`) xuyên suốt phiên làm việc.
+* **Quỹ đạo Chuột Sinh học (`Biometric Bézier Trajectory` theo `Fitts's Law`)**: Khi tương tác với các trang có hệ thống chống bot gắt gao (`Cloudflare Turnstile`), kết hợp di chuyển chuột theo đường cong `Bézier` có quán tính cơ bắp người và sự kiện phím cứng bản địa (`Native CDP Input Events`).

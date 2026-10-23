@@ -27,3 +27,8 @@ Sử dụng skill này khi người dùng yêu cầu thực hiện sửa đổi 
 1. **B1: Lập Plan**: Antigravity phân tích yêu cầu và xuất Implementation Plan.
 2. **B2: Gọi Aider**: Sử dụng `aider_run_task` để Aider thực thi sửa code.
 3. **B3: Verification**: Kiểm tra kết quả. Nếu Aider gặp sự cố lặp, gọi `aider_undo` để rollback và thử lại với prompt rõ ràng hơn.
+
+## 💰 Định Tuyến Mô Hình Nhận Biết Chi Phí & Khung Nhận Thức CVM (Cost-Aware Routing & CVM Harness — EVO-20261023)
+
+* **Định tuyến Mô hình Nhận biết Chi phí (`Cost-Aware Model Routing` kế thừa `cc-haha` & `TokenCostController`)**: Tự động phân bổ các tác vụ sửa đổi boilerplate/UI sang phân tầng tốc độ cao và dành ngân sách suy luận sâu cho kiến trúc lõi, đồng thời bảo vệ trần `128K Output Token Headroom`.
+* **Môi trường Thực thi Nhận thức (`Cognitive Virtual Machine - CVM` kế thừa `tianshu-harness`)**: Khóa chặt mục tiêu ban đầu (`Zero Goal Drift`), bắt buộc mọi thay đổi từ Aider phải đi kèm bằng chứng chạy `--test-cmd` đạt `Exit Code: 0` trước khi đóng gói commit.
