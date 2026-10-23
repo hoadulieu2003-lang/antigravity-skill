@@ -1,9 +1,9 @@
 schema_version: '1.0'
 skill_name: boxlite
 source_repo: boxlite-ai/boxlite
-stars: 2541
+stars: 2631
 status: CANDIDATE
-created_at: '2026-10-12T13:42:09.367703+00:00'
+created_at: '2026-10-23T07:42:16.781034+00:00'
 human_promotion_required: true
 evidence_files:
 - SKILL.md
@@ -11,7 +11,7 @@ evidence_files:
 benchmark:
   total_score: 10.0
   rating: RECOMMENDED
-  evaluated_at: '2026-10-23T04:42:14Z'
+  evaluated_at: '2026-10-23T07:42:17Z'
   breakdown:
     structure_metadata: 2.5
     command_safety: 2.5
