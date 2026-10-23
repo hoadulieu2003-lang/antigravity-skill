@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-23T13:42:20.072027+00:00",
+    "scan_date": "2026-10-23T16:42:12.398515+00:00",
     "cycle_id": "EVO-20261023",
     "sessions_evaluated": 92,
     "total_items_processed": 186,
-    "active_skills_count": 67,
-    "candidates_count": 113,
-    "enhancements_count": 38,
+    "active_skills_count": 87,
+    "candidates_count": 110,
+    "enhancements_count": 41,
     "optimizations_count": 34
   },
   "new_skill_candidates": [
@@ -21,18 +21,6 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "Desktop Companion for Hermes Agent",
       "suggested_skill_structure": "---\nname: hermes-desktop\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng fathah/hermes-desktop cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# FATHAH/HERMES-DESKTOP SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `fathah/hermes-desktop` (https://github.com/fathah/hermes-desktop)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
-      "skill_slug": "tencentdb-agent-memory",
-      "title": "TencentCloud/TencentDB-Agent-Memory",
-      "source": "GitHub (28325 ⭐)",
-      "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 105,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill,...",
-      "suggested_skill_structure": "---\nname: tencentdb-agent-memory\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng TencentCloud/TencentDB-Agent-Memory cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# TENCENTCLOUD/TENCENTDB-AGENT-MEMORY SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `TencentCloud/TencentDB-Agent-Memory` (https://github.com/TencentCloud/TencentDB-Agent-Memory)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
       "skill_slug": "openclaude",
@@ -83,30 +71,6 @@
       "suggested_skill_structure": "---\nname: zero\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Twigpine/zero cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# TWIGPINE/ZERO SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Twigpine/zero` (https://github.com/Twigpine/zero)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
-      "skill_slug": "autoclip",
-      "title": "zhouxiaoka/autoclip",
-      "source": "GitHub (9337 ⭐)",
-      "url": "https://github.com/zhouxiaoka/autoclip",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 95,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "AutoClip｜一个链接，一键出片。开源 AI 视频剪辑桌面工具，将播客、访谈、课程等长视频自动剪成短视频，生成字幕、封面和发布文案，适配抖音、小红书、TikTok、Reels 与 YouTube Shorts。Open-source AI video clipping & content repurposing.",
-      "suggested_skill_structure": "---\nname: autoclip\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng zhouxiaoka/autoclip cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ZHOUXIAOKA/AUTOCLIP SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `zhouxiaoka/autoclip` (https://github.com/zhouxiaoka/autoclip)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
-      "skill_slug": "ouroboros",
-      "title": "Q00/ouroboros",
-      "source": "GitHub (6215 ⭐)",
-      "url": "https://github.com/Q00/ouroboros",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 95,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "Agent OS: the agent gets smarter on its own. We just hold the line: Interview-gated, staged evaluation, budgeted evolution loop. MCP server, 14 runtimes: Cla...",
-      "suggested_skill_structure": "---\nname: ouroboros\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Q00/ouroboros cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# Q00/OUROBOROS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Q00/ouroboros` (https://github.com/Q00/ouroboros)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
       "skill_slug": "aigc-interview-book",
       "title": "WeThinkIn/AIGC-Interview-Book",
       "source": "GitHub (4970 ⭐)",
@@ -153,28 +117,74 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "Open-source, self-hosted customer support desk in a single binary. A lightweight alternative to Intercom, Zendesk, Chatwoot.",
       "suggested_skill_structure": "---\nname: libredesk\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng abhinavxd/libredesk cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ABHINAVXD/LIBREDESK SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `abhinavxd/libredesk` (https://github.com/abhinavxd/libredesk)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "open-reverselab",
+      "title": "LING71671/open-reverselab",
+      "source": "GitHub (1280 ⭐)",
+      "url": "https://github.com/LING71671/open-reverselab",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Open-source AI reverse-engineering agent platform and MCP server for Ghidra, Frida, x64dbg and Rizin — automated PE/APK/binary analysis, CTF and malware rese...",
+      "suggested_skill_structure": "---\nname: open-reverselab\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng LING71671/open-reverselab cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# LING71671/OPEN-REVERSELAB SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `LING71671/open-reverselab` (https://github.com/LING71671/open-reverselab)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "moltis",
+      "title": "moltis-org/moltis",
+      "source": "GitHub (2907 ⭐)",
+      "url": "https://github.com/moltis-org/moltis",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "A secure persistent personal agent server in Rust. One binary, sandboxed execution, multi-provider LLMs, voice, memory, Telegram, WhatsApp, Discord, Teams, a...",
+      "suggested_skill_structure": "---\nname: moltis\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng moltis-org/moltis cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# MOLTIS-ORG/MOLTIS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `moltis-org/moltis` (https://github.com/moltis-org/moltis)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "artex-global",
+      "title": "jiwoochris/artex-global",
+      "source": "GitHub (1437 ⭐)",
+      "url": "https://github.com/jiwoochris/artex-global",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 90,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "ARTEX 한국어판 · AI 자율 침투 테스트 프레임워크(upstream: Autumn-27/ARTEX, AGPL-3.0)",
+      "suggested_skill_structure": "---\nname: artex-global\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng jiwoochris/artex-global cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# JIWOOCHRIS/ARTEX-GLOBAL SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `jiwoochris/artex-global` (https://github.com/jiwoochris/artex-global)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
     {
-      "target_skill": "ast-repo-map",
+      "target_skill": "boxlite",
       "source_technology": "boxlite-ai/boxlite",
       "source_url": "https://github.com/boxlite-ai/boxlite",
       "source_type": "GitHub (2529 ⭐)",
       "priority": "HIGH",
       "priority_score": 85,
       "enhancement_rationale": "The micro-VM for AI agents — light enough to embed on your laptop, elastic enough to power an agentic cloud.",
-      "recommended_action": "Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context."
+      "recommended_action": "Bổ sung tri thức và thuật toán từ boxlite-ai/boxlite vào module boxlite."
     },
     {
-      "target_skill": "ast-repo-map",
+      "target_skill": "nocobase",
       "source_technology": "nocobase/nocobase",
       "source_url": "https://github.com/nocobase/nocobase",
       "source_type": "GitHub (24522 ⭐)",
       "priority": "HIGH",
       "priority_score": 85,
       "enhancement_rationale": "NocoBase is an open-source AI + no-code platform for building business systems fast. Instead of generating everything from scratch, AI works on top of produc...",
-      "recommended_action": "Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context."
+      "recommended_action": "Bổ sung tri thức và thuật toán từ nocobase/nocobase vào module nocobase."
+    },
+    {
+      "target_skill": "autoclip",
+      "source_technology": "zhouxiaoka/autoclip",
+      "source_url": "https://github.com/zhouxiaoka/autoclip",
+      "source_type": "GitHub (9337 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "AutoClip｜一个链接，一键出片。开源 AI 视频剪辑桌面工具，将播客、访谈、课程等长视频自动剪成短视频，生成字幕、封面和发布文案，适配抖音、小红书、TikTok、Reels 与 YouTube Shorts。Open-source AI video clipping & content repurposing.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ zhouxiaoka/autoclip vào module autoclip."
     },
     {
       "target_skill": "ui-ux-pro-max",
@@ -185,6 +195,26 @@
       "priority_score": 85,
       "enhancement_rationale": "🦞 OpenClaw (Clawdbot/Moltbot) 汉化版 - 开源个人 AI 助手中文版 | Claude/ChatGPT LLM 接入 | WhatsApp/Telegram/Discord 多平台 | 每小时自动同步 | CLI + Dashboard 全中文 | 全流程搭建教程，以及排错指南！",
       "recommended_action": "Bổ sung mẫu giao diện quản trị tác tử (Agentic Admin CRUD) và tương tác phản hồi trực quan."
+    },
+    {
+      "target_skill": "tencentdb-agent-memory",
+      "source_technology": "TencentCloud/TencentDB-Agent-Memory",
+      "source_url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+      "source_type": "GitHub (28325 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill,...",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ TencentCloud/TencentDB-Agent-Memory vào module tencentdb-agent-memory."
+    },
+    {
+      "target_skill": "ouroboros",
+      "source_technology": "Q00/ouroboros",
+      "source_url": "https://github.com/Q00/ouroboros",
+      "source_type": "GitHub (6215 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Agent OS: the agent gets smarter on its own. We just hold the line: Interview-gated, staged evaluation, budgeted evolution loop. MCP server, 14 runtimes: Cla...",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ Q00/ouroboros vào module ouroboros."
     },
     {
       "target_skill": "aider-execution-engine",
@@ -207,14 +237,14 @@
       "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
     },
     {
-      "target_skill": "aider-execution-engine",
+      "target_skill": "ai-berkshire",
       "source_technology": "xbtlin/ai-berkshire",
       "source_url": "https://github.com/xbtlin/ai-berkshire",
       "source_type": "GitHub (16773 ⭐)",
       "priority": "HIGH",
       "priority_score": 85,
       "enhancement_rationale": "AI 时代的伯克希尔：基于 Claude Code / Codex 的价值投资研究框架。巴菲特·芒格·段永平·李录四大师方法论 + 多Agent并行研究。| AI-era Berkshire: a value investing research framework built for Claude Code /...",
-      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+      "recommended_action": "Bổ sung tri thức và thuật toán từ xbtlin/ai-berkshire vào module ai-berkshire."
     },
     {
       "target_skill": "gemini-super-engine",
@@ -244,36 +274,6 @@
       "priority": "HIGH",
       "priority_score": 75,
       "enhancement_rationale": "A local coding agent for models with limited context: composable tools, skills, hooks and agents, with a terminal REPL, browser dashboard and ACP.",
-      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
-    },
-    {
-      "target_skill": "threejs",
-      "source_technology": "Tenney95/AI-Canvas-tauri",
-      "source_url": "https://github.com/Tenney95/AI-Canvas-tauri",
-      "source_type": "GitHub (215 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "Local-first AI canvas for visual workflows, AI short drama, image/video generation, storyboarding and asset management. ComfyUI, AI agents, MCP & Blender. 本地...",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ Tenney95/AI-Canvas-tauri vào module threejs."
-    },
-    {
-      "target_skill": "cdp-engine",
-      "source_technology": "Dodaios/Dodaios",
-      "source_url": "https://github.com/Dodaios/Dodaios",
-      "source_type": "GitHub (188 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "Your AI assistant, built for the agentic era. Open source and local: talk to it, and it runs your agents, your coding CLIs, your browser and your apps. Windo...",
-      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
-    },
-    {
-      "target_skill": "cdp-engine",
-      "source_technology": "KitionAI/kition",
-      "source_url": "https://github.com/KitionAI/kition",
-      "source_type": "GitHub (472 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "Kition brings Markdown, DataTable, WhiteBoard, a tool-using AI agent, browser research, and visual workflows into one desktop workspace.",
       "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
     }
   ],
