@@ -1,11 +1,11 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-24T01:42:15.833117+00:00",
+    "scan_date": "2026-10-24T04:42:26.562419+00:00",
     "cycle_id": "EVO-20261024",
-    "sessions_evaluated": 91,
-    "total_items_processed": 187,
+    "sessions_evaluated": 90,
+    "total_items_processed": 183,
     "active_skills_count": 87,
-    "candidates_count": 108,
+    "candidates_count": 104,
     "enhancements_count": 41,
     "optimizations_count": 37
   },
@@ -33,18 +33,6 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "runs anywhere. uses anything",
       "suggested_skill_structure": "---\nname: openclaude\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Twigpine/openclaude cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# TWIGPINE/OPENCLAUDE SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Twigpine/openclaude` (https://github.com/Twigpine/openclaude)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
-      "skill_slug": "paca",
-      "title": "Paca-AI/paca",
-      "source": "GitHub (1910 ⭐)",
-      "url": "https://github.com/Paca-AI/paca",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 95,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "AI-native, free, open-source alternative to Jira, Trello, ClickUp & Monday. Built for Scrum teams where humans and AI agents collaborate as equals — on the s...",
-      "suggested_skill_structure": "---\nname: paca\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Paca-AI/paca cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# PACA-AI/PACA SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Paca-AI/paca` (https://github.com/Paca-AI/paca)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
       "skill_slug": "tradingagents-astock",
@@ -153,6 +141,18 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "ARTEX 한국어판 · AI 자율 침투 테스트 프레임워크(upstream: Autumn-27/ARTEX, AGPL-3.0)",
       "suggested_skill_structure": "---\nname: artex-global\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng jiwoochris/artex-global cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# JIWOOCHRIS/ARTEX-GLOBAL SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `jiwoochris/artex-global` (https://github.com/jiwoochris/artex-global)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "goofish-cli",
+      "title": "fancyboi999/goofish-cli",
+      "source": "GitHub (308 ⭐)",
+      "url": "https://github.com/fancyboi999/goofish-cli",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "闲鱼 CLI · 原生支持 MCP · 为 AI Agent 而生 | Goofish (Xianyu) automation CLI · MCP-ready · Built for AI Agents",
+      "suggested_skill_structure": "---\nname: goofish-cli\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng fancyboi999/goofish-cli cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# FANCYBOI999/GOOFISH-CLI SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `fancyboi999/goofish-cli` (https://github.com/fancyboi999/goofish-cli)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
