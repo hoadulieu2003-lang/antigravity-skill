@@ -4078,3 +4078,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-24 20:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (90 ⭐)]** [NeoZi12/dispatchseo](https://github.com/NeoZi12/dispatchseo)
+  > Turn your AI agent into your SEO manager - works today with Claude Code, Codex, and Cursor. The open-source alternative to SEObot and Outrank
+
+</untrusted_external_content>
+
+---
