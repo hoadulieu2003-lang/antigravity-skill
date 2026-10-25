@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-25T04:42:15.923471+00:00",
+  "skill_name": "nanomuse",
+  "source_repo": "nano-muse/nanoMuse",
+  "stars": 2533,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\nanomuse\\SKILL.md",
+  "human_promotion_required": true
+}

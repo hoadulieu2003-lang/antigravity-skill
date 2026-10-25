@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-25T01:42:17.523577+00:00",
+    "scan_date": "2026-10-25T04:42:16.543135+00:00",
     "cycle_id": "EVO-20261025",
     "sessions_evaluated": 91,
     "total_items_processed": 180,
     "active_skills_count": 87,
-    "candidates_count": 104,
-    "enhancements_count": 42,
+    "candidates_count": 105,
+    "enhancements_count": 41,
     "optimizations_count": 33
   },
   "new_skill_candidates": [
@@ -131,6 +131,18 @@
       "suggested_skill_structure": "---\nname: moltis\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng moltis-org/moltis cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# MOLTIS-ORG/MOLTIS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `moltis-org/moltis` (https://github.com/moltis-org/moltis)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
+      "skill_slug": "eac-desktop",
+      "title": "Ebony-Vinyl/EAC-Desktop",
+      "source": "GitHub (2242 ⭐)",
+      "url": "https://github.com/Ebony-Vinyl/EAC-Desktop",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Embracing All Creation (Desktop) — Dedicated to the Harmonious Coexistence of Hundreds of DSH Plugins / 揽尽万象（桌面版） —— 致力于让数百个DSH插件和谐共存",
+      "suggested_skill_structure": "---\nname: eac-desktop\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Ebony-Vinyl/EAC-Desktop cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# EBONY-VINYL/EAC-DESKTOP SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Ebony-Vinyl/EAC-Desktop` (https://github.com/Ebony-Vinyl/EAC-Desktop)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
       "skill_slug": "artex-global",
       "title": "jiwoochris/artex-global",
       "source": "GitHub (1437 ⭐)",
@@ -141,31 +153,9 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "ARTEX 한국어판 · AI 자율 침투 테스트 프레임워크(upstream: Autumn-27/ARTEX, AGPL-3.0)",
       "suggested_skill_structure": "---\nname: artex-global\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng jiwoochris/artex-global cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# JIWOOCHRIS/ARTEX-GLOBAL SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `jiwoochris/artex-global` (https://github.com/jiwoochris/artex-global)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
-      "skill_slug": "goofish-cli",
-      "title": "fancyboi999/goofish-cli",
-      "source": "GitHub (308 ⭐)",
-      "url": "https://github.com/fancyboi999/goofish-cli",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "闲鱼 CLI · 原生支持 MCP · 为 AI Agent 而生 | Goofish (Xianyu) automation CLI · MCP-ready · Built for AI Agents",
-      "suggested_skill_structure": "---\nname: goofish-cli\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng fancyboi999/goofish-cli cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# FANCYBOI999/GOOFISH-CLI SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `fancyboi999/goofish-cli` (https://github.com/fancyboi999/goofish-cli)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
-    {
-      "target_skill": "boxlite",
-      "source_technology": "boxlite-ai/boxlite",
-      "source_url": "https://github.com/boxlite-ai/boxlite",
-      "source_type": "GitHub (2529 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "The micro-VM for AI agents — light enough to embed on your laptop, elastic enough to power an agentic cloud.",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ boxlite-ai/boxlite vào module boxlite."
-    },
     {
       "target_skill": "nocobase",
       "source_technology": "nocobase/nocobase",
@@ -275,6 +265,16 @@
       "priority_score": 85,
       "enhancement_rationale": "Open Science Desktop — local-first, model-agnostic AI research workbench for macOS, Windows & Linux. Open-source Claude Science desktop alternative built on ...",
       "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
+    },
+    {
+      "target_skill": "cdp-engine",
+      "source_technology": "lploc94/raw-cli",
+      "source_url": "https://github.com/lploc94/raw-cli",
+      "source_type": "GitHub (101 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "A local coding agent for models with limited context: composable tools, skills, hooks and agents, with a terminal REPL, browser dashboard and ACP.",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
     }
   ],
   "architecture_optimizations": [

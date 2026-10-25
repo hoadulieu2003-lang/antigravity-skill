@@ -4122,3 +4122,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-25 11:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (59 ⭐)]** [tetsuo-ai/agenc-core](https://github.com/tetsuo-ai/agenc-core)
+  > Open source AI coding agent for your terminal. 76.2% on Terminal-Bench 2.1 for $34. Works with any model: 25 providers, local models included.
+- **[GitHub (2242 ⭐)]** [Ebony-Vinyl/EAC-Desktop](https://github.com/Ebony-Vinyl/EAC-Desktop)
+  > Embracing All Creation (Desktop) — Dedicated to the Harmonious Coexistence of Hundreds of DSH Plugins / 揽尽万象（桌面版） —— 致力于让数百个DSH插件和谐共存
+
+</untrusted_external_content>
+
+---
