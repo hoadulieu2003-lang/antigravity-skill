@@ -4134,3 +4134,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-25 20:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (78 ⭐)]** [selfishprimate/seekter](https://github.com/selfishprimate/seekter)
+  > A job-search agent for Claude Code. It searches job sources every day, filters postings against your rules (location, visa, salary, sectors, seniority, langu...
+- **[GitHub (67039 ⭐)]** [ZhuLinsen/daily_stock_analysis](https://github.com/ZhuLinsen/daily_stock_analysis)
+  > LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dash...
+
+</untrusted_external_content>
+
+---
