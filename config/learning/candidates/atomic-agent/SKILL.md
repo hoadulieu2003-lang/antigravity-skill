@@ -1,7 +1,7 @@
 ---
 name: atomic-agent
 description: >-
-  Kỹ năng chuyên gia vận hành cho AtomicBot-ai/atomic-agent (3322 ⭐).
+  Kỹ năng chuyên gia vận hành cho AtomicBot-ai/atomic-agent (3439 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở atomic-agent vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Atomic Agent is a local-first AI agent
@@ -12,9 +12,9 @@ description: >-
 # AtomicBot-ai/atomic-agent — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/AtomicBot-ai/atomic-agent`  
-> **Độ uy tín cộng đồng**: 3322 ⭐  
+> **Độ uy tín cộng đồng**: 3439 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-14 19:42:15Z
+> **Tự động đóng gói lúc**: 2026-10-26 13:42:15Z
 
 ---
 
