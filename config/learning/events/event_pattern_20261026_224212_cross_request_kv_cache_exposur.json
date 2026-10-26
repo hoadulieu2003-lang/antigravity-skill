@@ -1,0 +1,7 @@
+{
+  "event_type": "ARCHITECTURAL_PATTERN_DISTILLED",
+  "title": "Cross-request KV cache exposure in the GLM-5.3 Workers AI model, and our remediation with SGLang",
+  "source": "Cloudflare Engineering",
+  "pattern_file": "C:\\Users\\game\\.gemini\\knowledge\\architecture_patterns\\cross_request_kv_cache_exposure_in_the_glm_53_workers_ai_mod.md",
+  "timestamp": "2026-10-26 22:42:12 UTC"
+}
