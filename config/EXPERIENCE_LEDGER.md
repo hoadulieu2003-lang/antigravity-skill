@@ -168,6 +168,17 @@ flowchart TD
   - `aider-execution-engine`: Định tuyến mô hình nhận biết chi phí (`Cost-Aware Routing`) & Khung nhận thức `CVM` chống trôi mục tiêu.
   - `ui-ux-pro-max`: Mẫu giao diện quản trị tác tử (`Agentic Admin CRUD`) & bảo toàn tiêu điểm bàn phím ổn định (`Stable Action Element Focus Continuity`).
 
+### 12. 📈 ANTIGRAVITY QUANT TERMINAL — ĐẶC QUYỀN VƯỢT RÀO MOMENTUM & BUNG FULL HẠM ĐỘI 7 TÀI SẢN (2026-10-26)
+* **Vị trí lưu trữ**: `C:/Users/game/Documents/app/trade/` (`daemon_monitor.js`, `config.json`, `lib/momentum_daemon_hook.js`)
+* **Bối cảnh & Chỉ thị Tối cao từ Anh**:
+  - *"anh chọn phương án B em ơi"* $\to$ Bung full hạm đội 7 tài sản (`GOLD`, `BTCUSD`, `EURUSD`, `USOIL`, `GBPUSD`, `USDJPY`, `XAGUSD`), tắt `strictLiveWinnersOnly: false` để giải phóng `DualCoreEngine` (Boss 1-10), `DiamondFleetPhase2` (11 động cơ Kim Cương) và `Counter-Trend Engine`. Nâng trần danh mục lên 5 vị thế đồng thời.
+  - *"ghi nhớ động cơ momentum luôn được phép vào lệnh dù có vị thế đang mở nhé"* $\to$ Khóa cứng đặc quyền VIP Vượt rào Bất biến (`Momentum Engine VIP Preemption Invariant`).
+* **Quy tắc Kiến trúc Bất biến (`Momentum Preemption & VIP Bypass Law`)**:
+  1. **Luôn Luôn Được Vào Lệnh Khi Có Tín Hiệu Momentum**: Động cơ `MOMENTUM_EXPANSION` (Nến Đô / Marubozu bứt phá) có đặc quyền tối cao, **TUYỆT ĐỐI KHÔNG BỊ CHẶN BỞI BẤT KỲ RÀO CẢN NÀO** kể cả khi tài sản hoặc tài khoản đã có vị thế mở (`Single-Ticket Invariant` hoặc `Single-Wave Guard`).
+  2. **Xử lý Hai Kịch Bản Thực Chiến**:
+     - **Nếu ngược chiều với vị thế cũ**: Kích hoạt *Lựa chọn 1 (Preemption)* — Tự động tất toán ngay các vị thế ngược chiều yếu thế trên sàn, dọn sạch lệnh chờ ngược chiều để dồn toàn lực mở lệnh mới theo xung lực bùng nổ của Momentum.
+     - **Nếu cùng chiều với vị thế cũ**: Cấp phép bồi thêm Lệnh Gia Tăng Xung Lực (*Momentum Booster / Scale-in*) khi mức ký quỹ an toàn (`Margin Level > 300%`), bảo đảm không bỏ lỡ con sóng tăng tốc.
+
 ---
 
 ## 📌 QUY TẮC NHẬN THỨC MẶC ĐỊNH CHO MỌI PHIÊN MỚI (INVARIANT FOR ALL SESSIONS)

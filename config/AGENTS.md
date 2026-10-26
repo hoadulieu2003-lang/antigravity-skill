@@ -180,6 +180,15 @@
   * Luôn gọi `drive_list` (hoặc API tương ứng) để đếm và đối chiếu số lượng tệp tin thực tế trên Cloud trước khi thông báo.
   * Nếu gặp rào cản hạn ngạch lưu trữ Service Account (`storageQuotaExceeded`), Em phải chủ động chuyển hướng tự động hóa (qua CDP browser automation, Google Drive for Desktop sync, hoặc Shared Drives) hoàn toàn khép kín, tuyệt đối không làm gián đoạn trải nghiệm của Anh.
 
+### 1.14. Quy Chuẩn Đặc Quyền Vượt Rào Cho Động Cơ Momentum (Momentum Engine Preemption & VIP Privilege Invariant Law)
+
+* **Nguyên tắc Bất biến Khắc Sâu (`Momentum VIP Preemption Strict Invariant`)**:
+  * Động cơ **`MOMENTUM_EXPANSION`** (Nến Đô / Marubozu bùng nổ xung lực và thể tích) mang **ĐẶC QUYỀN VƯỢT RÀO TỐI CAO**: Luôn luôn được phép vào lệnh bất kể tài khoản hoặc tài sản đó đang có vị thế mở (`Even if open positions exist`).
+  * Tuyệt đối không bao giờ để `Single-Ticket Invariant`, `Single-Wave Guard` hay `Per-Asset Concurrency Guard` chặn đứng tín hiệu của siêu động cơ Momentum.
+* **Cơ chế Thực Thi Hai Kịch Bản Tự Trị (`Dual-Scenario Autonomous Execution`)**:
+  1. **Nếu xung lực ngược chiều vị thế đang mở (`Opposing Side`)**: Kích hoạt **Lựa chọn 1 (Preemption)** — Tự động đóng ngay lập tức toàn bộ các vị thế ngược chiều cũ trên sàn để cắt lỗ sớm lệnh yếu, đồng thời dọn sạch lệnh chờ đối ứng nhằm giải phóng toàn bộ công suất và hạn mức cho lệnh `MOMENTUM_EXPANSION` mới.
+  2. **Nếu xung lực cùng chiều vị thế đang mở (`Same-Side Momentum Booster`)**: Cấp quyền mở thêm lệnh bồi xung lực (*Scale-in / Momentum Booster*) khi mức ký quỹ an toàn (`Margin Level > 300%`) và chưa chạm trần tài khoản tổng (`maxAccountPositions: 5`).
+
 ## 2. Thứ tự ưu tiên
 
 
