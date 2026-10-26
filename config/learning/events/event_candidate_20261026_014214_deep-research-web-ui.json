@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-26T01:42:14.805631+00:00",
+  "skill_name": "deep-research-web-ui",
+  "source_repo": "AnotiaWang/deep-research-web-ui",
+  "stars": 2223,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\deep-research-web-ui\\SKILL.md",
+  "human_promotion_required": true
+}

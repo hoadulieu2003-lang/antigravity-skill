@@ -4146,3 +4146,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-26 08:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (2223 ⭐)]** [AnotiaWang/deep-research-web-ui](https://github.com/AnotiaWang/deep-research-web-ui)
+  > AI deep-research agent that turns any question into a cited report: plans searches, reads real sources, verifies evidence. Self-hosted, multi-provider, Docke...
+
+</untrusted_external_content>
+
+---
