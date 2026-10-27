@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-27T07:42:13.843103+00:00",
+  "skill_name": "open-science",
+  "source_repo": "ai4s-research/open-science",
+  "stars": 2046,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\open-science\\SKILL.md",
+  "human_promotion_required": true
+}
