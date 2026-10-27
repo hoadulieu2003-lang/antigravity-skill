@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-27T04:42:14.506464+00:00",
+  "skill_name": "learn-claude-code",
+  "source_repo": "shareAI-lab/learn-claude-code",
+  "stars": 79296,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\learn-claude-code\\SKILL.md",
+  "human_promotion_required": true
+}

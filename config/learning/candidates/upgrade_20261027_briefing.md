@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261027` | **Thời gian**: `2026-10-27 01:42:15 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261027` | **Thời gian**: `2026-10-27 04:42:17 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -9,10 +9,10 @@
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
 | **Phiên học đã quét (Sessions Evaluated)** | `89` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
-| **Tài nguyên công nghệ (Items Processed)** | `183` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
+| **Tài nguyên công nghệ (Items Processed)** | `181` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `87` | Kho năng lực sẵn có tại `config/skills/` |
-| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `103` | Các khoảng trống công nghệ cần bổ sung độc lập |
-| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `44` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
+| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `102` | Các khoảng trống công nghệ cần bổ sung độc lập |
+| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `43` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
 | **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `35` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
 ---
@@ -20,31 +20,7 @@
 ## 🌟 2. Đề Xuất Ứng Viên Kỹ Năng Mới (`NEW_SKILL_CANDIDATE`)
 Các công nghệ đột phá giải quyết những bài toán mà Antigravity 2.0 hiện chưa có module chuyên trách:
 
-### 2.1. `hermes-desktop` — fathah/hermes-desktop 🔥 [HIGH PRIORITY]
-- **Nguồn gốc (Source)**: [GitHub (14393 ⭐)](https://github.com/fathah/hermes-desktop)
-- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
-- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
-- **Giá trị Đề xuất (Proposed Value)**: Desktop Companion for Hermes Agent
-
-```yaml
-# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
----
-name: hermes-desktop
-description: Tự động kích hoạt khi người dùng muốn tận dụng fathah/hermes-desktop cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
----
-
-# FATHAH/HERMES-DESKTOP SKILL ARCHITECTURE
-
-## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
-- Kế thừa giải pháp từ: `fathah/hermes-desktop` (https://github.com/fathah/hermes-desktop)
-- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
-
-## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
-- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
-- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
-```
-
-### 2.2. `openclaude` — Twigpine/openclaude 🔥 [HIGH PRIORITY]
+### 2.1. `openclaude` — Twigpine/openclaude 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (33836 ⭐)](https://github.com/Twigpine/openclaude)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -68,7 +44,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng Tw
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.3. `daily_stock_analysis` — ZhuLinsen/daily_stock_analysis 🔥 [HIGH PRIORITY]
+### 2.2. `daily_stock_analysis` — ZhuLinsen/daily_stock_analysis 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (67039 ⭐)](https://github.com/ZhuLinsen/daily_stock_analysis)
 - **Lĩnh vực (Domain)**: `Định lượng & Phân tích Thị trường (Quant & Financial AI)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Định lượng & Phân tích Thị trường (Quant & Financial AI).
@@ -92,7 +68,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng Zh
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.4. `ian-xiaohei-illustrations` — helloianneo/ian-xiaohei-illustrations 🔥 [HIGH PRIORITY]
+### 2.3. `ian-xiaohei-illustrations` — helloianneo/ian-xiaohei-illustrations 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (12873 ⭐)](https://github.com/helloianneo/ian-xiaohei-illustrations)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -116,7 +92,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng he
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.5. `aigc-interview-book` — WeThinkIn/AIGC-Interview-Book 🔥 [HIGH PRIORITY]
+### 2.4. `aigc-interview-book` — WeThinkIn/AIGC-Interview-Book 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (4970 ⭐)](https://github.com/WeThinkIn/AIGC-Interview-Book)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -140,7 +116,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng We
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.6. `skillhub` — iflytek/skillhub 🔥 [HIGH PRIORITY]
+### 2.5. `skillhub` — iflytek/skillhub 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (5225 ⭐)](https://github.com/iflytek/skillhub)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -164,7 +140,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng if
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.7. `clawpanel` — qingchencloud/clawpanel 🔥 [HIGH PRIORITY]
+### 2.6. `clawpanel` — qingchencloud/clawpanel 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2933 ⭐)](https://github.com/qingchencloud/clawpanel)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -188,7 +164,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng qi
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.8. `libredesk` — abhinavxd/libredesk 🔥 [HIGH PRIORITY]
+### 2.7. `libredesk` — abhinavxd/libredesk 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (3050 ⭐)](https://github.com/abhinavxd/libredesk)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -212,7 +188,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng ab
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.9. `open-reverselab` — LING71671/open-reverselab 🔥 [HIGH PRIORITY]
+### 2.8. `open-reverselab` — LING71671/open-reverselab 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1280 ⭐)](https://github.com/LING71671/open-reverselab)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -236,7 +212,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng LI
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.10. `moltis` — moltis-org/moltis 🔥 [HIGH PRIORITY]
+### 2.9. `moltis` — moltis-org/moltis 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2907 ⭐)](https://github.com/moltis-org/moltis)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -260,7 +236,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng mo
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.11. `eac-desktop` — Ebony-Vinyl/EAC-Desktop 🔥 [HIGH PRIORITY]
+### 2.10. `eac-desktop` — Ebony-Vinyl/EAC-Desktop 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2242 ⭐)](https://github.com/Ebony-Vinyl/EAC-Desktop)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -284,7 +260,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng Eb
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.12. `artex-global` — jiwoochris/artex-global 🔥 [HIGH PRIORITY]
+### 2.11. `artex-global` — jiwoochris/artex-global 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1437 ⭐)](https://github.com/jiwoochris/artex-global)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -308,6 +284,30 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng ji
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
+### 2.12. `subpool` — gesta-run/subpool 🔥 [HIGH PRIORITY]
+- **Nguồn gốc (Source)**: [GitHub (116 ⭐)](https://github.com/gesta-run/subpool)
+- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
+- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
+- **Giá trị Đề xuất (Proposed Value)**: A lightweight, self-hosted AI subscription pool for teams.
+
+```yaml
+# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
+---
+name: subpool
+description: Tự động kích hoạt khi người dùng muốn tận dụng gesta-run/subpool cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
+---
+
+# GESTA-RUN/SUBPOOL SKILL ARCHITECTURE
+
+## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
+- Kế thừa giải pháp từ: `gesta-run/subpool` (https://github.com/gesta-run/subpool)
+- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
+
+## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
+- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
+- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
+```
+
 ---
 
 ## 🛠️ 3. Đề Xuất Nâng Cấp Kỹ Năng Hiện Hữu (`SKILL_ENHANCEMENT`)
@@ -315,7 +315,6 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 
 | Kỹ năng Mục tiêu (Target) | Công nghệ Đối chiếu (Source Tech) | Mức độ Ưu tiên (Priority) | Hành động Đề xuất (Recommended Action) |
 | :--- | :--- | :--- | :--- |
-| **`autoclip`** | [zhouxiaoka/autoclip](https://github.com/zhouxiaoka/autoclip) | `HIGH` | Bổ sung tri thức và thuật toán từ zhouxiaoka/autoclip vào module autoclip. |
 | **`ui-ux-pro-max`** | [1186258278/OpenClawChineseTranslation](https://github.com/1186258278/OpenClawChineseTranslation) | `HIGH` | Bổ sung mẫu giao diện quản trị tác tử (Agentic Admin CRUD) và tương tác phản hồi trực quan. |
 | **`tencentdb-agent-memory`** | [TencentCloud/TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) | `HIGH` | Bổ sung tri thức và thuật toán từ TencentCloud/TencentDB-Agent-Memory vào module tencentdb-agent-memory. |
 | **`ouroboros`** | [Q00/ouroboros](https://github.com/Q00/ouroboros) | `HIGH` | Bổ sung tri thức và thuật toán từ Q00/ouroboros vào module ouroboros. |
@@ -326,6 +325,7 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 | **`gemini-super-engine`** | [synthetic-sciences/openscience](https://github.com/synthetic-sciences/openscience) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
 | **`gemini-super-engine`** | [ai4s-research/open-science](https://github.com/ai4s-research/open-science) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
 | **`gemini-super-engine`** | [AnotiaWang/deep-research-web-ui](https://github.com/AnotiaWang/deep-research-web-ui) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
+| **`aider-execution-engine`** | [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`cdp-engine`** | [Dodaios/Dodaios](https://github.com/Dodaios/Dodaios) | `HIGH` | Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents. |
 
 
