@@ -1,9 +1,9 @@
 schema_version: '1.0'
 skill_name: mercury-agent
 source_repo: cosmicstack-labs/mercury-agent
-stars: 3409
+stars: 3680
 status: CANDIDATE
-created_at: '2026-10-16T04:42:09.219937+00:00'
+created_at: '2026-10-28T22:42:10.320168+00:00'
 human_promotion_required: true
 evidence_files:
 - SKILL.md
@@ -11,7 +11,7 @@ evidence_files:
 benchmark:
   total_score: 10.0
   rating: RECOMMENDED
-  evaluated_at: '2026-10-28T16:42:13Z'
+  evaluated_at: '2026-10-28T22:42:10Z'
   breakdown:
     structure_metadata: 2.5
     command_safety: 2.5
