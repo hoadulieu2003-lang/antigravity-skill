@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261028` | **Thời gian**: `2026-10-28 04:42:20 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261028` | **Thời gian**: `2026-10-28 07:42:12 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -8,12 +8,12 @@
 ## 📊 1. Bức Tranh Tổng Thể (Executive Summary & Metrics)
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
-| **Phiên học đã quét (Sessions Evaluated)** | `87` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
+| **Phiên học đã quét (Sessions Evaluated)** | `86` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
 | **Tài nguyên công nghệ (Items Processed)** | `183` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `87` | Kho năng lực sẵn có tại `config/skills/` |
-| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `104` | Các khoảng trống công nghệ cần bổ sung độc lập |
-| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `41` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
-| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `37` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
+| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `106` | Các khoảng trống công nghệ cần bổ sung độc lập |
+| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `40` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
+| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `36` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
 ---
 
@@ -284,23 +284,23 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng An
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.12. `artex-global` — jiwoochris/artex-global 🔥 [HIGH PRIORITY]
-- **Nguồn gốc (Source)**: [GitHub (1437 ⭐)](https://github.com/jiwoochris/artex-global)
+### 2.12. `esp32-iphone-agent` — onehumanbeing/esp32-iphone-agent 🔥 [HIGH PRIORITY]
+- **Nguồn gốc (Source)**: [GitHub (4033 ⭐)](https://github.com/onehumanbeing/esp32-iphone-agent)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
-- **Giá trị Đề xuất (Proposed Value)**: ARTEX 한국어판 · AI 자율 침투 테스트 프레임워크(upstream: Autumn-27/ARTEX, AGPL-3.0)
+- **Giá trị Đề xuất (Proposed Value)**: Let an AI model use a real iPhone with a $7 ESP32: AirPlay eyes, USB HID hands, any OpenAI-compatible vision model. No Mac, no developer account, no jailbreak.
 
 ```yaml
 # Gợi ý Cấu trúc SKILL.md (Suggested Specification)
 ---
-name: artex-global
-description: Tự động kích hoạt khi người dùng muốn tận dụng jiwoochris/artex-global cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
+name: esp32-iphone-agent
+description: Tự động kích hoạt khi người dùng muốn tận dụng onehumanbeing/esp32-iphone-agent cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
 ---
 
-# JIWOOCHRIS/ARTEX-GLOBAL SKILL ARCHITECTURE
+# ONEHUMANBEING/ESP32-IPHONE-AGENT SKILL ARCHITECTURE
 
 ## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
-- Kế thừa giải pháp từ: `jiwoochris/artex-global` (https://github.com/jiwoochris/artex-global)
+- Kế thừa giải pháp từ: `onehumanbeing/esp32-iphone-agent` (https://github.com/onehumanbeing/esp32-iphone-agent)
 - Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
 
 ## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
@@ -325,8 +325,8 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 | **`gemini-super-engine`** | [ai4s-research/open-science](https://github.com/ai4s-research/open-science) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
 | **`gemini-super-engine`** | [AnotiaWang/deep-research-web-ui](https://github.com/AnotiaWang/deep-research-web-ui) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
 | **`aider-execution-engine`** | [shareAI-lab/learn-claude-code](https://github.com/shareAI-lab/learn-claude-code) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
-| **`cdp-engine`** | [KitionAI/kition](https://github.com/KitionAI/kition) | `HIGH` | Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents. |
 | **`aider-execution-engine`** | [ethanplusai/harvey](https://github.com/ethanplusai/harvey) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
+| **`cdp-engine`** | [rongxinzy/RongxinAI](https://github.com/rongxinzy/RongxinAI) | `HIGH` | Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents. |
 
 
 ## 🏛️ 4. Đề Xuất Tối Ưu Kiến Trúc & Quy Chuẩn (`ARCHITECTURE_OPTIMIZATION`)

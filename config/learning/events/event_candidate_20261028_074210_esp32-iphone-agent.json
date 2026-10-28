@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-28T07:42:10.826268+00:00",
+  "skill_name": "esp32-iphone-agent",
+  "source_repo": "onehumanbeing/esp32-iphone-agent",
+  "stars": 4033,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\esp32-iphone-agent\\SKILL.md",
+  "human_promotion_required": true
+}

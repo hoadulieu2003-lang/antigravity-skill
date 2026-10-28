@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-28T04:42:20.193887+00:00",
+    "scan_date": "2026-10-28T07:42:12.942581+00:00",
     "cycle_id": "EVO-20261028",
-    "sessions_evaluated": 87,
+    "sessions_evaluated": 86,
     "total_items_processed": 183,
     "active_skills_count": 87,
-    "candidates_count": 104,
-    "enhancements_count": 41,
-    "optimizations_count": 37
+    "candidates_count": 106,
+    "enhancements_count": 40,
+    "optimizations_count": 36
   },
   "new_skill_candidates": [
     {
@@ -143,16 +143,16 @@
       "suggested_skill_structure": "---\nname: open-duet\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Anil-matcha/open-duet cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ANIL-MATCHA/OPEN-DUET SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Anil-matcha/open-duet` (https://github.com/Anil-matcha/open-duet)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
-      "skill_slug": "artex-global",
-      "title": "jiwoochris/artex-global",
-      "source": "GitHub (1437 ⭐)",
-      "url": "https://github.com/jiwoochris/artex-global",
+      "skill_slug": "esp32-iphone-agent",
+      "title": "onehumanbeing/esp32-iphone-agent",
+      "source": "GitHub (4033 ⭐)",
+      "url": "https://github.com/onehumanbeing/esp32-iphone-agent",
       "domain": "Công nghệ Mới nổi (Emerging Technology)",
       "priority": "HIGH",
-      "priority_score": 90,
+      "priority_score": 95,
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "ARTEX 한국어판 · AI 자율 침투 테스트 프레임워크(upstream: Autumn-27/ARTEX, AGPL-3.0)",
-      "suggested_skill_structure": "---\nname: artex-global\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng jiwoochris/artex-global cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# JIWOOCHRIS/ARTEX-GLOBAL SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `jiwoochris/artex-global` (https://github.com/jiwoochris/artex-global)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+      "proposed_value": "Let an AI model use a real iPhone with a $7 ESP32: AirPlay eyes, USB HID hands, any OpenAI-compatible vision model. No Mac, no developer account, no jailbreak.",
+      "suggested_skill_structure": "---\nname: esp32-iphone-agent\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng onehumanbeing/esp32-iphone-agent cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ONEHUMANBEING/ESP32-IPHONE-AGENT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `onehumanbeing/esp32-iphone-agent` (https://github.com/onehumanbeing/esp32-iphone-agent)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
@@ -257,16 +257,6 @@
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     },
     {
-      "target_skill": "cdp-engine",
-      "source_technology": "KitionAI/kition",
-      "source_url": "https://github.com/KitionAI/kition",
-      "source_type": "GitHub (472 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "Kition brings Markdown, DataTable, WhiteBoard, a tool-using AI agent, browser research, and visual workflows into one desktop workspace.",
-      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
-    },
-    {
       "target_skill": "aider-execution-engine",
       "source_technology": "ethanplusai/harvey",
       "source_url": "https://github.com/ethanplusai/harvey",
@@ -275,6 +265,16 @@
       "priority_score": 75,
       "enhancement_rationale": "Autonomous AI sales agent powered by Claude Code. Finds prospects, writes cold emails, sends campaigns, handles replies, books meetings. No API keys needed —...",
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "cdp-engine",
+      "source_technology": "rongxinzy/RongxinAI",
+      "source_url": "https://github.com/rongxinzy/RongxinAI",
+      "source_type": "GitHub (153 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "Open-source desktop AI agent: built-in free model, local GGUF models via llama.cpp, dispatch tasks from WeChat/Feishu/DingTalk. Files, browser & MCP tools. |...",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
     }
   ],
   "architecture_optimizations": [
