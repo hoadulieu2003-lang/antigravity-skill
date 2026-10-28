@@ -2332,3 +2332,21 @@
 * **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
 
 ---
+### 🚨 [2026-10-28 16:11] Introducing the Cloudflare PHP Capture the Flag challenge
+* **Nguồn cảnh báo**: Cloudflare Engineering | [Chi tiết bài viết](https://blog.cloudflare.com/php-ctf/)
+* **Bài học nhận thức**: We are launching a PHP Capture the Flag challenge integrated with our Bug Bounty program to test our WAF protections. Security researchers are invited to bypass our defenses and capture the flag to...
+* **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
+
+---
+### 🚨 [2026-10-28 16:11] What took the Internet offline in Q3 2026
+* **Nguồn cảnh báo**: Cloudflare Engineering | [Chi tiết bài viết](https://blog.cloudflare.com/q3-2026-internet-disruption-summary/)
+* **Bài học nhận thức**: An examination of global Internet disruptions observed by Cloudflare Radar during the third quarter of 2026. This review analyzes how power failures, natural disasters, and government shutdowns imp...
+* **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
+
+---
+### 🚨 [2026-10-28 16:11] Cross-request KV cache exposure in the GLM-5.3 Workers AI model, and our remediation with SGLang
+* **Nguồn cảnh báo**: Cloudflare Engineering | [Chi tiết bài viết](https://blog.cloudflare.com/kv-cache-exposure-remediation/)
+* **Bài học nhận thức**: A configuration mismatch in GLM 5.3 on Workers AI triggered an SGLang bug that exposed KV cache pages across requests. Here is how we addressed the issue.
+* **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
+
+---
