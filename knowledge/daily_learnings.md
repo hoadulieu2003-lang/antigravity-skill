@@ -4306,3 +4306,29 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-28 11:42:03`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google Research]** [The sleep framework: A new way for LLMs to retain knowledge in continual learning](https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/)
+  > Education Innovation
+- **[Google DeepMind]** [Genie 4: A new generation of world simulation](https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/)
+  > Genie 4: our new world model unlocking unprecedented realism in real-time simulation.
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (6254 ⭐)]** [Anil-matcha/open-duet](https://github.com/Anil-matcha/open-duet)
+  > Open-source, self-hosted alternative to Claude Duet: AI coworkers (named agents) with instructions, memory, routines, their own isolated computer, and your a...
+- **[GitHub (246 ⭐)]** [mashanglinyu/luanyujia-workbench](https://github.com/mashanglinyu/luanyujia-workbench)
+  > 多场景 AI 工作台：六层总纲 + 拓扑连线图 + 公开版工作台模板（四场景可跑，源码照搬即用）+ 记忆机制。配套集市：https://www.mydsh.xyz 。作者：https://linyujia.me 。注意：不是装完就能用，场景要按自己的内容调试。
+- **[GitHub (136 ⭐)]** [Jueze-2019/dsh-redteam-mode](https://github.com/Jueze-2019/dsh-redteam-mode)
+  > DSH RedTeam 模式：把 DeepSeek Harness 变成红队作战指挥台——一个靶标名称拉起信息收集/漏洞检测/漏洞利用/内网渗透四个角色，资产与战果实时落入本地 SQLite 事实库（仅供已授权测试）
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Counting the Bandages: On measuring the time that AI saves](https://arxiv.org/abs/2610.35942)
+  > arXiv:2610.35942v1 Announce Type: new Abstract: I consider what it means for AI assistance to save time. I contrast a stopwatch view, on which time saved is ...
+- **[ArXiv CS.AI]** [Enhancing Deep Learning Model Performance through Data Generation Strategies: Classification of Olive Tree Diseases](https://arxiv.org/abs/2610.35984)
+  > arXiv:2610.35984v1 Announce Type: new Abstract: Deep learning models are highly effective in a wide range of domains, particu larly in plant disease diagnosi...
+
+</untrusted_external_content>
+
+---
