@@ -4368,3 +4368,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-29 02:42:03`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google DeepMind]** [Gemini 4 Carbon: Our next frontier model](https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model/)
+  > 
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (424 ⭐)]** [NotASithLord/peerd](https://github.com/NotASithLord/peerd)
+  > The first AI agent harness native to the browser. A browser extension that runs a full agent loop where you already work: it drives your tabs, spins up sandb...
+- **[GitHub (153 ⭐)]** [nodecode-ai/nodecode](https://github.com/nodecode-ai/nodecode)
+  > A living agent organism in Lisp.
+
+</untrusted_external_content>
+
+---

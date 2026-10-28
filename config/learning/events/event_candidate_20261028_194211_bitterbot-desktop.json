@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-28T19:42:11.073832+00:00",
+  "skill_name": "bitterbot-desktop",
+  "source_repo": "Bitterbot-AI/bitterbot-desktop",
+  "stars": 2478,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\bitterbot-desktop\\SKILL.md",
+  "human_promotion_required": true
+}
