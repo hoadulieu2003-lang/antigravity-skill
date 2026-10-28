@@ -1,6 +1,6 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-28T09:11:37.277112+00:00",
+    "scan_date": "2026-10-28T10:42:11.862681+00:00",
     "cycle_id": "EVO-20261028",
     "sessions_evaluated": 87,
     "total_items_processed": 184,
@@ -157,16 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "tencentdb-agent-memory",
-      "source_technology": "TencentCloud/TencentDB-Agent-Memory",
-      "source_url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
-      "source_type": "GitHub (28325 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill,...",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ TencentCloud/TencentDB-Agent-Memory vào module tencentdb-agent-memory."
-    },
-    {
       "target_skill": "ouroboros",
       "source_technology": "Q00/ouroboros",
       "source_url": "https://github.com/Q00/ouroboros",
@@ -254,6 +244,16 @@
       "priority": "HIGH",
       "priority_score": 85,
       "enhancement_rationale": "Bash is all you need - A nano claude code–like 「agent harness」, built from 0 to 1",
+      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "aider-execution-engine",
+      "source_technology": "UfoMiao/zcf",
+      "source_url": "https://github.com/UfoMiao/zcf",
+      "source_type": "GitHub (6078 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Zero-Config Code Flow for Claude code & Codex",
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     },
     {
