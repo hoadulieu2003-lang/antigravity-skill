@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-28T10:42:11.862681+00:00",
+    "scan_date": "2026-10-28T13:42:09.834046+00:00",
     "cycle_id": "EVO-20261028",
-    "sessions_evaluated": 87,
-    "total_items_processed": 184,
+    "sessions_evaluated": 86,
+    "total_items_processed": 183,
     "active_skills_count": 87,
     "candidates_count": 106,
-    "enhancements_count": 41,
+    "enhancements_count": 40,
     "optimizations_count": 36
   },
   "new_skill_candidates": [
@@ -257,16 +257,6 @@
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     },
     {
-      "target_skill": "aider-execution-engine",
-      "source_technology": "ethanplusai/harvey",
-      "source_url": "https://github.com/ethanplusai/harvey",
-      "source_type": "GitHub (259 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "Autonomous AI sales agent powered by Claude Code. Finds prospects, writes cold emails, sends campaigns, handles replies, books meetings. No API keys needed —...",
-      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
-    },
-    {
       "target_skill": "cdp-engine",
       "source_technology": "rongxinzy/RongxinAI",
       "source_url": "https://github.com/rongxinzy/RongxinAI",
@@ -275,6 +265,16 @@
       "priority_score": 75,
       "enhancement_rationale": "Open-source desktop AI agent: built-in free model, local GGUF models via llama.cpp, dispatch tasks from WeChat/Feishu/DingTalk. Files, browser & MCP tools. |...",
       "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
+      "target_skill": "aider-execution-engine",
+      "source_technology": "node9-ai/node9-proxy",
+      "source_url": "https://github.com/node9-ai/node9-proxy",
+      "source_type": "GitHub (219 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "Access control for AI agents. Set what Claude Code, Codex, Gemini, Cursor and any MCP server are allowed to do, review risky actions before they run, and kee...",
+      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     }
   ],
   "architecture_optimizations": [
