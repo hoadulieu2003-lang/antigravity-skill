@@ -4394,3 +4394,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-29 08:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (58 ⭐)]** [herdodp/snapgent-connector](https://github.com/herdodp/snapgent-connector)
+  > Free, open-source connector agent chatbot AI browser to many App via MCP.
+- **[GitHub (53 ⭐)]** [PsChina/deepseek-as-subagent](https://github.com/PsChina/deepseek-as-subagent)
+  > Run DeepSeek as a real sub-agent inside Claude Code / Codex CLI — with its own 7-tool agent loop, workspace-scoped file access, and bounded Bash.
+
+</untrusted_external_content>
+
+---
