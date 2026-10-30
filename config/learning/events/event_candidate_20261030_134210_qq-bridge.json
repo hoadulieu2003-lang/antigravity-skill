@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-10-30T13:42:10.193438+00:00",
+  "skill_name": "qq-bridge",
+  "source_repo": "Derpyu520/qq-bridge",
+  "stars": 3328,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\qq-bridge\\SKILL.md",
+  "human_promotion_required": true
+}

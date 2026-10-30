@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-30T10:42:09.834094+00:00",
+    "scan_date": "2026-10-30T13:42:11.042961+00:00",
     "cycle_id": "EVO-20261030",
     "sessions_evaluated": 84,
     "total_items_processed": 165,
     "active_skills_count": 87,
-    "candidates_count": 95,
+    "candidates_count": 96,
     "enhancements_count": 41,
-    "optimizations_count": 29
+    "optimizations_count": 28
   },
   "new_skill_candidates": [
     {
@@ -359,16 +359,6 @@
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     },
     {
-      "title": "Cloudflare and OpenAI: making AI discovery better for everyone",
-      "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/cloudflare-openai-discovery-agentic-web/",
-      "priority": "STRATEGIC",
-      "priority_score": 85,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "How Cloudflare and OpenAI are working together to help AI find useful content, keep up with changes, and make fewer wasted requests — making the experience better for users and website owners alike.",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
       "title": "Deploy with Void",
       "source": "Cloudflare Engineering",
       "url": "https://blog.cloudflare.com/deploy-with-void/",
@@ -396,6 +386,16 @@
       "priority_score": 85,
       "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
       "rationale": "Identity alone doesn't guarantee a bot will behave responsibly. We are introducing a system to continuously evaluate whether Verified bots honor site preferences, like robots.txt and HTTP 429s, ens...",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Beyond the patch: Protecting your NetScaler gateway against future vulnerabilities",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/protect-your-netscaler-gateway/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "CVE-2026-88771 lets attackers run commands on NetScaler Gateway before anyone signs in. Patching takes time most teams don't have, so the sign-in decision has to move in front of the vulnerable code.",
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     }
   ]

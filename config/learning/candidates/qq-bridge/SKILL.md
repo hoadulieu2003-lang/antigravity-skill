@@ -1,7 +1,7 @@
 ---
 name: qq-bridge
 description: >-
-  Kỹ năng chuyên gia vận hành cho Derpyu520/qq-bridge (3319 ⭐).
+  Kỹ năng chuyên gia vận hành cho Derpyu520/qq-bridge (3328 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở qq-bridge vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Bridge between QQ (SnowLuma OneBot v11) and DeepSeek Harness agents: social simulation, safe MCP tools, slang learning and more
@@ -12,9 +12,9 @@ description: >-
 # Derpyu520/qq-bridge — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/Derpyu520/qq-bridge`  
-> **Độ uy tín cộng đồng**: 3319 ⭐  
+> **Độ uy tín cộng đồng**: 3328 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-30 10:42:08Z
+> **Tự động đóng gói lúc**: 2026-10-30 13:42:10Z
 
 ---
 

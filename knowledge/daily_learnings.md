@@ -4456,3 +4456,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-30 20:42:03`
+
+<untrusted_external_content>
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
