@@ -4476,3 +4476,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-31 02:42:03`
+
+<untrusted_external_content>
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [4 real? Tracking exploitation and patching of eMudhra’s weak keys](https://blog.cloudflare.com/emudhra-patching/)
+  > Four, just four: that’s the key to break into any unpatched connection on the Internet that is using eMudhra certificates. Here’s how we quickly patched Cloudflare, what evidence we can see of atte...
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (70 ⭐)]** [konic-labs/kubic](https://github.com/konic-labs/kubic)
+  > Agentic coding, in your control
+
+</untrusted_external_content>
+
+---
