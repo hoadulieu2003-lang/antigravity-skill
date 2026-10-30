@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-30T13:42:11.042961+00:00",
+    "scan_date": "2026-10-30T16:42:18.887345+00:00",
     "cycle_id": "EVO-20261030",
     "sessions_evaluated": 84,
-    "total_items_processed": 165,
+    "total_items_processed": 163,
     "active_skills_count": 87,
     "candidates_count": 96,
-    "enhancements_count": 41,
-    "optimizations_count": 28
+    "enhancements_count": 40,
+    "optimizations_count": 27
   },
   "new_skill_candidates": [
     {
@@ -279,16 +279,6 @@
   ],
   "architecture_optimizations": [
     {
-      "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
-      "source": "Google DeepMind",
-      "url": "https://deepmind.google/blog/accelerating-antimicrobial-discovery/",
-      "priority": "STRATEGIC",
-      "priority_score": 95,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Accelerating the search for novel antimicrobial peptides using Google Antigravity for Science.",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
       "title": "Grounding AI agents in biological reality: Building blocks for autonomous wet labs",
       "source": "Google Research",
       "url": "https://research.google/blog/grounding-ai-agents-in-biological-reality-building-blocks-for-autonomous-wet-labs/",
@@ -359,16 +349,6 @@
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     },
     {
-      "title": "Deploy with Void",
-      "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/deploy-with-void/",
-      "priority": "STRATEGIC",
-      "priority_score": 85,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Introducing Void: an open-source SDK, CLI, and self-hosted platform for building full-stack Vite apps and deploying them to Cloudflare.",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
       "title": "A fully programmable secure web gateway",
       "source": "Cloudflare Engineering",
       "url": "https://blog.cloudflare.com/programmable-gateway-dlp/",
@@ -396,6 +376,26 @@
       "priority_score": 85,
       "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
       "rationale": "CVE-2026-88771 lets attackers run commands on NetScaler Gateway before anyone signs in. Patching takes time most teams don't have, so the sign-in decision has to move in front of the vulnerable code.",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Cutting our inference bill by 68% by being obsessive about optimization",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/obsessive-inference-optimization/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "When our AI code reviewer's cost per run doubled, we dug into the token usage to find out why. Learn how we used prompt caching and intelligent model routing to slash our inference bill by 68% whil...",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Introducing Clairic, a new System One class of extraction models",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/clairic-extraction-model/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Clairic is a new model from Cloudflare that is a System One extraction modeI, capable of extracting, computing, estimating, and forecasting data from unstructured inputs.",
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     }
   ]
