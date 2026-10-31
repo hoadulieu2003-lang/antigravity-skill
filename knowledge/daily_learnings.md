@@ -4546,3 +4546,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-31 17:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (294 ⭐)]** [WeftCut/WeftCut](https://github.com/WeftCut/WeftCut)
+  > Free, open-source AI video editor for macOS, Windows and Linux — drive the whole timeline from any MCP client.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [WebAnything: From the Wild Web to Scalable Agent Environments](https://arxiv.org/abs/2610.37786)
+  > arXiv:2610.37786v1 Announce Type: new Abstract: Web agents require diverse, executable, and resettable website environments for reproducible training and eva...
+
+</untrusted_external_content>
+
+---
