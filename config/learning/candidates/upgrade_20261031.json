@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-10-31T01:42:12.827579+00:00",
+    "scan_date": "2026-10-31T05:06:20.931727+00:00",
     "cycle_id": "EVO-20261031",
     "sessions_evaluated": 84,
-    "total_items_processed": 164,
+    "total_items_processed": 163,
     "active_skills_count": 87,
     "candidates_count": 96,
-    "enhancements_count": 41,
+    "enhancements_count": 40,
     "optimizations_count": 27
   },
   "new_skill_candidates": [
@@ -33,18 +33,6 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "中文小黑怪诞正文配图生成 Skill | 16:9 白底手绘 | 少量红橙蓝批注 | Codex Skill",
       "suggested_skill_structure": "---\nname: ian-xiaohei-illustrations\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng helloianneo/ian-xiaohei-illustrations cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# HELLOIANNEO/IAN-XIAOHEI-ILLUSTRATIONS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `helloianneo/ian-xiaohei-illustrations` (https://github.com/helloianneo/ian-xiaohei-illustrations)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
-      "skill_slug": "skillhub",
-      "title": "iflytek/skillhub",
-      "source": "GitHub (5225 ⭐)",
-      "url": "https://github.com/iflytek/skillhub",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 95,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "Self-hosted, open-source agent skill registry for enterprises. Publish & version skill packages, govern with RBAC and audit logs, deploy on-premise with Dock...",
-      "suggested_skill_structure": "---\nname: skillhub\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng iflytek/skillhub cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# IFLYTEK/SKILLHUB SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `iflytek/skillhub` (https://github.com/iflytek/skillhub)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
       "skill_slug": "clawpanel",
@@ -131,28 +119,40 @@
       "suggested_skill_structure": "---\nname: esp32-iphone-agent\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng onehumanbeing/esp32-iphone-agent cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ONEHUMANBEING/ESP32-IPHONE-AGENT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `onehumanbeing/esp32-iphone-agent` (https://github.com/onehumanbeing/esp32-iphone-agent)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
-      "skill_slug": "flovart",
-      "title": "avabbbb/Flovart",
-      "source": "GitHub (138 ⭐)",
-      "url": "https://github.com/avabbbb/Flovart",
+      "skill_slug": "leapmux",
+      "title": "leapmux/leapmux",
+      "source": "GitHub (116 ⭐)",
+      "url": "https://github.com/leapmux/leapmux",
       "domain": "Công nghệ Mới nổi (Emerging Technology)",
       "priority": "HIGH",
       "priority_score": 85,
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "Open-source agent-native visual production workspace where humans and coding agents edit the same live canvas — local-first, BYOK image/video models.",
-      "suggested_skill_structure": "---\nname: flovart\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng avabbbb/Flovart cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# AVABBBB/FLOVART SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `avabbbb/Flovart` (https://github.com/avabbbb/Flovart)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+      "proposed_value": "AI Coding Agent Multiplexer",
+      "suggested_skill_structure": "---\nname: leapmux\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng leapmux/leapmux cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# LEAPMUX/LEAPMUX SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `leapmux/leapmux` (https://github.com/leapmux/leapmux)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
-      "skill_slug": "cortico",
-      "title": "Pal-AI-Lab/Cortico",
-      "source": "GitHub (220 ⭐)",
-      "url": "https://github.com/Pal-AI-Lab/Cortico",
+      "skill_slug": "nanocode",
+      "title": "gakonst/nanocode",
+      "source": "GitHub (574 ⭐)",
+      "url": "https://github.com/gakonst/nanocode",
       "domain": "Công nghệ Mới nổi (Emerging Technology)",
       "priority": "HIGH",
       "priority_score": 85,
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "Event-stream AI Agent framework for building your persona bot 🍊",
-      "suggested_skill_structure": "---\nname: cortico\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Pal-AI-Lab/Cortico cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# PAL-AI-LAB/CORTICO SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Pal-AI-Lab/Cortico` (https://github.com/Pal-AI-Lab/Cortico)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+      "proposed_value": "SDK for Frontier Embedded Agents.",
+      "suggested_skill_structure": "---\nname: nanocode\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng gakonst/nanocode cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# GAKONST/NANOCODE SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `gakonst/nanocode` (https://github.com/gakonst/nanocode)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "locus",
+      "title": "r1n7aro/Locus",
+      "source": "GitHub (754 ⭐)",
+      "url": "https://github.com/r1n7aro/Locus",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "The open source Unity Dev Agent",
+      "suggested_skill_structure": "---\nname: locus\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng r1n7aro/Locus cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# R1N7ARO/LOCUS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `r1n7aro/Locus` (https://github.com/r1n7aro/Locus)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [

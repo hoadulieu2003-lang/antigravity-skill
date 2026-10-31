@@ -4512,3 +4512,21 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-31 12:06:07`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (390 ⭐)]** [justhil/pi-app](https://github.com/justhil/pi-app)
+  > Desktop app for the pi coding agent: streaming timeline, Git review with hunk staging, session tree, native UI for pi extensions. Windows · macOS · Linux. pi...
+- **[GitHub (57 ⭐)]** [Fangyuan025/Chaty](https://github.com/Fangyuan025/Chaty)
+  > The models on your disk, put to work. A private desktop app for open models — chat, a coding agent built for small models, text-to-image, text-to-music, answ...
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [LRMoE: Demand-Side Load Re-Calibration for Efficient MoE Training on Memory-Constrained Nodes](https://arxiv.org/abs/2610.37720)
+  > arXiv:2610.37720v1 Announce Type: new Abstract: Sparse Mixture-of-Experts (MoE) models offer scalable capacity for Web applications, but uneven routing creat...
+- **[ArXiv CS.AI]** [Amortized Localized Posterior Inference for Model Calibration with Application to an Ocean Turbulence Closure](https://arxiv.org/abs/2610.37731)
+  > arXiv:2610.37731v1 Announce Type: new Abstract: Model discrepancy may prevent a single calibration parameter from reproducing a physical response across the ...
+
+</untrusted_external_content>
+
+---
