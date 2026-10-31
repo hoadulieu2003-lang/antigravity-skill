@@ -4500,3 +4500,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-31 08:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (84 ⭐)]** [OpenDCAI/gugu](https://github.com/OpenDCAI/gugu)
+  > Gugu (咕咕): personal assistant, chat and device client — source release
+- **[GitHub (59 ⭐)]** [drawthingsai/local-code-community](https://github.com/drawthingsai/local-code-community)
+  > Source code of Local Code, a private AI agent for Mac, iPad and iPhone. Runs DeepSeek 4.1 on device, with Python, Node.js and a shell built into the app.
+
+</untrusted_external_content>
+
+---
