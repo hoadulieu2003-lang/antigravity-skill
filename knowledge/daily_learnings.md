@@ -4560,3 +4560,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-10-31 20:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (659 ⭐)]** [truffle-ai/dexto](https://github.com/truffle-ai/dexto)
+  > Agent harness and tookit for building AI agents and agentic applications. CLI and SDKs included
+- **[GitHub (214 ⭐)]** [Giton22/kyllene](https://github.com/Giton22/kyllene)
+  > Unofficial Android client for Hermes Agent.
+- **[GitHub (177 ⭐)]** [bigfish1913/pi-rust](https://github.com/bigfish1913/pi-rust)
+  > Rust-native, library-first coding-agent runtime and terminal CLI inspired by Pi, with composable LLM providers, tools, sessions, and plugin ABI
+
+</untrusted_external_content>
+
+---
