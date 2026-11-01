@@ -4574,3 +4574,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-01 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (91 ⭐)]** [PerryLink/dsh-mcp-panel](https://github.com/PerryLink/dsh-mcp-panel)
+  > MCP management console for the official DeepSeek Harness MCP client: /mcp command with health diagnostics and pipeline trial calls, a Settings MCP tab with s...
+
+</untrusted_external_content>
+
+---
