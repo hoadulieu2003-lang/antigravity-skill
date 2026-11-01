@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-01T10:42:10.250816+00:00",
+  "skill_name": "claude-code-book",
+  "source_repo": "lintsinghua/claude-code-book",
+  "stars": 4346,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\claude-code-book\\SKILL.md",
+  "human_promotion_required": true
+}

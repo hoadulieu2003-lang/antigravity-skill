@@ -4606,3 +4606,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-01 17:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (76 ⭐)]** [unitshaperextol/Legion-os](https://github.com/unitshaperextol/Legion-os)
+  > Next-Gen Multi-Agent Swarm Orchestration Engine. Coordinate 50+ LLM nodes (GPT-6, Claude 5.5, DeepSeek-V4) in a high-speed mesh network. "Redefining enterpri...
+- **[GitHub (4346 ⭐)]** [lintsinghua/claude-code-book](https://github.com/lintsinghua/claude-code-book)
+  > 《御舆：解码 Agent Harness》42万字拆解 AI Agent 的Harness骨架与神经 —— Claude Code 架构深度剖析，15 章从对话循环到构建你自己的 Agent Harness。在线阅读网站：
+
+</untrusted_external_content>
+
+---
