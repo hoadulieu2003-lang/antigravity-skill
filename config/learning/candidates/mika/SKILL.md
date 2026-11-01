@@ -1,7 +1,7 @@
 ---
 name: mika
 description: >-
-  Kỹ năng chuyên gia vận hành cho wangzan101/Mika (3068 ⭐).
+  Kỹ năng chuyên gia vận hành cho wangzan101/Mika (3628 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở mika vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến An on-device AI agent for Android that operates apps and the web to get things done for you
@@ -12,9 +12,9 @@ description: >-
 # wangzan101/Mika — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/wangzan101/Mika`  
-> **Độ uy tín cộng đồng**: 3068 ⭐  
+> **Độ uy tín cộng đồng**: 3628 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-11-01 07:44:18Z
+> **Tự động đóng gói lúc**: 2026-11-01 16:42:09Z
 
 ---
 
