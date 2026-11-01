@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-01T19:42:13.484922+00:00",
+    "scan_date": "2026-11-01T22:42:15.413084+00:00",
     "cycle_id": "EVO-20261102",
     "sessions_evaluated": 83,
-    "total_items_processed": 161,
+    "total_items_processed": 162,
     "active_skills_count": 87,
     "candidates_count": 97,
-    "enhancements_count": 39,
+    "enhancements_count": 40,
     "optimizations_count": 25
   },
   "new_skill_candidates": [
@@ -131,18 +131,6 @@
       "suggested_skill_structure": "---\nname: dsh-go\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ccch1mneyyy/dsh-Go cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# CCCH1MNEYYY/DSH-GO SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ccch1mneyyy/dsh-Go` (https://github.com/ccch1mneyyy/dsh-Go)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
-      "skill_slug": "locus",
-      "title": "r1n7aro/Locus",
-      "source": "GitHub (754 ⭐)",
-      "url": "https://github.com/r1n7aro/Locus",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "The open source Unity Dev Agent",
-      "suggested_skill_structure": "---\nname: locus\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng r1n7aro/Locus cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# R1N7ARO/LOCUS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `r1n7aro/Locus` (https://github.com/r1n7aro/Locus)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
       "skill_slug": "pi-bolt",
       "title": "opensec-git/Pi-Bolt",
       "source": "GitHub (369 ⭐)",
@@ -153,6 +141,18 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "Pi, the coding agent, compiled ahead of time to native code. Starts 3× sooner than Pi on Bun and uses about a third of its CPU.",
       "suggested_skill_structure": "---\nname: pi-bolt\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng opensec-git/Pi-Bolt cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# OPENSEC-GIT/PI-BOLT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `opensec-git/Pi-Bolt` (https://github.com/opensec-git/Pi-Bolt)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "opentakeoff",
+      "title": "Kentucky-ai/opentakeoff",
+      "source": "GitHub (612 ⭐)",
+      "url": "https://github.com/Kentucky-ai/opentakeoff",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Open-source (AGPL-3.0) PDF takeoff for construction & flooring — the first engine an AI agent drives natively over MCP, not bolted on. Rooms measured on the ...",
+      "suggested_skill_structure": "---\nname: opentakeoff\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Kentucky-ai/opentakeoff cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# KENTUCKY-AI/OPENTAKEOFF SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Kentucky-ai/opentakeoff` (https://github.com/Kentucky-ai/opentakeoff)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [

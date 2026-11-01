@@ -4640,3 +4640,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-02 05:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (55 ⭐)]** [s-nagaev/chibi](https://github.com/s-nagaev/chibi)
+  > Your Digital Companion. Self-hosted Telegram bot orchestrating multiple AI providers (OpenAI, Anthropic, Google, xAI, DeepSeek, Mistral, Alibaba, MiniMax) wi...
+- **[GitHub (151 ⭐)]** [aofp/yume](https://github.com/aofp/yume)
+  > Native desktop UI for Claude Code with orchestration, streaming, background agents, and multi-provider support. Built with Tauri + React.
+
+</untrusted_external_content>
+
+---
