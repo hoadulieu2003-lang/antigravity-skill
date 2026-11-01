@@ -4594,3 +4594,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-01 16:57:42`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (162 ⭐)]** [AgentBull/ankole](https://github.com/AgentBull/ankole)
+  > The open source Agent Harness with a Company Brain. Self-hosted AI Agents for Slack, Teams, Lark, DingTalk, WeCom, and more. An open source alternative to Cl...
+- **[GitHub (657 ⭐)]** [jackwener/DSH-Android](https://github.com/jackwener/DSH-Android)
+  > 免 ROOT 免 Termux，一个 APK 在安卓手机上跑 DeepSeek Harness。引擎内嵌 App 进程 · 读屏操作 App · 改系统设置 · 定时/条件自动化 · 可选 Shizuku
+
+</untrusted_external_content>
+
+---
