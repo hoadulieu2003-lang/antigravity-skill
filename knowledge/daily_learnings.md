@@ -4662,3 +4662,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-02 11:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (62 ⭐)]** [wenflow-org/wenflow](https://github.com/wenflow-org/wenflow)
+  > 先说清你想解决的事，再开始学习。问流 WenFlow：从真实问题出发的开源 AI 学习路径原型——对话澄清目标、生成可执行路径、回合式教学、遗忘曲线复习、学习负荷追踪（LSS/KTL/LF/LSB）；自带 18 页管理后台与虚拟学习者仿真。Vue3 + Node.js + SQLite，MIT，可自托管。早期实验原型。
+- **[GitHub (57 ⭐)]** [ShipfoxHQ/shipfox](https://github.com/ShipfoxHQ/shipfox)
+  > Your software factory, smarter every week
+
+</untrusted_external_content>
+
+---
