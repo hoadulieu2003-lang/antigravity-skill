@@ -4702,3 +4702,21 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-02 23:42:02`
+
+<untrusted_external_content>
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [How we halved DNS build delay and cut memory use by 85%](https://blog.cloudflare.com/dns-targeted-zone-builds/)
+  > Zone setting changes used to rebuild entire DNS zones, even ones with tens of millions of records. Here is how we built a planner that picks the smallest safe build, cutting full builds by 40%, pea...
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (292 ⭐)]** [guregodevo/memdoor](https://github.com/guregodevo/memdoor)
+  > A headless coding agent with multi-agent harness
+- **[GitHub (136 ⭐)]** [MaleleStudySpace/wx-assist](https://github.com/MaleleStudySpace/wx-assist)
+  > 「摘星」· 微信助手 — AI Agent 智能助手 / AI 群聊摘要 / 关键词即时提醒 / 公众号摘要与文章实时推送 / RAG 语义检索 / 聊天、朋友圈归档 / 收藏导出 。本地运行，数据不出本机。
+- **[GitHub (110 ⭐)]** [KenKaiii/gg-framework](https://github.com/KenKaiii/gg-framework)
+  > The coding agent that gets more out of your AI subscription. Fastest and leanest of 20 agents tested, with unlimited local search of real open-source code.
+
+</untrusted_external_content>
+
+---
