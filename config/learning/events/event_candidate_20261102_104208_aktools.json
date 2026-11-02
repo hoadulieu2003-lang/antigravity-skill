@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-02T10:42:08.980722+00:00",
+  "skill_name": "aktools",
+  "source_repo": "akfamily/aktools",
+  "stars": 1542,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\aktools\\SKILL.md",
+  "human_promotion_required": true
+}

@@ -4688,3 +4688,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-02 17:42:03`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google DeepMind]** [Speeding up planning decisions with AI](https://deepmind.google/blog/speeding-up-planning-decisions-with-ai/)
+  > Google DeepMind and UK government work together to reduce planning assessment times
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1542 ⭐)]** [akfamily/aktools](https://github.com/akfamily/aktools)
+  > HTTP API and MCP server for AKShare: fetch financial data from any programming language or AI assistant (Claude, Cursor)
+
+</untrusted_external_content>
+
+---
