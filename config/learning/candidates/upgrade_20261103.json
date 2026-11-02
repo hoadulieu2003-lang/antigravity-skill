@@ -1,11 +1,11 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-02T19:42:16.317122+00:00",
+    "scan_date": "2026-11-02T22:42:11.917391+00:00",
     "cycle_id": "EVO-20261103",
-    "sessions_evaluated": 84,
-    "total_items_processed": 167,
+    "sessions_evaluated": 83,
+    "total_items_processed": 164,
     "active_skills_count": 87,
-    "candidates_count": 99,
+    "candidates_count": 96,
     "enhancements_count": 41,
     "optimizations_count": 27
   },
@@ -143,16 +143,16 @@
       "suggested_skill_structure": "---\nname: aktools\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng akfamily/aktools cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# AKFAMILY/AKTOOLS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `akfamily/aktools` (https://github.com/akfamily/aktools)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
-      "skill_slug": "pi-bolt",
-      "title": "opensec-git/Pi-Bolt",
-      "source": "GitHub (369 ⭐)",
-      "url": "https://github.com/opensec-git/Pi-Bolt",
+      "skill_slug": "dsh-auto-review",
+      "title": "PerryLink/dsh-auto-review",
+      "source": "GitHub (234 ⭐)",
+      "url": "https://github.com/PerryLink/dsh-auto-review",
       "domain": "Công nghệ Mới nổi (Emerging Technology)",
       "priority": "HIGH",
       "priority_score": 85,
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "Pi, the coding agent, compiled ahead of time to native code. Starts 3× sooner than Pi on Bun and uses about a third of its CPU.",
-      "suggested_skill_structure": "---\nname: pi-bolt\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng opensec-git/Pi-Bolt cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# OPENSEC-GIT/PI-BOLT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `opensec-git/Pi-Bolt` (https://github.com/opensec-git/Pi-Bolt)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+      "proposed_value": "Second-model AI auto-review for DeepSeek Harness approval requests: a read-only reviewer subagent returns structured allow/deny verdicts with reasons, fail-c...",
+      "suggested_skill_structure": "---\nname: dsh-auto-review\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng PerryLink/dsh-auto-review cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# PERRYLINK/DSH-AUTO-REVIEW SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `PerryLink/dsh-auto-review` (https://github.com/PerryLink/dsh-auto-review)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
