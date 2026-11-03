@@ -1,9 +1,9 @@
 schema_version: '1.0'
 skill_name: qwenpaw
 source_repo: agentscope-ai/QwenPaw
-stars: 35877
+stars: 37256
 status: CANDIDATE
-created_at: '2026-10-21T01:42:09.166648+00:00'
+created_at: '2026-11-03T07:42:09.100206+00:00'
 human_promotion_required: true
 evidence_files:
 - SKILL.md
@@ -11,7 +11,7 @@ evidence_files:
 benchmark:
   total_score: 10.0
   rating: RECOMMENDED
-  evaluated_at: '2026-11-03T05:47:13Z'
+  evaluated_at: '2026-11-03T07:42:09Z'
   breakdown:
     structure_metadata: 2.5
     command_safety: 2.5

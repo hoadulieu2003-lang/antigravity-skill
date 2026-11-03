@@ -1,6 +1,6 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-03T05:47:15.086544+00:00",
+    "scan_date": "2026-11-03T07:42:09.688895+00:00",
     "cycle_id": "EVO-20261103",
     "sessions_evaluated": 83,
     "total_items_processed": 163,
@@ -33,18 +33,6 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "中文小黑怪诞正文配图生成 Skill | 16:9 白底手绘 | 少量红橙蓝批注 | Codex Skill",
       "suggested_skill_structure": "---\nname: ian-xiaohei-illustrations\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng helloianneo/ian-xiaohei-illustrations cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# HELLOIANNEO/IAN-XIAOHEI-ILLUSTRATIONS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `helloianneo/ian-xiaohei-illustrations` (https://github.com/helloianneo/ian-xiaohei-illustrations)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
-      "skill_slug": "open-reverselab",
-      "title": "LING71671/open-reverselab",
-      "source": "GitHub (1280 ⭐)",
-      "url": "https://github.com/LING71671/open-reverselab",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 95,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "Open-source AI reverse-engineering agent platform and MCP server for Ghidra, Frida, x64dbg and Rizin — automated PE/APK/binary analysis, CTF and malware rese...",
-      "suggested_skill_structure": "---\nname: open-reverselab\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng LING71671/open-reverselab cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# LING71671/OPEN-REVERSELAB SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `LING71671/open-reverselab` (https://github.com/LING71671/open-reverselab)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
       "skill_slug": "moltis",
@@ -153,6 +141,18 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "Second-model AI auto-review for DeepSeek Harness approval requests: a read-only reviewer subagent returns structured allow/deny verdicts with reasons, fail-c...",
       "suggested_skill_structure": "---\nname: dsh-auto-review\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng PerryLink/dsh-auto-review cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# PERRYLINK/DSH-AUTO-REVIEW SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `PerryLink/dsh-auto-review` (https://github.com/PerryLink/dsh-auto-review)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "mcp",
+      "title": "taskade/mcp",
+      "source": "GitHub (169 ⭐)",
+      "url": "https://github.com/taskade/mcp",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "🤖 Taskade MCP · Official MCP server and OpenAPI to MCP codegen. Build AI agent tools from any OpenAPI API and connect to Claude, Cursor, and more.",
+      "suggested_skill_structure": "---\nname: mcp\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng taskade/mcp cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# TASKADE/MCP SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `taskade/mcp` (https://github.com/taskade/mcp)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
