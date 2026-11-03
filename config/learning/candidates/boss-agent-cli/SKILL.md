@@ -1,7 +1,7 @@
 ---
 name: boss-agent-cli
 description: >-
-  Kỹ năng chuyên gia vận hành cho can4hou6joeng4/boss-agent-cli (2174 ⭐).
+  Kỹ năng chuyên gia vận hành cho can4hou6joeng4/boss-agent-cli (2175 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở boss-agent-cli vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến 🤖 Local-assist BOSS Zhipin CLI for AI agents — search, welfare filtering, shortlist, JSON-envelope output; low-risk & compliant by default
@@ -12,9 +12,9 @@ description: >-
 # can4hou6joeng4/boss-agent-cli — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/can4hou6joeng4/boss-agent-cli`  
-> **Độ uy tín cộng đồng**: 2174 ⭐  
+> **Độ uy tín cộng đồng**: 2175 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-11-02 22:42:10Z
+> **Tự động đóng gói lúc**: 2026-11-03 01:42:09Z
 
 ---
 
