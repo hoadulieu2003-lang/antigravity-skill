@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261103` | **Thời gian**: `2026-11-03 10:42:18 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261103` | **Thời gian**: `2026-11-03 13:42:12 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -9,11 +9,11 @@
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
 | **Phiên học đã quét (Sessions Evaluated)** | `83` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
-| **Tài nguyên công nghệ (Items Processed)** | `162` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
+| **Tài nguyên công nghệ (Items Processed)** | `161` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `87` | Kho năng lực sẵn có tại `config/skills/` |
-| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `94` | Các khoảng trống công nghệ cần bổ sung độc lập |
-| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `42` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
-| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `26` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
+| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `93` | Các khoảng trống công nghệ cần bổ sung độc lập |
+| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `43` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
+| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `25` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
 ---
 
@@ -260,31 +260,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng ak
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.11. `mcp` — taskade/mcp 🔥 [HIGH PRIORITY]
-- **Nguồn gốc (Source)**: [GitHub (169 ⭐)](https://github.com/taskade/mcp)
-- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
-- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
-- **Giá trị Đề xuất (Proposed Value)**: 🤖 Taskade MCP · Official MCP server and OpenAPI to MCP codegen. Build AI agent tools from any OpenAPI API and connect to Claude, Cursor, and more.
-
-```yaml
-# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
----
-name: mcp
-description: Tự động kích hoạt khi người dùng muốn tận dụng taskade/mcp cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
----
-
-# TASKADE/MCP SKILL ARCHITECTURE
-
-## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
-- Kế thừa giải pháp từ: `taskade/mcp` (https://github.com/taskade/mcp)
-- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
-
-## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
-- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
-- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
-```
-
-### 2.12. `deskmind` — deskmind-ai/deskmind 🔥 [HIGH PRIORITY]
+### 2.11. `deskmind` — deskmind-ai/deskmind 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (108 ⭐)](https://github.com/deskmind-ai/deskmind)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -301,6 +277,30 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng de
 
 ## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
 - Kế thừa giải pháp từ: `deskmind-ai/deskmind` (https://github.com/deskmind-ai/deskmind)
+- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
+
+## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
+- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
+- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
+```
+
+### 2.12. `jentic-public-apis` — jentic/jentic-public-apis 🔥 [HIGH PRIORITY]
+- **Nguồn gốc (Source)**: [GitHub (263 ⭐)](https://github.com/jentic/jentic-public-apis)
+- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
+- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
+- **Giá trị Đề xuất (Proposed Value)**: Directory of OpenAPI specifications for thousands of public APIs. Every API is machine-readable and scored for AI agents. CC0.
+
+```yaml
+# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
+---
+name: jentic-public-apis
+description: Tự động kích hoạt khi người dùng muốn tận dụng jentic/jentic-public-apis cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
+---
+
+# JENTIC/JENTIC-PUBLIC-APIS SKILL ARCHITECTURE
+
+## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
+- Kế thừa giải pháp từ: `jentic/jentic-public-apis` (https://github.com/jentic/jentic-public-apis)
 - Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
 
 ## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
@@ -366,29 +366,29 @@ Các phát hiện mang tầm chiến lược tác động đến Hiến chương
 - **Bối cảnh lý thuyết**: Google DeepMind and UK government work together to reduce planning assessment times
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.8. Beyond the patch: Protecting your NetScaler gateway against future vulnerabilities — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/protect-your-netscaler-gateway/)
-- **Bối cảnh lý thuyết**: CVE-2026-88771 lets attackers run commands on NetScaler Gateway before anyone signs in. Patching takes time most teams don't have, so the sign-in decision has to move in front of the vulnerable code.
-- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
-
-#### 4.9. Cutting our inference bill by 68% by being obsessive about optimization — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.8. Cutting our inference bill by 68% by being obsessive about optimization — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/obsessive-inference-optimization/)
 - **Bối cảnh lý thuyết**: When our AI code reviewer's cost per run doubled, we dug into the token usage to find out why. Learn how we used prompt caching and intelligent model routing to slash our inference bill by 68% whil...
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.10. Introducing Clairic, a new System One class of extraction models — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.9. Introducing Clairic, a new System One class of extraction models — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/clairic-extraction-model/)
 - **Bối cảnh lý thuyết**: Clairic is a new model from Cloudflare that is a System One extraction modeI, capable of extracting, computing, estimating, and forecasting data from unstructured inputs.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.11. Introducing tsrs: a Port of TypeScript to Rust — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.10. Introducing tsrs: a Port of TypeScript to Rust — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/typescript-rust-port/)
 - **Bối cảnh lý thuyết**: Cloudflare is collaborating on tsrs, a Rust port of TypeScript that is up to 8x faster and uses 70% less memory.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.12. 8 eMudhra certificates are compromised. Here's what you need to know — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.11. 8 eMudhra certificates are compromised. Here's what you need to know — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/emudhra-certificate-compromise/)
 - **Bối cảnh lý thuyết**: Following the discovery that eight eMudhra intermediate certificates use weak keys, Cloudflare is deploying mitigations and releasing client updates. We explain the impact, our response, and what c...
+- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
+
+#### 4.12. How Commerce.com and Cloudflare are getting storefronts ready for AI agents — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/webmcp-commerce/)
+- **Bối cảnh lý thuyết**: Almost 100,000 Commerce.com domains now give AI agents real shopping tools through WebMCP on Cloudflare. Here's how we turned it on across every store at once, while keeping each merchant in control.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
 ---
