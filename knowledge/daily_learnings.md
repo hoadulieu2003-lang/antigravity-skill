@@ -4744,3 +4744,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-03 12:47:01`
+
+<untrusted_external_content>
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [More Rules, Longer Lists? Benchmarking Self-Evolving Agents on a Hidden-Rule Curriculum](https://arxiv.org/abs/2610.40758)
+  > arXiv:2610.40758v1 Announce Type: new Abstract: Self-evolving agents rewrite a persistent state from feedback, but it is largely untested whether this lets t...
+- **[ArXiv CS.AI]** [Beyond Plausible Prediction: Safety Sufficiency in Web World Models](https://arxiv.org/abs/2610.40798)
+  > arXiv:2610.40798v1 Announce Type: new Abstract: Web world models increasingly predict the consequences of candidate actions before agents act, yet a plausibl...
+
+</untrusted_external_content>
+
+---
