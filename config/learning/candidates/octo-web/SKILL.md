@@ -1,7 +1,7 @@
 ---
 name: octo-web
 description: >-
-  Kỹ năng chuyên gia vận hành cho Mininglamp-OSS/octo-web (1212 ⭐).
+  Kỹ năng chuyên gia vận hành cho Mininglamp-OSS/octo-web (1213 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở octo-web vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Web & desktop (Electron) client for the OCTO open workplace — one React + TypeScript codebase shipping browser and PC surfaces, with first-class AI agent UX
@@ -12,9 +12,9 @@ description: >-
 # Mininglamp-OSS/octo-web — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/Mininglamp-OSS/octo-web`  
-> **Độ uy tín cộng đồng**: 1212 ⭐  
+> **Độ uy tín cộng đồng**: 1213 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-11-03 01:42:09Z
+> **Tự động đóng gói lúc**: 2026-11-04 03:48:27Z
 
 ---
 
