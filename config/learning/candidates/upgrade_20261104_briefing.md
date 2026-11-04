@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261104` | **Thời gian**: `2026-11-04 07:42:15 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261104` | **Thời gian**: `2026-11-04 11:53:31 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -284,23 +284,23 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng ak
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.12. `deskmind` — deskmind-ai/deskmind 🔥 [HIGH PRIORITY]
-- **Nguồn gốc (Source)**: [GitHub (108 ⭐)](https://github.com/deskmind-ai/deskmind)
+### 2.12. `spider` — spider-rs/spider 🔥 [HIGH PRIORITY]
+- **Nguồn gốc (Source)**: [GitHub (2820 ⭐)](https://github.com/spider-rs/spider)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
-- **Giá trị Đề xuất (Proposed Value)**: Small enough to run on your Mac. Smart enough to ask. An open-source computer use agent for macOS, with local models (MLX) that see, decide and act. 得心，应手。
+- **Giá trị Đề xuất (Proposed Value)**: Foundational low latency web data collecting in Rust
 
 ```yaml
 # Gợi ý Cấu trúc SKILL.md (Suggested Specification)
 ---
-name: deskmind
-description: Tự động kích hoạt khi người dùng muốn tận dụng deskmind-ai/deskmind cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
+name: spider
+description: Tự động kích hoạt khi người dùng muốn tận dụng spider-rs/spider cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
 ---
 
-# DESKMIND-AI/DESKMIND SKILL ARCHITECTURE
+# SPIDER-RS/SPIDER SKILL ARCHITECTURE
 
 ## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
-- Kế thừa giải pháp từ: `deskmind-ai/deskmind` (https://github.com/deskmind-ai/deskmind)
+- Kế thừa giải pháp từ: `spider-rs/spider` (https://github.com/spider-rs/spider)
 - Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
 
 ## 🛠️ 2. Workflows & Công cụ (Tools & Operations)

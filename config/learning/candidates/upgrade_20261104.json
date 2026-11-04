@@ -1,6 +1,6 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-04T07:42:15.412284+00:00",
+    "scan_date": "2026-11-04T11:53:31.823299+00:00",
     "cycle_id": "EVO-20261104",
     "sessions_evaluated": 82,
     "total_items_processed": 160,
@@ -143,16 +143,16 @@
       "suggested_skill_structure": "---\nname: aktools\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng akfamily/aktools cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# AKFAMILY/AKTOOLS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `akfamily/aktools` (https://github.com/akfamily/aktools)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
-      "skill_slug": "deskmind",
-      "title": "deskmind-ai/deskmind",
-      "source": "GitHub (108 ⭐)",
-      "url": "https://github.com/deskmind-ai/deskmind",
+      "skill_slug": "spider",
+      "title": "spider-rs/spider",
+      "source": "GitHub (2820 ⭐)",
+      "url": "https://github.com/spider-rs/spider",
       "domain": "Công nghệ Mới nổi (Emerging Technology)",
       "priority": "HIGH",
-      "priority_score": 85,
+      "priority_score": 90,
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "Small enough to run on your Mac. Smart enough to ask. An open-source computer use agent for macOS, with local models (MLX) that see, decide and act. 得心，应手。",
-      "suggested_skill_structure": "---\nname: deskmind\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng deskmind-ai/deskmind cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# DESKMIND-AI/DESKMIND SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `deskmind-ai/deskmind` (https://github.com/deskmind-ai/deskmind)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+      "proposed_value": "Foundational low latency web data collecting in Rust",
+      "suggested_skill_structure": "---\nname: spider\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng spider-rs/spider cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# SPIDER-RS/SPIDER SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `spider-rs/spider` (https://github.com/spider-rs/spider)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
