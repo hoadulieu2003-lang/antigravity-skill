@@ -4846,3 +4846,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-05 11:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (53 ⭐)]** [PerryLink/dsh-data-quality](https://github.com/PerryLink/dsh-data-quality)
+  > DeepSeek Harness plugin: deterministic data profiling, cleaning, and verification (dsh-data-quality)
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [moonshotai/Kimi-K3.1-Pro](https://huggingface.co/moonshotai/Kimi-K3.1-Pro)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
