@@ -2896,3 +2896,9 @@
 * **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
 
 ---
+### 🚨 [2026-11-06 02:42] Introducing Zero Wire, a hub for investigating critical Internet vulnerabilities
+* **Nguồn cảnh báo**: Cloudflare Engineering | [Chi tiết bài viết](https://blog.cloudflare.com/zero-wire/)
+* **Bài học nhận thức**: Zero Wire on Cloudflare Radar pairs plain-language briefings with global attack telemetry and remediation steps. Triage critical CVEs faster and decide how to protect your infrastructure.
+* **Biện pháp phòng ngừa cho Anti**: Kiểm toán bộ nhớ, thêm try-catch có timeout và kiểm tra điều kiện biên chặt chẽ.
+
+---

@@ -4914,3 +4914,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-06 02:42:02`
+
+<untrusted_external_content>
+### 🌐 Tin tức Sản phẩm Google & Frontier Labs
+- **[Google AI Official]** [Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips](https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/)
+  > Gemini Omni 1.2 Flash brings native 15-second video generation and editing, stronger consistency, and 30% lower pricing.
+
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [Agents aren’t humans (but they kinda are)](https://blog.cloudflare.com/trusted-agent-delegation/)
+  > AI agents act for millions, but servers see intermediaries that strip user visibility. This post defines the problem space and introduces a collaborative approach to safely identifying, allowing, a...
+
+</untrusted_external_content>
+
+---
