@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-05T01:14:13.427141+00:00",
+  "skill_name": "dsh-image-gen",
+  "source_repo": "shanliuling/dsh-image-gen",
+  "stars": 1104,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\dsh-image-gen\\SKILL.md",
+  "human_promotion_required": true
+}
