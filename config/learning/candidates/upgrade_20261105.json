@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-05T10:42:12.359573+00:00",
+    "scan_date": "2026-11-05T13:42:21.500273+00:00",
     "cycle_id": "EVO-20261105",
     "sessions_evaluated": 80,
     "total_items_processed": 157,
     "active_skills_count": 87,
     "candidates_count": 88,
-    "enhancements_count": 43,
-    "optimizations_count": 26
+    "enhancements_count": 44,
+    "optimizations_count": 25
   },
   "new_skill_candidates": [
     {
@@ -369,16 +369,6 @@
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     },
     {
-      "title": "How Commerce.com and Cloudflare are getting storefronts ready for AI agents",
-      "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/webmcp-commerce/",
-      "priority": "STRATEGIC",
-      "priority_score": 85,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Almost 100,000 Commerce.com domains now give AI agents real shopping tools through WebMCP on Cloudflare. Here's how we turned it on across every store at once, while keeping each merchant in control.",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
       "title": "Introducing full transaction detection for Cloudflare WAF",
       "source": "Cloudflare Engineering",
       "url": "https://blog.cloudflare.com/full-transaction-waf/",
@@ -396,6 +386,16 @@
       "priority_score": 85,
       "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
       "rationale": "Cloudflare has deployed default web application firewall (WAF) protections for newly disclosed PHP vulnerabilities before public disclosure. The rules use request and response signals to stop explo...",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Localizing compliance at scale: achieving South Korea’s ISMS certification",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/k-isms/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Cloudflare has achieved South Korea's ISMS certification following an audit across 80 controls. Learn how we localized user consent flows, adapted social sign-up paths at the edge, and validated ou...",
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     }
   ]
