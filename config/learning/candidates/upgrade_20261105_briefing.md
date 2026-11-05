@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261105` | **Thời gian**: `2026-11-05 13:42:21 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261105` | **Thời gian**: `2026-11-05 16:42:13 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -12,8 +12,8 @@
 | **Tài nguyên công nghệ (Items Processed)** | `157` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `87` | Kho năng lực sẵn có tại `config/skills/` |
 | **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `88` | Các khoảng trống công nghệ cần bổ sung độc lập |
-| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `44` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
-| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `25` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
+| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `45` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
+| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `23` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
 ---
 
@@ -324,71 +324,71 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 | **`gemini-super-engine`** | [can4hou6joeng4/boss-agent-cli](https://github.com/can4hou6joeng4/boss-agent-cli) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
 | **`cdp-engine`** | [Mininglamp-OSS/octo-web](https://github.com/Mininglamp-OSS/octo-web) | `HIGH` | Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents. |
 | **`gemini-super-engine`** | [EvoScientist/EvoScientist](https://github.com/EvoScientist/EvoScientist) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
+| **`aider-execution-engine`** | [zenstory-ai/oh-story-claudecode](https://github.com/zenstory-ai/oh-story-claudecode) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`aider-execution-engine`** | [Cassette-Editor/oh-my-cassette](https://github.com/Cassette-Editor/oh-my-cassette) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`ui-ux-pro-max`** | [TheSyart/emperor-agent](https://github.com/TheSyart/emperor-agent) | `HIGH` | Bổ sung mẫu giao diện quản trị tác tử (Agentic Admin CRUD) và tương tác phản hồi trực quan. |
-| **`threejs`** | [Samffprice/loopcut](https://github.com/Samffprice/loopcut) | `HIGH` | Bổ sung tri thức và thuật toán từ Samffprice/loopcut vào module threejs. |
 
 
 ## 🏛️ 4. Đề Xuất Tối Ưu Kiến Trúc & Quy Chuẩn (`ARCHITECTURE_OPTIMIZATION`)
 Các phát hiện mang tầm chiến lược tác động đến Hiến chương Tự trị và Quy tắc Suy luận Cấp cao:
 
-#### 4.1. Empowering frontline maternal care with AI-assisted ultrasound — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/empowering-frontline-maternal-care-with-ai-assisted-ultrasound/)
-- **Bối cảnh lý thuyết**: Health & Bioscience
-- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
-
-#### 4.2. Beyond tree cover: mapping the world’s forest types — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.1. Beyond tree cover: mapping the world’s forest types — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/beyond-tree-cover-mapping-the-worlds-forest-types/)
 - **Bối cảnh lý thuyết**: A global map categorizing every 10-meter patch of land on Earth into distinct forest types.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.3. Bringing foundational models to the front lines of TB screening — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.2. Bringing foundational models to the front lines of TB screening — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/bringing-foundational-models-to-the-front-lines-of-tb-screening/)
 - **Bối cảnh lý thuyết**: Generative AI
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.4. The sleep framework: A new way for LLMs to retain knowledge in continual learning — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.3. The sleep framework: A new way for LLMs to retain knowledge in continual learning — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/)
 - **Bối cảnh lý thuyết**: Education Innovation
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.5. Genie 4: A new generation of world simulation — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.4. Genie 4: A new generation of world simulation — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/)
 - **Bối cảnh lý thuyết**: Genie 4: our new world model unlocking unprecedented realism in real-time simulation.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.6. Gemini 4 Carbon: Our next frontier model — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.5. Gemini 4 Carbon: Our next frontier model — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model/)
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.7. Speeding up planning decisions with AI — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.6. Speeding up planning decisions with AI — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/speeding-up-planning-decisions-with-ai/)
 - **Bối cảnh lý thuyết**: Google DeepMind and UK government work together to reduce planning assessment times
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.8. Agentic cheminformatics with Google Antigravity — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.7. Agentic cheminformatics with Google Antigravity — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/)
 - **Bối cảnh lý thuyết**: Learn how Google Antigravity and our Cheminformatics Skills accelerate drug discovery workflows, search compounds, and propose novel rigidified macrocycles.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.9. Agile Deliberation: How AI helps humans define the gray areas — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.8. Agile Deliberation: How AI helps humans define the gray areas — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/agile-deliberation-how-ai-helps-humans-define-the-gray-areas/)
 - **Bối cảnh lý thuyết**: Data Mining & Modeling
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.10. Introducing full transaction detection for Cloudflare WAF — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/full-transaction-waf/)
-- **Bối cảnh lý thuyết**: Cloudflare's web application firewall can now correlate an HTTP request with its response. Full transaction detection helps every customer find successful exploits, data exposure, and risky misconf...
+#### 4.9. Detecting signs of hypertension using wearable sensors — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/detecting-signs-of-hypertension-using-wearable-sensors/)
+- **Bối cảnh lý thuyết**: Health & Bioscience
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.11. Cloudflare deploys protections against php2shell vulnerability — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/php-vulnerabilities-waf-protection/)
-- **Bối cảnh lý thuyết**: Cloudflare has deployed default web application firewall (WAF) protections for newly disclosed PHP vulnerabilities before public disclosure. The rules use request and response signals to stop explo...
-- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
-
-#### 4.12. Localizing compliance at scale: achieving South Korea’s ISMS certification — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.10. Localizing compliance at scale: achieving South Korea’s ISMS certification — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/k-isms/)
 - **Bối cảnh lý thuyết**: Cloudflare has achieved South Korea's ISMS certification following an audit across 80 controls. Learn how we localized user consent flows, adapted social sign-up paths at the edge, and validated ou...
+- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
+
+#### 4.11. Origin Range Requests: Serving large files without range-request tuning — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/origin-range-requests/)
+- **Bối cảnh lý thuyết**: Naive byte-range caching can waste gigabytes of origin bandwidth on small requests. We rebuilt our cache architecture in Pingora to coordinate partial fetches automatically, cutting R2 p99 latency ...
+- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
+
+#### 4.12. Bringing post-quantum cryptography to geographically fenced key management — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/post-quantum-geo-key-manager/)
+- **Bối cảnh lý thuyết**: Cloudflare's new post-quantum GeoKey Manager protects geographically fenced decryption keys from harvest now, decrypt later attacks. Learn how we redesigned our cryptography stack to support strict...
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
 ---

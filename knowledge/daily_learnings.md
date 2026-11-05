@@ -4898,3 +4898,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-05 23:42:02`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google Research]** [Detecting signs of hypertension using wearable sensors](https://research.google/blog/detecting-signs-of-hypertension-using-wearable-sensors/)
+  > Health & Bioscience
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (8331 ⭐)]** [zenstory-ai/oh-story-claudecode](https://github.com/zenstory-ai/oh-story-claudecode)
+  > Claude Code / Codex / OpenCode agent skills for writing Chinese web novels (网文): 扫榜、拆文、写作、去AI味、封面全流程，长篇短篇都支持 | 14 skills for novel writing and long-form fict...
+- **[GitHub (270 ⭐)]** [GUYI-AI/gugu](https://github.com/GUYI-AI/gugu)
+  > Gugu (咕咕): personal assistant, chat and device client — source release
+
+</untrusted_external_content>
+
+---
