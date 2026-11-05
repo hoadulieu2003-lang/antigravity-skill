@@ -4860,3 +4860,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-05 14:42:02`
+
+<untrusted_external_content>
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Who May Overrule the Agent? Evidence-Gated Authority in LLM Review Institutions](https://arxiv.org/abs/2611.05390)
+  > arXiv:2611.05390v1 Announce Type: new Abstract: Multi-agent language-model systems often add a reviewer to improve an upstream agent's decision. Yet a review...
+- **[ArXiv CS.AI]** [Agent Harness Awareness: Turning Verified Telemetry into Operational Control for Tool-Using Agents](https://arxiv.org/abs/2611.05391)
+  > arXiv:2611.05391v1 Announce Type: new Abstract: Tool descriptions tell an agent what an action can do, but they do not necessarily reveal whether that action...
+
+</untrusted_external_content>
+
+---
