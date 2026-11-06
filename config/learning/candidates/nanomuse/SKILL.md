@@ -1,7 +1,7 @@
 ---
 name: nanomuse
 description: >-
-  Kỹ năng chuyên gia vận hành cho nano-muse/nanoMuse (3193 ⭐).
+  Kỹ năng chuyên gia vận hành cho nano-muse/nanoMuse (3239 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở nanomuse vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến nanoMuse: an open-source personal agent for every device you own
@@ -12,9 +12,9 @@ description: >-
 # nano-muse/nanoMuse — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/nano-muse/nanoMuse`  
-> **Độ uy tín cộng đồng**: 3193 ⭐  
+> **Độ uy tín cộng đồng**: 3239 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-11-05 01:42:10Z
+> **Tự động đóng gói lúc**: 2026-11-06 07:42:09Z
 
 ---
 
