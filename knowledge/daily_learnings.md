@@ -5012,3 +5012,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-07 02:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (240 ⭐)]** [cogine-ai/awesome-openclaw-zh](https://github.com/cogine-ai/awesome-openclaw-zh)
+  > OpenClaw 中文实战与案例库：部署、渠道接入、工作流与原创实验。精选成果附输入和复现脚本。OPCBoost · by Cogine
+- **[GitHub (103 ⭐)]** [EvannZhongg/Nosis](https://github.com/EvannZhongg/Nosis)
+  > Nosis is a lightweight personal agent runtime: per-session execution boundaries with OS-level sandboxing, computer use, a full built-in toolset, Skill / Plug...
+
+</untrusted_external_content>
+
+---
