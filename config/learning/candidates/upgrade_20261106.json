@@ -1,11 +1,11 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-06T10:42:15.194181+00:00",
+    "scan_date": "2026-11-06T13:42:12.553051+00:00",
     "cycle_id": "EVO-20261106",
     "sessions_evaluated": 83,
-    "total_items_processed": 161,
+    "total_items_processed": 162,
     "active_skills_count": 87,
-    "candidates_count": 89,
+    "candidates_count": 90,
     "enhancements_count": 46,
     "optimizations_count": 24
   },
@@ -369,16 +369,6 @@
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     },
     {
-      "title": "Localizing compliance at scale: achieving South Korea’s ISMS certification",
-      "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/k-isms/",
-      "priority": "STRATEGIC",
-      "priority_score": 85,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Cloudflare has achieved South Korea's ISMS certification following an audit across 80 controls. Learn how we localized user consent flows, adapted social sign-up paths at the edge, and validated ou...",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
       "title": "Origin Range Requests: Serving large files without range-request tuning",
       "source": "Cloudflare Engineering",
       "url": "https://blog.cloudflare.com/origin-range-requests/",
@@ -396,6 +386,16 @@
       "priority_score": 85,
       "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
       "rationale": "Cloudflare's new post-quantum GeoKey Manager protects geographically fenced decryption keys from harvest now, decrypt later attacks. Learn how we redesigned our cryptography stack to support strict...",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Cross-request KV cache exposure in the GLM-5.3 Workers AI model, and our remediation with SGLang",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/kv-cache-exposure-remediation/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "A configuration mismatch in GLM 5.3 on Workers AI triggered an SGLang bug that exposed KV cache pages across requests. Here is how we addressed the issue.",
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     }
   ]

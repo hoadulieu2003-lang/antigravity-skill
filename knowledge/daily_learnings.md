@@ -4982,3 +4982,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-06 20:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (197 ⭐)]** [GroundedCoreAI/nexusdesk](https://github.com/GroundedCoreAI/nexusdesk)
+  > Open-source, self-hosted, extensible Agent platform built around ReAct and Harness engineering, with AI customer support as its first complete reference appl...
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [The Two-Ledger Model: Transaction-Grain Cost Accounting for Multi-Agent AI Systems Across Clouds, Models, and Systems of Record](https://arxiv.org/abs/2611.06989)
+  > arXiv:2611.06989v1 Announce Type: new Abstract: Enterprises run business transactions through multi-agent AI systems spanning clouds, large language models (...
+
+</untrusted_external_content>
+
+---

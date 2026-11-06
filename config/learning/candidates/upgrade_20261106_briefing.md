@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261106` | **Thời gian**: `2026-11-06 10:42:15 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261106` | **Thời gian**: `2026-11-06 13:42:12 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -9,9 +9,9 @@
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
 | **Phiên học đã quét (Sessions Evaluated)** | `83` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
-| **Tài nguyên công nghệ (Items Processed)** | `161` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
+| **Tài nguyên công nghệ (Items Processed)** | `162` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `87` | Kho năng lực sẵn có tại `config/skills/` |
-| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `89` | Các khoảng trống công nghệ cần bổ sung độc lập |
+| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `90` | Các khoảng trống công nghệ cần bổ sung độc lập |
 | **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `46` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
 | **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `24` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
@@ -376,19 +376,19 @@ Các phát hiện mang tầm chiến lược tác động đến Hiến chương
 - **Bối cảnh lý thuyết**: Health & Bioscience
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.10. Localizing compliance at scale: achieving South Korea’s ISMS certification — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/k-isms/)
-- **Bối cảnh lý thuyết**: Cloudflare has achieved South Korea's ISMS certification following an audit across 80 controls. Learn how we localized user consent flows, adapted social sign-up paths at the edge, and validated ou...
-- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
-
-#### 4.11. Origin Range Requests: Serving large files without range-request tuning — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.10. Origin Range Requests: Serving large files without range-request tuning — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/origin-range-requests/)
 - **Bối cảnh lý thuyết**: Naive byte-range caching can waste gigabytes of origin bandwidth on small requests. We rebuilt our cache architecture in Pingora to coordinate partial fetches automatically, cutting R2 p99 latency ...
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.12. Bringing post-quantum cryptography to geographically fenced key management — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.11. Bringing post-quantum cryptography to geographically fenced key management — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/post-quantum-geo-key-manager/)
 - **Bối cảnh lý thuyết**: Cloudflare's new post-quantum GeoKey Manager protects geographically fenced decryption keys from harvest now, decrypt later attacks. Learn how we redesigned our cryptography stack to support strict...
+- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
+
+#### 4.12. Cross-request KV cache exposure in the GLM-5.3 Workers AI model, and our remediation with SGLang — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/kv-cache-exposure-remediation/)
+- **Bối cảnh lý thuyết**: A configuration mismatch in GLM 5.3 on Workers AI triggered an SGLang bug that exposed KV cache pages across requests. Here is how we addressed the issue.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
 ---
