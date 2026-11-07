@@ -5054,3 +5054,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-07 17:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (116 ⭐)]** [imsai-sh/fish-pocket](https://github.com/imsai-sh/fish-pocket)
+  > Run DeepSeek Harness on iPhone and iPad, with a fully native SwiftUI interface. No computer, no server. 在 iPhone 和 iPad 上本机运行 DeepSeek Harness，界面完全原生。
+- **[GitHub (399 ⭐)]** [bulaofen0036-coder/TIA_Portal_Openness_MCP](https://github.com/bulaofen0036-coder/TIA_Portal_Openness_MCP)
+  > Drive Siemens TIA Portal V20/V21 (STEP 7, WinCC Unified) from any MCP client — create projects, generate PLC & HMI, compile & diagnose. Prebuilt runtime, no ...
+
+</untrusted_external_content>
+
+---

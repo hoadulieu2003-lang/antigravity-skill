@@ -1,7 +1,7 @@
 ---
 name: open-science
 description: >-
-  Kỹ năng chuyên gia vận hành cho ai4s-research/open-science (2046 ⭐).
+  Kỹ năng chuyên gia vận hành cho ai4s-research/open-science (2080 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở open-science vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Open Science Desktop — local-first, model-agnostic AI research workbench for macOS, Windows & Linux
@@ -12,9 +12,9 @@ description: >-
 # ai4s-research/open-science — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/ai4s-research/open-science`  
-> **Độ uy tín cộng đồng**: 2046 ⭐  
+> **Độ uy tín cộng đồng**: 2080 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-27 07:42:13Z
+> **Tự động đóng gói lúc**: 2026-11-07 10:42:10Z
 
 ---
 
