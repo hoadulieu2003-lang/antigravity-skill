@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261107` | **Thời gian**: `2026-11-06 22:42:12 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261107` | **Thời gian**: `2026-11-07 01:42:12 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -325,8 +325,8 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 | **`cdp-engine`** | [Mininglamp-OSS/octo-web](https://github.com/Mininglamp-OSS/octo-web) | `HIGH` | Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents. |
 | **`gemini-super-engine`** | [EvoScientist/EvoScientist](https://github.com/EvoScientist/EvoScientist) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
 | **`aider-execution-engine`** | [zenstory-ai/oh-story-claudecode](https://github.com/zenstory-ai/oh-story-claudecode) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
-| **`threejs`** | [Samffprice/loopcut](https://github.com/Samffprice/loopcut) | `HIGH` | Bổ sung tri thức và thuật toán từ Samffprice/loopcut vào module threejs. |
 | **`cdp-engine`** | [wgt19861219/godot-mcp-enhanced](https://github.com/wgt19861219/godot-mcp-enhanced) | `HIGH` | Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents. |
+| **`aider-execution-engine`** | [myunwang/LLMPET](https://github.com/myunwang/LLMPET) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 
 
 ## 🏛️ 4. Đề Xuất Tối Ưu Kiến Trúc & Quy Chuẩn (`ARCHITECTURE_OPTIMIZATION`)

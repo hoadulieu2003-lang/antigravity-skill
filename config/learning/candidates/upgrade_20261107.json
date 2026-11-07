@@ -1,6 +1,6 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-06T22:42:12.428095+00:00",
+    "scan_date": "2026-11-07T01:42:12.867155+00:00",
     "cycle_id": "EVO-20261107",
     "sessions_evaluated": 83,
     "total_items_processed": 162,
@@ -257,16 +257,6 @@
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     },
     {
-      "target_skill": "threejs",
-      "source_technology": "Samffprice/loopcut",
-      "source_url": "https://github.com/Samffprice/loopcut",
-      "source_type": "GitHub (129 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "Loopcut: an AI agent that works inside Blender. A fork of Blender (GPL).",
-      "recommended_action": "Bổ sung tri thức và thuật toán từ Samffprice/loopcut vào module threejs."
-    },
-    {
       "target_skill": "cdp-engine",
       "source_technology": "wgt19861219/godot-mcp-enhanced",
       "source_url": "https://github.com/wgt19861219/godot-mcp-enhanced",
@@ -275,6 +265,16 @@
       "priority_score": 75,
       "enhancement_rationale": "Enhanced MCP server for Godot 4.5-4.7: 33 tools / 199 actions, 3-layer architecture (headless + editor + game bridge), secure sandbox, recording & frame-veri...",
       "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
+      "target_skill": "aider-execution-engine",
+      "source_technology": "myunwang/LLMPET",
+      "source_url": "https://github.com/myunwang/LLMPET",
+      "source_type": "GitHub (124 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "🐙 盯着 Claude Code 的桌面宠物：随 agent 状态变表情、弹消息气泡、一键授权，并统计 token 用量与花费。本地优先、MIT。",
+      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     }
   ],
   "architecture_optimizations": [

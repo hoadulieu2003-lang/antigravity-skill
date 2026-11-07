@@ -5034,3 +5034,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-07 08:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (218 ⭐)]** [lalipa2003-arch/JailbreakHub](https://github.com/lalipa2003-arch/JailbreakHub)
+  > A Hub/research area, for jailbreaking LLM's, and breaking their safety filters.
+
+</untrusted_external_content>
+
+---
