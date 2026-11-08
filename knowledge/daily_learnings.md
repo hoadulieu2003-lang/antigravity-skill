@@ -5118,3 +5118,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-09 05:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (64 ⭐)]** [delexw/motion-graphics-agent](https://github.com/delexw/motion-graphics-agent)
+  > Turn ideas into motion graphics and animated videos with Claude or Codex. 用 Claude 或 Codex，将创意变成动态图形和动画视频。
+
+</untrusted_external_content>
+
+---
