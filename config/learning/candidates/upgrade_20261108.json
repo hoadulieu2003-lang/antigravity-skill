@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-08T13:42:15.959961+00:00",
+    "scan_date": "2026-11-08T16:42:17.251686+00:00",
     "cycle_id": "EVO-20261108",
     "sessions_evaluated": 81,
     "total_items_processed": 156,
     "active_skills_count": 87,
-    "candidates_count": 91,
-    "enhancements_count": 42,
+    "candidates_count": 92,
+    "enhancements_count": 41,
     "optimizations_count": 21
   },
   "new_skill_candidates": [
@@ -257,16 +257,6 @@
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     },
     {
-      "target_skill": "aider-execution-engine",
-      "source_technology": "myunwang/LLMPET",
-      "source_url": "https://github.com/myunwang/LLMPET",
-      "source_type": "GitHub (124 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "🐙 盯着 Claude Code 的桌面宠物：随 agent 状态变表情、弹消息气泡、一键授权，并统计 token 用量与花费。本地优先、MIT。",
-      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
-    },
-    {
       "target_skill": "cdp-engine",
       "source_technology": "jianshuo/claude-skills",
       "source_url": "https://github.com/jianshuo/claude-skills",
@@ -275,6 +265,16 @@
       "priority_score": 75,
       "enhancement_rationale": "13 Claude Code skills for video production (transcribe / translate / dub / multicam / subtitles / reframe) + WeChat publishing. Compatible with Claude Code, ...",
       "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
+      "target_skill": "ui-ux-pro-max",
+      "source_technology": "awizemann/scarf",
+      "source_url": "https://github.com/awizemann/scarf",
+      "source_type": "GitHub (897 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "Native macOS and iOS App for the Hermes AI agent — multi-window, multi-server (local + remote over SSH). Chat, dashboard, sessions, memory, cron, MCP, and more.",
+      "recommended_action": "Bổ sung mẫu giao diện quản trị tác tử (Agentic Admin CRUD) và tương tác phản hồi trực quan."
     }
   ],
   "architecture_optimizations": [

@@ -5108,3 +5108,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-08 23:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (360 ⭐)]** [shibing624/agentica](https://github.com/shibing624/agentica)
+  > One person, a team of agents: CLI, Web, Desktop & Python SDK with multi-session collaboration, persistent memory, and self-evolving skills. 一个人，一支 Agent 团队：支...
+
+</untrusted_external_content>
+
+---
