@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-08T10:42:14.485412+00:00",
+    "scan_date": "2026-11-08T13:42:15.959961+00:00",
     "cycle_id": "EVO-20261108",
-    "sessions_evaluated": 82,
+    "sessions_evaluated": 81,
     "total_items_processed": 156,
     "active_skills_count": 87,
-    "candidates_count": 90,
-    "enhancements_count": 43,
+    "candidates_count": 91,
+    "enhancements_count": 42,
     "optimizations_count": 21
   },
   "new_skill_candidates": [
@@ -143,16 +143,16 @@
       "suggested_skill_structure": "---\nname: spider\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng spider-rs/spider cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# SPIDER-RS/SPIDER SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `spider-rs/spider` (https://github.com/spider-rs/spider)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
-      "skill_slug": "openabcode",
-      "title": "matrixmapai/openabcode",
-      "source": "GitHub (425 ⭐)",
-      "url": "https://github.com/matrixmapai/openabcode",
+      "skill_slug": "anymodelbot",
+      "title": "modelflare-ai/AnyModelBot",
+      "source": "GitHub (2741 ⭐)",
+      "url": "https://github.com/modelflare-ai/AnyModelBot",
       "domain": "Công nghệ Mới nổi (Emerging Technology)",
       "priority": "HIGH",
-      "priority_score": 85,
+      "priority_score": 90,
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "OpenABCode is a coding agent that dynamically routes development tasks to the best-suited models",
-      "suggested_skill_structure": "---\nname: openabcode\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng matrixmapai/openabcode cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# MATRIXMAPAI/OPENABCODE SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `matrixmapai/openabcode` (https://github.com/matrixmapai/openabcode)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+      "proposed_value": "🤖 Open-source, local-first alternative to Grok Bot, OpenAI dots and Claude Duet. Your own AI bots on any model: GPT, Claude, Gemini, Grok, DeepSeek, Kimi, GL...",
+      "suggested_skill_structure": "---\nname: anymodelbot\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng modelflare-ai/AnyModelBot cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# MODELFLARE-AI/ANYMODELBOT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `modelflare-ai/AnyModelBot` (https://github.com/modelflare-ai/AnyModelBot)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [

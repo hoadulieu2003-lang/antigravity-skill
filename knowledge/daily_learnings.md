@@ -5096,3 +5096,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-08 20:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (72 ⭐)]** [wolfjkd/tradex-hub](https://github.com/wolfjkd/tradex-hub)
+  > A 股 AI 金融数据中台 · MCP/REST 双协议统一接入 · 多源 SmartRouter 自动降级 · 本地运行 · 免费零鉴权
+- **[GitHub (2741 ⭐)]** [modelflare-ai/AnyModelBot](https://github.com/modelflare-ai/AnyModelBot)
+  > 🤖 Open-source, local-first alternative to Grok Bot, OpenAI dots and Claude Duet. Your own AI bots on any model: GPT, Claude, Gemini, Grok, DeepSeek, Kimi, GL...
+
+</untrusted_external_content>
+
+---

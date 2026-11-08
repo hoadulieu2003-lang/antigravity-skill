@@ -1,7 +1,7 @@
 ---
 name: cc-haha
 description: >-
-  Kỹ năng chuyên gia vận hành cho NanmiCoder/cc-haha (15001 ⭐).
+  Kỹ năng chuyên gia vận hành cho NanmiCoder/cc-haha (15354 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở cc-haha vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến 本地优先的跨平台 Claude Code / AI Agent 桌面工作台：多 Agent 协作、Git Worktree、代码 Diff、技能市场、多模型、Computer Use、桌面宠物；支持微信、飞书、钉钉及 H5 等远程访问。 | Local-first Claude Code / AI Agent d
@@ -12,9 +12,9 @@ description: >-
 # NanmiCoder/cc-haha — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/NanmiCoder/cc-haha`  
-> **Độ uy tín cộng đồng**: 15001 ⭐  
+> **Độ uy tín cộng đồng**: 15354 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-14 04:42:10Z
+> **Tự động đóng gói lúc**: 2026-11-08 13:42:12Z
 
 ---
 
@@ -37,9 +37,8 @@ description: >-
 Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
 
 ```bash
-bun install
-cp .env.example .env
-./bin/claude-haha
+# Tham khảo tài liệu gốc tại GitHub: NanmiCoder/cc-haha
+git clone https://github.com/NanmiCoder/cc-haha.git
 ```
 
 ---

@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-08T13:42:13.491104+00:00",
+  "skill_name": "anymodelbot",
+  "source_repo": "modelflare-ai/AnyModelBot",
+  "stars": 2741,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\anymodelbot\\SKILL.md",
+  "human_promotion_required": true
+}
