@@ -5154,3 +5154,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-09 17:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (59 ⭐)]** [netresearch/git-workflow-skill](https://github.com/netresearch/git-workflow-skill)
+  > Agent Skill for Git workflow best practices - branching, commits, PR workflows | Claude Code compatible
+- **[GitHub (190 ⭐)]** [xiayu1987/noobot](https://github.com/xiayu1987/noobot)
+  > Cheap Money-Saving Self-hosted AI agent workspace with tool calling, MCP, multi-model routing, sandboxed execution, multi-agent workflows, and LLM-authored 3...
+- **[GitHub (105 ⭐)]** [webkubor/vite-plugin-agent-eyes](https://github.com/webkubor/vite-plugin-agent-eyes)
+  > Vite 运行时遥测插件：为 AI agent 提供结构化日志、错误快照、本地 Cookie 修复与提交前检查。 / Vite telemetry plugin for AI agents with structured logs, error snapshots, local cookie repair, an...
+
+</untrusted_external_content>
+
+---
