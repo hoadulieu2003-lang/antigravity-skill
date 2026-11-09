@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-09T13:42:11.744509+00:00",
+    "scan_date": "2026-11-09T16:42:11.546369+00:00",
     "cycle_id": "EVO-20261109",
-    "sessions_evaluated": 82,
-    "total_items_processed": 159,
+    "sessions_evaluated": 83,
+    "total_items_processed": 160,
     "active_skills_count": 87,
     "candidates_count": 91,
-    "enhancements_count": 42,
+    "enhancements_count": 43,
     "optimizations_count": 24
   },
   "new_skill_candidates": [
@@ -247,6 +247,16 @@
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     },
     {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "KnockOutEZ/wigolo",
+      "source_url": "https://github.com/KnockOutEZ/wigolo",
+      "source_type": "GitHub (5534 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "The go-to web for your AI coding agent — local-first search, fetch, crawl & research over MCP. No API keys, no cloud, $0/query. Public beta.",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
+    },
+    {
       "target_skill": "cdp-engine",
       "source_technology": "jianshuo/claude-skills",
       "source_url": "https://github.com/jianshuo/claude-skills",
@@ -265,16 +275,6 @@
       "priority_score": 75,
       "enhancement_rationale": "Native macOS and iOS App for the Hermes AI agent — multi-window, multi-server (local + remote over SSH). Chat, dashboard, sessions, memory, cron, MCP, and more.",
       "recommended_action": "Bổ sung mẫu giao diện quản trị tác tử (Agentic Admin CRUD) và tương tác phản hồi trực quan."
-    },
-    {
-      "target_skill": "aider-execution-engine",
-      "source_technology": "dcostenco/prism-coder",
-      "source_url": "https://github.com/dcostenco/prism-coder",
-      "source_type": "GitHub (156 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "Persistent session memory for AI coding agents — local-first, with on-device inference, associative recall, and drift detection. Works with Claude Code, Curs...",
-      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     }
   ],
   "architecture_optimizations": [

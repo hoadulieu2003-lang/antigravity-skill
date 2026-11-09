@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-09T16:42:10.029399+00:00",
+  "skill_name": "wigolo",
+  "source_repo": "KnockOutEZ/wigolo",
+  "stars": 5534,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\wigolo\\SKILL.md",
+  "human_promotion_required": true
+}
