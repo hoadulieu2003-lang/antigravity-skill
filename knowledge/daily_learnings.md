@@ -5264,3 +5264,21 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-10 23:42:03`
+
+<untrusted_external_content>
+### 🌐 Tin tức Sản phẩm Google & Frontier Labs
+- **[Google AI Official]** [We’re bringing Adobe’s creative and productivity tools closer to your everyday Google apps.](https://blog.google/company-news/inside-google/company-announcements/adobe-google-partnership-integration/)
+  > Google and Adobe are integrating creative and productivity tools. Edit PDFs in Drive and use Adobe AI in Gemini. See what’s new in this partnership.
+
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google DeepMind]** [Gemini 4 Carbon is now available](https://deepmind.google/blog/gemini-4-carbon-is-now-available/)
+  > 
+- **[Google DeepMind]** [Introducing AlphaProof Code: a breakthrough in verifying complex software at depth](https://deepmind.google/blog/introducing-alphaproof-code/)
+  > AlphaProof Code agents wrote three million lines of proofs in Lean to verify Signal’s core encryption.
+- **[Google DeepMind]** [Gemini Robotics 2.5 accelerates real-world general dexterity](https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/)
+  > Our most capable vision-language-action model enhances robot dexterity, reliability, and safety
+
+</untrusted_external_content>
+
+---
