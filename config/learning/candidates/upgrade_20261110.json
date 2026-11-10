@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-09T22:42:16.990842+00:00",
+    "scan_date": "2026-11-10T01:42:12.448601+00:00",
     "cycle_id": "EVO-20261110",
     "sessions_evaluated": 85,
     "total_items_processed": 163,
     "active_skills_count": 87,
-    "candidates_count": 93,
-    "enhancements_count": 43,
+    "candidates_count": 94,
+    "enhancements_count": 42,
     "optimizations_count": 25
   },
   "new_skill_candidates": [
@@ -157,16 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "gemini-super-engine",
-      "source_technology": "AnotiaWang/deep-research-web-ui",
-      "source_url": "https://github.com/AnotiaWang/deep-research-web-ui",
-      "source_type": "GitHub (2223 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "AI deep-research agent that turns any question into a cited report: plans searches, reads real sources, verifies evidence. Self-hosted, multi-provider, Docke...",
-      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
-    },
-    {
       "target_skill": "aider-execution-engine",
       "source_technology": "shareAI-lab/learn-claude-code",
       "source_url": "https://github.com/shareAI-lab/learn-claude-code",
@@ -275,6 +265,16 @@
       "priority_score": 75,
       "enhancement_rationale": "Native macOS and iOS App for the Hermes AI agent — multi-window, multi-server (local + remote over SSH). Chat, dashboard, sessions, memory, cron, MCP, and more.",
       "recommended_action": "Bổ sung mẫu giao diện quản trị tác tử (Agentic Admin CRUD) và tương tác phản hồi trực quan."
+    },
+    {
+      "target_skill": "aider-execution-engine",
+      "source_technology": "dcostenco/prism-coder",
+      "source_url": "https://github.com/dcostenco/prism-coder",
+      "source_type": "GitHub (156 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "Persistent session memory for AI coding agents — local-first, with on-device inference, associative recall, and drift detection. Works with Claude Code, Curs...",
+      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     }
   ],
   "architecture_optimizations": [
