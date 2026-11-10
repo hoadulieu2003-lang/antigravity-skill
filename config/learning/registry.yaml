@@ -1,6 +1,6 @@
 schema_version: '1.0'
 registry_id: FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY
-last_updated: '2026-10-23T16:07:20Z'
+last_updated: '2026-11-10T04:47:11Z'
 governance_mode: STRICT_HUMAN_PROMOTION_GATE
 tri_state_lifecycle:
   record: Stored as CANDIDATE; no execution authority
@@ -280,6 +280,26 @@ promoted_skills:
   promoted_at: '2026-10-23T16:07:07Z'
   approved_by: Anh (Product Owner)
   manifest: config/skills/tianshu-harness/SKILL.md
+- skill: impeccable
+  promoted_at: '2026-11-10T04:46:53Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/impeccable/SKILL.md
+- skill: canvas-design
+  promoted_at: '2026-11-10T04:46:53Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/canvas-design/SKILL.md
+- skill: algorithmic-art
+  promoted_at: '2026-11-10T04:46:54Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/algorithmic-art/SKILL.md
+- skill: theme-factory
+  promoted_at: '2026-11-10T04:46:54Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/theme-factory/SKILL.md
+- skill: remotion-video-engine
+  promoted_at: '2026-11-10T04:46:54Z'
+  approved_by: Anh (Product Owner)
+  manifest: config/skills/remotion-video-engine/SKILL.md
 capability_routing_history:
 - capability: gsap
   domain: visual_choreography
@@ -295,8 +315,8 @@ active_domain_packs:
   activated_at: '2026-09-06T09:16:00Z'
   approved_by: Anh (Product Owner)
 runtime_sync:
-  last_sync: '2026-10-23T16:07:20Z'
-  total_events_processed: 809
+  last_sync: '2026-11-10T04:47:11Z'
+  total_events_processed: 1009
   autonomous_captures: 10
   knowledge_ingestions: 1
   failure_events: 0
