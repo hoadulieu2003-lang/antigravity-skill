@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261110` | **Thời gian**: `2026-11-10 01:42:12 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261110` | **Thời gian**: `2026-11-10 04:42:12 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -164,7 +164,31 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng Ag
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.7. `android-ad-cleaner` — rddmwmddr/android-ad-cleaner 🔥 [HIGH PRIORITY]
+### 2.7. `noria` — AhmadHassan-BTed/Noria 🔥 [HIGH PRIORITY]
+- **Nguồn gốc (Source)**: [GitHub (4636 ⭐)](https://github.com/AhmadHassan-BTed/Noria)
+- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
+- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
+- **Giá trị Đề xuất (Proposed Value)**: An agentic extractor for messaging platforms. Noria receives messages & URLs via chat; scrapes web data to evaluate the content against custom scoring matric...
+
+```yaml
+# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
+---
+name: noria
+description: Tự động kích hoạt khi người dùng muốn tận dụng AhmadHassan-BTed/Noria cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
+---
+
+# AHMADHASSAN-BTED/NORIA SKILL ARCHITECTURE
+
+## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
+- Kế thừa giải pháp từ: `AhmadHassan-BTed/Noria` (https://github.com/AhmadHassan-BTed/Noria)
+- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
+
+## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
+- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
+- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
+```
+
+### 2.8. `android-ad-cleaner` — rddmwmddr/android-ad-cleaner 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (5780 ⭐)](https://github.com/rddmwmddr/android-ad-cleaner)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -188,7 +212,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng rd
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.8. `aktools` — akfamily/aktools 🔥 [HIGH PRIORITY]
+### 2.9. `aktools` — akfamily/aktools 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1542 ⭐)](https://github.com/akfamily/aktools)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -212,7 +236,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng ak
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.9. `spider` — spider-rs/spider 🔥 [HIGH PRIORITY]
+### 2.10. `spider` — spider-rs/spider 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2820 ⭐)](https://github.com/spider-rs/spider)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -236,7 +260,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng sp
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.10. `anymodelbot` — modelflare-ai/AnyModelBot 🔥 [HIGH PRIORITY]
+### 2.11. `anymodelbot` — modelflare-ai/AnyModelBot 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2741 ⭐)](https://github.com/modelflare-ai/AnyModelBot)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -260,7 +284,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng mo
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.11. `openabcode` — matrixmapai/openabcode 🔥 [HIGH PRIORITY]
+### 2.12. `openabcode` — matrixmapai/openabcode 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (425 ⭐)](https://github.com/matrixmapai/openabcode)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -284,30 +308,6 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng ma
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.12. `dsh-redteam-mode` — Jueze-2019/dsh-redteam-mode 🔥 [HIGH PRIORITY]
-- **Nguồn gốc (Source)**: [GitHub (136 ⭐)](https://github.com/Jueze-2019/dsh-redteam-mode)
-- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
-- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
-- **Giá trị Đề xuất (Proposed Value)**: DSH RedTeam 模式：把 DeepSeek Harness 变成红队作战指挥台——一个靶标名称拉起信息收集/漏洞检测/漏洞利用/内网渗透四个角色，资产与战果实时落入本地 SQLite 事实库（仅供已授权测试）
-
-```yaml
-# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
----
-name: dsh-redteam-mode
-description: Tự động kích hoạt khi người dùng muốn tận dụng Jueze-2019/dsh-redteam-mode cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
----
-
-# JUEZE-2019/DSH-REDTEAM-MODE SKILL ARCHITECTURE
-
-## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
-- Kế thừa giải pháp từ: `Jueze-2019/dsh-redteam-mode` (https://github.com/Jueze-2019/dsh-redteam-mode)
-- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
-
-## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
-- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
-- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
-```
-
 ---
 
 ## 🛠️ 3. Đề Xuất Nâng Cấp Kỹ Năng Hiện Hữu (`SKILL_ENHANCEMENT`)
@@ -324,9 +324,9 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 | **`gemini-super-engine`** | [EvoScientist/EvoScientist](https://github.com/EvoScientist/EvoScientist) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
 | **`aider-execution-engine`** | [zenstory-ai/oh-story-claudecode](https://github.com/zenstory-ai/oh-story-claudecode) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`gemini-super-engine`** | [KnockOutEZ/wigolo](https://github.com/KnockOutEZ/wigolo) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
-| **`cdp-engine`** | [jianshuo/claude-skills](https://github.com/jianshuo/claude-skills) | `HIGH` | Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents. |
 | **`ui-ux-pro-max`** | [awizemann/scarf](https://github.com/awizemann/scarf) | `HIGH` | Bổ sung mẫu giao diện quản trị tác tử (Agentic Admin CRUD) và tương tác phản hồi trực quan. |
 | **`aider-execution-engine`** | [dcostenco/prism-coder](https://github.com/dcostenco/prism-coder) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
+| **`cdp-engine`** | [NotASithLord/peerd](https://github.com/NotASithLord/peerd) | `HIGH` | Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents. |
 
 
 ## 🏛️ 4. Đề Xuất Tối Ưu Kiến Trúc & Quy Chuẩn (`ARCHITECTURE_OPTIMIZATION`)

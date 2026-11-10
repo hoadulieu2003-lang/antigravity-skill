@@ -5226,3 +5226,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-10 11:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (4636 ⭐)]** [AhmadHassan-BTed/Noria](https://github.com/AhmadHassan-BTed/Noria)
+  > An agentic extractor for messaging platforms. Noria receives messages & URLs via chat; scrapes web data to evaluate the content against custom scoring matric...
+- **[GitHub (126 ⭐)]** [labtether/labtether](https://github.com/labtether/labtether)
+  > LabTether
+- **[GitHub (53 ⭐)]** [BaseInfinity/claude-sdlc-harness](https://github.com/BaseInfinity/claude-sdlc-harness)
+  > Self-evolving SDLC enforcement for AI coding agents — hooks, skills, and one-command setup for Claude Code. Plan before coding, test before shipping, escalat...
+
+</untrusted_external_content>
+
+---
