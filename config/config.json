@@ -50,6 +50,13 @@
       }
     }
   },
+  "sidecars": {
+    "swarm/swarm_board": {
+      "projectId": "745bdf24-245f-4f0d-88bf-aa512d25d4be",
+      "resolvedPermissions": {},
+      "schemaVersion": 1
+    }
+  },
   "userSettings": {
     "artifactReviewMode": "ARTIFACT_REVIEW_MODE_TURBO",
     "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_EAGER",

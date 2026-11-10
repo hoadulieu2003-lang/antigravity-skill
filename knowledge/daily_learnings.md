@@ -5282,3 +5282,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-11 02:42:02`
+
+<untrusted_external_content>
+### 🌐 Tin tức Sản phẩm Google & Frontier Labs
+- **[Google AI Official]** [Gemini Intelligence: New features, on more devices](https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/)
+  > Gemini Intelligence is rolling out to more devices. See how expanded capabilities across these devices help you do more.
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1270 ⭐)]** [JMAN730/opendroid](https://github.com/JMAN730/opendroid)
+  > Your Open Autonomous Android Agent — A production-ready, self-planning AI assistant powered by local/remote LLMs and accessibility-driven screen automation.
+
+</untrusted_external_content>
+
+---
