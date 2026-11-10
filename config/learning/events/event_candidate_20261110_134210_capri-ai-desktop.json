@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-10T13:42:10.315916+00:00",
+  "skill_name": "capri-ai-desktop",
+  "source_repo": "PotterRemember37/Capri-AI-Desktop",
+  "stars": 1030,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\capri-ai-desktop\\SKILL.md",
+  "human_promotion_required": true
+}

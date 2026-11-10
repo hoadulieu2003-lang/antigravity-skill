@@ -1,7 +1,7 @@
 ---
 name: esp32-iphone-agent
 description: >-
-  Kỹ năng chuyên gia vận hành cho onehumanbeing/esp32-iphone-agent (4033 ⭐).
+  Kỹ năng chuyên gia vận hành cho onehumanbeing/esp32-iphone-agent (4794 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở esp32-iphone-agent vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Let an AI model use a real iPhone with a $7 ESP32: AirPlay eyes, USB HID hands, any OpenAI-compatible vision model
@@ -12,9 +12,9 @@ description: >-
 # onehumanbeing/esp32-iphone-agent — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/onehumanbeing/esp32-iphone-agent`  
-> **Độ uy tín cộng đồng**: 4033 ⭐  
+> **Độ uy tín cộng đồng**: 4794 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-10-28 07:42:10Z
+> **Tự động đóng gói lúc**: 2026-11-10 13:42:09Z
 
 ---
 
@@ -23,12 +23,12 @@ description: >-
 * **Mục tiêu cốt lõi**: Let an AI model use a real iPhone with a $7 ESP32: AirPlay eyes, USB HID hands, any OpenAI-compatible vision model. No Mac, no developer account, no jailbreak.
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
+- **It hears the phone.** The board forwards AirPlay audio and the iPhone turns it into words, so listening
+- **Free Jev line.** Jev takes the plain steps in a fraction of a second and leaves the rest to the large model;
+- **Long tasks.** No 40-step limit; any stopped run can continue. Every run can be replayed step by step on the phone.
 - **Eyes — AirPlay to the board.** The board opens its own Wi-Fi hotspot and appears in the phone's Screen Mirroring
 - **Hands — USB HID.** The board is a standard USB mouse and keyboard. With AssistiveTouch on, the mouse moves an
 - **Brain — the app.** The app decodes the stream, sends screenshots to any OpenAI-compatible vision model, and runs
-- **Closing the loop.** The pointer is relative, so the app tracks it and re-homes it in a corner; before precise taps
-- **Review.** Every run is kept on the phone: replay it step by step with the taps and swipes drawn on top.
-- **AirPlay source must be an iPhone.** Screen Mirroring from macOS is not supported: the handshake can look healthy
 
 ---
 

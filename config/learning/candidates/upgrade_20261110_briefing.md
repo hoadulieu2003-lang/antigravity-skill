@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261110` | **Thời gian**: `2026-11-10 10:42:12 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261110` | **Thời gian**: `2026-11-10 13:42:11 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -8,11 +8,11 @@
 ## 📊 1. Bức Tranh Tổng Thể (Executive Summary & Metrics)
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
-| **Phiên học đã quét (Sessions Evaluated)** | `84` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
-| **Tài nguyên công nghệ (Items Processed)** | `160` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
+| **Phiên học đã quét (Sessions Evaluated)** | `85` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
+| **Tài nguyên công nghệ (Items Processed)** | `162` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `92` | Kho năng lực sẵn có tại `config/skills/` |
-| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `93` | Các khoảng trống công nghệ cần bổ sung độc lập |
-| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `40` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
+| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `94` | Các khoảng trống công nghệ cần bổ sung độc lập |
+| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `41` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
 | **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `25` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
 ---
@@ -324,9 +324,9 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 | **`gemini-super-engine`** | [EvoScientist/EvoScientist](https://github.com/EvoScientist/EvoScientist) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
 | **`aider-execution-engine`** | [zenstory-ai/oh-story-claudecode](https://github.com/zenstory-ai/oh-story-claudecode) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`gemini-super-engine`** | [KnockOutEZ/wigolo](https://github.com/KnockOutEZ/wigolo) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
+| **`aider-execution-engine`** | [PotterRemember37/Capri-AI-Desktop](https://github.com/PotterRemember37/Capri-AI-Desktop) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`ui-ux-pro-max`** | [awizemann/scarf](https://github.com/awizemann/scarf) | `HIGH` | Bổ sung mẫu giao diện quản trị tác tử (Agentic Admin CRUD) và tương tác phản hồi trực quan. |
 | **`aider-execution-engine`** | [dcostenco/prism-coder](https://github.com/dcostenco/prism-coder) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
-| **`cdp-engine`** | [NotASithLord/peerd](https://github.com/NotASithLord/peerd) | `HIGH` | Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents. |
 
 
 ## 🏛️ 4. Đề Xuất Tối Ưu Kiến Trúc & Quy Chuẩn (`ARCHITECTURE_OPTIMIZATION`)
