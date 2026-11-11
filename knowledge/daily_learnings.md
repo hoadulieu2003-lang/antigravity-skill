@@ -5306,3 +5306,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-11 09:34:26`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (5093 ⭐)]** [ethanplusai/sellbird](https://github.com/ethanplusai/sellbird)
+  > Sellbird (formerly Harvey): the open-source outreach platform that runs on your Claude or ChatGPT plan. Finds companies and decision makers, verifies emails,...
+- **[GitHub (243 ⭐)]** [taxueseek/argo](https://github.com/taxueseek/argo)
+  > 专门为 agent 打造的开源 agent 搜索工具，具备 300的搜索源及多语言搜索能力，覆盖中文/英文/学术/代码/购物/金融/新闻/百科。
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [MiniMaxAI/MiniMax-H3-Image](https://huggingface.co/MiniMaxAI/MiniMax-H3-Image)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---

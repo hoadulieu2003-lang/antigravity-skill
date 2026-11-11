@@ -1,27 +1,15 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-10T22:42:16.495159+00:00",
+    "scan_date": "2026-11-11T02:34:39.930320+00:00",
     "cycle_id": "EVO-20261111",
     "sessions_evaluated": 86,
     "total_items_processed": 162,
     "active_skills_count": 92,
-    "candidates_count": 95,
+    "candidates_count": 96,
     "enhancements_count": 39,
-    "optimizations_count": 26
+    "optimizations_count": 25
   },
   "new_skill_candidates": [
-    {
-      "skill_slug": "ian-xiaohei-illustrations",
-      "title": "helloianneo/ian-xiaohei-illustrations",
-      "source": "GitHub (12873 ⭐)",
-      "url": "https://github.com/helloianneo/ian-xiaohei-illustrations",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 100,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "中文小黑怪诞正文配图生成 Skill | 16:9 白底手绘 | 少量红橙蓝批注 | Codex Skill",
-      "suggested_skill_structure": "---\nname: ian-xiaohei-illustrations\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng helloianneo/ian-xiaohei-illustrations cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# HELLOIANNEO/IAN-XIAOHEI-ILLUSTRATIONS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `helloianneo/ian-xiaohei-illustrations` (https://github.com/helloianneo/ian-xiaohei-illustrations)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
     {
       "skill_slug": "open-duet",
       "title": "Anil-matcha/open-duet",
@@ -153,6 +141,18 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "🤖 Open-source, local-first alternative to Grok Bot, OpenAI dots and Claude Duet. Your own AI bots on any model: GPT, Claude, Gemini, Grok, DeepSeek, Kimi, GL...",
       "suggested_skill_structure": "---\nname: anymodelbot\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng modelflare-ai/AnyModelBot cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# MODELFLARE-AI/ANYMODELBOT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `modelflare-ai/AnyModelBot` (https://github.com/modelflare-ai/AnyModelBot)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "sellbird",
+      "title": "ethanplusai/sellbird",
+      "source": "GitHub (5093 ⭐)",
+      "url": "https://github.com/ethanplusai/sellbird",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 90,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Sellbird (formerly Harvey): the open-source outreach platform that runs on your Claude or ChatGPT plan. Finds companies and decision makers, verifies emails,...",
+      "suggested_skill_structure": "---\nname: sellbird\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ethanplusai/sellbird cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ETHANPLUSAI/SELLBIRD SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ethanplusai/sellbird` (https://github.com/ethanplusai/sellbird)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [

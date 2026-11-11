@@ -7,7 +7,7 @@ human_promotion_required: true
 benchmark:
   total_score: 9.8
   rating: RECOMMENDED
-  evaluated_at: '2026-11-10T22:42:14Z'
+  evaluated_at: '2026-11-11T02:34:37Z'
   breakdown:
     structure_metadata: 2.5
     command_safety: 2.3
