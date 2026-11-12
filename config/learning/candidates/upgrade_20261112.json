@@ -1,27 +1,15 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-12T04:42:12.152220+00:00",
+    "scan_date": "2026-11-12T07:44:13.039260+00:00",
     "cycle_id": "EVO-20261112",
     "sessions_evaluated": 83,
-    "total_items_processed": 156,
+    "total_items_processed": 155,
     "active_skills_count": 92,
-    "candidates_count": 90,
+    "candidates_count": 89,
     "enhancements_count": 40,
     "optimizations_count": 24
   },
   "new_skill_candidates": [
-    {
-      "skill_slug": "esp32-iphone-agent",
-      "title": "onehumanbeing/esp32-iphone-agent",
-      "source": "GitHub (4033 ⭐)",
-      "url": "https://github.com/onehumanbeing/esp32-iphone-agent",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 95,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "Let an AI model use a real iPhone with a $7 ESP32: AirPlay eyes, USB HID hands, any OpenAI-compatible vision model. No Mac, no developer account, no jailbreak.",
-      "suggested_skill_structure": "---\nname: esp32-iphone-agent\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng onehumanbeing/esp32-iphone-agent cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ONEHUMANBEING/ESP32-IPHONE-AGENT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `onehumanbeing/esp32-iphone-agent` (https://github.com/onehumanbeing/esp32-iphone-agent)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
     {
       "skill_slug": "mika",
       "title": "wangzan101/Mika",
@@ -153,6 +141,18 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "A living agent organism in Lisp.",
       "suggested_skill_structure": "---\nname: nodecode\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng nodecode-ai/nodecode cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# NODECODE-AI/NODECODE SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `nodecode-ai/nodecode` (https://github.com/nodecode-ai/nodecode)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "rssh",
+      "title": "rssh-org/rssh",
+      "source": "GitHub (518 ⭐)",
+      "url": "https://github.com/rssh-org/rssh",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "An SSH tool dedicated to addressing all pain points · (macOS/Windows/Linux/Android/iOS/HmOS(mobile&pc))",
+      "suggested_skill_structure": "---\nname: rssh\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng rssh-org/rssh cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# RSSH-ORG/RSSH SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `rssh-org/rssh` (https://github.com/rssh-org/rssh)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [

@@ -5372,3 +5372,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-12 14:44:06`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (141 ⭐)]** [qrak/LLM_trader](https://github.com/qrak/LLM_trader)
+  > An LLM trading agent that shows its work: the chart, the prompt, the memory it retrieved, and every loss. Paper trading, public ledger.
+- **[GitHub (239 ⭐)]** [LintenAI/linten](https://github.com/LintenAI/linten)
+  > Open-source AI gateway. One OpenAI-shaped API for 100+ models, with virtual keys, spend tracking, routing, and guardrails. Self-hosted.
+
+</untrusted_external_content>
+
+---
