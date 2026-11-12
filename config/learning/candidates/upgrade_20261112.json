@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-12T07:44:13.039260+00:00",
+    "scan_date": "2026-11-12T10:42:18.974962+00:00",
     "cycle_id": "EVO-20261112",
-    "sessions_evaluated": 83,
-    "total_items_processed": 155,
+    "sessions_evaluated": 82,
+    "total_items_processed": 154,
     "active_skills_count": 92,
-    "candidates_count": 89,
-    "enhancements_count": 40,
+    "candidates_count": 90,
+    "enhancements_count": 38,
     "optimizations_count": 24
   },
   "new_skill_candidates": [
@@ -158,16 +158,6 @@
   "skill_enhancements": [
     {
       "target_skill": "aider-execution-engine",
-      "source_technology": "UfoMiao/zcf",
-      "source_url": "https://github.com/UfoMiao/zcf",
-      "source_type": "GitHub (6078 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Zero-Config Code Flow for Claude code & Codex",
-      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
-    },
-    {
-      "target_skill": "aider-execution-engine",
       "source_technology": "lintsinghua/claude-code-book",
       "source_url": "https://github.com/lintsinghua/claude-code-book",
       "source_type": "GitHub (4346 ⭐)",
@@ -274,6 +264,16 @@
       "priority": "HIGH",
       "priority_score": 75,
       "enhancement_rationale": "Native desktop UI for Claude Code with orchestration, streaming, background agents, and multi-provider support. Built with Tauri + React.",
+      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "aider-execution-engine",
+      "source_technology": "laolaoshiren/claude-code-skills-zh",
+      "source_url": "https://github.com/laolaoshiren/claude-code-skills-zh",
+      "source_type": "GitHub (900 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "面向中文开发者的 Claude Code Skills / Agents / Plugins 精选与原创技能库｜按场景分类｜复制即装｜持续更新",
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     }
   ],
