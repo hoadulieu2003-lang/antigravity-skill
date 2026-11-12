@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-11T02:34:39.930320+00:00",
+    "scan_date": "2026-11-11T04:42:23.578079+00:00",
     "cycle_id": "EVO-20261111",
-    "sessions_evaluated": 86,
-    "total_items_processed": 162,
+    "sessions_evaluated": 85,
+    "total_items_processed": 159,
     "active_skills_count": 92,
-    "candidates_count": 96,
-    "enhancements_count": 39,
+    "candidates_count": 94,
+    "enhancements_count": 38,
     "optimizations_count": 25
   },
   "new_skill_candidates": [
@@ -158,16 +158,6 @@
   "skill_enhancements": [
     {
       "target_skill": "aider-execution-engine",
-      "source_technology": "shareAI-lab/learn-claude-code",
-      "source_url": "https://github.com/shareAI-lab/learn-claude-code",
-      "source_type": "GitHub (79296 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Bash is all you need - A nano claude code–like 「agent harness」, built from 0 to 1",
-      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
-    },
-    {
-      "target_skill": "aider-execution-engine",
       "source_technology": "UfoMiao/zcf",
       "source_url": "https://github.com/UfoMiao/zcf",
       "source_type": "GitHub (6078 ⭐)",
@@ -275,6 +265,16 @@
       "priority_score": 75,
       "enhancement_rationale": "⚡ The Complete X/Twitter Automation Toolkit — Scrapers, MCP server for AI agents (Claude/GPT), CLI, browser scripts. No API fees. Open source. Unfollow peopl...",
       "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
+      "target_skill": "aider-execution-engine",
+      "source_technology": "aofp/yume",
+      "source_url": "https://github.com/aofp/yume",
+      "source_type": "GitHub (151 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "Native desktop UI for Claude Code with orchestration, streaming, background agents, and multi-provider support. Built with Tauri + React.",
+      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     }
   ],
   "architecture_optimizations": [

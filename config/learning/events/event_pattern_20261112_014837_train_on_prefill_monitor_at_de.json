@@ -1,0 +1,7 @@
+{
+  "event_type": "ARCHITECTURAL_PATTERN_DISTILLED",
+  "title": "Train on prefill, monitor at decode: Using sparse autoencoders for topic monitoring",
+  "source": "ArXiv CS.AI",
+  "pattern_file": "C:\\Users\\game\\.gemini\\knowledge\\architecture_patterns\\train_on_prefill_monitor_at_decode_using_sparse_autoencoders.md",
+  "timestamp": "2026-11-12 01:48:37 UTC"
+}
