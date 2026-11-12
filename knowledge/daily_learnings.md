@@ -5412,3 +5412,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-13 05:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (67 ⭐)]** [FMXExpress/PasClaw](https://github.com/FMXExpress/PasClaw)
+  > Ultra-lightweight native AI agent framework written entirely in Object Pascal for Delphi and Free Pascal, designed for performance, portability, and extensib...
+
+</untrusted_external_content>
+
+---
