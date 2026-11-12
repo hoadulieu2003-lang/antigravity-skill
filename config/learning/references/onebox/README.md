@@ -1,0 +1,516 @@
+<div align="center">
+  <img src=".github/readme/icon.webp" width="96" alt="OneBox icon" />
+
+  # OneBox (万宝盒)
+
+  **English** | [简体中文](README.zh-CN.md)
+
+  A free AI agent & toolbox for Android: say what you need and the built-in agent drives
+  90+ in-app tools to get it done — plus image & document tools, productivity and daily
+  utilities, and 100+ file formats you can open right away.
+
+  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+  [![Google Play](https://img.shields.io/badge/Google%20Play-OneBox-green?logo=google-play)](https://play.google.com/store/apps/details?id=com.shifenmiao.app)
+  [![F-Droid](https://img.shields.io/badge/F--Droid-in%20review-blue?logo=f-droid)](https://f-droid.org/packages/com.shifenmiao.app)
+  [![Ko-fi](https://img.shields.io/badge/Ko--fi-donate-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/wangzhishou)
+</div>
+
+## Screenshots
+
+<table>
+  <tr>
+    <td><img src=".github/readme/en/01.webp?v=3" width="180" alt="90+ tools in one app" /></td>
+    <td><img src=".github/readme/en/02.webp?v=3" width="180" alt="Say the word, AI does it" /></td>
+    <td><img src=".github/readme/en/03.webp?v=3" width="180" alt="Bookkeeping by voice" /></td>
+    <td><a href="https://youtube.com/shorts/eGkwoe3puSw"><img src=".github/readme/intro-en.jpg?v=2" width="180" alt="Intro video (YouTube Shorts)" /></a></td>
+  </tr>
+</table>
+
+## Download
+
+- **International**: [Google Play](https://play.google.com/store/apps/details?id=com.shifenmiao.app) · [Official site](https://www.oneboxable.com)
+- **中国**: [万宝盒官网](https://www.wanbaohe.com) · 小米 / 应用宝 / OPPO / vivo / 华为应用商店搜索「万宝盒」
+
+## AI Assistant: More Than Just Feature Count
+
+Plenty of toolbox apps are long on features. OneBox's built-in AI assistant saves you from hunting for tools and memorizing steps — just say what you want:
+
+> "Turn these images into a PDF."
+> "Log this bill screenshot into my ledger."
+> "Make me a to-do list."
+> "Look up today's stock prices online."
+
+It understands, acts, and reports back — in one flow.
+
+- **Bounded by its own permissions**: everything the agent does stays inside the app's own Android sandbox and declared permission set — it never touches contacts, SMS or call logs; local tools run entirely on-device, and only the conversation with your chosen model goes online.
+- **An agent that drives the tools**: the AI agent can invoke 90+ in-app local tools (PDF processing, image editing, file management, bookkeeping…), chaining multi-step tasks across tools — executed locally with per-tool timeouts and iteration limits.
+- **Picture-in-picture robot, no more waiting around**: long agent task? Just leave the app — with an active AI session it drops into system picture-in-picture, where the mini-window robot keeps you posted on progress and one tap brings you back to the result. Native PiP, zero permissions required.
+- **One chat, many models**: talk to multiple mainstream LLMs from a single entry, with custom AI engines and prompt management.
+- **Bring your own key — use it for free**: drop in any OpenAI-compatible API key (including free tiers like Gemini or OpenRouter's free models) and the full assistant + agent is yours at zero cost. Custom engines, endpoints and tokens are fully open in the Google Play build and in builds from this repo.
+- **Models that run on the phone — fully offline**: download a local model (Gemma 3 1B or Qwen3 0.6B) inside the app, or import your own `.litertlm` file, and chat without network, account or token cost — inference runs entirely on-device via LiteRT-LM (Google Play and FOSS builds only). Translation and reading text from photos have on-device paths too — see [On-Device AI](#on-device-ai-chat-translate-and-read-photos-without-a-network).
+- **Transparent by source**: every line is public — how data is processed locally and what never leaves the device is something you can verify, not a promise you have to trust.
+
+## On-Device AI: Chat, Translate and Read Photos Without a Network
+
+Three things in OneBox run on the phone itself. Once the model is on the device, they work without a network, an account or points.
+
+| Task | Runtime | Model | Download |
+| --- | --- | --- | --- |
+| Chat | LiteRT-LM | Gemma 3 1B (int4), Qwen3 0.6B, or your own `.litertlm` | ~585 MB / ~615 MB |
+| Translate | LiteRT-LM | Tencent Hy-MT2 1.8B | ~1.8 GB |
+| Read text in photos | ONNX Runtime + OpenCV | PP-OCRv6 small | ~26 MB |
+
+- **Chat**: download a recommended model or import any `.litertlm` from storage (it is copied in, so the original can go), then set it as the chat model. GPU first, CPU fallback, 4K context; memory pressure releases the engine instead of killing the app.
+- **Translate**: Fast, Default and Local modes. Local runs Hy-MT2 on-device in 20 languages plus auto-detect; camera input goes through the on-device OCR, so the photo is not uploaded. No login or points for the translation itself — read-aloud is a separate cloud TTS call that needs both.
+- **Read text in photos**: the 26 MB PP-OCRv6 pack is downloaded once and SHA-256 checked. Chinese, English, Japanese and common Latin scripts; copy by line, export Markdown, save as a note, history.
+- **Limits**: long documents, tables and image understanding still go to cloud models — on-device OCR returns text only. LiteRT-LM ships in the Google Play and FOSS builds (`feature/ai/src/litertlm/`); domestic builds compile a stub, so local chat and translation are missing there, while OCR is in every build.
+
+## File Opening: 100+ Formats in One App
+
+OneBox is also a file viewer. Tap an attachment in a chat app, a file in a file manager, or share one over from another app — it lands on the right screen, with no separate Office, PDF, media player or unzip app.
+
+| Type | Count | Common formats | Opens in |
+| --- | --- | --- | --- |
+| Images | 24 | jpg / png / gif / webp / heic / tiff / svg / avif / jxl / qoi … | Built-in viewer with swipe and zoom |
+| PDF | 1 | pdf | Built-in PDF preview |
+| Documents | 11 | doc / docx / xls / xlsx / ppt / pptx / odt / ods / odp / rtf / epub | Built-in offline preview (`feature/file-viewer`) with find; Word adds page numbers and night mode |
+| Markdown | 4 | md / markdown / mkd / mdown | Built-in editor, preview + edit |
+| HTML | 3 | html / htm / xhtml | Built-in browser |
+| Text / code / config | 42 | txt / log / json / xml / yaml / csv / kt / java / py / go / rs / sql / sh … | Built-in code editor with syntax highlighting |
+| Audio | 12 | mp3 / wav / flac / ogg / aac / m4a / opus … | Built-in player, background playback + notification controls |
+| Video | 13 | mp4 / mkv / mov / webm / avi / 3gp … | Built-in player with picture-in-picture |
+| Archives | 14 | zip / rar / 7z / tar / gz / xz … | ZIP browsed and extracted in-app; others handed to installed apps |
+
+**124 unique extensions.** Every single-file entry point — file browser, external intents, deep links, AI agent tool calls — goes through the same `ContentRouter` in `core/ui`, so a file opens the same way wherever it comes from. A few pro formats (camera RAW, uncommon audio codecs) depend on the system decoder; when they can't be decoded, OneBox says so or hands them off.
+
+## Features
+
+OneBox ships **107 feature modules**. Local tools run entirely on-device; only the conversation with your chosen AI model goes online. The tables below list every module — names refer to the `feature/*` directories in this repo.
+
+### AI & Assistant
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/ai` | AI Chat & Agent | Multi-model chat, dual-model duels, prompt execution, an agent that invokes in-app tools, and offline on-device models via LiteRT-LM (Google Play / FOSS builds), with token stats |
+| `feature/ai-image` | AI Image | Text-to-image generation, with share / copy / edit |
+| `feature/ai-detect` | AI Detector | Check whether a text or an image is AI-generated |
+| `feature/dsh-client` | DSH Client | Drive a [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) agent on your computer — scan-to-pair, end-to-end encrypted, LAN or cloud relay (computer side: [`onebox-dsh-bridge`](https://github.com/wangzhishou/onebox-dsh-bridge)) |
+| `feature/visual-automation` | Visual Automation | Feed screenshots to a multimodal model for screenshot-based UI automation |
+
+### Image Viewing & Editing
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/image-viewer` | Image Viewer | Immersive viewer with swipe browsing, double-tap / pinch zoom (up to 5×), online image download |
+| `feature/image-preview` | Image Preview | Preview and manage images; the entry point to edit / crop / filter flows |
+| `feature/single-edit` | Single Edit | All-in-one editor: crop, filters, draw, curves, resize, format & quality, before/after compare |
+| `feature/draw` | Draw | Free-form canvas: pen / neon / highlighter / blur / pixelate / text / stickers / healing, shapes and flood fill |
+| `feature/markup-layers` | Layers | Layer-based creation: add / order / merge / blend / opacity, brushes, text, shapes, export settings |
+| `feature/crop` | Crop | Crop with rotation, free-corner crop, shaped outlines and aspect ratios |
+| `feature/image-stitch` | Image Stitch | Horizontal / vertical / grid stitching with alignment, spacing and fading edges |
+| `feature/image-splitting` | Image Split | Split one image into a rows × columns grid of tiles |
+| `feature/image-stacking` | Image Stacking | Overlay multiple images into a single composite |
+| `feature/image-cutting` | Image Cut | Precise cut by horizontal / vertical start–end percentages, with invert |
+| `feature/compare` | Compare | Side-by-side or overlay diff of two images, slider and pixel-level highlight |
+| `feature/load-net-image` | Net Image Loader | Paste a URL to parse, preview and download images from the page |
+| `feature/pick-color` | Color Picker | Tap / drag to pick pixel colors, with pan and zoom modes |
+| `feature/collage-maker` | Collage Maker | Collages of up to 10 photos with templates, spacing, rounded corners, backgrounds |
+| `feature/text-card` | Text Cards | Turn quotes into beautiful cards with paper backgrounds, layers and AI illustrations |
+
+### Filters & Effects
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/filters` | Filters | 100+ filters (blur, color, artistic, edge, warp) with mask-based partial application |
+| `feature/gradient-maker` | Gradient Maker | Pure / overlay / mesh gradients with configurable color stops |
+| `feature/mesh-gradients` | Mesh Gradients | Browse and download mesh-gradient packs, jump into the editor |
+| `feature/noise-generation` | Noise Textures | Procedural noise via FastNoiseLite (OpenSimplex2 / Perlin / Value…) |
+| `feature/ascii-art` | ASCII Art | Convert images into character-based text art |
+| `feature/color-tools` | Color Tools | Color info (HEX / RGB / HSL), harmonies, shades / gradients, histogram analysis |
+| `feature/palette-tools` | Palette Extract | Extract palettes from images, Material You style, custom palette export |
+
+### Conversion & Compression
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/format-conversion` | Format Convert | JPEG / PNG / WebP conversion with quality control, EXIF retention, batch processing |
+| `feature/resize-convert` | Resize & Convert | Resize + convert in one pass: width / height / preset / scale modes, batch |
+| `feature/weight-resize` | Compress by Size | Compress to a target file size, with before/after size comparison |
+| `feature/limits-resize` | Limit Resize | Scale within max width / height; skip / re-encode / scale modes |
+| `feature/gif-tools` | GIF Tools | Multi-image GIFs with frame rate, repeat count, size and per-frame preview |
+| `feature/apng-tools` | APNG Tools | Multi-image APNGs with frame delay and repeat count |
+| `feature/webp-tools` | WebP Tools | Multi-image animated WebP with frame delay and repeat count |
+| `feature/svg-maker` | SVG Maker | Convert bitmaps into SVG vector graphics |
+| `feature/zip` | ZIP Archive | Pack images into a ZIP; open a ZIP to browse its tree and extract one file or all |
+
+### Metadata & Encoding
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/edit-exif` | Edit EXIF | View and modify camera model, capture time, GPS, copyright… |
+| `feature/delete-exif` | Delete EXIF | Batch-strip EXIF for privacy, or add new EXIF data |
+| `feature/base64-tools` | Base64 Tools | Two-way image ↔ Base64 conversion |
+| `feature/checksum-tools` | Checksum Tools | Compute and compare file / text hashes with multiple algorithms |
+
+### Documents & Text
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/pdf-tools` | PDF Toolbox | Preview, image → PDF, PDF → image, merge, split, compress, rotate, page management |
+| `feature/ocr-document` | OCR | OCR recognition and format conversion with task tracking, preview and export |
+| `feature/on-device-ocr` | On-Device OCR | Offline photo text recognition (PP-OCRv6): copy by line, Markdown export, notes, history |
+| `feature/translator` | Translate | 20 languages with auto-detect, camera OCR, voice input, read-aloud; offline with Hy-MT2 1.8B |
+| `feature/document-scanner` | Document Scanner | Scan paper documents into images / PDF |
+| `feature/markdown-edit` | Markdown Editor | WYSIWYG Markdown editing, export to PDF |
+| `feature/code-editor` | Code Editor | Syntax highlighting, file I/O and history |
+| `feature/file-viewer` | Document Preview | Offline preview for Word / Excel / PowerPoint / OpenDocument / RTF / EPUB with page jump, find and night mode |
+
+### Watermark & ID Photo
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/watermarking` | Watermark | Text / image / steganographic / stamp watermarks with position, rotation, opacity, tiling |
+| `feature/camera-watermark` | Camera Watermark | Stamp photos with time / location / device watermarks |
+| `feature/id-photo` | ID Photo | Standard ID-photo sizes, background replacement, batch export |
+| `feature/wallpapers-export` | Wallpaper Export | Read and save the system and lock-screen wallpapers |
+
+### Scanning & QR
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/scan-qr-code` | QR Tools | Scan (camera / image) and generate QR & barcodes: text, URL, WiFi, contacts… |
+
+### Measurement & Utilities
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/unit-converter` | Unit Converter | Length, weight, temperature, area, volume, speed, time and more |
+| `feature/compass` | Compass | Compass & luopan dials with bearings, magnetic declination and calibration hints |
+| `feature/measurement` | Ruler | On-screen ruler and protractor, cm / inch |
+| `feature/altitude` | Altitude | GPS altitude with history |
+| `feature/speed-test` | Speed Test | Download / upload speed with a gauge animation |
+| `feature/calendar` | Calendar | Calendar with Chinese almanac, bazi chart and lunar conversion |
+| `feature/schedule` | Schedule | Events with system-calendar sync and reminders |
+| `feature/teleprompter` | Teleprompter | Script editing + fullscreen playback with speed / font / color controls |
+| `feature/dead-pixel-test` | Dead Pixel Test | Fullscreen solid colors with color switching and grid overlay |
+| `feature/marquee` | Marquee | Fullscreen scrolling text, LED style and subtitle modes |
+| `feature/audio-cover-extractor` | Cover Extractor | Extract album covers from audio files |
+| `feature/device-status` | Device Status | View and copy the local IP, network and device details |
+
+### Security & Encryption
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/cipher` | Image Cipher | Encrypt / decrypt images with passwords |
+| `feature/password-vault` | Password Vault | Local encrypted account & password storage with categories and search |
+
+### Life & Productivity
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/bookkeeping` | Bookkeeping | Income / expense tracking with charts — the AI can log bills for you |
+| `feature/marktodo` | To-do | Topic-based tasks with tags, priorities, due dates and filters |
+| `feature/habit-tracker` | Habit Tracker | Daily check-ins with reminders, streaks and completion stats |
+| `feature/household-items` | Item Tracker | Track where things are stored, expiry dates and notes; AI can log & query |
+| `feature/period` | Period Tracker | Log periods, flow, symptoms and mood; predicts the next cycle |
+| `feature/record-center` | Health Records | 12 metric types (blood pressure, weight, glucose…), trends and AI insights |
+| `feature/loan-calculator` | Loan Calculator | Equal-payment / equal-principal loans: monthly payment, total interest, schedule |
+| `feature/lifetime` | Lifetime | A timeline of life events and milestones |
+| `feature/decision-wheel` | Decision Wheel | Custom random spinner to help you choose |
+| `feature/blessing-wall` | Blessing Wall | Greeting cards with background music and sharing |
+| `feature/poem` | Chinese Poetry | Random poems, keyword search, AI interpretation, history & favorites |
+| `feature/iching-divination` | I Ching | Shake to cast a hexagram, with changing lines and AI interpretation |
+
+### Games
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/game2048` | 2048 | The classic sliding-tile merge game |
+| `feature/xiangqi` | Chinese Chess | Vs AI, online play, game library, endgame analysis, whole-game or clip GIF export |
+| `feature/gomoku` | Gomoku | 15×15 board, vs LLM, AI battles, game library, review, GIF export |
+| `feature/chess` | Chess | Full rules (castling / en passant / promotion), vs LLM, game library, review, GIF export |
+| `feature/minesweeper` | Minesweeper | Multiple difficulties, timer, flags |
+| `feature/sudoku` | Sudoku | Three difficulties, hints, undo, timer, stats |
+| `feature/survive30s` | Survive 30s | Dodge obstacles for 30 seconds |
+| `feature/dice-roller` | Dice Roller | D4 / D6 / D8 / D10 / D12 / D20 dice |
+
+### Content & Community
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/online` | Discover | Content square aggregating recommended apps, notes and mini-programs |
+| `feature/blog` | Blog & Feedback | Read articles and send feedback |
+| `feature/profile` | Profile | VIP level, data backup & restore, about |
+| `feature/notification` | Notifications | Message center with unread badges |
+| `feature/ad-watch` | Watch & Earn | Watch rewarded ads to earn points, with a daily cap |
+
+### Files & Media
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/file-browser` | File Browser | Directory navigation, search, sort, multi-select operations |
+| `feature/file-transfer` | File Transfer | LAN file transfer with QR pairing and encryption |
+| `feature/cloud-storage` | Cloud Storage | Browse, upload, download and delete cloud files |
+| `feature/media-player` | Media Player | Unified local audio / video playback: video picture-in-picture, background audio with notification controls, media library, favorites and queue |
+| `feature/media-picker` | Media Picker | Image / video picking shared by the other tools |
+
+### App Shell & System
+
+| Module | Feature | Description |
+| --- | --- | --- |
+| `feature/app` | App Shell | Entry navigation with adaptive layout: drawer + bottom bar in portrait, navigation rail in landscape |
+| `feature/settings` | Settings | AI engines, themes, display, TTS, system prompts and more |
+| `feature/common` | Common | Shared UI base, data sync and category management |
+| `feature/search` | Global Search | Search features, content and messages, with quick navigation |
+| `feature/quick-tiles` | Quick Tiles | Quick-settings tiles: screenshot, color picker, scan… |
+| `feature/webview` | Web Browser | Built-in browser with tabs, bookmarks and history |
+| `feature/login` | Sign In | Auth flows and user agreement |
+| `feature/wechat` | WeChat Integration | WeChat SDK sign-in and payment callbacks |
+| `feature/demo` | Demo | Developer component showcase grid |
+| `feature/libraries-info` | Open-source Licenses | License list of all third-party libraries |
+| `feature/library-details` | License Details | Per-library license details |
+| `feature/boardgame` | Board Game Kit | Shared Xiangqi / Gomoku / Chess UI and 480 / 1440-pixel replay export: clip selection, speed, original-size preview, sharing and saving |
+
+## Tech Stack
+
+- **UI**: Jetpack Compose, Material 3
+- **Navigation / components**: Decompose (`StackNavigation`, `childStack`, retained components)
+- **DI**: Hilt
+- **Code generation**: KSP
+- **Build conventions**: custom Gradle convention plugins in `build-logic/convention`
+- **Persistence**: SQLite / Room (`AppDatabase`), MMKV (per-module)
+- **Network & images**: Retrofit / OkHttp, Coil
+- **On-device inference**: LiteRT-LM for chat and translation (`.litertlm` models), ONNX Runtime + OpenCV for OCR
+
+## Repository Structure
+
+| Path | Description |
+| --- | --- |
+| `app/` | Application shell and packaging entry; `AppActivity.kt` is the main Activity |
+| `feature/app/` | Top-level shell, root navigation, global CompositionLocals, screen wiring, adaptive layout |
+| `feature/*` | Business / tool feature modules |
+| `feature/ai/` | AI chat, agent, tool-calling chain, AI image features, on-device model runtime (`src/litertlm`) |
+| `feature/common/` | Shared business logic, AI engine catalog/sync |
+| `feature/settings/` | Settings, themes, AI engine configuration, local model management (download / import / set as chat model) |
+| `core/*` | Foundation layers: UI, domain, data, database, theme, settings, etc. |
+| `libs/*` | In-project reusable libraries |
+| `build-logic/convention/` | Custom Gradle convention plugins |
+| `web/` | Web frontend source of the file-transfer module (esbuild project) |
+| `fastlane/` | Google Play listing copy & assets (fastlane supply format) |
+
+## Architecture Entry Points
+
+Package paths beginning with `com.t8rin.*` are kept for compatibility with the upstream ImageToolbox module layout; the package name alone does **not** indicate provenance. Some files in that namespace were newly written for OneBox, and some inherited files have since been moved or renamed upstream. The header templates in `scripts/license_header_origin.py` record provenance explicitly with an `Origin:` marker — unmodified upstream copy, modified derivative, or OneBox original work — and the script classifies files by git blob SHA rather than by package name.
+
+- **App entry**: `app/src/main/java/com/shifenmiao/app/AppActivity.kt`
+- **Runtime navigation root**: `feature/app/src/main/java/com/t8rin/imagetoolbox/feature/root/presentation/screenLogic/RootComponent.kt`
+- **Route definitions**: `core/ui/src/main/kotlin/com/t8rin/imagetoolbox/core/ui/utils/navigation/Screen.kt`
+- **Child factory wiring**: `feature/app/.../navigation/ChildProvider.kt`
+- **Child composable wrappers**: `feature/app/.../navigation/NavigationChild.kt`
+- **Top-level shell selector**: `feature/app/src/main/java/com/wanbaohe/app/screen/ScreenSelector.kt`
+- **Adaptive navigation layout**: `feature/app/src/main/java/com/wanbaohe/app/navigation/AdaptiveNavigationLayout.kt`
+
+## Building from Source
+
+### Requirements
+
+- Use the bundled **Gradle Wrapper 9.8.2**
+- **JDK 17** (build-logic and CI target it)
+- Android targets: **Compile SDK 37.2 / Target SDK 37 / Min SDK 24**
+- Toolchain: **Kotlin 2.4.21 / AGP 9.4.1**
+- When in doubt, `gradle/libs.versions.toml` and `gradle/wrapper/gradle-wrapper.properties` are the source of truth
+
+### Clone
+
+The repository carries a lot of binary assets, so a full clone is large. For building, a shallow clone is enough:
+
+```bash
+git clone --depth=1 https://github.com/wangzhishou/OneBox.git
+```
+
+### Common Commands
+
+```bash
+./gradlew :app:assembleGoogleArm64Debug       # single-variant debug APK (google = default channel)
+./gradlew tasks --group=assemble              # list all assemble tasks
+./gradlew :app:tasks
+```
+
+### Variants
+
+The `app` module uses two flavor dimensions:
+
+- `app`: `xiaomi` / `yyb` / `oppo` / `vivo` / `huawei` / `onebox` / `google` / `foss`
+  (`foss` is the fully-FOSS build: no GMS, Firebase, WeChat or Alipay SDKs; this is the variant CI verifies)
+- `abi`: `arm64` (64-bit only)
+
+**Build and verify with the `google` (overseas / Play) flavor by default**; pick a domestic flavor only when it is actually needed. Task names combine the two dimensions, e.g.:
+
+- `:app:assembleGoogleArm64Debug`
+- `:app:assembleGoogleArm64Release`
+- `:app:assembleHuaweiArm64Debug`
+
+See `run.md` for more command examples.
+
+### Signing & API Keys (Optional)
+
+The project syncs and builds **without any key files**:
+
+- release signing falls back to placeholder values (not for production use)
+- debug builds fall back to AGP's default debug signing
+- third-party service keys (AI providers, Google Places, etc.) are empty and the corresponding features stay disabled
+
+To customize, copy the root templates and fill in real values:
+
+- `keystore.properties.template` → `keystore.properties`: release signing + service keys
+- `keystore-google.properties.template` → `keystore-google.properties`: dedicated signing for the google flavor
+
+Both target files are git-ignored; never commit real values.
+
+### Multi-channel Release Builds
+
+`build_release.sh` builds **7 channels × 1 ABI (arm64, 64-bit only) = 7 release APKs** into `release/` with a `release/manifest.txt` summary. Examples:
+
+```bash
+./build_release.sh                                # all 7
+./build_release.sh --channel xiaomi huawei        # selected channels
+./build_release.sh --abi arm64                    # 64-bit only
+./build_release.sh --no-offline --clean           # fetch deps online + clean first
+./build_release.sh --skip-build                   # re-collect artifacts only
+```
+
+A real `keystore.properties` is required for release packaging (the script exits early without it).
+
+### CI Releases
+
+`.github/workflows/android.yml` defines the tag-based release pipeline: Ubuntu runner, JDK 17, `assembleRelease`, then APK signing and release upload.
+
+### Update reminders & domestic distribution
+
+The "Open Source Project" row under *Profile → About* shows the latest release (plus a tab badge on
+*Profile* when a newer version exists). A startup dialog can be enabled from the remote config:
+
+```json
+"appUpdate": { "dialogEnabled": true, "dialogForVersionBelow": 150, "dialogCooldownHours": 24 }
+```
+
+The version source depends on the flavor: overseas (google / foss) reads GitHub Releases, the six
+domestic channels read the GitCode OpenAPI. GitCode mirrors only branches/tags/commits — **not**
+releases — so domestic builds need an extra publish step:
+
+```bash
+export GITCODE_TOKEN=xxx          # https://gitcode.com/setting/token-classic
+git push gitcode --tags           # the tag must exist: it is used as target_commitish
+./scripts/publish_gitcode_release.py --tag 1.4.0 --dir release --abi arm64
+```
+
+Tag pushes do this automatically: CI additionally builds the six domestic channels (arm64, appended via
+`matrix.include`) and publishes them to GitCode — requires the `GITCODE_TOKEN` secret and the tag being
+pushed to GitCode (the script uses the tag as `target_commitish`). The GitHub Release keeps the overseas
+packages only. The GitCode repository has to be public, otherwise the anonymous API returns 403.
+
+## AI / Agent Capabilities
+
+AI features are composed from several modules:
+
+- `feature/ai/`: AI chat, agent loop, tool-call execution, interactive tool bridging
+- `feature/ai/src/litertlm/`: on-device inference through LiteRT-LM (`LiteRtLmRuntime`, `LocalModelDirectoryRegistry`) — Google Play / FOSS builds, other channels compile a stub runtime
+- `feature/on-device-ocr/`: PP-OCRv6 on ONNX Runtime + OpenCV (`PpOcrV6Engine`); model pack in `filesDir/ocr_models/`, SHA-256 verified
+- `feature/translator/`: `TranslationService` with Local / Fast / Default modes; Local runs Hy-MT2 1.8B on LiteRT-LM and reuses the on-device OCR for camera input
+- `feature/common/`: AI engine catalog, engine sync, shared managers
+- `feature/settings/`: AI engine, model and working-mode configuration UI
+- `feature/settings/.../local/`: local model management — download recommended models, import a `.litertlm` file, set one as the chat model; an installed Hy-MT2 shows up in the translator's Local mode
+
+Local model files live in `filesDir/local_models/`; the one set as the chat model is loaded on first use, and inference falls back to the CPU backend when the GPU backend fails to initialize.
+
+The tool-calling chain is built on `ToolCallTaskManager`, `AgentLoopExecutor` and `AppDatabase`.
+
+## Security & Third-party Services
+
+- **No production secrets in this repo**: payment (WeChat Pay / Alipay), AI provider and Google Places keys are injected via the optional `keystore.properties` or kept server-side.
+- **Backend domains and guest tokens are not in source**: API base URLs and read-only guest tokens are injected from `keystore.properties` at build time, so builds from this repository never contact the production servers and hosted content stays empty. To enable connected features, point the app to your own backend (`core/r/**/UrlConstantsFlavor.kt`).
+- **WeChat appId / WeCom corpId** are public identifiers; the WeChat platform verifies callers by package name + signature, so third-party builds cannot impersonate the official app.
+- **Forks & redistribution**: change the `applicationId` (`com.shifenmiao.app` is taken), replace `app/src/google/assets/google-services.json` with your own Firebase configuration, and point the app to your own backend (API domains in `core/r/**/UrlConstantsFlavor.kt`).
+
+## Documentation
+
+- `run.md`: build / install / lint commands
+- `docs/modules.md`: module catalog (Chinese)
+- `CONTRIBUTING.md`: setup, conventions, and what will not be merged
+- `SECURITY.md`: how to report a vulnerability privately, and what is deliberately public
+- `docs/database-migrations.en.md`: database migration rules ([中文](docs/database-migrations.md))
+
+## Support the Project
+
+OneBox is built and maintained by a one-person company (OPC), with a limited budget for servers and AI resources. If it helps you:
+
+- **In-app donation**: in the app, go to Profile → Buy Me a Coffee (points-based)
+- **Partnership & sponsorship**: AI providers, cloud vendors and partners willing to sponsor tokens or resources are very welcome — reach us at support@oneboxable.com
+
+Every bit of support turns directly into better features and a more stable service.
+
+## Community & Feedback
+
+The same links are in the app under **Profile → Join Community** (overseas builds show Discord / X / YouTube, domestic builds show the QQ and WeChat groups):
+
+- **Discord**: [discord.gg/7j4hEBYGWv](https://discord.gg/7j4hEBYGWv) — chat, show & tell, early builds
+- **X (Twitter)**: [@OneBoxAndroid](https://x.com/OneBoxAndroid)
+- **YouTube**: [@OneBoxAndroid](https://www.youtube.com/@OneBoxAndroid) — intro videos and feature demos
+- **Bug reports & feature requests**: [GitHub Issues](https://github.com/wangzhishou/OneBox/issues)
+- **Questions, ideas, show & tell**: [GitHub Discussions](https://github.com/wangzhishou/OneBox/discussions)
+- **Security problems**: report them privately, see [SECURITY.md](SECURITY.md) — please do not open a public issue
+- **中文用户**:QQ 群 / 微信群见[中文版 README](README.zh-CN.md#交流与反馈)
+
+## Contributors Wanted
+
+OneBox is a one-person project and its surface area is now much larger than one person can cover. Help here is genuinely welcome, not a polite formality.
+
+The most useful contributions right now, roughly in order:
+
+1. **Translations.** The app and the Play listing ship in 13 locales. If your language reads wrong, only you can tell us. See `fastlane/metadata/android/<locale>/`.
+2. **Device testing.** Confirm a build actually works on your OEM ROM, and report what broke.
+3. **The open `good first issue` and `help wanted` list** — [start here](https://github.com/wangzhishou/OneBox/contribute).
+4. **The agent's tool choices.** 90+ tools are exposed to the agent; telling us which tool it picks badly, and what it should have picked instead, is real feedback.
+
+Start with [CONTRIBUTING.md](CONTRIBUTING.md). No keystores, API keys or backend access are needed to build.
+
+## License
+
+Apache-2.0, see `LICENSE`. The project is a fork of [ImageToolbox](https://github.com/T8RIN/ImageToolbox) (T8RIN, Apache-2.0): the image-processing core deliberately stays close to upstream so the diff stays reviewable, and upstream copyright notices are preserved in the files they came from. See `NOTICE` for the project-level attribution and the meaning of the per-file `Origin:` markers.
+
+## Feature Gallery
+
+One box, everything AI. Fully open source, free to use, and your data stays on-device — 18 cards to see what OneBox can do:
+
+<table>
+  <tr>
+    <td><img src=".github/readme/cards/en/01.webp" width="240" alt="AI bookkeeping" /></td>
+    <td><img src=".github/readme/cards/en/02.webp" width="240" alt="Item tracker with dedupe" /></td>
+    <td><img src=".github/readme/cards/en/03.webp" width="240" alt="Period tracker" /></td>
+  </tr>
+  <tr>
+    <td><img src=".github/readme/cards/en/04.webp" width="240" alt="Health records" /></td>
+    <td><img src=".github/readme/cards/en/05.webp" width="240" alt="Habit tracker" /></td>
+    <td><img src=".github/readme/cards/en/06.webp" width="240" alt="Teleprompter" /></td>
+  </tr>
+  <tr>
+    <td><img src=".github/readme/cards/en/07.webp" width="240" alt="Notes" /></td>
+    <td><img src=".github/readme/cards/en/08.webp" width="240" alt="AI activity log" /></td>
+    <td><img src=".github/readme/cards/en/09.webp" width="240" alt="Search and format conversion" /></td>
+  </tr>
+  <tr>
+    <td><img src=".github/readme/cards/en/10.webp" width="240" alt="Customize your home" /></td>
+    <td><img src=".github/readme/cards/en/11.webp" width="240" alt="Picture-in-picture agent" /></td>
+    <td><img src=".github/readme/cards/en/12.webp" width="240" alt="Permission before execution" /></td>
+  </tr>
+  <tr>
+    <td><img src=".github/readme/cards/en/13.webp" width="240" alt="Life tools" /></td>
+    <td><img src=".github/readme/cards/en/14.webp" width="240" alt="Scrolling marquee" /></td>
+    <td><img src=".github/readme/cards/en/15.webp" width="240" alt="Mini games" /></td>
+  </tr>
+  <tr>
+    <td><img src=".github/readme/cards/en/16.webp" width="240" alt="Dev tools" /></td>
+    <td><img src=".github/readme/cards/en/17.webp" width="240" alt="Handy tools" /></td>
+    <td><img src=".github/readme/cards/en/18.webp" width="240" alt="Agents, prompts and sites" /></td>
+  </tr>
+</table>

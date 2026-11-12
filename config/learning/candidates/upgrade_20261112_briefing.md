@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261112` | **Thời gian**: `2026-11-12 01:48:37 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261112` | **Thời gian**: `2026-11-12 04:42:12 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -9,42 +9,18 @@
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
 | **Phiên học đã quét (Sessions Evaluated)** | `83` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
-| **Tài nguyên công nghệ (Items Processed)** | `161` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
+| **Tài nguyên công nghệ (Items Processed)** | `156` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `92` | Kho năng lực sẵn có tại `config/skills/` |
-| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `93` | Các khoảng trống công nghệ cần bổ sung độc lập |
+| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `90` | Các khoảng trống công nghệ cần bổ sung độc lập |
 | **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `40` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
-| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `26` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
+| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `24` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
 ---
 
 ## 🌟 2. Đề Xuất Ứng Viên Kỹ Năng Mới (`NEW_SKILL_CANDIDATE`)
 Các công nghệ đột phá giải quyết những bài toán mà Antigravity 2.0 hiện chưa có module chuyên trách:
 
-### 2.1. `open-duet` — Anil-matcha/open-duet 🔥 [HIGH PRIORITY]
-- **Nguồn gốc (Source)**: [GitHub (6254 ⭐)](https://github.com/Anil-matcha/open-duet)
-- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
-- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
-- **Giá trị Đề xuất (Proposed Value)**: Open-source, self-hosted alternative to Claude Duet: AI coworkers (named agents) with instructions, memory, routines, their own isolated computer, and your a...
-
-```yaml
-# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
----
-name: open-duet
-description: Tự động kích hoạt khi người dùng muốn tận dụng Anil-matcha/open-duet cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
----
-
-# ANIL-MATCHA/OPEN-DUET SKILL ARCHITECTURE
-
-## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
-- Kế thừa giải pháp từ: `Anil-matcha/open-duet` (https://github.com/Anil-matcha/open-duet)
-- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
-
-## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
-- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
-- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
-```
-
-### 2.2. `esp32-iphone-agent` — onehumanbeing/esp32-iphone-agent 🔥 [HIGH PRIORITY]
+### 2.1. `esp32-iphone-agent` — onehumanbeing/esp32-iphone-agent 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (4033 ⭐)](https://github.com/onehumanbeing/esp32-iphone-agent)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -68,7 +44,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng on
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.3. `mika` — wangzan101/Mika 🔥 [HIGH PRIORITY]
+### 2.2. `mika` — wangzan101/Mika 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (3068 ⭐)](https://github.com/wangzan101/Mika)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -92,7 +68,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng wa
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.4. `dsh-go` — ccch1mneyyy/dsh-Go 🔥 [HIGH PRIORITY]
+### 2.3. `dsh-go` — ccch1mneyyy/dsh-Go 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (4274 ⭐)](https://github.com/ccch1mneyyy/dsh-Go)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -116,7 +92,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng cc
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.5. `agenta` — Agenta-AI/agenta 🔥 [HIGH PRIORITY]
+### 2.4. `agenta` — Agenta-AI/agenta 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (4888 ⭐)](https://github.com/Agenta-AI/agenta)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -140,7 +116,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng Ag
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.6. `noria` — AhmadHassan-BTed/Noria 🔥 [HIGH PRIORITY]
+### 2.5. `noria` — AhmadHassan-BTed/Noria 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (4636 ⭐)](https://github.com/AhmadHassan-BTed/Noria)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -164,7 +140,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng Ah
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.7. `opendroid` — JMAN730/opendroid 🔥 [HIGH PRIORITY]
+### 2.6. `opendroid` — JMAN730/opendroid 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1270 ⭐)](https://github.com/JMAN730/opendroid)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -188,7 +164,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng JM
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.8. `android-ad-cleaner` — rddmwmddr/android-ad-cleaner 🔥 [HIGH PRIORITY]
+### 2.7. `android-ad-cleaner` — rddmwmddr/android-ad-cleaner 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (5780 ⭐)](https://github.com/rddmwmddr/android-ad-cleaner)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -212,7 +188,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng rd
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.9. `aktools` — akfamily/aktools 🔥 [HIGH PRIORITY]
+### 2.8. `aktools` — akfamily/aktools 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1542 ⭐)](https://github.com/akfamily/aktools)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -236,7 +212,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng ak
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.10. `spider` — spider-rs/spider 🔥 [HIGH PRIORITY]
+### 2.9. `spider` — spider-rs/spider 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2820 ⭐)](https://github.com/spider-rs/spider)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -260,7 +236,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng sp
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.11. `anymodelbot` — modelflare-ai/AnyModelBot 🔥 [HIGH PRIORITY]
+### 2.10. `anymodelbot` — modelflare-ai/AnyModelBot 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2741 ⭐)](https://github.com/modelflare-ai/AnyModelBot)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -284,7 +260,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng mo
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.12. `sellbird` — ethanplusai/sellbird 🔥 [HIGH PRIORITY]
+### 2.11. `sellbird` — ethanplusai/sellbird 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (5093 ⭐)](https://github.com/ethanplusai/sellbird)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -301,6 +277,30 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng et
 
 ## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
 - Kế thừa giải pháp từ: `ethanplusai/sellbird` (https://github.com/ethanplusai/sellbird)
+- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
+
+## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
+- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
+- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
+```
+
+### 2.12. `nodecode` — nodecode-ai/nodecode 🔥 [HIGH PRIORITY]
+- **Nguồn gốc (Source)**: [GitHub (153 ⭐)](https://github.com/nodecode-ai/nodecode)
+- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
+- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
+- **Giá trị Đề xuất (Proposed Value)**: A living agent organism in Lisp.
+
+```yaml
+# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
+---
+name: nodecode
+description: Tự động kích hoạt khi người dùng muốn tận dụng nodecode-ai/nodecode cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
+---
+
+# NODECODE-AI/NODECODE SKILL ARCHITECTURE
+
+## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
+- Kế thừa giải pháp từ: `nodecode-ai/nodecode` (https://github.com/nodecode-ai/nodecode)
 - Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
 
 ## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
@@ -332,63 +332,63 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 ## 🏛️ 4. Đề Xuất Tối Ưu Kiến Trúc & Quy Chuẩn (`ARCHITECTURE_OPTIMIZATION`)
 Các phát hiện mang tầm chiến lược tác động đến Hiến chương Tự trị và Quy tắc Suy luận Cấp cao:
 
-#### 4.1. The sleep framework: A new way for LLMs to retain knowledge in continual learning — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/)
-- **Bối cảnh lý thuyết**: Education Innovation
-- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
-
-#### 4.2. Genie 4: A new generation of world simulation — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
-- **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/)
-- **Bối cảnh lý thuyết**: Genie 4: our new world model unlocking unprecedented realism in real-time simulation.
-- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
-
-#### 4.3. Gemini 4 Carbon: Our next frontier model — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.1. Gemini 4 Carbon: Our next frontier model — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model/)
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.4. Speeding up planning decisions with AI — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.2. Speeding up planning decisions with AI — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/speeding-up-planning-decisions-with-ai/)
 - **Bối cảnh lý thuyết**: Google DeepMind and UK government work together to reduce planning assessment times
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.5. Agentic cheminformatics with Google Antigravity — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.3. Agentic cheminformatics with Google Antigravity — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/)
 - **Bối cảnh lý thuyết**: Learn how Google Antigravity and our Cheminformatics Skills accelerate drug discovery workflows, search compounds, and propose novel rigidified macrocycles.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.6. Agile Deliberation: How AI helps humans define the gray areas — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.4. Agile Deliberation: How AI helps humans define the gray areas — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/agile-deliberation-how-ai-helps-humans-define-the-gray-areas/)
 - **Bối cảnh lý thuyết**: Data Mining & Modeling
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.7. Detecting signs of hypertension using wearable sensors — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.5. Detecting signs of hypertension using wearable sensors — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/detecting-signs-of-hypertension-using-wearable-sensors/)
 - **Bối cảnh lý thuyết**: Health & Bioscience
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.8. Exploring the world's languages with Language Explorer — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.6. Exploring the world's languages with Language Explorer — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/exploring-the-worlds-languages-with-language-explorer/)
 - **Bối cảnh lý thuyết**: Natural Language Processing
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.9. Gemini 4 Carbon is now available — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.7. Gemini 4 Carbon is now available — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/gemini-4-carbon-is-now-available/)
 - **Bối cảnh lý thuyết**: - **[Google DeepMind]** [Introducing AlphaProof Code: a breakthrough in verifying complex software at depth](https://deepmind.google/blog/introducing-alphaproof-code/) > AlphaProof Code agents wrote three million lines of proofs in Lean to verify Signal’s core encryption.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.10. Gemini Robotics 2.5 accelerates real-world general dexterity — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.8. Gemini Robotics 2.5 accelerates real-world general dexterity — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/)
 - **Bối cảnh lý thuyết**: Our most capable vision-language-action model enhances robot dexterity, reliability, and safety
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.11. Using wearables to enable cardiovascular-kidney-metabolic (CKM) risk profiling for personalized coaching — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.9. Using wearables to enable cardiovascular-kidney-metabolic (CKM) risk profiling for personalized coaching — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google Research](https://research.google/blog/using-wearables-to-enable-cardiovascular-kidney-metabolic-ckm-risk-profiling-for-personalized-coaching/)
 - **Bối cảnh lý thuyết**: Health & Bioscience
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
-#### 4.12. AlphaGenome 2: Deciphering how cells read DNA to better understand disease — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+#### 4.10. AlphaGenome 2: Deciphering how cells read DNA to better understand disease — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
 - **Nguồn nghiên cứu**: [Google DeepMind](https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/)
 - **Bối cảnh lý thuyết**: Predicting how DNA sequences and their variations impact specific human cell types and disease.
+- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
+
+#### 4.11. Cloudflare DDoS Threat Report 2026 Q3: More swarms, fewer giants — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/ddos-threat-report-2026-q3/)
+- **Bối cảnh lý thuyết**: Cloudflare mitigated over 8,200 DDoS attacks per hour in Q3 2026 as attackers shifted to shorter, high-frequency strikes. Explore the latest threat data, including the collapse of CLDAP vectors and...
+- **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
+
+#### 4.12. Cloudflare services for private origins is now generally available — `Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)` (STRATEGIC)
+- **Nguồn nghiên cứu**: [Cloudflare Engineering](https://blog.cloudflare.com/private-origins-public-to-private/)
+- **Bối cảnh lý thuyết**: Public traffic to private origins, with WAF, bot management, caching, and Workers, is now available to every customer with Cloudflare One connectivity.
 - **Khuyến nghị Kiến trúc (Architectural Directive)**: 👉 **Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding.**
 
 ---
