@@ -1,0 +1,402 @@
+{
+  "analysis_metadata": {
+    "scan_date": "2026-11-12T19:42:14.900775+00:00",
+    "cycle_id": "EVO-20261113",
+    "sessions_evaluated": 82,
+    "total_items_processed": 154,
+    "active_skills_count": 92,
+    "candidates_count": 90,
+    "enhancements_count": 38,
+    "optimizations_count": 24
+  },
+  "new_skill_candidates": [
+    {
+      "skill_slug": "mika",
+      "title": "wangzan101/Mika",
+      "source": "GitHub (3068 ⭐)",
+      "url": "https://github.com/wangzan101/Mika",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "An on-device AI agent for Android that operates apps and the web to get things done for you.",
+      "suggested_skill_structure": "---\nname: mika\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng wangzan101/Mika cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# WANGZAN101/MIKA SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `wangzan101/Mika` (https://github.com/wangzan101/Mika)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "dsh-go",
+      "title": "ccch1mneyyy/dsh-Go",
+      "source": "GitHub (4274 ⭐)",
+      "url": "https://github.com/ccch1mneyyy/dsh-Go",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "dsh-go — DeepSeek Harness 装进口袋：手机本机运行，也能遥控你的电脑。",
+      "suggested_skill_structure": "---\nname: dsh-go\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ccch1mneyyy/dsh-Go cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# CCCH1MNEYYY/DSH-GO SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ccch1mneyyy/dsh-Go` (https://github.com/ccch1mneyyy/dsh-Go)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "agenta",
+      "title": "Agenta-AI/agenta",
+      "source": "GitHub (4888 ⭐)",
+      "url": "https://github.com/Agenta-AI/agenta",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Agenta is a workspace where you and your team build agents and automations.",
+      "suggested_skill_structure": "---\nname: agenta\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Agenta-AI/agenta cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# AGENTA-AI/AGENTA SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Agenta-AI/agenta` (https://github.com/Agenta-AI/agenta)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "noria",
+      "title": "AhmadHassan-BTed/Noria",
+      "source": "GitHub (4636 ⭐)",
+      "url": "https://github.com/AhmadHassan-BTed/Noria",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "An agentic extractor for messaging platforms. Noria receives messages & URLs via chat; scrapes web data to evaluate the content against custom scoring matric...",
+      "suggested_skill_structure": "---\nname: noria\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng AhmadHassan-BTed/Noria cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# AHMADHASSAN-BTED/NORIA SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `AhmadHassan-BTed/Noria` (https://github.com/AhmadHassan-BTed/Noria)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "opendroid",
+      "title": "JMAN730/opendroid",
+      "source": "GitHub (1270 ⭐)",
+      "url": "https://github.com/JMAN730/opendroid",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Your Open Autonomous Android Agent — A production-ready, self-planning AI assistant powered by local/remote LLMs and accessibility-driven screen automation.",
+      "suggested_skill_structure": "---\nname: opendroid\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng JMAN730/opendroid cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# JMAN730/OPENDROID SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `JMAN730/opendroid` (https://github.com/JMAN730/opendroid)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "android-ad-cleaner",
+      "title": "rddmwmddr/android-ad-cleaner",
+      "source": "GitHub (5780 ⭐)",
+      "url": "https://github.com/rddmwmddr/android-ad-cleaner",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 90,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "关掉国产安卓手机系统里的广告、热搜、资讯推荐和营销推送。不 root，可还原，支持 AI 智能体一键执行。",
+      "suggested_skill_structure": "---\nname: android-ad-cleaner\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng rddmwmddr/android-ad-cleaner cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# RDDMWMDDR/ANDROID-AD-CLEANER SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `rddmwmddr/android-ad-cleaner` (https://github.com/rddmwmddr/android-ad-cleaner)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "aktools",
+      "title": "akfamily/aktools",
+      "source": "GitHub (1542 ⭐)",
+      "url": "https://github.com/akfamily/aktools",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 90,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "HTTP API and MCP server for AKShare: fetch financial data from any programming language or AI assistant (Claude, Cursor)",
+      "suggested_skill_structure": "---\nname: aktools\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng akfamily/aktools cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# AKFAMILY/AKTOOLS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `akfamily/aktools` (https://github.com/akfamily/aktools)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "spider",
+      "title": "spider-rs/spider",
+      "source": "GitHub (2820 ⭐)",
+      "url": "https://github.com/spider-rs/spider",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 90,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Foundational low latency web data collecting in Rust",
+      "suggested_skill_structure": "---\nname: spider\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng spider-rs/spider cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# SPIDER-RS/SPIDER SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `spider-rs/spider` (https://github.com/spider-rs/spider)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "anymodelbot",
+      "title": "modelflare-ai/AnyModelBot",
+      "source": "GitHub (2741 ⭐)",
+      "url": "https://github.com/modelflare-ai/AnyModelBot",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 90,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "🤖 Open-source, local-first alternative to Grok Bot, OpenAI dots and Claude Duet. Your own AI bots on any model: GPT, Claude, Gemini, Grok, DeepSeek, Kimi, GL...",
+      "suggested_skill_structure": "---\nname: anymodelbot\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng modelflare-ai/AnyModelBot cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# MODELFLARE-AI/ANYMODELBOT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `modelflare-ai/AnyModelBot` (https://github.com/modelflare-ai/AnyModelBot)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "sellbird",
+      "title": "ethanplusai/sellbird",
+      "source": "GitHub (5093 ⭐)",
+      "url": "https://github.com/ethanplusai/sellbird",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 90,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Sellbird (formerly Harvey): the open-source outreach platform that runs on your Claude or ChatGPT plan. Finds companies and decision makers, verifies emails,...",
+      "suggested_skill_structure": "---\nname: sellbird\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ethanplusai/sellbird cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ETHANPLUSAI/SELLBIRD SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ethanplusai/sellbird` (https://github.com/ethanplusai/sellbird)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "rssh",
+      "title": "rssh-org/rssh",
+      "source": "GitHub (518 ⭐)",
+      "url": "https://github.com/rssh-org/rssh",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "An SSH tool dedicated to addressing all pain points · (macOS/Windows/Linux/Android/iOS/HmOS(mobile&pc))",
+      "suggested_skill_structure": "---\nname: rssh\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng rssh-org/rssh cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# RSSH-ORG/RSSH SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `rssh-org/rssh` (https://github.com/rssh-org/rssh)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "ralphy",
+      "title": "alecs5am/ralphy",
+      "source": "GitHub (142 ⭐)",
+      "url": "https://github.com/alecs5am/ralphy",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Open-source desktop app for content creation, with an agent runtime and standalone CLI.",
+      "suggested_skill_structure": "---\nname: ralphy\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng alecs5am/ralphy cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ALECS5AM/RALPHY SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `alecs5am/ralphy` (https://github.com/alecs5am/ralphy)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    }
+  ],
+  "skill_enhancements": [
+    {
+      "target_skill": "aider-execution-engine",
+      "source_technology": "lintsinghua/claude-code-book",
+      "source_url": "https://github.com/lintsinghua/claude-code-book",
+      "source_type": "GitHub (4346 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "《御舆：解码 Agent Harness》42万字拆解 AI Agent 的Harness骨架与神经 —— Claude Code 架构深度剖析，15 章从对话循环到构建你自己的 Agent Harness。在线阅读网站：",
+      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "ouroboros",
+      "source_technology": "razzant/ouroboros",
+      "source_url": "https://github.com/razzant/ouroboros",
+      "source_type": "GitHub (1597 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Ouroboros — self-creating AI agent. Born Feb 16, 2026.",
+      "recommended_action": "Bổ sung tri thức và thuật toán từ razzant/ouroboros vào module ouroboros."
+    },
+    {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "can4hou6joeng4/boss-agent-cli",
+      "source_url": "https://github.com/can4hou6joeng4/boss-agent-cli",
+      "source_type": "GitHub (2173 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "🤖 Local-assist BOSS Zhipin CLI for AI agents — search, welfare filtering, shortlist, JSON-envelope output; low-risk & compliant by default.",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
+    },
+    {
+      "target_skill": "cdp-engine",
+      "source_technology": "Mininglamp-OSS/octo-web",
+      "source_url": "https://github.com/Mininglamp-OSS/octo-web",
+      "source_type": "GitHub (1212 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Web & desktop (Electron) client for the OCTO open workplace — one React + TypeScript codebase shipping browser and PC surfaces, with first-class AI agent UX.",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "EvoScientist/EvoScientist",
+      "source_url": "https://github.com/EvoScientist/EvoScientist",
+      "source_type": "GitHub (4934 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "🔬 Harness Vibe Research with Self-evolving AI Scientists",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
+    },
+    {
+      "target_skill": "aider-execution-engine",
+      "source_technology": "zenstory-ai/oh-story-claudecode",
+      "source_url": "https://github.com/zenstory-ai/oh-story-claudecode",
+      "source_type": "GitHub (8331 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Claude Code / Codex / OpenCode agent skills for writing Chinese web novels (网文): 扫榜、拆文、写作、去AI味、封面全流程，长篇短篇都支持 | 14 skills for novel writing and long-form fict...",
+      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "KnockOutEZ/wigolo",
+      "source_url": "https://github.com/KnockOutEZ/wigolo",
+      "source_type": "GitHub (5534 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "The go-to web for your AI coding agent — local-first search, fetch, crawl & research over MCP. No API keys, no cloud, $0/query. Public beta.",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
+    },
+    {
+      "target_skill": "aider-execution-engine",
+      "source_technology": "PotterRemember37/Capri-AI-Desktop",
+      "source_url": "https://github.com/PotterRemember37/Capri-AI-Desktop",
+      "source_type": "GitHub (1030 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Capri — Edgerunners-inspired AI agent for your desktop. Supports Claude 3.7, Claude Code, OpenAI, and local Ollama/LLaMA. Custom AI Waifu Companion with voic...",
+      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "cdp-engine",
+      "source_technology": "nirholas/XActions",
+      "source_url": "https://github.com/nirholas/XActions",
+      "source_type": "GitHub (633 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "⚡ The Complete X/Twitter Automation Toolkit — Scrapers, MCP server for AI agents (Claude/GPT), CLI, browser scripts. No API fees. Open source. Unfollow peopl...",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
+      "target_skill": "aider-execution-engine",
+      "source_technology": "aofp/yume",
+      "source_url": "https://github.com/aofp/yume",
+      "source_type": "GitHub (151 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "Native desktop UI for Claude Code with orchestration, streaming, background agents, and multi-provider support. Built with Tauri + React.",
+      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "aider-execution-engine",
+      "source_technology": "laolaoshiren/claude-code-skills-zh",
+      "source_url": "https://github.com/laolaoshiren/claude-code-skills-zh",
+      "source_type": "GitHub (900 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "面向中文开发者的 Claude Code Skills / Agents / Plugins 精选与原创技能库｜按场景分类｜复制即装｜持续更新",
+      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "cdp-engine",
+      "source_technology": "guregodevo/memdoor",
+      "source_url": "https://github.com/guregodevo/memdoor",
+      "source_type": "GitHub (292 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "A headless coding agent with multi-agent harness",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    }
+  ],
+  "architecture_optimizations": [
+    {
+      "title": "Speeding up planning decisions with AI",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/speeding-up-planning-decisions-with-ai/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Google DeepMind and UK government work together to reduce planning assessment times",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Agentic cheminformatics with Google Antigravity",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Learn how Google Antigravity and our Cheminformatics Skills accelerate drug discovery workflows, search compounds, and propose novel rigidified macrocycles.",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Agile Deliberation: How AI helps humans define the gray areas",
+      "source": "Google Research",
+      "url": "https://research.google/blog/agile-deliberation-how-ai-helps-humans-define-the-gray-areas/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Data Mining & Modeling",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Detecting signs of hypertension using wearable sensors",
+      "source": "Google Research",
+      "url": "https://research.google/blog/detecting-signs-of-hypertension-using-wearable-sensors/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Health & Bioscience",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Exploring the world's languages with Language Explorer",
+      "source": "Google Research",
+      "url": "https://research.google/blog/exploring-the-worlds-languages-with-language-explorer/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Natural Language Processing",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Gemini 4 Carbon is now available",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/gemini-4-carbon-is-now-available/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "- **[Google DeepMind]** [Introducing AlphaProof Code: a breakthrough in verifying complex software at depth](https://deepmind.google/blog/introducing-alphaproof-code/) > AlphaProof Code agents wrote three million lines of proofs in Lean to verify Signal’s core encryption.",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Gemini Robotics 2.5 accelerates real-world general dexterity",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Our most capable vision-language-action model enhances robot dexterity, reliability, and safety",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Using wearables to enable cardiovascular-kidney-metabolic (CKM) risk profiling for personalized coaching",
+      "source": "Google Research",
+      "url": "https://research.google/blog/using-wearables-to-enable-cardiovascular-kidney-metabolic-ckm-risk-profiling-for-personalized-coaching/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Health & Bioscience",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "AlphaGenome 2: Deciphering how cells read DNA to better understand disease",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Predicting how DNA sequences and their variations impact specific human cell types and disease.",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Introducing Gemini 4 Hydrogen",
+      "source": "Google DeepMind",
+      "url": "https://deepmind.google/blog/introducing-gemini-4-hydrogen/",
+      "priority": "STRATEGIC",
+      "priority_score": 95,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Cloudflare DDoS Threat Report 2026 Q3: More swarms, fewer giants",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/ddos-threat-report-2026-q3/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Cloudflare mitigated over 8,200 DDoS attacks per hour in Q3 2026 as attackers shifted to shorter, high-frequency strikes. Explore the latest threat data, including the collapse of CLDAP vectors and...",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Cloudflare services for private origins is now generally available",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/private-origins-public-to-private/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Public traffic to private origins, with WAF, bot management, caching, and Workers, is now available to every customer with Cloudflare One connectivity.",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    }
+  ]
+}
