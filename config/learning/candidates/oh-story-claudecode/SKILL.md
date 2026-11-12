@@ -1,10 +1,10 @@
 ---
 name: oh-story-claudecode
 description: >-
-  Kỹ năng chuyên gia vận hành cho zenstory-ai/oh-story-claudecode (8331 ⭐).
+  Kỹ năng chuyên gia vận hành cho zenstory-ai/oh-story-claudecode (8546 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở oh-story-claudecode vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Claude Code / Codex / OpenCode agent skills for writing Chinese web novels (网文): 扫榜、拆文、写作、去AI味、封面全流程，长篇短篇都支持 | 14 skills for novel writing and long-form fict
+    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến AI 写网文全流程 skill 包：扫榜选材、拆解爆款、大纲细纲、长篇设定与伏笔追踪、短篇反转、去AI味与封面生成，适配 Claude Code / Codex / Antigravity / OpenCode 等 ｜ Agent skill pack for writing Chinese web novels
     - Thiết lập cấu hình và vận hành lệnh CLI của zenstory-ai/oh-story-claudecode
   KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'oh-story-claudecode'.
 ---
@@ -12,19 +12,19 @@ description: >-
 # zenstory-ai/oh-story-claudecode — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/zenstory-ai/oh-story-claudecode`  
-> **Độ uy tín cộng đồng**: 8331 ⭐  
+> **Độ uy tín cộng đồng**: 8546 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-11-05 16:42:11Z
+> **Tự động đóng gói lúc**: 2026-11-12 13:42:09Z
 
 ---
 
 ## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
 
-* **Mục tiêu cốt lõi**: Claude Code / Codex / OpenCode agent skills for writing Chinese web novels (网文): 扫榜、拆文、写作、去AI味、封面全流程，长篇短篇都支持 | 14 skills for novel writing and long-form fict...
+* **Mục tiêu cốt lõi**: AI 写网文全流程 skill 包：扫榜选材、拆解爆款、大纲细纲、长篇设定与伏笔追踪、短篇反转、去AI味与封面生成，适配 Claude Code / Codex / Antigravity / OpenCode 等 ｜ Agent skill pack for writing Chinese web novels
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- **用文件系统当记忆** — 设定、大纲、正文、追踪各自独立维护，压缩上下文或更换会话后，从文件恢复当前进度、伏笔和未完承诺。
-- **确定性检查与门禁** — 长篇写前检查细纲和追踪，写后检查截断、工程词和常见 AI 句式。支持 hooks 的宿主自动执行对应检查，其他环境按 skill 流程执行。
+- **用文件系统当记忆** — 设定、大纲、正文、追踪分目录落盘。几十万字的长篇不靠对话记忆硬撑，压缩上下文或换新会话后，照样从文件读回当前进度、人物状态、伏笔和待填的坑。
+- **写前守卫与写后去味** — 长篇没写细纲不直接动笔，写完自动扫半截断章、大纲词漏进正文和常见 AI 腔。支持 hooks 的宿主自动拦截和巡检，其他环境按 skill 流程走完检查。
 - **适配 7 款编程 Agent** — Claude Code · Codex CLI · Google Antigravity · OpenCode · ZCode · OpenClaw · Reasonix；能读取项目文件的通用 Web AI / Agent 环境也可使用。
 - **面向的平台** — 起点、番茄、晋江、七猫、知乎盐言等长短篇平台。
 - **Telegram 群**：<https://t.me/ohstoryclaudecode> —— 日常交流、踩坑、新功能讨论。
