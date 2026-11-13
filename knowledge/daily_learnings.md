@@ -5422,3 +5422,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-13 14:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (146 ⭐)]** [BkashJEE/hermes-bot-forge](https://github.com/BkashJEE/hermes-bot-forge)
+  > Hermes Agent plugin: say 'make me a ' and your agent builds a complete, working Bot — name, face, SOUL.md, memory, tools, skills, routines, gateway.
+
+</untrusted_external_content>
+
+---
