@@ -1,6 +1,6 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-13T07:42:25.828652+00:00",
+    "scan_date": "2026-11-13T10:42:15.734001+00:00",
     "cycle_id": "EVO-20261113",
     "sessions_evaluated": 82,
     "total_items_processed": 153,
@@ -71,6 +71,18 @@
       "suggested_skill_structure": "---\nname: opendroid\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng JMAN730/opendroid cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# JMAN730/OPENDROID SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `JMAN730/opendroid` (https://github.com/JMAN730/opendroid)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
+      "skill_slug": "suparagent",
+      "title": "Anil-matcha/suparagent",
+      "source": "GitHub (7053 ⭐)",
+      "url": "https://github.com/Anil-matcha/suparagent",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Open-source, self-hosted alternative to Grok Bot, Claude Duet, OpenAI Dots, Meta Muse, Instinct, Manus Cue: AI coworkers (named agents) with instructions, me...",
+      "suggested_skill_structure": "---\nname: suparagent\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Anil-matcha/suparagent cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ANIL-MATCHA/SUPARAGENT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Anil-matcha/suparagent` (https://github.com/Anil-matcha/suparagent)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
       "skill_slug": "android-ad-cleaner",
       "title": "rddmwmddr/android-ad-cleaner",
       "source": "GitHub (5780 ⭐)",
@@ -129,18 +141,6 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "Sellbird (formerly Harvey): the open-source outreach platform that runs on your Claude or ChatGPT plan. Finds companies and decision makers, verifies emails,...",
       "suggested_skill_structure": "---\nname: sellbird\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ethanplusai/sellbird cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ETHANPLUSAI/SELLBIRD SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ethanplusai/sellbird` (https://github.com/ethanplusai/sellbird)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
-      "skill_slug": "rssh",
-      "title": "rssh-org/rssh",
-      "source": "GitHub (518 ⭐)",
-      "url": "https://github.com/rssh-org/rssh",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "An SSH tool dedicated to addressing all pain points · (macOS/Windows/Linux/Android/iOS/HmOS(mobile&pc))",
-      "suggested_skill_structure": "---\nname: rssh\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng rssh-org/rssh cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# RSSH-ORG/RSSH SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `rssh-org/rssh` (https://github.com/rssh-org/rssh)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
       "skill_slug": "ralphy",
