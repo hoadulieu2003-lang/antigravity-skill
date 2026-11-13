@@ -11,9 +11,8 @@
 [![GitHub Release](https://img.shields.io/github/v/release/can4hou6joeng4/boss-agent-cli?style=flat-square)](https://github.com/can4hou6joeng4/boss-agent-cli/releases)
 [![PyPI Downloads](https://img.shields.io/pypi/dm/boss-agent-cli?style=flat-square)](https://pypi.org/project/boss-agent-cli/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/can4hou6joeng4/boss-agent-cli/pulls)
-[![MCP Toplist](https://mcptoplist.com/badge/glama%2Fcan4hou6joeng4%2Fboss-agent-cli.svg)](https://mcptoplist.com/server/glama%2Fcan4hou6joeng4%2Fboss-agent-cli)
 
-[快速上手](docs/getting-started.md) · [Agent 集成](#-agent-集成) · [命令](#-命令) · [排障](docs/troubleshooting.md) · [路线图](ROADMAP.md) · **中文** | [English](README.en.md)
+[快速上手](docs/getting-started.md) · [架构](docs/architecture.md) · [Agent 集成](#-agent-集成) · [命令](#-命令) · [排障](docs/troubleshooting.md) · [路线图](ROADMAP.md) · **中文** | [English](README.en.md)
 
 <a href="demo/showcase/boss-agent-cli-showcase.mp4" title="观看 48 秒产品发布会动画">
   <img src="demo/showcase/boss-agent-cli-showcase.gif?v=keynote-20261008" alt="boss-agent-cli 极光发布会动画：福利筛选、双角色工作流与 Agent 接入" width="100%">
@@ -39,8 +38,8 @@ boss-agent-cli 把职位发现、福利筛选、本地简历与 AI、投递沟�
 - **纯终端向导**：直接运行 `boss` 或 `boss wizard`，选择角色、平台和目标；同一 workflow 也可用 `--input-json`、run ID 或 MCP 推进和恢复
 - **本地候选池与统计**：查看详情后本地保存、读取带有效状态的网页职位收藏并仅同步有效项 / 用标签和备注复盘候选岗位、离线对比、查看漏斗统计 —— `shortlist` `stats` `watch` `preset` `favorites`
 - **AI 求职增强 + 本地模型**：JD 分析、简历润色、定向优化、候选池匹配、模拟面试、沟通指导；本地模型权重外置，支持 Ollama/vLLM OpenAI 兼容接口 —— `ai analyze-jd` `ai local configure` `ai local smoke`
-- **Schema 驱动 + JSON 信封**：stdout 只输出 `{ok, data, pagination, error, hints}` 信封，`boss schema` 是能力真源，适合 CLI 编排 / Shell Agent / MCP / Python SDK
-- **招聘者完整链路**：先确认招聘者身份，再进入候选人搜索、推荐牛人、首次招呼、附件简历接收与下载、简历、聊天/最近消息、回复和职位管理 —— `hr whoami/candidates/recommendations/greet/applications/resume/chat/last-messages/reply/request-resume/accept-resume/download-resume/jobs`
+- **Schema 驱动 + JSON 信封**：stdout 只输出 `{ok, schema_version, command, data, pagination, error, hints}` 七键信封，`boss schema` 是能力真源，适合 CLI 编排 / Shell Agent / MCP / Python SDK
+- **招聘者完整链路**：先确认招聘者身份，再进入候选人搜索、推荐牛人、首次招呼、工作地点、附件简历接收与下载、简历、聊天/最近消息、回复和职位管理 —— `hr whoami/candidates/recommendations/greet/location/applications/resume/chat/last-messages/reply/request-resume/accept-resume/download-resume/jobs`
 - **平台抽象**：`Platform` / `RecruiterPlatform` 双注册表 + `--platform` 全局选项；当前注册平台为 `zhipin`（BOSS 直聘）
 
 ## 🚀 快速开始
@@ -90,7 +89,7 @@ boss --platform zhipin search "Python"     # --platform 默认即 zhipin，可�
 推荐先读：[Agent Quickstart](docs/agent-quickstart.md) · [Capability Matrix](docs/capability-matrix.md) · [Host Examples](docs/agent-hosts.md)
 
 ```json
-// 方式一：MCP（推荐）—— Claude Desktop / Cursor 等 MCP 宿主，暴露 78 个已实现工具
+// 方式一：MCP（推荐）—— Claude Desktop / Cursor 等 MCP 宿主，暴露 79 个已实现工具
 { "mcpServers": { "boss-agent": { "command": "uvx", "args": ["--from", "boss-agent-cli[mcp]", "boss-mcp"] } } }
 ```
 
@@ -120,18 +119,18 @@ with BossClient(AuthManager(...)) as client:
 
 ## 📚 命令
 
-`boss schema` 暴露 39 个顶层命令 + 14 个一级招聘者子命令，按工作流分组：
+`boss schema` 暴露 39 个顶层命令 + 15 个一级招聘者子命令，按工作流分组：
 
 - **认证**：`login` · `logout` · `status` · `doctor`
-- **职位发现**：`search` · `detail` · `show` · `cities` · `history`
+- **职位发现**：`search` · `recommend` · `detail` · `show` · `cities` · `history`
 - **本地整理**：`watch` · `preset` · `shortlist` · `stats` · `favorites`
 - **可恢复采集**：`crawl configure/run/start/status/results/resume/stop/shortlist`
 - **简历 / AI**：`resume` · `me` · `ai analyze-jd` · `ai polish` · `ai optimize` · `ai fit` · `ai suggest-keywords` · `ai resume-optimize` · `ai cover-letter` · `ai interview-prep` · `ai chat-coach` · `ai local`
 - **系统 / workflow**：`wizard` · `schema` · `platforms` · `export` · `config` · `clean`
-- **候选者动作**：`greet` · `batch-greet` · `apply` · `exchange` · `chat*` · `pipeline` · `digest`
-- **招聘者**：`hr whoami/applications/candidates/recommendations/greet/resume/chat/chatmsg/last-messages/reply/request-resume/accept-resume/download-resume/jobs`
+- **候选者动作**：`greet` · `batch-greet` · `apply` · `exchange` · `chat` · `chatmsg` · `chat-summary` · `mark` · `interviews` · `pipeline` · `digest` · `follow-up`
+- **招聘者**：`hr whoami/applications/candidates/recommendations/greet/location/resume/chat/chatmsg/last-messages/reply/request-resume/accept-resume/download-resume/jobs`
 
-完整命令表、参数与福利筛选原理见 **[命令参考](docs/commands.md)**；能力真源是 `boss schema`（支持 `--format openai-tools` / `anthropic-tools` 导出工具定义）。
+完整命令表、参数与福利筛选原理见 **[命令参考](docs/commands.md)**；能力真源是 `boss schema`（支持 `--format openai-tools` / `anthropic-tools` / `mcp-tools` 导出工具定义）。
 
 批量采集需要额外安装 `uv sync --extra crawl`。它使用独立的 `<data-dir>/crawl/chrome-profile`，不会接管日常 Chrome profile。默认不注入 Hook；如需使用本地脚本，必须同时显式提供 Hook 档位和包含 `SHA256SUMS` 的目录：
 
@@ -171,7 +170,7 @@ boss --browser-source existing-browser --cdp-url http://localhost:9222 chat
 ```bash
 boss config list                    # 查看所有配置
 boss config set log_level debug     # 设置日志级别
-boss config reset                   # 恢复默认
+boss config reset log_level         # 恢复单个配置项的默认值
 ```
 
 配置位于 `~/.boss-agent/config.json`：运行模式（`operating_mode=assisted|research`）、请求间隔、批量打招呼间隔、日志级别、CDP 地址、导出目录、平台 / 角色。
@@ -199,7 +198,7 @@ CLI (Click)
 
 ## 🤝 贡献者
 
-欢迎 Issue / PR：`git clone` → `feat/xxx` 分支 → 写测试 → `python scripts/quality_baseline.py`（Windows 中文系统可先 `$env:PYTHONUTF8='1'`）→ PR。详见 [CONTRIBUTING.md](CONTRIBUTING.md)，上手路径见 [快速上手](docs/getting-started.md)。
+欢迎 Issue / PR：`git clone` → `feat/xxx` 分支 → 写测试 → `python scripts/quality_baseline.py`（Windows 中文系统可先 `$env:PYTHONUTF8='1'`）→ PR。详见 [CONTRIBUTING.md](CONTRIBUTING.md)，上手路径见 [快速上手](docs/getting-started.md)。可复现的离线 MCP 评测见 [`evals/README.md`](evals/README.md)。参与即表示同意遵守 [行为准则](CODE_OF_CONDUCT.md)。
 
 感谢每一位让 boss-agent-cli 变得更好的贡献者，去关注他们！❤️
 
@@ -210,7 +209,8 @@ CLI (Click)
 ## ❤️ 支持
 
 - 如果它帮到了你，最直接的支持是点一个 [Star ⭐](https://github.com/can4hou6joeng4/boss-agent-cli)，或分享给正在找工作的人。
-- 用出问题、有新想法，欢迎提 [Issue](https://github.com/can4hou6joeng4/boss-agent-cli/issues)；想动手就直接上 PR。
+- 用出问题、有新想法，欢迎提 [Issue](https://github.com/can4hou6joeng4/boss-agent-cli/issues)；想动手就直接上 PR。安全漏洞请按 [SECURITY.md](SECURITY.md) 私密报告，不要公开提 Issue。
+- 需要帮助？先看 [获取支持](SUPPORT.md)：文档入口、Discussions、Issue 与私密安全报告的正确去处。
 - 想看看船队的其他船，欢迎靠泊母港 [bobochang.cn](https://bobochang.cn) 🧭，航海记录在[掘金专栏](https://juejin.cn/user/1187904004821262)。
 
 本项目受益于 [geekgeekrun](https://github.com/geekgeekrun/geekgeekrun) · [boss-cli](https://github.com/jackwener/boss-cli) · [opencli](https://github.com/jackwener/opencli)，一并致谢。

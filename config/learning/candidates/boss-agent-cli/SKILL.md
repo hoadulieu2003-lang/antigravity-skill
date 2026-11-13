@@ -1,7 +1,7 @@
 ---
 name: boss-agent-cli
 description: >-
-  Kỹ năng chuyên gia vận hành cho can4hou6joeng4/boss-agent-cli (2184 ⭐).
+  Kỹ năng chuyên gia vận hành cho can4hou6joeng4/boss-agent-cli (2220 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở boss-agent-cli vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến 🤖 Local-assist BOSS Zhipin CLI for AI agents — search, welfare filtering, shortlist, JSON-envelope output; low-risk & compliant by default
@@ -12,9 +12,9 @@ description: >-
 # can4hou6joeng4/boss-agent-cli — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/can4hou6joeng4/boss-agent-cli`  
-> **Độ uy tín cộng đồng**: 2184 ⭐  
+> **Độ uy tín cộng đồng**: 2220 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-11-03 22:42:10Z
+> **Tự động đóng gói lúc**: 2026-11-13 16:42:13Z
 
 ---
 
@@ -40,7 +40,7 @@ Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chu�
 boss platforms                             # 查看已注册平台与能力状态（当前仅 zhipin）
 boss --platform zhipin search "Python"     # --platform 默认即 zhipin，可省略
 
-// 方式一：MCP（推荐）—— Claude Desktop / Cursor 等 MCP 宿主，暴露 78 个已实现工具
+// 方式一：MCP（推荐）—— Claude Desktop / Cursor 等 MCP 宿主，暴露 79 个已实现工具
 { "mcpServers": { "boss-agent": { "command": "uvx", "args": ["--from", "boss-agent-cli[mcp]", "boss-mcp"] } } }
 ```
 
