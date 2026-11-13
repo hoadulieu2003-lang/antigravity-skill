@@ -5442,3 +5442,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-13 20:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (171 ⭐)]** [cometchat/cometchat-skills](https://github.com/cometchat/cometchat-skills)
+  > Add CometChat chat & messaging and voice & video calls to any React, Next.js, React Native, Angular, Android, iOS, or Flutter project through your AI coding ...
+- **[GitHub (118 ⭐)]** [skyelan1999/aide](https://github.com/skyelan1999/aide)
+  > Self-hosted AI workspace for developers and engineers. Bring your own models, work with local or SSH projects, and automate coding and project workflows with...
+- **[GitHub (751 ⭐)]** [myYangyunfan/dsh_desktop](https://github.com/myYangyunfan/dsh_desktop)
+  > DeepSeek Harness (dsh) Windows desktop client - bundled Node.js + dsh CLI, one-click launch
+
+</untrusted_external_content>
+
+---

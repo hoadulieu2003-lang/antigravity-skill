@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-13T10:42:15.734001+00:00",
+    "scan_date": "2026-11-13T13:42:14.211793+00:00",
     "cycle_id": "EVO-20261113",
     "sessions_evaluated": 82,
-    "total_items_processed": 153,
+    "total_items_processed": 155,
     "active_skills_count": 92,
-    "candidates_count": 91,
+    "candidates_count": 94,
     "enhancements_count": 36,
-    "optimizations_count": 24
+    "optimizations_count": 23
   },
   "new_skill_candidates": [
     {
@@ -379,16 +379,6 @@
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     },
     {
-      "title": "Cloudflare DDoS Threat Report 2026 Q3: More swarms, fewer giants",
-      "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/ddos-threat-report-2026-q3/",
-      "priority": "STRATEGIC",
-      "priority_score": 85,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Cloudflare mitigated over 8,200 DDoS attacks per hour in Q3 2026 as attackers shifted to shorter, high-frequency strikes. Explore the latest threat data, including the collapse of CLDAP vectors and...",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
       "title": "Cloudflare services for private origins is now generally available",
       "source": "Cloudflare Engineering",
       "url": "https://blog.cloudflare.com/private-origins-public-to-private/",
@@ -396,6 +386,16 @@
       "priority_score": 85,
       "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
       "rationale": "Public traffic to private origins, with WAF, bot management, caching, and Workers, is now available to every customer with Cloudflare One connectivity.",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "4 real? Tracking exploitation and patching of eMudhra’s weak keys",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/emudhra-patching/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "Four, just four: that’s the key to break into any unpatched connection on the Internet that is using eMudhra certificates. Here’s how we quickly patched Cloudflare, what evidence we can see of atte...",
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     }
   ]
