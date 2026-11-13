@@ -5476,3 +5476,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-14 05:42:03`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google Research]** [Advancing science & engineering with Antigravity’s /teamwork](https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/)
+  > Education Innovation
+
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [Kitesurf is now open source](https://blog.cloudflare.com/kitesurf-open-source/)
+  > Kitesurf, our experimental browser engine for AI agents, is now open source. Inspect the code, run it locally, or deploy your own instance on Cloudflare Workers.
+
+</untrusted_external_content>
+
+---

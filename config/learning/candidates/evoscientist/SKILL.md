@@ -1,7 +1,7 @@
 ---
 name: evoscientist
 description: >-
-  Kỹ năng chuyên gia vận hành cho EvoScientist/EvoScientist (4934 ⭐).
+  Kỹ năng chuyên gia vận hành cho EvoScientist/EvoScientist (4966 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở evoscientist vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến 🔬 Harness Vibe Research with Self-evolving AI Scientists
@@ -12,9 +12,9 @@ description: >-
 # EvoScientist/EvoScientist — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/EvoScientist/EvoScientist`  
-> **Độ uy tín cộng đồng**: 4934 ⭐  
+> **Độ uy tín cộng đồng**: 4966 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-11-03 16:42:11Z
+> **Tự động đóng gói lúc**: 2026-11-13 22:42:10Z
 
 ---
 

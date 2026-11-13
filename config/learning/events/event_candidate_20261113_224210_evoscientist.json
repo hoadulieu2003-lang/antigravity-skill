@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-13T22:42:10.122987+00:00",
+  "skill_name": "evoscientist",
+  "source_repo": "EvoScientist/EvoScientist",
+  "stars": 4966,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\evoscientist\\SKILL.md",
+  "human_promotion_required": true
+}
