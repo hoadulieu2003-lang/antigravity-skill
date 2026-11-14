@@ -5490,3 +5490,21 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-14 14:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (88 ⭐)]** [sktkkoo/Yorishiro](https://github.com/sktkkoo/Yorishiro)
+  > A terminal that gives AI a body and a living space.
+- **[GitHub (271 ⭐)]** [PapilotAI/papilot](https://github.com/PapilotAI/papilot)
+  > Next-Generation AI LaTeX Editor: Don't read or write LaTeX. Just work on the PDF.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Zugwise: Domain-Aware Game Reconstruction for Digitizing Handwritten Chess Scoresheets](https://arxiv.org/abs/2611.14544)
+  > arXiv:2611.14544v1 Announce Type: new Abstract: Digitizing handwritten chess scoresheets has been studied as a handwriting-recognition problem: read the move...
+- **[ArXiv CS.AI]** [Cleaning an Agent's History Hurts When the World Still Holds the Error](https://arxiv.org/abs/2611.14654)
+  > arXiv:2611.14654v1 Announce Type: new Abstract: Tool-using language-model agents accumulate histories of their own mistakes, and a system that compacts, repa...
+
+</untrusted_external_content>
+
+---
