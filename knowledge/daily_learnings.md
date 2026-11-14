@@ -5534,3 +5534,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-14 23:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (104 ⭐)]** [Kamra-PMS/kamra-pms](https://github.com/Kamra-PMS/kamra-pms)
+  > World's first open-source, agentic AI-ready PMS. Free hotel and short-term rental PMS (AGPL): front desk, folios, POS, housekeeping, booking engine, plus gov...
+- **[GitHub (62 ⭐)]** [esrrhs/divvy](https://github.com/esrrhs/divvy)
+  > An automated coding agent for small, cheap LLMs: split big goals into contract-driven task trees, execute each leaf in an isolated context, and verify with r...
+
+</untrusted_external_content>
+
+---

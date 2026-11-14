@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-14T13:42:11.532346+00:00",
+    "scan_date": "2026-11-14T16:42:12.183664+00:00",
     "cycle_id": "EVO-20261114",
     "sessions_evaluated": 84,
-    "total_items_processed": 163,
+    "total_items_processed": 164,
     "active_skills_count": 92,
-    "candidates_count": 96,
+    "candidates_count": 98,
     "enhancements_count": 38,
-    "optimizations_count": 27
+    "optimizations_count": 26
   },
   "new_skill_candidates": [
     {
@@ -389,13 +389,13 @@
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     },
     {
-      "title": "Cloudflare services for private origins is now generally available",
+      "title": "4 real? Tracking exploitation and patching of eMudhra’s weak keys",
       "source": "Cloudflare Engineering",
-      "url": "https://blog.cloudflare.com/private-origins-public-to-private/",
+      "url": "https://blog.cloudflare.com/emudhra-patching/",
       "priority": "STRATEGIC",
       "priority_score": 85,
       "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Public traffic to private origins, with WAF, bot management, caching, and Workers, is now available to every customer with Cloudflare One connectivity.",
+      "rationale": "Four, just four: that’s the key to break into any unpatched connection on the Internet that is using eMudhra certificates. Here’s how we quickly patched Cloudflare, what evidence we can see of atte...",
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     }
   ]
