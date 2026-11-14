@@ -5508,3 +5508,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-14 17:42:03`
+
+<untrusted_external_content>
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Together Compiler: Continual Compilation for AI Inference](https://arxiv.org/abs/2611.14681)
+  > arXiv:2611.14681v1 Announce Type: new Abstract: Today's AI workloads are rapidly changing: new models are released more often, model architectures are increa...
+- **[ArXiv CS.AI]** [When Should Semantic Priors Enter Partially-Identified Causal Discovery?](https://arxiv.org/abs/2611.14736)
+  > arXiv:2611.14736v1 Announce Type: new Abstract: Observational causal discovery often leaves causal di- rections unresolved or unstable. Large language mod- e...
+
+</untrusted_external_content>
+
+---
