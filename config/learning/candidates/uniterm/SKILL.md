@@ -1,7 +1,7 @@
 ---
 name: uniterm
 description: >-
-  Kỹ năng chuyên gia vận hành cho ys-ll/uniterm (1000 ⭐).
+  Kỹ năng chuyên gia vận hành cho ys-ll/uniterm (1177 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở uniterm vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến All-in-one terminal covering 30+ protocols — SSH, RDP, SFTP, databases, Kubernetes and more
@@ -12,9 +12,9 @@ description: >-
 # ys-ll/uniterm — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/ys-ll/uniterm`  
-> **Độ uy tín cộng đồng**: 1000 ⭐  
+> **Độ uy tín cộng đồng**: 1177 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-11-02 13:42:08Z
+> **Tự động đóng gói lúc**: 2026-11-14 13:42:10Z
 
 ---
 
@@ -23,7 +23,7 @@ description: >-
 * **Mục tiêu cốt lõi**: All-in-one terminal covering 30+ protocols — SSH, RDP, SFTP, databases, Kubernetes and more. With a built-in AI Agent that runs multi-turn shell commands aut...
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- **Local & Serial Terminal** — PowerShell / CMD / Git Bash / WSL plus serial connections with configurable baud rate, data bits, stop bits, parity, and local echo.
+- **Terminal** — SSH / Telnet / Mosh / Raw TCP / Serial, plus local shells (PowerShell / CMD / Git Bash / WSL).
 - **File Transfer** — SFTP / SCP / FTP / FTPS / SMB / WebDAV / S3 / Zmodem with dual-pane browsing and `rz`/`sz` support in SSH terminals.
 - **Remote Desktop** — RDP (Windows Remote Desktop), VNC (Linux remote control), SPICE (KVM/QEMU VMs), X11 (X Window forwarding)
 - **Server Monitor** — Real-time CPU, memory, disk, network, processes, ports, and network interfaces.

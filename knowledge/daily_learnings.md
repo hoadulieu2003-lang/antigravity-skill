@@ -5520,3 +5520,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-14 20:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (112 ⭐)]** [ChrisVip001/joyczl-agent](https://github.com/ChrisVip001/joyczl-agent)
+  > Joy — a local-first personal assistant. Rust core (loop / memory / tools / graph / evals), TypeScript gateways + dashboard, Python thin SDK.
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [SynthCorp: A Platform for Creating Benchmarks for Data Agents](https://arxiv.org/abs/2611.14765)
+  > arXiv:2611.14765v1 Announce Type: new Abstract: Current benchmarks for LLM-driven data agents saturate quickly and cannot target specific capabilities. We pr...
+
+</untrusted_external_content>
+
+---

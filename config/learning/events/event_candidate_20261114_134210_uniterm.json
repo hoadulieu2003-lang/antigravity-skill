@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-14T13:42:10.816861+00:00",
+  "skill_name": "uniterm",
+  "source_repo": "ys-ll/uniterm",
+  "stars": 1177,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\uniterm\\SKILL.md",
+  "human_promotion_required": true
+}
