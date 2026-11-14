@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-14T19:42:21.607438+00:00",
+    "scan_date": "2026-11-14T22:42:21.078528+00:00",
     "cycle_id": "EVO-20261115",
     "sessions_evaluated": 83,
     "total_items_processed": 162,
     "active_skills_count": 92,
-    "candidates_count": 97,
-    "enhancements_count": 38,
+    "candidates_count": 98,
+    "enhancements_count": 37,
     "optimizations_count": 25
   },
   "new_skill_candidates": [
@@ -237,16 +237,6 @@
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     },
     {
-      "target_skill": "cdp-engine",
-      "source_technology": "nirholas/XActions",
-      "source_url": "https://github.com/nirholas/XActions",
-      "source_type": "GitHub (633 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "⚡ The Complete X/Twitter Automation Toolkit — Scrapers, MCP server for AI agents (Claude/GPT), CLI, browser scripts. No API fees. Open source. Unfollow peopl...",
-      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
-    },
-    {
       "target_skill": "aider-execution-engine",
       "source_technology": "aofp/yume",
       "source_url": "https://github.com/aofp/yume",
@@ -275,6 +265,16 @@
       "priority_score": 75,
       "enhancement_rationale": "A headless coding agent with multi-agent harness",
       "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
+      "target_skill": "ast-repo-map",
+      "source_technology": "KenKaiii/gg-framework",
+      "source_url": "https://github.com/KenKaiii/gg-framework",
+      "source_type": "GitHub (110 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "The coding agent that gets more out of your AI subscription. Fastest and leanest of 20 agents tested, with unlimited local search of real open-source code.",
+      "recommended_action": "Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context."
     }
   ],
   "architecture_optimizations": [
