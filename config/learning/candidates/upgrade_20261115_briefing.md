@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261115` | **Thời gian**: `2026-11-15 04:42:13 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261115` | **Thời gian**: `2026-11-15 07:42:12 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -8,10 +8,10 @@
 ## 📊 1. Bức Tranh Tổng Thể (Executive Summary & Metrics)
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
-| **Phiên học đã quét (Sessions Evaluated)** | `82` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
-| **Tài nguyên công nghệ (Items Processed)** | `160` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
+| **Phiên học đã quét (Sessions Evaluated)** | `81` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
+| **Tài nguyên công nghệ (Items Processed)** | `156` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `92` | Kho năng lực sẵn có tại `config/skills/` |
-| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `97` | Các khoảng trống công nghệ cần bổ sung độc lập |
+| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `93` | Các khoảng trống công nghệ cần bổ sung độc lập |
 | **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `37` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
 | **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `25` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
@@ -284,23 +284,23 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng et
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.12. `pi-app` — justhil/pi-app 🔥 [HIGH PRIORITY]
-- **Nguồn gốc (Source)**: [GitHub (390 ⭐)](https://github.com/justhil/pi-app)
+### 2.12. `weftcut` — WeftCut/WeftCut 🔥 [HIGH PRIORITY]
+- **Nguồn gốc (Source)**: [GitHub (294 ⭐)](https://github.com/WeftCut/WeftCut)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
-- **Giá trị Đề xuất (Proposed Value)**: Desktop app for the pi coding agent: streaming timeline, Git review with hunk staging, session tree, native UI for pi extensions. Windows · macOS · Linux. pi...
+- **Giá trị Đề xuất (Proposed Value)**: Free, open-source AI video editor for macOS, Windows and Linux — drive the whole timeline from any MCP client.
 
 ```yaml
 # Gợi ý Cấu trúc SKILL.md (Suggested Specification)
 ---
-name: pi-app
-description: Tự động kích hoạt khi người dùng muốn tận dụng justhil/pi-app cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
+name: weftcut
+description: Tự động kích hoạt khi người dùng muốn tận dụng WeftCut/WeftCut cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
 ---
 
-# JUSTHIL/PI-APP SKILL ARCHITECTURE
+# WEFTCUT/WEFTCUT SKILL ARCHITECTURE
 
 ## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
-- Kế thừa giải pháp từ: `justhil/pi-app` (https://github.com/justhil/pi-app)
+- Kế thừa giải pháp từ: `WeftCut/WeftCut` (https://github.com/WeftCut/WeftCut)
 - Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
 
 ## 🛠️ 2. Workflows & Công cụ (Tools & Operations)

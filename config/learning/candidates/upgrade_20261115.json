@@ -1,11 +1,11 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-15T04:42:13.521304+00:00",
+    "scan_date": "2026-11-15T07:42:12.852921+00:00",
     "cycle_id": "EVO-20261115",
-    "sessions_evaluated": 82,
-    "total_items_processed": 160,
+    "sessions_evaluated": 81,
+    "total_items_processed": 156,
     "active_skills_count": 92,
-    "candidates_count": 97,
+    "candidates_count": 93,
     "enhancements_count": 37,
     "optimizations_count": 25
   },
@@ -143,16 +143,16 @@
       "suggested_skill_structure": "---\nname: sellbird\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ethanplusai/sellbird cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ETHANPLUSAI/SELLBIRD SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ethanplusai/sellbird` (https://github.com/ethanplusai/sellbird)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
-      "skill_slug": "pi-app",
-      "title": "justhil/pi-app",
-      "source": "GitHub (390 ⭐)",
-      "url": "https://github.com/justhil/pi-app",
+      "skill_slug": "weftcut",
+      "title": "WeftCut/WeftCut",
+      "source": "GitHub (294 ⭐)",
+      "url": "https://github.com/WeftCut/WeftCut",
       "domain": "Công nghệ Mới nổi (Emerging Technology)",
       "priority": "HIGH",
       "priority_score": 85,
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "Desktop app for the pi coding agent: streaming timeline, Git review with hunk staging, session tree, native UI for pi extensions. Windows · macOS · Linux. pi...",
-      "suggested_skill_structure": "---\nname: pi-app\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng justhil/pi-app cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# JUSTHIL/PI-APP SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `justhil/pi-app` (https://github.com/justhil/pi-app)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+      "proposed_value": "Free, open-source AI video editor for macOS, Windows and Linux — drive the whole timeline from any MCP client.",
+      "suggested_skill_structure": "---\nname: weftcut\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng WeftCut/WeftCut cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# WEFTCUT/WEFTCUT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `WeftCut/WeftCut` (https://github.com/WeftCut/WeftCut)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
