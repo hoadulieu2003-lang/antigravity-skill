@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261115` | **Thời gian**: `2026-11-15 07:42:12 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261115` | **Thời gian**: `2026-11-15 10:42:13 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -8,12 +8,12 @@
 ## 📊 1. Bức Tranh Tổng Thể (Executive Summary & Metrics)
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
-| **Phiên học đã quét (Sessions Evaluated)** | `81` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
-| **Tài nguyên công nghệ (Items Processed)** | `156` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
+| **Phiên học đã quét (Sessions Evaluated)** | `80` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
+| **Tài nguyên công nghệ (Items Processed)** | `152` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `92` | Kho năng lực sẵn có tại `config/skills/` |
-| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `93` | Các khoảng trống công nghệ cần bổ sung độc lập |
-| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `37` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
-| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `25` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
+| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `90` | Các khoảng trống công nghệ cần bổ sung độc lập |
+| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `35` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
+| **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `26` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
 ---
 
@@ -284,23 +284,23 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng et
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.12. `weftcut` — WeftCut/WeftCut 🔥 [HIGH PRIORITY]
-- **Nguồn gốc (Source)**: [GitHub (294 ⭐)](https://github.com/WeftCut/WeftCut)
+### 2.12. `dexto` — truffle-ai/dexto 🔥 [HIGH PRIORITY]
+- **Nguồn gốc (Source)**: [GitHub (659 ⭐)](https://github.com/truffle-ai/dexto)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
-- **Giá trị Đề xuất (Proposed Value)**: Free, open-source AI video editor for macOS, Windows and Linux — drive the whole timeline from any MCP client.
+- **Giá trị Đề xuất (Proposed Value)**: Agent harness and tookit for building AI agents and agentic applications. CLI and SDKs included
 
 ```yaml
 # Gợi ý Cấu trúc SKILL.md (Suggested Specification)
 ---
-name: weftcut
-description: Tự động kích hoạt khi người dùng muốn tận dụng WeftCut/WeftCut cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
+name: dexto
+description: Tự động kích hoạt khi người dùng muốn tận dụng truffle-ai/dexto cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
 ---
 
-# WEFTCUT/WEFTCUT SKILL ARCHITECTURE
+# TRUFFLE-AI/DEXTO SKILL ARCHITECTURE
 
 ## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
-- Kế thừa giải pháp từ: `WeftCut/WeftCut` (https://github.com/WeftCut/WeftCut)
+- Kế thừa giải pháp từ: `truffle-ai/dexto` (https://github.com/truffle-ai/dexto)
 - Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
 
 ## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
