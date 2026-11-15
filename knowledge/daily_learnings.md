@@ -5578,3 +5578,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-15 23:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (168 ⭐)]** [JuneYaooo/rea-toon](https://github.com/JuneYaooo/rea-toon)
+  > AI 拆解学习短剧：为什么火、剧本怎么写、每一镜怎么拍 | Break down any short drama with AI: why it works, the script, every shot
+- **[GitHub (368 ⭐)]** [patriceckhart/zot](https://github.com/patriceckhart/zot)
+  > Yet another coding agent harness, lightweight and written in go.
+
+</untrusted_external_content>
+
+---
