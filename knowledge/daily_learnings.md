@@ -5566,3 +5566,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-15 20:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1456 ⭐)]** [agentlas-ai/Agentlas-OS](https://github.com/agentlas-ai/Agentlas-OS)
+  > The Open-Source AI Agent OS inspired by OpenAI Dots, Meta Muse, OpenClaw, Hermes & Mem0. Autonomous 3-tier headhunting, Receipt & Verifier loops, scoped memo...
+- **[GitHub (2339 ⭐)]** [Vincentwei1021/video-talkcraft](https://github.com/Vincentwei1021/video-talkcraft)
+  > Agent skill that turns Claude Code / Codex into a motion-design studio for voiceover-driven explainer videos — word-level voiceover sync, 109 motion recipe c...
+
+</untrusted_external_content>
+
+---

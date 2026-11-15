@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-15T13:42:12.715947+00:00",
+  "skill_name": "video-talkcraft",
+  "source_repo": "Vincentwei1021/video-talkcraft",
+  "stars": 2339,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\video-talkcraft\\SKILL.md",
+  "human_promotion_required": true
+}

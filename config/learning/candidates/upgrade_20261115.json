@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-15T10:42:13.805783+00:00",
+    "scan_date": "2026-11-15T13:42:15.314005+00:00",
     "cycle_id": "EVO-20261115",
     "sessions_evaluated": 80,
-    "total_items_processed": 152,
+    "total_items_processed": 151,
     "active_skills_count": 92,
-    "candidates_count": 90,
-    "enhancements_count": 35,
+    "candidates_count": 88,
+    "enhancements_count": 36,
     "optimizations_count": 26
   },
   "new_skill_candidates": [
@@ -83,6 +83,18 @@
       "suggested_skill_structure": "---\nname: suparagent\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng Anil-matcha/suparagent cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ANIL-MATCHA/SUPARAGENT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `Anil-matcha/suparagent` (https://github.com/Anil-matcha/suparagent)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
+      "skill_slug": "agentlas-os",
+      "title": "agentlas-ai/Agentlas-OS",
+      "source": "GitHub (1456 ⭐)",
+      "url": "https://github.com/agentlas-ai/Agentlas-OS",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "The Open-Source AI Agent OS inspired by OpenAI Dots, Meta Muse, OpenClaw, Hermes & Mem0. Autonomous 3-tier headhunting, Receipt & Verifier loops, scoped memo...",
+      "suggested_skill_structure": "---\nname: agentlas-os\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng agentlas-ai/Agentlas-OS cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# AGENTLAS-AI/AGENTLAS-OS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `agentlas-ai/Agentlas-OS` (https://github.com/agentlas-ai/Agentlas-OS)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
       "skill_slug": "android-ad-cleaner",
       "title": "rddmwmddr/android-ad-cleaner",
       "source": "GitHub (5780 ⭐)",
@@ -141,18 +153,6 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "Sellbird (formerly Harvey): the open-source outreach platform that runs on your Claude or ChatGPT plan. Finds companies and decision makers, verifies emails,...",
       "suggested_skill_structure": "---\nname: sellbird\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ethanplusai/sellbird cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ETHANPLUSAI/SELLBIRD SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ethanplusai/sellbird` (https://github.com/ethanplusai/sellbird)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
-      "skill_slug": "dexto",
-      "title": "truffle-ai/dexto",
-      "source": "GitHub (659 ⭐)",
-      "url": "https://github.com/truffle-ai/dexto",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "Agent harness and tookit for building AI agents and agentic applications. CLI and SDKs included",
-      "suggested_skill_structure": "---\nname: dexto\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng truffle-ai/dexto cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# TRUFFLE-AI/DEXTO SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `truffle-ai/dexto` (https://github.com/truffle-ai/dexto)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
@@ -238,6 +238,16 @@
     },
     {
       "target_skill": "aider-execution-engine",
+      "source_technology": "Vincentwei1021/video-talkcraft",
+      "source_url": "https://github.com/Vincentwei1021/video-talkcraft",
+      "source_type": "GitHub (2339 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "Agent skill that turns Claude Code / Codex into a motion-design studio for voiceover-driven explainer videos — word-level voiceover sync, 109 motion recipe c...",
+      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "aider-execution-engine",
       "source_technology": "aofp/yume",
       "source_url": "https://github.com/aofp/yume",
       "source_type": "GitHub (151 ⭐)",
@@ -265,16 +275,6 @@
       "priority_score": 75,
       "enhancement_rationale": "A headless coding agent with multi-agent harness",
       "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
-    },
-    {
-      "target_skill": "ast-repo-map",
-      "source_technology": "KenKaiii/gg-framework",
-      "source_url": "https://github.com/KenKaiii/gg-framework",
-      "source_type": "GitHub (110 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "The coding agent that gets more out of your AI subscription. Fastest and leanest of 20 agents tested, with unlimited local search of real open-source code.",
-      "recommended_action": "Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context."
     }
   ],
   "architecture_optimizations": [

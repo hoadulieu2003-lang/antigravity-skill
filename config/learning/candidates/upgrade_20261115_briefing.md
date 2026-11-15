@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261115` | **Thời gian**: `2026-11-15 10:42:13 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261115` | **Thời gian**: `2026-11-15 13:42:15 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -9,10 +9,10 @@
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
 | **Phiên học đã quét (Sessions Evaluated)** | `80` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
-| **Tài nguyên công nghệ (Items Processed)** | `152` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
+| **Tài nguyên công nghệ (Items Processed)** | `151` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `92` | Kho năng lực sẵn có tại `config/skills/` |
-| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `90` | Các khoảng trống công nghệ cần bổ sung độc lập |
-| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `35` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
+| **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `88` | Các khoảng trống công nghệ cần bổ sung độc lập |
+| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `36` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
 | **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `26` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
 ---
@@ -164,7 +164,31 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng An
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.7. `android-ad-cleaner` — rddmwmddr/android-ad-cleaner 🔥 [HIGH PRIORITY]
+### 2.7. `agentlas-os` — agentlas-ai/Agentlas-OS 🔥 [HIGH PRIORITY]
+- **Nguồn gốc (Source)**: [GitHub (1456 ⭐)](https://github.com/agentlas-ai/Agentlas-OS)
+- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
+- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
+- **Giá trị Đề xuất (Proposed Value)**: The Open-Source AI Agent OS inspired by OpenAI Dots, Meta Muse, OpenClaw, Hermes & Mem0. Autonomous 3-tier headhunting, Receipt & Verifier loops, scoped memo...
+
+```yaml
+# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
+---
+name: agentlas-os
+description: Tự động kích hoạt khi người dùng muốn tận dụng agentlas-ai/Agentlas-OS cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
+---
+
+# AGENTLAS-AI/AGENTLAS-OS SKILL ARCHITECTURE
+
+## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
+- Kế thừa giải pháp từ: `agentlas-ai/Agentlas-OS` (https://github.com/agentlas-ai/Agentlas-OS)
+- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
+
+## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
+- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
+- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
+```
+
+### 2.8. `android-ad-cleaner` — rddmwmddr/android-ad-cleaner 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (5780 ⭐)](https://github.com/rddmwmddr/android-ad-cleaner)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -188,7 +212,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng rd
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.8. `aktools` — akfamily/aktools 🔥 [HIGH PRIORITY]
+### 2.9. `aktools` — akfamily/aktools 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1542 ⭐)](https://github.com/akfamily/aktools)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -212,7 +236,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng ak
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.9. `spider` — spider-rs/spider 🔥 [HIGH PRIORITY]
+### 2.10. `spider` — spider-rs/spider 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2820 ⭐)](https://github.com/spider-rs/spider)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -236,7 +260,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng sp
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.10. `anymodelbot` — modelflare-ai/AnyModelBot 🔥 [HIGH PRIORITY]
+### 2.11. `anymodelbot` — modelflare-ai/AnyModelBot 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2741 ⭐)](https://github.com/modelflare-ai/AnyModelBot)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -260,7 +284,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng mo
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.11. `sellbird` — ethanplusai/sellbird 🔥 [HIGH PRIORITY]
+### 2.12. `sellbird` — ethanplusai/sellbird 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (5093 ⭐)](https://github.com/ethanplusai/sellbird)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -284,30 +308,6 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng et
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.12. `dexto` — truffle-ai/dexto 🔥 [HIGH PRIORITY]
-- **Nguồn gốc (Source)**: [GitHub (659 ⭐)](https://github.com/truffle-ai/dexto)
-- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
-- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
-- **Giá trị Đề xuất (Proposed Value)**: Agent harness and tookit for building AI agents and agentic applications. CLI and SDKs included
-
-```yaml
-# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
----
-name: dexto
-description: Tự động kích hoạt khi người dùng muốn tận dụng truffle-ai/dexto cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
----
-
-# TRUFFLE-AI/DEXTO SKILL ARCHITECTURE
-
-## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
-- Kế thừa giải pháp từ: `truffle-ai/dexto` (https://github.com/truffle-ai/dexto)
-- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
-
-## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
-- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
-- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
-```
-
 ---
 
 ## 🛠️ 3. Đề Xuất Nâng Cấp Kỹ Năng Hiện Hữu (`SKILL_ENHANCEMENT`)
@@ -323,10 +323,10 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 | **`aider-execution-engine`** | [zenstory-ai/oh-story-claudecode](https://github.com/zenstory-ai/oh-story-claudecode) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`gemini-super-engine`** | [KnockOutEZ/wigolo](https://github.com/KnockOutEZ/wigolo) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
 | **`aider-execution-engine`** | [PotterRemember37/Capri-AI-Desktop](https://github.com/PotterRemember37/Capri-AI-Desktop) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
+| **`aider-execution-engine`** | [Vincentwei1021/video-talkcraft](https://github.com/Vincentwei1021/video-talkcraft) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`aider-execution-engine`** | [aofp/yume](https://github.com/aofp/yume) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`aider-execution-engine`** | [laolaoshiren/claude-code-skills-zh](https://github.com/laolaoshiren/claude-code-skills-zh) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`cdp-engine`** | [guregodevo/memdoor](https://github.com/guregodevo/memdoor) | `HIGH` | Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents. |
-| **`ast-repo-map`** | [KenKaiii/gg-framework](https://github.com/KenKaiii/gg-framework) | `HIGH` | Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context. |
 
 
 ## 🏛️ 4. Đề Xuất Tối Ưu Kiến Trúc & Quy Chuẩn (`ARCHITECTURE_OPTIMIZATION`)
