@@ -1,7 +1,7 @@
 ---
 name: nod
 description: >-
-  Kỹ năng chuyên gia vận hành cho n8n-io/nod (1513 ⭐).
+  Kỹ năng chuyên gia vận hành cho n8n-io/nod (1806 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở nod vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Open source personal agent with its own computer
@@ -12,9 +12,9 @@ description: >-
 # n8n-io/nod — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/n8n-io/nod`  
-> **Độ uy tín cộng đồng**: 1513 ⭐  
+> **Độ uy tín cộng đồng**: 1806 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-11-15 13:42:12Z
+> **Tự động đóng gói lúc**: 2026-11-16 07:42:11Z
 
 ---
 

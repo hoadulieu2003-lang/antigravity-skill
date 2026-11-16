@@ -5610,3 +5610,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-16 14:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (83 ⭐)]** [MuaraAI/FluxCode](https://github.com/MuaraAI/FluxCode)
+  > Lightweight native code editor for Windows and Linux, written in Rust on GPUI. AI agent panel (ACP: OpenCode, Mura), Python-friendly terminal, built-in git, ...
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [When Should LLM Agents Forget? Memory Filtering Under Query-Critical Resolver Errors](https://arxiv.org/abs/2611.17338)
+  > arXiv:2611.17338v1 Announce Type: new Abstract: LLM memory systems often delete facts classified as stale. We show that this hard-filtering step can reduce d...
+- **[ArXiv CS.AI]** [Does the Ranking Hold? A Practitioner-Facing Audit of Hallucination Detectors on Small, Quantized, On-Device LLMs](https://arxiv.org/abs/2611.17339)
+  > arXiv:2611.17339v1 Announce Type: new Abstract: Hallucination detection for large language models is dominated by methods evaluated on 7B-70B research models...
+
+</untrusted_external_content>
+
+---
