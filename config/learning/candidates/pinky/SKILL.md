@@ -1,7 +1,7 @@
 ---
 name: pinky
 description: >-
-  Kỹ năng chuyên gia vận hành cho DIYgod/pinky (2222 ⭐).
+  Kỹ năng chuyên gia vận hành cho DIYgod/pinky (2231 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở pinky vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Let AI use your iPhone or Android phone, with you in the loop: any MCP agent from macOS, Windows or Linux, or Pinky itself, right on the phone
@@ -12,9 +12,9 @@ description: >-
 # DIYgod/pinky — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/DIYgod/pinky`  
-> **Độ uy tín cộng đồng**: 2222 ⭐  
+> **Độ uy tín cộng đồng**: 2231 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-11-16 01:42:11Z
+> **Tự động đóng gói lúc**: 2026-11-16 04:42:09Z
 
 ---
 
