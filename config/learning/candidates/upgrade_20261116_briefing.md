@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261116` | **Thời gian**: `2026-11-16 07:42:11 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261116` | **Thời gian**: `2026-11-16 10:42:19 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -8,11 +8,11 @@
 ## 📊 1. Bức Tranh Tổng Thể (Executive Summary & Metrics)
 | Chỉ số (Metric) | Số lượng (Count) | Ý nghĩa Kỹ thuật (Technical Rationale) |
 | :--- | :--- | :--- |
-| **Phiên học đã quét (Sessions Evaluated)** | `83` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
-| **Tài nguyên công nghệ (Items Processed)** | `157` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
+| **Phiên học đã quét (Sessions Evaluated)** | `81` | Toàn bộ tri thức tích lũy mới nhất trong `daily_learnings.md` |
+| **Tài nguyên công nghệ (Items Processed)** | `155` | Các bài báo DeepMind, Cloudflare, ArXiv, GitHub Trending |
 | **Kỹ năng hiện hữu (Active Skills)** | `92` | Kho năng lực sẵn có tại `config/skills/` |
 | **Ứng viên Kỹ năng Mới (New Skill Candidates)** | `94` | Các khoảng trống công nghệ cần bổ sung độc lập |
-| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `36` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
+| **Đề xuất Nâng cấp Kỹ năng (Skill Enhancements)** | `34` | Tối ưu hóa các module hiện có (`cdp-engine`, `ui-ux`, v.v.) |
 | **Tối ưu Hóa Kiến Trúc (Architecture Optimizations)** | `26` | Đột phá về lý thuyết suy luận, an ninh và đa tác tử |
 
 ---
@@ -20,31 +20,7 @@
 ## 🌟 2. Đề Xuất Ứng Viên Kỹ Năng Mới (`NEW_SKILL_CANDIDATE`)
 Các công nghệ đột phá giải quyết những bài toán mà Antigravity 2.0 hiện chưa có module chuyên trách:
 
-### 2.1. `mika` — wangzan101/Mika 🔥 [HIGH PRIORITY]
-- **Nguồn gốc (Source)**: [GitHub (3068 ⭐)](https://github.com/wangzan101/Mika)
-- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
-- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
-- **Giá trị Đề xuất (Proposed Value)**: An on-device AI agent for Android that operates apps and the web to get things done for you.
-
-```yaml
-# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
----
-name: mika
-description: Tự động kích hoạt khi người dùng muốn tận dụng wangzan101/Mika cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
----
-
-# WANGZAN101/MIKA SKILL ARCHITECTURE
-
-## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
-- Kế thừa giải pháp từ: `wangzan101/Mika` (https://github.com/wangzan101/Mika)
-- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
-
-## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
-- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
-- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
-```
-
-### 2.2. `dsh-go` — ccch1mneyyy/dsh-Go 🔥 [HIGH PRIORITY]
+### 2.1. `dsh-go` — ccch1mneyyy/dsh-Go 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (4274 ⭐)](https://github.com/ccch1mneyyy/dsh-Go)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -68,7 +44,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng cc
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.3. `agenta` — Agenta-AI/agenta 🔥 [HIGH PRIORITY]
+### 2.2. `agenta` — Agenta-AI/agenta 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (4888 ⭐)](https://github.com/Agenta-AI/agenta)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -92,7 +68,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng Ag
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.4. `noria` — AhmadHassan-BTed/Noria 🔥 [HIGH PRIORITY]
+### 2.3. `noria` — AhmadHassan-BTed/Noria 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (4636 ⭐)](https://github.com/AhmadHassan-BTed/Noria)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -116,7 +92,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng Ah
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.5. `opendroid` — JMAN730/opendroid 🔥 [HIGH PRIORITY]
+### 2.4. `opendroid` — JMAN730/opendroid 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1270 ⭐)](https://github.com/JMAN730/opendroid)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -140,7 +116,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng JM
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.6. `suparagent` — Anil-matcha/suparagent 🔥 [HIGH PRIORITY]
+### 2.5. `suparagent` — Anil-matcha/suparagent 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (7053 ⭐)](https://github.com/Anil-matcha/suparagent)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -164,7 +140,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng An
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.7. `agentlas-os` — agentlas-ai/Agentlas-OS 🔥 [HIGH PRIORITY]
+### 2.6. `agentlas-os` — agentlas-ai/Agentlas-OS 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1456 ⭐)](https://github.com/agentlas-ai/Agentlas-OS)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -188,7 +164,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng ag
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.8. `pinky` — DIYgod/pinky 🔥 [HIGH PRIORITY]
+### 2.7. `pinky` — DIYgod/pinky 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2222 ⭐)](https://github.com/DIYgod/pinky)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -212,7 +188,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng DI
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.9. `android-ad-cleaner` — rddmwmddr/android-ad-cleaner 🔥 [HIGH PRIORITY]
+### 2.8. `android-ad-cleaner` — rddmwmddr/android-ad-cleaner 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (5780 ⭐)](https://github.com/rddmwmddr/android-ad-cleaner)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -236,7 +212,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng rd
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.10. `aktools` — akfamily/aktools 🔥 [HIGH PRIORITY]
+### 2.9. `aktools` — akfamily/aktools 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (1542 ⭐)](https://github.com/akfamily/aktools)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -260,7 +236,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng ak
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.11. `spider` — spider-rs/spider 🔥 [HIGH PRIORITY]
+### 2.10. `spider` — spider-rs/spider 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2820 ⭐)](https://github.com/spider-rs/spider)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -284,7 +260,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng sp
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.12. `anymodelbot` — modelflare-ai/AnyModelBot 🔥 [HIGH PRIORITY]
+### 2.11. `anymodelbot` — modelflare-ai/AnyModelBot 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (2741 ⭐)](https://github.com/modelflare-ai/AnyModelBot)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -308,6 +284,30 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng mo
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
+### 2.12. `sellbird` — ethanplusai/sellbird 🔥 [HIGH PRIORITY]
+- **Nguồn gốc (Source)**: [GitHub (5093 ⭐)](https://github.com/ethanplusai/sellbird)
+- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
+- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
+- **Giá trị Đề xuất (Proposed Value)**: Sellbird (formerly Harvey): the open-source outreach platform that runs on your Claude or ChatGPT plan. Finds companies and decision makers, verifies emails,...
+
+```yaml
+# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
+---
+name: sellbird
+description: Tự động kích hoạt khi người dùng muốn tận dụng ethanplusai/sellbird cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
+---
+
+# ETHANPLUSAI/SELLBIRD SKILL ARCHITECTURE
+
+## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
+- Kế thừa giải pháp từ: `ethanplusai/sellbird` (https://github.com/ethanplusai/sellbird)
+- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
+
+## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
+- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
+- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
+```
+
 ---
 
 ## 🛠️ 3. Đề Xuất Nâng Cấp Kỹ Năng Hiện Hữu (`SKILL_ENHANCEMENT`)
@@ -315,7 +315,6 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 
 | Kỹ năng Mục tiêu (Target) | Công nghệ Đối chiếu (Source Tech) | Mức độ Ưu tiên (Priority) | Hành động Đề xuất (Recommended Action) |
 | :--- | :--- | :--- | :--- |
-| **`aider-execution-engine`** | [lintsinghua/claude-code-book](https://github.com/lintsinghua/claude-code-book) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`ouroboros`** | [razzant/ouroboros](https://github.com/razzant/ouroboros) | `HIGH` | Bổ sung tri thức và thuật toán từ razzant/ouroboros vào module ouroboros. |
 | **`gemini-super-engine`** | [can4hou6joeng4/boss-agent-cli](https://github.com/can4hou6joeng4/boss-agent-cli) | `HIGH` | Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ. |
 | **`cdp-engine`** | [Mininglamp-OSS/octo-web](https://github.com/Mininglamp-OSS/octo-web) | `HIGH` | Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents. |
@@ -327,6 +326,7 @@ Gia cố các module sẵn có bằng các giải thuật hoặc thư viện b�
 | **`aider-execution-engine`** | [aofp/yume](https://github.com/aofp/yume) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`aider-execution-engine`** | [laolaoshiren/claude-code-skills-zh](https://github.com/laolaoshiren/claude-code-skills-zh) | `HIGH` | Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing). |
 | **`cdp-engine`** | [guregodevo/memdoor](https://github.com/guregodevo/memdoor) | `HIGH` | Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents. |
+| **`ast-repo-map`** | [KenKaiii/gg-framework](https://github.com/KenKaiii/gg-framework) | `HIGH` | Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context. |
 
 
 ## 🏛️ 4. Đề Xuất Tối Ưu Kiến Trúc & Quy Chuẩn (`ARCHITECTURE_OPTIMIZATION`)

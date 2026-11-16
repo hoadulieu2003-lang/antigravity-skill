@@ -1,27 +1,15 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-16T07:42:11.827834+00:00",
+    "scan_date": "2026-11-16T10:42:19.734819+00:00",
     "cycle_id": "EVO-20261116",
-    "sessions_evaluated": 83,
-    "total_items_processed": 157,
+    "sessions_evaluated": 81,
+    "total_items_processed": 155,
     "active_skills_count": 92,
     "candidates_count": 94,
-    "enhancements_count": 36,
+    "enhancements_count": 34,
     "optimizations_count": 26
   },
   "new_skill_candidates": [
-    {
-      "skill_slug": "mika",
-      "title": "wangzan101/Mika",
-      "source": "GitHub (3068 ⭐)",
-      "url": "https://github.com/wangzan101/Mika",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 95,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "An on-device AI agent for Android that operates apps and the web to get things done for you.",
-      "suggested_skill_structure": "---\nname: mika\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng wangzan101/Mika cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# WANGZAN101/MIKA SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `wangzan101/Mika` (https://github.com/wangzan101/Mika)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
     {
       "skill_slug": "dsh-go",
       "title": "ccch1mneyyy/dsh-Go",
@@ -153,19 +141,21 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "🤖 Open-source, local-first alternative to Grok Bot, OpenAI dots and Claude Duet. Your own AI bots on any model: GPT, Claude, Gemini, Grok, DeepSeek, Kimi, GL...",
       "suggested_skill_structure": "---\nname: anymodelbot\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng modelflare-ai/AnyModelBot cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# MODELFLARE-AI/ANYMODELBOT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `modelflare-ai/AnyModelBot` (https://github.com/modelflare-ai/AnyModelBot)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "sellbird",
+      "title": "ethanplusai/sellbird",
+      "source": "GitHub (5093 ⭐)",
+      "url": "https://github.com/ethanplusai/sellbird",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 90,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Sellbird (formerly Harvey): the open-source outreach platform that runs on your Claude or ChatGPT plan. Finds companies and decision makers, verifies emails,...",
+      "suggested_skill_structure": "---\nname: sellbird\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ethanplusai/sellbird cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ETHANPLUSAI/SELLBIRD SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ethanplusai/sellbird` (https://github.com/ethanplusai/sellbird)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
-    {
-      "target_skill": "aider-execution-engine",
-      "source_technology": "lintsinghua/claude-code-book",
-      "source_url": "https://github.com/lintsinghua/claude-code-book",
-      "source_type": "GitHub (4346 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "《御舆：解码 Agent Harness》42万字拆解 AI Agent 的Harness骨架与神经 —— Claude Code 架构深度剖析，15 章从对话循环到构建你自己的 Agent Harness。在线阅读网站：",
-      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
-    },
     {
       "target_skill": "ouroboros",
       "source_technology": "razzant/ouroboros",
@@ -275,6 +265,16 @@
       "priority_score": 75,
       "enhancement_rationale": "A headless coding agent with multi-agent harness",
       "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
+      "target_skill": "ast-repo-map",
+      "source_technology": "KenKaiii/gg-framework",
+      "source_url": "https://github.com/KenKaiii/gg-framework",
+      "source_type": "GitHub (110 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "The coding agent that gets more out of your AI subscription. Fastest and leanest of 20 agents tested, with unlimited local search of real open-source code.",
+      "recommended_action": "Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context."
     }
   ],
   "architecture_optimizations": [

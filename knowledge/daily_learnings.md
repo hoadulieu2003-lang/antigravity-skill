@@ -5626,3 +5626,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-16 17:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (181 ⭐)]** [wycocoyu/cococv](https://github.com/wycocoyu/cococv)
+  > CocoCV (cococv.cn) - Full-stack AI Resume Platform & LaTeX Editor. 一句话生成在线可修改的高清 LaTeX PDF 简历：支持 AI 对话生成、可解释诊断与 ATS 检查、PDF/图片解析及 CLI / Agent Skill。
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [LoRAWeaver: Directional Adapter Routing in LoRA Representation Space](https://arxiv.org/abs/2611.17340)
+  > arXiv:2611.17340v1 Announce Type: new Abstract: Large language models are expensive to update through full retraining. Parameter-efficient fine-tuning reduce...
+- **[ArXiv CS.AI]** [Tabular Population Priors as Structured Retrieval for EHR Medication Set Prediction](https://arxiv.org/abs/2611.17341)
+  > arXiv:2611.17341v1 Announce Type: new Abstract: Medication prediction from electronic health records is a fixed vocabulary structured prediction problem, yet...
+
+</untrusted_external_content>
+
+---
