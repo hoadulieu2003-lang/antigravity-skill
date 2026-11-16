@@ -1,11 +1,11 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-15T22:42:19.902999+00:00",
+    "scan_date": "2026-11-16T01:42:13.608501+00:00",
     "cycle_id": "EVO-20261116",
-    "sessions_evaluated": 82,
-    "total_items_processed": 154,
+    "sessions_evaluated": 83,
+    "total_items_processed": 155,
     "active_skills_count": 92,
-    "candidates_count": 91,
+    "candidates_count": 92,
     "enhancements_count": 36,
     "optimizations_count": 26
   },
@@ -95,6 +95,18 @@
       "suggested_skill_structure": "---\nname: agentlas-os\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng agentlas-ai/Agentlas-OS cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# AGENTLAS-AI/AGENTLAS-OS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `agentlas-ai/Agentlas-OS` (https://github.com/agentlas-ai/Agentlas-OS)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
+      "skill_slug": "pinky",
+      "title": "DIYgod/pinky",
+      "source": "GitHub (2222 ⭐)",
+      "url": "https://github.com/DIYgod/pinky",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 95,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "Let AI use your iPhone or Android phone, with you in the loop: any MCP agent from macOS, Windows or Linux, or Pinky itself, right on the phone.",
+      "suggested_skill_structure": "---\nname: pinky\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng DIYgod/pinky cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# DIYGOD/PINKY SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `DIYgod/pinky` (https://github.com/DIYgod/pinky)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
       "skill_slug": "android-ad-cleaner",
       "title": "rddmwmddr/android-ad-cleaner",
       "source": "GitHub (5780 ⭐)",
@@ -141,18 +153,6 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "🤖 Open-source, local-first alternative to Grok Bot, OpenAI dots and Claude Duet. Your own AI bots on any model: GPT, Claude, Gemini, Grok, DeepSeek, Kimi, GL...",
       "suggested_skill_structure": "---\nname: anymodelbot\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng modelflare-ai/AnyModelBot cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# MODELFLARE-AI/ANYMODELBOT SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `modelflare-ai/AnyModelBot` (https://github.com/modelflare-ai/AnyModelBot)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
-      "skill_slug": "sellbird",
-      "title": "ethanplusai/sellbird",
-      "source": "GitHub (5093 ⭐)",
-      "url": "https://github.com/ethanplusai/sellbird",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 90,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "Sellbird (formerly Harvey): the open-source outreach platform that runs on your Claude or ChatGPT plan. Finds companies and decision makers, verifies emails,...",
-      "suggested_skill_structure": "---\nname: sellbird\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ethanplusai/sellbird cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ETHANPLUSAI/SELLBIRD SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ethanplusai/sellbird` (https://github.com/ethanplusai/sellbird)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
