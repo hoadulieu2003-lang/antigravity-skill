@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-16T19:42:19.775232+00:00",
+    "scan_date": "2026-11-16T22:42:14.084783+00:00",
     "cycle_id": "EVO-20261117",
     "sessions_evaluated": 82,
-    "total_items_processed": 156,
+    "total_items_processed": 155,
     "active_skills_count": 92,
-    "candidates_count": 93,
-    "enhancements_count": 36,
+    "candidates_count": 92,
+    "enhancements_count": 35,
     "optimizations_count": 26
   },
   "new_skill_candidates": [
@@ -228,16 +228,6 @@
     },
     {
       "target_skill": "aider-execution-engine",
-      "source_technology": "aofp/yume",
-      "source_url": "https://github.com/aofp/yume",
-      "source_type": "GitHub (151 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "Native desktop UI for Claude Code with orchestration, streaming, background agents, and multi-provider support. Built with Tauri + React.",
-      "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
-    },
-    {
-      "target_skill": "aider-execution-engine",
       "source_technology": "laolaoshiren/claude-code-skills-zh",
       "source_url": "https://github.com/laolaoshiren/claude-code-skills-zh",
       "source_type": "GitHub (900 ⭐)",
@@ -275,6 +265,16 @@
       "priority_score": 75,
       "enhancement_rationale": "Claude Code-style auto-memory plugin for DeepSeek Harness (dsh): typed memory files + MEMORY.md index auto-injected into the system prompt. File-only, no ext...",
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
+    },
+    {
+      "target_skill": "gemini-super-engine",
+      "source_technology": "lalipa2003-arch/JailbreakHub",
+      "source_url": "https://github.com/lalipa2003-arch/JailbreakHub",
+      "source_type": "GitHub (218 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "A Hub/research area, for jailbreaking LLM's, and breaking their safety filters.",
+      "recommended_action": "Khai thác kỹ thuật Textual Gradients (ToolGrad) để tinh chỉnh cú pháp và tăng độ chính xác khi gọi công cụ."
     }
   ],
   "architecture_optimizations": [

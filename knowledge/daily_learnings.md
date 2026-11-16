@@ -5676,3 +5676,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-17 05:42:03`
+
+<untrusted_external_content>
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [Comfy-Org/MiniMax-H3-Image](https://huggingface.co/Comfy-Org/MiniMax-H3-Image)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
