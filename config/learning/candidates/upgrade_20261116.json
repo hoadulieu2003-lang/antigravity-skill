@@ -1,27 +1,15 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-16T10:42:19.734819+00:00",
+    "scan_date": "2026-11-16T13:42:19.197463+00:00",
     "cycle_id": "EVO-20261116",
     "sessions_evaluated": 81,
     "total_items_processed": 155,
     "active_skills_count": 92,
-    "candidates_count": 94,
-    "enhancements_count": 34,
+    "candidates_count": 92,
+    "enhancements_count": 36,
     "optimizations_count": 26
   },
   "new_skill_candidates": [
-    {
-      "skill_slug": "dsh-go",
-      "title": "ccch1mneyyy/dsh-Go",
-      "source": "GitHub (4274 ⭐)",
-      "url": "https://github.com/ccch1mneyyy/dsh-Go",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 95,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "dsh-go — DeepSeek Harness 装进口袋：手机本机运行，也能遥控你的电脑。",
-      "suggested_skill_structure": "---\nname: dsh-go\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ccch1mneyyy/dsh-Go cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# CCCH1MNEYYY/DSH-GO SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ccch1mneyyy/dsh-Go` (https://github.com/ccch1mneyyy/dsh-Go)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
     {
       "skill_slug": "agenta",
       "title": "Agenta-AI/agenta",
@@ -153,6 +141,18 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "Sellbird (formerly Harvey): the open-source outreach platform that runs on your Claude or ChatGPT plan. Finds companies and decision makers, verifies emails,...",
       "suggested_skill_structure": "---\nname: sellbird\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ethanplusai/sellbird cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ETHANPLUSAI/SELLBIRD SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ethanplusai/sellbird` (https://github.com/ethanplusai/sellbird)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "wx-assist",
+      "title": "MaleleStudySpace/wx-assist",
+      "source": "GitHub (136 ⭐)",
+      "url": "https://github.com/MaleleStudySpace/wx-assist",
+      "domain": "Công nghệ Mới nổi (Emerging Technology)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
+      "proposed_value": "「摘星」· 微信助手 — AI Agent 智能助手 / AI 群聊摘要 / 关键词即时提醒 / 公众号摘要与文章实时推送 / RAG 语义检索 / 聊天、朋友圈归档 / 收藏导出 。本地运行，数据不出本机。",
+      "suggested_skill_structure": "---\nname: wx-assist\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng MaleleStudySpace/wx-assist cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# MALELESTUDYSPACE/WX-ASSIST SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `MaleleStudySpace/wx-assist` (https://github.com/MaleleStudySpace/wx-assist)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [
