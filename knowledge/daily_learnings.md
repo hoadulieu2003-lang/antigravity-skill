@@ -5712,3 +5712,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-17 23:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (53 ⭐)]** [2722039978-source/Noosphere](https://github.com/2722039978-source/Noosphere)
+  > 面向 Windows 的 AI 项目工作台。支持启动本地模型、接入云端 API，在同一工作区里读代码和附件、跟进任务、保存项目记忆。
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Dataset)]** [Vyber07/cyber-security](https://huggingface.co/Vyber07/cyber-security)
+  > Trending dataset on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
