@@ -5696,3 +5696,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-17 20:46:35`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (334 ⭐)]** [acvnace/awesome-vibe-coding-resources](https://github.com/acvnace/awesome-vibe-coding-resources)
+  > A curated list of awesome resources for vibe coding
+- **[GitHub (141 ⭐)]** [InfernalAzazel/ghost-job](https://github.com/InfernalAzazel/ghost-job)
+  > 🤖 免费的 BOSS直聘自动投递桌面软件：AI 筛选岗位、简历匹配打分、自动打招呼与自动回复 HR，支持 Windows / macOS / Linux。Free AI auto-apply app for BOSS Zhipin.
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [higurashi-ai/Haru-4B](https://huggingface.co/higurashi-ai/Haru-4B)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
