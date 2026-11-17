@@ -5686,3 +5686,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-17 17:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (1492 ⭐)]** [sqfcyily/deva](https://github.com/sqfcyily/deva)
+  > 对话式 AI 助手 · All in Chat - 把 Agent 能力装进对话里，无需复杂配置，像聊天一样使用 Agent。已内置破甲角色「小码酱」，支持国模破甲。
+
+</untrusted_external_content>
+
+---

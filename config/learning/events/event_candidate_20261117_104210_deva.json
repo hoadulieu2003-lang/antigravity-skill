@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-17T10:42:10.383104+00:00",
+  "skill_name": "deva",
+  "source_repo": "sqfcyily/deva",
+  "stars": 1492,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\deva\\SKILL.md",
+  "human_promotion_required": true
+}
