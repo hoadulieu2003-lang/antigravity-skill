@@ -5740,3 +5740,23 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-18 05:42:03`
+
+<untrusted_external_content>
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [Quad9’s withdrawal from France: A canary in the coal mine](https://blog.cloudflare.com/quad9-withdrawal-from-france/)
+  > Quad9's forced withdrawal from France highlights the dangers of mandating DNS-level blocking. We explore why forcing public resolvers to act as content filters is technically flawed and threatens t...
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (58 ⭐)]** [tashfeenahmed/scallopbot](https://github.com/tashfeenahmed/scallopbot)
+  > Self-hosted personal AI assistant with sleep-style memory consolidation and MCP-native memory. In maintenance mode.
+- **[GitHub (297 ⭐)]** [ANDRETRIPOL/OpenGhost](https://github.com/ANDRETRIPOL/OpenGhost)
+  > Open desktop AI agent for Windows, macOS and Linux, written from scratch: its own agent engine, its own browser tooling and its own drawing engine that shows...
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [thinkingmachines/Inkling-2-Small](https://huggingface.co/thinkingmachines/Inkling-2-Small)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
