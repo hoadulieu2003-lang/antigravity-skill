@@ -5836,3 +5836,25 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-19 02:42:02`
+
+<untrusted_external_content>
+### 🌐 Tin tức Sản phẩm Google & Frontier Labs
+- **[Google AI Official]** [The Gemini app is now available on lower-memory Android devices.](https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/)
+  > The Google Gemini app now supports lower-memory Android devices. Access Gemini Live and custom image creation on your phone. Download the app today.
+
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google DeepMind]** [Genie 4 is now available](https://deepmind.google/blog/genie-4-is-now-available/)
+  > 
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (66 ⭐)]** [QAInsights/jmeter-ai](https://github.com/QAInsights/jmeter-ai)
+  > Feather Wand: AI agent for Apache JMeter. Build and edit test plans with Claude, OpenAI, Gemini, Ollama and more, with Claude Code, Codex and an MCP server b...
+- **[GitHub (154 ⭐)]** [NJohansen/handle-mcp](https://github.com/NJohansen/handle-mcp)
+  > MCP server for nemlig.com, BilkaToGo, Rema1000: search products, add to cart and price comparisons. You always accept and pay yourself.
+- **[GitHub (1408 ⭐)]** [Team-Commonly/commonly](https://github.com/Team-Commonly/commonly)
+  > Open-source workspace where your team and your agents share one pod. Connect the Claude Code or Codex you already run, @mention it next to your teammates, an...
+
+</untrusted_external_content>
+
+---
