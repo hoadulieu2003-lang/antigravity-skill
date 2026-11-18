@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-18T07:42:09.941363+00:00",
+  "skill_name": "octop",
+  "source_repo": "TencentCloud/Octop",
+  "stars": 12200,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\octop\\SKILL.md",
+  "human_promotion_required": true
+}

@@ -1,7 +1,7 @@
 ---
 name: octop
 description: >-
-  Kỹ năng chuyên gia vận hành cho TencentCloud/Octop (4690 ⭐).
+  Kỹ năng chuyên gia vận hành cho TencentCloud/Octop (12200 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở octop vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến A smarter, self-hosted AI assistant — multi-user, multi-agent
@@ -12,9 +12,9 @@ description: >-
 # TencentCloud/Octop — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/TencentCloud/Octop`  
-> **Độ uy tín cộng đồng**: 4690 ⭐  
+> **Độ uy tín cộng đồng**: 12200 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-23 07:42:37Z
+> **Tự động đóng gói lúc**: 2026-11-18 07:42:09Z
 
 ---
 
@@ -24,10 +24,10 @@ description: >-
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
 - **Personal assistant** — let a dedicated agent write weekly reports, organize notes, and manage your schedule; memory persists with the workspace.
-- **Family sharing** — one admin account, the whole household; assign different agents and experts per member.
-- **Team helper** — multiple agents collaborate in parallel, bridging Feishu / DingTalk / WeCom to route tasks into group chats.
+- **Family sharing** — one admin account, the whole household; assign different agents and experts per member; share experts and knowledge bases when useful.
+- **Team helper** — AgentTeams or parallel agents, bridging Feishu / DingTalk / WeCom / WeChat to route tasks into group chats.
 - **Developer boost** — delegate coding tasks to OpenCode / Claude Code via ACP, or troubleshoot from the terminal with AI assistance.
-- **Web automation** — use Browser AI+ to fill forms, capture screenshots, and gather public info.
+- **Web automation** — use Browser AI+ and remote desktop for forms, screenshots, and GUI apps.
 - **Scheduled tasks** — configure cron in natural language so the agent pushes or runs jobs on time every day.
 
 ---
@@ -37,9 +37,9 @@ description: >-
 Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
 
 ```bash
-curl -fsSL https://finnie-1258344699.cos.ap-guangzhou.myqcloud.com/octop/install.sh | bash
+curl -fsSL https://download.octop.cloud/octop/scripts/install.sh | bash
 
-irm https://finnie-1258344699.cos.ap-guangzhou.myqcloud.com/octop/install.ps1 | iex
+irm https://download.octop.cloud/octop/scripts/install.ps1 | iex
 ```
 
 ---
