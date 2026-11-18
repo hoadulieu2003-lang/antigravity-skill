@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-18T04:42:10.110897+00:00",
+  "skill_name": "ego-lite",
+  "source_repo": "citrolabs/ego-lite",
+  "stars": 23433,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\ego-lite\\SKILL.md",
+  "human_promotion_required": true
+}

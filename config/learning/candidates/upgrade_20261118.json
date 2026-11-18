@@ -1,12 +1,12 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-18T01:42:18.218137+00:00",
+    "scan_date": "2026-11-18T04:42:12.054817+00:00",
     "cycle_id": "EVO-20261118",
-    "sessions_evaluated": 81,
-    "total_items_processed": 153,
+    "sessions_evaluated": 82,
+    "total_items_processed": 154,
     "active_skills_count": 92,
     "candidates_count": 95,
-    "enhancements_count": 30,
+    "enhancements_count": 31,
     "optimizations_count": 26
   },
   "new_skill_candidates": [
@@ -207,6 +207,16 @@
       "recommended_action": "Bổ sung cơ chế định tuyến mô hình thông minh nhận biết chi phí (Cost-aware model routing)."
     },
     {
+      "target_skill": "cdp-engine",
+      "source_technology": "citrolabs/ego-lite",
+      "source_url": "https://github.com/citrolabs/ego-lite",
+      "source_type": "GitHub (23433 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "enhancement_rationale": "The fastest browser for AI agents to run browser automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, w...",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
+    },
+    {
       "target_skill": "aider-execution-engine",
       "source_technology": "AskTheWay/dsh-auto-memory",
       "source_url": "https://github.com/AskTheWay/dsh-auto-memory",
@@ -265,16 +275,6 @@
       "priority_score": 75,
       "enhancement_rationale": "Localix CLI: an ultrafast agent runtime for coding and CI, in Rust. One binary under 4 MB, any model. The command is llx.",
       "recommended_action": "Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context."
-    },
-    {
-      "target_skill": "cdp-engine",
-      "source_technology": "ANDRETRIPOL/OpenGhost",
-      "source_url": "https://github.com/ANDRETRIPOL/OpenGhost",
-      "source_type": "GitHub (297 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 75,
-      "enhancement_rationale": "Open desktop AI agent for Windows, macOS and Linux, written from scratch: its own agent engine, its own browser tooling and its own drawing engine that shows...",
-      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
     }
   ],
   "architecture_optimizations": [
