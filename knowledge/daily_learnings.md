@@ -5808,3 +5808,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-18 20:42:03`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (541 ⭐)]** [leo1oel/lattice](https://github.com/leo1oel/lattice)
+  > A local-first, agent-first LaTeX writing app for macOS: live PDF, annotations, papers and Overleaf sync
+
+### 📄 Nghiên cứu Học thuật Mới (ArXiv Preprints)
+- **[ArXiv CS.AI]** [Language Models Can Rewrite Their Own Weights](https://arxiv.org/abs/2611.21885)
+  > arXiv:2611.21885v1 Announce Type: new Abstract: Language models are trained once, frozen and deployed: improving one again takes another training run, and a ...
+
+</untrusted_external_content>
+
+---
