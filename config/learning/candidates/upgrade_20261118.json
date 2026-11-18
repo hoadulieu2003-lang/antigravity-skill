@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-17T22:42:12.211856+00:00",
+    "scan_date": "2026-11-18T01:42:18.218137+00:00",
     "cycle_id": "EVO-20261118",
     "sessions_evaluated": 81,
     "total_items_processed": 153,
     "active_skills_count": 92,
     "candidates_count": 95,
-    "enhancements_count": 31,
-    "optimizations_count": 25
+    "enhancements_count": 30,
+    "optimizations_count": 26
   },
   "new_skill_candidates": [
     {
@@ -157,16 +157,6 @@
   ],
   "skill_enhancements": [
     {
-      "target_skill": "cdp-engine",
-      "source_technology": "Mininglamp-OSS/octo-web",
-      "source_url": "https://github.com/Mininglamp-OSS/octo-web",
-      "source_type": "GitHub (1212 ⭐)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "enhancement_rationale": "Web & desktop (Electron) client for the OCTO open workplace — one React + TypeScript codebase shipping browser and PC surfaces, with first-class AI agent UX.",
-      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
-    },
-    {
       "target_skill": "gemini-super-engine",
       "source_technology": "EvoScientist/EvoScientist",
       "source_url": "https://github.com/EvoScientist/EvoScientist",
@@ -275,6 +265,16 @@
       "priority_score": 75,
       "enhancement_rationale": "Localix CLI: an ultrafast agent runtime for coding and CI, in Rust. One binary under 4 MB, any model. The command is llx.",
       "recommended_action": "Nâng cấp cơ chế tiền lưu trữ cú pháp (Prefix caching / Stigmergy) giảm tối đa độ trễ nạp AST context."
+    },
+    {
+      "target_skill": "cdp-engine",
+      "source_technology": "ANDRETRIPOL/OpenGhost",
+      "source_url": "https://github.com/ANDRETRIPOL/OpenGhost",
+      "source_type": "GitHub (297 ⭐)",
+      "priority": "HIGH",
+      "priority_score": 75,
+      "enhancement_rationale": "Open desktop AI agent for Windows, macOS and Linux, written from scratch: its own agent engine, its own browser tooling and its own drawing engine that shows...",
+      "recommended_action": "Tích hợp công nghệ chống nhận diện (Anti-detection stealth) hoặc browser wrapper tối ưu hóa cho AI agents."
     }
   ],
   "architecture_optimizations": [
