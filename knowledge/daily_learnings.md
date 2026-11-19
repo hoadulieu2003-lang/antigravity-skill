@@ -5890,3 +5890,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-19 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (55 ⭐)]** [greekr4/rever-browser](https://github.com/greekr4/rever-browser)
+  > AI agent browser for web reverse engineering
+
+### 🤗 Mô hình & Trọng số Nổi bật (Hugging Face)
+- **[HuggingFace (Model)]** [tencent/Hy4-flash](https://huggingface.co/tencent/Hy4-flash)
+  > Trending model on Hugging Face hub.
+
+</untrusted_external_content>
+
+---
