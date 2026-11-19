@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-19T22:42:10.734938+00:00",
+  "skill_name": "nod",
+  "source_repo": "n8n-io/nod",
+  "stars": 2678,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\nod\\SKILL.md",
+  "human_promotion_required": true
+}

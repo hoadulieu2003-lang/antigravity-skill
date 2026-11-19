@@ -5938,3 +5938,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-20 05:42:02`
+
+<untrusted_external_content>
+### 🔬 Nghiên cứu Đột phá từ Google Research & DeepMind
+- **[Google Research]** [A game you cannot win unless you have a quantum computer](https://research.google/blog/a-game-you-cannot-win-unless-you-have-a-quantum-computer/)
+  > Quantum
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (304 ⭐)]** [ghorbelhamdi/buddy-android](https://github.com/ghorbelhamdi/buddy-android)
+  > Android AI assistant in a floating bubble: Claude Code, Codex, OpenCode, Gemini (Antigravity CLI) or Grok use your phone for you — read the screen, tap, type...
+- **[GitHub (1496 ⭐)]** [fetchai/innovation-lab-examples](https://github.com/fetchai/innovation-lab-examples)
+  > 80+ production-ready AI agent examples in Python — build autonomous agents, multi-agent systems and agentic AI with uAgents, ASI:One, MCP, A2A, LangChain, Cr...
+
+</untrusted_external_content>
+
+---

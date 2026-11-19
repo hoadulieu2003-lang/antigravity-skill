@@ -1,7 +1,7 @@
 ---
 name: agenta
 description: >-
-  Kỹ năng chuyên gia vận hành cho Agenta-AI/agenta (4888 ⭐).
+  Kỹ năng chuyên gia vận hành cho Agenta-AI/agenta (4921 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở agenta vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Agenta is a workspace where you and your team build agents and automations
@@ -12,9 +12,9 @@ description: >-
 # Agenta-AI/agenta — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/Agenta-AI/agenta`  
-> **Độ uy tín cộng đồng**: 4888 ⭐  
+> **Độ uy tín cộng đồng**: 4921 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-11-03 16:42:11Z
+> **Tự động đóng gói lúc**: 2026-11-19 22:42:09Z
 
 ---
 
