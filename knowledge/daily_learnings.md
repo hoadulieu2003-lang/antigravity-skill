@@ -5878,3 +5878,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-19 09:30:48`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (904 ⭐)]** [lidge-ai/ima2-gen](https://github.com/lidge-ai/ima2-gen)
+  > Local-first visual generation runtime and studio for people and coding agents, with reproducible image and video workflows across multiple providers.
+- **[GitHub (76 ⭐)]** [MichengAI/dsh-pua](https://github.com/MichengAI/dsh-pua)
+  > DSH PUA — 为 DeepSeek Harness 提供 PUA 任务推进、角色风味、验收循环和运行状态卡片 · PUA task persistence, personas, verification loops, and live status cards for DeepSeek Harness
+
+</untrusted_external_content>
+
+---
