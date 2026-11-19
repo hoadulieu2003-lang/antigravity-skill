@@ -5922,3 +5922,19 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-20 02:42:03`
+
+<untrusted_external_content>
+### 🌐 Tin tức Sản phẩm Google & Frontier Labs
+- **[Google AI Official]** [Introducing Tool Retrieval in the Gemini API](https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/)
+  > Give your agents access to hundreds of tools while using fewer tokens with Tool Retrieval, now in preview in the Gemini API.
+- **[Google AI Official]** [Walter Isaacson on curiosity and creativity in the AI age.](https://blog.google/innovation-and-ai/technology/ai/dialogues-walter-isaacson/)
+  > Walter Isaacson joins Google to discuss how history’s greatest innovators inspire creativity and human judgment in the AI age. Watch the episode.
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (108 ⭐)]** [revolist/revo-ui](https://github.com/revolist/revo-ui)
+  > Low-weight framework-agnostic component library for analytics dashboards and business apps. Date & time pickers, date & time range, charts, multi/selects, AI...
+
+</untrusted_external_content>
+
+---
