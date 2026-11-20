@@ -1,13 +1,13 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-19T22:42:12.270806+00:00",
+    "scan_date": "2026-11-20T01:42:12.604465+00:00",
     "cycle_id": "EVO-20261120",
-    "sessions_evaluated": 86,
-    "total_items_processed": 173,
+    "sessions_evaluated": 85,
+    "total_items_processed": 170,
     "active_skills_count": 92,
-    "candidates_count": 102,
+    "candidates_count": 101,
     "enhancements_count": 38,
-    "optimizations_count": 31
+    "optimizations_count": 29
   },
   "new_skill_candidates": [
     {
@@ -279,16 +279,6 @@
   ],
   "architecture_optimizations": [
     {
-      "title": "Agile Deliberation: How AI helps humans define the gray areas",
-      "source": "Google Research",
-      "url": "https://research.google/blog/agile-deliberation-how-ai-helps-humans-define-the-gray-areas/",
-      "priority": "STRATEGIC",
-      "priority_score": 95,
-      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
-      "rationale": "Data Mining & Modeling",
-      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
-    },
-    {
       "title": "Detecting signs of hypertension using wearable sensors",
       "source": "Google Research",
       "url": "https://research.google/blog/detecting-signs-of-hypertension-using-wearable-sensors/",
@@ -396,6 +386,16 @@
       "priority_score": 95,
       "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
       "rationale": "Quantum",
+      "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
+    },
+    {
+      "title": "Agents aren’t humans (but they kinda are)",
+      "source": "Cloudflare Engineering",
+      "url": "https://blog.cloudflare.com/trusted-agent-delegation/",
+      "priority": "STRATEGIC",
+      "priority_score": 85,
+      "impact_area": "Tư duy Suy luận & An ninh Hệ thống (Reasoning Scaffold & System Security)",
+      "rationale": "AI agents act for millions, but servers see intermediaries that strip user visibility. This post defines the problem space and introduces a collaborative approach to safely identifying, allowing, a...",
       "architectural_recommendation": "Cập nhật quy chuẩn vận hành AGENTS.md và tinh chỉnh System 2 Thinking Scaffolding."
     }
   ]
