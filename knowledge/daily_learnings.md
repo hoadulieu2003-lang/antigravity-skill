@@ -5954,3 +5954,17 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-20 11:42:02`
+
+<untrusted_external_content>
+### ⚡ Hạ tầng Mạng & Edge Computing (Cloudflare Engineering)
+- **[Cloudflare Engineering]** [nginx2root: Five new nginx vulnerabilities, and how Cloudflare protects origins from the worst of them](https://blog.cloudflare.com/nginx2root/)
+  > Five memory corruption bugs in nginx, called nginx2root, can let an unauthenticated attacker run code on a server. Here’s how they work, and why origins behind Cloudflare's proxy are shielded from ...
+
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (91 ⭐)]** [YanQuan-dozzy/Boss-Claw](https://github.com/YanQuan-dozzy/Boss-Claw)
+  > BossClaw｜本地 AI 求职助手与自动投递工具：覆盖 BOSS直聘 / 猎聘 / 智联招聘 / 前程无忧，简历解析 → 职业画像 → AI 岗位匹配排序 → 按岗位定制简历 → 生成招呼语并安全投递，全程可追踪；本地优先、独立运行不占用浏览器，支持外部 agent 经 MCP 接入。
+
+</untrusted_external_content>
+
+---
