@@ -1,0 +1,12 @@
+{
+  "description": "AlphaFold, 3D visualization tools, and protein databases to explore protein structures, sequences, pathways, and drug interactions.",
+  "displayName": "Structural Biology",
+  "logo": "https://www.gstatic.com/antigravity/buildWithGoogle/science/logo.svg",
+  "name": "structural-biology",
+  "suggestedPrompts": [
+    "Fetch the AlphaFold structure of tardigrade Dsup (UniProt P0DOW4), open it in 3D, and explain what its confidence profile reveals about protecting DNA.",
+    "Find the top 5 interaction partners of human CLOCK in STRING and explain how they work together to keep 24-hour time.",
+    "Visualize the engineered plastic-eating enzyme FAST-PETase (PDB 7SH6) in 3D and annotate its active site and key thermostability mutations."
+  ],
+  "version": "1.0.0"
+}

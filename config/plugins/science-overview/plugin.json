@@ -1,0 +1,7 @@
+{
+  "description": "Antigravity for science highlights, and an overview of the main science plugins.",
+  "displayName": "Science Overview",
+  "logo": "https://www.gstatic.com/antigravity/buildWithGoogle/science/logo.svg",
+  "name": "science-overview",
+  "version": "1.0.0"
+}

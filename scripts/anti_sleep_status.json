@@ -1,7 +1,7 @@
 ﻿{
     "status":  "ACTIVE_AWAKE_LOCKED",
-    "pid":  17908,
+    "pid":  9220,
     "apiReturn":  2147483715,
     "flags":  "0x80000043 (ES_CONTINUOUS | ES_SYSTEM_REQUIRED | ES_DISPLAY_REQUIRED | ES_AWAYMODE_REQUIRED)",
-    "lastHeartbeat":  "2026-11-20T21:31:51.1519431+07:00"
+    "lastHeartbeat":  "2026-11-21T07:16:29.9922025+07:00"
 }

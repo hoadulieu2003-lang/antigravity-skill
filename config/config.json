@@ -1,19 +1,4 @@
 {
-  "aiEngineSettings": {
-    "activeModel": "gemini-3.8-flash",
-    "autonomousSelfHealing": true,
-    "concurrencyProfile": "TURBO_HYPER_PARALLEL_MAX_THROUGHPUT",
-    "deepThinkingBudget": "unlimited_maximum",
-    "defaultSubagentsPerBatch": 6,
-    "maxConcurrentSubagents": 12,
-    "maxOutputTokensHeadroom": 131072,
-    "minConcurrentSubagents": 6,
-    "outputTokenMultiplier": 8,
-    "reasoningProfile": "ultra_high_reasoning",
-    "scope": "ENGINEERING_CODE_AND_ARCHITECTURE_ONLY",
-    "status": "HYPER_OVERCLOCKED_X8_ENGINEERING_ONLY",
-    "videoPromptBloatPrevention": true
-  },
   "plugins": {
     "android-cli-plugin": {
       "enabled": false,
@@ -21,6 +6,14 @@
         "id": "antigravity-plugins-official/plugin/android-cli-plugin",
         "marketplace": "antigravity-plugins-official",
         "version": "1.0.16625370"
+      }
+    },
+    "chemistry": {
+      "enabled": false,
+      "installedFrom": {
+        "id": "antigravity-plugins-official/plugin/chemistry",
+        "marketplace": "antigravity-plugins-official",
+        "version": "1.0.0"
       }
     },
     "chrome-devtools-plugin": {
@@ -32,6 +25,14 @@
     "flutter": {
       "enabled": false
     },
+    "genomics": {
+      "enabled": false,
+      "installedFrom": {
+        "id": "antigravity-plugins-official/plugin/genomics",
+        "marketplace": "antigravity-plugins-official",
+        "version": "1.0.0"
+      }
+    },
     "google-antigravity-sdk": {
       "enabled": true
     },
@@ -41,12 +42,28 @@
     "modern-web-guidance-plugin": {
       "enabled": true
     },
-    "science": {
+    "science-overview": {
       "enabled": false,
       "installedFrom": {
-        "id": "antigravity-plugins-official/plugin/science",
+        "id": "antigravity-plugins-official/plugin/science-overview",
         "marketplace": "antigravity-plugins-official",
-        "version": "1.4.0"
+        "version": "1.0.0"
+      }
+    },
+    "scientific-literature": {
+      "enabled": false,
+      "installedFrom": {
+        "id": "antigravity-plugins-official/plugin/scientific-literature",
+        "marketplace": "antigravity-plugins-official",
+        "version": "1.0.0"
+      }
+    },
+    "structural-biology": {
+      "enabled": false,
+      "installedFrom": {
+        "id": "antigravity-plugins-official/plugin/structural-biology",
+        "marketplace": "antigravity-plugins-official",
+        "version": "1.0.0"
       }
     }
   },

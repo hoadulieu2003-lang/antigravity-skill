@@ -1,7 +1,7 @@
 {
   "version": "2.0.0",
-  "last_updated": "2026-11-20T14:32:07.597832+00:00",
-  "total_cycles_run": 59,
+  "last_updated": "2026-11-21T00:16:32.582404+00:00",
+  "total_cycles_run": 60,
   "cycles": [
     {
       "cycle_id": "EVO-20260923",
@@ -826,6 +826,20 @@
       "artifacts": {
         "json_report": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\upgrade_20261120.json",
         "briefing_markdown": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\upgrade_20261120_briefing.md"
+      },
+      "status": "COMPLETED_PENDING_ARCHITECT_REVIEW"
+    },
+    {
+      "cycle_id": "EVO-20261121",
+      "timestamp": "2026-11-21T00:16:32.527811+00:00",
+      "sessions_analyzed": 83,
+      "items_processed": 168,
+      "candidates_count": 103,
+      "enhancements_count": 34,
+      "optimizations_count": 29,
+      "artifacts": {
+        "json_report": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\upgrade_20261121.json",
+        "briefing_markdown": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\upgrade_20261121_briefing.md"
       },
       "status": "COMPLETED_PENDING_ARCHITECT_REVIEW"
     }

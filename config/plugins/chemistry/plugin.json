@@ -1,0 +1,12 @@
+{
+  "description": "RDKit cheminformatics, reaction and property tools, plus ChEMBL and PubChem, to work with molecules, their properties, and bioactivity data.",
+  "displayName": "Chemistry",
+  "logo": "https://www.gstatic.com/antigravity/buildWithGoogle/science/logo.svg",
+  "name": "chemistry",
+  "suggestedPrompts": [
+    "Launch an interactive viewer compare these 8 approved COX-1/COX-2 NSAIDs and analgesics: Aspirin, Ibuprofen, Naproxen, Celecoxib, Rofecoxib, Etoricoxib, Diclofenac, and Indomethacin.",
+    "Show me the two-step mechanism for the synthesis of aspirin from salicylic acid and acetic anhydride.",
+    "Can you show me the resonance structures of pyrrole?"
+  ],
+  "version": "1.0.0"
+}

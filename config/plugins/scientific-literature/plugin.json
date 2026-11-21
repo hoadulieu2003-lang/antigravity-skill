@@ -1,0 +1,12 @@
+{
+  "description": "Search scientific papers, clinical trials, FDA records, and historical texts.",
+  "displayName": "Scientific Literature",
+  "logo": "https://www.gstatic.com/antigravity/buildWithGoogle/science/logo.svg",
+  "name": "scientific-literature",
+  "suggestedPrompts": [
+    "Write a literature review on earthquake mechanics and show me the sources of the papers which evidence the content in this review.",
+    "Query PubMed database for papers on using plants to clean heavy metals from soil.",
+    "Find preprints from the past month on asteroid deflection and planetary defense."
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "AlphaGenome and major genetics databases to analyze DNA variants, gene regulation, and links between genes and disease.",
+  "displayName": "Genomics",
+  "logo": "https://www.gstatic.com/antigravity/buildWithGoogle/science/logo.svg",
+  "name": "genomics",
+  "suggestedPrompts": [
+    "Rank rs1421085, rs9939609 and rs17817449 at the FTO obesity locus by AlphaGenome AVI score.",
+    "Which tissues does rs1421085 affect gene expression in? Check GTEx eQTLs.",
+    "Predict how chr11:5226929:C>T affects splicing using AlphaGenome Atlas AVI."
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,7 @@
+{
+  "event_type": "ARCHITECTURAL_PATTERN_DISTILLED",
+  "title": "How Cloudflare WAF protects against ruby2shell (CVE-2026-132825)",
+  "source": "Cloudflare Engineering",
+  "pattern_file": "C:\\Users\\game\\.gemini\\knowledge\\architecture_patterns\\how_cloudflare_waf_protects_against_ruby2shell_cve_2026_1328.md",
+  "timestamp": "2026-11-21 00:16:32 UTC"
+}
