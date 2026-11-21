@@ -1,6 +1,6 @@
 {
   "analysis_metadata": {
-    "scan_date": "2026-11-21T01:42:18.783039+00:00",
+    "scan_date": "2026-11-21T04:42:11.514221+00:00",
     "cycle_id": "EVO-20261121",
     "sessions_evaluated": 83,
     "total_items_processed": 168,
@@ -107,18 +107,6 @@
       "suggested_skill_structure": "---\nname: sellbird\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng ethanplusai/sellbird cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# ETHANPLUSAI/SELLBIRD SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `ethanplusai/sellbird` (https://github.com/ethanplusai/sellbird)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     },
     {
-      "skill_slug": "dsh-see-now",
-      "title": "SAOS-3624/dsh-see-now",
-      "source": "GitHub (392 ⭐)",
-      "url": "https://github.com/SAOS-3624/dsh-see-now",
-      "domain": "Công nghệ Mới nổi (Emerging Technology)",
-      "priority": "HIGH",
-      "priority_score": 85,
-      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
-      "proposed_value": "让 AI 实时看见你的屏幕：按变化量筛选帧、多帧拼进一张图，静止画面几乎不花 token",
-      "suggested_skill_structure": "---\nname: dsh-see-now\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng SAOS-3624/dsh-see-now cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# SAOS-3624/DSH-SEE-NOW SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `SAOS-3624/dsh-see-now` (https://github.com/SAOS-3624/dsh-see-now)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
-    },
-    {
       "skill_slug": "nexusdesk",
       "title": "GroundedCoreAI/nexusdesk",
       "source": "GitHub (197 ⭐)",
@@ -153,6 +141,18 @@
       "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).",
       "proposed_value": "PhysicsOS 是一个面向初高中物理学习的公益可视化智能体，通过 AI 理解题目并结合物理引擎，将抽象物理过程转化为可交互、可观察、可计算、可验证的真实物理场景。",
       "suggested_skill_structure": "---\nname: physicsos\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng 122-syf-wcy/PhysicsOS cho các tác vụ Công nghệ Mới nổi (Emerging Technology).\n---\n\n# 122-SYF-WCY/PHYSICSOS SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `122-syf-wcy/PhysicsOS` (https://github.com/122-syf-wcy/PhysicsOS)\n- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
+    },
+    {
+      "skill_slug": "awesome-openclaw-zh",
+      "title": "cogine-ai/awesome-openclaw-zh",
+      "source": "GitHub (240 ⭐)",
+      "url": "https://github.com/cogine-ai/awesome-openclaw-zh",
+      "domain": "Thiết kế Phần cứng & Mạch Điện tử (Hardware & PCB EDA Design)",
+      "priority": "HIGH",
+      "priority_score": 85,
+      "capability_gap": "Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Thiết kế Phần cứng & Mạch Điện tử (Hardware & PCB EDA Design).",
+      "proposed_value": "OpenClaw 中文实战与案例库：部署、渠道接入、工作流与原创实验。精选成果附输入和复现脚本。OPCBoost · by Cogine",
+      "suggested_skill_structure": "---\nname: awesome-openclaw-zh\ndescription: Tự động kích hoạt khi người dùng muốn tận dụng cogine-ai/awesome-openclaw-zh cho các tác vụ Thiết kế Phần cứng & Mạch Điện tử (Hardware & PCB EDA Design).\n---\n\n# COGINE-AI/AWESOME-OPENCLAW-ZH SKILL ARCHITECTURE\n\n## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)\n- Kế thừa giải pháp từ: `cogine-ai/awesome-openclaw-zh` (https://github.com/cogine-ai/awesome-openclaw-zh)\n- Lĩnh vực: Thiết kế Phần cứng & Mạch Điện tử (Hardware & PCB EDA Design)\n\n## 🛠️ 2. Workflows & Công cụ (Tools & Operations)\n- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.\n- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.\n"
     }
   ],
   "skill_enhancements": [

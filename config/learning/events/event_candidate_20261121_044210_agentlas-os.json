@@ -1,0 +1,10 @@
+{
+  "event_type": "CANDIDATE_SKILL_SYNTHESIZED",
+  "timestamp": "2026-11-21T04:42:10.841876+00:00",
+  "skill_name": "agentlas-os",
+  "source_repo": "agentlas-ai/Agentlas-OS",
+  "stars": 1400,
+  "status": "CANDIDATE",
+  "candidate_path": "C:\\Users\\game\\.gemini\\config\\learning\\candidates\\agentlas-os\\SKILL.md",
+  "human_promotion_required": true
+}

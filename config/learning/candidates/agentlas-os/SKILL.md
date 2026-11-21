@@ -1,7 +1,7 @@
 ---
 name: agentlas-os
 description: >-
-  Kỹ năng chuyên gia vận hành cho agentlas-ai/Agentlas-OS (1456 ⭐).
+  Kỹ năng chuyên gia vận hành cho agentlas-ai/Agentlas-OS (1400 ⭐).
   Tự động kích hoạt khi người dùng muốn:
     - Tự động hóa hoặc tích hợp công cụ mã nguồn mở agentlas-os vào hệ thống
     - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến The Open-Source AI Agent OS inspired by OpenAI Dots, Meta Muse, OpenClaw, Hermes & Mem0
@@ -12,9 +12,9 @@ description: >-
 # agentlas-ai/Agentlas-OS — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
 
 > **Nguồn gốc**: GitHub Repository `https://github.com/agentlas-ai/Agentlas-OS`  
-> **Độ uy tín cộng đồng**: 1456 ⭐  
+> **Độ uy tín cộng đồng**: 1400 ⭐  
 > **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-11-15 13:42:10Z
+> **Tự động đóng gói lúc**: 2026-11-21 04:42:10Z
 
 ---
 
@@ -23,8 +23,11 @@ description: >-
 * **Mục tiêu cốt lõi**: The Open-Source AI Agent OS inspired by OpenAI Dots, Meta Muse, OpenClaw, Hermes & Mem0. Autonomous 3-tier headhunting, Receipt & Verifier loops, scoped memo...
 * **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
 * **Các tính năng nổi bật được trích xuất**:
-- Khả năng tự động hóa và tích hợp đa nền tảng.
-- Tối ưu hóa hiệu năng và độ ổn định.
+- **Up to 99% off**: from 0.1x official pricing
+- **Official upstreams, 100% genuine models**: no downgrades, no dilution, every model verifiable
+- **1,000+ redundant routes with automatic failover**: one route stumbles, the next takes over
+- **200+ models from 16 brands**: text, image and video with one key
+- **Recommended by 100+ top open-source projects**, the largest with 100k+ stars
 
 ---
 

@@ -1,5 +1,5 @@
 # 🧬 BÁO CÁO TIẾN HÓA HỆ THỐNG ANTIGRAVITY (SYSTEM EVOLUTION BRIEFING)
-> **Mã chu kỳ (Cycle ID)**: `EVO-20261121` | **Thời gian**: `2026-11-21 01:42:18 UTC`  
+> **Mã chu kỳ (Cycle ID)**: `EVO-20261121` | **Thời gian**: `2026-11-21 04:42:11 UTC`  
 > **Chủ quản**: Anh — Lead Architect / Product Owner  
 > **Tác tử thực thi**: Worker Pod 1 — Evolution Engine Developer  
 
@@ -212,31 +212,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng et
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.9. `dsh-see-now` — SAOS-3624/dsh-see-now 🔥 [HIGH PRIORITY]
-- **Nguồn gốc (Source)**: [GitHub (392 ⭐)](https://github.com/SAOS-3624/dsh-see-now)
-- **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
-- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
-- **Giá trị Đề xuất (Proposed Value)**: 让 AI 实时看见你的屏幕：按变化量筛选帧、多帧拼进一张图，静止画面几乎不花 token
-
-```yaml
-# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
----
-name: dsh-see-now
-description: Tự động kích hoạt khi người dùng muốn tận dụng SAOS-3624/dsh-see-now cho các tác vụ Công nghệ Mới nổi (Emerging Technology).
----
-
-# SAOS-3624/DSH-SEE-NOW SKILL ARCHITECTURE
-
-## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
-- Kế thừa giải pháp từ: `SAOS-3624/dsh-see-now` (https://github.com/SAOS-3624/dsh-see-now)
-- Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
-
-## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
-- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
-- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
-```
-
-### 2.10. `nexusdesk` — GroundedCoreAI/nexusdesk 🔥 [HIGH PRIORITY]
+### 2.9. `nexusdesk` — GroundedCoreAI/nexusdesk 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (197 ⭐)](https://github.com/GroundedCoreAI/nexusdesk)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -260,7 +236,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng Gr
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.11. `taskuary` — ldbumble/taskuary 🔥 [HIGH PRIORITY]
+### 2.10. `taskuary` — ldbumble/taskuary 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (148 ⭐)](https://github.com/ldbumble/taskuary)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -284,7 +260,7 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng ld
 - Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
 ```
 
-### 2.12. `physicsos` — 122-syf-wcy/PhysicsOS 🔥 [HIGH PRIORITY]
+### 2.11. `physicsos` — 122-syf-wcy/PhysicsOS 🔥 [HIGH PRIORITY]
 - **Nguồn gốc (Source)**: [GitHub (263 ⭐)](https://github.com/122-syf-wcy/PhysicsOS)
 - **Lĩnh vực (Domain)**: `Công nghệ Mới nổi (Emerging Technology)`
 - **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Công nghệ Mới nổi (Emerging Technology).
@@ -302,6 +278,30 @@ description: Tự động kích hoạt khi người dùng muốn tận dụng 12
 ## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
 - Kế thừa giải pháp từ: `122-syf-wcy/PhysicsOS` (https://github.com/122-syf-wcy/PhysicsOS)
 - Lĩnh vực: Công nghệ Mới nổi (Emerging Technology)
+
+## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
+- Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
+- Tích hợp chuẩn giao tiếp Model Context Protocol (MCP) hoặc CLI execution engine.
+```
+
+### 2.12. `awesome-openclaw-zh` — cogine-ai/awesome-openclaw-zh 🔥 [HIGH PRIORITY]
+- **Nguồn gốc (Source)**: [GitHub (240 ⭐)](https://github.com/cogine-ai/awesome-openclaw-zh)
+- **Lĩnh vực (Domain)**: `Thiết kế Phần cứng & Mạch Điện tử (Hardware & PCB EDA Design)`
+- **Khoảng trống Năng lực (Capability Gap)**: Hệ thống hiện chưa có công cụ chuyên biệt tối ưu hóa cho Thiết kế Phần cứng & Mạch Điện tử (Hardware & PCB EDA Design).
+- **Giá trị Đề xuất (Proposed Value)**: OpenClaw 中文实战与案例库：部署、渠道接入、工作流与原创实验。精选成果附输入和复现脚本。OPCBoost · by Cogine
+
+```yaml
+# Gợi ý Cấu trúc SKILL.md (Suggested Specification)
+---
+name: awesome-openclaw-zh
+description: Tự động kích hoạt khi người dùng muốn tận dụng cogine-ai/awesome-openclaw-zh cho các tác vụ Thiết kế Phần cứng & Mạch Điện tử (Hardware & PCB EDA Design).
+---
+
+# COGINE-AI/AWESOME-OPENCLAW-ZH SKILL ARCHITECTURE
+
+## 🎯 1. Mục tiêu & Định vị (Intent & Positioning)
+- Kế thừa giải pháp từ: `cogine-ai/awesome-openclaw-zh` (https://github.com/cogine-ai/awesome-openclaw-zh)
+- Lĩnh vực: Thiết kế Phần cứng & Mạch Điện tử (Hardware & PCB EDA Design)
 
 ## 🛠️ 2. Workflows & Công cụ (Tools & Operations)
 - Kích hoạt quy trình xử lý chuyên sâu theo ngữ cảnh.
