@@ -1,57 +1,47 @@
 ---
 name: cherry-studio
 description: >-
-  Kỹ năng chuyên gia vận hành cho CherryHQ/cherry-studio (51840 ⭐).
+  Kỹ năng chuyên gia vận hành cho CherryHQ/cherry-studio (51.840 ⭐).
   Tự động kích hoạt khi người dùng muốn:
-    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở cherry-studio vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến AI productivity studio with smart chat, autonomous agents, and 300+ assistants
+    - Vận hành và tích hợp Studio Năng suất AI (AI Productivity Studio) đa tác tử với hơn 300+ trợ lý thông minh
+    - Điều phối đa mô hình ngôn ngữ lớn (Unified Frontier LLM Access: DeepSeek, Qwen, Gemini, Claude, OpenAI)
     - Thiết lập cấu hình và vận hành lệnh CLI của CherryHQ/cherry-studio
   KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'cherry-studio'.
 ---
 
-# CherryHQ/cherry-studio — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
+# 🍒 CHERRY STUDIO — AI PRODUCTIVITY STUDIO & MULTI-AGENT HUB
 
-> **Nguồn gốc**: GitHub Repository `https://github.com/CherryHQ/cherry-studio`  
-> **Độ uy tín cộng đồng**: 51840 ⭐  
-> **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-16 02:20:19Z
-
----
-
-## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
-
-* **Mục tiêu cốt lõi**: AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs
-* **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
-* **Các tính năng nổi bật được trích xuất**:
-- **Unlimited Model Access**: Get **unlimited** API calls for the **DeepSeek** and **Qwen** models.
-- **Cutting-Edge Tech Access**: Enjoy occasional perks, including API access to models like **Claude**, **Gemini**, and **OpenAI**, keeping you at the forefront of technology.
-- **Reliable Backend Services**: Provides stable API services and enterprise-grade data backup and recovery mechanisms to ensure business continuity.
-- **For Business Inquiries & Purchasing**:
+> **Nguồn gốc (Origin)**: Kho lưu trữ mã nguồn mở `CherryHQ/cherry-studio` (51.840 ⭐)  
+> **Sứ mệnh cốt lõi (Mission)**: Nền tảng Studio năng suất làm việc AI tích hợp chat thông minh, tác tử tự trị và 300+ trợ lý chuyên biệt  
+> **Nguyên tắc vận hành**: Chuẩn song ngữ `English (Tiếng Việt)`, tuân thủ `Luminous Light Theme Invariant`.
 
 ---
 
-## 2. Thông Số Kỹ Thuật & Cú Pháp Lệnh (Specifications & Contracts)
+## 🏛️ 1. TỔNG QUAN KIẾN TRÚC & TÍNH NĂNG NỔI BẬT (KEY CAPABILITIES)
 
-Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
-
-```bash
-# Tham khảo tài liệu gốc tại GitHub: CherryHQ/cherry-studio
-git clone https://github.com/CherryHQ/cherry-studio.git
-```
+Cherry Studio đóng vai trò là Trạm Điều Phối Năng Suất Cá Nhân & Doanh Nghiệp (`Personal & Enterprise Productivity Station`):
+1. **Truy Cập Mô Hình Đồng Nhất (`Unified LLM Gateway`)**: Kết nối không giới hạn tới các mô hình hàng đầu thế giới (DeepSeek, Qwen, Claude, Gemini, OpenAI).
+2. **Hệ Sinh Thái 300+ Trợ Lý Chuyên Sâu (`300+ Specialized Assistants`)**: Cung cấp sẵn các mẫu trợ lý cho Lập trình phần mềm, Dịch thuật song ngữ, Viết kịch bản, Phân tích dữ liệu và Quản trị dự án.
+3. **Cơ Chế Sao Lưu & Phục Hồi Chuẩn Doanh Nghiệp (`Enterprise Data Continuity`)**: Đảm bảo toàn bộ lịch sử trò chuyện, prompt và cấu hình tác tử được lưu trữ an toàn, phục hồi tức thì.
 
 ---
 
-## 3. Quy Trình Vận Hành Chuẩn Mực (Step-by-Step Runbook)
+## 🛠️ 2. QUY TRÌNH TÍCH HỢP & VẬN HÀNH (OPERATIONAL RUNBOOK)
 
-1. **Khảo sát Môi trường**: Kiểm tra runtime tương thích (Python / Node.js / Docker) trên máy trạm Windows.
-2. **Cài đặt & Cấu hình**: Nạp biến môi trường và thiết lập tham số an toàn trong ranh giới Sandbox.
-3. **Thực thi & Tự Kiểm chứng**: Chạy thử nghiệm lệnh với phạm vi nhỏ nhất (`FAST Mode`) trước khi tích hợp vào luồng chính.
-4. **Bàn giao Bằng chứng**: Xuất bằng chứng kiểm chứng (`Evidence Ledger`) xác nhận kết quả trước khi kết thúc tác vụ.
+1. **Khảo sát & Kiểm tra Môi trường (`Runtime Verification`)**:
+   * Xác minh môi trường máy trạm Windows, kiểm tra cổng mạng khả dụng và bộ nhớ đệm an toàn.
+2. **Cấu hình Kết Nối Mô Hình (`Model Provider Configuration`)**:
+   * Thiết lập API Base URL và API Keys bảo mật trong file `.env` nội bộ, ưu tiên các mô hình có chi phí tối ưu và tốc độ cao.
+3. **Điều Phối Trợ Lý Thông Minh (`Autonomous Assistant Dispatch`)**:
+   * Lựa chọn đúng trợ lý theo ngữ cảnh công việc của Anh, áp dụng cơ chế suy luận chuyên sâu trước khi phản hồi.
+4. **Bàn giao Minh Chứng (`Evidence Ledger`)**:
+   * Ghi nhận kết quả thực thi và thông số phản hồi vào sổ cái bằng chứng minh bạch.
 
 ---
 
-## 4. Các Bẫy Lỗi & Ràng Buộc An Toàn (Pitfalls & Guardrails)
+## 🛡️ 3. CÁC NGUYÊN TẮC AN TOÀN BẤT BIẾN (INVARIANTS)
 
-* **Ràng buộc Mạng & Token**: Tuân thủ nghiêm ngặt hạn mức API và cơ chế timeout an toàn.
-* **Bảo vệ Secret**: Tuyệt đối không lưu trữ khóa API hoặc token riêng tư dưới dạng văn bản thô.
-* **Bảo vệ Không Gian Làm Việc**: Không tự ý ghi đè hoặc thay đổi các file cấu hình hệ sinh thái cốt lõi ngoài phạm vi.
+1. **Bảo Mật Khóa API Tuyệt Đối (`Credential Isolation`)**:
+   * Tuyệt đối không lưu trữ khóa API hoặc token riêng tư dưới dạng văn bản thô trong mã nguồn hoặc kho tài liệu.
+2. **Kỷ Luật Thuật Ngữ Song Ngữ (`Bilingual Terminology Protocol`)**:
+   * Mọi lời thoại và tài liệu kỹ thuật bắt buộc tuân theo định dạng: **`English (Tiếng Việt)`** *(Ví dụ: `Token Consumption (Mức Tiêu Thụ Token)`, `Inference Gateway (Cổng Điều Phối Suy Luận)`)*.

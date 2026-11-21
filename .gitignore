@@ -33,3 +33,7 @@ config/sidecars/antigravity_master_hub/*.png
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+antigravity-backup/
+*.user_bak
+

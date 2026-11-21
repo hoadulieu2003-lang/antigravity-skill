@@ -1,0 +1,92 @@
+# ==============================================================================
+# ANTIGRAVITY SKILLS VAULT — DEDICATED .GITIGNORE (QUY CHUẨN LOẠI TRỪ AN TOÀN)
+# ==============================================================================
+# Bảo vệ đa tầng (Defense-in-Depth) cho 66 Enterprise Skills
+# Ngăn chặn rò rỉ Secrets, Cache, Logs và File tạm thời vào Git
+
+# 1. Bí Mật & Thông Tin Xác Thực (Secrets & Credentials - Invariant Rule 14)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.cert
+*.crt
+*credential*.json
+*service_account*.json
+hub_config.json
+
+# 2. Python Build & Cache Artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# 3. Node.js & Web Framework Artifacts
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+.turbo/
+.next/
+.nuxt/
+.astro/
+.cache/
+*.tsbuildinfo
+
+# 4. Logs, Backups & Tạm Thời (Temporary & Backup Files)
+*.log
+logs/
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+*.orig
+
+# 5. Hệ Điều Hành & IDE Cục Bộ (OS & Editor Local Configs)
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-workspace
+*.sublime-project

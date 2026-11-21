@@ -1,61 +1,78 @@
 ---
 name: vibe-coding-cn
 description: >-
-  Kỹ năng chuyên gia vận hành cho tradecatlabs/vibe-coding-cn (16237 ⭐).
+  Kỹ năng chuyên gia vận hành Vibe Coding thực chiến từ tradecatlabs/vibe-coding-cn (16.237 ⭐).
   Tự động kích hoạt khi người dùng muốn:
-    - Tự động hóa hoặc tích hợp công cụ mã nguồn mở vibe-coding-cn vào hệ thống
-    - Giải quyết các tác vụ kỹ thuật chuyên sâu liên quan đến Vibe Coding 从入门到精通教程｜AI 结对编程工作流｜Prompt、Skill、Workflow、上下文管理、codex实战指南
-    - Thiết lập cấu hình và vận hành lệnh CLI của tradecatlabs/vibe-coding-cn
+    - Áp dụng phương pháp luận Vibe Coding biến ý tưởng thành sản phẩm phần mềm chạy được
+    - Vận hành quy trình Lập trình Cặp Đôi AI (AI Pair-Programming Workflow) với Prompt, Skill, Workflow và Quản trị Ngữ cảnh (Context Management)
+    - Khởi tạo và tối ưu hóa hệ thống Mẫu Lời Nhắc Mẹ (Alpha-Prompt Generator & Omega-Prompt Optimizer)
   KHÔNG CẦN người dùng phải nhớ tên kỹ thuật 'vibe-coding-cn'.
 ---
 
-# tradecatlabs/vibe-coding-cn — Cẩm Nang Kỹ Năng Vận Hành Chuyên Sâu
+# 🚀 VIBE CODING PRO — MASTER AI PAIR-PROGRAMMING RUNBOOK
 
-> **Nguồn gốc**: GitHub Repository `https://github.com/tradecatlabs/vibe-coding-cn`  
-> **Độ uy tín cộng đồng**: 16237 ⭐  
-> **Trạng thái Quản trị**: `CANDIDATE` (Tuân thủ FRAMEWORK_V2_CAPABILITY_AND_LEARNING_REGISTRY)  
-> **Tự động đóng gói lúc**: 2026-09-15 19:42:11Z
-
----
-
-## 1. Bản Chất Kiến Trúc & Giá Trị Cốt Lõi (Architectural Essence)
-
-* **Mục tiêu cốt lõi**: Vibe Coding 从入门到精通教程｜AI 结对编程工作流｜Prompt、Skill、Workflow、上下文管理、codex实战指南
-* **Lĩnh vực áp dụng**: Tự động hóa lập trình, Tác tử AI (AI Agents), và Tối ưu hóa quy trình kỹ thuật.
-* **Các tính năng nổi bật được trích xuất**:
-- `vibe-coding-cn` 是中文 Vibe Coding 从入门到精通教程，目标是把想法稳定变成可运行产品。
-- **α-提示词（生成器）**：一个“母体”提示词，其唯一职责是生成其他提示词或技能。
-- **Ω-提示词（优化器）**：另一个“母体”提示词，其唯一职责是优化其他提示词或技能。
-* **概念是入口；不理解概念，就无法看见、触达对象**
-* **只用最强模型**
-* **结果主导**
+> **Nguồn gốc (Origin)**: Kho lưu trữ mã nguồn mở `tradecatlabs/vibe-coding-cn` (16.237 ⭐)  
+> **Phương pháp luận (Methodology)**: `Vibe Coding (Lập trình Trực giác Dựa trên Luồng Ý Thức)`  
+> **Mục tiêu tối thượng**: Biến mọi ý tưởng thô thành sản phẩm phần mềm ổn định, chạy được trong thời gian ngắn nhất  
+> **Nguyên tắc vận hành**: Chuẩn song ngữ `English (Tiếng Việt)`, bám sát `Evidence Ledger (Sổ cái Bằng chứng)`.
 
 ---
 
-## 2. Thông Số Kỹ Thuật & Cú Pháp Lệnh (Specifications & Contracts)
+## 🏛️ 1. BẢN CHẤT KIẾN TRÚC & TRIẾT LÝ CỐT LÕI (CORE PHILOSOPHY)
 
-Dưới đây là các cấu trúc lệnh và cấu hình thực thi tiêu chuẩn được trích xuất từ tài liệu chính thức:
+Phương pháp luận **Vibe Coding** định hình lại mối quan hệ giữa Lập trình viên và AI, chuyển đổi từ "người gõ từng dòng code" sang "Tổng công trình sư điều phối ý định (`Intent Architect`)":
 
-```bash
-git submodule update --init --recursive
-pip install -r tools/prompts-library/requirements.txt
+```mermaid
+flowchart TD
+    Concept["💡 Khái Niệm / Ý Tưởng<br/>(Core Concept)"] --> Alpha["🧬 α-Prompt Generator<br/>(Bộ Sinh Lời Nhắc Mẫu)"]
+    Alpha --> Scaffold["🏗️ System Scaffolding<br/>(Dựng Khung Kiến Trúc Dự Án)"]
+    Scaffold --> PairProg["⚡ AI Pair-Programming Loop<br/>(Vòng Lặp Lập Trình Cặp Đôi)"]
+    PairProg --> Omega["🔬 Ω-Prompt Optimizer<br/>(Bộ Tối Ưu Lời Nhắc & Kỹ Năng)"]
+    Omega --> Ship["🚢 Production Deliverable<br/>(Sản Phẩm Xuất Xưởng Chạy Được)"]
 
-pip install -r tools/prompts-library/scripts/requirements.txt
+    style Concept fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    style Alpha fill:#fff9c4,stroke:#fbc02d,stroke-width:2px;
+    style Scaffold fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px;
+    style PairProg fill:#ffe0b2,stroke:#f57c00,stroke-width:2px;
+    style Omega fill:#e8f5e9,stroke:#388e3c,stroke-width:2px;
+    style Ship fill:#ede7f6,stroke:#512da8,stroke-width:2px;
 ```
 
----
-
-## 3. Quy Trình Vận Hành Chuẩn Mực (Step-by-Step Runbook)
-
-1. **Khảo sát Môi trường**: Kiểm tra runtime tương thích (Python / Node.js / Docker) trên máy trạm Windows.
-2. **Cài đặt & Cấu hình**: Nạp biến môi trường và thiết lập tham số an toàn trong ranh giới Sandbox.
-3. **Thực thi & Tự Kiểm chứng**: Chạy thử nghiệm lệnh với phạm vi nhỏ nhất (`FAST Mode`) trước khi tích hợp vào luồng chính.
-4. **Bàn giao Bằng chứng**: Xuất bằng chứng kiểm chứng (`Evidence Ledger`) xác nhận kết quả trước khi kết thúc tác vụ.
+### 3 Trụ Cột Triết Lý Bất Biến:
+1. **Khái Niệm là Cửa Vào (`Concept is the Portal`)**: Nếu không nắm rõ bản chất khái niệm kiến trúc, bạn sẽ không thể nhìn thấy, chạm tới hoặc điều phối được đối tượng mã nguồn.
+2. **Chỉ Dùng Mô Hình Mạnh Nhất (`Frontier Models Only`)**: Vibe Coding đòi hỏi năng lực suy luận kịch trần (`Max Reasoning`), ưu tiên các mô hình mạnh nhất để hạn chế ảo giác (`Hallucination`).
+3. **Kết Quả Thực Tế Làm Thước Đo (`Outcome-Driven Deliverables`)**: Mọi dòng code sinh ra phải được kiểm chứng bằng runtime thực tế, không chấp nhận khẳng định suông.
 
 ---
 
-## 4. Các Bẫy Lỗi & Ràng Buộc An Toàn (Pitfalls & Guardrails)
+## 🧬 2. CẶP MA TRẬN LỜI NHẮC MẸ (THE DUAL MOTHER-PROMPT ENGINES)
 
-* **Ràng buộc Mạng & Token**: Tuân thủ nghiêm ngặt hạn mức API và cơ chế timeout an toàn.
-* **Bảo vệ Secret**: Tuyệt đối không lưu trữ khóa API hoặc token riêng tư dưới dạng văn bản thô.
-* **Bảo vệ Không Gian Làm Việc**: Không tự ý ghi đè hoặc thay đổi các file cấu hình hệ sinh thái cốt lõi ngoài phạm vi.
+Hệ thống vận hành dựa trên 2 cỗ máy lời nhắc tự thân:
+* **$\alpha$-Prompt (Alpha Generator — Cỗ máy Mẹ Sinh Lời Nhắc)**:
+  * *Nhiệm vụ*: Lấy mục tiêu người dùng làm đầu vào, tự động phân tích không gian bài toán và sinh ra các bộ Prompt chuyên biệt, kịch bản kiểm thử hoặc System Instructions mới.
+* **$\Omega$-Prompt (Omega Optimizer — Cỗ máy Mẹ Tối Ưu Hóa)**:
+  * *Nhiệm vụ*: Kiểm toán các prompt, quy trình làm việc (`Workflows`) hoặc file kỹ năng (`Skills`) hiện có, loại bỏ các điểm mơ hồ, tối ưu hóa độ súc tích của Token và tăng tỷ lệ thành công của tác vụ lên mức tối đa.
+
+---
+
+## 🛠️ 3. QUY TRÌNH VẬN HÀNH 4 BƯỚC KHÉP KÍN (STANDARD 4-STEP RUNBOOK)
+
+1. **Bước 1 — Định Vị Không Gian Khái Niệm (`Conceptual Scoping`)**:
+   * Khảo sát môi trường và xác định rõ miền vấn đề: runtime tương thích (Node.js / Python / Docker) trên máy trạm Windows.
+2. **Bước 2 — Thiết Lập Khung Thử Nghiệm Tối Giản (`Minimal Sandbox Scaffolding`)**:
+   * Tạo môi trường cô lập, nạp biến môi trường an toàn và khởi tạo dự án với quy mô tối thiểu (`FAST Mode`).
+3. **Bước 3 — Vòng Lặp Lập Trình Trực Giác Cặp Đôi (`Iterative Vibe Loop`)**:
+   * Chia nhỏ công việc thành các bước lặp 15–30 giây, kiểm tra trực quan ngay trên trình duyệt hoặc terminal, sửa lỗi theo phản hồi tức thì (`Real-Time Feedback`).
+4. **Bước 4 — Kiểm Chứng & Xuất Sổ Cái Bằng Chứng (`Evidence Ledger Verification`)**:
+   * Chạy unit tests hoặc kiểm chứng tương tác end-to-end, ghi nhận kết quả vào sổ cái bằng chứng trước khi bàn giao cho Anh.
+
+---
+
+## 🛡️ 4. CÁC NGUYÊN TẮC AN TOÀN BẤT BIẾN (SAFETY GUARDRAILS)
+
+1. **Kỷ Luật Song Ngữ Bắt Buộc (`Bilingual Terminology Protocol`)**:
+   * Toàn bộ lời thoại, tài liệu kỹ thuật và giải thích phải tuân thủ nghiêm ngặt định dạng: **`English (Tiếng Việt)`** *(Ví dụ: `Context Compaction (Nén Ngữ Cảnh)`, `State Machine (Máy Trạng Thái)`)*.
+2. **Bảo Mật Thông Tin Định Danh Tuyệt Đối (`Credential Isolation`)**:
+   * Không bao giờ hardcode token, khóa API hay thông tin xác thực vào mã nguồn công khai.
+3. **Quy Chuẩn Giao Diện Sáng Đa Tầng Luminous (`Luminous Light Theme Invariant`)**:
+   * Mọi giao diện web, dashboard hoặc prototype sinh ra trong quá trình Vibe Coding phải mặc định 100% sử dụng nền sáng đa tầng cao cấp, triệt tiêu Dark Mode trừ khi có chỉ đạo riêng của Anh.
