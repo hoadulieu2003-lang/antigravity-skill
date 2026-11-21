@@ -6058,3 +6058,13 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-21 16:34:06`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (100 ⭐)]** [AKMessi/vex](https://github.com/AKMessi/vex)
+  > claude code for video editing
+
+</untrusted_external_content>
+
+---
