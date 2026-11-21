@@ -6046,3 +6046,15 @@ Xây dựng một bộ giáo trình và khung tham chiếu kỹ thuật tối th
 </untrusted_external_content>
 
 ---
+## 📅 Phiên Học Tập Đa Nguồn: `2026-11-21 14:42:02`
+
+<untrusted_external_content>
+### 🛠️ Xu hướng AI Agent & Mã nguồn Mở (GitHub Trending)
+- **[GitHub (61 ⭐)]** [NipunaRanasinghe/awesome-ai-agents](https://github.com/NipunaRanasinghe/awesome-ai-agents)
+  > A curated list of frameworks, tools, and resources for building and deploying AI agents.
+- **[GitHub (284 ⭐)]** [boshi-xixixi/TraeSkill](https://github.com/boshi-xixixi/TraeSkill)
+  > 为 Trae IDE 打造的全流程标准化 AI 开发技能库，内置调度分发与多角色研发技能，一键导入规范 AI 编码工作流 🚀
+
+</untrusted_external_content>
+
+---
